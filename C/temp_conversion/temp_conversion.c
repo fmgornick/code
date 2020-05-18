@@ -2,18 +2,18 @@
 
 int main()
 {
-    int fahrenheit, celsius;
+    int fahrenheit, celsius;    // declaring variables as ints
     int lower, upper, step;
 
-    lower = 0;
+    lower = 0;  // assigning integer values to variables
     upper = 300;
     step = 20;
 
     fahrenheit = lower;
-    while(fahrenheit <= upper) {
-        celsius = (5 * (fahrenheit - 32)) / 9; 
+    while(fahrenheit <= upper) {                   // while loop for temp
+        celsius = (5 * (fahrenheit - 32)) / 9;     // incrementing
         printf("%d\t%d\n", fahrenheit, celsius);
-        fahrenheit = fahrenheit +  step;
+        fahrenheit += step;
     }
     return 0;
 }
