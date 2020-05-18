@@ -12,7 +12,7 @@ int main()
     fahrenheit = lower;
     while(fahrenheit <= upper) {                   // while loop for temp
         celsius = (5 * (fahrenheit - 32)) / 9;     // incrementing
-        printf("%d\t%d\n", fahrenheit, celsius);
+        printf("%3d %6d\n", fahrenheit, celsius);
         fahrenheit += step;
     }
     return 0;
