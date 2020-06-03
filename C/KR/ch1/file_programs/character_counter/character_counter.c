@@ -2,11 +2,19 @@
 
 int main()
 {
+    FILE *fr;
+    fr = fopen("text.txt", "r");
+
     int nc;
+    nc = 0;
+    
+    char ch;
 
-    for(nc = 0; getchar() != EOF; ++nc)
-        ;
+    for (ch = getc(fr); ch != EOF; ch = getc(fr))
+        ++nc;
 
-    printf("%1d\n", nc);
+    fclose(fr);
+
+    printf("%d\n", nc);
     return 0;
 }
