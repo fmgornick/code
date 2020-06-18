@@ -1,14 +1,16 @@
 #include <stdio.h>
 
+// CTRL + D to signal EOF
+
 int main()
 {
-    int nl;
-    nl = 0;
+    int num_lines = 0;
+    int input;
+    
+    while ((input = getchar()) != EOF) {
+        if (getchar() == '\n') ++num_lines;
+    }   
 
-    while(getchar() != EOF)
-        if (getchar() == '\n')
-            ++nl;
-
-    printf("%d\n", nl);
+    printf("\nLines: %d", num_lines);
     return 0; 
 }

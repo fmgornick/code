@@ -2,19 +2,13 @@
 
 int main()
 {
-    FILE *fr;
-    fr = fopen("text.txt", "r");
+    int chars = 0;
+    int input;
 
-    int nc;
-    nc = 0;
-    
-    char ch;
+    while ((input = getchar()) != EOF) {
+        ++chars;
+    }
 
-    for (ch = getc(fr); ch != EOF; ch = getc(fr))
-        ++nc;
-
-    fclose(fr);
-
-    printf("%d\n", nc);
+    printf("\nCharacters: %d", chars);
     return 0;
 }
