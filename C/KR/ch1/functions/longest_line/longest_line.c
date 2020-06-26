@@ -18,7 +18,7 @@ int main()
         }
     
     if (max > 0)
-        printf("\n\nlongest line: %snumber of characters: %d", longest, max);
+        printf("\n\nlongest line: %snumber of characters: %d", longest, max - 2);
     
     return 0;
 }
