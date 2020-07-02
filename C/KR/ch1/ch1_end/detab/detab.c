@@ -50,7 +50,7 @@ void replace(char s[])
 
         else {
             for (k = 0; k < TABLENGTH; ++k) {
-                s_new[j] = '#';
+                s_new[j] = ' ';
                 ++j;
             }
         }
