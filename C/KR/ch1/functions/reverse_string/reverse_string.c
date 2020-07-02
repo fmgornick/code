@@ -1,4 +1,5 @@
 #include <stdio.h>
+
 #define MAXLINE 1000
 
 int getlin(char line[], int maximum_length);

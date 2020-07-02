@@ -10,9 +10,10 @@ int main()
     char line[MAXLINE];
     int length;
 
-    while ((length = getlin(line, MAXLINE)) > 0)
+    while ((length = getlin(line, MAXLINE)) > 0) {
         replace(line);
         printf("%s\n", line);
+    }
 
     return 0;
 }
@@ -54,4 +55,6 @@ void replace(char s[])
         }
     
     s = s_new;
+    s[i] = '\n';
+    s[i++] = '\0';
 }
