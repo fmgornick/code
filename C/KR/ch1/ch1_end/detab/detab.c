@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 #define MAXLINE 1000
+#define TABLENGTH 4
 
 int getlin(char line[], int limit);
 void replace(char line[]);
@@ -22,7 +23,7 @@ int getlin(char s[], int lim)
 {
     int c, i;
 
-    for (i = 0; i < (lim - 1) && (c = getchar()) != EOF && c != '\n'; ++i)
+    for (i = 0; i < lim - 1 && (c = getchar()) != EOF && c != '\n'; ++i)
         s[i] = c;
 
     if (c == '\n') {
@@ -37,24 +38,30 @@ int getlin(char s[], int lim)
 
 void replace(char s[])
 {
-    int i, j = 0, k = 0;
+    int i, j = 0, k, l = 0;
     char s_new[MAXLINE];
 
-    for (i = 0; s[i] != '\0'; ++i)
+    for (i = 0; s[i] != '\0'; ++i) {
         if (s[i] != '\t') {
             s_new[j] = s[i];
             ++j;
         }
+    }
 
         else {
-            while (k < 4)
-                s_new[j] = ' ';
+            for (k = 0; k < TABLENGTH; ++k) {
+                s_new[j] = '#';
                 ++j;
-                ++k;
-            k = 0;
+            }
         }
+
+    if (s[i] == '\n') {
+        s_new[j] = s[i];
+        ++j;
+    }
     
-    s = s_new;
-    s[i] = '\n';
-    s[i++] = '\0';
+    s_new[j] = '\0';
+
+    while ((s[l] = s_new[l]) != '\0')
+        ++l;
 }
