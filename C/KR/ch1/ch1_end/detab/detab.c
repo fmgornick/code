@@ -1,10 +1,6 @@
 #include <stdio.h>
 
-#define MAXLINE 1000
 #define TABSTOP 8
-
-int getlin(char line[], int limit);
-void replace(char line[]);
 
 int main()
 {
