@@ -1,67 +1,37 @@
 #include <stdio.h>
 
 #define MAXLINE 1000
-#define TABLENGTH 4
+#define TABSTOP 8
 
 int getlin(char line[], int limit);
 void replace(char line[]);
 
 int main()
 {
-    char line[MAXLINE];
-    int length;
+    int i, c, position = 1, num_blanks = 0;
 
-    while ((length = getlin(line, MAXLINE)) > 0) {
-        replace(line);
-        printf("%s\n", line);
-    }
+    while ((c = getchar()) != EOF) {
 
-    return 0;
-}
+        if (c == '\t') {
+            num_blanks = TABSTOP - ((position - 1) % TABSTOP);
 
-int getlin(char s[], int lim)
-{
-    int c, i;
+            for (i = 0; i < num_blanks; ++i) {
+                putchar('#');
+            }
 
-    for (i = 0; i < lim - 1 && (c = getchar()) != EOF && c != '\n'; ++i)
-        s[i] = c;
-
-    if (c == '\n') {
-        s[i] = c;
-        ++i;
-    }
-
-    s[i] = '\0';
-
-    return i;
-}
-
-void replace(char s[])
-{
-    int i, j = 0, k, l = 0;
-    char s_new[MAXLINE];
-
-    for (i = 0; s[i] != '\0'; ++i) {
-        if (s[i] != '\t') {
-            s_new[j] = s[i];
-            ++j;
+            position = 1;
+            num_blanks = 0;
         }
-    }
+
+        else if (c == '\n') {
+            putchar(c);
+            position = 1;
+        }
 
         else {
-            for (k = 0; k < TABLENGTH; ++k) {
-                s_new[j] = ' ';
-                ++j;
-            }
+            putchar(c);
+            ++position;
         }
-
-    if (s[i] == '\n') {
-        s_new[j] = s[i];
-        ++j;
     }
-    
-    s_new[j] = '\0';
-
-    while ((s[l] = s_new[l]) != '\0')
-        ++l;
+    return 0;
 }
