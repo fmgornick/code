@@ -8,24 +8,21 @@ void replace(char line[]);
 
 int main()
 {
-    int i, c, position = 1, num_blanks = 0;
+    int i, c, position = 0;
 
     while ((c = getchar()) != EOF) {
 
         if (c == '\t') {
-            num_blanks = TABSTOP - ((position - 1) % TABSTOP);
 
-            for (i = 0; i < num_blanks; ++i) {
-                putchar('#');
+            while (position % TABSTOP != 0) {
+                putchar(' ');
+                ++position;
             }
-
-            position = 1;
-            num_blanks = 0;
         }
 
         else if (c == '\n') {
             putchar(c);
-            position = 1;
+            position = 0;
         }
 
         else {
