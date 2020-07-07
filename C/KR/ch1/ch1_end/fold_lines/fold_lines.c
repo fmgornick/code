@@ -72,16 +72,20 @@ int main()
         else {
 
             if (i > 0) {
+                printf("\n");
+
                 for (j = 0; j <= i; ++j) {
                     putchar(word[j]);
                     word[j] = '\0';
                 }
-            }
+                putchar(c);
 
-            printf("\n");
-            position = 0;
+                position = i + 2;
+                i = 0;
+            }
         }
     }
+    printf("\n");
     return 0;
 }
 
