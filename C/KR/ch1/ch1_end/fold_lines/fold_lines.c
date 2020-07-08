@@ -71,7 +71,14 @@ int main()
 
         else {
 
-            if (i > 0) {
+            if ((c == SPACE || c == TAB || c == '\n') && i == 0) {
+                printf("\n");
+
+                position = 0;
+                i = 0;
+            }
+
+            else {
                 printf("\n");
 
                 for (j = 0; j <= i; ++j) {
