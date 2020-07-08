@@ -1,13 +1,11 @@
 #include <stdio.h>
 
 #define MAXLINE 1024
-#define BORDER 80
-
-#define TAB '\t'
-#define TABSTOP 8
+#define BORDER 100
 
 #define SPACE ' '
-#define NEW '\n'
+#define TAB '\t'
+#define TABSTOP 8
 
 int main()
 {
@@ -16,7 +14,7 @@ int main()
 
     while ((c = getchar()) != EOF) {
         
-        if (c != SPACE && c != TAB && c != NEW && position < BORDER) {
+        if (c != SPACE && c != TAB && c != '\n' && position < BORDER) {
             word[i] = c;
             ++i;
             ++position;
