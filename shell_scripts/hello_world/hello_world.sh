@@ -1,3 +1,3 @@
 #!/bin/sh
 
-echo "Hello, World!"
+echo "\nHello, World!\n"
