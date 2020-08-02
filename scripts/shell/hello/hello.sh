@@ -1,4 +1,4 @@
 #!/bin/sh
 
-echo "\nHello, World!\n"
-exit 0
+echo "you're using $(basename $0)"
+echo "hello $1"
