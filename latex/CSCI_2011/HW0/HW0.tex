@@ -1,0 +1,70 @@
+\documentclass[12pt]{article}
+
+\title{CSCI 2011 HW 0}
+\author{Fletcher Gornick}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{colortbl}
+\usepackage[margin=1.0in]{geometry}
+
+\begin{document}
+
+
+\maketitle
+
+\section{1.1 Problem 7}
+\textbf{For a real number x, consider the open sentence P (x) : x(x - 5) = 6. For 
+which values of x is P(x) a true statement?}
+
+$$x^2 -5x = 6$$
+$$x^2 -5x -6 = 0$$
+$$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} => x = \frac{5 \pm \sqrt{25 - 4(1)(-6)}}{2}$$
+$$x = \frac{5 \pm \sqrt{1}}{2} => x = \frac{4}{2}, \frac{6}{2}$$
+$$x = 2,3$$
+
+
+\section{1.2 Problem 11}
+\textbf{Verify the following De Morgan’s Law by a truth table. For two statements
+\textit{P} and \textit{Q}, $\sim(P \wedge Q) \equiv (\sim P) \vee (\sim Q)$}
+
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|}
+
+        \hline
+        $P$ & $Q$ & $\sim P$ & $\sim Q$ & $\sim (P \wedge Q)$ & $(\sim P) \vee (\sim Q)$ \\
+        \hline
+        \hline
+        T & T & F & F & \cellcolor[gray]{0.8} F & \cellcolor[gray]{0.8} F \\
+        \hline
+        T & F & F & T & \cellcolor[gray]{0.8} T & \cellcolor[gray]{0.8} T \\
+        \hline
+        F & T & T & F & \cellcolor[gray]{0.8} T & \cellcolor[gray]{0.8} T \\
+        \hline
+        F & F & T & T & \cellcolor[gray]{0.8} T & \cellcolor[gray]{0.8} T \\
+        \hline
+        
+    \end{tabular}
+\end{table}
+
+They have the same truth values, so they're logically equivalent.
+
+
+\section{1.2 Problem 13}
+\textbf{Use De Morgan’s Laws to state the negations of the following.}
+
+
+\begin{enumerate}[label=(\alph*)]
+\item \textbf{Either $x=0$ or $y=0$.}
+    Both x and y are not zero.
+
+\item \textbf{The integers \textit{a} and \textit{b} are both nonnegative.}
+    Either \textit{a} is negative or \textit{b} is negative.
+
+\end{enumerate}
+
+
+\end{document}
