@@ -5,6 +5,8 @@
 
 \usepackage{amsmath,amssymb}
 \usepackage{enumitem}
+\usepackage{colortbl}
+\usepackage{soul}
 \usepackage[margin=1.0in]{geometry}
 
 \begin{document}
@@ -13,6 +15,38 @@
 \section{1.2 Problem 18}
 \textbf{Let \textit{P}, \textit{Q} and \textit{R} be statements. Determine whether
 the following is true.} $$P \oplus (Q \oplus R) \equiv (P \oplus Q) \oplus R$$
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|c|}
+
+        \hline
+        $P$ & $Q$ & $R$ & $P \oplus Q$ & $Q \oplus R$ & $P \oplus (Q \oplus R)$ & 
+        $(P \oplus Q) \oplus R$ \\
+        \hline
+        \hline
+        T & T & T & F & F & \cellcolor[gray]{0.8} T & \cellcolor[gray]{0.8} T \\
+        \hline
+        T & T & F & F & T & \cellcolor[gray]{0.8} F & \cellcolor[gray]{0.8} F \\
+        \hline
+        T & F & T & T & T & \cellcolor[gray]{0.8} F & \cellcolor[gray]{0.8} F \\
+        \hline
+        T & F & F & T & F & \cellcolor[gray]{0.8} T & \cellcolor[gray]{0.8} T \\
+        \hline
+        F & T & T & T & F & \cellcolor[gray]{0.8} F & \cellcolor[gray]{0.8} F \\
+        \hline
+        F & T & F & T & T & \cellcolor[gray]{0.8} T & \cellcolor[gray]{0.8} T \\
+        \hline
+        F & F & T & F & T & \cellcolor[gray]{0.8} T & \cellcolor[gray]{0.8} T \\
+        \hline
+        F & F & F & F & F & \cellcolor[gray]{0.8} F & \cellcolor[gray]{0.8} F \\
+        \hline
+
+    \end{tabular}
+\end{table}
+
+Since both $P \oplus (Q \oplus R)$ and $(P \oplus Q) \oplus R$ have the same truth
+values, the two are logically equivalent.
 
 
 
@@ -25,41 +59,157 @@ implication $(\sim P) \Rightarrow (\sim Q)$.}
     \item \textbf{Use a truth table to verify that $P \Rightarrow Q \not\equiv 
         (\sim P) \Rightarrow (\sim Q)$.}
 
+    \begin{table}[ht]
+        \centering
+        \begin{tabular}{|c|c|c|c|c|c|}
+
+            \hline
+            $P$ & $Q$ & $\sim P$ & $\sim Q$ & $P \Rightarrow Q$ & 
+            $(\sim P) \Rightarrow (\sim Q)$ \\
+            \hline
+            \hline
+            T & T & F & F & \cellcolor[gray]{0.8} T & \cellcolor[gray]{0.8} T \\
+            \hline
+            T & F & F & T & \cellcolor[rgb]{1,0,0} F & \cellcolor[rgb]{1,0,0} T \\
+            \hline
+            F & T & T & F & \cellcolor[rgb]{1,0,0} T & \cellcolor[rgb]{1,0,0} F \\
+            \hline
+            F & F & T & T & \cellcolor[gray]{0.8} T & \cellcolor[gray]{0.8} T \\
+            \hline
+
+        \end{tabular}
+    \end{table}
+
+    $P \Rightarrow Q$ and $(\sim P) \Rightarrow (\sim Q)$ don't contain the same
+    truth values in row two and three, so they are not logically equivalent.
+
     \item \textbf{Find another implication that is logically equivalent to
         $(\sim P) \Rightarrow (\sim Q)$ and verify your answer.}
+
+    \begin{align*}
+        && (\sim P) \Rightarrow (\sim Q) &\equiv \sim(\sim P) \vee (\sim Q) && 
+        \text{(Theorem 1.48 from textbook and 3a of HW)} \\
+        && &\equiv P \vee (\sim Q) && \text{(Double negation)} \\
+        && &\equiv (\sim Q) \vee P && \text{(Commutative Law)} \\
+        && &\equiv Q \Rightarrow P && \text{(Theorem 1.48 from textbook again)}
+    \end{align*}
+
+    \hl{$(\sim P) \Rightarrow (\sim Q) \equiv Q \Rightarrow P$} as proven by the 
+    above logical equivalencies.
 
 \end{enumerate}
 
 
 
 \section{1.3 Problem 25}
-\textbf{For two statements \textit{P} and \textit{Q}, use truth tables to verify
-the following.}
+\textbf{For two statements \textit{P} and \textit{Q}, use logical equivalencies
+to verify the following.}
 
 \begin{enumerate}[label=(\alph*)]
 
     \item \textbf{$P \vee Q \equiv (\sim P) \Rightarrow Q$.}
 
+        \begin{table}[ht]
+            \centering
+            \begin{tabular}{|c|c|c|c|}
+
+                \hline
+                $P$ & $Q$ & $P \Rightarrow Q$ & $(\sim P) \vee Q$ \\
+                \hline
+                \hline
+                T & T & \cellcolor[gray]{0.8} T & \cellcolor[gray]{0.8} T \\
+                \hline
+                T & F & \cellcolor[gray]{0.8} F & \cellcolor[gray]{0.8} F \\
+                \hline
+                F & T & \cellcolor[gray]{0.8} T & \cellcolor[gray]{0.8} T \\
+                \hline
+                F & F & \cellcolor[gray]{0.8} T & \cellcolor[gray]{0.8} T \\
+                \hline
+
+            \end{tabular}
+        \end{table}
+
+    This shows that $P \Rightarrow Q \equiv (\sim P) \vee Q$, It's also theorem
+    1.48 in the textbook. Now we can use logical equivalencies to prove that 
+    $P \vee Q \equiv (\sim P) \Rightarrow Q$.
+
+    \begin{align*}
+        && (\sim P) \Rightarrow Q &\equiv \sim (\sim P) \vee Q && \text{(Theorem 1.48)} \\
+        && &\equiv P \vee Q && \text{(Double negation)} 
+    \end{align*}
+
     \item \textbf{$P \wedge Q \equiv \sim (P \Rightarrow (\sim Q))$.}
+
+    \begin{align*}
+        && P \wedge Q &\equiv \sim (\sim (P \wedge Q)) && \text{(Double negation)} \\
+        && &\equiv \sim ((\sim P) \vee (\sim Q)) && \text{(De Morgan's Law)} \\
+        && &\equiv \sim (P \Rightarrow (\sim Q)) && \text{(Theorem 1.48)} \\
+    \end{align*}
         
     \item \textbf{$\sim (P \Rightarrow Q) \equiv P \wedge (\sim Q)$.}
+
+    \begin{align*}
+        && \sim (P \Rightarrow Q) &\equiv \sim ((\sim P) \vee Q) && \text{(Theorem 1.48)} \\
+        && &\equiv \sim (\sim P) \wedge (\sim Q) && \text{(De Morgan's Law)} \\
+        && &\equiv P \wedge (\sim Q) && \text{(Double negation)}
+    \end{align*}
 
 \end{enumerate}
 
 
 
 \section{1.4 Problem 12}
-\textbf{For every two statements \textit{P} and \textit{Q}, use truth tables to
-verify the following.}
+\textbf{For every two statements \textit{P} and \textit{Q}, use logical equivalencies
+to verify the following.}
 
 \begin{enumerate}[label=(\alph*)]
 
     \item \textbf{$P \Leftrightarrow Q \equiv (\sim P) \Leftrightarrow (\sim Q)$.}
 
+    \begin{align*}
+        && P \Leftrightarrow Q &\equiv (P \Rightarrow Q) \wedge (Q \Rightarrow P) && 
+        \text{(Definition of a biconditional)} \\
+        && &\equiv ((\sim P) \vee Q) \wedge ((\sim Q) \vee P) && \text{(Theorem 1.48)} \\
+        && &\equiv (Q \vee (\sim P)) \wedge (P \vee (\sim Q)) && \text{(Commutative property)} \\
+        && &\equiv ((\sim Q) \Rightarrow (\sim P)) \wedge ((\sim P) \Rightarrow (\sim Q)) &&
+        \text{(Theorem 1.48)} \\
+        && &\equiv (\sim P) \Leftrightarrow (\sim Q) && \text{(Definition of a biconditional)}
+    \end{align*}
+
     \item \textbf{$P \Leftrightarrow Q \equiv (P \wedge Q) \vee ((\sim P) \wedge
         (\sim Q))$.}
 
+    \begin{align*}
+        && P \Leftrightarrow Q &\equiv (P \Rightarrow Q) \wedge (Q \Rightarrow P) &&
+        \text{(Definition of a biconditional)} \\
+        && &\equiv ((\sim P) \vee Q) \wedge ((\sim Q) \vee P) && \text{(Theorem 1.48)} \\
+        && &\equiv ((\sim P) \wedge ((\sim Q) \vee P)) \vee (Q \wedge ((\sim Q) \vee P)) &&
+        \text{(Distributive property)} \\
+        && &\equiv (((\sim P) \wedge (\sim Q)) \vee ((\sim P) \wedge P)) \vee 
+        ((Q \wedge (\sim Q)) \vee (Q \wedge P)) && \text{(Distributive property)} \\
+        && &\equiv ((\sim P) \wedge (\sim Q)) \vee (Q \wedge P) && \text{($(\sim X) \wedge X = F$)} \\
+        && &\equiv (P \wedge Q) \vee ((\sim P) \wedge (\sim Q)) && \text{(Commutative property)}
+    \end{align*}
+
     \item \textbf{$\sim (P \Leftrightarrow Q) \equiv P \Leftrightarrow (\sim Q)$.}
+        
+    \begin{align*}
+        && \sim (P \Leftrightarrow Q) &\equiv \sim ((P \Rightarrow Q) \wedge (Q \Rightarrow P)) &&
+        \text{(Definition of a biconditional)} \\
+        && &\equiv \sim (((\sim P) \vee Q) \wedge ((\sim Q) \vee P)) && \text{(Theorem 1.48)} \\
+        && &\equiv (\sim ((\sim P) \vee Q)) \vee (\sim ((\sim Q) \vee P)) &&
+        \text{(De Morgan's Law)} \\
+        && &\equiv (P \wedge (\sim Q)) \vee (Q \wedge (\sim P)) && \text{(De Morgan's Law)} \\
+        && &\equiv (P \vee (Q \wedge (\sim P))) \wedge ((\sim Q) \vee (Q \wedge (\sim P))) &&
+        \text{(Distributive property)} \\
+        && &\equiv ((P \vee Q) \wedge (P \vee (\sim P))) \wedge (((\sim Q) 
+        \vee Q) \wedge ((\sim Q) \vee (\sim P))) && \text{(Distributive property)} \\
+        && &\equiv (P \vee Q) \wedge ((\sim Q) \vee (\sim P)) && \text{($\sim X \vee X = T$)} \\
+        && &\equiv (Q \vee P) \wedge ((\sim P) \vee (\sim Q)) && \text{(Commutative property)} \\
+        && &\equiv ((\sim Q) \Rightarrow P) \wedge (P \Rightarrow (\sim Q)) &&
+        \text{(Theorem 1.48)} \\
+        && &\equiv P \Leftrightarrow (\sim Q) && \text{(Definition of a biconditional)}
+    \end{align*}
 
 \end{enumerate}
 
