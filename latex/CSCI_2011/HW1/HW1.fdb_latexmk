@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1600057415 "HW1.tex" "HW1.pdf" "HW1" 1600057416
+["pdflatex"] 1600098319 "HW1.tex" "HW1.pdf" "HW1" 1600098319
   "/usr/local/texlive/2020/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2020/texmf-dist/fonts/tfm/jknappen/ec/ectt1000.tfm" 1136768653 1536 06717a2b50de47d4087ac0e6cd759455 ""
   "/usr/local/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
@@ -60,9 +60,9 @@
   "/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1586288239 4811913 0be9a7e86c70a26e5e3042966bcd7097 ""
   "/usr/local/texlive/2020/texmf-var/web2c/pdftex/pdflatex.fmt" 1586288259 2432462 fd0fa20e9a3cb5f8169fd0ba1c955158 ""
   "/usr/local/texlive/2020/texmf.cnf" 1586288231 577 d60164b4589a341208aff7a667fbbdcb ""
-  "HW1.aux" 1600057416 508 4f800028e486891740581b1b29203d19 "pdflatex"
-  "HW1.tex" 1600057413 8924 655a03d2062f9bff17d9234d4177a9bf ""
+  "HW1.aux" 1600098319 508 4f800028e486891740581b1b29203d19 "pdflatex"
+  "HW1.tex" 1600098318 9473 59528e2b380c7709c55708f5870ddee5 ""
   (generated)
   "HW1.log"
-  "HW1.aux"
   "HW1.pdf"
+  "HW1.aux"

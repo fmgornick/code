@@ -222,15 +222,22 @@ then what is the truth value of the following?}
 
 \begin{enumerate}[label=(\alph*)]
     
-    \item \textbf{$S \vee R$}
+    \item \textbf{$S \vee R$} \\
+        \text{\hl{True} (Always True $\vee$ Always False $\equiv$ Always True)}
 
-    \item \textbf{$S \wedge R$}
+    \item \textbf{$S \wedge R$} \\
+        \text{\hl{False} (Always True $\wedge$ Always False $\equiv$ Always False)}
 
-    \item \textbf{$S \Rightarrow R$}
+    \item \textbf{$S \Rightarrow R$} \\
+        \text{\hl{False} (Always True $\Rightarrow$ Always False $\equiv$ Always False)}
 
-    \item \textbf{$R \Rightarrow S$}
+    \item \textbf{$R \Rightarrow S$} \\
+        \text{\hl{True} (Always False $\Rightarrow$ Always True $\equiv$ Always True)}
 
-    \item \textbf{$S \Leftrightarrow R$}
+    \item \textbf{$S \Leftrightarrow R$} \\
+        \text{$S \Leftrightarrow R \equiv (S \Rightarrow R) \wedge (R \Rightarrow S)$} \\
+        \text{(Always False) $\wedge$ (Always True) $\equiv$ Always False} \\
+        \text{\hl{False}}
 
 \end{enumerate}
 
