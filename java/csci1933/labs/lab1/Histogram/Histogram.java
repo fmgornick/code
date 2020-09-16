@@ -5,7 +5,7 @@
 
 import java.util.*;
 
-public class Milestone5 {
+public class Histogram {
     public static void main(String args[]) {
 
         int i, j;

@@ -27,8 +27,15 @@ public class Circle {
     
     @Override
     public boolean equals(Object other) {
-        Circle o = (Circle) other;
-        return Double.compare(radius, o.radius)== 0;
+        Circle o;
+        if (other instanceof Circle) {
+            o = (Circle) other;
+
+            if (this.radius == o.radius) {
+                return true;
+            }
+        }
+        return false;
     }
 }
 
