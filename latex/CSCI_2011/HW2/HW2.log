@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  21 SEP 2020 15:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  21 SEP 2020 15:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -266,15 +266,15 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 16.
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-Overfull \hbox (14.6569pt too wide) detected at line 91
+) [1
+
+{/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+Overfull \hbox (14.6569pt too wide) detected at line 98
 []
  []
 
-[1
 
-{/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (50.52269pt too wide) in paragraph at lines 128--130
+Overfull \hbox (50.52269pt too wide) in paragraph at lines 135--137
 []$\OMS/cmsy/m/n/10 P\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 A\OT1/cmr/m/n/10 ) = []\
 OMS/cmsy/m/n/10 ;\OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 f\OT1/cmr/m/n/10 1\OMS/cms
 y/m/n/10 g\OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 f\OT1/cmr/m/n/10 2\OMS/cmsy/m/n/1
@@ -301,7 +301,7 @@ r/m/n/10 4\OMS/cmsy/m/n/10 g\OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 f\OT1/cmr/m/n/1
  []
 
 
-Overfull \hbox (56.0435pt too wide) in paragraph at lines 144--146
+Overfull \hbox (56.0435pt too wide) in paragraph at lines 151--153
 [][] [][][][][]
  []
 
@@ -330,7 +330,7 @@ b></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
 /usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></u
 sr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb
 >
-Output written on HW2.pdf (2 pages, 147320 bytes).
+Output written on HW2.pdf (2 pages, 147312 bytes).
 PDF statistics:
  71 PDF objects out of 1000 (max. 8388607)
  51 compressed objects within 1 object stream
