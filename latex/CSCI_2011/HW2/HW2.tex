@@ -1,0 +1,150 @@
+\documentclass[10pt]{article}
+
+\title{CSCI 2011 HW 2}
+\author{Fletcher Gornick}
+
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{colortbl}
+\usepackage{soul}
+\usepackage{xcolor}
+\usepackage[margin=1.0in]{geometry}
+
+\def \n {\par \vspace{\baselineskip}}
+
+\begin{document}
+\maketitle
+
+\section{2.1 Problem 26}
+\textbf{For $n \in \mathbb{N}$, two sets $A$ and $C$ have the property that $A \subset C$, 
+$|A| = n$, and $|C| = n+3$. How many sets $B$ are there such that $A \subset B \subset C$?}
+
+\n
+
+$|C|-|A| = 3$, so $C$ has three more elements than $A$. $B \supset A$, so $B$ must have
+more elements than $A$, $B$ can not have the same number of elements as $A$ because 
+$B \not\supseteq A$. $B \subset C$, so $B$ must have less elements than $C$. Again, they
+cannot be equal because $B \not\subseteq C$.  This means that B must have one or two more
+elements than A that are also in C.
+
+\n
+
+ex: $A = \{a\}, C = \{a,b,c,d\}$
+
+possible sets for B: $\{a,b\}, \{a,c\}, \{a,d\}, \{a,b,c\}, \{a,b,d\}, \{a,c,d\}$
+
+\hl{Number of possible sets for B: 6}
+
+\n
+
+$C \cap \bar A = \{b,c,d\}$. So B includes any combination of those three values that 
+sums up to one or two total values, giving 6 possible combinations...
+$\big\{\{b\},\{c\},\{d\},\{b,c\},\{b,d\},\{c,d\}\big\}$
+
+
+\section{2.2 Problem 22}
+\textbf{For sets $A$ and $B$ of integers, define $A+B = \{a+b : a \in A, b \in B\}$.
+If $|A| = |B| = 5$, how small and how large can $|A + B|$ be?}
+
+\par \vspace{\baselineskip}
+
+The largest possible value for $|A+B|$ comes when each element of $A$ and $B$ add up 
+to a different sum.
+
+\par \vspace{\baselineskip}
+
+ex: $A = \{a,b,c,d,e\}, B = \{v,w,x,y,z\}$
+
+$A + B = \{a+v, a+w, a+x, a+y, a+z, b+v, b+w, b+x, b+y, b+z, c+v, c+w, c+x, c+y, c+z,
+d+v, d+w, d+x, d+y, d+z, e+v, e+w, e+x, e+y, e+z\}$
+
+\hl{$|A + B| = 25$}
+
+\par \vspace{\baselineskip}
+
+The smallest possible value for $|A + B|$ comes when each element of $A$ and $B$ add
+up to the same sum.
+
+\par \vspace{\baselineskip}
+
+ex: $A = \{0,1,2,3,4\}, B = \{0,1,2,3,4\}$
+
+$A + B = \{0,1,2,3,4,5,6,7,8\}$
+
+\hl{$|A + B| = 9$}
+
+
+
+\section{2.3 Problem 12}
+\textbf{Verify, for sets $A$, $B$, and $C$, that $(A \times B) \cap (A \times C) = A \times (B \cap C)$.}
+
+\begin{align*}
+    && A \times (B \cap C) &= \{(x,y) : x \in A, y \in (B \cap C)\} && 
+    \text{(definition of the product between sets)} \\
+    && &= \{(x,y) : (x \in A) \wedge (y \in (B \wedge C))\} && \text{(comma and intercept = ``and'')} \\
+    && &= \{(x,y) : (x \in A) \wedge (y \in B) \wedge (y \in C)\} && \text{(distributive property)} \\
+    && &= \{(x,y) : ((x \in A) \wedge (y \in B)) \wedge ((x \in A) \wedge (y \in C))\} &&
+    (X \wedge X \equiv X) \\
+    && &= \{(x,y) : ((x,y) \in A \times B) , ((x,y) \in A \times C)\} && 
+    \text{(``and'' = comma)} \\
+    && &= (A \times B) \cap (A \times C) && \text{(definition of the product between sets)} \\
+\end{align*}
+
+
+
+\section{2.3 Problem 14}
+\textbf{For two sets $A$ and $B$ of real numbers, the set $A \cdot B$ is defined by
+$$A \cdot B = \{ab : a \in A, b \in B\}.$$ Determine each of the following sets.}
+
+\begin{enumerate}[label=(\alph*)]
+
+    \item \textbf{$A \cdot B$ for $A = \{\frac{1}{2}, 1, \sqrt{2}\}$ and $B = \{\sqrt{2},2,4\}$.}
+
+        $\{\frac{\sqrt{2}}{2},1,2,\sqrt{2},2,4,2,2\sqrt{2},4\sqrt{2}\} \Rightarrow$
+        \hl{$\{\frac{\sqrt{2}}{2}, 1, \sqrt{2}, 2, 2\sqrt{2}, 4\sqrt{2}\}$}
+
+    \item \textbf{$\mathbb{R} \cdot \mathbb{R}$.}
+
+        any real number multiplyed by another real number is just a real number, so
+        \hl{$\mathbb{R} \cdot \mathbb{R} = \mathbb{R}$}
+
+    \item \textbf{$\mathbb{R} \cdot C$ where $C \subseteq \mathbb{R}$ with $|C| = 2$.}
+
+        $C$ contains two elements that are both real numbers. Assuming that one of it's
+        elements is zero, the other can be any non-zero number. For any non-zero real
+        number, you can multiply it by another real number in the $\mathbb{R}$ set to 
+        produce any possible number in the $\mathbb{R}$ set. This means that...
+
+        \hl{$\mathbb{R} \cdot C = \mathbb{R}$}
+
+\end{enumerate}
+
+
+
+\section{2.4 Problem 10}
+\textbf{Let $A = \{1,2,3,4\}$. Partition the power set $\mathcal{P}(A)$ of $A$ into
+as many subsets as possible such that no two subsets have the same number of elements.}
+
+$\mathcal{P}(A) = \big\{\emptyset, \{1\}, \{2\}, \{3\}, \{4\}, \{1,2\}, \{1,3\}, \{1,4\}, 
+\{2,3\}, \{2,4\}, \{3,4\}, \{1,2,3\}, \{1,2,4\}, \{1,3,4\}, \{2,3,4\}, \{1,2,3,4\}\big\}$
+
+\par \vspace{\baselineskip}
+
+$P =$ Partition of $\mathcal{P}(A)$
+
+{\small
+    \hl{
+        $ P = 
+        \Big\{\big\{\emptyset\big\}, 
+        \big\{\{1\},\{2\}\big\}, 
+        \big\{\{3\},\{4\},\{1,2\}\big\}, 
+        \big\{\{1,3\},\{1,4\},\{2,3\},\{2,4\}\big\}, 
+        \big\{\{3,4\},\{1,2,3\},\{1,2,4\},\{1,3,4\},
+        \{2,3,4\},\{1,2,3,4\}\big\}\Big\} $
+    }
+}%
+
+5 possible subsets.
+
+
+\end{document}
