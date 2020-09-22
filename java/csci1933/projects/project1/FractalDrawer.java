@@ -1,5 +1,7 @@
 // FractalDrawer class draws a fractal of a shape indicated by user input
-import java.awt.Color;
+import java.util.*;
+import java.awt.*;
+import java.io.*;
 
 public class FractalDrawer {
     private double totalArea=0;  // member variable for tracking the total area
@@ -11,15 +13,46 @@ public class FractalDrawer {
     // drawFractal creates a new Canvas object
     // and determines which shapes to draw a fractal by calling appropriate helper function
     // drawFractal returns the area of the fractal
-    public double drawFractal(String type) {
-        return 2;
+    public static double drawFractal(String type) {
+        Canvas myCanvas = new Canvas(1000,1200);
+
+        switch (type) {
+            case "triangle": drawTriangleFractal(1200, 1000, 0, 1000, Color.blue, myCanvas, 8, 0); 
+                             break;
+
+            case "circle": drawCircleFractal(200, 400, 400, Color.blue, myCanvas, 10);
+                           break;
+
+            case "rectangle": drawRectangleFractal(200, 160, 200, 360, Color.blue, myCanvas, 10);
+                              break;
+
+            default: System.out.println("this should not happen");
+        }
+        return 1;
     }
 
 
     //TODO:
     // drawTriangleFractal draws a triangle fractal using recursive techniques
-    public void drawTriangleFractal(double width, double height, double x, double y, Color c, Canvas can, int level){
+    public static void drawTriangleFractal(double width, double height, double x, double y, Color start, Canvas can, int level, int colorNum) {
+        Color[] color = {Color.red, Color.orange, Color.yellow, Color.green, Color.blue, Color.magenta};
 
+        Triangle triangle = new Triangle(x, y, width, height);
+        triangle.setColor(start);
+
+        can.drawShape(triangle);
+
+        if (level > 0) {
+
+            if (colorNum >= 5) colorNum = 0;
+            else ++colorNum;
+
+            --level;
+
+            drawTriangleFractal(width/2, height/2, x, y, color[colorNum], can, level, colorNum);
+            drawTriangleFractal(width/2, height/2, x + width/2, y, color[colorNum], can, level, colorNum);
+            drawTriangleFractal(width/2, height/2, x + width/4, y - height/2, color[colorNum], can, level, colorNum);
+        }
     }
 
 
@@ -30,26 +63,29 @@ public class FractalDrawer {
         circle.setColor(c);
 
         can.drawShape(circle);
-        
-        if (radius > 1) {
-            drawCircleFractal(radius/2, x+radius, y, c, can, level);
-            drawCircleFractal(radius/2, x-radius, y, c, can, level);
-        }
     }
 
 
     //TODO:
     // drawRectangleFractal draws a rectangle fractal using recursive techniques
-    public void drawRectangleFractal(double width, double height, double x, double y, Color c, Canvas can, int level) {
+    public static void drawRectangleFractal(double width, double height, double x, double y, Color c, Canvas can, int level) {
+        Rectangle rectangle = new Rectangle(x, y, width, height);
+        rectangle.setColor(c);
+        
+        can.drawShape(rectangle);
     }
 
     //TODO:
     // main should ask user for shape input, and then draw the corresponding fractal.
     // should print area of fractal
-    public static void main(String[] args){
+    public static void main(String args[]){
+        Scanner s = new Scanner(System.in);
 
-        Canvas canvas = new Canvas(800,800);
+        System.out.println();
+        System.out.println("what shape would you like a fractal of?");
+        System.out.print("type triangle, circle, or rectangle: ");
 
-        drawCircleFractal(200, 400, 400, Color.blue, canvas, 10);
+        String shape = s.nextLine().toLowerCase();
+        drawFractal(shape);
     }
 }
