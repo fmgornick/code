@@ -1,3 +1,5 @@
+// WRITTEN BY GORNI025
+
 import java.awt.*;
 
 public class Rectangle {
