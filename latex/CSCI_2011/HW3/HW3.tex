@@ -23,9 +23,20 @@ $b$, $a + b$ is odd.}
     
     \item \textbf{Express this quantified statement in symbols.}
 
+        Let $S$ be the set of all even integers and let $T$ be the set of all odd integers.
+
+        $\forall a \in S, \forall b \in T: a+b \in T$
+
+
     \item \textbf{Express the negation of this quantified statement in symbols.}
+
+        $\exists a \in S, \exists b \in T: a+b \not\in T$
         
+
     \item \textbf{Express the negation of this quantified statement in words.}
+
+        There exists an even integer $a$, and an odd integer $b$, such that $a+b$ is not odd.
+
 
 \end{enumerate}
 
@@ -36,11 +47,25 @@ $b$, $a + b$ is odd.}
 
 \textbf{For every integer $a$, there exists an integer $b$ such that $|\frac{a+1}{2} - b| \leq 1$.}
 
+\n
+There exists an integer $a$ such that for every integer $b$, $|\frac{a+1}{2} - b| \nleq 1$.
+
 
 \section{3.2 Problem 16}
 \textbf{Prove that if $a$ and $b$ are positive integers, then $\frac{a}{b} + \frac{b}{a} \geq 2$.}
 
+Assume that $\frac{a}{b} + \frac{b}{a} \geq 2$, it follows that...
 
+\begin{align*}
+    && \frac{a}{b} + \frac{b}{a} \geq 2 &\Rightarrow \frac{a^2 + b^2}{ab} \geq 2 &\\
+    && &\Rightarrow a^2 + b^2 \geq 2ab &\\
+    && &\Rightarrow a^2 - 2ab + b^2 \geq 0 &\\
+    && &\Rightarrow (a - b)^2 \geq 0 &\\
+\end{align*}
+
+We know that $(a-b)^2 \geq 0$, because any number squared is greater than or equal to zero (even negative).
+
+Therefore it must be the case that $\frac{a}{b} + \frac{b}{a} \geq 2$.
 
 \section{3.2 Problem 18}
 \textbf{Prove the following:}
@@ -49,13 +74,27 @@ $b$, $a + b$ is odd.}
 
     \item \textbf{If $a$ and $b$ are even integers, then $a+b$ is even.}
 
+        Let $a = 2k$, and $b = 2l$, for $k,l \in \mathbb{Z}$ (definition of an even number),
+        it follows that $a + b = 2k + 2l = 2(k + l)$.  Since $k + l$ is an integer, $2(k + l)$
+        must be an even integer (by definition again).  Therefore $a + b$ is even.
+
+
     \item \textbf{If $c$ and $d$ are even integers, do we know that $c+d$ is even?}
+
+        Yes, because the previous proof applies to all even integers, not just $a$ and $b$.
+
 
     \item \textbf{For integers $x$ and $y$, if we know $x+y$ is even, do we know that $x$ and $y$
         are even?}
 
+        No.  For example, say $x = 1$, and $y = 3$.  $1 + 3 = 4$, which is even, but both x and y are odd.
+
+
     \item \textbf{If $a$ and $b$ are integers that are not both even, do we know that $a+b$ is
         not even?}
+
+        No.  Just like in the previous example, say $a = 1$ and $b = 3$.  $a$ and $b$ are integers that are not
+        both even in this case, but their sum is 4, which is even.
 
 \end{enumerate}
 
@@ -64,7 +103,7 @@ $b$, $a + b$ is odd.}
 \section{3.3 Problem 8}
 \textbf{Give a proof of
     \begin{align*}
-        \text{Let } n \in \mathbb{Z} \text{. Then } n - 3 \text{ Is even if and only if } n + 4 \text{ is odd.}
+        \text{Let } n \in \mathbb{Z} \text{.  Then } n - 3 \text{ Is even if and only if } n + 4 \text{ is odd.}
     \end{align*}
 using}
 
@@ -82,7 +121,7 @@ using}
 
 
 \section{3.3 Problem 12}
-\textbf{Let $a,b$ and $m$ be integers. Prove that if $2a + 3b \geq 12m +1$, then $a \geq 3m + 1$ or $b \geq 2m + 1$.}
+\textbf{Let $a,b$ and $m$ be integers.  Prove that if $2a + 3b \geq 12m +1$, then $a \geq 3m + 1$ or $b \geq 2m + 1$.}
 
 
 \end{document}
