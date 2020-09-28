@@ -6,6 +6,11 @@ class.
 you can do this by running "javac FractalDrawer.java", then "java FractalDrawer"
 (make sure you're in the project1 directory when running the program)
 
+you may get this warning when you first compile...
+Note: ./Canvas.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+don't worry though, it'll still run fine.
+
 it will then prompt you to type in the shape (it doesn't matter if you capitalize 
 or not, but you must spell it correctly!)
 
@@ -27,7 +32,7 @@ that I have a lot of recursive function calls in my program, it takes a lot of
 computing power.
 
 By the way, you can tweak the levels of recursion in the drawFractal method inside 
-the FractalDrawer class file.
+the FractalDrawer class file (second to last input parameter).
 
 Also, I added another input parameter for the specific fractal drawing methods. 
 It's just my own form of a state variable that works through recursive functions, 
