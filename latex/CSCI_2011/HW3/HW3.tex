@@ -110,8 +110,44 @@ using}
 \begin{enumerate}[label=(\alph*)]
 
     \item \textbf{two direct proofs.}
+
+        \begin{itemize}
+            \item Assume $n + 4$ is odd.  This would mean that for some integer $k$, $n + 4 = 2k + 1$.  It follows that
+                $n - 3 = 2k - 6 = 2(k - 3)$.  Since $k - 3$ is an integer, and $n - 3 = 2(k - 3)$, $n - 3$ must be even.
+        \end{itemize}
+
+        \begin{itemize}
+            \item Now let's assume $n - 3$ is even.  This means that for some integer $k$, $n - 3 = 2k$.  It follows that
+                $n + 4 = 2k + 7 = 2(k + 3) + 1$.  Since $k + 3$ is an integer, and $n + 4 = 2(k + 3) + 1$, $n + 4$ must be odd.
+        \end{itemize}
+
+
     \item \textbf{one direct proof and one proof by contrapositive}
+
+        \begin{itemize}
+            \item DIRECT PROOF: Assume $n + 4$ is odd.  This would mean that for some integer $k$, $n + 4 = 2k + 1$.  It follows 
+                that $n - 3 = 2k - 6 = 2(k - 3)$.  Since $k - 3$ is an integer, and $n - 3 = 2(k - 3)$, $n - 3$ must be even.
+        \end{itemize}
+
+        \begin{itemize}
+            \item PROOF BY CONTRAPOSITIVE: Now let's assume that $n + 4$ is not odd, or simply, $n + 4$ is even.  This means that 
+                there exists an integer $k$ such that $n + 4 = 2k$.  It follows that $n - 3 = 2k - 7 = 2(k - 4) + 1$.  Since $k - 4$
+                is an integer, and $n - 3 = 2(k - 4) + 1$, $n - 3$ must be odd.
+        \end{itemize}
+
+
     \item \textbf{two proofs by contrapositive.}
+
+        \begin{itemize}
+            \item Assume that $n + 4$ is not odd, or simply, $n + 4$ is even.  This means that there exists an integer $k$ 
+                such that $n + 4 = 2k$.  It follows that $n - 3 = 2k - 7 = 2(k - 4) + 1$.  Since $k - 4$ is an integer, and 
+                $n - 3 = 2(k - 4) + 1$, $n - 3$ must be odd.
+        \end{itemize}
+
+        \begin{itemize}
+            \item Now let's assume that $n - 3$ is odd.  This means that there exists an integer $k$ such that $n - 3 = 2k + 1$.
+                It follows that $n + 4 = 2k + 8 = 2(k + 4)$.  Since $k + 4$ is an integer, and $n + 4 = 2(k + 4)$, $n + 4$ must be even.
+        \end{itemize}
     
 
 \end{enumerate}
@@ -123,5 +159,19 @@ using}
 \section{3.3 Problem 12}
 \textbf{Let $a,b$ and $m$ be integers.  Prove that if $2a + 3b \geq 12m +1$, then $a \geq 3m + 1$ or $b \geq 2m + 1$.}
 
+We will proceed by examining the contrapositive...
+
+Let $a,b$ and $m$ be integers.  Prove that if $a < 3m + 1$ and $b < 2m + 1$, then $2a + 3b < 12m + 1$.
+
+\n
+Since $a$, $b$, and $m$ are integers, the statement can be rewritten as..
+
+If $a \leq 3m$ and $b \leq 2m$, then $2a + 3b < 12m + 1$.
+
+\n
+Therefore $2a + 3b \leq 2(3m) + 3(2m) \leq 12m < 12m + 1$.
+
+\n
+Thus, either $a \geq 3m + 1$ or $b \geq 2m + 1$, if $2a + 3b \geq 12m + 1$.
 
 \end{document}
