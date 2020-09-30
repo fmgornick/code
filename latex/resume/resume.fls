@@ -228,8 +228,8 @@ INPUT sections/languages.tex
 INPUT sections/languages.tex
 INPUT sections/projects.tex
 INPUT sections/projects.tex
-INPUT sections/awards.tex
-INPUT sections/awards.tex
+INPUT sections/scholarships.tex
+INPUT sections/scholarships.tex
 INPUT sections/extracurricular.tex
 INPUT sections/extracurricular.tex
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
