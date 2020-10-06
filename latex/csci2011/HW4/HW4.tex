@@ -1,0 +1,77 @@
+\documentclass[10pt]{article}
+
+\title{CSCI 2011 HW 4}
+\author{Fletcher Gornick}
+
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{colortbl}
+\usepackage{soul}
+\usepackage{xcolor}
+\usepackage[margin=1.0in]{geometry}
+
+\def \n {\par \vspace{\baselineskip}}
+\setlength{\parindent}{0cm}
+
+\begin{document}
+\maketitle
+
+\section{3 Problem 18}
+\textbf{Prove that 100 cannot be written as the sum of three integers, an even number of which are even.}
+
+\n
+This problem can be split up into two cases...
+\n
+\hl{Case 1: 0 even integers and 3 odd integers.}
+
+Let $i,j,k \in \mathbb{Z}$ be odd integers.  This means $\exists a, \exists b, \exists c \in \mathbb{Z}$
+such that $i = 2a + 1$, $j = 2b + 1$, and $k = 2c + 1$. 
+
+Therefore, $i + j + k = (2a+1) + (2b+1) + (2c+1) = 2a + 2b + 2c + 3 = 2(a + b + c + 1) + 1$
+
+Since $a + b + c + 1$ is an integer, $i + j + k$ must be odd.  Hence $i + j + k \not= 100$.
+
+\n
+\hl{Case 2: 2 even integers and 1 odd integer.}
+
+Assume $i,j,k \in \mathbb{Z}$.  Let $i$ and $j$ be even integers and $k$ be an odd integer.  This means
+$\exists a, \exists b, \exists c \in \mathbb{Z}$ such that $i = 2a$, $j = 2b$, $k = 2c + 1$.
+
+Therefore $i + j + k = (2a) + (2b) + (2c+1) = 2a + 2b + 2c + 1 = 2(a + b + c) + 1$.
+
+Since $a + b + c$ is an integer, $i + j + k$ must be odd.  Hence $i + j + k \not= 100$.
+
+
+
+\section{3 Problem 32}
+\textbf{Prove that there exist a rational number $a$ and an irrational number $b$ such that $a^b$ is irrational.}
+
+
+\section{3 Problem 38}
+\textbf{Prove for every integer $n$ that there exist two integers $a$ and $b$ of opposite parity such that $an + b$ is an odd integer.}
+
+\n
+This problem can be split up into two cases... 
+\n\hl{Case 1: For all even integers $n$, there exist two integers $a$ and $b$ of opposite parity such that $an + b$ is an odd integer.} \\
+For $n$ to be even, there must exist an integer $k$ such that $n = 2k$. 
+Plugging in $2k$ for $n$, we get $2ak + b$ is odd.  Now let $a = 2$ and $b = 1$, 
+Therefore $an + b = 2(2k) + 1$.  Since $2k$ is an integer, $an + b$ is odd.
+
+
+
+\n\hl{Case 2: For all odd integers $n$, there exist two integers $a$ and $b$ of opposite parity such that $an + b$ is an odd integer.} \\
+Assuming $n$ is odd, $\exists k \in \mathbb{Z}$ such that $n = 2k + 1$.  Now let's assume $a = 1$ and $b = 2$.
+Therefore $an + b = 1(2k + 1) + 2 = 2k + 3 = 2(k + 1) + 1$.  Since $2k + 1$ is an integer, $an + b$ is odd.
+
+
+\section{3.5 Problem 8}
+\textbf{Disprove: For every two sets $A$ and $B$, $\mathcal{P}(A \cup B) = \mathcal{P}(A) \cup \mathcal{P}(B)$.}
+
+
+\section{3.7 Problem 12}
+\textbf{Prove that $\sqrt{2} + \sqrt{3}$ is an irrational number.}
+
+
+
+
+\end{document}
