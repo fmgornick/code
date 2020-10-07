@@ -46,6 +46,11 @@ Since $a + b + c$ is an integer, $i + j + k$ must be odd.  Hence $i + j + k \not
 \section{3 Problem 32}
 \textbf{Prove that there exist a rational number $a$ and an irrational number $b$ such that $a^b$ is irrational.}
 
+\n
+Suppose there are two irrational numbers $x,y$ such that $a = x^y$ is rational.  We know this is possible because it was proven in result 3.38
+of the textbook. With that in mind, Let $b = \frac{1}{y}$, which is irrational, because $y$ is irrational.  Therefore 
+$a^b = \big(x^y\big)^\frac{1}{y} = x^\frac{y}{y} = x$, which is irrational.  Hence, $a^b$ is irrational.
+
 
 \section{3 Problem 38}
 \textbf{Prove for every integer $n$ that there exist two integers $a$ and $b$ of opposite parity such that $an + b$ is an odd integer.}
@@ -67,11 +72,38 @@ Therefore $an + b = 1(2k + 1) + 2 = 2k + 3 = 2(k + 1) + 1$.  Since $2k + 1$ is a
 \section{3.5 Problem 8}
 \textbf{Disprove: For every two sets $A$ and $B$, $\mathcal{P}(A \cup B) = \mathcal{P}(A) \cup \mathcal{P}(B)$.}
 
+\n
+In order to disprove the claim, one counterexample will suffice.  So let $A = \{1\}$ and $B = \{2\}$, so $A \cup B = \{1,2\}$. 
+Taking the powersets, we get $\mathcal{P}(A) = \big\{\emptyset, \{1\}\big\}$, $\mathcal{P}(B) = \big\{\emptyset, \{2\}\big\}$, and 
+$\mathcal{P}(A \cup B) = \big\{\emptyset, \{1\}, \{2\}, \{1,2\}\big\}$.  
+Therefore \hl{$\mathcal{P}(A) \cup \mathcal{P}(B) = \big\{\emptyset,\{1\},\{2\}\big\} \not= \big\{\emptyset, \{1\}, \{2\}, \{1,2\}\big\}
+= \mathcal{P}(A \cup B)$}.
+
 
 \section{3.7 Problem 12}
 \textbf{Prove that $\sqrt{2} + \sqrt{3}$ is an irrational number.}
 
+\n
+Assume, to the contrary, that $\sqrt{2} + \sqrt{3}$ is a rational number, this must mean that there exist two integers, $a$ and $b$,
+such that $\sqrt{2} + \sqrt{3} = \frac{a}{b}$, where $b \not= 0$.  We can also keep in mind that $\sqrt{2}$ is an irrational number, which
+was solved in a previous example.
 
+Therefore... 
+
+\begin{align*}
+    && \sqrt{2} + \sqrt{3} &= \frac{a}{b} && \\
+    && \sqrt{3} &= \frac{a}{b} - \sqrt{2} && \\
+    && \big(\sqrt{3}\big)^2 &= \Big(\frac{a}{b} - \sqrt{2}\Big)^2 && \\
+    && 3 &= \frac{a^2}{b^2} - \frac{2a}{b}\sqrt{2} + 2 && \\
+    && \frac{2a}{b}\sqrt{2} &= \frac{a^2}{b^2} - 3 + 2 && \\
+    && \sqrt{2} &= \frac{b\Big(\frac{a^2}{b^2} - 1\Big)}{2a} && \\
+    && \sqrt{2} &= \frac{\frac{a^2}{b} - b}{2a} && \\
+    && \sqrt{2} &= \frac{\frac{a^2 - b^2}{b}}{2a} && \\
+    && \sqrt{2} &= \frac{a^2 - b^2}{2ab} && \\
+\end{align*}
+
+Since $a^2 - b^2$ and $2ab$ are both integers, $\sqrt{2}$ must be rational, which is a contradiction.  Therefore $\sqrt{2} + \sqrt{3}$
+must be an irrational number.
 
 
 \end{document}
