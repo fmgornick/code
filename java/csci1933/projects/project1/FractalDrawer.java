@@ -19,7 +19,7 @@ public class FractalDrawer {
         Canvas myCanvas = new Canvas(1000,1200);
 
         switch (type) {
-            case "triangle": drawTriangleFractal(1200, 1000, 0, 1000, Color.magenta, myCanvas, 8, 0);
+            case "triangle": drawTriangleFractal(1200, 1000, 0, 1000, Color.magenta, myCanvas, 3, 0);
                              return totalArea;
 
             case "circle": drawCircleFractal(450, 600, 500, Color.magenta, myCanvas, 8, 0);
