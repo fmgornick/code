@@ -401,6 +401,118 @@ public class BattleboatsBoard {
     }
 
     public int fire(int x, int y) {
+        if (se == 1) {
+            if (printhelper(x, y).equals("A")) {
+                for (int i = 0; i < boat1.length; i++) {
+                    if (boat1[i].row == x && boat1[i].col == y) {
+                        boat1[i].status = 'H';
+                    }
+                }
+            }
+            else if (printhelper(x, y).equals("B")) {
+                for (int i = 0; i < boat3.length; i++) {
+                    if (boat3[i].row == x && boat3[i].col == y) {
+                        boat3[i].status = 'H';
+                    }
+                }
+            }
+            else if (printhelper(x, y).equals("C")) {
+                for (int i = 0; i < boat5.length; i++) {
+                    if (boat5[i].row == x && boat5[i].col == y) {
+                        boat5[i].status = 'H';
+                    }
+                }
+            }
+            else if (printhelper(x, y).equals("D")) {
+                for (int i = 0; i < boat7.length; i++) {
+                    if (boat7[i].row == x && boat7[i].col == y) {
+                        boat7[i].status = 'H';
+                    }
+                }
+            }
+            else {
+                for (int i = 0; i < boat9.length; i++) {
+                    if (boat9[i].row == x && boat9[i].col == y) {
+                        boat9[i].status = 'H';
+                    }
+                }
+            }
+        }
+
+        else {
+            if (printhelper(x, y).equals("A")) {
+                for (int i = 0; i < boat1.length; i++) {
+                    if (boat1[i].row == x && boat1[i].col == y) {
+                        boat1[i].status = 'H';
+                    }
+                }
+            }
+            else if (printhelper(x, y).equals("B")) {
+                for (int i = 0; i < boat2.length; i++) {
+                    if (boat2[i].row == x && boat2[i].col == y) {
+                        boat2[i].status = 'H';
+                    }
+                }
+            }
+            else if (printhelper(x, y).equals("C")) {
+                for (int i = 0; i < boat3.length; i++) {
+                    if (boat3[i].row == x && boat3[i].col == y) {
+                        boat3[i].status = 'H';
+                    }
+                }
+            }
+            else if (printhelper(x, y).equals("D")) {
+                for (int i = 0; i < boat4.length; i++) {
+                    if (boat4[i].row == x && boat4[i].col == y) {
+                        boat4[i].status = 'H';
+                    }
+                }
+            }
+            else if (printhelper(x, y).equals("E")) {
+                for (int i = 0; i < boat5.length; i++) {
+                    if (boat5[i].row == x && boat5[i].col == y) {
+                        boat5[i].status = 'H';
+                    }
+                }
+            }
+            else if (printhelper(x, y).equals("F")) {
+                for (int i = 0; i < boat6.length; i++) {
+                    if (boat6[i].row == x && boat6[i].col == y) {
+                        boat6[i].status = 'H';
+                    }
+                }
+            }
+            else if (printhelper(x, y).equals("G")) {
+                for (int i = 0; i < boat7.length; i++) {
+                    if (boat7[i].row == x && boat7[i].col == y) {
+                        boat7[i].status = 'H';
+                    }
+                }
+            }
+            else if (printhelper(x, y).equals("H")) {
+                for (int i = 0; i < boat8.length; i++) {
+                    if (boat8[i].row == x && boat8[i].col == y) {
+                        boat8[i].status = 'H';
+                    }
+                }
+            }
+            else if (printhelper(x, y).equals("I")) {
+                for (int i = 0; i < boat9.length; i++) {
+                    if (boat9[i].row == x && boat9[i].col == y) {
+                        boat9[i].status = 'H';
+                    }
+                }
+            }
+            else {
+                for (int i = 0; i < boat10.length; i++) {
+                    if (boat10[i].row == x && boat10[i].col == y) {
+                        boat10[i].status = 'H';
+                    }
+                }
+            }
+
+        }
+
         if (board[x][y].status == '-') {
             board[x][y].setStatus('M');
             return 0;
@@ -511,6 +623,108 @@ public class BattleboatsBoard {
 
         return numCells;
     }
+
+    public boolean sunk(int r, int c) {
+        boolean tf = true;
+        if (se == 1) {
+
+            if (printhelper(r, c).equals("A")) {
+                for (int i = 0; i < boat1.length; i++) {
+                    if (boat1[i].status != 'H') tf = false;
+                }
+            }
+
+            else if (printhelper(r, c).equals("B")) {
+                for (int i = 0; i < boat3.length; i++) {
+                    if (boat3[i].status != 'H') tf = false;
+                }
+            }
+            
+            else if (printhelper(r, c).equals("C")) {
+                for (int i = 0; i < boat5.length; i++) {
+                    if (boat5[i].status != 'H') tf = false;
+                }
+            }
+            
+            else if (printhelper(r, c).equals("D")) {
+                for (int i = 0; i < boat7.length; i++) {
+                    if (boat7[i].status != 'H') tf = false;
+                }
+            }
+            
+            else {
+                for (int i = 0; i < boat9.length; i++) {
+                    if (boat9[i].status != 'H') tf = false;
+                }
+            }
+        }
+
+        else {
+
+            if (printhelper(r, c).equals("A")) {
+                for (int i = 0; i < boat1.length; i++) {
+                    if (boat1[i].status != 'H') tf = false;
+                }
+            }
+
+            else if (printhelper(r, c).equals("B")) {
+                for (int i = 0; i < boat2.length; i++) {
+                    if (boat2[i].status != 'H') tf = false;
+                }
+            }
+            
+            else if (printhelper(r, c).equals("C")) {
+                for (int i = 0; i < boat3.length; i++) {
+                    if (boat3[i].status != 'H') tf = false;
+                }
+            }
+            
+            else if (printhelper(r, c).equals("D")) {
+                for (int i = 0; i < boat4.length; i++) {
+                    if (boat4[i].status != 'H') tf = false;
+                }
+            }
+            
+            else if (printhelper(r, c).equals("E")) {
+                for (int i = 0; i < boat5.length; i++) {
+                    if (boat5[i].status != 'H') tf = false;
+                }
+            }
+
+            else if (printhelper(r, c).equals("F")) {
+                for (int i = 0; i < boat6.length; i++) {
+                    if (boat6[i].status != 'H') tf = false;
+                }
+            }
+
+            else if (printhelper(r, c).equals("G")) {
+                for (int i = 0; i < boat7.length; i++) {
+                    if (boat7[i].status != 'H') tf = false;
+                }
+            }
+            
+            else if (printhelper(r, c).equals("H")) {
+                for (int i = 0; i < boat8.length; i++) {
+                    if (boat8[i].status != 'H') tf = false;
+                }
+            }
+            
+            else if (printhelper(r, c).equals("I")) {
+                for (int i = 0; i < boat9.length; i++) {
+                    if (boat9[i].status != 'H') tf = false;
+                }
+            }
+            
+            else {
+                for (int i = 0; i < boat10.length; i++) {
+                    if (boat10[i].status != 'H') tf = false;
+                }
+            }
+        }
+
+        return tf;
+    }
+
 
     public String displayhelper(int r, int c) {
         if (board[r][c].status == 'H') {
@@ -749,3 +963,4 @@ public class BattleboatsBoard {
             System.out.println("   + - + - + - + - + - + - + - + - + - + - + - + - +");
         }
     }
+}
