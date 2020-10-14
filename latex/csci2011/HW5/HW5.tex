@@ -43,10 +43,47 @@ $1 + r + r^2 + ... + r^n = \frac{r^{n+1} - 1}{r - 1}$ is true for all integers $
 \section{4.2 Problem 14}
 \textbf{Prove that $\frac{1}{\sqrt{1}} + \frac{1}{\sqrt{2}} + \cdots + \frac{1}{\sqrt{n}} > \sqrt{n + 1}$ for ever integer $n \geq 3$.}
 
+\n
+Base Case: Let $n = 3$, $\frac1{\sqrt1} + \frac1{\sqrt2} + \frac1{\sqrt3} \approx 2.284 > 2 = \sqrt{3 + 1}$.  Therefore, our base case holds.
+
+\n
+Inductive Step: Assume for some integer $k \geq 3$, that $\frac{1}{\sqrt{1}} + \frac{1}{\sqrt{2}} + \cdots + \frac{1}{\sqrt{k}} > \sqrt{k + 1}$.  
+We show that $\frac{1}{\sqrt{1}} + \frac{1}{\sqrt{2}} + \cdots + \frac{1}{\sqrt{k}} + \frac{1}{\sqrt{k + 1}} > \sqrt{k + 2}$.
+By the inductive hypothesis, we know that...
+
+$\frac{1}{\sqrt{1}} + \frac{1}{\sqrt{2}} + \cdots + \frac{1}{\sqrt{k}} + \frac{1}{\sqrt{k + 1}} > \sqrt{k + 1} + \frac{1}{\sqrt{k + 1}}
+= \frac{k + 1 + 1}{\sqrt{k + 1}}
+= \frac{k + 2}{\sqrt{k + 1}} 
+> \frac{k + 2}{\sqrt{k + 2}} 
+= \sqrt{k + 2}$.
+
+\n
+Therefore, by the principle of mathematical induction, the claim $\frac{1}{\sqrt{1}} + \frac{1}{\sqrt{2}} + \cdots + \frac{1}{\sqrt{n}} > \sqrt{n + 1}$
+holds for all integers $n \geq 3$.
+
 
 
 \section{4.2 Problem 16}
 \textbf{Prove for every positive integer $n$ that $2! \cdot 4! \cdot 6! \cdots (2n)! \geq ((n + 1)!)^n$.}
+
+\n
+Base Case: Since $n$ can be any positive integer, we can look at when $n = 1$, so $(2 \cdot 1)! = 2$, and
+$((n + 1)!)^n = ((1 + 1)!)^1 = 2$.  So the base case holds.
+
+\n
+Inductive Step: Now we can assume for some integer $k \geq 1$, that $2! \cdot 4! \cdot 6! \cdots (2k)! \geq ((k + 1)!)^k$.  We show that
+$2! \cdot 4! \cdot 6! \cdots (2k)! \cdot (2k + 2)! \geq ((k + 2)!)^{k + 1}$
+
+\begin{align*}
+    && 2! \cdot 4! \cdot 6! \cdots (2k)! \cdot (2k + 2)! &\geq ((k + 1)!)^k(2k + 2)! && \text{(by the inductive hypothesis)} \\
+    && &\geq ((k + 1)!)^k(k + 1)!(k + 2)^{k + 1} && \Bigg(\frac{(2k + 2)!}{(k + 1)!} > (k + 2)^{k + 1}\Bigg) \\
+    && &= ((k + 1)!)^{k + 1}(k + 2)^{k + 1} && \\
+    && &= ((k + 2)(k + 1)!)^{k + 1} && \\
+    && &= ((k + 2)!)^{k + 1} && \\
+\end{align*}
+
+Therefore, the claim holds for the inductive step.  Hence, by the principle of mathematical induction, the claim
+$2! \cdot 4! \cdot 6! \cdots (2n)! \geq ((n + 1)!)^n$ holds for all integers $n \geq 1$.
 
 
 
@@ -57,8 +94,29 @@ $1 + r + r^2 + ... + r^n = \frac{r^{n+1} - 1}{r - 1}$ is true for all integers $
 
     \item \textbf{Determine $a_2, a_3, a_4$ and $a_5$.}
 
+        $a_2 = 2a_1 + 1 = 2 \cdot 3 + 1 = 7$. \\
+        $a_3 = 2a_2 + 1 = 2 \cdot 7 + 1 = 15$. \\
+        $a_4 = 2a_3 + 1 = 2 \cdot 15 + 1 = 31$. \\
+        $a_5 = 2a_4 + 1 = 2 \cdot 31 + 1 = 63$. 
+
     \item \textbf{Based on the variables obtained in (a), make a guess for a formula for $a_n$ for every positive integer $n$ and use induction to verify that your guess is correct.}
 
+    My best guess for the formula for this equation is $a_n = 2^{n + 1} - 1}, \forall n \in \mathbb{N}$.
+
+    \n
+    Base Case: First, we must prove for the $n = 1$ case.  We know that $a_1 = 3$ from above, and $2^{n + 1} - 1 = 2^{1 + 1} - 1 = 3$, 
+    so the base case holds.
+
+    \n
+    Inductive Step: Let's assume for some integer $k \geq 2$, that $a_k = 2a_{k-1} + 1 = 2^{k + 1} - 1$.  We show that 
+    $a_{k + 1} = 2a_k + 1 = 2^{k + 2} - 1$.
+
+    \n
+    By the inductive hypothesis, we know that $a_{k + 1} = 2a_k + 1 = 2(2^{k + 1} - 1) + 1$, so $2(2^{k + 1} - 1) + 1 = 
+    2 \cdot 2^{k + 1} - 2 + 1 = 2^{k + 2} - 1$, therefore the claim holds for the inductive step as well.
+
+    \n
+    By the principle of mathematical induction, the claim $a_n = 2a_{n-1} + 1 = 2^{n + 1} - 1$ holds for all integers $n \geq 2$.
 \end{enumerate}
 
 
@@ -66,6 +124,19 @@ $1 + r + r^2 + ... + r^n = \frac{r^{n+1} - 1}{r - 1}$ is true for all integers $
 \section{4.3 Problem 22}
 \textbf{Use induction to show the following for Fibonacci numbers: $F_2 + F_4 + \cdots + F_{2n} = F_{2n+1} - 1$ for every positive integer $n$.}
 
+\n Base Case: Assume $n = 1$, we know $F_{2 \cdot 1} = 1$.  Also $F_{2 \cdot 1 + 1} - 1 = F_3 - 1 = 1$, therefore the claim holds for the base case.
+
+\n Inductive Step: Now let's assume for some integer $k \geq 1$, that $F_2 + F_4 + \cdots + F_{2k} = F_{2k+1} - 1$.  We show that
+$F_2 + F_4 + \cdots + F_{2k} + F_{2k + 2} = F_{2k+3} - 1$
+
+\begin{align*}
+    && F_2 + F_4 + \cdots + F_{2k} + F_{2k + 2} &= F_{2k+1} - 1 + F_{2k + 2} && \text{(by the inductive hypothesis)} \\
+    && &= F_{2k+1} + F_{2k + 2} - 1 && \\
+    && &= F_{2k+3} - 1 && \text{(by the definintion of the Fibonacci Sequence)} \\
+\end{align*}
+
+Therefore the claim holds for the inductive step.  Hence, by the principle of mathematical induction, the claim
+$F_2 + F_4 + \cdots + F_{2n} = F_{2n+1} - 1$ holds for all intergers $n \geq 1$.
 
 
 
