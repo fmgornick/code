@@ -3,9 +3,9 @@ import java.util.Scanner;
 public class BattleboatsGame {
     public static BattleboatsBoard game;
     public static int shots = 0;
-    public static int turns = 0;
+    public static int turns = 1;
     public static int remaining = 0;
-    public static int missile = 0;
+    public static int missile = -10;
     public static int drone = 0;
 
     public static void main(String[] args) {
@@ -82,191 +82,247 @@ public class BattleboatsGame {
                 System.out.print("coordinates: ");
                 c = s.nextLine();
 
-                int[] coordinates;
 
-                while (true) {
-                    coordinates = new int[c.split(" ").length];
-                    for (int i = 0; i < c.split(" ").length; i++) {
-                        coordinates[i] = Integer.parseInt(c.split(" ")[i]);
-                    }
+                try {
+                    while (true) {
 
-                    if (coordinates.length != 2) {
-                        System.out.println();
-                        System.out.println("error: make sure you type two integers separated by a space");
-                        System.out.print("coordinates: ");
-                        c = s.nextLine();
+                        int[] coordinates;
+                        coordinates = new int[c.split(" ").length];
 
-                    }
-                    else if (coordinates.length == 2 && (coordinates[0] < 0 || coordinates[0] >= game.board.length || coordinates[1] < 0 || coordinates[1] >= game.board.length)) {
-                        System.out.println();
-                        System.out.println("penalty: index out of range, you lose a turn");
-                        shots++;
-                        turns++;
-                        break;
-                    }
-
-                    else if (game.board[coordinates[0]][coordinates[1]].status == 'H' || game.board[coordinates[0]][coordinates[1]].status == 'M') {
-                        System.out.println();
-                        System.out.println("penalty: you already fired at this location, you lose a turn");
-                        shots++;
-                        turns++;
-                        break;
-                    }
-
-                    else if (coordinates.length == 2 && coordinates[0] >= 0 && coordinates[0] < game.board.length && coordinates[1] >= 0 && coordinates[1] < game.board.length) {
-                        game.fire(coordinates[0], coordinates[1]);
-                        shots++;
-
-                        if (game.board[coordinates[0]][coordinates[1]].status == 'H') {
-                            if (game.sunk(coordinates[0], coordinates[1])) {
-                                System.out.println();
-                                System.out.println("you sunk my battleship!");
-                                break;
-                            }
-
-                            else {
-                                System.out.println();
-                                System.out.println("hit!");
-                                break;
-                            }
+                        for (int i = 0; i < c.split(" ").length; i++) {
+                            coordinates[i] = Integer.parseInt(c.split(" ")[i]);
                         }
-                        else {
+
+                        if (coordinates.length != 2) {
                             System.out.println();
-                            System.out.println("miss");
+                            System.out.println("error: make sure you type two integers separated by a space");
+                            System.out.print("coordinates: ");
+                            c = s.nextLine();
+
+                        }
+
+                        else if (coordinates.length == 2 && (coordinates[0] < 0 || coordinates[0] >= game.board.length || coordinates[1] < 0 || coordinates[1] >= game.board.length)) {
+                            System.out.println();
+                            System.out.println("penalty: index out of range, you lose a turn");
+                            shots++;
+                            turns++;
                             break;
                         }
+
+                        else if (game.board[coordinates[0]][coordinates[1]].status == 'H' || game.board[coordinates[0]][coordinates[1]].status == 'M') {
+                            System.out.println();
+                            System.out.println("penalty: you already fired at this location, you lose a turn");
+                            shots++;
+                            turns++;
+                            break;
+                        }
+
+                        else if (coordinates.length == 2 && coordinates[0] >= 0 && coordinates[0] < game.board.length && coordinates[1] >= 0 && coordinates[1] < game.board.length) {
+                            game.fire(coordinates[0], coordinates[1]);
+                            shots++;
+
+                            if (game.board[coordinates[0]][coordinates[1]].status == 'H') {
+                                if (game.sunk(coordinates[0], coordinates[1])) {
+                                    System.out.println();
+                                    System.out.println("you sunk my battleship!");
+                                    break;
+                                }
+
+                                else {
+                                    System.out.println();
+                                    System.out.println("hit!");
+                                    break;
+                                }
+                            }
+                            else {
+                                System.out.println();
+                                System.out.println("miss");
+                                break;
+                            }
+                        }
                     }
+
+                    turns++;
+                    game.display();
+                    System.out.println();
+                    if (game.gameOver()) break;
+                    System.out.println("turn " + turns);
+                    System.out.print("> ");
+                    c = s.nextLine();
                 }
 
-                turns++;
-                game.display();
-                System.out.println();
-                System.out.print("> ");
-                c = s.nextLine();
+                catch (NumberFormatException exception) {
+                    System.out.println();
+                    System.out.println("error: make sure you type two integers separated by a space");
+                    c = "fire";
+                }
 
             }
 
             else if (c.equals("missile")) {
-                if ((se.equals("1") && missile == 0) || (se.equals("2") && missile < 2)) {
-                    System.out.print("coordinates: ");
-                    c = s.nextLine();
-                    int[] coordinates = new int[c.split(" ").length];
-                    for (int i = 0; i < c.split(" ").length; i++) {
-                        coordinates[i] = Integer.parseInt(c.split(" ")[i]);
-                    }
 
-                    if (coordinates.length == 2 && (coordinates[0] < 0 || coordinates[0] >= game.board.length || coordinates[1] < 0 || coordinates[1] >= game.board.length)) {
-                        System.out.println();
-                        System.out.println("penalty: index out of range, you lose a turn (you can still use the missile on the next turn)");
-                        turns++;
-                    }
-
-                    else if (coordinates.length == 2 && coordinates[0] >= 0 && coordinates[0] < game.board.length && coordinates[1] >= 0 && coordinates[1] < game.board.length) {
-                        game.missile(coordinates[0], coordinates[1]);
-                        missile++;
-                    }
-                }
-
-                else if (se.equals("1") && missile > 0) {
-                    System.out.println();
-                    System.out.println("you already used the missle once, you only get one missile per game");
-                }
-
-                else {
-                    System.out.println();
-                    System.out.println("you already used the missle twice, you only get two missiles per game");
-                }
-
-                turns++;
-                game.display();
-                System.out.println();
-                System.out.print("> ");
-                c = s.nextLine();
-            }
-
-            else if (c.equals("drone")) {
-
-                if ((se.equals("1") && drone == 0) || (se.equals("2") && drone < 2)) {
-                    System.out.println("row or column? (type \"r\" for row or \"c\" for column)");
-                    System.out.print("> ");
-                    c = s.nextLine();
-
+                try {
                     while (true) {
-                        if (c.equals("r")) {
-                            System.out.println();
-                            System.out.println("which row?");
-                            System.out.print("> ");
 
+                        if ((se.equals("1") && missile <= 0) || (se.equals("2") && missile < 2)) {
+
+                            System.out.print("coordinates: ");
                             c = s.nextLine();
-                            int row = Integer.parseInt(c);
+                            int[] coordinates = new int[c.split(" ").length];
 
-                            if (row >= 0 && ((se.equals("1") && row < 8) || (se.equals("2") && row < 12))) {
+                            for (int i = 0; i < c.split(" ").length; i++) {
+                                coordinates[i] = Integer.parseInt(c.split(" ")[i]);
+                            }
+
+                            if (coordinates.length == 2 && (coordinates[0] < 0 || coordinates[0] >= game.board.length || coordinates[1] < 0 || coordinates[1] >= game.board.length)) {
                                 System.out.println();
-                                System.out.println("there are " + game.drone(1, row) + " cell(s) containing boats in this row");
-                                drone++;
+                                System.out.println("penalty: index out of range, you lose a turn (you can still use the missile on the next turn)");
+                                turns++;
                                 break;
                             }
 
-                            else { 
-                                System.out.println();
-                                System.out.println("penalty: index out of range, you lose a turn (you can still use the drone on the next turn)");
-                                turns++;
+                            else if (coordinates.length == 2 && coordinates[0] >= 0 && coordinates[0] < game.board.length && coordinates[1] >= 0 && coordinates[1] < game.board.length) {
+                                game.missile(coordinates[0], coordinates[1]);
+                                missile++;
                                 break;
+                            }
+
+                            else {
+                            System.out.println();
+                            System.out.println("error: make sure you type two integers separated by a space");
+                            c = "missile";
+                            break;
                             }
                         }
 
-                        else if (c.equals("c")) {
+                        else if (se.equals("1") && missile > 0) {
                             System.out.println();
-                            System.out.println("which column?");
-                            System.out.print("> ");
-
-                            c = s.nextLine();
-                            int col = Integer.parseInt(c);
-
-                            if (col >= 0 && col < game.board.length) {
-                                System.out.println();
-                                System.out.println("there are " + game.drone(0, col) + " cell(s) containing boats in this column");
-                                drone++;
-                                break;
-                            }
-
-                            else { 
-                                System.out.println();
-                                System.out.println("penalty: index out of range, you lose a turn (you can still use the drone on the next turn)");
-                                turns++;
-                                break;
-                            }
+                            System.out.println("you already used the missle once, you only get one missile per game");
+                            turns--;
+                            break;
                         }
 
                         else {
                             System.out.println();
-                            System.out.println("invalid input, please type \"r\" for row or \"c\" for column)");
-                            System.out.print("> ");
-                            c = s.nextLine();
+                            System.out.println("you already used the missle twice, you only get two missiles per game");
+                            turns--;
+                            break;
                         }
                     }
-                }
 
-                else if (se.equals("1") && drone > 0) {
+                    turns++;
+                    game.display();
                     System.out.println();
-                    System.out.println("you already used the drone once, you only get one drone per game");
+                    if (game.gameOver()) break;
+                    System.out.println("turn " + turns);
+                    System.out.print("> ");
+                    c = s.nextLine();
                 }
 
-                else {
+                catch (NumberFormatException exception) {
                     System.out.println();
-                    System.out.println("you already used the drone twice, you only get two drones per game");
+                    System.out.println("error: make sure you type two integers separated by a space");
+                    c = "missile";
+                }
+            }
+
+            else if (c.equals("drone")) {
+
+                try {
+                    if ((se.equals("1") && drone == 0) || (se.equals("2") && drone < 2)) {
+                        System.out.println("row or column? (type \"r\" for row or \"c\" for column)");
+                        System.out.print("> ");
+                        c = s.nextLine();
+
+                        while (true) {
+                            if (c.equals("r")) {
+                                System.out.println();
+                                System.out.println("which row?");
+                                System.out.print("> ");
+
+                                c = s.nextLine();
+                                int row = Integer.parseInt(c);
+
+                                if (row >= 0 && ((se.equals("1") && row < 8) || (se.equals("2") && row < 12))) {
+                                    System.out.println();
+                                    System.out.println("there are " + game.drone(1, row) + " cell(s) containing boats in this row");
+                                    drone++;
+                                    break;
+                                }
+
+                                else { 
+                                    System.out.println();
+                                    System.out.println("penalty: index out of range, you lose a turn (you can still use the drone on the next turn)");
+                                    turns++;
+                                    break;
+                                }
+                            }
+
+                            else if (c.equals("c")) {
+                                System.out.println();
+                                System.out.println("which column?");
+                                System.out.print("> ");
+
+                                c = s.nextLine();
+                                int col = Integer.parseInt(c);
+
+                                if (col >= 0 && col < game.board.length) {
+                                    System.out.println();
+                                    System.out.println("there are " + game.drone(0, col) + " cell(s) containing boats in this column");
+                                    drone++;
+                                    break;
+                                }
+
+                                else { 
+                                    System.out.println();
+                                    System.out.println("penalty: index out of range, you lose a turn (you can still use the drone on the next turn)");
+                                    turns++;
+                                    break;
+                                }
+                            }
+
+                            else {
+                                System.out.println();
+                                System.out.println("invalid input, please type \"r\" for row or \"c\" for column)");
+                                System.out.print("> ");
+                                c = s.nextLine();
+                            }
+                        }
+                    }
+
+                    else if (se.equals("1") && drone > 0) {
+                        System.out.println();
+                        System.out.println("you already used the drone once, you only get one drone per game");
+                        turns--;
+                    }
+
+                    else {
+                        System.out.println();
+                        System.out.println("you already used the drone twice, you only get two drones per game");
+                        turns--;
+                    }
+
+                    turns++;
+                    game.display();
+                    System.out.println();
+                    if (game.gameOver()) break;
+                    System.out.println("turn " + turns);
+                    System.out.print("> ");
+                    c = s.nextLine();
                 }
 
-                turns++;
-                game.display();
-                System.out.println();
-                System.out.print("> ");
-                c = s.nextLine();
+                catch (NumberFormatException exception) {
+                    System.out.println();
+                    System.out.println("error: make sure you type an integer");
+                    System.out.println();
+                    c = "drone";
+                }
             }
 
             else if (c.equals("display")) {
                 game.display();
                 System.out.println();
+                System.out.println("turn " + turns);
                 System.out.print("> ");
                 c = s.nextLine();
             }
@@ -274,6 +330,7 @@ public class BattleboatsGame {
             else if (c.equals("print")) {
                 game.print();
                 System.out.println();
+                System.out.println("turn " + turns);
                 System.out.print("> ");
                 c = s.nextLine();
             }
@@ -287,6 +344,11 @@ public class BattleboatsGame {
                 c = s.nextLine();
 
             }
+        }
+
+        if (game.gameOver()) {
+            System.out.println();
+            System.out.println("YOU WIN!");
         }
 
         System.out.println();

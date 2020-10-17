@@ -347,6 +347,26 @@ public class BattleboatsBoard {
     }
 
 
+    public boolean gameOver() {
+        if (se == 1) {
+            for (int i = 0; i < boatArray.length; i += 2) {
+                for (int j = 0; j < boatArray[i].length; j++) {
+                    if (boatArray[i][j].status != 'H') return false;
+                }
+            }
+            return true;
+        }
+
+        else {
+            for (int i = 0; i < boatArray.length; i++) {
+                for (int j = 0; j < boatArray[i].length; j++) {
+                    if (boatArray[i][j].status != 'H') return false;
+                }
+            }
+            return true;
+        }
+    }
+
     public String displayHelper(int r, int c) {
         switch (board[r][c].status) {
             case 'H':
