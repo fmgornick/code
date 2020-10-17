@@ -13,517 +13,230 @@ public class BattleboatsBoard {
     public Cell[] boat9 = new Cell[2];
     public Cell[] boat10 = new Cell[2];
 
-    public BattleboatsBoard(int standardOrExpert) {
-        se = standardOrExpert;
+    public Cell[][] boatArray = {boat1, boat2, boat3, boat4, boat5, boat6, boat7, boat8, boat9, boat10};
+    public String[] boatNames = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J"};
+
+
+    public BattleboatsBoard(int se) {
+        this.se = se;
     }
+
+    public int randomize(Cell[] boat, int verticalOrHorizontal, int remaining) {
+
+        if (se == 1) {
+        int randRow1 = (int) Math.floor(Math.random() * (9 - boat.length));
+        int randCol1 = (int) Math.floor(Math.random() * 8);
+
+        int randRow2 = (int) Math.floor(Math.random() * 8);
+        int randCol2 = (int) Math.floor(Math.random() * (9 - boat.length));
+
+            if (verticalOrHorizontal == 0) {
+                for (int i = 0; i < boat.length; i++) {
+                    if (board[randRow1 + i][randCol1].status != '-') return remaining;
+                }
+                for (int i = 0; i < boat.length; i++) {
+                    board[randRow1][randCol1].status = 'B';
+                    boat[i] = board[randRow1][randCol1];
+                    randRow1++;
+                }
+                return --remaining;
+            }
+
+            else {
+                for (int i = 0; i < boat.length; i++) {
+                    if (board[randRow2][randCol2 + i].status != '-') return remaining;
+                }
+                for (int i = 0; i < boat.length; i++) {
+                    board[randRow2][randCol2].status = 'B';
+                    boat[i] = board[randRow2][randCol2];
+                    randCol2++;
+                }
+                return --remaining;
+            }
+        }
+
+        else {
+        int randRow1 = (int) Math.floor(Math.random() * (13 - boat.length));
+        int randCol1 = (int) Math.floor(Math.random() * 12);
+
+        int randRow2 = (int) Math.floor(Math.random() * 12);
+        int randCol2 = (int) Math.floor(Math.random() * (13 - boat.length));
+
+            if (verticalOrHorizontal == 0) {
+                for (int i = 0; i < boat.length; i++) {
+                    if (board[randRow1 + i][randCol1].status != '-') return remaining;
+                }
+                for (int i = 0; i < boat.length; i++) {
+                    board[randRow1][randCol1].status = 'B';
+                    boat[i] = board[randRow1][randCol1];
+                    randRow1++;
+                }
+                return --remaining;
+            }
+
+            else {
+                for (int i = 0; i < boat.length; i++) {
+                    if (board[randRow2][randCol2 + i].status != '-') return remaining;
+                }
+                for (int i = 0; i < boat.length; i++) {
+                    board[randRow2][randCol2].status = 'B';
+                    boat[i] = board[randRow2][randCol2];
+                    randCol2++;
+                }
+                return --remaining;
+            }
+        }
+    }
+
 
     public void placeBoats() {
         if (se == 1) {
             int remainingBoats = 5;
-
             board = new Cell[8][8];
+             
             for (int i = 0; i < board.length; i++) {
                 for (int j = 0; j < board[i].length; j++) {
                     board[i][j] = new Cell(i,j,'-');
                 }
             }
 
-            while (remainingBoats > 0) {
-                if (remainingBoats == 5) {
-                    int vh = (int) Math.floor(Math.random() * 2);
-                    if (vh == 0) {
-                        int randRow = (int) Math.floor(Math.random() * 4);
-                        int randCol = (int) Math.floor(Math.random() * 8);
-
-                        if (board[randRow][randCol].status == '-' && board[randRow + 1][randCol].status == '-' && board[randRow + 2][randCol].status == '-'
-                               && board[randRow + 3][randCol].status == '-' && board[randRow + 4][randCol].status == '-') {
-                            for (int i = 0; i < 5; i++) {
-                                board[randRow][randCol].setStatus('B');
-                                boat1[i] = new Cell(randRow, randCol, 'B');
-                                randRow++;
-                            }
-                        }
-                        else remainingBoats++;
-                    }
-                    else {
-                        int randRow = (int) Math.floor(Math.random() * 8);
-                        int randCol = (int) Math.floor(Math.random() * 4);
-
-                        if (board[randRow][randCol].status == '-' && board[randRow][randCol + 1].status == '-' && board[randRow][randCol + 2].status == '-'
-                               && board[randRow][randCol + 3].status == '-' && board[randRow][randCol + 4].status == '-') {
-                            for (int i = 0; i < 5; i++) {
-                                board[randRow][randCol].setStatus('B');
-                                boat1[i] = new Cell(randRow, randCol, 'B');
-                                randCol++;
-                            }
-                        }
-                        else remainingBoats++;
-
-                    }
-
-                    remainingBoats--;
-                }
-
-                else if (remainingBoats == 4) {
-                    int vh = (int) Math.floor(Math.random() * 2);
-                    if (vh == 0) {
-                        int randRow = (int) Math.floor(Math.random() * 5);
-                        int randCol = (int) Math.floor(Math.random() * 8);
-
-                        if (board[randRow][randCol].status == '-' && board[randRow + 1][randCol].status == '-' && board[randRow + 2][randCol].status == '-'
-                               && board[randRow + 3][randCol].status == '-') {
-                            for (int i = 0; i < 4; i++) {
-                                board[randRow][randCol].setStatus('B');
-                                boat3[i] = new Cell(randRow, randCol, 'B');
-                                randRow++;
-                            }
-                        }
-                        else remainingBoats++;
-                    }
-                    else {
-                        int randRow = (int) Math.floor(Math.random() * 8);
-                        int randCol = (int) Math.floor(Math.random() * 5);
-
-                        if (board[randRow][randCol].status == '-' && board[randRow][randCol + 1].status == '-' && board[randRow][randCol + 2].status == '-'
-                               && board[randRow][randCol + 3].status == '-') {
-                            for (int i = 0; i < 4; i++) {
-                                board[randRow][randCol].setStatus('B');
-                                boat3[i] = new Cell(randRow, randCol, 'B');
-                                randCol++;
-                            }
-                        }
-                        else remainingBoats++;
-
-                    }
-
-                    remainingBoats--;
-                }
-
-                else if (remainingBoats == 2 || remainingBoats == 3) {
-                    int vh = (int) Math.floor(Math.random() * 2);
-                    if (vh == 0) {
-                        int randRow = (int) Math.floor(Math.random() * 6);
-                        int randCol = (int) Math.floor(Math.random() * 8);
-
-                        if (board[randRow][randCol].status == '-' && board[randRow + 1][randCol].status == '-' && board[randRow + 2][randCol].status == '-') {
-                            for (int i = 0; i < 3; i++) {
-                                board[randRow][randCol].setStatus('B');
-                                if (remainingBoats == 3) {
-                                    boat5[i] = new Cell(randRow, randCol, 'B');
-                                }
-                                else boat7[i] = new Cell(randRow, randCol, 'B');
-                                randRow++;
-
-                            }
-                        }
-                        else remainingBoats++;
-                    }
-                    else {
-                        int randRow = (int) Math.floor(Math.random() * 8);
-                        int randCol = (int) Math.floor(Math.random() * 6);
-
-                        if (board[randRow][randCol].status == '-' && board[randRow][randCol + 1].status == '-' && board[randRow][randCol + 2].status == '-') {
-                            for (int i = 0; i < 3; i++) {
-                                board[randRow][randCol].setStatus('B');
-                                if (remainingBoats == 3) {
-                                    boat5[i] = new Cell(randRow, randCol, 'B');
-                                }
-                                else boat7[i] = new Cell(randRow, randCol, 'B');
-                                randCol++;
-                            }
-                        }
-                        else remainingBoats++;
-
-                    }
-
-                    remainingBoats--;
-                }
-
-                else if (remainingBoats == 1) {
-                    int vh = (int) Math.floor(Math.random() * 2);
-                    if (vh == 0) {
-                        int randRow = (int) Math.floor(Math.random() * 7);
-                        int randCol = (int) Math.floor(Math.random() * 8);
-
-                        if (board[randRow][randCol].status == '-' && board[randRow + 1][randCol].status == '-') {
-                            for (int i = 0; i < 2; i++) {
-                                board[randRow][randCol].setStatus('B');
-                                boat9[i] = new Cell(randRow, randCol, 'B');
-                                randRow++;
-                            }
-                        }
-                        else remainingBoats++;
-                    }
-                    else {
-                        int randRow = (int) Math.floor(Math.random() * 8);
-                        int randCol = (int) Math.floor(Math.random() * 7);
-
-                        if (board[randRow][randCol].status == '-' && board[randRow][randCol + 1].status == '-') {
-                            for (int i = 0; i < 2; i++) {
-                                board[randRow][randCol].setStatus('B');
-                                boat9[i] = new Cell(randRow, randCol, 'B');
-                                randCol++;
-                            }
-                        }
-                        else remainingBoats++;
-
-                    }
-
-                    remainingBoats--;
+            while(remainingBoats > 0) {
+                switch (remainingBoats) {
+                    case 1:
+                        remainingBoats = randomize(boat9, (int) Math.floor(Math.random() * 2), remainingBoats);
+                        break;
+                    case 2:
+                        remainingBoats = randomize(boat7, (int) Math.floor(Math.random() * 2), remainingBoats);
+                        break;
+                    case 3:
+                        remainingBoats = randomize(boat5, (int) Math.floor(Math.random() * 2), remainingBoats);
+                        break;
+                    case 4:
+                        remainingBoats = randomize(boat3, (int) Math.floor(Math.random() * 2), remainingBoats);
+                        break;
+                    case 5:
+                        remainingBoats = randomize(boat1, (int) Math.floor(Math.random() * 2), remainingBoats);
+                        break;
+                    default:
+                        remainingBoats = 0;
+                        break;
                 }
             }
         }
 
         else if (se == 2) {
             int remainingBoats = 10;
-
             board = new Cell[12][12];
+
             for (int i = 0; i < board.length; i++) {
                 for (int j = 0; j < board[i].length; j++) {
                     board[i][j] = new Cell(i,j,'-');
                 }
             }
 
-            while (remainingBoats > 0) {
-                if (remainingBoats == 10 || remainingBoats == 9) {
-                    int vh = (int) Math.floor(Math.random() * 2);
-                    if (vh == 0) {
-                        int randRow = (int) Math.floor(Math.random() * 8);
-                        int randCol = (int) Math.floor(Math.random() * 12);
-
-                        if (board[randRow][randCol].status == '-' && board[randRow + 1][randCol].status == '-' && board[randRow + 2][randCol].status == '-'
-                               && board[randRow + 3][randCol].status == '-' && board[randRow + 4][randCol].status == '-') {
-                            for (int i = 0; i < 5; i++) {
-                                if (remainingBoats == 10) {
-                                    board[randRow][randCol].setStatus('B');
-                                    boat1[i] = new Cell(randRow, randCol, 'B');
-                                    randRow++;
-                                }
-                                else {
-                                    board[randRow][randCol].setStatus('B');
-                                    boat2[i] = new Cell(randRow, randCol, 'B');
-                                    randRow++;
-                                }
-                            }
-                        }
-                        else remainingBoats++;
-                    }
-                    else {
-                        int randRow = (int) Math.floor(Math.random() * 12);
-                        int randCol = (int) Math.floor(Math.random() * 8);
-
-                        if (board[randRow][randCol].status == '-' && board[randRow][randCol + 1].status == '-' && board[randRow][randCol + 2].status == '-'
-                               && board[randRow][randCol + 3].status == '-' && board[randRow][randCol + 4].status == '-') {
-                            for (int i = 0; i < 5; i++) {
-                                if (remainingBoats == 10) {
-                                    board[randRow][randCol].setStatus('B');
-                                    boat1[i] = new Cell(randRow, randCol, 'B');
-                                    randCol++;
-                                }
-                                else {
-                                    board[randRow][randCol].setStatus('B');
-                                    boat2[i] = new Cell(randRow, randCol, 'B');
-                                    randCol++;
-                                }
-                            }
-                        }
-                        else remainingBoats++;
-
-                    }
-
-                    remainingBoats--;
-                }
-
-                else if (remainingBoats == 8 || remainingBoats == 7) {
-                    int vh = (int) Math.floor(Math.random() * 2);
-                    if (vh == 0) {
-                        int randRow = (int) Math.floor(Math.random() * 9);
-                        int randCol = (int) Math.floor(Math.random() * 12);
-
-                        if (board[randRow][randCol].status == '-' && board[randRow + 1][randCol].status == '-' && board[randRow + 2][randCol].status == '-'
-                               && board[randRow + 3][randCol].status == '-') {
-                            for (int i = 0; i < 4; i++) {
-                                if (remainingBoats == 8) {
-                                    board[randRow][randCol].setStatus('B');
-                                    boat3[i] = new Cell(randRow, randCol, 'B');
-                                    randRow++;
-                                }
-                                else {
-                                    board[randRow][randCol].setStatus('B');
-                                    boat4[i] = new Cell(randRow, randCol, 'B');
-                                    randRow++;
-                                }
-                            }
-                        }
-                        else remainingBoats++;
-                    }
-                    else {
-                        int randRow = (int) Math.floor(Math.random() * 12);
-                        int randCol = (int) Math.floor(Math.random() * 9);
-
-                        if (board[randRow][randCol].status == '-' && board[randRow][randCol + 1].status == '-' && board[randRow][randCol + 2].status == '-'
-                               && board[randRow][randCol + 3].status == '-') {
-                            for (int i = 0; i < 4; i++) {
-                                if (remainingBoats == 8) {
-                                    board[randRow][randCol].setStatus('B');
-                                    boat3[i] = new Cell(randRow, randCol, 'B');
-                                    randCol++;
-                                }
-                                else {
-                                    board[randRow][randCol].setStatus('B');
-                                    boat4[i] = new Cell(randRow, randCol, 'B');
-                                    randCol++;
-                                }
-                            }
-                        }
-                        else remainingBoats++;
-
-                    }
-
-                    remainingBoats--;
-                }
-
-                else if (remainingBoats == 6 || remainingBoats == 5 || remainingBoats == 4 || remainingBoats == 3) {
-                    int vh = (int) Math.floor(Math.random() * 2);
-                    if (vh == 0) {
-                        int randRow = (int) Math.floor(Math.random() * 10);
-                        int randCol = (int) Math.floor(Math.random() * 12);
-
-                        if (board[randRow][randCol].status == '-' && board[randRow + 1][randCol].status == '-' && board[randRow + 2][randCol].status == '-') {
-                            for (int i = 0; i < 3; i++) {
-                                if (remainingBoats == 6) {
-                                    board[randRow][randCol].setStatus('B');
-                                    boat5[i] = new Cell(randRow, randCol, 'B');
-                                    randRow++;
-                                }
-                                else if (remainingBoats == 5) {
-                                    board[randRow][randCol].setStatus('B');
-                                    boat6[i] = new Cell(randRow, randCol, 'B');
-                                    randRow++;
-                                }
-                                else if (remainingBoats == 4) {
-                                    board[randRow][randCol].setStatus('B');
-                                    boat7[i] = new Cell(randRow, randCol, 'B');
-                                    randRow++;
-                                }
-                                else {
-                                    board[randRow][randCol].setStatus('B');
-                                    boat8[i] = new Cell(randRow, randCol, 'B');
-                                    randRow++;
-                                }
-                            }
-                        }
-                        else remainingBoats++;
-                    }
-                    else {
-                        int randRow = (int) Math.floor(Math.random() * 12);
-                        int randCol = (int) Math.floor(Math.random() * 10);
-
-                        if (board[randRow][randCol].status == '-' && board[randRow][randCol + 1].status == '-' && board[randRow][randCol + 2].status == '-') {
-                            for (int i = 0; i < 3; i++) {
-                                if (remainingBoats == 6) {
-                                    board[randRow][randCol].setStatus('B');
-                                    boat5[i] = new Cell(randRow, randCol, 'B');
-                                    randCol++;
-                                }
-                                else if (remainingBoats == 5) {
-                                    board[randRow][randCol].setStatus('B');
-                                    boat6[i] = new Cell(randRow, randCol, 'B');
-                                    randCol++;
-                                }
-                                else if (remainingBoats == 4) {
-                                    board[randRow][randCol].setStatus('B');
-                                    boat7[i] = new Cell(randRow, randCol, 'B');
-                                    randCol++;
-                                }
-                                else {
-                                    board[randRow][randCol].setStatus('B');
-                                    boat8[i] = new Cell(randRow, randCol, 'B');
-                                    randCol++;
-                                }
-                            }
-                        }
-                        else remainingBoats++;
-
-                    }
-
-                    remainingBoats--;
-                }
-
-                else if (remainingBoats == 2 || remainingBoats == 1) {
-                    int vh = (int) Math.floor(Math.random() * 2);
-                    if (vh == 0) {
-                        int randRow = (int) Math.floor(Math.random() * 11);
-                        int randCol = (int) Math.floor(Math.random() * 12);
-
-                        if (board[randRow][randCol].status == '-' && board[randRow + 1][randCol].status == '-') {
-                            for (int i = 0; i < 2; i++) {
-                                if (remainingBoats == 2) {
-                                    board[randRow][randCol].setStatus('B');
-                                    boat9[i] = new Cell(randRow, randCol, 'B');
-                                    randRow++;
-                                }
-                                else {
-                                    board[randRow][randCol].setStatus('B');
-                                    boat10[i] = new Cell(randRow, randCol, 'B');
-                                    randRow++;
-                                }
-                            }
-                        }
-                        else remainingBoats++;
-                    }
-                    else {
-                        int randRow = (int) Math.floor(Math.random() * 12);
-                        int randCol = (int) Math.floor(Math.random() * 11);
-
-                        if (board[randRow][randCol].status == '-' && board[randRow][randCol + 1].status == '-') {
-                            for (int i = 0; i < 2; i++) {
-                                if (remainingBoats == 2) {
-                                    board[randRow][randCol].setStatus('B');
-                                    boat9[i] = new Cell(randRow, randCol, 'B');
-                                    randCol++;
-                                }
-                                else {
-                                    board[randRow][randCol].setStatus('B');
-                                    boat10[i] = new Cell(randRow, randCol, 'B');
-                                    randCol++;
-                                }
-                            }
-                        }
-                        else remainingBoats++;
-
-                    }
-
-                    remainingBoats--;
+            while(remainingBoats > 0) {
+                switch (remainingBoats) {
+                    case 1:
+                        remainingBoats = randomize(boat10, (int) Math.floor(Math.random() * 2), remainingBoats);
+                        break;
+                    case 2:
+                        remainingBoats = randomize(boat9, (int) Math.floor(Math.random() * 2), remainingBoats);
+                        break;
+                    case 3:
+                        remainingBoats = randomize(boat8, (int) Math.floor(Math.random() * 2), remainingBoats);
+                        break;
+                    case 4:
+                        remainingBoats = randomize(boat7, (int) Math.floor(Math.random() * 2), remainingBoats);
+                        break;
+                    case 5:
+                        remainingBoats = randomize(boat6, (int) Math.floor(Math.random() * 2), remainingBoats);
+                        break;
+                    case 6:
+                        remainingBoats = randomize(boat5, (int) Math.floor(Math.random() * 2), remainingBoats);
+                        break;
+                    case 7:
+                        remainingBoats = randomize(boat4, (int) Math.floor(Math.random() * 2), remainingBoats);
+                        break;
+                    case 8:
+                        remainingBoats = randomize(boat3, (int) Math.floor(Math.random() * 2), remainingBoats);
+                        break;
+                    case 9:
+                        remainingBoats = randomize(boat2, (int) Math.floor(Math.random() * 2), remainingBoats);
+                        break;
+                    case 10:
+                        remainingBoats = randomize(boat1, (int) Math.floor(Math.random() * 2), remainingBoats);
+                        break;
+                    default:
+                        remainingBoats = 0;
+                        break;
                 }
             }
         }
     }
 
-    public int fire(int x, int y) {
+
+    public boolean isBoat(int r, int c) {
         if (se == 1) {
-            if (printhelper(x, y).equals("A")) {
-                for (int i = 0; i < boat1.length; i++) {
-                    if (boat1[i].row == x && boat1[i].col == y) {
-                        boat1[i].status = 'H';
-                    }
+            for (int i = 0; i < boatArray.length; i += 2) {
+                for (int j = 0; j < boatArray[i].length; j++) {
+                    if (boatArray[i][j].row == r && boatArray[i][j].col == c) return true;
                 }
             }
-            else if (printhelper(x, y).equals("B")) {
-                for (int i = 0; i < boat3.length; i++) {
-                    if (boat3[i].row == x && boat3[i].col == y) {
-                        boat3[i].status = 'H';
-                    }
-                }
-            }
-            else if (printhelper(x, y).equals("C")) {
-                for (int i = 0; i < boat5.length; i++) {
-                    if (boat5[i].row == x && boat5[i].col == y) {
-                        boat5[i].status = 'H';
-                    }
-                }
-            }
-            else if (printhelper(x, y).equals("D")) {
-                for (int i = 0; i < boat7.length; i++) {
-                    if (boat7[i].row == x && boat7[i].col == y) {
-                        boat7[i].status = 'H';
-                    }
-                }
-            }
-            else {
-                for (int i = 0; i < boat9.length; i++) {
-                    if (boat9[i].row == x && boat9[i].col == y) {
-                        boat9[i].status = 'H';
-                    }
-                }
-            }
+            return false;
         }
 
         else {
-            if (printhelper(x, y).equals("A")) {
-                for (int i = 0; i < boat1.length; i++) {
-                    if (boat1[i].row == x && boat1[i].col == y) {
-                        boat1[i].status = 'H';
-                    }
+            for (int i = 0; i < boatArray.length; i++) {
+                for (int j = 0; j < boatArray[i].length; j++) {
+                    if (boatArray[i][j].row == r && boatArray[i][j].col == c) return true;
                 }
             }
-            else if (printhelper(x, y).equals("B")) {
-                for (int i = 0; i < boat2.length; i++) {
-                    if (boat2[i].row == x && boat2[i].col == y) {
-                        boat2[i].status = 'H';
-                    }
-                }
-            }
-            else if (printhelper(x, y).equals("C")) {
-                for (int i = 0; i < boat3.length; i++) {
-                    if (boat3[i].row == x && boat3[i].col == y) {
-                        boat3[i].status = 'H';
-                    }
-                }
-            }
-            else if (printhelper(x, y).equals("D")) {
-                for (int i = 0; i < boat4.length; i++) {
-                    if (boat4[i].row == x && boat4[i].col == y) {
-                        boat4[i].status = 'H';
-                    }
-                }
-            }
-            else if (printhelper(x, y).equals("E")) {
-                for (int i = 0; i < boat5.length; i++) {
-                    if (boat5[i].row == x && boat5[i].col == y) {
-                        boat5[i].status = 'H';
-                    }
-                }
-            }
-            else if (printhelper(x, y).equals("F")) {
-                for (int i = 0; i < boat6.length; i++) {
-                    if (boat6[i].row == x && boat6[i].col == y) {
-                        boat6[i].status = 'H';
-                    }
-                }
-            }
-            else if (printhelper(x, y).equals("G")) {
-                for (int i = 0; i < boat7.length; i++) {
-                    if (boat7[i].row == x && boat7[i].col == y) {
-                        boat7[i].status = 'H';
-                    }
-                }
-            }
-            else if (printhelper(x, y).equals("H")) {
-                for (int i = 0; i < boat8.length; i++) {
-                    if (boat8[i].row == x && boat8[i].col == y) {
-                        boat8[i].status = 'H';
-                    }
-                }
-            }
-            else if (printhelper(x, y).equals("I")) {
-                for (int i = 0; i < boat9.length; i++) {
-                    if (boat9[i].row == x && boat9[i].col == y) {
-                        boat9[i].status = 'H';
-                    }
-                }
-            }
-            else {
-                for (int i = 0; i < boat10.length; i++) {
-                    if (boat10[i].row == x && boat10[i].col == y) {
-                        boat10[i].status = 'H';
-                    }
-                }
-            }
-
+            return false;
         }
-
-        if (board[x][y].status == '-') {
-            board[x][y].setStatus('M');
-            return 0;
-        }
-        else if (board[x][y].status == 'B') {
-            board[x][y].setStatus('H');
-            return 0;
-        }
-
-        else return 1;
     }
+
+    public int indexBoat(int r, int c) {
+        if (se == 1) {
+            for (int i = 0; i < boatArray.length; i += 2) {
+                for (int j = 0; j < boatArray[i].length; j++) {
+                    if (boatArray[i][j].row == r && boatArray[i][j].col == c) {
+                        return i;
+                    }
+                }
+            }
+            return -1;
+        }
+
+        else {
+            for (int i = 0; i < boatArray.length; i++) {
+                for (int j = 0; j < boatArray[i].length; j++) {
+                    if (boatArray[i][j].row == r && boatArray[i][j].col == c) {
+                        return i;
+                    }
+                }
+            }
+            return -1;
+        }
+    }
+
+
+    public int fire(int r, int c) {
+        if(isBoat(r,c)) {
+            board[r][c].status = 'H';
+            for (int i = 0; i < boatArray[indexBoat(r,c)].length; i++) {
+                if (boatArray[indexBoat(r,c)][i].row == r && boatArray[indexBoat(r,c)][i].col == c) {
+                    boatArray[indexBoat(r,c)][i].status = board[r][c].status;
+                }
+            }
+            return 1;
+        }
+
+        else {
+            board[r][c].status = 'M';
+            return 0;
+        }
+    }
+
 
     public void missile(int r, int c) {
         if (r > 0 && r < board.length - 1 && c > 0 && c < board[r].length - 1) {
@@ -603,6 +316,7 @@ public class BattleboatsBoard {
         }
     }
 
+
     public int drone(int direction, int index) {
         int numCells = 0;
         if (direction == 0) {
@@ -624,147 +338,57 @@ public class BattleboatsBoard {
         return numCells;
     }
 
+
     public boolean sunk(int r, int c) {
-        boolean tf = true;
-        if (se == 1) {
-
-            if (printhelper(r, c).equals("A")) {
-                for (int i = 0; i < boat1.length; i++) {
-                    if (boat1[i].status != 'H') tf = false;
-                }
-            }
-
-            else if (printhelper(r, c).equals("B")) {
-                for (int i = 0; i < boat3.length; i++) {
-                    if (boat3[i].status != 'H') tf = false;
-                }
-            }
-            
-            else if (printhelper(r, c).equals("C")) {
-                for (int i = 0; i < boat5.length; i++) {
-                    if (boat5[i].status != 'H') tf = false;
-                }
-            }
-            
-            else if (printhelper(r, c).equals("D")) {
-                for (int i = 0; i < boat7.length; i++) {
-                    if (boat7[i].status != 'H') tf = false;
-                }
-            }
-            
-            else {
-                for (int i = 0; i < boat9.length; i++) {
-                    if (boat9[i].status != 'H') tf = false;
-                }
-            }
+        for (int i = 0; i < boatArray[indexBoat(r,c)].length; i++) {
+            if (boatArray[indexBoat(r,c)][i].status != 'H') return false;
         }
-
-        else {
-
-            if (printhelper(r, c).equals("A")) {
-                for (int i = 0; i < boat1.length; i++) {
-                    if (boat1[i].status != 'H') tf = false;
-                }
-            }
-
-            else if (printhelper(r, c).equals("B")) {
-                for (int i = 0; i < boat2.length; i++) {
-                    if (boat2[i].status != 'H') tf = false;
-                }
-            }
-            
-            else if (printhelper(r, c).equals("C")) {
-                for (int i = 0; i < boat3.length; i++) {
-                    if (boat3[i].status != 'H') tf = false;
-                }
-            }
-            
-            else if (printhelper(r, c).equals("D")) {
-                for (int i = 0; i < boat4.length; i++) {
-                    if (boat4[i].status != 'H') tf = false;
-                }
-            }
-            
-            else if (printhelper(r, c).equals("E")) {
-                for (int i = 0; i < boat5.length; i++) {
-                    if (boat5[i].status != 'H') tf = false;
-                }
-            }
-
-            else if (printhelper(r, c).equals("F")) {
-                for (int i = 0; i < boat6.length; i++) {
-                    if (boat6[i].status != 'H') tf = false;
-                }
-            }
-
-            else if (printhelper(r, c).equals("G")) {
-                for (int i = 0; i < boat7.length; i++) {
-                    if (boat7[i].status != 'H') tf = false;
-                }
-            }
-            
-            else if (printhelper(r, c).equals("H")) {
-                for (int i = 0; i < boat8.length; i++) {
-                    if (boat8[i].status != 'H') tf = false;
-                }
-            }
-            
-            else if (printhelper(r, c).equals("I")) {
-                for (int i = 0; i < boat9.length; i++) {
-                    if (boat9[i].status != 'H') tf = false;
-                }
-            }
-            
-            else {
-                for (int i = 0; i < boat10.length; i++) {
-                    if (boat10[i].status != 'H') tf = false;
-                }
-            }
-        }
-
-        return tf;
+        return true;
     }
 
 
-    public String displayhelper(int r, int c) {
-        if (board[r][c].status == 'H') {
-            return "X";
-        }
-        else if (board[r][c].status == 'M') {
-            return "O";
-        }
-        else return " ";
+    public String displayHelper(int r, int c) {
+        switch (board[r][c].status) {
+            case 'H':
+                return "X";
 
+            case 'M':
+                return "O";
+
+            default:
+                return " ";
+        }
     }
+
 
     public void display() {
         if (se == 1) {
             System.out.println();
             System.out.println("    0   1   2   3   4   5   6   7  ");
             System.out.println("  + - + - + - + - + - + - + - + - +");
-            System.out.println("0 | " + displayhelper(0,0) + " | " + displayhelper(0,1) + " | " + displayhelper(0,2) + " | " + displayhelper(0,3) + " | " 
-                                    + displayhelper(0,4) + " | " + displayhelper(0,5) + " | " + displayhelper(0,6) + " | " + displayhelper(0,7) + " |");
+            System.out.println("0 | " + displayHelper(0,0) + " | " + displayHelper(0,1) + " | " + displayHelper(0,2) + " | " + displayHelper(0,3) + " | " 
+                                    + displayHelper(0,4) + " | " + displayHelper(0,5) + " | " + displayHelper(0,6) + " | " + displayHelper(0,7) + " |");
             System.out.println("  + - + - + - + - + - + - + - + - +");
-            System.out.println("1 | " + displayhelper(1,0) + " | " + displayhelper(1,1) + " | " + displayhelper(1,2) + " | " + displayhelper(1,3) + " | " 
-                                    + displayhelper(1,4) + " | " + displayhelper(1,5) + " | " + displayhelper(1,6) + " | " + displayhelper(1,7) + " |");
+            System.out.println("1 | " + displayHelper(1,0) + " | " + displayHelper(1,1) + " | " + displayHelper(1,2) + " | " + displayHelper(1,3) + " | " 
+                                    + displayHelper(1,4) + " | " + displayHelper(1,5) + " | " + displayHelper(1,6) + " | " + displayHelper(1,7) + " |");
             System.out.println("  + - + - + - + - + - + - + - + - +");
-            System.out.println("2 | " + displayhelper(2,0) + " | " + displayhelper(2,1) + " | " + displayhelper(2,2) + " | " + displayhelper(2,3) + " | " 
-                                    + displayhelper(2,4) + " | " + displayhelper(2,5) + " | " + displayhelper(2,6) + " | " + displayhelper(2,7) + " |");
+            System.out.println("2 | " + displayHelper(2,0) + " | " + displayHelper(2,1) + " | " + displayHelper(2,2) + " | " + displayHelper(2,3) + " | " 
+                                    + displayHelper(2,4) + " | " + displayHelper(2,5) + " | " + displayHelper(2,6) + " | " + displayHelper(2,7) + " |");
             System.out.println("  + - + - + - + - + - + - + - + - +");
-            System.out.println("3 | " + displayhelper(3,0) + " | " + displayhelper(3,1) + " | " + displayhelper(3,2) + " | " + displayhelper(3,3) + " | " 
-                                    + displayhelper(3,4) + " | " + displayhelper(3,5) + " | " + displayhelper(3,6) + " | " + displayhelper(3,7) + " |");
+            System.out.println("3 | " + displayHelper(3,0) + " | " + displayHelper(3,1) + " | " + displayHelper(3,2) + " | " + displayHelper(3,3) + " | " 
+                                    + displayHelper(3,4) + " | " + displayHelper(3,5) + " | " + displayHelper(3,6) + " | " + displayHelper(3,7) + " |");
             System.out.println("  + - + - + - + - + - + - + - + - +");
-            System.out.println("4 | " + displayhelper(4,0) + " | " + displayhelper(4,1) + " | " + displayhelper(4,2) + " | " + displayhelper(4,3) + " | " 
-                                    + displayhelper(4,4) + " | " + displayhelper(4,5) + " | " + displayhelper(4,6) + " | " + displayhelper(4,7) + " |");
+            System.out.println("4 | " + displayHelper(4,0) + " | " + displayHelper(4,1) + " | " + displayHelper(4,2) + " | " + displayHelper(4,3) + " | " 
+                                    + displayHelper(4,4) + " | " + displayHelper(4,5) + " | " + displayHelper(4,6) + " | " + displayHelper(4,7) + " |");
             System.out.println("  + - + - + - + - + - + - + - + - +");
-            System.out.println("5 | " + displayhelper(5,0) + " | " + displayhelper(5,1) + " | " + displayhelper(5,2) + " | " + displayhelper(5,3) + " | " 
-                                    + displayhelper(5,4) + " | " + displayhelper(5,5) + " | " + displayhelper(5,6) + " | " + displayhelper(5,7) + " |");
+            System.out.println("5 | " + displayHelper(5,0) + " | " + displayHelper(5,1) + " | " + displayHelper(5,2) + " | " + displayHelper(5,3) + " | " 
+                                    + displayHelper(5,4) + " | " + displayHelper(5,5) + " | " + displayHelper(5,6) + " | " + displayHelper(5,7) + " |");
             System.out.println("  + - + - + - + - + - + - + - + - +");
-            System.out.println("6 | " + displayhelper(6,0) + " | " + displayhelper(6,1) + " | " + displayhelper(6,2) + " | " + displayhelper(6,3) + " | " 
-                                    + displayhelper(6,4) + " | " + displayhelper(6,5) + " | " + displayhelper(6,6) + " | " + displayhelper(6,7) + " |");
+            System.out.println("6 | " + displayHelper(6,0) + " | " + displayHelper(6,1) + " | " + displayHelper(6,2) + " | " + displayHelper(6,3) + " | " 
+                                    + displayHelper(6,4) + " | " + displayHelper(6,5) + " | " + displayHelper(6,6) + " | " + displayHelper(6,7) + " |");
             System.out.println("  + - + - + - + - + - + - + - + - +");
-            System.out.println("7 | " + displayhelper(7,0) + " | " + displayhelper(7,1) + " | " + displayhelper(7,2) + " | " + displayhelper(7,3) + " | " 
-                                    + displayhelper(7,4) + " | " + displayhelper(7,5) + " | " + displayhelper(7,6) + " | " + displayhelper(7,7) + " |");
+            System.out.println("7 | " + displayHelper(7,0) + " | " + displayHelper(7,1) + " | " + displayHelper(7,2) + " | " + displayHelper(7,3) + " | " 
+                                    + displayHelper(7,4) + " | " + displayHelper(7,5) + " | " + displayHelper(7,6) + " | " + displayHelper(7,7) + " |");
             System.out.println("  + - + - + - + - + - + - + - + - +");
         }
 
@@ -772,140 +396,107 @@ public class BattleboatsBoard {
             System.out.println();
             System.out.println("     0   1   2   3   4   5   6   7   8   9   10  11 ");
             System.out.println("   + - + - + - + - + - + - + - + - + - + - + - + - +");
-            System.out.println("0  | " + displayhelper(0,0) + " | " + displayhelper(0,1) + " | " + displayhelper(0,2) + " | " + displayhelper(0,3) + " | " 
-                                    + displayhelper(0,4) + " | " + displayhelper(0,5) + " | " + displayhelper(0,6) + " | " + displayhelper(0,7) + " | "
-                                    + displayhelper(0,8) + " | " + displayhelper(0,9) + " | " + displayhelper(0,10) + " | " + displayhelper(0,11) + " |");
+            System.out.println("0  | " + displayHelper(0,0) + " | " + displayHelper(0,1) + " | " + displayHelper(0,2) + " | " + displayHelper(0,3) + " | " 
+                                    + displayHelper(0,4) + " | " + displayHelper(0,5) + " | " + displayHelper(0,6) + " | " + displayHelper(0,7) + " | "
+                                    + displayHelper(0,8) + " | " + displayHelper(0,9) + " | " + displayHelper(0,10) + " | " + displayHelper(0,11) + " |");
             System.out.println("   + - + - + - + - + - + - + - + - + - + - + - + - +");
-            System.out.println("1  | " + displayhelper(1,0) + " | " + displayhelper(1,1) + " | " + displayhelper(1,2) + " | " + displayhelper(1,3) + " | " 
-                                    + displayhelper(1,4) + " | " + displayhelper(1,5) + " | " + displayhelper(1,6) + " | " + displayhelper(1,7) + " | "
-                                    + displayhelper(1,8) + " | " + displayhelper(1,9) + " | " + displayhelper(1,10) + " | " + displayhelper(1,11) + " |");
+            System.out.println("1  | " + displayHelper(1,0) + " | " + displayHelper(1,1) + " | " + displayHelper(1,2) + " | " + displayHelper(1,3) + " | " 
+                                    + displayHelper(1,4) + " | " + displayHelper(1,5) + " | " + displayHelper(1,6) + " | " + displayHelper(1,7) + " | "
+                                    + displayHelper(1,8) + " | " + displayHelper(1,9) + " | " + displayHelper(1,10) + " | " + displayHelper(1,11) + " |");
             System.out.println("   + - + - + - + - + - + - + - + - + - + - + - + - +");
-            System.out.println("2  | " + displayhelper(2,0) + " | " + displayhelper(2,1) + " | " + displayhelper(2,2) + " | " + displayhelper(2,3) + " | " 
-                                    + displayhelper(2,4) + " | " + displayhelper(2,5) + " | " + displayhelper(2,6) + " | " + displayhelper(2,7) + " | "
-                                    + displayhelper(2,8) + " | " + displayhelper(2,9) + " | " + displayhelper(2,10) + " | " + displayhelper(2,11) + " |");
+            System.out.println("2  | " + displayHelper(2,0) + " | " + displayHelper(2,1) + " | " + displayHelper(2,2) + " | " + displayHelper(2,3) + " | " 
+                                    + displayHelper(2,4) + " | " + displayHelper(2,5) + " | " + displayHelper(2,6) + " | " + displayHelper(2,7) + " | "
+                                    + displayHelper(2,8) + " | " + displayHelper(2,9) + " | " + displayHelper(2,10) + " | " + displayHelper(2,11) + " |");
             System.out.println("   + - + - + - + - + - + - + - + - + - + - + - + - +");
-            System.out.println("3  | " + displayhelper(3,0) + " | " + displayhelper(3,1) + " | " + displayhelper(3,2) + " | " + displayhelper(3,3) + " | " 
-                                    + displayhelper(3,4) + " | " + displayhelper(3,5) + " | " + displayhelper(3,6) + " | " + displayhelper(3,7) + " | "
-                                    + displayhelper(3,8) + " | " + displayhelper(3,9) + " | " + displayhelper(3,10) + " | " + displayhelper(3,11) + " |");
+            System.out.println("3  | " + displayHelper(3,0) + " | " + displayHelper(3,1) + " | " + displayHelper(3,2) + " | " + displayHelper(3,3) + " | " 
+                                    + displayHelper(3,4) + " | " + displayHelper(3,5) + " | " + displayHelper(3,6) + " | " + displayHelper(3,7) + " | "
+                                    + displayHelper(3,8) + " | " + displayHelper(3,9) + " | " + displayHelper(3,10) + " | " + displayHelper(3,11) + " |");
             System.out.println("   + - + - + - + - + - + - + - + - + - + - + - + - +");
-            System.out.println("4  | " + displayhelper(4,0) + " | " + displayhelper(4,1) + " | " + displayhelper(4,2) + " | " + displayhelper(4,3) + " | " 
-                                    + displayhelper(4,4) + " | " + displayhelper(4,5) + " | " + displayhelper(4,6) + " | " + displayhelper(4,7) + " | "
-                                    + displayhelper(4,8) + " | " + displayhelper(4,9) + " | " + displayhelper(4,10) + " | " + displayhelper(4,11) + " |");
+            System.out.println("4  | " + displayHelper(4,0) + " | " + displayHelper(4,1) + " | " + displayHelper(4,2) + " | " + displayHelper(4,3) + " | " 
+                                    + displayHelper(4,4) + " | " + displayHelper(4,5) + " | " + displayHelper(4,6) + " | " + displayHelper(4,7) + " | "
+                                    + displayHelper(4,8) + " | " + displayHelper(4,9) + " | " + displayHelper(4,10) + " | " + displayHelper(4,11) + " |");
             System.out.println("   + - + - + - + - + - + - + - + - + - + - + - + - +");
-            System.out.println("5  | " + displayhelper(5,0) + " | " + displayhelper(5,1) + " | " + displayhelper(5,2) + " | " + displayhelper(5,3) + " | " 
-                                    + displayhelper(5,4) + " | " + displayhelper(5,5) + " | " + displayhelper(5,6) + " | " + displayhelper(5,7) + " | "
-                                    + displayhelper(5,8) + " | " + displayhelper(5,9) + " | " + displayhelper(5,10) + " | " + displayhelper(5,11) + " |");
+            System.out.println("5  | " + displayHelper(5,0) + " | " + displayHelper(5,1) + " | " + displayHelper(5,2) + " | " + displayHelper(5,3) + " | " 
+                                    + displayHelper(5,4) + " | " + displayHelper(5,5) + " | " + displayHelper(5,6) + " | " + displayHelper(5,7) + " | "
+                                    + displayHelper(5,8) + " | " + displayHelper(5,9) + " | " + displayHelper(5,10) + " | " + displayHelper(5,11) + " |");
             System.out.println("   + - + - + - + - + - + - + - + - + - + - + - + - +");
-            System.out.println("6  | " + displayhelper(6,0) + " | " + displayhelper(6,1) + " | " + displayhelper(6,2) + " | " + displayhelper(6,3) + " | " 
-                                    + displayhelper(6,4) + " | " + displayhelper(6,5) + " | " + displayhelper(6,6) + " | " + displayhelper(6,7) + " | "
-                                    + displayhelper(6,8) + " | " + displayhelper(6,9) + " | " + displayhelper(6,10) + " | " + displayhelper(6,11) + " |");
+            System.out.println("6  | " + displayHelper(6,0) + " | " + displayHelper(6,1) + " | " + displayHelper(6,2) + " | " + displayHelper(6,3) + " | " 
+                                    + displayHelper(6,4) + " | " + displayHelper(6,5) + " | " + displayHelper(6,6) + " | " + displayHelper(6,7) + " | "
+                                    + displayHelper(6,8) + " | " + displayHelper(6,9) + " | " + displayHelper(6,10) + " | " + displayHelper(6,11) + " |");
             System.out.println("   + - + - + - + - + - + - + - + - + - + - + - + - +");
-            System.out.println("7  | " + displayhelper(7,0) + " | " + displayhelper(7,1) + " | " + displayhelper(7,2) + " | " + displayhelper(7,3) + " | " 
-                                    + displayhelper(7,4) + " | " + displayhelper(7,5) + " | " + displayhelper(7,6) + " | " + displayhelper(7,7) + " | "
-                                    + displayhelper(7,8) + " | " + displayhelper(7,9) + " | " + displayhelper(7,10) + " | " + displayhelper(7,11) + " |");
+            System.out.println("7  | " + displayHelper(7,0) + " | " + displayHelper(7,1) + " | " + displayHelper(7,2) + " | " + displayHelper(7,3) + " | " 
+                                    + displayHelper(7,4) + " | " + displayHelper(7,5) + " | " + displayHelper(7,6) + " | " + displayHelper(7,7) + " | "
+                                    + displayHelper(7,8) + " | " + displayHelper(7,9) + " | " + displayHelper(7,10) + " | " + displayHelper(7,11) + " |");
             System.out.println("   + - + - + - + - + - + - + - + - + - + - + - + - +");
-            System.out.println("8  | " + displayhelper(8,0) + " | " + displayhelper(8,1) + " | " + displayhelper(8,2) + " | " + displayhelper(8,3) + " | " 
-                                    + displayhelper(8,4) + " | " + displayhelper(8,5) + " | " + displayhelper(8,6) + " | " + displayhelper(8,7) + " | "
-                                    + displayhelper(8,8) + " | " + displayhelper(8,9) + " | " + displayhelper(8,10) + " | " + displayhelper(8,11) + " |");
+            System.out.println("8  | " + displayHelper(8,0) + " | " + displayHelper(8,1) + " | " + displayHelper(8,2) + " | " + displayHelper(8,3) + " | " 
+                                    + displayHelper(8,4) + " | " + displayHelper(8,5) + " | " + displayHelper(8,6) + " | " + displayHelper(8,7) + " | "
+                                    + displayHelper(8,8) + " | " + displayHelper(8,9) + " | " + displayHelper(8,10) + " | " + displayHelper(8,11) + " |");
             System.out.println("   + - + - + - + - + - + - + - + - + - + - + - + - +");
-            System.out.println("9  | " + displayhelper(9,0) + " | " + displayhelper(9,1) + " | " + displayhelper(9,2) + " | " + displayhelper(9,3) + " | " 
-                                    + displayhelper(9,4) + " | " + displayhelper(9,5) + " | " + displayhelper(9,6) + " | " + displayhelper(9,7) + " | "
-                                    + displayhelper(9,8) + " | " + displayhelper(9,9) + " | " + displayhelper(9,10) + " | " + displayhelper(9,11) + " |");
+            System.out.println("9  | " + displayHelper(9,0) + " | " + displayHelper(9,1) + " | " + displayHelper(9,2) + " | " + displayHelper(9,3) + " | " 
+                                    + displayHelper(9,4) + " | " + displayHelper(9,5) + " | " + displayHelper(9,6) + " | " + displayHelper(9,7) + " | "
+                                    + displayHelper(9,8) + " | " + displayHelper(9,9) + " | " + displayHelper(9,10) + " | " + displayHelper(9,11) + " |");
             System.out.println("   + - + - + - + - + - + - + - + - + - + - + - + - +");
-            System.out.println("10 | " + displayhelper(10,0) + " | " + displayhelper(10,1) + " | " + displayhelper(10,2) + " | " + displayhelper(10,3) + " | " 
-                                    + displayhelper(10,4) + " | " + displayhelper(10,5) + " | " + displayhelper(10,6) + " | " + displayhelper(10,7) + " | "
-                                    + displayhelper(10,8) + " | " + displayhelper(10,9) + " | " + displayhelper(10,10) + " | " + displayhelper(10,11) + " |");
+            System.out.println("10 | " + displayHelper(10,0) + " | " + displayHelper(10,1) + " | " + displayHelper(10,2) + " | " + displayHelper(10,3) + " | " 
+                                    + displayHelper(10,4) + " | " + displayHelper(10,5) + " | " + displayHelper(10,6) + " | " + displayHelper(10,7) + " | "
+                                    + displayHelper(10,8) + " | " + displayHelper(10,9) + " | " + displayHelper(10,10) + " | " + displayHelper(10,11) + " |");
             System.out.println("   + - + - + - + - + - + - + - + - + - + - + - + - +");
-            System.out.println("11 | " + displayhelper(11,0) + " | " + displayhelper(11,1) + " | " + displayhelper(11,2) + " | " + displayhelper(11,3) + " | " 
-                                    + displayhelper(11,4) + " | " + displayhelper(11,5) + " | " + displayhelper(11,6) + " | " + displayhelper(11,7) + " | "
-                                    + displayhelper(11,8) + " | " + displayhelper(11,9) + " | " + displayhelper(11,10) + " | " + displayhelper(11,11) + " |");
+            System.out.println("11 | " + displayHelper(11,0) + " | " + displayHelper(11,1) + " | " + displayHelper(11,2) + " | " + displayHelper(11,3) + " | " 
+                                    + displayHelper(11,4) + " | " + displayHelper(11,5) + " | " + displayHelper(11,6) + " | " + displayHelper(11,7) + " | "
+                                    + displayHelper(11,8) + " | " + displayHelper(11,9) + " | " + displayHelper(11,10) + " | " + displayHelper(11,11) + " |");
             System.out.println("   + - + - + - + - + - + - + - + - + - + - + - + - +");
         }
     }
 
-    public String printhelper(int r, int c) {
-        if (se == 1) {
-            for (int i = 0; i < boat1.length; i++) {
-                if (boat1[i].row == r && boat1[i].col == c) return "A";
-            }
-            for (int i = 0; i < boat3.length; i++) {
-                if (boat3[i].row == r && boat3[i].col == c) return "B";
-            }
-            for (int i = 0; i < boat5.length; i++) {
-                if (boat5[i].row == r && boat5[i].col == c) return "C";
-            }
-            for (int i = 0; i < boat7.length; i++) {
-                if (boat7[i].row == r && boat7[i].col == c) return "D";
-            }
-            for (int i = 0; i < boat9.length; i++) {
-                if (boat9[i].row == r && boat9[i].col == c) return "E";
-            }
-            return " ";
-        }
 
-        else {
-            for (int i = 0; i < boat1.length; i++) {
-                if (boat1[i].row == r && boat1[i].col == c) return "A";
-            }
-            for (int i = 0; i < boat2.length; i++) {
-                if (boat2[i].row == r && boat2[i].col == c) return "B";
-            }
-            for (int i = 0; i < boat3.length; i++) {
-                if (boat3[i].row == r && boat3[i].col == c) return "C";
-            }
-            for (int i = 0; i < boat4.length; i++) {
-                if (boat4[i].row == r && boat4[i].col == c) return "D";
-            }
-            for (int i = 0; i < boat5.length; i++) {
-                if (boat5[i].row == r && boat5[i].col == c) return "E";
-            }
-            for (int i = 0; i < boat6.length; i++) {
-                if (boat6[i].row == r && boat6[i].col == c) return "F";
-            }
-            for (int i = 0; i < boat7.length; i++) {
-                if (boat7[i].row == r && boat7[i].col == c) return "G";
-            }
-            for (int i = 0; i < boat8.length; i++) {
-                if (boat8[i].row == r && boat8[i].col == c) return "H";
-            }
-            for (int i = 0; i < boat9.length; i++) {
-                if (boat9[i].row == r && boat9[i].col == c) return "I";
-            }
-            for (int i = 0; i < boat10.length; i++) {
-                if (boat10[i].row == r && boat10[i].col == c) return "J";
-            }
-            return " ";
+    public String printHelper(int r, int c) {
+        switch (board[r][c].status) {
+            case '-':
+                return " ";
+
+            case 'B':
+                if (se == 1) return boatNames[indexBoat(r,c) / 2];
+                else return boatNames[indexBoat(r,c)];
+
+            case 'H':
+                return "X";
+
+            case 'M':
+                return "O";
+
+            default:
+                return "n";
         }
     }
+
 
     public void print() {
         if (se == 1) {
             System.out.println();
             System.out.println("    0   1   2   3   4   5   6   7  ");
             System.out.println("  + - + - + - + - + - + - + - + - +");
-            System.out.println("0 | " + printhelper(0,0) + " | " + printhelper(0,1) + " | " + printhelper(0,2) + " | " + printhelper(0,3) + " | " 
-                                    + printhelper(0,4) + " | " + printhelper(0,5) + " | " + printhelper(0,6) + " | " + printhelper(0,7) + " |");
+            System.out.println("0 | " + printHelper(0,0) + " | " + printHelper(0,1) + " | " + printHelper(0,2) + " | " + printHelper(0,3) + " | " 
+                                    + printHelper(0,4) + " | " + printHelper(0,5) + " | " + printHelper(0,6) + " | " + printHelper(0,7) + " |");
             System.out.println("  + - + - + - + - + - + - + - + - +");
-            System.out.println("1 | " + printhelper(1,0) + " | " + printhelper(1,1) + " | " + printhelper(1,2) + " | " + printhelper(1,3) + " | " 
-                                    + printhelper(1,4) + " | " + printhelper(1,5) + " | " + printhelper(1,6) + " | " + printhelper(1,7) + " |");
+            System.out.println("1 | " + printHelper(1,0) + " | " + printHelper(1,1) + " | " + printHelper(1,2) + " | " + printHelper(1,3) + " | " 
+                                    + printHelper(1,4) + " | " + printHelper(1,5) + " | " + printHelper(1,6) + " | " + printHelper(1,7) + " |");
             System.out.println("  + - + - + - + - + - + - + - + - +");
-            System.out.println("2 | " + printhelper(2,0) + " | " + printhelper(2,1) + " | " + printhelper(2,2) + " | " + printhelper(2,3) + " | " 
-                                    + printhelper(2,4) + " | " + printhelper(2,5) + " | " + printhelper(2,6) + " | " + printhelper(2,7) + " |");
+            System.out.println("2 | " + printHelper(2,0) + " | " + printHelper(2,1) + " | " + printHelper(2,2) + " | " + printHelper(2,3) + " | " 
+                                    + printHelper(2,4) + " | " + printHelper(2,5) + " | " + printHelper(2,6) + " | " + printHelper(2,7) + " |");
             System.out.println("  + - + - + - + - + - + - + - + - +");
-            System.out.println("3 | " + printhelper(3,0) + " | " + printhelper(3,1) + " | " + printhelper(3,2) + " | " + printhelper(3,3) + " | " 
-                                    + printhelper(3,4) + " | " + printhelper(3,5) + " | " + printhelper(3,6) + " | " + printhelper(3,7) + " |");
+            System.out.println("3 | " + printHelper(3,0) + " | " + printHelper(3,1) + " | " + printHelper(3,2) + " | " + printHelper(3,3) + " | " 
+                                    + printHelper(3,4) + " | " + printHelper(3,5) + " | " + printHelper(3,6) + " | " + printHelper(3,7) + " |");
             System.out.println("  + - + - + - + - + - + - + - + - +");
-            System.out.println("4 | " + printhelper(4,0) + " | " + printhelper(4,1) + " | " + printhelper(4,2) + " | " + printhelper(4,3) + " | " 
-                                    + printhelper(4,4) + " | " + printhelper(4,5) + " | " + printhelper(4,6) + " | " + printhelper(4,7) + " |");
+            System.out.println("4 | " + printHelper(4,0) + " | " + printHelper(4,1) + " | " + printHelper(4,2) + " | " + printHelper(4,3) + " | " 
+                                    + printHelper(4,4) + " | " + printHelper(4,5) + " | " + printHelper(4,6) + " | " + printHelper(4,7) + " |");
             System.out.println("  + - + - + - + - + - + - + - + - +");
-            System.out.println("5 | " + printhelper(5,0) + " | " + printhelper(5,1) + " | " + printhelper(5,2) + " | " + printhelper(5,3) + " | " 
-                                    + printhelper(5,4) + " | " + printhelper(5,5) + " | " + printhelper(5,6) + " | " + printhelper(5,7) + " |");
+            System.out.println("5 | " + printHelper(5,0) + " | " + printHelper(5,1) + " | " + printHelper(5,2) + " | " + printHelper(5,3) + " | " 
+                                    + printHelper(5,4) + " | " + printHelper(5,5) + " | " + printHelper(5,6) + " | " + printHelper(5,7) + " |");
             System.out.println("  + - + - + - + - + - + - + - + - +");
-            System.out.println("6 | " + printhelper(6,0) + " | " + printhelper(6,1) + " | " + printhelper(6,2) + " | " + printhelper(6,3) + " | " 
-                                    + printhelper(6,4) + " | " + printhelper(6,5) + " | " + printhelper(6,6) + " | " + printhelper(6,7) + " |");
+            System.out.println("6 | " + printHelper(6,0) + " | " + printHelper(6,1) + " | " + printHelper(6,2) + " | " + printHelper(6,3) + " | " 
+                                    + printHelper(6,4) + " | " + printHelper(6,5) + " | " + printHelper(6,6) + " | " + printHelper(6,7) + " |");
             System.out.println("  + - + - + - + - + - + - + - + - +");
-            System.out.println("7 | " + printhelper(7,0) + " | " + printhelper(7,1) + " | " + printhelper(7,2) + " | " + printhelper(7,3) + " | " 
-                                    + printhelper(7,4) + " | " + printhelper(7,5) + " | " + printhelper(7,6) + " | " + printhelper(7,7) + " |");
+            System.out.println("7 | " + printHelper(7,0) + " | " + printHelper(7,1) + " | " + printHelper(7,2) + " | " + printHelper(7,3) + " | " 
+                                    + printHelper(7,4) + " | " + printHelper(7,5) + " | " + printHelper(7,6) + " | " + printHelper(7,7) + " |");
             System.out.println("  + - + - + - + - + - + - + - + - +");
         }
 
@@ -913,53 +504,53 @@ public class BattleboatsBoard {
             System.out.println();
             System.out.println("     0   1   2   3   4   5   6   7   8   9   10  11 ");
             System.out.println("   + - + - + - + - + - + - + - + - + - + - + - + - +");
-            System.out.println("0  | " + printhelper(0,0) + " | " + printhelper(0,1) + " | " + printhelper(0,2) + " | " + printhelper(0,3) + " | " 
-                                    + printhelper(0,4) + " | " + printhelper(0,5) + " | " + printhelper(0,6) + " | " + printhelper(0,7) + " | "
-                                    + printhelper(0,8) + " | " + printhelper(0,9) + " | " + printhelper(0,10) + " | " + printhelper(0,11) + " |");
+            System.out.println("0  | " + printHelper(0,0) + " | " + printHelper(0,1) + " | " + printHelper(0,2) + " | " + printHelper(0,3) + " | " 
+                                    + printHelper(0,4) + " | " + printHelper(0,5) + " | " + printHelper(0,6) + " | " + printHelper(0,7) + " | "
+                                    + printHelper(0,8) + " | " + printHelper(0,9) + " | " + printHelper(0,10) + " | " + printHelper(0,11) + " |");
             System.out.println("   + - + - + - + - + - + - + - + - + - + - + - + - +");
-            System.out.println("1  | " + printhelper(1,0) + " | " + printhelper(1,1) + " | " + printhelper(1,2) + " | " + printhelper(1,3) + " | " 
-                                    + printhelper(1,4) + " | " + printhelper(1,5) + " | " + printhelper(1,6) + " | " + printhelper(1,7) + " | "
-                                    + printhelper(1,8) + " | " + printhelper(1,9) + " | " + printhelper(1,10) + " | " + printhelper(1,11) + " |");
+            System.out.println("1  | " + printHelper(1,0) + " | " + printHelper(1,1) + " | " + printHelper(1,2) + " | " + printHelper(1,3) + " | " 
+                                    + printHelper(1,4) + " | " + printHelper(1,5) + " | " + printHelper(1,6) + " | " + printHelper(1,7) + " | "
+                                    + printHelper(1,8) + " | " + printHelper(1,9) + " | " + printHelper(1,10) + " | " + printHelper(1,11) + " |");
             System.out.println("   + - + - + - + - + - + - + - + - + - + - + - + - +");
-            System.out.println("2  | " + printhelper(2,0) + " | " + printhelper(2,1) + " | " + printhelper(2,2) + " | " + printhelper(2,3) + " | " 
-                                    + printhelper(2,4) + " | " + printhelper(2,5) + " | " + printhelper(2,6) + " | " + printhelper(2,7) + " | "
-                                    + printhelper(2,8) + " | " + printhelper(2,9) + " | " + printhelper(2,10) + " | " + printhelper(2,11) + " |");
+            System.out.println("2  | " + printHelper(2,0) + " | " + printHelper(2,1) + " | " + printHelper(2,2) + " | " + printHelper(2,3) + " | " 
+                                    + printHelper(2,4) + " | " + printHelper(2,5) + " | " + printHelper(2,6) + " | " + printHelper(2,7) + " | "
+                                    + printHelper(2,8) + " | " + printHelper(2,9) + " | " + printHelper(2,10) + " | " + printHelper(2,11) + " |");
             System.out.println("   + - + - + - + - + - + - + - + - + - + - + - + - +");
-            System.out.println("3  | " + printhelper(3,0) + " | " + printhelper(3,1) + " | " + printhelper(3,2) + " | " + printhelper(3,3) + " | " 
-                                    + printhelper(3,4) + " | " + printhelper(3,5) + " | " + printhelper(3,6) + " | " + printhelper(3,7) + " | "
-                                    + printhelper(3,8) + " | " + printhelper(3,9) + " | " + printhelper(3,10) + " | " + printhelper(3,11) + " |");
+            System.out.println("3  | " + printHelper(3,0) + " | " + printHelper(3,1) + " | " + printHelper(3,2) + " | " + printHelper(3,3) + " | " 
+                                    + printHelper(3,4) + " | " + printHelper(3,5) + " | " + printHelper(3,6) + " | " + printHelper(3,7) + " | "
+                                    + printHelper(3,8) + " | " + printHelper(3,9) + " | " + printHelper(3,10) + " | " + printHelper(3,11) + " |");
             System.out.println("   + - + - + - + - + - + - + - + - + - + - + - + - +");
-            System.out.println("4  | " + printhelper(4,0) + " | " + printhelper(4,1) + " | " + printhelper(4,2) + " | " + printhelper(4,3) + " | " 
-                                    + printhelper(4,4) + " | " + printhelper(4,5) + " | " + printhelper(4,6) + " | " + printhelper(4,7) + " | "
-                                    + printhelper(4,8) + " | " + printhelper(4,9) + " | " + printhelper(4,10) + " | " + printhelper(4,11) + " |");
+            System.out.println("4  | " + printHelper(4,0) + " | " + printHelper(4,1) + " | " + printHelper(4,2) + " | " + printHelper(4,3) + " | " 
+                                    + printHelper(4,4) + " | " + printHelper(4,5) + " | " + printHelper(4,6) + " | " + printHelper(4,7) + " | "
+                                    + printHelper(4,8) + " | " + printHelper(4,9) + " | " + printHelper(4,10) + " | " + printHelper(4,11) + " |");
             System.out.println("   + - + - + - + - + - + - + - + - + - + - + - + - +");
-            System.out.println("5  | " + printhelper(5,0) + " | " + printhelper(5,1) + " | " + printhelper(5,2) + " | " + printhelper(5,3) + " | " 
-                                    + printhelper(5,4) + " | " + printhelper(5,5) + " | " + printhelper(5,6) + " | " + printhelper(5,7) + " | "
-                                    + printhelper(5,8) + " | " + printhelper(5,9) + " | " + printhelper(5,10) + " | " + printhelper(5,11) + " |");
+            System.out.println("5  | " + printHelper(5,0) + " | " + printHelper(5,1) + " | " + printHelper(5,2) + " | " + printHelper(5,3) + " | " 
+                                    + printHelper(5,4) + " | " + printHelper(5,5) + " | " + printHelper(5,6) + " | " + printHelper(5,7) + " | "
+                                    + printHelper(5,8) + " | " + printHelper(5,9) + " | " + printHelper(5,10) + " | " + printHelper(5,11) + " |");
             System.out.println("   + - + - + - + - + - + - + - + - + - + - + - + - +");
-            System.out.println("6  | " + printhelper(6,0) + " | " + printhelper(6,1) + " | " + printhelper(6,2) + " | " + printhelper(6,3) + " | " 
-                                    + printhelper(6,4) + " | " + printhelper(6,5) + " | " + printhelper(6,6) + " | " + printhelper(6,7) + " | "
-                                    + printhelper(6,8) + " | " + printhelper(6,9) + " | " + printhelper(6,10) + " | " + printhelper(6,11) + " |");
+            System.out.println("6  | " + printHelper(6,0) + " | " + printHelper(6,1) + " | " + printHelper(6,2) + " | " + printHelper(6,3) + " | " 
+                                    + printHelper(6,4) + " | " + printHelper(6,5) + " | " + printHelper(6,6) + " | " + printHelper(6,7) + " | "
+                                    + printHelper(6,8) + " | " + printHelper(6,9) + " | " + printHelper(6,10) + " | " + printHelper(6,11) + " |");
             System.out.println("   + - + - + - + - + - + - + - + - + - + - + - + - +");
-            System.out.println("7  | " + printhelper(7,0) + " | " + printhelper(7,1) + " | " + printhelper(7,2) + " | " + printhelper(7,3) + " | " 
-                                    + printhelper(7,4) + " | " + printhelper(7,5) + " | " + printhelper(7,6) + " | " + printhelper(7,7) + " | "
-                                    + printhelper(7,8) + " | " + printhelper(7,9) + " | " + printhelper(7,10) + " | " + printhelper(7,11) + " |");
+            System.out.println("7  | " + printHelper(7,0) + " | " + printHelper(7,1) + " | " + printHelper(7,2) + " | " + printHelper(7,3) + " | " 
+                                    + printHelper(7,4) + " | " + printHelper(7,5) + " | " + printHelper(7,6) + " | " + printHelper(7,7) + " | "
+                                    + printHelper(7,8) + " | " + printHelper(7,9) + " | " + printHelper(7,10) + " | " + printHelper(7,11) + " |");
             System.out.println("   + - + - + - + - + - + - + - + - + - + - + - + - +");
-            System.out.println("8  | " + printhelper(8,0) + " | " + printhelper(8,1) + " | " + printhelper(8,2) + " | " + printhelper(8,3) + " | " 
-                                    + printhelper(8,4) + " | " + printhelper(8,5) + " | " + printhelper(8,6) + " | " + printhelper(8,7) + " | "
-                                    + printhelper(8,8) + " | " + printhelper(8,9) + " | " + printhelper(8,10) + " | " + printhelper(8,11) + " |");
+            System.out.println("8  | " + printHelper(8,0) + " | " + printHelper(8,1) + " | " + printHelper(8,2) + " | " + printHelper(8,3) + " | " 
+                                    + printHelper(8,4) + " | " + printHelper(8,5) + " | " + printHelper(8,6) + " | " + printHelper(8,7) + " | "
+                                    + printHelper(8,8) + " | " + printHelper(8,9) + " | " + printHelper(8,10) + " | " + printHelper(8,11) + " |");
             System.out.println("   + - + - + - + - + - + - + - + - + - + - + - + - +");
-            System.out.println("9  | " + printhelper(9,0) + " | " + printhelper(9,1) + " | " + printhelper(9,2) + " | " + printhelper(9,3) + " | " 
-                                    + printhelper(9,4) + " | " + printhelper(9,5) + " | " + printhelper(9,6) + " | " + printhelper(9,7) + " | "
-                                    + printhelper(9,8) + " | " + printhelper(9,9) + " | " + printhelper(9,10) + " | " + printhelper(9,11) + " |");
+            System.out.println("9  | " + printHelper(9,0) + " | " + printHelper(9,1) + " | " + printHelper(9,2) + " | " + printHelper(9,3) + " | " 
+                                    + printHelper(9,4) + " | " + printHelper(9,5) + " | " + printHelper(9,6) + " | " + printHelper(9,7) + " | "
+                                    + printHelper(9,8) + " | " + printHelper(9,9) + " | " + printHelper(9,10) + " | " + printHelper(9,11) + " |");
             System.out.println("   + - + - + - + - + - + - + - + - + - + - + - + - +");
-            System.out.println("10 | " + printhelper(10,0) + " | " + printhelper(10,1) + " | " + printhelper(10,2) + " | " + printhelper(10,3) + " | " 
-                                    + printhelper(10,4) + " | " + printhelper(10,5) + " | " + printhelper(10,6) + " | " + printhelper(10,7) + " | "
-                                    + printhelper(10,8) + " | " + printhelper(10,9) + " | " + printhelper(10,10) + " | " + printhelper(10,11) + " |");
+            System.out.println("10 | " + printHelper(10,0) + " | " + printHelper(10,1) + " | " + printHelper(10,2) + " | " + printHelper(10,3) + " | " 
+                                    + printHelper(10,4) + " | " + printHelper(10,5) + " | " + printHelper(10,6) + " | " + printHelper(10,7) + " | "
+                                    + printHelper(10,8) + " | " + printHelper(10,9) + " | " + printHelper(10,10) + " | " + printHelper(10,11) + " |");
             System.out.println("   + - + - + - + - + - + - + - + - + - + - + - + - +");
-            System.out.println("11 | " + printhelper(11,0) + " | " + printhelper(11,1) + " | " + printhelper(11,2) + " | " + printhelper(11,3) + " | " 
-                                    + printhelper(11,4) + " | " + printhelper(11,5) + " | " + printhelper(11,6) + " | " + printhelper(11,7) + " | "
-                                    + printhelper(11,8) + " | " + printhelper(11,9) + " | " + printhelper(11,10) + " | " + printhelper(11,11) + " |");
+            System.out.println("11 | " + printHelper(11,0) + " | " + printHelper(11,1) + " | " + printHelper(11,2) + " | " + printHelper(11,3) + " | " 
+                                    + printHelper(11,4) + " | " + printHelper(11,5) + " | " + printHelper(11,6) + " | " + printHelper(11,7) + " | "
+                                    + printHelper(11,8) + " | " + printHelper(11,9) + " | " + printHelper(11,10) + " | " + printHelper(11,11) + " |");
             System.out.println("   + - + - + - + - + - + - + - + - + - + - + - + - +");
         }
     }
