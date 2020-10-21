@@ -17,12 +17,17 @@ public class BattleboatsBoard {
     public String[] boatNames = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J"};
 
 
+    // constructor
     public BattleboatsBoard(int se) {
         this.se = se;
     }
 
+
+    // generate random cell location and place boats if no overlap
+    // takes input from placeBoats method
     public int randomize(Cell[] boat, int verticalOrHorizontal, int remaining) {
 
+        // for standard board
         if (se == 1) {
         int randRow1 = (int) Math.floor(Math.random() * (9 - boat.length));
         int randCol1 = (int) Math.floor(Math.random() * 8);
@@ -55,6 +60,7 @@ public class BattleboatsBoard {
             }
         }
 
+        // for expert board
         else {
         int randRow1 = (int) Math.floor(Math.random() * (13 - boat.length));
         int randCol1 = (int) Math.floor(Math.random() * 12);
@@ -89,6 +95,7 @@ public class BattleboatsBoard {
     }
 
 
+    // run randomize program for each boat to initialize
     public void placeBoats() {
         if (se == 1) {
             int remainingBoats = 5;
@@ -100,6 +107,7 @@ public class BattleboatsBoard {
                 }
             }
 
+            // standard mode (every odd boat from 1 - 9 is standard
             while(remainingBoats > 0) {
                 switch (remainingBoats) {
                     case 1:
@@ -134,6 +142,7 @@ public class BattleboatsBoard {
                 }
             }
 
+            // expert mode (every boat 1 - 10 for expert)
             while(remainingBoats > 0) {
                 switch (remainingBoats) {
                     case 1:
@@ -175,6 +184,7 @@ public class BattleboatsBoard {
     }
 
 
+    // check a location to see if there's a boat there
     public boolean isBoat(int r, int c) {
         if (se == 1) {
             for (int i = 0; i < boatArray.length; i += 2) {
@@ -195,6 +205,7 @@ public class BattleboatsBoard {
         }
     }
 
+    // if there is a boat, check which index on the boat the coordinate is
     public int indexBoat(int r, int c) {
         if (se == 1) {
             for (int i = 0; i < boatArray.length; i += 2) {
@@ -220,6 +231,8 @@ public class BattleboatsBoard {
     }
 
 
+    // change coordinate location from '-' to 'M' or 'B' to 'H'.  Also updates
+    // the boats elements
     public int fire(int r, int c) {
         if(isBoat(r,c)) {
             board[r][c].status = 'H';
@@ -238,85 +251,91 @@ public class BattleboatsBoard {
     }
 
 
-    public void missile(int r, int c) {
+    // fires at coordinate and every one-block surrounding location.  Covers
+    // every case.  Returns number of hits
+    public int missile(int r, int c) {
+        int numHits = 0;
         if (r > 0 && r < board.length - 1 && c > 0 && c < board[r].length - 1) {
-            fire(r-1, c-1);
-            fire(r-1, c);
-            fire(r-1, c+1);
-            fire(r, c-1);
-            fire(r, c);
-            fire(r, c+1);
-            fire(r+1, c-1);
-            fire(r+1, c);
-            fire(r+1, c+1);
+            numHits += fire(r-1, c-1);
+            numHits += fire(r-1, c);
+            numHits += fire(r-1, c+1);
+            numHits += fire(r, c-1);
+            numHits += fire(r, c);
+            numHits += fire(r, c+1);
+            numHits += fire(r+1, c-1);
+            numHits += fire(r+1, c);
+            numHits += fire(r+1, c+1);
         }
 
         else if (r > 0 && r < board.length - 1 && c == 0 && c < board[r].length - 1) {
-            fire(r-1, c);
-            fire(r-1, c+1);
-            fire(r, c);
-            fire(r, c+1);
-            fire(r+1, c);
-            fire(r+1, c+1);
+            numHits += fire(r-1, c);
+            numHits += fire(r-1, c+1);
+            numHits += fire(r, c);
+            numHits += fire(r, c+1);
+            numHits += fire(r+1, c);
+            numHits += fire(r+1, c+1);
         }
 
         else if (r > 0 && r < board.length - 1 && c > 0 && c == board[r].length - 1) {
-            fire(r-1, c-1);
-            fire(r-1, c);
-            fire(r, c-1);
-            fire(r, c);
-            fire(r+1, c-1);
-            fire(r+1, c);
+            numHits += fire(r-1, c-1);
+            numHits += fire(r-1, c);
+            numHits += fire(r, c-1);
+            numHits += fire(r, c);
+            numHits += fire(r+1, c-1);
+            numHits += fire(r+1, c);
         }
 
         else if (r == 0 && r < board.length - 1 && c > 0 && c < board[r].length - 1) {
-            fire(r, c-1);
-            fire(r, c);
-            fire(r, c+1);
-            fire(r+1, c-1);
-            fire(r+1, c);
-            fire(r+1, c+1);
+            numHits += fire(r, c-1);
+            numHits += fire(r, c);
+            numHits += fire(r, c+1);
+            numHits += fire(r+1, c-1);
+            numHits += fire(r+1, c);
+            numHits += fire(r+1, c+1);
         }
 
         else if (r == 0 && r < board.length - 1 && c == 0 && c < board[r].length - 1) {
-            fire(r, c);
-            fire(r, c+1);
-            fire(r+1, c);
-            fire(r+1, c+1);
+            numHits += fire(r, c);
+            numHits += fire(r, c+1);
+            numHits += fire(r+1, c);
+            numHits += fire(r+1, c+1);
         }
 
         else if (r == 0 && r < board.length - 1 && c > 0 && c == board[r].length - 1) {
-            fire(r, c-1);
-            fire(r, c);
-            fire(r+1, c-1);
-            fire(r+1, c);
+            numHits += fire(r, c-1);
+            numHits += fire(r, c);
+            numHits += fire(r+1, c-1);
+            numHits += fire(r+1, c);
         }
 
         else if (r > 0 && r == board.length - 1 && c > 0 && c < board[r].length - 1) {
-            fire(r-1, c-1);
-            fire(r-1, c);
-            fire(r-1, c+1);
-            fire(r, c-1);
-            fire(r, c);
-            fire(r, c+1);
+            numHits += fire(r-1, c-1);
+            numHits += fire(r-1, c);
+            numHits += fire(r-1, c+1);
+            numHits += fire(r, c-1);
+            numHits += fire(r, c);
+            numHits += fire(r, c+1);
         }
 
         else if (r > 0 && r == board.length - 1 && c == 0 && c < board[r].length - 1) {
-            fire(r-1, c);
-            fire(r-1, c+1);
-            fire(r, c);
-            fire(r, c+1);
+            numHits += fire(r-1, c);
+            numHits += fire(r-1, c+1);
+            numHits += fire(r, c);
+            numHits += fire(r, c+1);
         }
 
         else {
-            fire(r-1, c-1);
-            fire(r-1, c);
-            fire(r, c-1);
-            fire(r, c);
+            numHits += fire(r-1, c-1);
+            numHits += fire(r-1, c);
+            numHits += fire(r, c-1);
+            numHits += fire(r, c);
         }
+
+        return numHits;
     }
 
 
+    // iterates through row / column and returns all indexes containing a boat
     public int drone(int direction, int index) {
         int numCells = 0;
         if (direction == 0) {
@@ -339,6 +358,7 @@ public class BattleboatsBoard {
     }
 
 
+    // iterates through boat to check if every element was hit
     public boolean sunk(int r, int c) {
         for (int i = 0; i < boatArray[indexBoat(r,c)].length; i++) {
             if (boatArray[indexBoat(r,c)][i].status != 'H') return false;
@@ -347,6 +367,7 @@ public class BattleboatsBoard {
     }
 
 
+    // checks to see if every boat is hit
     public boolean gameOver() {
         if (se == 1) {
             for (int i = 0; i < boatArray.length; i += 2) {
@@ -367,6 +388,9 @@ public class BattleboatsBoard {
         }
     }
 
+
+    // returns an 'X' for a hit loaction, and 'O' for a missed location, and
+    // nothing if it hasn't been fired at
     public String displayHelper(int r, int c) {
         switch (board[r][c].status) {
             case 'H':
@@ -381,7 +405,9 @@ public class BattleboatsBoard {
     }
 
 
+    // displays the whole grid
     public void display() {
+        // standard grid
         if (se == 1) {
             System.out.println();
             System.out.println("    0   1   2   3   4   5   6   7  ");
@@ -412,6 +438,7 @@ public class BattleboatsBoard {
             System.out.println("  + - + - + - + - + - + - + - + - +");
         }
 
+        // expert grid
         else {
             System.out.println();
             System.out.println("     0   1   2   3   4   5   6   7   8   9   10  11 ");
@@ -468,6 +495,8 @@ public class BattleboatsBoard {
     }
 
 
+    // returns 'X' for hits, 'O' for misses, nothing if no boats are present,
+    // and the boats character names if boats were present and not fired at
     public String printHelper(int r, int c) {
         switch (board[r][c].status) {
             case '-':
@@ -489,7 +518,9 @@ public class BattleboatsBoard {
     }
 
 
+    // prints the grid (including non-fired-at boat locations)
     public void print() {
+        // standard
         if (se == 1) {
             System.out.println();
             System.out.println("    0   1   2   3   4   5   6   7  ");
@@ -520,6 +551,7 @@ public class BattleboatsBoard {
             System.out.println("  + - + - + - + - + - + - + - + - +");
         }
 
+        // expert
         else {
             System.out.println();
             System.out.println("     0   1   2   3   4   5   6   7   8   9   10  11 ");

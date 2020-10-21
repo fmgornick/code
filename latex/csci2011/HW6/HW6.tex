@@ -1,0 +1,142 @@
+\documentclass[10pt]{article}
+
+\title{CSCI 2011 HW 5}
+\author{Fletcher Gornick}
+
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{colortbl}
+\usepackage{soul}
+\usepackage{xcolor}
+\usepackage[margin=1.0in]{geometry}
+
+\def \n {\par \vspace{\baselineskip}}
+\setlength{\parindent}{0cm}
+
+\begin{document}
+\maketitle
+
+\section{Chapter 4 Problem 16}
+\textbf{Let $a$ be a real number.  Use induction to prove that $\sum_{i=0}^{n} (a + i) = \frac12 (n + 1)(2a + n)$
+for every nonnegative integer $n$.}
+
+For this problem we will proceed by using the principle of mathematical induction.
+
+\n BASE CASE: When $n = 0$, $\sum_{i=0}^{n} (a + i) = a$, and $\frac12(n + 1)(2a + n) = \frac12 \cdot 1 \cdot (2a) = a$, therefore the 
+claim holds for the base case.
+
+\n INDUCTIVE STEP: Assume, for some $k \in \mathbb{N}$, that $\sum_{i=0}^{k} (a + i) = \frac12 (k + 1)(2a + k)$, we show that 
+$\sum_{i=0}^{k + 1} (a + i) = \frac12 (k + 2)(2a + k + 1)$. 
+
+\n $\sum_{i=0}^{k + 1} (a + i) = \sum_{i=0}^{k} (a + i) + a + k + 1 = \frac12 (k + 1)(2a + k) + a + k + 1$ by the inductive hypothesis.
+$\frac12 (k + 1)(2a + k) + a + k + 1 = ak + \frac{k^2}2 + a + \frac{k}{2} + a + k + 1 = \frac{k^2}2 + ak + \frac{3k}{2} + 2a + 1$
+$ = \frac12(k^2 + 2ak + 3k + 4a + 2) = \frac12(k + 2)(2a + k + 1)$.  Hence, the claim holds for the inductive step as well.
+
+\n Therefore, by the principle of mathematical induction, the claim $\sum_{i=0}^{n} (a + i) = \frac12 (n + 1)(2a + n)$ is true for every 
+nonnegative integer $n$.
+
+
+
+\section{Chapter 4 Problem 20}
+\textbf{A sequence $\{a_n\}$ is defined recursively by $a_1 = 2$, $a_2 = 4$, and $a_n = a_{n-1} + 2a_{n-2}$ for $n \geq 3$.
+Prove that $a_n = 2^n$ for every positive integer $n$.}
+
+For this problem we will proceed by using the principle of strong mathematical induction. 
+
+\n BASE CASE: We will prove this for $n = 1$ and $n = 2$.  $a_1 = 2^1 = 2$ and $a_2 = 2^2 = 4$, therefore the claim holds for the base 
+cases $n = 1$ and $n = 2$.
+
+\n INDUCTIVE STEP: Suppose, for $1 \leq i \leq k$, where $k \geq 3$, that $a_i = 2^i$.  We show that $a_{k + 1} = 2^{k + 1}$.
+
+\n By definintion, $a_{k + 1} = a_k + 2a_{k - 1}$, and by our strong inductive hypothesis, $a_k + 2a_{k - 1} = 2^k + 2 \cdot 2^{k - 1}$.
+$2^k + 2 \cdot 2^{k - 1} = 2^k + 2^k = 2 \cdot 2^k = 2^{k + 1}$.
+Hence, the claim holds for our inductive step as well.
+
+\n Therefore, by the principle of strong mathematical induction, the claim $a_n = 2^n$ is true for every positive integer $n$.
+
+
+\n\n\n\n
+\section{Chapter 4 Problem 28}
+\textbf{Prove for every positive integer $n$ and the Fibonacci numbers $F_1, F_2, ...$ that $F_{n+6} = 4F_{n+3} + F_n$.}
+
+For this problem we will proceed by using the principle of strong mathematical induction. 
+
+\n BASE CASE: We will prove the claim for the $n = 1$ case.  $F_{n + 6} = F_{7} = 13$.  $4F_{n + 3} + F_n = 4F_4 + F_1
+= 4 \cdot 3 + 1 = 12$, so the claim holds for the base case.
+
+\n INDUCTIVE STEP: Suppose, for $1 \leq i \leq k$, where $k > 1$, that $F_{i+6} = 4F_{i+3} + F_n$.  We show that
+$F_{k+7} = 4F_{k+4} + F_{k+1}$.
+
+\n By the definition of Fibonacci Series, $F_{k+7} = F_{k+6} + F_{k+5}$, and by our strong inductive hypothesis... 
+$F_{k+6} + F_{k+5} = 4F_{k+3} + F_k + 4F_{k+2} + F_{k-1} = 4(F_{k+3} + F_{k+2}) + F_k + F_{k-1} = 4F_{k+4} + F_{k+1}$, again,
+by the definition of Fibonacci Series.  Hence, the claim holds for the inductive step.
+
+\n Therefore, by the principle of strong mathematical induction, the claim $F_{n+6} = 4F_{n+3} + F_n$ is true for all positive integers $n$.
+
+
+\section{Chapter 5.1 Problem 10}
+\textbf{The following are relations on the set $\mathbb{R}$ of real numbers.  Which of the properties reflexive, symmetric
+and transitive does each relation below possess?}
+
+\begin{enumerate}[label=(\alph*)]
+
+    \item \textbf{$x$ $R_1$ $y$ if $|x - y| \leq 1$.} \\
+        \textbf{Reflexive:} the relation is reflexive because $|x - x| = 0 \leq 1$. \\
+        \textbf{Symmetric:} the relation is symmetric because $|x - y| = |y - x|$. \\
+        \textbf{Transitive:} the relation is not transitive.  Take for example the relations 1 $R$ 2 and 2 $R$ 3. 1 $R$ 2 $= |1 - 2| = 1 \leq 1$.
+        2 $R$ 3 $= |2 - 3| = 1 \leq 1$.  Now if we take 1 $R$ 3, we get $|1 - 3| = 2 \not\leq 1$, therefore the relation is NOT transitive.
+
+    \item \textbf{$x$ $R_2$ $y$ if $y \leq 2x + 1$.} \\
+        \textbf{Reflexive:} the relation is not reflexive because if we take for example $x = -10$, we get $-10 \leq 2(-10) + 1 = -19$ which isn't true. \\
+        \textbf{Symmetric:} the relation is also not symmetric because take for example $x = 10, y = 1$, which gives us $1 \leq 20(10) + 1 = 21$ which
+        is true, but if we switch $x$ and $y$, we get $10 \leq 2(1) + 1$ which is not true. \\
+        \textbf{Transitive:} the relation is also not transitive.  Take, for example, $x = 5$, $y = 10$, and $z = 20$.  $y = 10 \leq 11 = 2(5) + 1 = 2x + 1$,
+        so this relation is true.  $z = 20 \leq 21 = 2(10) + 1 = 2y + 1$, this relation is true as well.  But when we relate $x$ to $z$, we get
+        $z = 20 \leq 2(5) + 1 = 2x + 1$ which is not true.
+
+    \item \textbf{$x$ $R_3$ $y$ if $y = x^2$.} \\
+        \textbf{Reflexive:} this relation is not reflexive.  Take for example $x = 2$, since $x^2 = 4 \not= 2$ the relation cannot be reflexive. \\
+        \textbf{Symmetric:} this relation is not symmetric.  Take for example $x = 2$ and $y = 4$, $x^2 = 4 = y$ so $x$ $R_3$ $y$ is true, but if we look at
+        $y$ $R_3$ $x$, we get $x = 2 = 16 = y^2$ which is not true. \\
+        \textbf{Transitive:} this relation is not transitive.  Take for example $x = 2$, $y = 4$, and $z = 16$.  $x^2 = 4 = y$, so $x$ $R_3$ $y$ is true.
+        $y^2 = 16 = z$, so $y$ $R_3$ $z$ is true.  But looking at $x$ $R_3$ $z$, we get $x^2 = 4 = z$ which is not true.
+
+    \item \textbf{$x$ $R_4$ $y$ if $x^2 + y^2 = 9$.} \\
+        \textbf{Reflexive:} the relation is not reflexive.  Take for example $x = 2$ and $y = \sqrt5$, so $x^2 + y^2 = 4 + 5 = 9$.  But if we take just x,
+        we get $x^2 + x^2 = 4 + 4 = 8 \not= 9$, so this relation cannot be reflexive. \\
+        \textbf{Symmetric:} The relation is symmetric because addition is commutative ($x^2 + y^2 = y^2 + x^2 = 9$). \\
+        \textbf{Transitive:} The relation is not transitive.  Take for example $x = 2$, $y = \sqrt5$, and $z = 2$.  $x^2 + y^2 = 4 + 5 = 9$, and 
+        $y^2 + z^2 = 5 + 4 = 9$, but $x^2 + z^2 = 4 + 4 = 8 \not= 9$, so the relation cannot be commutative.
+
+\end{enumerate}
+
+
+
+\section{Chapter 5.2 Problem 14}
+\textbf{A relation $R$ is defined on the set $\mathbb{R}^+$ of positive real numbers by $a$ $R$ $b$ if the arithmetic mean
+(the average) of $a$ and $b$ equals the geometric mean of $a$ and $b$, that is, if $\frac{a + b}2 = \sqrt{ab}$.}
+
+\begin{enumerate}[label=(\alph*)]
+
+    \item \textbf{Prove that $R$ is an equivalence relation.} \\
+        \textbf{Reflexive:} $a$ R $a$ $= \frac{a + a}{2} = \frac{2a}{2} = a = \sqrt{a \cdot a}$, this shows the relation is reflexive. \\
+        \textbf{Symmetric:} Since addition and multiplication are both commutative properties, this means
+        $\frac{a + b}{2} = \frac{b + a}{2} = \sqrt{ab} = \sqrt{ba}$, therefore the relation is symmetric. \\
+        \textbf{Transitive:} For this case, we can assume that it is given that $\frac{a + b}2 = \sqrt{ab}$ and $\frac{b + c}2 = \sqrt{bc}$.
+        Now we show that $\frac{a + c}2 = \sqrt{ac}$...
+
+        $$ \frac{a + b}{2} = \sqrt{ab} \Rightarrow a + b = 2\sqrt{ab} \Rightarrow (a + b)^2 = (2\sqrt{ab})^2 \Rightarrow
+        a^2 + b^2 + 2ab = 4ab \Rightarrow a^2 + b^2 - 2ab = 0 \Rightarrow (a - b)^2 = 0 \Rightarrow a = b$$
+
+        Since $a$ must equal $b$, the relation $b$ R $c$ is equivalent to the relation $a$ R $c$, therefore, the relation is transitive.
+
+        Since the relation is reflexive, symmetric, and transitive, this means it's an equivalence relation.
+
+    \item \textbf{Describe the distinct equivalence classes resulting from $R$.} \\
+        As we proved in part b, in order for the relation to be true, the relation variables $a$ and $b$ must be equivalent.  Therefore, the only
+        equivalence class is Class $[a] = \{a\}$, $\forall a \in \mathbb{R}^+$.
+
+\end{enumerate}
+
+
+\end{document}
