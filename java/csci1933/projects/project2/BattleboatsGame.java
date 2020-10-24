@@ -1,3 +1,5 @@
+// Fletcher Gornick, GORNI025
+
 import java.util.Scanner;
 
 public class BattleboatsGame {
@@ -181,10 +183,27 @@ public class BattleboatsGame {
 
                 // runs if numbers are inputed
                 try {
-                    System.out.print("coordinates: ");
-                    c = s.nextLine();
-
                     while (true) {
+
+                        // runs in standard if you already used a missile
+                        if (se.equals("1") && missile > 0) {
+                            System.out.println();
+                            System.out.println("you already used the missile once, you only get one missile per game");
+                            turns--;
+                            break;
+                        }
+
+                        // runs in expert if you already used 2 missiles
+                        else if (se.equals("2") && missile > 1) {
+                            System.out.println();
+                            System.out.println("you already used the missile twice, you only get two missiles per game");
+                            turns--;
+                            break;
+                        }
+
+                        System.out.print("coordinates: ");
+                        c = s.nextLine();
+
 
                         int[] coordinates = new int[c.split(" ").length];
 
@@ -198,9 +217,6 @@ public class BattleboatsGame {
                         if (((se.equals("1") && missile < 1) || (se.equals("2") && missile < 2)) && coordinates.length != 2) {
                             System.out.println();
                             System.out.println("error: make sure you type two integers separated by a space");
-                            System.out.print("coordinates: ");
-                            c = s.nextLine();
-
                         }
 
                         // must put correct range of coordinates in
@@ -217,22 +233,6 @@ public class BattleboatsGame {
                             System.out.println();
                             System.out.println(game.missile(coordinates[0], coordinates[1]) + " hit(s)");
                             missile++;
-                            break;
-                        }
-
-                        // runs in standard if you already used a missile
-                        else if (se.equals("1") && missile > 0) {
-                            System.out.println();
-                            System.out.println("you already used the missile once, you only get one missile per game");
-                            turns--;
-                            break;
-                        }
-
-                        // runs in expert if you already used 2 missiles
-                        else {
-                            System.out.println();
-                            System.out.println("you already used the missile twice, you only get two missiles per game");
-                            turns--;
                             break;
                         }
                     }

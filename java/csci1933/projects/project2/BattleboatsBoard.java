@@ -1,3 +1,5 @@
+// Fletcher Gornick, GORNI025
+
 public class BattleboatsBoard {
     public int se;
     public Cell[][] board;

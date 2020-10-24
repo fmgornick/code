@@ -1,3 +1,5 @@
+// Fletcher Gornick, GORNI025
+
 public class Cell {
     public int row;
     public int col;
