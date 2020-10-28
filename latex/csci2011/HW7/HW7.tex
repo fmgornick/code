@@ -60,19 +60,33 @@ where $f = \{(1,4), (2,5), (3,1)\}$ and $g = \{(1,3), (2,3), (3,2), (4,4), (5,1)
 \section{Chapter 5.5 Problem 12}
 \textbf{Prove or disprove: The set $S = \{(a,b): a,b \in \mathbb{R}\}$ of all points in the plane is uncountable.} \\
 
-In this case, $S$ is the set of $\mathbb{R} \times \mathbb{R}$.  Say we have two sets, $A$ and $B$, which are both the sets of real numbers, so 
-$\mathbb{R} \times \mathbb{R} = A \times B$.  Now let's suppose the cartesian product of the two sets is countable, therefore
-$S: A \times B \to \mathbb{N}$.  This means that for some $a \in A$, we have a set $C = \{(a,b)\}: b \in B\}$, so we have that $C \subseteq S = A \times B$
-
+we can take a subset of $S$ by making $b$ constant and leaving $a$ as an element in $\mathbb{R}$.  So we have a set $A$ such that  $A \subseteq S$, and 
+$A = \{(a,0): a \in \mathbb{R}\}$.  We can now create a bijective function $f: \mathbb{R} \to A$, where $f(x) = (x,0), \forall x \in \mathbb{R}$.  We know this 
+function is bijective because for every distinct value of $x$, we have a distinct $f(x)$ (therefore it's onto), and we know that every value in the co-domain of 
+$f$ can be mapped to it's domain ($(x,0) \to x$, so it's onto as well).  Since A has the same cardinality of $\mathbb{R}$, and the set of real numbers is uncountable,
+we know that $S$ is uncountable because $|A| = |\mathbb{R}|$ and $A \subseteq S$.
 
 
 \section{Chapter 5 Problem 32}
-\textbf{Prove that the function $f: \mathbb{R} - \{3\} \to \mathbb{R} - \{1\}$ defined by $f(x) = \frac{x}{x-3}$ is bijective.}
+\textbf{Prove that the function $f: \mathbb{R} - \{3\} \to \mathbb{R} - \{1\}$ defined by $f(x) = \frac{x}{x-3}$ is bijective.} \\
 
+First, we must show the function is one-to-one. \\
+Suppose there exists two numbers $a,b \in \mathbb{R}$ and $a,b \not= 3$, such that $f(a) = f(b)$, therefore $\frac{a}{a-3} = \frac{b}{b-3}$, which means
+$ab - 3a = ab - 3b \Rightarrow 3a = 3b \Rightarrow a = b$.  This means that $f$ is one-to-one. \\
+
+Next, we show the function is onto. \\
+Suppose $y = f(x)$ and $y \not= 1$ as stated in the definition.  therefore y = $\frac{x}{x-3}$, so we can manipulate this equation to find a function mapping the
+co-domain to the domain. \\
+$y = \frac{x}{x-3} \Rightarrow yx - 3y = x \Rightarrow yx - x = 3y \Rightarrow x(y - 1) = 3y \Rightarrow x = \frac{3y}{y-1}$, and since $y \not= 1$, $f$ is onto. \\
+
+Since the function is both one-to-one and onto, $f$ is bijective.
 
 
 \section{Chapter 5 Problem 40}
 \textbf{Determine, with explanation, whether the following is true or false.  If $A$ and $B$ are disjoint sets such that $A$ is countable
-and $B$ is uncountable, then $A \cup B$ is uncountable.}
+and $B$ is uncountable, then $A \cup B$ is uncountable.} \\
+
+Since $B$ is uncountable, and $B \subseteq A \cup B$, $A \cup B$ must also be uncountable, because by theorem 5.81 from the textbook, every set that contains an
+uncountable set is itself uncountable.
 
 \end{document}

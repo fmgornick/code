@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  27 OCT 2020 01:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  28 OCT 2020 00:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -271,9 +271,28 @@ Underfull \hbox (badness 10000) in paragraph at lines 61--62
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 71--72
+
+ []
+
 [1
 
 {/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+Underfull \hbox (badness 10000) in paragraph at lines 73--76
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 77--81
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 87--88
+
+ []
+
 [2] (./HW7.aux) ) 
 Here is how much of TeX's memory you used:
  3599 strings out of 480608
@@ -295,7 +314,7 @@ fb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pf
 b></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
 </usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.
 pfb>
-Output written on HW7.pdf (2 pages, 110185 bytes).
+Output written on HW7.pdf (2 pages, 113800 bytes).
 PDF statistics:
  55 PDF objects out of 1000 (max. 8388607)
  39 compressed objects within 1 object stream
