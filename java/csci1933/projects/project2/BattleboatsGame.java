@@ -3,12 +3,12 @@
 import java.util.Scanner;
 
 public class BattleboatsGame {
-    public static BattleboatsBoard game;
-    public static int shots = 0;
-    public static int turns = 1;
-    public static int remaining = 0;
-    public static int missile = 0;
-    public static int drone = 0;
+    private static BattleboatsBoard game;
+    private static int shots = 0;
+    private static int turns = 1;
+    private static int remaining = 0;
+    private static int missile = 0;
+    private static int drone = 0;
 
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
@@ -113,7 +113,7 @@ public class BattleboatsGame {
                         }
 
                         // must put coordinates within range
-                        else if (coordinates.length == 2 && (coordinates[0] < 0 || coordinates[0] >= game.board.length || coordinates[1] < 0 || coordinates[1] >= game.board.length)) {
+                        else if (coordinates.length == 2 && (coordinates[0] < 0 || coordinates[0] >= game.getBoardLength() || coordinates[1] < 0 || coordinates[1] >= game.getBoardLength())) {
                             System.out.println();
                             System.out.println("penalty: index out of range, you lose a turn");
                             shots++;
@@ -122,7 +122,7 @@ public class BattleboatsGame {
                         }
 
                         // cannot fire at the same location
-                        else if (game.board[coordinates[0]][coordinates[1]].status == 'H' || game.board[coordinates[0]][coordinates[1]].status == 'M') {
+                        else if (game.getBoardCoordinates(coordinates[0], coordinates[1]) == 'H' || game.getBoardCoordinates(coordinates[0], coordinates[1]) == 'M') {
                             System.out.println();
                             System.out.println("penalty: you already fired at this location, you lose a turn");
                             shots++;
@@ -130,12 +130,12 @@ public class BattleboatsGame {
                             break;
                         }
 
-                        else if (coordinates.length == 2 && coordinates[0] >= 0 && coordinates[0] < game.board.length && coordinates[1] >= 0 && coordinates[1] < game.board.length) {
+                        else if (coordinates.length == 2 && coordinates[0] >= 0 && coordinates[0] < game.getBoardLength() && coordinates[1] >= 0 && coordinates[1] < game.getBoardLength()) {
                             game.fire(coordinates[0], coordinates[1]);
                             shots++;
 
                             // sunk
-                            if (game.board[coordinates[0]][coordinates[1]].status == 'H') {
+                            if (game.getBoardCoordinates(coordinates[0], coordinates[1]) == 'H') {
                                 if (game.sunk(coordinates[0], coordinates[1])) {
                                     System.out.println();
                                     System.out.println("you sunk my battleship!");
@@ -220,7 +220,7 @@ public class BattleboatsGame {
                         }
 
                         // must put correct range of coordinates in
-                        else if (((se.equals("1") && missile < 1) || (se.equals("2") && missile < 2)) && coordinates.length == 2 && (coordinates[0] < 0 || coordinates[0] >= game.board.length || coordinates[1] < 0 || coordinates[1] >= game.board.length)) {
+                        else if (((se.equals("1") && missile < 1) || (se.equals("2") && missile < 2)) && coordinates.length == 2 && (coordinates[0] < 0 || coordinates[0] >= game.getBoardLength() || coordinates[1] < 0 || coordinates[1] >= game.getBoardLength())) {
                             System.out.println();
                             System.out.println("penalty: index out of range, you lose a turn (you can still use the missile on the next turn)");
                             turns++;
@@ -229,7 +229,7 @@ public class BattleboatsGame {
 
                         // fires missile if all conditions met, also says how
                         // many hits
-                        else if (((se.equals("1") && missile < 1) || (se.equals("2") && missile < 2)) && coordinates.length == 2 && coordinates[0] >= 0 && coordinates[0] < game.board.length && coordinates[1] >= 0 && coordinates[1] < game.board.length) {
+                        else if (((se.equals("1") && missile < 1) || (se.equals("2") && missile < 2)) && coordinates.length == 2 && coordinates[0] >= 0 && coordinates[0] < game.getBoardLength() && coordinates[1] >= 0 && coordinates[1] < game.getBoardLength()) {
                             System.out.println();
                             System.out.println(game.missile(coordinates[0], coordinates[1]) + " hit(s)");
                             missile++;
@@ -304,7 +304,7 @@ public class BattleboatsGame {
                                 int col = Integer.parseInt(c);
 
                                 // checks indexes if conditions met
-                                if (col >= 0 && col < game.board.length) {
+                                if (col >= 0 && col < game.getBoardLength()) {
                                     System.out.println();
                                     System.out.println("there are " + game.drone(0, col) + " cell(s) containing boats in this column");
                                     drone++;

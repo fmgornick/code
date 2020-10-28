@@ -1,27 +1,35 @@
 // Fletcher Gornick, GORNI025
 
 public class BattleboatsBoard {
-    public int se;
-    public Cell[][] board;
+    private int se;
+    private Cell[][] board;
 
-    public Cell[] boat1 = new Cell[5];
-    public Cell[] boat2 = new Cell[5];
-    public Cell[] boat3 = new Cell[4];
-    public Cell[] boat4 = new Cell[4];
-    public Cell[] boat5 = new Cell[3];
-    public Cell[] boat6 = new Cell[3];
-    public Cell[] boat7 = new Cell[3];
-    public Cell[] boat8 = new Cell[3];
-    public Cell[] boat9 = new Cell[2];
-    public Cell[] boat10 = new Cell[2];
+    private Cell[] boat1 = new Cell[5];
+    private Cell[] boat2 = new Cell[5];
+    private Cell[] boat3 = new Cell[4];
+    private Cell[] boat4 = new Cell[4];
+    private Cell[] boat5 = new Cell[3];
+    private Cell[] boat6 = new Cell[3];
+    private Cell[] boat7 = new Cell[3];
+    private Cell[] boat8 = new Cell[3];
+    private Cell[] boat9 = new Cell[2];
+    private Cell[] boat10 = new Cell[2];
 
-    public Cell[][] boatArray = {boat1, boat2, boat3, boat4, boat5, boat6, boat7, boat8, boat9, boat10};
-    public String[] boatNames = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J"};
+    private Cell[][] boatArray = {boat1, boat2, boat3, boat4, boat5, boat6, boat7, boat8, boat9, boat10};
+    private String[] boatNames = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J"};
 
 
     // constructor
     public BattleboatsBoard(int se) {
         this.se = se;
+    }
+
+    public int getBoardLength() {
+        return board.length;
+    }
+
+    public char getBoardCoordinates(int row, int col) {
+        return board[row][col].getStatus();
     }
 
 
@@ -39,10 +47,10 @@ public class BattleboatsBoard {
 
             if (verticalOrHorizontal == 0) {
                 for (int i = 0; i < boat.length; i++) {
-                    if (board[randRow1 + i][randCol1].status != '-') return remaining;
+                    if (board[randRow1 + i][randCol1].getStatus() != '-') return remaining;
                 }
                 for (int i = 0; i < boat.length; i++) {
-                    board[randRow1][randCol1].status = 'B';
+                    board[randRow1][randCol1].setStatus('B');
                     boat[i] = board[randRow1][randCol1];
                     randRow1++;
                 }
@@ -51,10 +59,10 @@ public class BattleboatsBoard {
 
             else {
                 for (int i = 0; i < boat.length; i++) {
-                    if (board[randRow2][randCol2 + i].status != '-') return remaining;
+                    if (board[randRow2][randCol2 + i].getStatus() != '-') return remaining;
                 }
                 for (int i = 0; i < boat.length; i++) {
-                    board[randRow2][randCol2].status = 'B';
+                    board[randRow2][randCol2].setStatus('B');
                     boat[i] = board[randRow2][randCol2];
                     randCol2++;
                 }
@@ -72,10 +80,10 @@ public class BattleboatsBoard {
 
             if (verticalOrHorizontal == 0) {
                 for (int i = 0; i < boat.length; i++) {
-                    if (board[randRow1 + i][randCol1].status != '-') return remaining;
+                    if (board[randRow1 + i][randCol1].getStatus() != '-') return remaining;
                 }
                 for (int i = 0; i < boat.length; i++) {
-                    board[randRow1][randCol1].status = 'B';
+                    board[randRow1][randCol1].setStatus('B');
                     boat[i] = board[randRow1][randCol1];
                     randRow1++;
                 }
@@ -84,10 +92,10 @@ public class BattleboatsBoard {
 
             else {
                 for (int i = 0; i < boat.length; i++) {
-                    if (board[randRow2][randCol2 + i].status != '-') return remaining;
+                    if (board[randRow2][randCol2 + i].getStatus() != '-') return remaining;
                 }
                 for (int i = 0; i < boat.length; i++) {
-                    board[randRow2][randCol2].status = 'B';
+                    board[randRow2][randCol2].setStatus('B');
                     boat[i] = board[randRow2][randCol2];
                     randCol2++;
                 }
@@ -191,7 +199,7 @@ public class BattleboatsBoard {
         if (se == 1) {
             for (int i = 0; i < boatArray.length; i += 2) {
                 for (int j = 0; j < boatArray[i].length; j++) {
-                    if (boatArray[i][j].row == r && boatArray[i][j].col == c) return true;
+                    if (boatArray[i][j].getRow() == r && boatArray[i][j].getCol() == c) return true;
                 }
             }
             return false;
@@ -200,7 +208,7 @@ public class BattleboatsBoard {
         else {
             for (int i = 0; i < boatArray.length; i++) {
                 for (int j = 0; j < boatArray[i].length; j++) {
-                    if (boatArray[i][j].row == r && boatArray[i][j].col == c) return true;
+                    if (boatArray[i][j].getRow() == r && boatArray[i][j].getCol() == c) return true;
                 }
             }
             return false;
@@ -212,7 +220,7 @@ public class BattleboatsBoard {
         if (se == 1) {
             for (int i = 0; i < boatArray.length; i += 2) {
                 for (int j = 0; j < boatArray[i].length; j++) {
-                    if (boatArray[i][j].row == r && boatArray[i][j].col == c) {
+                    if (boatArray[i][j].getRow() == r && boatArray[i][j].getCol() == c) {
                         return i;
                     }
                 }
@@ -223,7 +231,7 @@ public class BattleboatsBoard {
         else {
             for (int i = 0; i < boatArray.length; i++) {
                 for (int j = 0; j < boatArray[i].length; j++) {
-                    if (boatArray[i][j].row == r && boatArray[i][j].col == c) {
+                    if (boatArray[i][j].getRow() == r && boatArray[i][j].getCol() == c) {
                         return i;
                     }
                 }
@@ -237,17 +245,17 @@ public class BattleboatsBoard {
     // the boats elements
     public int fire(int r, int c) {
         if(isBoat(r,c)) {
-            board[r][c].status = 'H';
+            board[r][c].setStatus('H');
             for (int i = 0; i < boatArray[indexBoat(r,c)].length; i++) {
-                if (boatArray[indexBoat(r,c)][i].row == r && boatArray[indexBoat(r,c)][i].col == c) {
-                    boatArray[indexBoat(r,c)][i].status = board[r][c].status;
+                if (boatArray[indexBoat(r,c)][i].getRow() == r && boatArray[indexBoat(r,c)][i].getCol() == c) {
+                    boatArray[indexBoat(r,c)][i].setStatus(board[r][c].getStatus());
                 }
             }
             return 1;
         }
 
         else {
-            board[r][c].status = 'M';
+            board[r][c].setStatus('M');
             return 0;
         }
     }
@@ -342,7 +350,7 @@ public class BattleboatsBoard {
         int numCells = 0;
         if (direction == 0) {
             for (int i = 0; i < board.length; i++) {
-                if (board[i][index].status == 'H' || board[i][index].status == 'B') {
+                if (board[i][index].getStatus() == 'H' || board[i][index].getStatus() == 'B') {
                     numCells++;
                 }
             }
@@ -350,7 +358,7 @@ public class BattleboatsBoard {
 
         else {
             for (int i = 0; i < board[index].length; i++) {
-                if (board[index][i].status == 'H' || board[index][i].status == 'B') {
+                if (board[index][i].getStatus() == 'H' || board[index][i].getStatus() == 'B') {
                     numCells++;
                 }
             }
@@ -363,7 +371,7 @@ public class BattleboatsBoard {
     // iterates through boat to check if every element was hit
     public boolean sunk(int r, int c) {
         for (int i = 0; i < boatArray[indexBoat(r,c)].length; i++) {
-            if (boatArray[indexBoat(r,c)][i].status != 'H') return false;
+            if (boatArray[indexBoat(r,c)][i].getStatus() != 'H') return false;
         }
         return true;
     }
@@ -374,7 +382,7 @@ public class BattleboatsBoard {
         if (se == 1) {
             for (int i = 0; i < boatArray.length; i += 2) {
                 for (int j = 0; j < boatArray[i].length; j++) {
-                    if (boatArray[i][j].status != 'H') return false;
+                    if (boatArray[i][j].getStatus() != 'H') return false;
                 }
             }
             return true;
@@ -383,7 +391,7 @@ public class BattleboatsBoard {
         else {
             for (int i = 0; i < boatArray.length; i++) {
                 for (int j = 0; j < boatArray[i].length; j++) {
-                    if (boatArray[i][j].status != 'H') return false;
+                    if (boatArray[i][j].getStatus() != 'H') return false;
                 }
             }
             return true;
@@ -394,7 +402,7 @@ public class BattleboatsBoard {
     // returns an 'X' for a hit loaction, and 'O' for a missed location, and
     // nothing if it hasn't been fired at
     public String displayHelper(int r, int c) {
-        switch (board[r][c].status) {
+        switch (board[r][c].getStatus()) {
             case 'H':
                 return "X";
 
@@ -500,7 +508,7 @@ public class BattleboatsBoard {
     // returns 'X' for hits, 'O' for misses, nothing if no boats are present,
     // and the boats character names if boats were present and not fired at
     public String printHelper(int r, int c) {
-        switch (board[r][c].status) {
+        switch (board[r][c].getStatus()) {
             case '-':
                 return " ";
 

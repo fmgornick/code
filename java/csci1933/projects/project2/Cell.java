@@ -1,9 +1,9 @@
 // Fletcher Gornick, GORNI025
 
 public class Cell {
-    public int row;
-    public int col;
-    public char status;
+    private int row;
+    private int col;
+    private char status;
 
     public Cell(int row, int col, char status) {
         this.row = row;
@@ -13,6 +13,14 @@ public class Cell {
 
     public char getStatus() {
         return status;
+    }
+
+    public int getRow() {
+        return row;
+    }
+
+    public int getCol() {
+        return col;
     }
 
     public void setStatus(char c) {

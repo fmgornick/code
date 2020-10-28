@@ -10,7 +10,6 @@
 \usepackage{xcolor}
 \usepackage[margin=1.0in]{geometry}
 
-\def \n {\par \vspace{\baselineskip}}
 \setlength{\parindent}{0cm}
 
 \begin{document}
@@ -22,9 +21,13 @@ where $f = \{(1,4), (2,5), (3,1)\}$ and $g = \{(1,3), (2,3), (3,2), (4,4), (5,1)
 
 \begin{enumerate}[label=(\alph*)]
 
-    \item \textbf{Determine $(g \circ f)(1)$, $(g \circ f)(2)$ and $(g \circ f)(3)$.}
+    \item \textbf{Determine $(g \circ f)(1)$, $(g \circ f)(2)$ and $(g \circ f)(3)$.} \\
+        $(g \circ f)(1) = 4$ because $f(1) = 4$ and $g(4) =$ \hl{$4$}. \\
+        $(g \circ f)(2) = 1$ because $f(2) = 5$ and $g(5) =$ \hl{$1$}. \\
+        $(g \circ f)(3) = 3$ because $f(3) = 1$ and $g(1) =$ \hl{$3$}. 
 
-    \item \textbf{Determine $g \circ f$.}
+    \item \textbf{Determine $g \circ f$.} \\
+        Since in the previous example, we found all possible values of $g \circ f$, we know \hl{$g \circ f = \{(1,4), (2,1), (3,3)\}$.}
 
 \end{enumerate}
 
@@ -38,14 +41,28 @@ where $f = \{(1,4), (2,5), (3,1)\}$ and $g = \{(1,3), (2,3), (3,2), (4,4), (5,1)
     \item \textbf{There exists functions $f: A \to B$ and $g: B \to C$ such that $f$ is not one-to-one and $g \circ f: A \to C$
         is one-to-one.}
 
+        Suppose $g \circ f$ is injective, and we want to show that $f$ is not.  There must exist elemtents $a$ and $b$ such that $a \not= b$ but 
+        $f(a) = f(b)$ in order for $f$ to not be injective.  Therefore $g(f(a)) = g(f(b))$ because $f(a) = f(b)$.  Since $g(f(x)) = (g \circ f)(x)$, 
+        this means that $(g \circ f)(a) = (g \circ f)(b)$, meaning that $g \circ f$ is not injective, which contradicts our supposition.  Therefore, 
+        by contradictive proof, if $f$ is not one-to-one, it cannot be the case that $g \circ f$ is.
+
     \item \textbf{There exists functions $f: A \to B$ and $g: B \to C$ such that $f$ is not onto and $g \circ f: A \to C$ is onto.}
+
+        Suppose $A = \{a\}$, $B = \{b,c\}$ and $C = \{d\}$.  We can also assume $f(a) = b$ and $g(b) = d$.  Therefore $f$ is not onto, because you cannot
+        link element $c$ in set $B$ to any element in set $A$ through $f$.  But we do know that $g \circ f$ is onto, because $(g \circ f)(a) = g(f(a)) = g(b) = d$,
+        and there's only one element in $C$ that links to $a \in A$.  Therefore, by proof of existence, there exists functions $f$ and $g$, such that 
+        $g \circ f$ is onto but $f$ is not.
 
 \end{enumerate}
 
 
 
 \section{Chapter 5.5 Problem 12}
-\textbf{Prove or disprove: The set $S = \{(a,b): a,b \in \mathbb{R}\}$ of all points in the plane is uncountable.}
+\textbf{Prove or disprove: The set $S = \{(a,b): a,b \in \mathbb{R}\}$ of all points in the plane is uncountable.} \\
+
+In this case, $S$ is the set of $\mathbb{R} \times \mathbb{R}$.  Say we have two sets, $A$ and $B$, which are both the sets of real numbers, so 
+$\mathbb{R} \times \mathbb{R} = A \times B$.  Now let's suppose the cartesian product of the two sets is countable, therefore
+$S: A \times B \to \mathbb{N}$.  This means that for some $a \in A$, we have a set $C = \{(a,b)\}: b \in B\}$, so we have that $C \subseteq S = A \times B$
 
 
 
