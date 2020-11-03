@@ -1,0 +1,55 @@
+\documentclass[10pt]{article}
+
+\title{CSCI 2011 HW 8}
+\author{Fletcher Gornick}
+
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{colortbl}
+\usepackage{soul}
+\usepackage{xcolor}
+\usepackage[margin=1.0in]{geometry}
+
+\setlength{\parindent}{0cm}
+
+\begin{document}
+\maketitle
+
+\section{6.2 Problem 8}
+\textbf{For the function $f$ defined by $f(n) = \frac{n^2+1}{n+1}$ for each $n \in \mathbb{N}$, show that $f(n) = O(n)$.} \\
+
+for $n \geq 1$,
+$f(n) = \frac{n^2+1}{n+1} \leq \frac{n^2+n}{n+1} < \frac{n^2+n}{n} = n + 1 \leq n + n = 2n$.  Therefore $f(n) < 2n$ for $n \geq 1$, and so $f(n) = O(n)$.
+
+
+\section{Chapter 6 Problem 12}
+\textbf{Let $f: \mathbb{N} \to \mathbb{R}^+$ and $g: \mathbb{N} \to \mathbb{R}^+$ be defined by $f(n) = 2n^3 + n + 10$ and $g(n) = n^3 + 4n^2 + 1$
+for $n \in \mathbb{N}$.  Show that $f = \Theta(g)$}. \\
+
+First we show that $f = O(g)$. \\
+for $n \geq 1$, $f(n) = 2n^3 + n + 10 \leq 2n^3 + n^2 + 10 < 10n^3 + 40n^2 + 10 = 10(n^3 + 4n^2 + 1)$.  Therefore $f(n) < 10 \cdot g(n)$ for $n \geq 1$, and so
+$f = O(g)$. \\
+
+Now we show that $f = \Omega(g)$ or, put more simply, $g = O(f)$. \\
+for $n \geq 1$, $g(n) = n^3 + 4n^2 + 1 \leq n^3 + 4n^3 + 1 = 5n^3 + 1 < 10n^3 + 50 < 10n^3 + 5n + 50 = 5(2n^3 + n + 10)$.  Therefore $g(n) < 5 \cdot f(n)$ for
+$n \geq 1$, and so $g = O(f)$. \\
+
+Since $f = O(g)$ and $g = O(f)$, it must be the case that $f = \Theta(g)$
+
+
+\section{6.2 Problem 14}
+\textbf{Let $f: \mathbb{N} \to \mathbb{R}^+$, $g: \mathbb{N} \to \mathbb{R}^+$ and $h: \mathbb{N} \to \mathbb{R}^+$ be three functions.  Prove that
+if $f = \Theta(g)$ and $g = \Theta(h)$, then $f = \Theta(h)$.} \\
+
+For $n,k \in \mathbb{Z}$, $n \geq k$, $f = \Theta(g)$, so there must exist $c_1, c_2 \in \mathbb{N}$, such that $c_1g(n) \leq f(n) \leq c_2g(n)$. \\
+For $n,k \in \mathbb{Z}$, $n \geq k$, $g = \Theta(h)$, so there must exist $d_1, d_2 \in \mathbb{N}$, such that $d_1h(n) \leq g(n) \leq d_2h(n)$.
+
+
+\section{7.1 Problem 16}
+\textbf{Prove that $4 \mid (3^{2n-1} + 1)$ for every positive integer $n$.}
+
+
+\section{7.2 Problem 8}
+\textbf{Prove that every prime except one has the form $a^2 - b^2$ for some positive integers $a$ and $b$.}
+
+\end{document}
