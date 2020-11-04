@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1604385586 "HW8.tex" "HW8.pdf" "HW8" 1604385586
+["pdflatex"] 1604469385 "HW8.tex" "HW8.pdf" "HW8" 1604469385
   "/usr/local/texlive/2020/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2020/texmf-dist/fonts/tfm/jknappen/ec/ectt1000.tfm" 1136768653 1536 06717a2b50de47d4087ac0e6cd759455 ""
   "/usr/local/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
@@ -64,9 +64,9 @@
   "/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1586288239 4811913 0be9a7e86c70a26e5e3042966bcd7097 ""
   "/usr/local/texlive/2020/texmf-var/web2c/pdftex/pdflatex.fmt" 1586288259 2432462 fd0fa20e9a3cb5f8169fd0ba1c955158 ""
   "/usr/local/texlive/2020/texmf.cnf" 1586288231 577 d60164b4589a341208aff7a667fbbdcb ""
-  "HW8.aux" 1604385586 512 3cccc6ffb08787c5f426dd4270c15740 "pdflatex"
-  "HW8.tex" 1604385585 2181 807b8e4a1ccc46b689cf0e4b1cd43ac2 ""
+  "HW8.aux" 1604469385 512 ef094b76080477cc095253d6bed0cb8e "pdflatex"
+  "HW8.tex" 1604469383 4746 55b2d6565ebe729df8825092052f3751 ""
   (generated)
   "HW8.pdf"
-  "HW8.aux"
   "HW8.log"
+  "HW8.aux"

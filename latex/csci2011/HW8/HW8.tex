@@ -15,11 +15,13 @@
 \begin{document}
 \maketitle
 
+
 \section{6.2 Problem 8}
 \textbf{For the function $f$ defined by $f(n) = \frac{n^2+1}{n+1}$ for each $n \in \mathbb{N}$, show that $f(n) = O(n)$.} \\
 
 for $n \geq 1$,
 $f(n) = \frac{n^2+1}{n+1} \leq \frac{n^2+n}{n+1} < \frac{n^2+n}{n} = n + 1 \leq n + n = 2n$.  Therefore $f(n) < 2n$ for $n \geq 1$, and so $f(n) = O(n)$.
+
 
 
 \section{Chapter 6 Problem 12}
@@ -37,19 +39,53 @@ $n \geq 1$, and so $g = O(f)$. \\
 Since $f = O(g)$ and $g = O(f)$, it must be the case that $f = \Theta(g)$
 
 
+
 \section{6.2 Problem 14}
 \textbf{Let $f: \mathbb{N} \to \mathbb{R}^+$, $g: \mathbb{N} \to \mathbb{R}^+$ and $h: \mathbb{N} \to \mathbb{R}^+$ be three functions.  Prove that
 if $f = \Theta(g)$ and $g = \Theta(h)$, then $f = \Theta(h)$.} \\
 
 For $n,k \in \mathbb{Z}$, $n \geq k$, $f = \Theta(g)$, so there must exist $c_1, c_2 \in \mathbb{N}$, such that $c_1g(n) \leq f(n) \leq c_2g(n)$. \\
-For $n,k \in \mathbb{Z}$, $n \geq k$, $g = \Theta(h)$, so there must exist $d_1, d_2 \in \mathbb{N}$, such that $d_1h(n) \leq g(n) \leq d_2h(n)$.
+
+For $n,k \in \mathbb{Z}$, $n \geq k$, $g = \Theta(h)$, so there must exist $d_1, d_2 \in \mathbb{N}$, such that $d_1h(n) \leq g(n) \leq d_2h(n)$. \\
+
+Since $d_1h(n) \leq g(n)$, it follows that $c_1d_1h(n) \leq c_1g(n)$.  We can let $e_1 = c_1d_1$. \\
+Also, since $d_2h(n) \geq g(n)$, it follows that $c_2d_2h(n) \geq c_2g(n)$.  We can let $e_2 = c_2d_2$. \\
+
+$e_1h(n) \leq c_1g(n) \leq f(n) \leq c_2g(n) \leq e_2h(n)$ implies that $e_1h(n) \leq f(n) \leq e_2h(n)$.  Since $e_1, e_2$ are constants, it follows that
+$f = \Theta(h)$. \\
 
 
 \section{7.1 Problem 16}
-\textbf{Prove that $4 \mid (3^{2n-1} + 1)$ for every positive integer $n$.}
+\textbf{Prove that $4 \mid (3^{2n-1} + 1)$ for every positive integer $n$.} \\
+We will proceed using an Inductive proof. \\
+
+BASE CASE: First we show that $4 \mid (3^{2n-1} + 1)$ for the base case, where $n = 1$.  So $3^{2n-1} + 1 = 4q$ for some $q \in \mathbb{Z}$.  
+$3^{2n-1} + 1 = 3^{2-1} + 1 = 3 + 1 = 4 = 4(1)$, therefore the claim holds for the base case. \\
+
+INDUCTIVE STEP: Suppose $4 \mid (3^{2k-1} + 1)$ is true for some $k \geq 2$, we show that $4 \mid (3^{2k+1} + 1)$.  Also keep in mind that $4 \mid (3^{2k-1} + 1)$
+implies that $3^{2k-1} + 1 = 4q$ for some $q \in \mathbb{Z}$.
+$$3^{2k+1} + 1 = 9 \cdot 3^{2k-1} + 1 = 9 \cdot 3^{2k-1} + 9 - 8 = 9(3^{2k-1} + 1) - 8 = 9(4q) - 8 = 4(9q - 2)$$ \\
+Keep in mind that the second to last step was from our inductive hypothesis.  Since $9q - 2$ is an integer, the claim holds for our inductive step as well. \\
+
+By the principle of mathematical induction, the claim $4 \mid (3^{2n-1} + 1)$ holds for all positive integers $n$.
 
 
 \section{7.2 Problem 8}
-\textbf{Prove that every prime except one has the form $a^2 - b^2$ for some positive integers $a$ and $b$.}
+\textbf{Prove that every prime except one has the form $a^2 - b^2$ for some positive integers $a$ and $b$.} \\
+
+First, we can express $a^2 - b^2$ as $(a + b)(a - b)$, so in order to yield a prime, we can assume that $|a| > |b|$ (otherwise $a - b \leq 0$, which cannot yield
+a prime). \\
+
+The two smallest positive integers that fit our rule is $a = 2$ and $b = 1$ because they must both be positive, and cannot be equal.  $(2 + 1)(2 - 1) = 3 > 2$.  
+Since the smallest number that can be represented by this equation is $3$, it must follow that $2$ is the one prime that cannot be expressed by $a^2 - b^2$. \\
+
+Now since we are looking for a prime outcome, and primes must be a multiple of themself and $1$, and there are no two positive integers that 
+add up to $1$, it must be the case that $a - b = 1$ and $a + b$ is equal to the prime number.  Since $a - b = 1$, it follows that $a = b + 1$, so prime number 
+$p = 2b + 1$, so $b = \frac{p-1}{2}$. \\
+
+Since $p$ is prime and $p \not= 2$, $p$ must be odd, so $p - 1$ is even and $\frac{p-1}{2}$ must be an integer.  Also, $b = a - 1$, so $2a - 1 = p \Rightarrow
+a = \frac{p + 1}{2}$.  Again since all primes are odd except two, which is the exception, $\frac{p+1}{2}$ must be an integer. \\
+
+Since $a$ and $b$ are integers if $p$ is a prime (except 2), and $p = a + b$, it follows that $p$ can be expressed as $a^2 - b^2$.
 
 \end{document}
