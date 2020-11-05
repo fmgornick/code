@@ -37,21 +37,21 @@ public class ArrayList<T extends Comparable<T>> implements List<T> {
     }
 
     public boolean add(int index, T element) {
-        if (index > lastOpen || element == null) return false;
+        if (size() == 0 || index < 0 || index >= lastOpen || element == null) return false;
 
         else if (index == 0) {
-            if (index >= array.length) resize();
+            if (lastOpen >= array.length) resize();
             for (int i = lastOpen - 1; i >= 0; i--) {
                 array[i + 1] = array[i];
             }
             array[index] = element;
-            if (element.compareTo(array[1]) > 0) isSorted = false;
+            if (array[1] != null && element.compareTo(array[1]) > 0) isSorted = false;
             lastOpen++;
             return true;
         }
 
         else {
-            if (index >= array.length) resize();
+            if (lastOpen >= array.length) resize();
             for (int i = lastOpen - 1; i >= index; i--) {
                 array[i + 1] = array[i];
             }
@@ -136,17 +136,25 @@ public class ArrayList<T extends Comparable<T>> implements List<T> {
 
     public void greaterThan(T element) {
         if (isSorted) {
-            int index = 0;
-            int newLastOpen;
-            while (array[index].compareTo(element) <= 0) index++;
-            newLastOpen = lastOpen - index;
+            if (array[0].compareTo(element) <= 0) {
+                int index = 0;
+                int newLastOpen;
+                while (array[index].compareTo(element) <= 0 && index < lastOpen) {
+                    index++;
+                    if (index == lastOpen) {
+                        break;
+                    }
+                }
 
-            for (int i = 0; index < lastOpen; i++) {
-                array[i] = array[index];
-                array[index] = null;
-                index++;
+                newLastOpen = lastOpen - index;
+
+                for (int i = 0; index < lastOpen; i++) {
+                    array[i] = array[index];
+                    array[index] = null;
+                    index++;
+                }
+                lastOpen = newLastOpen;
             }
-            lastOpen = newLastOpen;
         }
 
         else {
@@ -161,15 +169,22 @@ public class ArrayList<T extends Comparable<T>> implements List<T> {
 
     public void lessThan(T element) {
         if (isSorted) {
-            int index = 0;
-            int newLastOpen;
-            while (array[index].compareTo(element) <= 0) index++;
-            newLastOpen = index;
+            if (array[lastOpen - 1].compareTo(element) >= 0) {
+                int index = 0;
+                int newLastOpen;
+                while (array[index].compareTo(element) < 0) {
+                    index++;
+                    if (index == lastOpen) {
+                        break;
+                    }
+                }
+                newLastOpen = index;
 
-            for (int i = index; i < lastOpen; i++) {
-                array[i] = null;
+                for (int i = index; i < lastOpen; i++) {
+                    array[i] = null;
+                }
+                lastOpen = newLastOpen;
             }
-            lastOpen = newLastOpen;
         }
 
         else {
@@ -231,22 +246,5 @@ public class ArrayList<T extends Comparable<T>> implements List<T> {
             result += array[lastOpen - 1];
             return result;
         }
-    }
-
-    public static void main(String[] args) {
-        ArrayList<Integer> ls = new ArrayList<>();
-        ls.add(7);
-        ls.add(5);
-        ls.add(4);
-        ls.add(8);
-        ls.add(5);
-        ls.add(9);
-        ls.add(1);
-        ls.add(4,6);
-        System.out.println(ls);
-        ls.equalTo(5);
-        System.out.println(ls);
-        System.out.println(ls.lastOpen);
-
     }
 }

@@ -28,11 +28,14 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
     }
 
     public boolean add(int index, T element) {
-        if (element == null || index < 0 || index > size()) return false;
+        if (element == null || index < 0 || index >= size()) return false;
+
+        else if (index == 0 && size() == 0) return false;
 
         else if (index == 0) {
             start = new Node<T>(element, start);
-            if (start.getData().compareTo(start.getNext().getData()) > 0) isSorted = false;
+            end = start.getNext();
+            if (start.getData().compareTo(end.getData()) > 0) isSorted = false;
             return true;
         }
 
@@ -74,7 +77,7 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
         else {
             Node<T> currNode = start;
             int currIndex = 0;
-            while(currIndex < size()) {
+            while (currIndex < size()) {
                 if (currIndex == index) {
                     return currNode.getData();
                 }
@@ -88,10 +91,12 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
     }
 
     public int indexOf(T element) {
-        if (isSorted) {
+        if (element == null) return -1;
+
+        else if (isSorted) {
             Node<T> currNode = start;
             int currIndex = 0;
-            while(currNode != null) {
+            while (currNode != null) {
                 if (currNode.getData().compareTo(element) < 0) {
                     currNode = currNode.getNext();
                     currIndex++;
@@ -111,7 +116,7 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
 
             Node<T> currNode = start;
             int index = 0;
-            while(index < size()) {
+            while (index < size()) {
                 if (element == currNode.getData()) {
                     return index;
                 }
@@ -149,7 +154,7 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
         Node<T> head = start.getNext();
         Node<T> tail = start;
 
-        while(head != null) {
+        while (head != null) {
             if (head.getData().compareTo(tail.getData()) < 0) {
                 return false;
             }
@@ -231,6 +236,12 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
 
         if (index < 0 || index >= size()) return null;
 
+        else if (index == 0 && start.getNext() == null) {
+            T temp = start.getData();
+            clear();
+            return temp;
+        }
+
         else if (index == 0) {
             head = start;
             start = start.getNext();
@@ -262,15 +273,15 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
         Node<T> head = start;
         Node<T> tail = head;
         if (isSorted) {
-            if (start.getData().compareTo(element) <= 0) {
-                start = null;
-                end = start;
-                head = null;
+            if (end.getData().compareTo(element) <= 0) {
+                clear();
             }
 
             while(head != null) {
                 if (head.getData().compareTo(element) > 0) {
-                    tail.setNext(null);
+                    if (tail != start) {
+                        tail.setNext(null);
+                    }
                     start = head;
                     break;
                 }
@@ -309,9 +320,7 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
         Node<T> tail = head;
         if (isSorted) {
             if (start.getData().compareTo(element) >= 0) {
-                start = null;
-                end = start;
-                head = null;
+                clear();
             }
 
             while(head != null) {
@@ -352,8 +361,7 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
 
     public void equalTo (T element) {
         if (indexOf(element) == -1) {
-            start = null;
-            end = start;
+            clear();
         }
 
         else {
@@ -370,12 +378,14 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
             tail = head;
             head = head.getNext();
 
-            while (head.getData().compareTo(element) == 0) {
-                tail = head;
-                head = head.getNext();
+            if (head != null) {
+                while (head.getData().compareTo(element) == 0) {
+                    tail = head;
+                    head = head.getNext();
+                }
+                tail.setNext(null);
+                end = tail;
             }
-            tail.setNext(null);
-            end = tail;
         }
     }
 
@@ -393,18 +403,15 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
     }
 
     public static void main(String[] args) {
-        LinkedList<Integer> ls = new LinkedList<>();
-        ls.add(8);
-        ls.add(7);
-        ls.add(4);
-        ls.add(1);
-        ls.add(5);
-        ls.add(9);
-        ls.add(3,6);
-        System.out.println(ls);
-        ls.sort();
-        System.out.println(ls);
-        System.out.println("start: " + ls.start.getData());
-        System.out.println("end: " + ls.end.getData());
+        List<String> arr = new LinkedList<String>();
+        arr.add(0, "fish");
+        arr.add("cat");
+        arr.add("dog");
+        arr.add("snake");
+        arr.add(-1, "fish");
+        arr.add(24, "fish");
+        arr.add(3, "fish");
+        arr.add(4, "fish");
+        System.out.println(arr);
     }
 }
