@@ -1,49 +1,252 @@
 public class ArrayList<T extends Comparable<T>> implements List<T> {
+    private T[] array;
+    private int lastOpen;
+    private boolean isSorted;
 
-    boolean add(T element) {
-        return false;
+    public ArrayList() {
+        array = (T[]) new Comparable[2];
+        isSorted = true;
+        lastOpen = 0;
     }
 
-    boolean add(int index, T element) {
-        return false;
+    public void resize() {
+        T[] newArray = (T[]) new Comparable[2 * array.length];
+        for (int i = 0; i < array.length; i++) {
+            newArray[i] = array[i];
+        }
+        array = newArray;
     }
 
-    void clear() {
+    public boolean add(T element) {
+        if (element == null) return false;
+
+        else if (lastOpen == 0) {
+            array[lastOpen] = element;
+            lastOpen++;
+            return true;
+        }
+
+        else {
+            if (lastOpen >= array.length) resize();
+            array[lastOpen] = element;
+
+            if (element.compareTo(array[lastOpen - 1]) < 0) isSorted = false;
+            lastOpen++;
+            return true;
+        }
     }
 
-    T get(int index) {
-        return null;
+    public boolean add(int index, T element) {
+        if (index > lastOpen || element == null) return false;
+
+        else if (index == 0) {
+            if (index >= array.length) resize();
+            for (int i = lastOpen - 1; i >= 0; i--) {
+                array[i + 1] = array[i];
+            }
+            array[index] = element;
+            if (element.compareTo(array[1]) > 0) isSorted = false;
+            lastOpen++;
+            return true;
+        }
+
+        else {
+            if (index >= array.length) resize();
+            for (int i = lastOpen - 1; i >= index; i--) {
+                array[i + 1] = array[i];
+            }
+            array[index] = element;
+            if (element.compareTo(array[index-1]) < 0 || element.compareTo(array[index+1]) > 0) isSorted = false;
+            lastOpen++;
+            return true;
+        }
     }
 
-    int index(int index) {
-        return -1;
+    public void clear() {
+        for (int i = 0; i < lastOpen; i++) {
+            array[i] = null;
+        }
+        lastOpen = 0;
     }
 
-    boolean isEmpty() {
-        return false;
+    public T get(int index) {
+        if (index < 0 || index >= lastOpen) return null;
+        else return array[index];
     }
 
-    int size() {
-        return -1;
+    public int indexOf(T element) {
+        if (element == null) return -1;
+
+        else if (isSorted) {
+            for (int i = 0; i < lastOpen; i++) {
+                if (array[i].compareTo(element) == 0) return i;
+                else if (array[i].compareTo(element) > 0) return -1;
+            }
+            return -1;
+        }
+
+        else {
+            for (int i = 0; i < lastOpen; i++) {
+                if (array[i].compareTo(element) == 0) {
+                    return i;
+                }
+            }
+            return -1;
+        }
     }
 
-    void sort() {
+    public boolean isEmpty() {
+        if (array[0] == null) return true;
+        else return false;
     }
 
-    T remove(int index) {
-        return null;
+    public int size() {
+        return lastOpen;
     }
 
-    void greaterThan(T element) {
+    public void sort() {
+        if (!isSorted) {
+            int minIndex;
+            T temp;
+            for (int i = 0; i < lastOpen; i++) {
+                minIndex = i;
+                for (int j = i + 1; j < lastOpen; j++) {
+                    if (array[minIndex].compareTo(array[j]) > 0) minIndex = j;
+                }
+                temp = array[i];
+                array[i] = array[minIndex];
+                array[minIndex] = temp;
+            }
+            isSorted = true;
+        }
     }
 
-    void lessThan(T element) {
+    public T remove(int index) {
+        if (index < 0 || index >= lastOpen) return null;
+
+        else {
+            T element = array[index];
+            for (int i = index; i < lastOpen - 1; i++) {
+                array[i] = array[i + 1];
+            }
+            lastOpen--;
+            return element;
+        }
     }
 
-    void equalTo(T element) {
+    public void greaterThan(T element) {
+        if (isSorted) {
+            int index = 0;
+            int newLastOpen;
+            while (array[index].compareTo(element) <= 0) index++;
+            newLastOpen = lastOpen - index;
+
+            for (int i = 0; index < lastOpen; i++) {
+                array[i] = array[index];
+                array[index] = null;
+                index++;
+            }
+            lastOpen = newLastOpen;
+        }
+
+        else {
+            for (int i = 0; i < lastOpen; i++) {
+                if (array[i].compareTo(element) <= 0) {
+                    remove(i);
+                    i--;
+                }
+            }
+        }
     }
 
-    String toString() {
-        return "";
+    public void lessThan(T element) {
+        if (isSorted) {
+            int index = 0;
+            int newLastOpen;
+            while (array[index].compareTo(element) <= 0) index++;
+            newLastOpen = index;
+
+            for (int i = index; i < lastOpen; i++) {
+                array[i] = null;
+            }
+            lastOpen = newLastOpen;
+        }
+
+        else {
+            for (int i = 0; i < lastOpen; i++) {
+                if (array[i].compareTo(element) >= 0) {
+                    remove(i);
+                    i--;
+                }
+            }
+        }
+    }
+
+    public void equalTo(T element) {
+        if (isSorted) {
+            int index = 0;
+            int newLastOpen;
+            while (array[index].compareTo(element) < 0) index++;
+
+            if (array[index].compareTo(element) != 0) clear();
+
+            else {
+                newLastOpen = lastOpen - index;
+                for (int i = 0; index < lastOpen; i++) {
+                    array[i] = array[index];
+                    array[index] = null;
+                    index++;
+                }
+                lastOpen = newLastOpen;
+                index = 0;
+
+                while (array[index].compareTo(element) == 0) index++;
+                newLastOpen = index;
+
+                for (int i = index; i < lastOpen; i++) {
+                    array[i] = null;
+                }
+                lastOpen = newLastOpen;
+            }
+        }
+
+        else {
+            for (int i = 0; i < lastOpen; i++) {
+                if (array[i].compareTo(element) != 0) {
+                    remove(i);
+                    i--;
+                }
+            }
+        }
+    }
+
+    public String toString() {
+        String result = "";
+        if (size() == 0) return result;
+
+        else {
+            for (int i = 0; i < lastOpen - 1; i++) {
+                result += array[i] + ", ";
+            }
+            result += array[lastOpen - 1];
+            return result;
+        }
+    }
+
+    public static void main(String[] args) {
+        ArrayList<Integer> ls = new ArrayList<>();
+        ls.add(7);
+        ls.add(5);
+        ls.add(4);
+        ls.add(8);
+        ls.add(5);
+        ls.add(9);
+        ls.add(1);
+        ls.add(4,6);
+        System.out.println(ls);
+        ls.equalTo(5);
+        System.out.println(ls);
+        System.out.println(ls.lastOpen);
+
     }
 }
