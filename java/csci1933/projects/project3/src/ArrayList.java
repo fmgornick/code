@@ -1,3 +1,5 @@
+// Fletcher Gornick, GORNI025
+
 public class ArrayList<T extends Comparable<T>> implements List<T> {
     private T[] array;
     private int lastOpen;

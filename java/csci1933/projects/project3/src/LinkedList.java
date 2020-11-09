@@ -1,3 +1,5 @@
+// Fletcher Gornick, GORNI025
+
 public class LinkedList<T extends Comparable<T>> implements List<T> {
     private Node<T> start;
     private Node<T> end;
