@@ -1,0 +1,70 @@
+\documentclass[10pt]{article}
+
+\title{CSCI 2011 HW 9}
+\author{Fletcher Gornick}
+
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{colortbl}
+\usepackage{soul}
+\usepackage{xcolor}
+\usepackage[margin=1.0in]{geometry}
+
+\setlength{\parindent}{0cm}
+
+\begin{document}
+\maketitle
+
+\section{Chapter 7.3 Problem 18}
+\textbf{Let $n \in \mathbb{Z}$.  Prove that $3 \mid (2n^2 + 1)$ if and only if $3 \nmid n$.} \\
+
+First, we show that if $3 \mid (2n^2 + 1)$, then $3 \nmid n$.  We will use the contrapositive for this proof.  We show that
+$3 \mid n \Rightarrow 3 \nmid (2n^2 + 1)$.  By definition, $n = 3s$ for some $s \in \mathbb{Z}$.  Therefore... \\
+$2n^2 + 1 = 2(3s)^2 + 1 = 18s^2 + 1 = 3(6s^2) + 1$, and since $6s^2$ is an integer, $3 \nmid (2n^2 + 1)$. \\
+
+Next, we show that if $3 \nmid n$, then $3 \mid (2n^2 + 1)$.  We can break this up into two separate cases, either $n = 3t + 1$ or $n = 3t + 2$
+for some $t \in \mathbb{Z}$.  Let's look at the first case, where $n = 3t + 1$... \\
+$2n^2 + 1 = 2(3t + 1)^2 + 1 = 18t^2 +12t + 3 = 3(6t^2 + 4t + 1)$, and since $6t^2 + 4t + 1$ is an integer, $3 \mid (2n^2 + 1)$. \\
+
+Now we look at the case where $n = 3t + 2$... \\
+$2n^2 + 1 = 2(3t + 2)^2 + 1 = 18t^2 + 24t + 9 = 3(6t^2 + 8t + 3)$, and since $6t^2 + 8t + 3$ is an integer, $3 \mid (2n^2 + 1)$. \\
+Therefore the biconditional must be true.
+
+
+\section{Chapter 7.4 Problem 14}
+\textbf{Let $a \in \mathbb{Z}$.  Prove that if $a^2 \not\equiv a$ (mod 3), then $a \not\equiv 0$ (mod 3) and $a \not\equiv 1$ (mod 3).} \\
+
+Let's look at the contrapositive.  If $a \equiv 0$ (mod 3) or $a \equiv 1$ (mod 3), then $a^2 \equiv a$ (mod 3).  Now all we must do is prove
+that the implication is true for either $a \equiv 0$ (mod 3) or $a \equiv 1$ (mod 3), for this instance, I'll choose $a \equiv 0$ (mod 3).  We show
+that $0^2 \equiv 0$ (mod 3).  Therefore $3 \mid (0^2 - 0)$ by definition, and since $0^2 - 0 = 0$ and $3 \mid 0$ we know this statement must be true.
+
+
+\section{Chapter 7.6 Problem 6}
+\textbf{Let $a$ and $b$ be integers not both 0, and let $d = gcd(a,b)$.  Prove that if $a = da'$ and $b = db'$ for some integers $a'$ and $b'$,
+then $gcd(a',b') = 1$.} \\
+
+By definition, $d = sa + tb$ for some integers $s,t \in \mathbb{Z}$.  And since $a = da'$ and $b = db'$, it must be the case that
+$d = sda' + tdb'$, factoring out $d$, we get $sa' + tb' = 1$.  By Theorem 7.47 of the textbook, we know that $gcd(a',b')$ is the smallest positive
+integer that's a linear combination of $a'$ and $b'$, and since 1 is a linear combination of $a'$ and $b'$, it must follow that $gcd(a',b') = 1$, 
+because 1 is the smallest positive integer in the set of all integers. \\\\\\
+
+    
+\section{Chapter 7 Problem 12}
+\textbf{Let $x$ and $y$ be integers such that $x + y \equiv 0$ (mod 3).  Prove that if $a,b \in \mathbb{Z}$ such that $a \equiv b$ (mod 3),
+then $ax + by \equiv 0$ (mod 3).} \\
+
+By definition, $x + y \equiv 0$ (mod 3) implies that $x + y = 3q$ for some $q \in \mathbb{Z}$.  Also $a = 3r + b$ for some $r \in \mathbb{Z}$.  \\
+
+Since $x + y = 3q$, we know $x = 3q - y$, now solving for $ax + by$, we have... \\
+$ax + by = (3r + b)(3q - y) + by = 9rq - 3ry + 3bq - by + by = 9rq - 3ry + 3bq = 3(3rq - ry + bq)$, and since $3rq - ry + bq$ is an integer, it
+follows that $3 \mid (ax + by)$, and therefore $ax + by \equiv 0$ (mod 3) by definition.
+
+
+\section{Chapter 8.1 Problem 14}
+\textbf{A man leaves for work on a rainy morning. He has a choice of three raincoats, four umbrellas and two hats. Assuming that he must take
+a coat and an umbrella (but not necessarily a hat), how many possibilities for raingear does he have?} \\
+
+If he chooses not to bring a hat, then he has $3 \cdot 4 = 12$ options, and if he does choose to bring a hat, then he has 
+$3 \cdot 4 \cdot 2 = 24$ options.  All together, he has $12 + 24 = 36$ options.
+
+\end{document}
