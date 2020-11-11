@@ -5,16 +5,18 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
     private Node<T> end;
     private boolean isSorted;
 
+    // LinkedList default constructor
     public LinkedList() {
         start = new Node<T>(null, null);
         end = start;
         isSorted = true;
     }
 
-
+    // points end node to new element
     public boolean add(T element) {
         if (element == null) return false;
 
+        // if it's the first element added
         else if (size() == 0) {
             start = new Node<T>(element, null);
             end = start;
@@ -22,6 +24,7 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
         }
 
         else {
+            // every other case
             end.setNext(new Node<T>(element, null));
             if (end.getData().compareTo(end.getNext().getData()) > 0) isSorted = false;
             end = end.getNext();
@@ -30,10 +33,12 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
     }
 
     public boolean add(int index, T element) {
+        // make sure element is within the list
         if (element == null || index < 0 || index >= size()) return false;
 
         else if (index == 0 && size() == 0) return false;
 
+        // element added to the start of the list
         else if (index == 0) {
             start = new Node<T>(element, start);
             end = start.getNext();
@@ -41,13 +46,7 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
             return true;
         }
 
-        else if (index == size()) {
-            if (end.getData().compareTo(element) > 0) isSorted = false;
-            end.setNext(new Node<T>(element, null));
-            end = end.getNext();
-            return true;
-        }
-
+        // other cases
         else {
             int currIndex = 1;
             Node<T> currNode = start;
@@ -66,12 +65,15 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
         }
     }
 
+    // changes start node pointer to null and data to null
     public void clear() {
         start = new Node<T>(null, null);
         end = start;
     }
 
+    // iterate through the list until index is reached then return element
     public T get(int index) {
+        // make sure element is in list
         if (index < 0 || index >= size()) return null;
 
         else if (index == 0) return start.getData();
@@ -92,6 +94,7 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
         }
     }
 
+    // iterates through list and returns element if it finds one
     public int indexOf(T element) {
         if (element == null) return -1;
 
@@ -108,6 +111,7 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
                     return currIndex;
                 }
 
+                // if element not found
                 else return -1;
             }
             return -1;
@@ -127,16 +131,22 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
                     index++;
                 }
             }
+            // if element not found
             return -1;
         }
     }
 
+    // only needs to check if first index is null (assuming nobody is adding 
+    // null elements)
     public boolean isEmpty() {
         if (size() == 0) return true;
         else return false;
     }
 
+    // iterates through list until reaching final node and incrementing the
+    // size
     public int size() {
+        // make sure size isn't 0
         if (start.getData() == null) {
             return 0;
         }
@@ -152,6 +162,7 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
         }
     }
 
+    // iterate through and check to see if it's sorted
     public boolean sorted() {
         Node<T> head = start.getNext();
         Node<T> tail = start;
@@ -173,6 +184,7 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
             Node<T> back = start;
             T min = start.getData();
 
+            // locate smallest index
             while (front != null) {
                 if (front.getData().compareTo(min) < 0) {
                     min = front.getData();
@@ -184,6 +196,7 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
             if(start.getData().compareTo(min) > 0) {
                 while (front != null) {
                     if (front.getData().compareTo(min) == 0) {
+                        // set front equal to smallesr element
                         if (front.getNext() == null) {
                             back.setNext(null);
                             front.setNext(start);
@@ -212,6 +225,7 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
                 front = middle.getNext();
 
                 while (front != null) {
+                    // switch elements if needed
                     if (front.getData().compareTo(middle.getData()) < 0) {
                         middle.setNext(front.getNext());
                         front.setNext(middle);
@@ -220,6 +234,7 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
                         front = middle.getNext();
                     }
 
+                    // move pointers up one if no switch needed
                     else {
                         back = middle;
                         middle = front;
@@ -232,24 +247,29 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
         }
     }
 
+    // iterate through list until index reached, then remove element
     public T remove(int index) {
         Node<T> head;
         Node<T> tail;
 
+        // check if index in list
         if (index < 0 || index >= size()) return null;
 
+        // if there's only one element
         else if (index == 0 && start.getNext() == null) {
             T temp = start.getData();
             clear();
             return temp;
         }
 
+        // remove furst element
         else if (index == 0) {
             head = start;
             start = start.getNext();
             return head.getData();
         }
 
+        // other cases
         else {
             head = start.getNext();
             tail = start;
@@ -275,13 +295,17 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
         Node<T> head = start;
         Node<T> tail = head;
         if (isSorted) {
+            // check to make sure the whole list isn't already greater than
             if (end.getData().compareTo(element) <= 0) {
                 clear();
             }
 
+            // iterate through list until first element greater than is
+            // reached
             while(head != null) {
                 if (head.getData().compareTo(element) > 0) {
                     if (tail != start) {
+                        // remove elements before
                         tail.setNext(null);
                     }
                     start = head;
@@ -294,7 +318,9 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
             }
         }
 
+        // if not sorted
         else {
+            // first index case
             while (start.getData().compareTo(element) <= 0) {
                 start = start.getNext();
                 head.setNext(null);
@@ -302,6 +328,7 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
                 tail = head;
             }
 
+            // every other case
             while(head != null) {
                 if (head.getData().compareTo(element) <= 0) {
                     tail.setNext(head.getNext());
@@ -321,10 +348,13 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
         Node<T> head = start;
         Node<T> tail = head;
         if (isSorted) {
+            // check to make sure the whole list isn't already less than
             if (start.getData().compareTo(element) >= 0) {
                 clear();
             }
 
+            // iterate through list until first element greater than or equal
+            // to is reached
             while(head != null) {
                 if (head.getData().compareTo(element) >= 0) {
                     tail.setNext(null);
@@ -332,6 +362,7 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
                     break;
                 }
                 else {
+                    // remove all indexes greater than or equal to
                     tail = head;
                     head = tail.getNext();
                 }
@@ -339,6 +370,7 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
         }
 
         else {
+            // start case
             while (start.getData().compareTo(element) >= 0) {
                 start = start.getNext();
                 head.setNext(null);
@@ -346,12 +378,14 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
                 tail = head;
             }
 
+            // remove index of greater than or equal to elements
             while(head != null) {
                 if (head.getData().compareTo(element) >= 0) {
                     tail.setNext(head.getNext());
                     head.setNext(null);
                     head = tail.getNext();
                 }
+                // if element less than, increment pointers
                 else {
                     tail = head;
                     head = tail.getNext();
@@ -362,6 +396,7 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
     }
 
     public void equalTo (T element) {
+        // clear list if none equal to
         if (indexOf(element) == -1) {
             clear();
         }
@@ -370,17 +405,20 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
             int currIndex = 0;
             Node<T> head = start;
             Node<T> tail = head;
+            // iterates to the equal element
             while (currIndex < indexOf(element)) {
                 tail = head;
                 head = head.getNext();
                 currIndex++;
             }
+            // remove elements before equal element
             tail.setNext(null);
             start = head;
             tail = head;
             head = head.getNext();
 
             if (head != null) {
+                // remove all other nodes not equal to element
                 while (head.getData().compareTo(element) == 0) {
                     tail = head;
                     head = head.getNext();
@@ -391,6 +429,7 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
         }
     }
 
+    // iterate through and print each value
     public String toString() {
         String result = "";
         Node<T> currNode = start;
@@ -399,21 +438,9 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
             result += currNode.getData();
             currNode = currNode.getNext();
 
+            // last element doesn't need a comma after
             if (currNode != null) result += ", ";
         }
         return result;
-    }
-
-    public static void main(String[] args) {
-        List<String> arr = new LinkedList<String>();
-        arr.add(0, "fish");
-        arr.add("cat");
-        arr.add("dog");
-        arr.add("snake");
-        arr.add(-1, "fish");
-        arr.add(24, "fish");
-        arr.add(3, "fish");
-        arr.add(4, "fish");
-        System.out.println(arr);
     }
 }
