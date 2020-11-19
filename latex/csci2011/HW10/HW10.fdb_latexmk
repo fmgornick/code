@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1605587417 "HW10.tex" "HW10.pdf" "HW10" 1605587417
+["pdflatex"] 1605808080 "HW10.tex" "HW10.pdf" "HW10" 1605808081
   "/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2020/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2020/texmf-dist/fonts/tfm/jknappen/ec/ectt1000.tfm" 1136768653 1536 06717a2b50de47d4087ac0e6cd759455 ""
@@ -68,9 +68,9 @@
   "/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1586288239 4811913 0be9a7e86c70a26e5e3042966bcd7097 ""
   "/usr/local/texlive/2020/texmf-var/web2c/pdftex/pdflatex.fmt" 1586288259 2432462 fd0fa20e9a3cb5f8169fd0ba1c955158 ""
   "/usr/local/texlive/2020/texmf.cnf" 1586288231 577 d60164b4589a341208aff7a667fbbdcb ""
-  "HW10.aux" 1605587417 546 7b31c8b3a35bb60f1ec5c628c1617b7a "pdflatex"
-  "HW10.tex" 1605587415 5404 402b622298059dbcad89eee4be958bd0 ""
+  "HW10.aux" 1605808081 546 7b31c8b3a35bb60f1ec5c628c1617b7a "pdflatex"
+  "HW10.tex" 1605808078 6242 0b06d9b0b72aefab12bc60ffdb553212 ""
   (generated)
-  "HW10.log"
   "HW10.pdf"
+  "HW10.log"
   "HW10.aux"

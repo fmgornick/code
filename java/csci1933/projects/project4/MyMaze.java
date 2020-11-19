@@ -370,6 +370,16 @@ public class MyMaze {
 
     /* TODO: Solve the maze using the algorithm found in the writeup. */
     public void solveMaze() {
+        Q1Gen<Cell> cellQ = new Q1Gen<Cell>();
+        cellQ.add(maze[0][0]);
+        maze[0][0].setVisited(true);
+        int r = 0;
+        int c = 0;
+        int direction;
+
+        while(!cellQ.isEmpty()) {
+
+        }
     }
 
     public static void main(String[] args) {

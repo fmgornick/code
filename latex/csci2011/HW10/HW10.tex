@@ -63,7 +63,7 @@ are possible if}
 
 \begin{enumerate}[label=(\alph*)]
     \item \textbf{there is no other restriction on membership for the committee?} \\
-        $5 + 3 + 4 = 12$, $\binom{12}{4} = \frac{12!}{4!8!} = 495$
+        $5 + 3 + 4 = 12$, $\binom{12}{4} = \frac{12!}{4!8!} = 495$.
 
     \item \textbf{at least one senior, one junior and one sophomore must serve on the committee?} \\
         Three possibilities: (1) two seniors, one junior, one sophomore.  (2) one senior, two juniors, one sophomore.  (3) one senior, one junior,
@@ -75,7 +75,7 @@ are possible if}
         $\binom54 + \binom53\binom31 + \binom53\binom41 = 5 + (10\cdot3) + (10\cdot4) = 75$.
 
     \item \textbf{at least one senior must serve on the committee?} \\
-        For this case, we can subtract the inverse from our total possibilites.  So we look at the cases where there are zero seniors.  Four
+        For this case, we can subtract the inverse from our total possibilities.  So we look at the cases where there are zero seniors.  Four
         possibilities: (1) 3 juniors, 1 sophomore.  (2) 2 juniors, 2 sophomores.  (3) 1 junior, 3 sophomores.  (4) 4 sophomores.  Therefore, our total
         is \\
         $\binom{12}{4} - \binom33\binom41 - \binom32\binom42 - \binom31\binom43 - \binom44 = 495 - 4 - (3\cdot6) - (3\cdot4) - 1 = 460$.
@@ -89,10 +89,17 @@ tennis matches.}
 
 \begin{enumerate}[label=(\alph*)]
     \item \textbf{Determine $t_1$ and $t_2$.} \\
+        $t_1$ is the number of ways to divide two people into pairs for one match, since there are only two people to divvy up for one match, there's 
+        only one possibility.  For $t_2$, there are 4 people and two matches.  There are three different ways to pair up one player with another for one
+        match, and the other two players can then also be matched up together for the other match, meaning that $t_2 = 3$.
 
     \item \textbf{Give a recursive definition of $t_n$ for $n \geq 1$.} \\
+        Every time $n$ is incremented, there are two new players added to the mix, so with $2n$ people, one person can match up with $2n - 1$ people, then 
+        for all the other ways everyone else can be divvied up, that was already solved from the previous term.  Therefore $t_n = (2n-1)t_{n-1}$.
 
     \item \textbf{Use the recursive definition in (b) to compute $t_3$ and $t_4$.} \\
+        $t_3 = (2\cdot3 - 1)t_2 = 5 \cdot 3 = 15$. \\
+        $t_4 = (2\cdot4 - 1)t_3 = 7 \cdot 15 = 105$.
 
 \end{enumerate}
 
