@@ -1,5 +1,5 @@
-// Names:
-// x500s:
+// Name: Fletcher Gornick
+// x500: gorni025
 
 import java.util.Random;
 
@@ -25,300 +25,318 @@ public class MyMaze {
         int c = 0;
         int direction;
 
-        while(!cellStack.isEmpty()) {
-            r = cellStack.top().getRow();
-            c = cellStack.top().getCol();
+        if (m.maze.length > 1 && m.maze[0].length > 1) {
+            while(!cellStack.isEmpty()) {
+                r = cellStack.top().getRow();
+                c = cellStack.top().getCol();
 
-            if (r == 0 && c == 0) {
-                if (m.maze[r+1][c].getVisited() == true && m.maze[r][c+1].getVisited() == true) {
-                    cellStack.pop();
-                }
-                else {
-                    while (true) {
-                        direction = (int) Math.floor(Math.random() * 2);
-                        if (direction == 0) {
-                            if (m.maze[r][c+1].getVisited() == false) {
-                                m.maze[r][c].setRight(false);
-                                m.maze[r][++c].setVisited(true);
-                                cellStack.push(m.maze[r][c]);
-                                break;
+                if (r == 0 && c == 0) {
+                    if (m.maze[r+1][c].getVisited() == true && m.maze[r][c+1].getVisited() == true) {
+                        cellStack.pop();
+                    }
+                    else {
+                        while (true) {
+                            direction = (int) Math.floor(Math.random() * 2);
+                            if (direction == 0) {
+                                if (m.maze[r][c+1].getVisited() == false) {
+                                    m.maze[r][c].setRight(false);
+                                    m.maze[r][++c].setVisited(true);
+                                    cellStack.push(m.maze[r][c]);
+                                    break;
+                                }
                             }
-                        }
-                        else {
-                            if (m.maze[r+1][c].getVisited() == false) {
-                                m.maze[r][c].setBottom(false);
-                                m.maze[++r][c].setVisited(true);
-                                cellStack.push(m.maze[r][c]);
-                                break;
+                            else {
+                                if (m.maze[r+1][c].getVisited() == false) {
+                                    m.maze[r][c].setBottom(false);
+                                    m.maze[++r][c].setVisited(true);
+                                    cellStack.push(m.maze[r][c]);
+                                    break;
+                                }
                             }
                         }
                     }
                 }
-            }
-            
-            else if (r == 0 && c == m.maze[r].length-1) {
-                if (m.maze[r+1][c].getVisited() == true && m.maze[r][c-1].getVisited() == true) {
-                    cellStack.pop();
-                }
-                else {
-                    while (true) {
-                        direction = (int) Math.floor(Math.random() * 2);
-                        if (direction == 0) {
-                            if (m.maze[r+1][c].getVisited() == false) {
-                                m.maze[r][c].setBottom(false);
-                                m.maze[++r][c].setVisited(true);
-                                cellStack.push(m.maze[r][c]);
-                                break;
+                
+                else if (r == 0 && c == m.maze[r].length-1) {
+                    if (m.maze[r+1][c].getVisited() == true && m.maze[r][c-1].getVisited() == true) {
+                        cellStack.pop();
+                    }
+                    else {
+                        while (true) {
+                            direction = (int) Math.floor(Math.random() * 2);
+                            if (direction == 0) {
+                                if (m.maze[r+1][c].getVisited() == false) {
+                                    m.maze[r][c].setBottom(false);
+                                    m.maze[++r][c].setVisited(true);
+                                    cellStack.push(m.maze[r][c]);
+                                    break;
+                                }
                             }
-                        }
-                        else {
-                            if (m.maze[r][c-1].getVisited() == false) {
-                                m.maze[r][c-1].setRight(false);
-                                m.maze[r][--c].setVisited(true);
-                                cellStack.push(m.maze[r][c]);
-                                break;
+                            else {
+                                if (m.maze[r][c-1].getVisited() == false) {
+                                    m.maze[r][c-1].setRight(false);
+                                    m.maze[r][--c].setVisited(true);
+                                    cellStack.push(m.maze[r][c]);
+                                    break;
+                                }
                             }
                         }
                     }
                 }
-            }
 
-            else if (r == m.maze.length-1 && c == 0) {
-                if (m.maze[r-1][c].getVisited() == true && m.maze[r][c+1].getVisited() == true) {
-                    cellStack.pop();
-                }
-                else {
-                    while (true) {
-                        direction = (int) Math.floor(Math.random() * 2);
-                        if (direction == 0) {
-                            if (m.maze[r-1][c].getVisited() == false) {
-                                m.maze[r-1][c].setBottom(false);
-                                m.maze[--r][c].setVisited(true);
-                                cellStack.push(m.maze[r][c]);
-                                break;
+                else if (r == m.maze.length-1 && c == 0) {
+                    if (m.maze[r-1][c].getVisited() == true && m.maze[r][c+1].getVisited() == true) {
+                        cellStack.pop();
+                    }
+                    else {
+                        while (true) {
+                            direction = (int) Math.floor(Math.random() * 2);
+                            if (direction == 0) {
+                                if (m.maze[r-1][c].getVisited() == false) {
+                                    m.maze[r-1][c].setBottom(false);
+                                    m.maze[--r][c].setVisited(true);
+                                    cellStack.push(m.maze[r][c]);
+                                    break;
+                                }
                             }
-                        }
-                        else {
-                            if (m.maze[r][c+1].getVisited() == false) {
-                                m.maze[r][c].setRight(false);
-                                m.maze[r][++c].setVisited(true);
-                                cellStack.push(m.maze[r][c]);
-                                break;
+                            else {
+                                if (m.maze[r][c+1].getVisited() == false) {
+                                    m.maze[r][c].setRight(false);
+                                    m.maze[r][++c].setVisited(true);
+                                    cellStack.push(m.maze[r][c]);
+                                    break;
+                                }
                             }
                         }
                     }
                 }
-            }
 
-            else if (r == m.maze.length-1 && c == m.maze[r].length-1) {
-                if (m.maze[r-1][c].getVisited() == true && m.maze[r][c-1].getVisited() == true) {
-                    cellStack.pop();
-                }
-                else {
-                    while (true) {
-                        direction = (int) Math.floor(Math.random() * 2);
-                        if (direction == 0) {
-                            if (m.maze[r-1][c].getVisited() == false) {
-                                m.maze[r-1][c].setBottom(false);
-                                m.maze[--r][c].setVisited(true);
-                                cellStack.push(m.maze[r][c]);
-                                break;
+                else if (r == m.maze.length-1 && c == m.maze[r].length-1) {
+                    if (m.maze[r-1][c].getVisited() == true && m.maze[r][c-1].getVisited() == true) {
+                        cellStack.pop();
+                    }
+                    else {
+                        while (true) {
+                            direction = (int) Math.floor(Math.random() * 2);
+                            if (direction == 0) {
+                                if (m.maze[r-1][c].getVisited() == false) {
+                                    m.maze[r-1][c].setBottom(false);
+                                    m.maze[--r][c].setVisited(true);
+                                    cellStack.push(m.maze[r][c]);
+                                    break;
+                                }
                             }
-                        }
-                        else {
-                            if (m.maze[r][c-1].getVisited() == false) {
-                                m.maze[r][c-1].setRight(false);
-                                m.maze[r][--c].setVisited(true);
-                                cellStack.push(m.maze[r][c]);
-                                break;
+                            else {
+                                if (m.maze[r][c-1].getVisited() == false) {
+                                    m.maze[r][c-1].setRight(false);
+                                    m.maze[r][--c].setVisited(true);
+                                    cellStack.push(m.maze[r][c]);
+                                    break;
+                                }
                             }
                         }
                     }
                 }
-            }
 
-            else if (r == 0) {
-                if (m.maze[r][c+1].getVisited() == true && m.maze[r+1][c].getVisited() == true && m.maze[r][c-1].getVisited() == true) {
-                    cellStack.pop();
-                }
-                else {
-                    while (true) {
-                        direction = (int) Math.floor(Math.random() * 3);
-                        if (direction == 0) {
-                            if (m.maze[r][c+1].getVisited() == false) {
-                                m.maze[r][c].setRight(false);
-                                m.maze[r][++c].setVisited(true);
-                                cellStack.push(m.maze[r][c]);
-                                break;
+                else if (r == 0) {
+                    if (m.maze[r][c+1].getVisited() == true && m.maze[r+1][c].getVisited() == true && m.maze[r][c-1].getVisited() == true) {
+                        cellStack.pop();
+                    }
+                    else {
+                        while (true) {
+                            direction = (int) Math.floor(Math.random() * 3);
+                            if (direction == 0) {
+                                if (m.maze[r][c+1].getVisited() == false) {
+                                    m.maze[r][c].setRight(false);
+                                    m.maze[r][++c].setVisited(true);
+                                    cellStack.push(m.maze[r][c]);
+                                    break;
+                                }
                             }
-                        }
-                        else if (direction == 1) {
-                            if (m.maze[r+1][c].getVisited() == false) {
-                                m.maze[r][c].setBottom(false);
-                                m.maze[++r][c].setVisited(true);
-                                cellStack.push(m.maze[r][c]);
-                                break;
+                            else if (direction == 1) {
+                                if (m.maze[r+1][c].getVisited() == false) {
+                                    m.maze[r][c].setBottom(false);
+                                    m.maze[++r][c].setVisited(true);
+                                    cellStack.push(m.maze[r][c]);
+                                    break;
+                                }
                             }
-                        }
-                        else {
-                            if (m.maze[r][c-1].getVisited() == false) {
-                                m.maze[r][c-1].setRight(false);
-                                m.maze[r][--c].setVisited(true);
-                                cellStack.push(m.maze[r][c]);
-                                break;
+                            else {
+                                if (m.maze[r][c-1].getVisited() == false) {
+                                    m.maze[r][c-1].setRight(false);
+                                    m.maze[r][--c].setVisited(true);
+                                    cellStack.push(m.maze[r][c]);
+                                    break;
+                                }
                             }
                         }
                     }
                 }
-            }
 
-            else if (c == 0) {
-                if (m.maze[r-1][c].getVisited() == true && m.maze[r][c+1].getVisited() == true && m.maze[r+1][c].getVisited() == true) {
-                    cellStack.pop();
-                }
-                else {
-                    while (true) {
-                        direction = (int) Math.floor(Math.random() * 3);
-                        if (direction == 0) {
-                            if (m.maze[r-1][c].getVisited() == false) {
-                                m.maze[r-1][c].setBottom(false);
-                                m.maze[--r][c].setVisited(true);
-                                cellStack.push(m.maze[r][c]);
-                                break;
+                else if (c == 0) {
+                    if (m.maze[r-1][c].getVisited() == true && m.maze[r][c+1].getVisited() == true && m.maze[r+1][c].getVisited() == true) {
+                        cellStack.pop();
+                    }
+                    else {
+                        while (true) {
+                            direction = (int) Math.floor(Math.random() * 3);
+                            if (direction == 0) {
+                                if (m.maze[r-1][c].getVisited() == false) {
+                                    m.maze[r-1][c].setBottom(false);
+                                    m.maze[--r][c].setVisited(true);
+                                    cellStack.push(m.maze[r][c]);
+                                    break;
+                                }
                             }
-                        }
-                        else if (direction == 1) {
-                            if (m.maze[r][c+1].getVisited() == false) {
-                                m.maze[r][c].setRight(false);
-                                m.maze[r][++c].setVisited(true);
-                                cellStack.push(m.maze[r][c]);
-                                break;
+                            else if (direction == 1) {
+                                if (m.maze[r][c+1].getVisited() == false) {
+                                    m.maze[r][c].setRight(false);
+                                    m.maze[r][++c].setVisited(true);
+                                    cellStack.push(m.maze[r][c]);
+                                    break;
+                                }
                             }
-                        }
-                        else {
-                            if (m.maze[r+1][c].getVisited() == false) {
-                                m.maze[r][c].setBottom(false);
-                                m.maze[++r][c].setVisited(true);
-                                cellStack.push(m.maze[r][c]);
-                                break;
+                            else {
+                                if (m.maze[r+1][c].getVisited() == false) {
+                                    m.maze[r][c].setBottom(false);
+                                    m.maze[++r][c].setVisited(true);
+                                    cellStack.push(m.maze[r][c]);
+                                    break;
+                                }
                             }
                         }
                     }
                 }
-            }
 
-            else if (r == m.maze.length-1) {
-                if (m.maze[r][c-1].getVisited() == true && m.maze[r-1][c].getVisited() == true && m.maze[r][c+1].getVisited() == true) {
-                    cellStack.pop();
-                }
-                else {
-                    while (true) {
-                        direction = (int) Math.floor(Math.random() * 3);
-                        if (direction == 0) {
-                            if (m.maze[r][c-1].getVisited() == false) {
-                                m.maze[r][c-1].setRight(false);
-                                m.maze[r][--c].setVisited(true);
-                                cellStack.push(m.maze[r][c]);
-                                break;
+                else if (r == m.maze.length-1) {
+                    if (m.maze[r][c-1].getVisited() == true && m.maze[r-1][c].getVisited() == true && m.maze[r][c+1].getVisited() == true) {
+                        cellStack.pop();
+                    }
+                    else {
+                        while (true) {
+                            direction = (int) Math.floor(Math.random() * 3);
+                            if (direction == 0) {
+                                if (m.maze[r][c-1].getVisited() == false) {
+                                    m.maze[r][c-1].setRight(false);
+                                    m.maze[r][--c].setVisited(true);
+                                    cellStack.push(m.maze[r][c]);
+                                    break;
+                                }
                             }
-                        }
-                        else if (direction == 1) {
-                            if (m.maze[r-1][c].getVisited() == false) {
-                                m.maze[r-1][c].setBottom(false);
-                                m.maze[--r][c].setVisited(true);
-                                cellStack.push(m.maze[r][c]);
-                                break;
+                            else if (direction == 1) {
+                                if (m.maze[r-1][c].getVisited() == false) {
+                                    m.maze[r-1][c].setBottom(false);
+                                    m.maze[--r][c].setVisited(true);
+                                    cellStack.push(m.maze[r][c]);
+                                    break;
+                                }
                             }
-                        }
-                        else {
-                            if (m.maze[r][c+1].getVisited() == false) {
-                                m.maze[r][c].setRight(false);
-                                m.maze[r][++c].setVisited(true);
-                                cellStack.push(m.maze[r][c]);
-                                break;
+                            else {
+                                if (m.maze[r][c+1].getVisited() == false) {
+                                    m.maze[r][c].setRight(false);
+                                    m.maze[r][++c].setVisited(true);
+                                    cellStack.push(m.maze[r][c]);
+                                    break;
+                                }
                             }
                         }
                     }
                 }
-            }
 
-            else if (c == m.maze[r].length-1) {
-                if (m.maze[r-1][c].getVisited() == true && m.maze[r][c-1].getVisited() == true && m.maze[r+1][c].getVisited() == true) {
-                    cellStack.pop();
-                }
-                else {
-                    while (true) {
-                        direction = (int) Math.floor(Math.random() * 3);
-                        if (direction == 0) {
-                            if (m.maze[r-1][c].getVisited() == false) {
-                                m.maze[r-1][c].setBottom(false);
-                                m.maze[--r][c].setVisited(true);
-                                cellStack.push(m.maze[r][c]);
-                                break;
+                else if (c == m.maze[r].length-1) {
+                    if (m.maze[r-1][c].getVisited() == true && m.maze[r][c-1].getVisited() == true && m.maze[r+1][c].getVisited() == true) {
+                        cellStack.pop();
+                    }
+                    else {
+                        while (true) {
+                            direction = (int) Math.floor(Math.random() * 3);
+                            if (direction == 0) {
+                                if (m.maze[r-1][c].getVisited() == false) {
+                                    m.maze[r-1][c].setBottom(false);
+                                    m.maze[--r][c].setVisited(true);
+                                    cellStack.push(m.maze[r][c]);
+                                    break;
+                                }
                             }
-                        }
-                        else if (direction == 1) {
-                            if (m.maze[r][c-1].getVisited() == false) {
-                                m.maze[r][c-1].setRight(false);
-                                m.maze[r][--c].setVisited(true);
-                                cellStack.push(m.maze[r][c]);
-                                break;
+                            else if (direction == 1) {
+                                if (m.maze[r][c-1].getVisited() == false) {
+                                    m.maze[r][c-1].setRight(false);
+                                    m.maze[r][--c].setVisited(true);
+                                    cellStack.push(m.maze[r][c]);
+                                    break;
+                                }
                             }
-                        }
-                        else {
-                            if (m.maze[r+1][c].getVisited() == false) {
-                                m.maze[r][c].setBottom(false);
-                                m.maze[++r][c].setVisited(true);
-                                cellStack.push(m.maze[r][c]);
-                                break;
+                            else {
+                                if (m.maze[r+1][c].getVisited() == false) {
+                                    m.maze[r][c].setBottom(false);
+                                    m.maze[++r][c].setVisited(true);
+                                    cellStack.push(m.maze[r][c]);
+                                    break;
+                                }
                             }
                         }
                     }
                 }
-            }
-            else {
-                if (m.maze[r-1][c].getVisited() == true && m.maze[r][c+1].getVisited() == true && m.maze[r+1][c].getVisited() == true && m.maze[r][c-1].getVisited() == true) {
-                    cellStack.pop();
-                }
+
                 else {
-                    while (true) {
-                        direction = (int) Math.floor(Math.random() * 4);
-                        if (direction == 0) {
-                            if (m.maze[r-1][c].getVisited() == false) {
-                                m.maze[r-1][c].setBottom(false);
-                                m.maze[--r][c].setVisited(true);
-                                cellStack.push(m.maze[r][c]);
-                                break;
+                    if (m.maze[r-1][c].getVisited() == true && m.maze[r][c+1].getVisited() == true && m.maze[r+1][c].getVisited() == true && m.maze[r][c-1].getVisited() == true) {
+                        cellStack.pop();
+                    }
+                    else {
+                        while (true) {
+                            direction = (int) Math.floor(Math.random() * 4);
+                            if (direction == 0) {
+                                if (m.maze[r-1][c].getVisited() == false) {
+                                    m.maze[r-1][c].setBottom(false);
+                                    m.maze[--r][c].setVisited(true);
+                                    cellStack.push(m.maze[r][c]);
+                                    break;
+                                }
                             }
-                        }
-                        else if (direction == 1) {
-                            if (m.maze[r][c+1].getVisited() == false) {
-                                m.maze[r][c].setRight(false);
-                                m.maze[r][++c].setVisited(true);
-                                cellStack.push(m.maze[r][c]);
-                                break;
+                            else if (direction == 1) {
+                                if (m.maze[r][c+1].getVisited() == false) {
+                                    m.maze[r][c].setRight(false);
+                                    m.maze[r][++c].setVisited(true);
+                                    cellStack.push(m.maze[r][c]);
+                                    break;
+                                }
                             }
-                        }
-                        else if (direction == 2) {
-                            if (m.maze[r+1][c].getVisited() == false) {
-                                m.maze[r][c].setBottom(false);
-                                m.maze[++r][c].setVisited(true);
-                                cellStack.push(m.maze[r][c]);
-                                break;
+                            else if (direction == 2) {
+                                if (m.maze[r+1][c].getVisited() == false) {
+                                    m.maze[r][c].setBottom(false);
+                                    m.maze[++r][c].setVisited(true);
+                                    cellStack.push(m.maze[r][c]);
+                                    break;
+                                }
                             }
-                        }
-                        else {
-                            if (m.maze[r][c-1].getVisited() == false) {
-                                m.maze[r][c-1].setRight(false);
-                                m.maze[r][--c].setVisited(true);
-                                cellStack.push(m.maze[r][c]);
-                                break;
+                            else {
+                                if (m.maze[r][c-1].getVisited() == false) {
+                                    m.maze[r][c-1].setRight(false);
+                                    m.maze[r][--c].setVisited(true);
+                                    cellStack.push(m.maze[r][c]);
+                                    break;
+                                }
                             }
                         }
                     }
                 }
             }
         }
+
+        else if (m.maze.length == 1 || m.maze[0].length == 1) {
+            if (m.maze.length == 1) {
+                for (int i = 0; i < m.maze[0].length; i++) {
+                    m.maze[0][i].setRight(false);
+                }
+            }
+
+            if (m.maze[0].length == 1) {
+                for (int i = 0; i < m.maze.length; i++) {
+                    m.maze[i][0].setBottom(false);
+                }
+            }
+        }
+
 
         for (int i = 0; i < m.maze.length; i++) {
             for (int j = 0; j < m.maze[i].length; j++) {
@@ -331,7 +349,7 @@ public class MyMaze {
     }
 
     /* TODO: Print a representation of the maze to the terminal */
-    public void printMaze(boolean path) {
+    public void printMaze() {
         String result = "";
 
         for (int i = 0; i <= maze.length * 2; i++) {
@@ -339,8 +357,14 @@ public class MyMaze {
                 if (i == 0 || i == maze.length * 2) result += "+ - ";
 
                 else if (i == 1) {
-                    if (maze[i/2][j].getRight() == true) result += "   |";
-                    else result += "    ";
+                    if (maze[i/2][j].getRight() == true) {
+                        if (maze[i/2][j].getVisited() == true) result += " * |";
+                        else result += "   |";
+                    }
+                    else {
+                        if (maze[i/2][j].getVisited() == true) result += " *  ";
+                        else result += "    ";
+                    }
                 }
 
                 else {
@@ -349,8 +373,14 @@ public class MyMaze {
                         else result += "+   ";
                     }
                     else {
-                        if (maze[i/2][j].getRight() == true) result += "   |";
-                        else result +=  "    ";
+                        if (maze[i/2][j].getRight() == true) {
+                            if (maze[i/2][j].getVisited() == true) result += " * |";
+                            else result += "   |";
+                        }
+                        else {
+                            if (maze[i/2][j].getVisited() == true) result +=  " *  ";
+                            else result +=  "    ";
+                        }
                     }
                 }
             }
@@ -373,17 +403,85 @@ public class MyMaze {
         Q1Gen<Cell> cellQ = new Q1Gen<Cell>();
         cellQ.add(maze[0][0]);
         maze[0][0].setVisited(true);
+        Cell temp = null;
         int r = 0;
         int c = 0;
         int direction;
 
-        while(!cellQ.isEmpty()) {
+        if (maze.length > 1 && maze[0].length > 1) {
+            while(!cellQ.isEmpty()) {
+                temp = cellQ.remove();
+                r = temp.getRow();
+                c = temp.getCol();
+                maze[r][c].setVisited(true);
 
+                if (r == 0 && c == 0) {
+                    if (maze[r][c].getRight() == false && maze[r][c+1].getVisited() == false) cellQ.add(maze[r][c+1]);
+                    if (maze[r][c].getBottom() == false && maze[r+1][c].getVisited() == false) cellQ.add(maze[r+1][c]);
+                }
+                
+                else if (r == 0 && c == maze[r].length-1) {
+                    if (maze[r][c].getBottom() == false && maze[r+1][c].getVisited() == false) cellQ.add(maze[r+1][c]);
+                    if (maze[r][c-1].getRight() == false && maze[r][c-1].getVisited() == false) cellQ.add(maze[r][c-1]);
+                }
+
+                else if (r == maze.length-1 && c == 0) {
+                    if (maze[r][c].getRight() == false && maze[r][c+1].getVisited() == false) cellQ.add(maze[r][c+1]);
+                    if (maze[r-1][c].getBottom() == false && maze[r-1][c].getVisited() == false) cellQ.add(maze[r-1][c]);
+                }
+
+                else if (r == maze.length-1 && c == maze[r].length-1) {
+                    break;
+                }
+
+                else if (r == 0) {
+                    if (maze[r][c].getRight() == false && maze[r][c+1].getVisited() == false) cellQ.add(maze[r][c+1]);
+                    if (maze[r][c].getBottom() == false && maze[r+1][c].getVisited() == false) cellQ.add(maze[r+1][c]);
+                    if (maze[r][c-1].getRight() == false && maze[r][c-1].getVisited() == false) cellQ.add(maze[r][c-1]);
+                }
+
+                else if (c == 0) {
+                    if (maze[r][c].getRight() == false && maze[r][c+1].getVisited() == false) cellQ.add(maze[r][c+1]);
+                    if (maze[r][c].getBottom() == false && maze[r+1][c].getVisited() == false) cellQ.add(maze[r+1][c]);
+                    if (maze[r-1][c].getBottom() == false && maze[r-1][c].getVisited() == false) cellQ.add(maze[r-1][c]);
+                }
+
+                else if (r == maze.length-1) {
+                    if (maze[r][c].getRight() == false && maze[r][c+1].getVisited() == false) cellQ.add(maze[r][c+1]);
+                    if (maze[r][c-1].getRight() == false && maze[r][c-1].getVisited() == false) cellQ.add(maze[r][c-1]);
+                    if (maze[r-1][c].getBottom() == false && maze[r-1][c].getVisited() == false) cellQ.add(maze[r-1][c]);
+
+                }
+
+                else if (c == maze[r].length-1) {
+                    if (maze[r][c].getBottom() == false && maze[r+1][c].getVisited() == false) cellQ.add(maze[r+1][c]);
+                    if (maze[r][c-1].getRight() == false && maze[r][c-1].getVisited() == false) cellQ.add(maze[r][c-1]);
+                    if (maze[r-1][c].getBottom() == false && maze[r-1][c].getVisited() == false) cellQ.add(maze[r-1][c]);
+                }
+
+                else {
+                    if (maze[r][c].getRight() == false && maze[r][c+1].getVisited() == false) cellQ.add(maze[r][c+1]);
+                    if (maze[r][c].getBottom() == false && maze[r+1][c].getVisited() == false) cellQ.add(maze[r+1][c]);
+                    if (maze[r-1][c].getBottom() == false && maze[r-1][c].getVisited() == false) cellQ.add(maze[r-1][c]);
+                    if (maze[r][c-1].getRight() == false && maze[r][c-1].getVisited() == false) cellQ.add(maze[r][c-1]);
+                }
+            }
+        }
+
+        else if (maze.length == 1 || maze[0].length == 1) {
+            for (int i = 0; i < maze.length; i++) {
+                for (int j = 0; j < maze[0].length; j++) {
+                    maze[i][j].setVisited(true);
+                }
+            }
         }
     }
 
     public static void main(String[] args) {
-        MyMaze newMaze = makeMaze(20,20);
-        newMaze.printMaze(false);
+        MyMaze newMaze = makeMaze(1,1);
+        newMaze.printMaze();
+        newMaze.solveMaze();
+        System.out.println();
+        newMaze.printMaze();
     }
 }
