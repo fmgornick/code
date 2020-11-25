@@ -15,7 +15,7 @@ public class Main {
         while (true) {
             System.out.print("number of rows: ");
             try {
-                r = s.nextInt();
+                r = Integer.parseInt(s.nextLine());
                 if (r >= 1) break;
                 else {
                     System.out.println("please type an integer greater than or equal to 1");
@@ -32,7 +32,7 @@ public class Main {
         while (true) {
             System.out.print("number of columns: ");
             try {
-                c = s.nextInt();
+                c = Integer.parseInt(s.nextLine());
                 if (c >= 1) break;
                 else {
                     System.out.println("please type an integer greater than or equal to 1");
