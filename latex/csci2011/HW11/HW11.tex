@@ -1,0 +1,87 @@
+\documentclass[10pt]{article}
+
+\title{CSCI 2011 HW 11}
+\author{Fletcher Gornick}
+
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{colortbl}
+\usepackage{soul}
+\usepackage{xcolor}
+\usepackage[margin=1.0in]{geometry}
+
+\setlength{\parindent}{0cm}
+
+\begin{document}
+\maketitle
+
+\section{Chapter 9.1 Problem 16}
+\textbf{What is the exact term in $(\sqrt{x} - \frac{1}{\sqrt{x}})^{10}$ containing $x$?} \\
+We want the term where we get $x^1$, so we have $(\sqrt{x})^{10-r}(-\frac{1}{\sqrt{x}})^r = cx$ for some $r,c \in \mathbb{R}$.  In this
+case, $(\sqrt{x})^6 = x^3$ and $(-\frac{1}{\sqrt{x}})^4 = \frac{1}{x^2}$, so $(\sqrt{x})^6 \cdot (-\frac{1}{\sqrt{x}})^4 = x$, therefore $r = 4$.
+We know that the coefficient $c$ is equal to $\binom{n}{r}$, which is $\binom{10}{4} = 210$.  This means that our term containing $x$ is $210x$.
+
+\section{Chapter 9.2 Problem 20}
+\textbf{A coin collector has 10 identical silver coins and 6 identical gold coins.  In how many ways can he place these 16 coins in a
+    row if no two gold coins are placed next to each other?} \\
+Since no gold coins can touch, we can create a template for available spaces for the extra silver coins...
+$$\_\_\ GS\ \_\_\ GS\ \_\_\ GS\ \_\_\ GS\ \_\_\ GS\ \_\_\ G\ \_\_$$
+we can represent each gold silver pair (and the one single gold at the end) as delimeters for our extra 5 silver pieces.  Since there are 6
+delimeters and 5 silver coins, there are 11 total, giving us $\binom{11}{5} = 462$ possible orientations.
+
+\section{Chapter 10.1 Problem 18}
+\textbf{During the last class period of the semester, each student in a graduate computer science class with 10 students is required 
+    to give a brief report on his or her class project. The professor randomly selects the order in which the reports are to be given. 
+    Two students have been working on similar projects and would like to give their reports consecutively. What is the probability that 
+    this will happen?} \\\\
+the probability of them presenting consecutively is equal to the number of outcomes where they are constecutive divided by the total number of
+outcomes.  Since there are 10 presenting times, there are $10! = 3628800$ possible outcomes.  If person 1 and person 2 are paired together, then
+we can treat them as one single grouping giving us $9! = 362880$ different outcomes, but this only covers half.  If it must be person 1 then 
+person 2, then there are 362880 probabilities, but there's also the case where it's person 2 followed by person 1, which gives us another 362880
+probabilities.  Therefore, the probability of them going consecutively is $\frac{2!9!}{10!} = \frac{725760}{3628800} = \frac15$.
+\\\\\\\\
+
+\section{Chapter 10.2 Problem 24}
+\textbf{A student has an exam in a discrete mathematics class tomorrow. The exam is divided into two parts. The first part consists 
+    only of true-false questions and the second part consists only of multiple choice questions. She estimates that the probability of 
+    getting B or better on Part 1 is 0.8 and the probability of getting B or better on Part 2 is 0.6. She also estimates that the 
+    probability of getting B or better on both parts is 0.5.} \\\\
+    probability of getting a B or better on part 1 = $P(B1) = 0.8$ \\
+    probability of getting a B or better on part 2 = $P(B2) = 0.6$ \\
+    probability of getting a B or better on part 1 and part 2 = $P(B1 \cap B2) = 0.5$ 
+\begin{enumerate}[label=(\alph*)]
+    \item \textbf{What is the probability of getting B or better on Part 1 if she got a B or better on Part 2?} \\
+        $P(B1 \vert B2) = \frac{P(B1 \cap B2)}{P(B2)} = \frac{0.5}{0.6} = \frac56$.
+
+    \item \textbf{Are the events ``getting B or better on Part 1'' and ``getting B or better on Part 2'' independent?} \\
+        If $P(B1)$ and $P(B2)$ were independent, then $P(B1) = P(B1 \vert B2)$, but $P(B1) = 0.8$, and $P(B1 \vert B2) = 0.83$.  Since
+        $P(B1) \not= P(B1 \vert B2)$, the two events are NOT independent.
+\end{enumerate}
+
+\section{Chapter 10 Problem 20}
+\textbf{A bowl contains 3 red balls, 2 white balls and one blue ball.}
+
+\begin{enumerate}[label=(\alph*)]
+    \item \textbf{What is the expected number of white balls obtained if three balls are selected at random from the bowl?} \\
+        we can describe a random variable $X$ as the number of white balls obtained.  Since we are drawing three balls, and there are two
+        white balls, the possible values of $X$ are 0, 1, or 2.  We must first solve for the probabilities of each of these before finding the
+        expected value. \\
+
+        $P(X=0) = \frac{\binom33}{\binom63} + \frac{\binom32\binom11}{\binom63} = \frac15$ \\
+        $P(X=2) = \frac{\binom22\binom31}{\binom63} + \frac{\binom22\binom11}{\binom63} = \frac15$ \\
+        $P(X=1) = 1 - P(X=0) - P(X=2) = 1 - \frac15 - \frac15 = \frac35$ \\
+
+        Therefore, our expected value is $0 \cdot \frac15 + 1 \cdot \frac35 + 2 \cdot \frac15 = 1$.
+
+    \item \textbf{What is the expected number of white balls obtained if three balls are selected at random from the bowl, one at a 
+        time, where a ball is returned to the bowl after it is selected?} \\
+        In this case, we can create a new random variable Y, with possible values 0, 1, 2, and 3.  Again, we must first calculate the probabilities
+        of each possible outcome. 
+        \begin{align*}
+            P(X=0) = \Big(\frac46\Big)^3 = \frac{8}{27} && P(X=1) = 3 \cdot \Big(\frac26\Big) \cdot \Big(\frac46\Big)^2 = \frac49 \\
+            P(X=2) = 3 \cdot \Big(\frac26\Big)^2 \cdot \Big(\frac46\Big) = \frac29 && P(X=3) = \Big(\frac26\Big)^3 = \frac{1}{27}
+        \end{align*}
+        Therefore, our expected value is $0 \cdot \frac{8}{27} + 1 \cdot \frac49 + 2 \cdot \frac29 + 3 \cdot \frac{1}{27} = 1$.
+\end{enumerate}
+
+\end{document}
