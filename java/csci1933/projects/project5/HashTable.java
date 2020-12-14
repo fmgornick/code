@@ -21,6 +21,7 @@ public class HashTable<T extends Comparable<T>> {
     // displays the hash table as well as collision information
     public void display() {
         int count;
+        int nonEmptyIndexes = 0;
         int max = 0;
         float totalCollisions = 0;
         NGen<T> ptr;
@@ -36,6 +37,7 @@ public class HashTable<T extends Comparable<T>> {
                 ptr = ptr.getNext();
             }
 
+            if (count > 0) nonEmptyIndexes++;
             if (max < count) max = count;
             totalCollisions += count;
 
@@ -43,18 +45,34 @@ public class HashTable<T extends Comparable<T>> {
         }
 
         // extra collision information
-        System.out.printf("average collision length: %.2f\n", totalCollisions / table.length);
+        System.out.printf("average collision length: %.2f\n", totalCollisions / nonEmptyIndexes);
         System.out.println("longest chain: " + max);
     }
 
     // basic add function
     public void add(T item) {
-        table[hash1(item)] = new NGen(item, table[hash1(item)]);
+        NGen<T> ptr = table[hash1(item)];
+        boolean itemInHashTable = false;
+
+        while (ptr.getData() != "") {
+            if (ptr.getData().compareTo(item) == 0) itemInHashTable = true;
+            ptr = ptr.getNext();
+        }
+
+        if (!itemInHashTable) table[hash1(item)] = new NGen(item, table[hash1(item)]);
     }
 
     // depends on the hash function you want to use
     public void add(T item, int num) {
-        table[hash(item, num)] = new NGen(item, table[hash(item,num)]);
+        NGen<T> ptr = table[hash(item,num)];
+        boolean itemInHashTable = false;
+
+        while (ptr.getData() != "") {
+            if (ptr.getData().compareTo(item) == 0) itemInHashTable = true;
+            ptr = ptr.getNext();
+        }
+
+        if (!itemInHashTable) table[hash(item,num)] = new NGen(item, table[hash(item,num)]);
     }
 
     // adds entire file to hash table

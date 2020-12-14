@@ -23,8 +23,8 @@ program will again display the table and collision information.
 
 If you'd like, you can change which hash function is used, or the size of the hash
 table as well as the file that gets hashed.  For my program it seems as though 
-any hash function works fine for "keywords.txt" (table length: 97, longest chain: 3), 
-and hash4() is best for all the other files.  
+any hash function works fine for "keywords.txt" and hash4() is best for all the 
+other files.  
 
 But yeah that's pretty much it, feel free to play around with the table sizes,
 files, and hash functions.
