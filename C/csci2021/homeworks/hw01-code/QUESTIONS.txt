@@ -1,0 +1,242 @@
+                           _________________
+
+                            HW 01 QUESTIONS
+                           _________________
+
+
+Write your answers to the questions below directly in this text file to
+prepare for the associated quiz. Credit for the HW is earned by
+completing the online quiz.
+
+
+PROBLEM 1 `age.c'
+=================
+
+A
+~
+
+  Examine the source code for `age.c'. Compile it using the following
+  invocation of `gcc'
+  ,----
+  | gcc age.c
+  `----
+  This should create the executable `a.out'. Run this program using the
+  invocation.
+  ,----
+  | ./a.out
+  `----
+  Perform several runs of the program with the following values and
+  paste your output in the space below.
+
+  - Enter 16: 
+        You are 8409600 minutes old.
+        You're too young to do anything fun.
+
+  - Enter 18:
+        You are 9460800 minutes old.
+        You can vote but cannot legally imbibe alcohol.
+        I bet that hasn't stopped you from trying though...
+
+  - Enter 25:
+        You are 13140000 minutes old.
+        You may imbibe alcohol but cannot be president
+
+  - Enter 44
+        You are 23126400 minutes old.
+        You may imbibe alcohol but cannot be president
+
+
+B
+~
+
+  Analyze the code for `age.c' and describe a flaw in the conditional
+  structure towards the end that prevents the output:
+  ,----
+  | You can vote, drink, and be president.
+  | Try all three at once!
+  `----
+  from being printed.
+
+  Alter the code to fix this bug so that for ages 35 and larger, the
+  above text is printed. Paste your fixed code for the conditional below
+  and test it by recompiling and showing a demo run.
+
+  else if( age_years >= 21 && age_years < 35){
+
+
+C
+~
+
+  Attempt to enter some absurd ages for the age computation.
+  - Enter 5000
+  - Enter -5000
+  Describe anything strange that seems to be happening based your
+  understanding of how basic arithmetic is supposed to work.
+
+  Typing in a really large number gives us a negative number in minutes,
+  but the logic still works the same.
+
+  Also, typing in a large negative number gives us a positive number in
+  minutes, but again the logic in the if/else statements works fine.
+
+  If you happen to know WHY this strangeness is happening, describe it
+  below.  If not, you will find out soon.
+
+
+D
+~
+
+  Describe which function is used to print information to the screen.
+  Describe how it seems to work to substitute values into output and
+  what *format specifier* indicates an integer should be substituted.
+
+  the printf() function prints anything instide the quotations unless
+  preceeded by a backslash or percent sign.  %d must represent integer
+  values and the variable must come after the comma.
+
+
+E
+~
+
+  Describe what function is used to read typed input interactively from
+  a user in the `age.c' program.  Describe anything that seems strange
+  about this function or its arguments.
+
+  looks like it just takes in what the user types and outputs it if 
+  called.  You could also store the output into a variable by separating
+  the variable from the output with a comma.  Also an & is necessary for
+  whatever reason.
+
+  We will learn in not long why this bit of strangeness is necessary.
+
+
+PROBLEM 2 Collatz
+=================
+
+A
+~
+
+  Examine and compile the code associated with the collatz
+  program. There are three files associated with this program.
+  - `collatz_funcs.c' which defines two utility functions for computing
+    the Collatz sequence
+  - `collatz_main.c' which defines a `main()' function to compute a
+    Collatz sequence
+  - `collatz.h' header file which declares functions in
+    `collatz_funcs.c' so that they are known to `collatz_main.c'
+
+  To compile the program, use the following invocation of `gcc'
+  ,----
+  | gcc -o collatz collatz_funcs.c collatz_main.c
+  `----
+  This should create the program `collatz' which can be run with
+  ,----
+  | ./collatz
+  `----
+
+  Do so and enter inputs
+  - Starting integer 7
+  - Show output: 1
+
+  Paste the output below.
+
+        Step 0: 7
+        Step 1: 22
+        Step 2: 11
+        Step 3: 34
+        Step 4: 17
+        Step 5: 52
+        Step 6: 26
+        Step 7: 13
+        Step 8: 40
+        Step 9: 20
+        Step 10: 10
+        Step 11: 5
+        Step 12: 16
+        Step 13: 8
+        Step 14: 4
+        Step 15: 2
+        Step 16: 1
+
+.
+B
+~
+
+  Determine what the "dash-O" option used above for `gcc -o' does. For
+  example, what happens if one runs
+  ,----
+  | gcc -o GLIPGLOP collatz_funcs.c collatz_main.c
+  `----
+
+  it would create an output executable called GLIPGLOP created from the
+  two collatz files which can be run with ./GLIPGLOP
+
+  instead.  You may wish to use the `ls' command to list the files in
+  the current directory.
+
+  Describe what happens if you omit this option `-o' when compiling as
+  in
+  ,----
+  | gcc collatz_funcs.c collatz_main.c
+  `----
+
+  it would compile the two files creating an a.out executable
+
+
+C
+~
+
+  Attempt to compile only the file `collatz_main.c' by doing
+  ,----
+  | gcc -o something collatz_main.c
+  `----
+
+
+  This should result in an error. Show the output of that error and
+  determine why the compilation fails.
+
+Undefined symbols for architecture x86_64:
+  "_collatz_next", referenced from:
+      _main in collatz_main-bae5bf.o
+  "_collatz_steps", referenced from:
+      _main in collatz_main-bae5bf.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+
+the functions collatz_next and colltz_steps are defined in the 
+collatz_funcs.c file and referenced in the collatz_main.c file, so
+just compiling the main file leads to undefined references.
+
+
+
+D
+~
+
+  Attempt to compile only the file `collatz_funcs.c' by doing
+  ,----
+  | gcc -o something collatz_funcs.c
+  `----
+
+
+  This should result in an error. Show the output of that error and
+  determine why the compilation fails.
+
+Undefined symbols for architecture x86_64:
+  "_main", referenced from:
+     implicit entry/start for main executable
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+
+there's no main function, you must have a main function to
+compile.
+
+Review Course Syllabus
+======================
+
+  Make sure to review the Course Syllabus to acquaint yourself with
+  course policies such as the following.
+  - The PRIME DIRECTIVE to preserve academic integrity
+  - Fair collaboration with other students
+  - Late submission policies on assignments (projects, HW, quizzes, lab
+    work)
+  - Grading criteria and weighting on exams/assignments
