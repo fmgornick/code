@@ -57,7 +57,7 @@ QUIZ VOLE System
   system. Which of these describes VOLE best?
   - ( ) It's a web site that describes Unix commands making it easier to
     understand those systems.
-  - ( ) It's a web interface that gives you a Graphical Unix environment
+  - (X) It's a web interface that gives you a Graphical Unix environment
     without needing to install anything.
   - ( ) It's a terminal command that allows easy access to the UMN's
     computing systems.
@@ -71,7 +71,7 @@ QUIZ VOLE System
     Lab systems
   - ( ) It only provides a terminal interface so you need to learn a
     terminal text editor.
-  - ( ) It lags and ssssssssstalls frequently because doing graphics
+  - (X) It lags and ssssssssstalls frequently because doing graphics
     over the network requires a fast internet connection
   - ( ) It is not the opposite of a Mantis.
 
@@ -94,7 +94,7 @@ QUIZ Secure Shell
     `kauf0095' and allows anyone typing to the command to act as that
     user on `atlas' without password verification and without any
     encryption of the connection.
-  - ( ) Opens a secure connection to the machine `atlas' for the user
+  - (X) Opens a secure connection to the machine `atlas' for the user
     `kauf0095' and, after verifying a password, opens a terminal/shell
     on that machine for further commands.
 
@@ -104,7 +104,7 @@ QUIZ Secure Shell
   `----
 
 
-  - ( ) It copies the directory `hw01-code' recursively to the remote
+  - (X) It copies the directory `hw01-code' recursively to the remote
     machine `atlas' for user `kauf0095' allowing the contents of the
     entire folder to be moved from the local computer to a different
     computer. Password verification is required for user `kauf0095'.
@@ -149,7 +149,7 @@ QUIZ Command Basics
   |       D. lists the files in the current folder, 
   |       E. moves up one folder
   | 
-  | - ( ) A. Changes to your home directory/folder, 
+  | - (X) A. Changes to your home directory/folder, 
   |       B. creates a folder named csci2021
   |       C. changes into the folder csci2021, 
   |       D. lists the files in the current folder,
