@@ -230,10 +230,9 @@ INPUT sections/projects.tex
 INPUT sections/projects.tex
 INPUT sections/scholarships.tex
 INPUT sections/scholarships.tex
-INPUT sections/extracurricular.tex
-INPUT sections/extracurricular.tex
-INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
 INPUT /usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map
+INPUT sections/extracurricular.tex
+INPUT sections/extracurricular.tex
 INPUT resume.aux
 INPUT ./resume.out
 INPUT ./resume.out
