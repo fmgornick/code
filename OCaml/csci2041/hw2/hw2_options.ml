@@ -13,12 +13,12 @@ let x = Some 100
 let x_as_list =
   match x with
   | None -> []
-  | Some x ->
-    (* typing context: <FILL IN YOUR ANSWER> *)
-    (* dynamic environment: <FILL IN YOUR ANSWER> *)
+  | Some x -> 
+    (* typing context: x : int *)
+    (* dynamic environment: x --> 100 *)
     [x]
 
 ;; (* end of `x_as_list` *)
 
-(* typing context: <FILL IN YOUR ANSWER> *)
-(* dynamic environment: <FILL IN YOUR ANSWER> *)
+(* typing context: x : int option, x_as_list : int list *)
+(* dynamic environment: x --> Some 100, x_as_list --> [100] *)

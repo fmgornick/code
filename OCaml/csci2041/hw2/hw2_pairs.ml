@@ -10,11 +10,11 @@ let x = (1, true)
 let swapped_x =
   match x with
   | (x, y) ->
-    (* typing context: <FILL IN YOUR ANSWER> *)
-    (* dynamic environment: <FILL IN YOUR ANSWER> *)
+    (* typing context: x : int, y : bool *)
+    (* dynamic environment: x --> 1, y --> true *)
     (y, x)
 
 ;; (* end of `x_as_list` *)
 
-(* typing context: <FILL IN YOUR ANSWER> *)
-(* dynamic environment: <FILL IN YOUR ANSWER> *)
+(* typing context: x : int * bool, swapped_x : bool * int *)
+(* dynamic environment: x --> (1, true), swapped_x --> (true, 1) *)

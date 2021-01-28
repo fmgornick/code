@@ -18,7 +18,9 @@ let y : int * int = (2, 3) (* 2/3 *)
    guaranteed to be non-zero and do not worry about integer
    overflow.
  *)
-let x_times_y : int * int = (* <FILL IN YOUR ANSWER> *)
+let x_times_y : int * int = 
+   match x with (x1,x2) ->
+      match y with (y1,y2) -> (x1*y1,x2*y2)
 
 (* `x_minus_y` should give the result of subtracting `y` from `x`.
 
@@ -29,6 +31,8 @@ let x_times_y : int * int = (* <FILL IN YOUR ANSWER> *)
    are guaranteed to be non-zero and do not worry about integer
    overflow.
  *)
-let x_minus_y : int * int = (* <FILL IN YOUR ANSWER> *)
+let x_minus_y : int * int = 
+   match x with (x1,x2) ->
+      match y with (y1,y2) -> (x1*y2-y1*x2,x2*y2)
 
 (* No need to fill in dynamic environments or typing contexts. *)
