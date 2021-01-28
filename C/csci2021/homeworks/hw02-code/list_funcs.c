@@ -25,6 +25,7 @@ char *list_get(list_t *list, int index){
   // bounds, add this later...
   int i = 0;
   node_t *ptr = list->head;
+  if (index >= list->size) return NULL;
   while(i!=index){
     i++;
     ptr = ptr->next;
@@ -57,12 +58,12 @@ void node_print_all(node_t *cur, int index){
 int list_insert(list_t *list, char *new_data){
   node_t *result = node_insert(list->head, new_data);
   if(result == NULL){           // duplicate found, ignore
-    return 1;                   // 0 indicates not modified
+    return 0;                   // 0 indicates not modified
   }
   else{                         // successful insert
     list->head = result;        // head may have changed
     list->size++;               // size now larger
-    return 0;                   // 1 indicates modifed
+    return 1;                   // 1 indicates modifed
   }
 }
 
@@ -113,6 +114,11 @@ void list_clear(list_t* list){
 ///////////////////////////////////////////////////////////////////////////////// 
 
 // Returns 1 if the list contains the given query and 0 otherwise.
-//int list_contains(list_t *list, char *query){
-// IMPLEMENT ME
-//}
+int list_contains(list_t *list, char *query){
+    node_t *ptr = list->head;
+    while (ptr!=NULL) {
+        if (strcmp(ptr->data,query)==0) return 1;
+        ptr=ptr->next;
+    }
+    return 0;
+}

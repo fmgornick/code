@@ -204,6 +204,10 @@ A
   mention what else this function is good for and what it returns when
   the end of input is reached.
 
+  the first argument is the named input stream, since stdin is used for 
+  every fscanf in the file, scanf would have also worked.  It's good for
+  reading from files, and it returns the number of items stored.
+
 
 B
 ~
@@ -213,6 +217,10 @@ B
   call it, and its return value. Describe how it is used to identify
   commands typed by a user in list_main.c. Also determine whether this
   function gives any guidance on the sorting order of strings.
+
+  strcmp(string1, string2) is how you call it.  It returns a 0 if they are
+  equal.  If the sorted order of string 1 is less than the sorted order
+  of string 2 (in ascii values) it returns a negative number and vv.
 
 
 C

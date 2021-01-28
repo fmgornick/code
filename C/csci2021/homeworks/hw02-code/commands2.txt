@@ -1,0 +1,10 @@
+insert spongebob
+insert squidward
+insert patrick
+insert sandy
+print
+get 2
+get 5
+contains sandy
+contains plankton
+exit

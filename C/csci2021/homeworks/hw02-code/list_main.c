@@ -82,7 +82,20 @@ int main(int argc, char *argv[]){
       list_print_all(&list);
     }
 
-    // add case for "contains" command which uses the list_contains() function
+    else if ( strcmp("contains", cmd)==0 ){
+      fscanf(stdin,"%s",cmd);
+      if(echo){
+        printf("contains %s\n",cmd);
+      }
+
+      success = list_contains(&list,cmd);
+      if(success) {
+        printf("\'%s\' is present\n",cmd);
+      }
+      else {
+        printf("not found\n");
+      }
+    }
 
     else{                                 // unknown command
       if(echo){
