@@ -122,3 +122,30 @@ int list_contains(list_t *list, char *query){
     }
     return 0;
 }
+
+int list_remove(list_t *list, char *query) {
+  if (list->size==0) return 0;
+
+  else if (strcmp(list->head->data,query)==0) {
+    node_t *tmp = list->head;
+    list->head = list->head->next;
+    list->size -= 1;
+    free(tmp);
+    return 1;
+  }
+
+  else {
+    node_t *ptr = list->head;
+    while (ptr->next != NULL) {
+      if (strcmp(ptr->next->data,query)==0) {
+        node_t *freeit = ptr->next;
+        ptr->next = freeit->next;
+        list->size -= 1;
+        free(freeit);
+        return 1;
+      }
+      else ptr = ptr->next;
+    }
+    return 0;
+  }
+}

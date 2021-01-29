@@ -97,6 +97,18 @@ int main(int argc, char *argv[]){
       }
     }
 
+    else if (strcmp("remove", cmd) == 0) {
+      fscanf(stdin,"%s",cmd);
+      if (echo) {
+        printf("remove %s\n",cmd);
+      }
+
+      success = list_remove(&list,cmd);
+      if(!success) {
+        printf("remove failed\n");
+      }
+    }
+
     else{                                 // unknown command
       if(echo){
         printf("%s\n",cmd);

@@ -40,6 +40,8 @@ int list_insert(list_t *list, char *new_data);
 // if the list is modified or 0 if not modified due to duplicate
 // entries
 
+int list_remove(list_t *list, char *data);
+
 node_t *node_insert(node_t *cur, char *new_data);
 // Insert in the new_data in sorted order to the given list using
 // recursion.  Uses recursion to unstitch the list then re-stitch it
