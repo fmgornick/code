@@ -1,0 +1,7 @@
+{
+    // Tests counting linebreaks (\n and end of string) in a string
+    char string[]="O\nM\nG";
+    int count = count_linebreaks(string);
+    printf("result: %d\n", count);
+}
+result: 3

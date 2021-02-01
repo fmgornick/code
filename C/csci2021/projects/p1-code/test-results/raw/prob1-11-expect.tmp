@@ -1,0 +1,11 @@
+{
+    // Tests locating linebreak indices in a string
+    char string[]="10\n20\n30\n40 50\n60 70 80\n 90\n100\n110 120\n130";
+    int count = -1;
+    int *linebreaks = find_linebreaks(string, &count);
+    printf("count: %d\n",count);
+    printf("array: "); print_int_array(linebreaks, count); printf("\n");
+    free(linebreaks);
+}
+count: 9
+array: [ 2,  5,  8, 14, 23, 27, 31, 39, 43]

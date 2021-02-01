@@ -1,0 +1,9 @@
+{
+    // Tests replacing characters in a string
+    char string[]=
+      "Four score and seven years ago our forefathers brought forth...";
+    string_replace_char(string, 'F', 'P');
+    string_replace_char(string, 'f', 'p');
+    printf("result: '%s'\n", string);
+}
+result: 'Pour score and seven years ago our porepathers brought porth...'

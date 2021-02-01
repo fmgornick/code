@@ -1,0 +1,80 @@
+{
+    // Tests load_font() on the font_capsonly.txt file.
+    // This font does not have all ASCII codepoints defined
+    // so some of the glyphs will appear as defaults / XXXs.
+    char *font_file = "data/font_capsonly.txt";
+    font_t *font = font_load(font_file);
+    char *string =
+" ! \" # $ % & ' ( )\n\
++ * , - . / 0 1 2 3\n\
+4 5 6 7 8 9 : ; < =\n\
+> ? @ A B C D E F G\n\
+H I J K L M N O P Q\n\
+R S T U V W X Y Z [\n\
+\\ ] ^ _ ` a b c d e\n\
+f g h i j k l m n o\n\
+p q r s t u v w x y\n\
+z { | } ~";
+    print_fontified_linebreaks(string, font);
+    font_free(font);
+}
+   _   34XXXX  35XXXX  36XXXX  37XXXX  38XXXX  39XXXX  40XXXX  41XXXX
+  | |  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+  | |  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+  |_|  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+  (_)  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+       XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+43XXXX  42XXXX  44XXXX  45XXXX  46XXXX  47XXXX  48XXXX  49XXXX  50XXXX  51XXXX
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+52XXXX  53XXXX  54XXXX  55XXXX  56XXXX  57XXXX       59XXXX  60XXXX  61XXXX
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX   _   XXXXXX  XXXXXX  XXXXXX
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  (_)  XXXXXX  XXXXXX  XXXXXX
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX   _   XXXXXX  XXXXXX  XXXXXX
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  (_)  XXXXXX  XXXXXX  XXXXXX
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX       XXXXXX  XXXXXX  XXXXXX
+62XXXX  63XXXX  64XXXX      _       ____      ____    ____     _____    _____     ____ 
+XXXXXX  XXXXXX  XXXXXX     / \     | __ )    / ___|  |  _ \   | ____|  |  ___|   / ___|
+XXXXXX  XXXXXX  XXXXXX    / _ \    |  _ \   | |      | | | |  |  _|    | |_     | |  _ 
+XXXXXX  XXXXXX  XXXXXX   / ___ \   | |_) |  | |___   | |_| |  | |___   |  _|    | |_| |
+XXXXXX  XXXXXX  XXXXXX  /_/   \_\  |____/    \____|  |____/   |_____|  |_|       \____|
+XXXXXX  XXXXXX  XXXXXX                                                                 
+ _   _    ___        _    _  __   _        __  __    _   _     ___     ____      ___  
+| | | |  |_ _|      | |  | |/ /  | |      |  \/  |  | \ | |   / _ \   |  _ \    / _ \ 
+| |_| |   | |    _  | |  | ' /   | |      | |\/| |  |  \| |  | | | |  | |_) |  | | | |
+|  _  |   | |   | |_| |  | . \   | |___   | |  | |  | |\  |  | |_| |  |  __/   | |_| |
+|_| |_|  |___|   \___/   |_|\_\  |_____|  |_|  |_|  |_| \_|   \___/   |_|       \__\_\
+                                                                                      
+ ____     ____     _____    _   _   __     __  __        __  __  __  __   __   _____  91XXXX
+|  _ \   / ___|   |_   _|  | | | |  \ \   / /  \ \      / /  \ \/ /  \ \ / /  |__  /  XXXXXX
+| |_) |  \___ \     | |    | | | |   \ \ / /    \ \ /\ / /    \  /    \ V /     / /   XXXXXX
+|  _ <    ___) |    | |    | |_| |    \ V /      \ V  V /     /  \     | |     / /_   XXXXXX
+|_| \_\  |____/     |_|     \___/      \_/        \_/\_/     /_/\_\    |_|    /____|  XXXXXX
+                                                                                      XXXXXX
+92XXXX  93XXXX  94XXXX  95XXXX  96XXXX  97XXXX  98XXXX  99XXXX  100XXX  101XXX
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+102XXX  103XXX  104XXX  105XXX  106XXX  107XXX  108XXX  109XXX  110XXX  111XXX
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+112XXX  113XXX  114XXX  115XXX  116XXX  117XXX  118XXX  119XXX  120XXX  121XXX
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+122XXX  123XXX  124XXX  125XXX  126XXX
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX

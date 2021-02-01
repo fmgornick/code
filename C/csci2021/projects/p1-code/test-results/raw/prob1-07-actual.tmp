@@ -1,0 +1,8 @@
+{
+    // Tests counting linebreaks (\n and end of string) in a string
+    char string[]=
+      "If you lie to\nthe compiler,\nit will get\nits revenge.\n-Henry Spencer";
+    int count = count_linebreaks(string);
+    printf("result: %d\n", count);
+}
+result: 5

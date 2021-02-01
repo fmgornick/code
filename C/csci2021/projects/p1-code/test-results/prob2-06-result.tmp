@@ -1,0 +1,223 @@
+(TEST 6) load_font_3
+COMMENTS:
+
+program: ./test_banlet_funcs2 load_font_3
+Failure messages:
+- FAILURE(139) due to Kill Signal from OS: likely a SEGFAULT occured
+- FAILURE: Valgrind reports reachable memory, may need to add free() or fclose()
+- FAILURE: Output Mismatch at lines marked
+
+--- Side by Side Differences ---
+- Expect output in: test-results/raw/prob2-06-expect.tmp
+- Actual output in: test-results/raw/prob2-06-actual.tmp
+- Differing lines have a character like '|' '>' or '<' in the middle
+==== EXPECT ====                                                                               ==== ACTUAL ====                                                                            
+{                                                                                              {
+    // Tests load_font() on the font_capsonly.txt file.                                            // Tests load_font() on the font_capsonly.txt file.
+    // This font does not have all ASCII codepoints defined                                        // This font does not have all ASCII codepoints defined
+    // so some of the glyphs will appear as defaults / XXXs.                                       // so some of the glyphs will appear as defaults / XXXs.
+    char *font_file = "data/font_capsonly.txt";                                                    char *font_file = "data/font_capsonly.txt";
+    font_t *font = font_load(font_file);                                                           font_t *font = font_load(font_file);
+    char *string =                                                                                 char *string =
+" ! \" # $ % & ' ( )\n\                                                                        " ! \" # $ % & ' ( )\n\
++ * , - . / 0 1 2 3\n\                                                                         + * , - . / 0 1 2 3\n\
+4 5 6 7 8 9 : ; < =\n\                                                                         4 5 6 7 8 9 : ; < =\n\
+> ? @ A B C D E F G\n\                                                                         > ? @ A B C D E F G\n\
+H I J K L M N O P Q\n\                                                                         H I J K L M N O P Q\n\
+R S T U V W X Y Z [\n\                                                                         R S T U V W X Y Z [\n\
+\\ ] ^ _ ` a b c d e\n\                                                                        \\ ] ^ _ ` a b c d e\n\
+f g h i j k l m n o\n\                                                                         f g h i j k l m n o\n\
+p q r s t u v w x y\n\                                                                         p q r s t u v w x y\n\
+z { | } ~";                                                                                    z { | } ~";
+    print_fontified_linebreaks(string, font);                                                      print_fontified_linebreaks(string, font);
+    font_free(font);                                                                               font_free(font);
+}                                                                                              }
+   _   34XXXX  35XXXX  36XXXX  37XXXX  38XXXX  39XXXX  40XXXX  41XXXX                        <
+  | |  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX                        <
+  | |  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX                        <
+  |_|  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX                        <
+  (_)  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX                        <
+       XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX                        <
+43XXXX  42XXXX  44XXXX  45XXXX  46XXXX  47XXXX  48XXXX  49XXXX  50XXXX  51XXXX               <
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX               <
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX               <
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX               <
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX               <
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX               <
+52XXXX  53XXXX  54XXXX  55XXXX  56XXXX  57XXXX       59XXXX  60XXXX  61XXXX                  <
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX   _   XXXXXX  XXXXXX  XXXXXX                  <
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  (_)  XXXXXX  XXXXXX  XXXXXX                  <
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX   _   XXXXXX  XXXXXX  XXXXXX                  <
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  (_)  XXXXXX  XXXXXX  XXXXXX                  <
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX       XXXXXX  XXXXXX  XXXXXX                  <
+62XXXX  63XXXX  64XXXX      _       ____      ____    ____     _____    _____     ____       <
+XXXXXX  XXXXXX  XXXXXX     / \     | __ )    / ___|  |  _ \   | ____|  |  ___|   / ___|      <
+XXXXXX  XXXXXX  XXXXXX    / _ \    |  _ \   | |      | | | |  |  _|    | |_     | |  _       <
+XXXXXX  XXXXXX  XXXXXX   / ___ \   | |_) |  | |___   | |_| |  | |___   |  _|    | |_| |      <
+XXXXXX  XXXXXX  XXXXXX  /_/   \_\  |____/    \____|  |____/   |_____|  |_|       \____|      <
+XXXXXX  XXXXXX  XXXXXX                                                                       <
+ _   _    ___        _    _  __   _        __  __    _   _     ___     ____      ___         <
+| | | |  |_ _|      | |  | |/ /  | |      |  \/  |  | \ | |   / _ \   |  _ \    / _ \        <
+| |_| |   | |    _  | |  | ' /   | |      | |\/| |  |  \| |  | | | |  | |_) |  | | | |       <
+|  _  |   | |   | |_| |  | . \   | |___   | |  | |  | |\  |  | |_| |  |  __/   | |_| |       <
+|_| |_|  |___|   \___/   |_|\_\  |_____|  |_|  |_|  |_| \_|   \___/   |_|       \__\_\       <
+                                                                                             <
+ ____     ____     _____    _   _   __     __  __        __  __  __  __   __   _____  91XXXX <
+|  _ \   / ___|   |_   _|  | | | |  \ \   / /  \ \      / /  \ \/ /  \ \ / /  |__  /  XXXXXX <
+| |_) |  \___ \     | |    | | | |   \ \ / /    \ \ /\ / /    \  /    \ V /     / /   XXXXXX <
+|  _ <    ___) |    | |    | |_| |    \ V /      \ V  V /     /  \     | |     / /_   XXXXXX <
+|_| \_\  |____/     |_|     \___/      \_/        \_/\_/     /_/\_\    |_|    /____|  XXXXXX <
+                                                                                      XXXXXX <
+92XXXX  93XXXX  94XXXX  95XXXX  96XXXX  97XXXX  98XXXX  99XXXX  100XXX  101XXX               <
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX               <
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX               <
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX               <
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX               <
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX               <
+102XXX  103XXX  104XXX  105XXX  106XXX  107XXX  108XXX  109XXX  110XXX  111XXX               <
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX               <
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX               <
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX               <
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX               <
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX               <
+112XXX  113XXX  114XXX  115XXX  116XXX  117XXX  118XXX  119XXX  120XXX  121XXX               <
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX               <
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX               <
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX               <
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX               <
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX               <
+122XXX  123XXX  124XXX  125XXX  126XXX                                                       <
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX                                                       <
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX                                                       <
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX                                                       <
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX                                                       <
+XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX                                                       <
+--- Line Differences ---
+EXPECT:  21)    _   34XXXX  35XXXX  36XXXX  37XXXX  38XXXX  39XXXX  40XXXX  41XXXX
+EXPECT:  22)   | |  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+EXPECT:  23)   | |  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+EXPECT:  24)   |_|  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+EXPECT:  25)   (_)  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+EXPECT:  26)        XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+EXPECT:  27) 43XXXX  42XXXX  44XXXX  45XXXX  46XXXX  47XXXX  48XXXX  49XXXX  50XXXX  51XXXX
+EXPECT:  28) XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+EXPECT:  29) XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+EXPECT:  30) XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+EXPECT:  31) XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+EXPECT:  32) XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+EXPECT:  33) 52XXXX  53XXXX  54XXXX  55XXXX  56XXXX  57XXXX       59XXXX  60XXXX  61XXXX
+EXPECT:  34) XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX   _   XXXXXX  XXXXXX  XXXXXX
+EXPECT:  35) XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  (_)  XXXXXX  XXXXXX  XXXXXX
+EXPECT:  36) XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX   _   XXXXXX  XXXXXX  XXXXXX
+EXPECT:  37) XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  (_)  XXXXXX  XXXXXX  XXXXXX
+EXPECT:  38) XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX       XXXXXX  XXXXXX  XXXXXX
+EXPECT:  39) 62XXXX  63XXXX  64XXXX      _       ____      ____    ____     _____    _____     ____ 
+EXPECT:  40) XXXXXX  XXXXXX  XXXXXX     / \     | __ )    / ___|  |  _ \   | ____|  |  ___|   / ___|
+EXPECT:  41) XXXXXX  XXXXXX  XXXXXX    / _ \    |  _ \   | |      | | | |  |  _|    | |_     | |  _ 
+EXPECT:  42) XXXXXX  XXXXXX  XXXXXX   / ___ \   | |_) |  | |___   | |_| |  | |___   |  _|    | |_| |
+EXPECT:  43) XXXXXX  XXXXXX  XXXXXX  /_/   \_\  |____/    \____|  |____/   |_____|  |_|       \____|
+EXPECT:  44) XXXXXX  XXXXXX  XXXXXX                                                                 
+EXPECT:  45)  _   _    ___        _    _  __   _        __  __    _   _     ___     ____      ___  
+EXPECT:  46) | | | |  |_ _|      | |  | |/ /  | |      |  \/  |  | \ | |   / _ \   |  _ \    / _ \ 
+EXPECT:  47) | |_| |   | |    _  | |  | ' /   | |      | |\/| |  |  \| |  | | | |  | |_) |  | | | |
+EXPECT:  48) |  _  |   | |   | |_| |  | . \   | |___   | |  | |  | |\  |  | |_| |  |  __/   | |_| |
+EXPECT:  49) |_| |_|  |___|   \___/   |_|\_\  |_____|  |_|  |_|  |_| \_|   \___/   |_|       \__\_\
+EXPECT:  50)                                                                                       
+EXPECT:  51)  ____     ____     _____    _   _   __     __  __        __  __  __  __   __   _____  91XXXX
+EXPECT:  52) |  _ \   / ___|   |_   _|  | | | |  \ \   / /  \ \      / /  \ \/ /  \ \ / /  |__  /  XXXXXX
+EXPECT:  53) | |_) |  \___ \     | |    | | | |   \ \ / /    \ \ /\ / /    \  /    \ V /     / /   XXXXXX
+EXPECT:  54) |  _ <    ___) |    | |    | |_| |    \ V /      \ V  V /     /  \     | |     / /_   XXXXXX
+EXPECT:  55) |_| \_\  |____/     |_|     \___/      \_/        \_/\_/     /_/\_\    |_|    /____|  XXXXXX
+EXPECT:  56)                                                                                       XXXXXX
+EXPECT:  57) 92XXXX  93XXXX  94XXXX  95XXXX  96XXXX  97XXXX  98XXXX  99XXXX  100XXX  101XXX
+EXPECT:  58) XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+EXPECT:  59) XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+EXPECT:  60) XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+EXPECT:  61) XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+EXPECT:  62) XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+EXPECT:  63) 102XXX  103XXX  104XXX  105XXX  106XXX  107XXX  108XXX  109XXX  110XXX  111XXX
+EXPECT:  64) XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+EXPECT:  65) XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+EXPECT:  66) XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+EXPECT:  67) XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+EXPECT:  68) XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+EXPECT:  69) 112XXX  113XXX  114XXX  115XXX  116XXX  117XXX  118XXX  119XXX  120XXX  121XXX
+EXPECT:  70) XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+EXPECT:  71) XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+EXPECT:  72) XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+EXPECT:  73) XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+EXPECT:  74) XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+EXPECT:  75) 122XXX  123XXX  124XXX  125XXX  126XXX
+EXPECT:  76) XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+EXPECT:  77) XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+EXPECT:  78) XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+EXPECT:  79) XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+EXPECT:  80) XXXXXX  XXXXXX  XXXXXX  XXXXXX  XXXXXX
+
+--- Valgrind Log from: test-results/raw/prob2-06-valgrd.tmp ---
+==295741== Memcheck, a memory error detector
+==295741== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==295741== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==295741== Command: ./test_banlet_funcs2 load_font_3
+==295741== Parent PID: 295740
+==295741== 
+==295741== Invalid write of size 1
+==295741==    at 0x109BA4: print_fontified_linebreaks (banlet_funcs.c:139)
+==295741==    by 0x109700: main (test_banlet_funcs2.c:127)
+==295741==  Address 0x4aa4102 is 0 bytes after a block of size 18 alloc'd
+==295741==    at 0x483DFAF: realloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==295741==    by 0x109B2A: print_fontified_linebreaks (banlet_funcs.c:135)
+==295741==    by 0x109700: main (test_banlet_funcs2.c:127)
+==295741== 
+==295741== Invalid read of size 1
+==295741==    at 0x483EFB4: __strlen_sse2 (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==295741==    by 0x109BB2: print_fontified_linebreaks (banlet_funcs.c:141)
+==295741==    by 0x109700: main (test_banlet_funcs2.c:127)
+==295741==  Address 0x4aa4102 is 0 bytes after a block of size 18 alloc'd
+==295741==    at 0x483DFAF: realloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==295741==    by 0x109B2A: print_fontified_linebreaks (banlet_funcs.c:135)
+==295741==    by 0x109700: main (test_banlet_funcs2.c:127)
+==295741== 
+==295741== Invalid read of size 4
+==295741==    at 0x109A96: print_fontified (banlet_funcs.c:90)
+==295741==    by 0x109BC6: print_fontified_linebreaks (banlet_funcs.c:141)
+==295741==    by 0x109700: main (test_banlet_funcs2.c:127)
+==295741==  Address 0x0 is not stack'd, malloc'd or (recently) free'd
+==295741== 
+==295741== 
+==295741== Process terminating with default action of signal 11 (SIGSEGV)
+==295741==  Access not within mapped region at address 0x0
+==295741==    at 0x109A96: print_fontified (banlet_funcs.c:90)
+==295741==    by 0x109BC6: print_fontified_linebreaks (banlet_funcs.c:141)
+==295741==    by 0x109700: main (test_banlet_funcs2.c:127)
+==295741==  If you believe this happened as a result of a stack
+==295741==  overflow in your program's main thread (unlikely but
+==295741==  possible), you can try to increase the size of the
+==295741==  main thread stack using the --main-stacksize= flag.
+==295741==  The main thread stack size used in this run was 8388608.
+==295741== 
+==295741== HEAP SUMMARY:
+==295741==     in use at exit: 58 bytes in 2 blocks
+==295741==   total heap usage: 3 allocs, 1 frees, 58 bytes allocated
+==295741== 
+==295741== 18 bytes in 1 blocks are still reachable in loss record 1 of 2
+==295741==    at 0x483DFAF: realloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==295741==    by 0x109B2A: print_fontified_linebreaks (banlet_funcs.c:135)
+==295741==    by 0x109700: main (test_banlet_funcs2.c:127)
+==295741== 
+==295741== 40 bytes in 1 blocks are still reachable in loss record 2 of 2
+==295741==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==295741==    by 0x1098FA: find_linebreaks (banlet_funcs.c:53)
+==295741==    by 0x109ADA: print_fontified_linebreaks (banlet_funcs.c:129)
+==295741==    by 0x109700: main (test_banlet_funcs2.c:127)
+==295741== 
+==295741== LEAK SUMMARY:
+==295741==    definitely lost: 0 bytes in 0 blocks
+==295741==    indirectly lost: 0 bytes in 0 blocks
+==295741==      possibly lost: 0 bytes in 0 blocks
+==295741==    still reachable: 58 bytes in 2 blocks
+==295741==         suppressed: 0 bytes in 0 blocks
+==295741== 
+==295741== For lists of detected and suppressed errors, rerun with: -s
+==295741== ERROR SUMMARY: 3 errors from 3 contexts (suppressed: 0 from 0)
+

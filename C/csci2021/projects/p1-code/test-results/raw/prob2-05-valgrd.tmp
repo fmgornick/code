@@ -1,0 +1,48 @@
+==297266== Memcheck, a memory error detector
+==297266== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==297266== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==297266== Command: ./test_banlet_funcs2 load_font_2
+==297266== Parent PID: 297265
+==297266== 
+==297266== Invalid read of size 4
+==297266==    at 0x109A96: print_fontified (banlet_funcs.c:90)
+==297266==    by 0x109BCC: print_fontified_linebreaks (banlet_funcs.c:141)
+==297266==    by 0x10964D: main (test_banlet_funcs2.c:105)
+==297266==  Address 0x0 is not stack'd, malloc'd or (recently) free'd
+==297266== 
+==297266== 
+==297266== Process terminating with default action of signal 11 (SIGSEGV)
+==297266==  Access not within mapped region at address 0x0
+==297266==    at 0x109A96: print_fontified (banlet_funcs.c:90)
+==297266==    by 0x109BCC: print_fontified_linebreaks (banlet_funcs.c:141)
+==297266==    by 0x10964D: main (test_banlet_funcs2.c:105)
+==297266==  If you believe this happened as a result of a stack
+==297266==  overflow in your program's main thread (unlikely but
+==297266==  possible), you can try to increase the size of the
+==297266==  main thread stack using the --main-stacksize= flag.
+==297266==  The main thread stack size used in this run was 8388608.
+==297266== 
+==297266== HEAP SUMMARY:
+==297266==     in use at exit: 51 bytes in 2 blocks
+==297266==   total heap usage: 3 allocs, 1 frees, 51 bytes allocated
+==297266== 
+==297266== 11 bytes in 1 blocks are still reachable in loss record 1 of 2
+==297266==    at 0x483DFAF: realloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==297266==    by 0x109B2A: print_fontified_linebreaks (banlet_funcs.c:135)
+==297266==    by 0x10964D: main (test_banlet_funcs2.c:105)
+==297266== 
+==297266== 40 bytes in 1 blocks are still reachable in loss record 2 of 2
+==297266==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==297266==    by 0x1098FA: find_linebreaks (banlet_funcs.c:53)
+==297266==    by 0x109ADA: print_fontified_linebreaks (banlet_funcs.c:129)
+==297266==    by 0x10964D: main (test_banlet_funcs2.c:105)
+==297266== 
+==297266== LEAK SUMMARY:
+==297266==    definitely lost: 0 bytes in 0 blocks
+==297266==    indirectly lost: 0 bytes in 0 blocks
+==297266==      possibly lost: 0 bytes in 0 blocks
+==297266==    still reachable: 51 bytes in 2 blocks
+==297266==         suppressed: 0 bytes in 0 blocks
+==297266== 
+==297266== For lists of detected and suppressed errors, rerun with: -s
+==297266== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)

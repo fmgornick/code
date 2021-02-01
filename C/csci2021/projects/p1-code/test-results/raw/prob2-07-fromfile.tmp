@@ -1,0 +1,12 @@
+{
+    // Tests taht load_font() returns NULL if font is not found
+    char *font_file = "data/no_such_font.txt.txt";
+    font_t *font = font_load(font_file);
+    if(font != NULL){
+      printf("What the deuce just happened?\n");
+    }
+    else{
+      printf("NULL returned correctly\n");
+    }
+}
+NULL returned correctly

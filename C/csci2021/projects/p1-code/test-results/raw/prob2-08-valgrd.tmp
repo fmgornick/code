@@ -1,0 +1,15 @@
+==294426== Memcheck, a memory error detector
+==294426== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==294426== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==294426== Command: ./banlet_main Hello\ world!
+==294426== Parent PID: 294425
+==294426== 
+==294426== 
+==294426== HEAP SUMMARY:
+==294426==     in use at exit: 0 bytes in 0 blocks
+==294426==   total heap usage: 3 allocs, 3 frees, 17 bytes allocated
+==294426== 
+==294426== All heap blocks were freed -- no leaks are possible
+==294426== 
+==294426== For lists of detected and suppressed errors, rerun with: -s
+==294426== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

@@ -1,0 +1,1755 @@
+#+TITLE: Problem 3 hashset_main application
+# Set defaults including to use Valgrind off the bat for all tests.
+#+TESTY: PREFIX="prob3"
+#+TESTY: PROGRAM='./hashset_main -echo'
+#+TESTY: PROMPT='HS|>'
+#+TESTY: USE_VALGRIND=1
+
+* Start, Print, Quit
+Starts the program, prints what should be an empty set, then issues
+the quit command which should end the program
+
+#+BEGIN_SRC sh
+Hashset Application
+Commands:
+  hashcode <item>  : prints out the numeric hash code for the given key (does not change the hash set)
+  contains <item>  : prints the value associated with the given item or NOT PRESENT
+  add <item>       : inserts the given item into the hash set, reports existing items
+  print            : prints all items in the hash set in the order they were addded
+  structure        : prints detailed structure of the hash set
+  clear            : reinitializes hash set to be empty with default size
+  save <file>      : writes the contents of the hash set to the given file
+  load <file>      : clears the current hash set and loads the one in the given file
+  next_prime <int> : if <int> is prime, prints it, otherwise finds the next prime and prints it
+  expand           : expands memory size of hash set to reduce its load factor
+  bye              : exit the program
+HS|> print
+HS|> bye
+#+END_SRC
+
+* Check for End of Input
+Checks that the main() loop detects EOF when scanning typed input and
+exits.  When working interactively in a Unix terminal typing Ctrl-d
+(Control "d") will indicate the end of input. When piping a script in
+this happens automatically. If this test fails, ensure main() is
+looking for EOF on scanf()/fscanf() calls and exits when detected.
+
+#+BEGIN_SRC sh
+Hashset Application
+Commands:
+  hashcode <item>  : prints out the numeric hash code for the given key (does not change the hash set)
+  contains <item>  : prints the value associated with the given item or NOT PRESENT
+  add <item>       : inserts the given item into the hash set, reports existing items
+  print            : prints all items in the hash set in the order they were addded
+  structure        : prints detailed structure of the hash set
+  clear            : reinitializes hash set to be empty with default size
+  save <file>      : writes the contents of the hash set to the given file
+  load <file>      : clears the current hash set and loads the one in the given file
+  next_prime <int> : if <int> is prime, prints it, otherwise finds the next prime and prints it
+  expand           : expands memory size of hash set to reduce its load factor
+  bye              : exit the program
+HS|> print
+HS|> print
+#+TESTY_EOF:
+HS|>
+#+END_SRC
+
+* Hashcodes / Contains in Empty Table
+Checks that the 'hashcode' command is honored by main() and runs the
+provided hashcode() function and prints its results. 
+
+Also checks the presence of the 'contains' command and that it
+correctly indicates nothing is contained in the empty table. 
+
+#+BEGIN_SRC sh
+Hashset Application
+Commands:
+  hashcode <item>  : prints out the numeric hash code for the given key (does not change the hash set)
+  contains <item>  : prints the value associated with the given item or NOT PRESENT
+  add <item>       : inserts the given item into the hash set, reports existing items
+  print            : prints all items in the hash set in the order they were addded
+  structure        : prints detailed structure of the hash set
+  clear            : reinitializes hash set to be empty with default size
+  save <file>      : writes the contents of the hash set to the given file
+  load <file>      : clears the current hash set and loads the one in the given file
+  next_prime <int> : if <int> is prime, prints it, otherwise finds the next prime and prints it
+  expand           : expands memory size of hash set to reduce its load factor
+  bye              : exit the program
+HS|> hashcode A
+65
+HS|> hashcode C
+67
+HS|> hashcode D
+68
+HS|> hashcode a
+97
+HS|> hashcode Rick
+1801677138
+HS|> hashcode Morty
+521644699469
+HS|> hashcode Birdperson
+8318822995102689602
+HS|> hashcode Gearhead
+7233173975803716935
+HS|> hashcode Unity
+521644109397
+HS|> print
+HS|> contains Rick
+NOT PRESENT
+HS|> contains Morty
+NOT PRESENT
+HS|> bye
+#+END_SRC
+
+* Add One and Print/Contains
+Adds a single item to the table and checks that it is present while
+other items are not found
+
+#+BEGIN_SRC sh
+Hashset Application
+Commands:
+  hashcode <item>  : prints out the numeric hash code for the given key (does not change the hash set)
+  contains <item>  : prints the value associated with the given item or NOT PRESENT
+  add <item>       : inserts the given item into the hash set, reports existing items
+  print            : prints all items in the hash set in the order they were addded
+  structure        : prints detailed structure of the hash set
+  clear            : reinitializes hash set to be empty with default size
+  save <file>      : writes the contents of the hash set to the given file
+  load <file>      : clears the current hash set and loads the one in the given file
+  next_prime <int> : if <int> is prime, prints it, otherwise finds the next prime and prints it
+  expand           : expands memory size of hash set to reduce its load factor
+  bye              : exit the program
+HS|> add Rick
+HS|> print
+  1 Rick
+HS|> contains Rick
+FOUND: Rick
+HS|> contains Morty
+NOT PRESENT
+HS|> contains Summer
+NOT PRESENT
+HS|> contains Rick
+FOUND: Rick
+HS|> print
+  1 Rick
+HS|> bye
+#+END_SRC
+
+* Add One structure
+Checks the 'structure' command works for empty and single-item
+tables. 
+
+#+BEGIN_SRC sh
+Hashset Application
+Commands:
+  hashcode <item>  : prints out the numeric hash code for the given key (does not change the hash set)
+  contains <item>  : prints the value associated with the given item or NOT PRESENT
+  add <item>       : inserts the given item into the hash set, reports existing items
+  print            : prints all items in the hash set in the order they were addded
+  structure        : prints detailed structure of the hash set
+  clear            : reinitializes hash set to be empty with default size
+  save <file>      : writes the contents of the hash set to the given file
+  load <file>      : clears the current hash set and loads the one in the given file
+  next_prime <int> : if <int> is prime, prints it, otherwise finds the next prime and prints it
+  expand           : expands memory size of hash set to reduce its load factor
+  bye              : exit the program
+HS|> structure
+item_count: 0
+table_size: 5
+order_first: NULL
+order_last : NULL
+load_factor: 0.0000
+[ 0] : 
+[ 1] : 
+[ 2] : 
+[ 3] : 
+[ 4] : 
+HS|> add Rick
+HS|> structure
+item_count: 1
+table_size: 5
+order_first: Rick
+order_last : Rick
+load_factor: 0.2000
+[ 0] : 
+[ 1] : 
+[ 2] : 
+[ 3] : {1801677138 Rick >>NULL} 
+[ 4] : 
+HS|> bye
+#+END_SRC
+
+* Two Items
+Adds two items and checks that print, contains, and structure reflect
+the additions accurately.
+
+#+BEGIN_SRC sh
+Hashset Application
+Commands:
+  hashcode <item>  : prints out the numeric hash code for the given key (does not change the hash set)
+  contains <item>  : prints the value associated with the given item or NOT PRESENT
+  add <item>       : inserts the given item into the hash set, reports existing items
+  print            : prints all items in the hash set in the order they were addded
+  structure        : prints detailed structure of the hash set
+  clear            : reinitializes hash set to be empty with default size
+  save <file>      : writes the contents of the hash set to the given file
+  load <file>      : clears the current hash set and loads the one in the given file
+  next_prime <int> : if <int> is prime, prints it, otherwise finds the next prime and prints it
+  expand           : expands memory size of hash set to reduce its load factor
+  bye              : exit the program
+HS|> add Rick
+HS|> add Morty
+HS|> print
+  1 Rick
+  2 Morty
+HS|> contains Rick
+FOUND: Rick
+HS|> contains Morty
+FOUND: Morty
+HS|> contains MortymerJr
+NOT PRESENT
+HS|> contains SummerY
+NOT PRESENT
+HS|> contains Summer
+NOT PRESENT
+HS|> structure
+item_count: 2
+table_size: 5
+order_first: Rick
+order_last : Morty
+load_factor: 0.4000
+[ 0] : 
+[ 1] : 
+[ 2] : 
+[ 3] : {1801677138 Rick >>Morty} 
+[ 4] : {521644699469 Morty >>NULL} 
+HS|> bye
+#+END_SRC
+
+* Two Items Opposite Order
+Again adds two items but in opposite order to ensure the ordered item
+list reflects the add order.
+
+#+BEGIN_SRC sh
+Hashset Application
+Commands:
+  hashcode <item>  : prints out the numeric hash code for the given key (does not change the hash set)
+  contains <item>  : prints the value associated with the given item or NOT PRESENT
+  add <item>       : inserts the given item into the hash set, reports existing items
+  print            : prints all items in the hash set in the order they were addded
+  structure        : prints detailed structure of the hash set
+  clear            : reinitializes hash set to be empty with default size
+  save <file>      : writes the contents of the hash set to the given file
+  load <file>      : clears the current hash set and loads the one in the given file
+  next_prime <int> : if <int> is prime, prints it, otherwise finds the next prime and prints it
+  expand           : expands memory size of hash set to reduce its load factor
+  bye              : exit the program
+HS|> add Morty
+HS|> add Rick
+HS|> print
+  1 Morty
+  2 Rick
+HS|> structure
+item_count: 2
+table_size: 5
+order_first: Morty
+order_last : Rick
+load_factor: 0.4000
+[ 0] : 
+[ 1] : 
+[ 2] : 
+[ 3] : {1801677138 Rick >>NULL} 
+[ 4] : {521644699469 Morty >>Rick} 
+HS|> bye
+#+END_SRC
+
+* Three Items
+Adds three items and performs structure checks. Third item hashes to
+the same table index as a previous item and should appear at the head
+of the list in that bucket.
+
+#+BEGIN_SRC sh
+Hashset Application
+Commands:
+  hashcode <item>  : prints out the numeric hash code for the given key (does not change the hash set)
+  contains <item>  : prints the value associated with the given item or NOT PRESENT
+  add <item>       : inserts the given item into the hash set, reports existing items
+  print            : prints all items in the hash set in the order they were addded
+  structure        : prints detailed structure of the hash set
+  clear            : reinitializes hash set to be empty with default size
+  save <file>      : writes the contents of the hash set to the given file
+  load <file>      : clears the current hash set and loads the one in the given file
+  next_prime <int> : if <int> is prime, prints it, otherwise finds the next prime and prints it
+  expand           : expands memory size of hash set to reduce its load factor
+  bye              : exit the program
+HS|> add Rick
+HS|> add Morty
+HS|> add Summer
+HS|> print
+  1 Rick
+  2 Morty
+  3 Summer
+HS|> structure
+item_count: 3
+table_size: 5
+order_first: Rick
+order_last : Summer
+load_factor: 0.6000
+[ 0] : 
+[ 1] : 
+[ 2] : 
+[ 3] : {125779953153363 Summer >>NULL} {1801677138 Rick >>Morty} 
+[ 4] : {521644699469 Morty >>Summer} 
+HS|> contains Rick
+FOUND: Rick
+HS|> contains Morty
+FOUND: Morty
+HS|> contains Summer
+FOUND: Summer
+HS|> contains Beth
+NOT PRESENT
+HS|> contains SummerY
+NOT PRESENT
+HS|> contains MortyEvil
+NOT PRESENT
+HS|> bye
+#+END_SRC
+
+* Four Items
+Add 4th item, check for print, contains, structure. Still only one
+overlap in hashing locations.
+
+#+BEGIN_SRC sh
+Hashset Application
+Commands:
+  hashcode <item>  : prints out the numeric hash code for the given key (does not change the hash set)
+  contains <item>  : prints the value associated with the given item or NOT PRESENT
+  add <item>       : inserts the given item into the hash set, reports existing items
+  print            : prints all items in the hash set in the order they were addded
+  structure        : prints detailed structure of the hash set
+  clear            : reinitializes hash set to be empty with default size
+  save <file>      : writes the contents of the hash set to the given file
+  load <file>      : clears the current hash set and loads the one in the given file
+  next_prime <int> : if <int> is prime, prints it, otherwise finds the next prime and prints it
+  expand           : expands memory size of hash set to reduce its load factor
+  bye              : exit the program
+HS|> add Rick
+HS|> add Morty
+HS|> add Summer
+HS|> add Beth
+HS|> print
+  1 Rick
+  2 Morty
+  3 Summer
+  4 Beth
+HS|> structure
+item_count: 4
+table_size: 5
+order_first: Rick
+order_last : Beth
+load_factor: 0.8000
+[ 0] : 
+[ 1] : 
+[ 2] : {1752458562 Beth >>NULL} 
+[ 3] : {125779953153363 Summer >>Beth} {1801677138 Rick >>Morty} 
+[ 4] : {521644699469 Morty >>Summer} 
+HS|> contains Beth
+FOUND: Beth
+HS|> contains BethClone
+NOT PRESENT
+HS|> contains Summer
+FOUND: Summer
+HS|> contains Jerry
+NOT PRESENT
+HS|> bye
+#+END_SRC
+
+* Adding Multiple with Hash Collisions
+Adds larger number of items with hashing conflicts creating longer
+lists in each bucket. Check structure and contains.
+
+#+BEGIN_SRC sh
+Hashset Application
+Commands:
+  hashcode <item>  : prints out the numeric hash code for the given key (does not change the hash set)
+  contains <item>  : prints the value associated with the given item or NOT PRESENT
+  add <item>       : inserts the given item into the hash set, reports existing items
+  print            : prints all items in the hash set in the order they were addded
+  structure        : prints detailed structure of the hash set
+  clear            : reinitializes hash set to be empty with default size
+  save <file>      : writes the contents of the hash set to the given file
+  load <file>      : clears the current hash set and loads the one in the given file
+  next_prime <int> : if <int> is prime, prints it, otherwise finds the next prime and prints it
+  expand           : expands memory size of hash set to reduce its load factor
+  bye              : exit the program
+HS|> add Rick
+HS|> add Morty
+HS|> add Beth
+HS|> add Summer
+HS|> add Jerry
+HS|> add Tinyrick
+HS|> print
+  1 Rick
+  2 Morty
+  3 Beth
+  4 Summer
+  5 Jerry
+  6 Tinyrick
+HS|> structure
+item_count: 6
+table_size: 5
+order_first: Rick
+order_last : Tinyrick
+load_factor: 1.2000
+[ 0] : {7738144525137111380 Tinyrick >>NULL} 
+[ 1] : 
+[ 2] : {1752458562 Beth >>Summer} 
+[ 3] : {125779953153363 Summer >>Jerry} {1801677138 Rick >>Morty} 
+[ 4] : {521611142474 Jerry >>Tinyrick} {521644699469 Morty >>Beth} 
+HS|> contains Jerry
+FOUND: Jerry
+HS|> contains Beth
+FOUND: Beth
+HS|> contains Birdperson
+NOT PRESENT
+HS|> add Birdperson
+HS|> add Picklerick
+HS|> add MortymerJr
+HS|> print
+  1 Rick
+  2 Morty
+  3 Beth
+  4 Summer
+  5 Jerry
+  6 Tinyrick
+  7 Birdperson
+  8 Picklerick
+  9 MortymerJr
+HS|> structure
+item_count: 9
+table_size: 5
+order_first: Rick
+order_last : MortymerJr
+load_factor: 1.8000
+[ 0] : {7738144525137111380 Tinyrick >>Birdperson} 
+[ 1] : 
+[ 2] : {8318822995102689602 Birdperson >>Picklerick} {1752458562 Beth >>Summer} 
+[ 3] : {8243115061383688013 MortymerJr >>NULL} {125779953153363 Summer >>Jerry} {1801677138 Rick >>Morty} 
+[ 4] : {7598247037659998544 Picklerick >>MortymerJr} {521611142474 Jerry >>Tinyrick} {521644699469 Morty >>Beth} 
+HS|> contains Picklerick
+FOUND: Picklerick
+HS|> contains Jaguar
+NOT PRESENT
+HS|> contains Beth
+FOUND: Beth
+HS|> bye
+#+END_SRC
+
+* Many Alphabetic Adds
+Adds all upper and lower case letters creating large load and long
+lists in the hash table.
+
+#+BEGIN_SRC sh
+Hashset Application
+Commands:
+  hashcode <item>  : prints out the numeric hash code for the given key (does not change the hash set)
+  contains <item>  : prints the value associated with the given item or NOT PRESENT
+  add <item>       : inserts the given item into the hash set, reports existing items
+  print            : prints all items in the hash set in the order they were addded
+  structure        : prints detailed structure of the hash set
+  clear            : reinitializes hash set to be empty with default size
+  save <file>      : writes the contents of the hash set to the given file
+  load <file>      : clears the current hash set and loads the one in the given file
+  next_prime <int> : if <int> is prime, prints it, otherwise finds the next prime and prints it
+  expand           : expands memory size of hash set to reduce its load factor
+  bye              : exit the program
+HS|> add A
+HS|> add B
+HS|> add C
+HS|> add D
+HS|> add E
+HS|> add F
+HS|> add G
+HS|> add H
+HS|> add I
+HS|> add J
+HS|> add K
+HS|> add L
+HS|> add M
+HS|> add N
+HS|> add O
+HS|> add P
+HS|> add Q
+HS|> add R
+HS|> add S
+HS|> add T
+HS|> add U
+HS|> add V
+HS|> add W
+HS|> add X
+HS|> add Y
+HS|> add Z
+HS|> add a
+HS|> add b
+HS|> add c
+HS|> add d
+HS|> add e
+HS|> add f
+HS|> add g
+HS|> add h
+HS|> add i
+HS|> add j
+HS|> add k
+HS|> add l
+HS|> add m
+HS|> add n
+HS|> add o
+HS|> add p
+HS|> add q
+HS|> add r
+HS|> add s
+HS|> add t
+HS|> add u
+HS|> add v
+HS|> add w
+HS|> add x
+HS|> add y
+HS|> add z
+HS|> structure
+item_count: 52
+table_size: 5
+order_first: A
+order_last : z
+load_factor: 10.4000
+[ 0] : {120 x >>y} {115 s >>t} {110 n >>o} {105 i >>j} {100 d >>e} {90 Z >>a} {85 U >>V} {80 P >>Q} {75 K >>L} {70 F >>G} {65 A >>B} 
+[ 1] : {121 y >>z} {116 t >>u} {111 o >>p} {106 j >>k} {101 e >>f} {86 V >>W} {81 Q >>R} {76 L >>M} {71 G >>H} {66 B >>C} 
+[ 2] : {122 z >>NULL} {117 u >>v} {112 p >>q} {107 k >>l} {102 f >>g} {97 a >>b} {87 W >>X} {82 R >>S} {77 M >>N} {72 H >>I} {67 C >>D} 
+[ 3] : {118 v >>w} {113 q >>r} {108 l >>m} {103 g >>h} {98 b >>c} {88 X >>Y} {83 S >>T} {78 N >>O} {73 I >>J} {68 D >>E} 
+[ 4] : {119 w >>x} {114 r >>s} {109 m >>n} {104 h >>i} {99 c >>d} {89 Y >>Z} {84 T >>U} {79 O >>P} {74 J >>K} {69 E >>F} 
+HS|> bye
+#+END_SRC
+
+* Clear Command
+Tests that the 'clear' command clears out the current hash table and
+restores to an empty, default-sized hash table.
+
+#+BEGIN_SRC sh
+Hashset Application
+Commands:
+  hashcode <item>  : prints out the numeric hash code for the given key (does not change the hash set)
+  contains <item>  : prints the value associated with the given item or NOT PRESENT
+  add <item>       : inserts the given item into the hash set, reports existing items
+  print            : prints all items in the hash set in the order they were addded
+  structure        : prints detailed structure of the hash set
+  clear            : reinitializes hash set to be empty with default size
+  save <file>      : writes the contents of the hash set to the given file
+  load <file>      : clears the current hash set and loads the one in the given file
+  next_prime <int> : if <int> is prime, prints it, otherwise finds the next prime and prints it
+  expand           : expands memory size of hash set to reduce its load factor
+  bye              : exit the program
+HS|> add Birdperson
+HS|> add Squanchy
+HS|> add Unity
+HS|> print
+  1 Birdperson
+  2 Squanchy
+  3 Unity
+HS|> structure
+item_count: 3
+table_size: 5
+order_first: Birdperson
+order_last : Unity
+load_factor: 0.6000
+[ 0] : 
+[ 1] : 
+[ 2] : {521644109397 Unity >>NULL} {8318822995102689602 Birdperson >>Squanchy} 
+[ 3] : 
+[ 4] : {8748351601899827539 Squanchy >>Unity} 
+HS|> clear
+HS|> print
+HS|> structure
+item_count: 0
+table_size: 5
+order_first: NULL
+order_last : NULL
+load_factor: 0.0000
+[ 0] : 
+[ 1] : 
+[ 2] : 
+[ 3] : 
+[ 4] : 
+HS|> bye
+#+END_SRC
+
+* Multiple Clears
+Uses the 'clear' command several times in a row to ensure that all
+memory is properly free()'d and no memory leaks are present.
+
+#+BEGIN_SRC sh
+Hashset Application
+Commands:
+  hashcode <item>  : prints out the numeric hash code for the given key (does not change the hash set)
+  contains <item>  : prints the value associated with the given item or NOT PRESENT
+  add <item>       : inserts the given item into the hash set, reports existing items
+  print            : prints all items in the hash set in the order they were addded
+  structure        : prints detailed structure of the hash set
+  clear            : reinitializes hash set to be empty with default size
+  save <file>      : writes the contents of the hash set to the given file
+  load <file>      : clears the current hash set and loads the one in the given file
+  next_prime <int> : if <int> is prime, prints it, otherwise finds the next prime and prints it
+  expand           : expands memory size of hash set to reduce its load factor
+  bye              : exit the program
+HS|> add Rick
+HS|> add Morty
+HS|> add Beth
+HS|> structure
+item_count: 3
+table_size: 5
+order_first: Rick
+order_last : Beth
+load_factor: 0.6000
+[ 0] : 
+[ 1] : 
+[ 2] : {1752458562 Beth >>NULL} 
+[ 3] : {1801677138 Rick >>Morty} 
+[ 4] : {521644699469 Morty >>Beth} 
+HS|> clear
+HS|> structure
+item_count: 0
+table_size: 5
+order_first: NULL
+order_last : NULL
+load_factor: 0.0000
+[ 0] : 
+[ 1] : 
+[ 2] : 
+[ 3] : 
+[ 4] : 
+HS|> add Birdperson
+HS|> add Unity
+HS|> add BetaSeven
+HS|> structure
+item_count: 3
+table_size: 5
+order_first: Birdperson
+order_last : BetaSeven
+load_factor: 0.6000
+[ 0] : 
+[ 1] : 
+[ 2] : {521644109397 Unity >>BetaSeven} {8318822995102689602 Birdperson >>Unity} 
+[ 3] : {7311142453874287938 BetaSeven >>NULL} 
+[ 4] : 
+HS|> clear
+HS|> structure
+item_count: 0
+table_size: 5
+order_first: NULL
+order_last : NULL
+load_factor: 0.0000
+[ 0] : 
+[ 1] : 
+[ 2] : 
+[ 3] : 
+[ 4] : 
+HS|> clear
+HS|> structure
+item_count: 0
+table_size: 5
+order_first: NULL
+order_last : NULL
+load_factor: 0.0000
+[ 0] : 
+[ 1] : 
+[ 2] : 
+[ 3] : 
+[ 4] : 
+HS|> add Squanchy
+HS|> add Tammy
+HS|> add Jessica
+HS|> structure
+item_count: 3
+table_size: 5
+order_first: Squanchy
+order_last : Jessica
+load_factor: 0.6000
+[ 0] : {521526927700 Tammy >>Jessica} 
+[ 1] : {27412377300591946 Jessica >>NULL} 
+[ 2] : 
+[ 3] : 
+[ 4] : {8748351601899827539 Squanchy >>Tammy} 
+HS|> clear
+HS|> clear
+HS|> clear
+HS|> structure
+item_count: 0
+table_size: 5
+order_first: NULL
+order_last : NULL
+load_factor: 0.0000
+[ 0] : 
+[ 1] : 
+[ 2] : 
+[ 3] : 
+[ 4] : 
+HS|> bye
+#+END_SRC
+
+* Save File and Contents
+Creates a small table and saves it using the 'save' command. Later
+checks the contents of the file for correct format.
+
+#+BEGIN_SRC sh
+Hashset Application
+Commands:
+  hashcode <item>  : prints out the numeric hash code for the given key (does not change the hash set)
+  contains <item>  : prints the value associated with the given item or NOT PRESENT
+  add <item>       : inserts the given item into the hash set, reports existing items
+  print            : prints all items in the hash set in the order they were addded
+  structure        : prints detailed structure of the hash set
+  clear            : reinitializes hash set to be empty with default size
+  save <file>      : writes the contents of the hash set to the given file
+  load <file>      : clears the current hash set and loads the one in the given file
+  next_prime <int> : if <int> is prime, prints it, otherwise finds the next prime and prints it
+  expand           : expands memory size of hash set to reduce its load factor
+  bye              : exit the program
+HS|> add Rick
+HS|> add Morty
+HS|> print
+  1 Rick
+  2 Morty
+HS|> save test-results/save1.tmp
+HS|> bye
+#+END_SRC
+
+** Contents of save1.tmp file
+After saving to the hash set, check that it has the correct contents.
+
+#+TESTY: program="bash -v"
+#+TESTY: prompt=">>"
+#+TESTY: use_valgrind=0
+
+#+BEGIN_SRC sh
+>> cat test-results/save1.tmp
+5 2
+  1 Rick
+  2 Morty
+#+END_SRC
+
+* Load Contents from Existing File
+Loads the provided save file `data/rm.hashset` and checks that it is
+correctly loaded.
+
+** Check for data/rm.hashset 
+First check that the file exists in the data/
+#+TESTY: program="bash -v"
+#+TESTY: prompt=">>"
+#+TESTY: use_valgrind=0
+
+#+BEGIN_SRC sh
+>> cat data/rm.hashset
+5 6
+  1 Rick
+  2 Morty
+  3 Summer
+  4 Jerry
+  5 Beth
+  6 Tinyrick
+#+END_SRC
+
+
+** Check load data/rm.hashset 
+Load data/rm.hashset into the application and check that it has the
+expected structure/contents.
+
+#+TESTY: program="./hashset_main -echo"
+#+TESTY: prompt="HS|>"
+#+TESTY: use_valgrind=1
+
+#+BEGIN_SRC sh
+Hashset Application
+Commands:
+  hashcode <item>  : prints out the numeric hash code for the given key (does not change the hash set)
+  contains <item>  : prints the value associated with the given item or NOT PRESENT
+  add <item>       : inserts the given item into the hash set, reports existing items
+  print            : prints all items in the hash set in the order they were addded
+  structure        : prints detailed structure of the hash set
+  clear            : reinitializes hash set to be empty with default size
+  save <file>      : writes the contents of the hash set to the given file
+  load <file>      : clears the current hash set and loads the one in the given file
+  next_prime <int> : if <int> is prime, prints it, otherwise finds the next prime and prints it
+  expand           : expands memory size of hash set to reduce its load factor
+  bye              : exit the program
+HS|> load data/rm.hashset
+HS|> print
+  1 Rick
+  2 Morty
+  3 Summer
+  4 Jerry
+  5 Beth
+  6 Tinyrick
+HS|> structure
+item_count: 6
+table_size: 5
+order_first: Rick
+order_last : Tinyrick
+load_factor: 1.2000
+[ 0] : {7738144525137111380 Tinyrick >>NULL} 
+[ 1] : 
+[ 2] : {1752458562 Beth >>Tinyrick} 
+[ 3] : {125779953153363 Summer >>Jerry} {1801677138 Rick >>Morty} 
+[ 4] : {521611142474 Jerry >>Beth} {521644699469 Morty >>Summer} 
+HS|> contains Tinyrick
+FOUND: Tinyrick
+HS|> contains Jerry
+FOUND: Jerry
+HS|> contains Birdperson
+NOT PRESENT
+HS|> bye
+#+END_SRC
+
+* Load Replaces Existing Table
+Adds several items to hash table and the loads a new table from
+file. Should replace existing table without memory leaks. Also checks
+that loading non-existing file does not change the existing table and
+prints an appropriate message.
+
+#+BEGIN_SRC sh
+Hashset Application
+Commands:
+  hashcode <item>  : prints out the numeric hash code for the given key (does not change the hash set)
+  contains <item>  : prints the value associated with the given item or NOT PRESENT
+  add <item>       : inserts the given item into the hash set, reports existing items
+  print            : prints all items in the hash set in the order they were addded
+  structure        : prints detailed structure of the hash set
+  clear            : reinitializes hash set to be empty with default size
+  save <file>      : writes the contents of the hash set to the given file
+  load <file>      : clears the current hash set and loads the one in the given file
+  next_prime <int> : if <int> is prime, prints it, otherwise finds the next prime and prints it
+  expand           : expands memory size of hash set to reduce its load factor
+  bye              : exit the program
+HS|> add Summer
+HS|> add Tammy
+HS|> add Lincler
+HS|> structure
+item_count: 3
+table_size: 5
+order_first: Summer
+order_last : Lincler
+load_factor: 0.6000
+[ 0] : {521526927700 Tammy >>Lincler} 
+[ 1] : 
+[ 2] : 
+[ 3] : {32199663544068428 Lincler >>NULL} {125779953153363 Summer >>Tammy} 
+[ 4] : 
+HS|> load data/rm.hashset
+HS|> structure
+item_count: 6
+table_size: 5
+order_first: Rick
+order_last : Tinyrick
+load_factor: 1.2000
+[ 0] : {7738144525137111380 Tinyrick >>NULL} 
+[ 1] : 
+[ 2] : {1752458562 Beth >>Tinyrick} 
+[ 3] : {125779953153363 Summer >>Jerry} {1801677138 Rick >>Morty} 
+[ 4] : {521611142474 Jerry >>Beth} {521644699469 Morty >>Summer} 
+HS|> add Lincler
+HS|> add Tammy
+HS|> structure
+item_count: 8
+table_size: 5
+order_first: Rick
+order_last : Tammy
+load_factor: 1.6000
+[ 0] : {521526927700 Tammy >>NULL} {7738144525137111380 Tinyrick >>Lincler} 
+[ 1] : 
+[ 2] : {1752458562 Beth >>Tinyrick} 
+[ 3] : {32199663544068428 Lincler >>Tammy} {125779953153363 Summer >>Jerry} {1801677138 Rick >>Morty} 
+[ 4] : {521611142474 Jerry >>Beth} {521644699469 Morty >>Summer} 
+HS|> load data/alphabet.hashset
+HS|> structure
+item_count: 52
+table_size: 5
+order_first: A
+order_last : z
+load_factor: 10.4000
+[ 0] : {120 x >>y} {115 s >>t} {110 n >>o} {105 i >>j} {100 d >>e} {90 Z >>a} {85 U >>V} {80 P >>Q} {75 K >>L} {70 F >>G} {65 A >>B} 
+[ 1] : {121 y >>z} {116 t >>u} {111 o >>p} {106 j >>k} {101 e >>f} {86 V >>W} {81 Q >>R} {76 L >>M} {71 G >>H} {66 B >>C} 
+[ 2] : {122 z >>NULL} {117 u >>v} {112 p >>q} {107 k >>l} {102 f >>g} {97 a >>b} {87 W >>X} {82 R >>S} {77 M >>N} {72 H >>I} {67 C >>D} 
+[ 3] : {118 v >>w} {113 q >>r} {108 l >>m} {103 g >>h} {98 b >>c} {88 X >>Y} {83 S >>T} {78 N >>O} {73 I >>J} {68 D >>E} 
+[ 4] : {119 w >>x} {114 r >>s} {109 m >>n} {104 h >>i} {99 c >>d} {89 Y >>Z} {84 T >>U} {79 O >>P} {74 J >>K} {69 E >>F} 
+
+HS|> load test-results/not_there.tmp
+ERROR: could not open file 'test-results/not_there.tmp'
+load failed
+
+HS|> structure
+item_count: 52
+table_size: 5
+order_first: A
+order_last : z
+load_factor: 10.4000
+[ 0] : {120 x >>y} {115 s >>t} {110 n >>o} {105 i >>j} {100 d >>e} {90 Z >>a} {85 U >>V} {80 P >>Q} {75 K >>L} {70 F >>G} {65 A >>B} 
+[ 1] : {121 y >>z} {116 t >>u} {111 o >>p} {106 j >>k} {101 e >>f} {86 V >>W} {81 Q >>R} {76 L >>M} {71 G >>H} {66 B >>C} 
+[ 2] : {122 z >>NULL} {117 u >>v} {112 p >>q} {107 k >>l} {102 f >>g} {97 a >>b} {87 W >>X} {82 R >>S} {77 M >>N} {72 H >>I} {67 C >>D} 
+[ 3] : {118 v >>w} {113 q >>r} {108 l >>m} {103 g >>h} {98 b >>c} {88 X >>Y} {83 S >>T} {78 N >>O} {73 I >>J} {68 D >>E} 
+[ 4] : {119 w >>x} {114 r >>s} {109 m >>n} {104 h >>i} {99 c >>d} {89 Y >>Z} {84 T >>U} {79 O >>P} {74 J >>K} {69 E >>F} 
+HS|> bye
+#+END_SRC
+
+* Save and Load 
+Saves and loads several times with adding in between creating several
+versions of the hash table that can be recalled via load.
+
+#+BEGIN_SRC sh
+Hashset Application
+Commands:
+  hashcode <item>  : prints out the numeric hash code for the given key (does not change the hash set)
+  contains <item>  : prints the value associated with the given item or NOT PRESENT
+  add <item>       : inserts the given item into the hash set, reports existing items
+  print            : prints all items in the hash set in the order they were addded
+  structure        : prints detailed structure of the hash set
+  clear            : reinitializes hash set to be empty with default size
+  save <file>      : writes the contents of the hash set to the given file
+  load <file>      : clears the current hash set and loads the one in the given file
+  next_prime <int> : if <int> is prime, prints it, otherwise finds the next prime and prints it
+  expand           : expands memory size of hash set to reduce its load factor
+  bye              : exit the program
+HS|> add Unity
+HS|> add BethsMom
+HS|> add Gaia
+HS|> add Rick
+HS|> structure
+item_count: 4
+table_size: 5
+order_first: Unity
+order_last : Rick
+load_factor: 0.8000
+[ 0] : {1634296135 Gaia >>Rick} 
+[ 1] : 
+[ 2] : {521644109397 Unity >>BethsMom} 
+[ 3] : {1801677138 Rick >>NULL} 
+[ 4] : {7885606630618064194 BethsMom >>Gaia} 
+HS|> save testing/ver1.tmp
+ERROR: could not open file 'testing/ver1.tmp'
+HS|> save test-results/ver1.tmp
+HS|> add Morty
+HS|> add Jerry
+HS|> add Birdperson
+HS|> add Summer
+HS|> structure
+item_count: 8
+table_size: 5
+order_first: Unity
+order_last : Summer
+load_factor: 1.6000
+[ 0] : {1634296135 Gaia >>Rick} 
+[ 1] : 
+[ 2] : {8318822995102689602 Birdperson >>Summer} {521644109397 Unity >>BethsMom} 
+[ 3] : {125779953153363 Summer >>NULL} {1801677138 Rick >>Morty} 
+[ 4] : {521611142474 Jerry >>Birdperson} {521644699469 Morty >>Jerry} {7885606630618064194 BethsMom >>Gaia} 
+HS|> save test-results/ver2.tmp
+HS|> load test-results/ver1.tmp
+HS|> structure
+item_count: 4
+table_size: 5
+order_first: Unity
+order_last : Rick
+load_factor: 0.8000
+[ 0] : {1634296135 Gaia >>Rick} 
+[ 1] : 
+[ 2] : {521644109397 Unity >>BethsMom} 
+[ 3] : {1801677138 Rick >>NULL} 
+[ 4] : {7885606630618064194 BethsMom >>Gaia} 
+HS|> add Gearhead
+HS|> add Squanchy
+HS|> add Jaguar
+HS|> save test-results/ver3.tmp
+HS|> load test-results/ver2.tmp
+HS|> structure
+item_count: 8
+table_size: 5
+order_first: Unity
+order_last : Summer
+load_factor: 1.6000
+[ 0] : {1634296135 Gaia >>Rick} 
+[ 1] : 
+[ 2] : {8318822995102689602 Birdperson >>Summer} {521644109397 Unity >>BethsMom} 
+[ 3] : {125779953153363 Summer >>NULL} {1801677138 Rick >>Morty} 
+[ 4] : {521611142474 Jerry >>Birdperson} {521644699469 Morty >>Jerry} {7885606630618064194 BethsMom >>Gaia} 
+HS|> load test-results/ver3.tmp
+HS|> structure
+item_count: 7
+table_size: 5
+order_first: Unity
+order_last : Jaguar
+load_factor: 1.4000
+[ 0] : {7233173975803716935 Gearhead >>Squanchy} {1634296135 Gaia >>Rick} 
+[ 1] : 
+[ 2] : {125762907103562 Jaguar >>NULL} {521644109397 Unity >>BethsMom} 
+[ 3] : {1801677138 Rick >>Gearhead} 
+[ 4] : {8748351601899827539 Squanchy >>Jaguar} {7885606630618064194 BethsMom >>Gaia} 
+HS|> load test-results/ver1.tmp
+HS|> structure
+item_count: 4
+table_size: 5
+order_first: Unity
+order_last : Rick
+load_factor: 0.8000
+[ 0] : {1634296135 Gaia >>Rick} 
+[ 1] : 
+[ 2] : {521644109397 Unity >>BethsMom} 
+[ 3] : {1801677138 Rick >>NULL} 
+[ 4] : {7885606630618064194 BethsMom >>Gaia} 
+HS|> bye
+#+END_SRC
+
+** Check file contents
+Checks that the save files look okay
+
+#+TESTY: program="bash -v"
+#+TESTY: prompt=">>"
+#+TESTY: use_valgrind=0
+
+#+BEGIN_SRC sh
+>> cat test-results/ver1.tmp
+5 4
+  1 Unity
+  2 BethsMom
+  3 Gaia
+  4 Rick
+>> cat test-results/ver2.tmp
+5 8
+  1 Unity
+  2 BethsMom
+  3 Gaia
+  4 Rick
+  5 Morty
+  6 Jerry
+  7 Birdperson
+  8 Summer
+>> cat test-results/ver3.tmp
+5 7
+  1 Unity
+  2 BethsMom
+  3 Gaia
+  4 Rick
+  5 Gearhead
+  6 Squanchy
+  7 Jaguar
+#+END_SRC
+
+* next_prime and expand
+Checks the next_prime command first then loads a hash table from file
+and expands it several times checking the internal table structure.
+
+#+BEGIN_SRC sh
+Hashset Application
+Commands:
+  hashcode <item>  : prints out the numeric hash code for the given key (does not change the hash set)
+  contains <item>  : prints the value associated with the given item or NOT PRESENT
+  add <item>       : inserts the given item into the hash set, reports existing items
+  print            : prints all items in the hash set in the order they were addded
+  structure        : prints detailed structure of the hash set
+  clear            : reinitializes hash set to be empty with default size
+  save <file>      : writes the contents of the hash set to the given file
+  load <file>      : clears the current hash set and loads the one in the given file
+  next_prime <int> : if <int> is prime, prints it, otherwise finds the next prime and prints it
+  expand           : expands memory size of hash set to reduce its load factor
+  bye              : exit the program
+HS|> next_prime 5
+5
+HS|> next_prime 6
+7
+HS|> next_prime 10
+11
+HS|> next_prime 22
+23
+HS|> next_prime 186
+191
+HS|> next_prime 2021
+2027
+HS|> load data/rm.hashset
+HS|> structure
+item_count: 6
+table_size: 5
+order_first: Rick
+order_last : Tinyrick
+load_factor: 1.2000
+[ 0] : {7738144525137111380 Tinyrick >>NULL} 
+[ 1] : 
+[ 2] : {1752458562 Beth >>Tinyrick} 
+[ 3] : {125779953153363 Summer >>Jerry} {1801677138 Rick >>Morty} 
+[ 4] : {521611142474 Jerry >>Beth} {521644699469 Morty >>Summer} 
+HS|> expand
+HS|> structure
+item_count: 6
+table_size: 11
+order_first: Rick
+order_last : Tinyrick
+load_factor: 0.5455
+[ 0] : 
+[ 1] : 
+[ 2] : 
+[ 3] : {125779953153363 Summer >>Jerry} {521644699469 Morty >>Summer} 
+[ 4] : {521611142474 Jerry >>Beth} 
+[ 5] : 
+[ 6] : 
+[ 7] : 
+[ 8] : {1752458562 Beth >>Tinyrick} {1801677138 Rick >>Morty} 
+[ 9] : {7738144525137111380 Tinyrick >>NULL} 
+[10] : 
+HS|> print
+  1 Rick
+  2 Morty
+  3 Summer
+  4 Jerry
+  5 Beth
+  6 Tinyrick
+HS|> expand
+HS|> structure
+item_count: 6
+table_size: 23
+order_first: Rick
+order_last : Tinyrick
+load_factor: 0.2609
+[ 0] : 
+[ 1] : 
+[ 2] : 
+[ 3] : 
+[ 4] : 
+[ 5] : 
+[ 6] : 
+[ 7] : 
+[ 8] : 
+[ 9] : 
+[10] : {7738144525137111380 Tinyrick >>NULL} 
+[11] : 
+[12] : {1752458562 Beth >>Tinyrick} 
+[13] : 
+[14] : {125779953153363 Summer >>Jerry} {1801677138 Rick >>Morty} 
+[15] : 
+[16] : 
+[17] : {521644699469 Morty >>Summer} 
+[18] : 
+[19] : 
+[20] : 
+[21] : 
+[22] : {521611142474 Jerry >>Beth} 
+HS|> print
+  1 Rick
+  2 Morty
+  3 Summer
+  4 Jerry
+  5 Beth
+  6 Tinyrick
+HS|> expand
+HS|> structure
+item_count: 6
+table_size: 47
+order_first: Rick
+order_last : Tinyrick
+load_factor: 0.1277
+[ 0] : {125779953153363 Summer >>Jerry} 
+[ 1] : 
+[ 2] : 
+[ 3] : 
+[ 4] : 
+[ 5] : 
+[ 6] : {1801677138 Rick >>Morty} 
+[ 7] : 
+[ 8] : 
+[ 9] : 
+[10] : 
+[11] : 
+[12] : 
+[13] : 
+[14] : 
+[15] : 
+[16] : {521611142474 Jerry >>Beth} 
+[17] : 
+[18] : {1752458562 Beth >>Tinyrick} 
+[19] : 
+[20] : 
+[21] : 
+[22] : 
+[23] : 
+[24] : 
+[25] : 
+[26] : 
+[27] : 
+[28] : 
+[29] : 
+[30] : 
+[31] : 
+[32] : 
+[33] : 
+[34] : 
+[35] : 
+[36] : 
+[37] : 
+[38] : 
+[39] : 
+[40] : 
+[41] : 
+[42] : 
+[43] : 
+[44] : {7738144525137111380 Tinyrick >>NULL} 
+[45] : {521644699469 Morty >>Summer} 
+[46] : 
+HS|> bye
+#+END_SRC
+
+* Save/Load Expand
+Checks that save/load works proper for expanded hash tables. 
+
+#+BEGIN_SRC sh
+Hashset Application
+Commands:
+  hashcode <item>  : prints out the numeric hash code for the given key (does not change the hash set)
+  contains <item>  : prints the value associated with the given item or NOT PRESENT
+  add <item>       : inserts the given item into the hash set, reports existing items
+  print            : prints all items in the hash set in the order they were addded
+  structure        : prints detailed structure of the hash set
+  clear            : reinitializes hash set to be empty with default size
+  save <file>      : writes the contents of the hash set to the given file
+  load <file>      : clears the current hash set and loads the one in the given file
+  next_prime <int> : if <int> is prime, prints it, otherwise finds the next prime and prints it
+  expand           : expands memory size of hash set to reduce its load factor
+  bye              : exit the program
+HS|> load data/rm.hashset
+HS|> structure
+item_count: 6
+table_size: 5
+order_first: Rick
+order_last : Tinyrick
+load_factor: 1.2000
+[ 0] : {7738144525137111380 Tinyrick >>NULL} 
+[ 1] : 
+[ 2] : {1752458562 Beth >>Tinyrick} 
+[ 3] : {125779953153363 Summer >>Jerry} {1801677138 Rick >>Morty} 
+[ 4] : {521611142474 Jerry >>Beth} {521644699469 Morty >>Summer} 
+HS|> expand
+HS|> structure
+item_count: 6
+table_size: 11
+order_first: Rick
+order_last : Tinyrick
+load_factor: 0.5455
+[ 0] : 
+[ 1] : 
+[ 2] : 
+[ 3] : {125779953153363 Summer >>Jerry} {521644699469 Morty >>Summer} 
+[ 4] : {521611142474 Jerry >>Beth} 
+[ 5] : 
+[ 6] : 
+[ 7] : 
+[ 8] : {1752458562 Beth >>Tinyrick} {1801677138 Rick >>Morty} 
+[ 9] : {7738144525137111380 Tinyrick >>NULL} 
+[10] : 
+HS|> add Birdperson
+HS|> add Picklerick
+HS|> structure
+item_count: 8
+table_size: 11
+order_first: Rick
+order_last : Picklerick
+load_factor: 0.7273
+[ 0] : {7598247037659998544 Picklerick >>NULL} 
+[ 1] : 
+[ 2] : 
+[ 3] : {125779953153363 Summer >>Jerry} {521644699469 Morty >>Summer} 
+[ 4] : {521611142474 Jerry >>Beth} 
+[ 5] : {8318822995102689602 Birdperson >>Picklerick} 
+[ 6] : 
+[ 7] : 
+[ 8] : {1752458562 Beth >>Tinyrick} {1801677138 Rick >>Morty} 
+[ 9] : {7738144525137111380 Tinyrick >>Birdperson} 
+[10] : 
+HS|> save test-results/expanded.tm
+HS|> clear
+HS|> structure
+item_count: 0
+table_size: 5
+order_first: NULL
+order_last : NULL
+load_factor: 0.0000
+[ 0] : 
+[ 1] : 
+[ 2] : 
+[ 3] : 
+[ 4] : 
+HS|> load test-results/expanded.tm
+HS|> structure
+item_count: 8
+table_size: 11
+order_first: Rick
+order_last : Picklerick
+load_factor: 0.7273
+[ 0] : {7598247037659998544 Picklerick >>NULL} 
+[ 1] : 
+[ 2] : 
+[ 3] : {125779953153363 Summer >>Jerry} {521644699469 Morty >>Summer} 
+[ 4] : {521611142474 Jerry >>Beth} 
+[ 5] : {8318822995102689602 Birdperson >>Picklerick} 
+[ 6] : 
+[ 7] : 
+[ 8] : {1752458562 Beth >>Tinyrick} {1801677138 Rick >>Morty} 
+[ 9] : {7738144525137111380 Tinyrick >>Birdperson} 
+[10] : 
+HS|> load data/alphabet_expand.hashset 
+HS|> structure
+item_count: 52
+table_size: 23
+order_first: A
+order_last : z
+load_factor: 2.2609
+[ 0] : {115 s >>t} {69 E >>F} 
+[ 1] : {116 t >>u} {70 F >>G} 
+[ 2] : {117 u >>v} {71 G >>H} 
+[ 3] : {118 v >>w} {72 H >>I} 
+[ 4] : {119 w >>x} {73 I >>J} 
+[ 5] : {120 x >>y} {97 a >>b} {74 J >>K} 
+[ 6] : {121 y >>z} {98 b >>c} {75 K >>L} 
+[ 7] : {122 z >>NULL} {99 c >>d} {76 L >>M} 
+[ 8] : {100 d >>e} {77 M >>N} 
+[ 9] : {101 e >>f} {78 N >>O} 
+[10] : {102 f >>g} {79 O >>P} 
+[11] : {103 g >>h} {80 P >>Q} 
+[12] : {104 h >>i} {81 Q >>R} 
+[13] : {105 i >>j} {82 R >>S} 
+[14] : {106 j >>k} {83 S >>T} 
+[15] : {107 k >>l} {84 T >>U} 
+[16] : {108 l >>m} {85 U >>V} 
+[17] : {109 m >>n} {86 V >>W} 
+[18] : {110 n >>o} {87 W >>X} 
+[19] : {111 o >>p} {88 X >>Y} {65 A >>B} 
+[20] : {112 p >>q} {89 Y >>Z} {66 B >>C} 
+[21] : {113 q >>r} {90 Z >>a} {67 C >>D} 
+[22] : {114 r >>s} {68 D >>E} 
+HS|> bye
+
+#+END_SRC
+
+* Stress
+Performs a variety of tests exercising most of the functionality in
+the hash table.
+
+#+BEGIN_SRC sh
+Hashset Application
+Commands:
+  hashcode <item>  : prints out the numeric hash code for the given key (does not change the hash set)
+  contains <item>  : prints the value associated with the given item or NOT PRESENT
+  add <item>       : inserts the given item into the hash set, reports existing items
+  print            : prints all items in the hash set in the order they were addded
+  structure        : prints detailed structure of the hash set
+  clear            : reinitializes hash set to be empty with default size
+  save <file>      : writes the contents of the hash set to the given file
+  load <file>      : clears the current hash set and loads the one in the given file
+  next_prime <int> : if <int> is prime, prints it, otherwise finds the next prime and prints it
+  expand           : expands memory size of hash set to reduce its load factor
+  bye              : exit the program
+HS|> add 10
+HS|> add 20
+HS|> add 30
+HS|> add 40
+HS|> print
+  1 10
+  2 20
+  3 30
+  4 40
+HS|> structure
+item_count: 4
+table_size: 5
+order_first: 10
+order_last : 40
+load_factor: 0.8000
+[ 0] : {12340 40 >>NULL} 
+[ 1] : 
+[ 2] : {12337 10 >>20} 
+[ 3] : {12338 20 >>30} 
+[ 4] : {12339 30 >>40} 
+HS|> save test-results/stress1.tmp
+HS|> load data/alphabet.hashset
+HS|> structure
+item_count: 52
+table_size: 5
+order_first: A
+order_last : z
+load_factor: 10.4000
+[ 0] : {120 x >>y} {115 s >>t} {110 n >>o} {105 i >>j} {100 d >>e} {90 Z >>a} {85 U >>V} {80 P >>Q} {75 K >>L} {70 F >>G} {65 A >>B} 
+[ 1] : {121 y >>z} {116 t >>u} {111 o >>p} {106 j >>k} {101 e >>f} {86 V >>W} {81 Q >>R} {76 L >>M} {71 G >>H} {66 B >>C} 
+[ 2] : {122 z >>NULL} {117 u >>v} {112 p >>q} {107 k >>l} {102 f >>g} {97 a >>b} {87 W >>X} {82 R >>S} {77 M >>N} {72 H >>I} {67 C >>D} 
+[ 3] : {118 v >>w} {113 q >>r} {108 l >>m} {103 g >>h} {98 b >>c} {88 X >>Y} {83 S >>T} {78 N >>O} {73 I >>J} {68 D >>E} 
+[ 4] : {119 w >>x} {114 r >>s} {109 m >>n} {104 h >>i} {99 c >>d} {89 Y >>Z} {84 T >>U} {79 O >>P} {74 J >>K} {69 E >>F} 
+HS|> expand
+HS|> expand
+HS|> structure
+item_count: 52
+table_size: 23
+order_first: A
+order_last : z
+load_factor: 2.2609
+[ 0] : {115 s >>t} {69 E >>F} 
+[ 1] : {116 t >>u} {70 F >>G} 
+[ 2] : {117 u >>v} {71 G >>H} 
+[ 3] : {118 v >>w} {72 H >>I} 
+[ 4] : {119 w >>x} {73 I >>J} 
+[ 5] : {120 x >>y} {97 a >>b} {74 J >>K} 
+[ 6] : {121 y >>z} {98 b >>c} {75 K >>L} 
+[ 7] : {122 z >>NULL} {99 c >>d} {76 L >>M} 
+[ 8] : {100 d >>e} {77 M >>N} 
+[ 9] : {101 e >>f} {78 N >>O} 
+[10] : {102 f >>g} {79 O >>P} 
+[11] : {103 g >>h} {80 P >>Q} 
+[12] : {104 h >>i} {81 Q >>R} 
+[13] : {105 i >>j} {82 R >>S} 
+[14] : {106 j >>k} {83 S >>T} 
+[15] : {107 k >>l} {84 T >>U} 
+[16] : {108 l >>m} {85 U >>V} 
+[17] : {109 m >>n} {86 V >>W} 
+[18] : {110 n >>o} {87 W >>X} 
+[19] : {111 o >>p} {88 X >>Y} {65 A >>B} 
+[20] : {112 p >>q} {89 Y >>Z} {66 B >>C} 
+[21] : {113 q >>r} {90 Z >>a} {67 C >>D} 
+[22] : {114 r >>s} {68 D >>E} 
+HS|> print
+  1 A
+  2 B
+  3 C
+  4 D
+  5 E
+  6 F
+  7 G
+  8 H
+  9 I
+ 10 J
+ 11 K
+ 12 L
+ 13 M
+ 14 N
+ 15 O
+ 16 P
+ 17 Q
+ 18 R
+ 19 S
+ 20 T
+ 21 U
+ 22 V
+ 23 W
+ 24 X
+ 25 Y
+ 26 Z
+ 27 a
+ 28 b
+ 29 c
+ 30 d
+ 31 e
+ 32 f
+ 33 g
+ 34 h
+ 35 i
+ 36 j
+ 37 k
+ 38 l
+ 39 m
+ 40 n
+ 41 o
+ 42 p
+ 43 q
+ 44 r
+ 45 s
+ 46 t
+ 47 u
+ 48 v
+ 49 w
+ 50 x
+ 51 y
+ 52 z
+HS|> save test-results/stress-alphabet.tmp
+HS|> clear
+HS|> add Rick
+HS|> add Morty
+HS|> add Summer
+HS|> add Jerry
+HS|> add Summer
+Item already present, no changes made
+HS|> add Beth
+HS|> add Birdperson
+HS|> structure
+item_count: 6
+table_size: 5
+order_first: Rick
+order_last : Birdperson
+load_factor: 1.2000
+[ 0] : 
+[ 1] : 
+[ 2] : {8318822995102689602 Birdperson >>NULL} {1752458562 Beth >>Birdperson} 
+[ 3] : {125779953153363 Summer >>Jerry} {1801677138 Rick >>Morty} 
+[ 4] : {521611142474 Jerry >>Beth} {521644699469 Morty >>Summer} 
+HS|> expand
+HS|> add MortymerJr
+HS|> add Picklerick
+HS|> structure
+item_count: 8
+table_size: 11
+order_first: Rick
+order_last : Picklerick
+load_factor: 0.7273
+[ 0] : {7598247037659998544 Picklerick >>NULL} {8243115061383688013 MortymerJr >>Picklerick} 
+[ 1] : 
+[ 2] : 
+[ 3] : {125779953153363 Summer >>Jerry} {521644699469 Morty >>Summer} 
+[ 4] : {521611142474 Jerry >>Beth} 
+[ 5] : {8318822995102689602 Birdperson >>MortymerJr} 
+[ 6] : 
+[ 7] : 
+[ 8] : {1752458562 Beth >>Birdperson} {1801677138 Rick >>Morty} 
+[ 9] : 
+[10] : 
+HS|> save test-results/stress-rm.tmp
+HS|> load test-results/stress-alphabet.tmp
+HS|> structure
+item_count: 52
+table_size: 23
+order_first: A
+order_last : z
+load_factor: 2.2609
+[ 0] : {115 s >>t} {69 E >>F} 
+[ 1] : {116 t >>u} {70 F >>G} 
+[ 2] : {117 u >>v} {71 G >>H} 
+[ 3] : {118 v >>w} {72 H >>I} 
+[ 4] : {119 w >>x} {73 I >>J} 
+[ 5] : {120 x >>y} {97 a >>b} {74 J >>K} 
+[ 6] : {121 y >>z} {98 b >>c} {75 K >>L} 
+[ 7] : {122 z >>NULL} {99 c >>d} {76 L >>M} 
+[ 8] : {100 d >>e} {77 M >>N} 
+[ 9] : {101 e >>f} {78 N >>O} 
+[10] : {102 f >>g} {79 O >>P} 
+[11] : {103 g >>h} {80 P >>Q} 
+[12] : {104 h >>i} {81 Q >>R} 
+[13] : {105 i >>j} {82 R >>S} 
+[14] : {106 j >>k} {83 S >>T} 
+[15] : {107 k >>l} {84 T >>U} 
+[16] : {108 l >>m} {85 U >>V} 
+[17] : {109 m >>n} {86 V >>W} 
+[18] : {110 n >>o} {87 W >>X} 
+[19] : {111 o >>p} {88 X >>Y} {65 A >>B} 
+[20] : {112 p >>q} {89 Y >>Z} {66 B >>C} 
+[21] : {113 q >>r} {90 Z >>a} {67 C >>D} 
+[22] : {114 r >>s} {68 D >>E} 
+HS|> load test-results/notable.tmp
+ERROR: could not open file 'test-results/notable.tmp'
+load failed
+HS|> structure
+item_count: 52
+table_size: 23
+order_first: A
+order_last : z
+load_factor: 2.2609
+[ 0] : {115 s >>t} {69 E >>F} 
+[ 1] : {116 t >>u} {70 F >>G} 
+[ 2] : {117 u >>v} {71 G >>H} 
+[ 3] : {118 v >>w} {72 H >>I} 
+[ 4] : {119 w >>x} {73 I >>J} 
+[ 5] : {120 x >>y} {97 a >>b} {74 J >>K} 
+[ 6] : {121 y >>z} {98 b >>c} {75 K >>L} 
+[ 7] : {122 z >>NULL} {99 c >>d} {76 L >>M} 
+[ 8] : {100 d >>e} {77 M >>N} 
+[ 9] : {101 e >>f} {78 N >>O} 
+[10] : {102 f >>g} {79 O >>P} 
+[11] : {103 g >>h} {80 P >>Q} 
+[12] : {104 h >>i} {81 Q >>R} 
+[13] : {105 i >>j} {82 R >>S} 
+[14] : {106 j >>k} {83 S >>T} 
+[15] : {107 k >>l} {84 T >>U} 
+[16] : {108 l >>m} {85 U >>V} 
+[17] : {109 m >>n} {86 V >>W} 
+[18] : {110 n >>o} {87 W >>X} 
+[19] : {111 o >>p} {88 X >>Y} {65 A >>B} 
+[20] : {112 p >>q} {89 Y >>Z} {66 B >>C} 
+[21] : {113 q >>r} {90 Z >>a} {67 C >>D} 
+[22] : {114 r >>s} {68 D >>E} 
+HS|> print
+  1 A
+  2 B
+  3 C
+  4 D
+  5 E
+  6 F
+  7 G
+  8 H
+  9 I
+ 10 J
+ 11 K
+ 12 L
+ 13 M
+ 14 N
+ 15 O
+ 16 P
+ 17 Q
+ 18 R
+ 19 S
+ 20 T
+ 21 U
+ 22 V
+ 23 W
+ 24 X
+ 25 Y
+ 26 Z
+ 27 a
+ 28 b
+ 29 c
+ 30 d
+ 31 e
+ 32 f
+ 33 g
+ 34 h
+ 35 i
+ 36 j
+ 37 k
+ 38 l
+ 39 m
+ 40 n
+ 41 o
+ 42 p
+ 43 q
+ 44 r
+ 45 s
+ 46 t
+ 47 u
+ 48 v
+ 49 w
+ 50 x
+ 51 y
+ 52 z
+HS|> load test-results/stress-rm.tmp
+HS|> structure
+item_count: 8
+table_size: 11
+order_first: Rick
+order_last : Picklerick
+load_factor: 0.7273
+[ 0] : {7598247037659998544 Picklerick >>NULL} {8243115061383688013 MortymerJr >>Picklerick} 
+[ 1] : 
+[ 2] : 
+[ 3] : {125779953153363 Summer >>Jerry} {521644699469 Morty >>Summer} 
+[ 4] : {521611142474 Jerry >>Beth} 
+[ 5] : {8318822995102689602 Birdperson >>MortymerJr} 
+[ 6] : 
+[ 7] : 
+[ 8] : {1752458562 Beth >>Birdperson} {1801677138 Rick >>Morty} 
+[ 9] : 
+[10] : 
+HS|> print
+  1 Rick
+  2 Morty
+  3 Summer
+  4 Jerry
+  5 Beth
+  6 Birdperson
+  7 MortymerJr
+  8 Picklerick
+HS|> expand
+HS|> print
+  1 Rick
+  2 Morty
+  3 Summer
+  4 Jerry
+  5 Beth
+  6 Birdperson
+  7 MortymerJr
+  8 Picklerick
+HS|> structure
+item_count: 8
+table_size: 23
+order_first: Rick
+order_last : Picklerick
+load_factor: 0.3478
+[ 0] : 
+[ 1] : 
+[ 2] : 
+[ 3] : 
+[ 4] : 
+[ 5] : 
+[ 6] : 
+[ 7] : 
+[ 8] : 
+[ 9] : {7598247037659998544 Picklerick >>NULL} {8318822995102689602 Birdperson >>MortymerJr} 
+[10] : 
+[11] : 
+[12] : {8243115061383688013 MortymerJr >>Picklerick} {1752458562 Beth >>Birdperson} 
+[13] : 
+[14] : {125779953153363 Summer >>Jerry} {1801677138 Rick >>Morty} 
+[15] : 
+[16] : 
+[17] : {521644699469 Morty >>Summer} 
+[18] : 
+[19] : 
+[20] : 
+[21] : 
+[22] : {521611142474 Jerry >>Beth} 
+HS|> add Squanchy
+HS|> add EvilMorty
+HS|> add Dumbrick
+HS|> structure
+item_count: 11
+table_size: 23
+order_first: Rick
+order_last : Dumbrick
+load_factor: 0.4783
+[ 0] : 
+[ 1] : 
+[ 2] : 
+[ 3] : 
+[ 4] : 
+[ 5] : {8748351601899827539 Squanchy >>EvilMorty} 
+[ 6] : 
+[ 7] : 
+[ 8] : 
+[ 9] : {7598247037659998544 Picklerick >>Squanchy} {8318822995102689602 Birdperson >>MortymerJr} 
+[10] : 
+[11] : 
+[12] : {8243115061383688013 MortymerJr >>Picklerick} {1752458562 Beth >>Birdperson} 
+[13] : {8390891434066671173 EvilMorty >>Dumbrick} 
+[14] : {125779953153363 Summer >>Jerry} {1801677138 Rick >>Morty} 
+[15] : 
+[16] : 
+[17] : {521644699469 Morty >>Summer} 
+[18] : 
+[19] : 
+[20] : 
+[21] : {7738144524751172932 Dumbrick >>NULL} 
+[22] : {521611142474 Jerry >>Beth} 
+HS|> contains Dumb
+NOT PRESENT
+HS|> contains Picklerick
+FOUND: Picklerick
+HS|> contains Jaguar
+NOT PRESENT
+HS|> load data/rm.hashset
+HS|> structure
+item_count: 6
+table_size: 5
+order_first: Rick
+order_last : Tinyrick
+load_factor: 1.2000
+[ 0] : {7738144525137111380 Tinyrick >>NULL} 
+[ 1] : 
+[ 2] : {1752458562 Beth >>Tinyrick} 
+[ 3] : {125779953153363 Summer >>Jerry} {1801677138 Rick >>Morty} 
+[ 4] : {521611142474 Jerry >>Beth} {521644699469 Morty >>Summer} 
+HS|> clear
+HS|> structure
+item_count: 0
+table_size: 5
+order_first: NULL
+order_last : NULL
+load_factor: 0.0000
+[ 0] : 
+[ 1] : 
+[ 2] : 
+[ 3] : 
+[ 4] : 
+HS|> bye
+#+END_SRC

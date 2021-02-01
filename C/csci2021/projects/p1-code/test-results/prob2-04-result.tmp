@@ -1,0 +1,205 @@
+(TEST 4) load_font_1
+COMMENTS:
+
+program: ./test_banlet_funcs2 load_font_1
+Failure messages:
+- FAILURE(139) due to Kill Signal from OS: likely a SEGFAULT occured
+- FAILURE: Valgrind reports reachable memory, may need to add free() or fclose()
+- FAILURE: Output Mismatch at lines marked
+
+--- Side by Side Differences ---
+- Expect output in: test-results/raw/prob2-04-expect.tmp
+- Actual output in: test-results/raw/prob2-04-actual.tmp
+- Differing lines have a character like '|' '>' or '<' in the middle
+==== EXPECT ====                                                           ==== ACTUAL ====                                                        
+{                                                                          {
+    // Tests load_font() on the font_standard.txt file                         // Tests load_font() on the font_standard.txt file
+    // ALSO checks that free_font() function deallocates.                      // ALSO checks that free_font() function deallocates.
+    char *font_file = "data/font_standard.txt";                                char *font_file = "data/font_standard.txt";
+    font_t *font = font_load(font_file);                                       font_t *font = font_load(font_file);
+    char *string =                                                             char *string =
+" !\"#$%&'()\n\                                                            " !\"#$%&'()\n\
+*+,-./0123\n\                                                              *+,-./0123\n\
+456789:;<=\n\                                                              456789:;<=\n\
+>?@ABCDEFG\n\                                                              >?@ABCDEFG\n\
+HIJKLMNOPQ\n\                                                              HIJKLMNOPQ\n\
+RSTUVWXYZ[\n\                                                              RSTUVWXYZ[\n\
+\\]^_`abcde\n\                                                             \\]^_`abcde\n\
+fghijklmno\n\                                                              fghijklmno\n\
+pqrstuvwxy\n\                                                              pqrstuvwxy\n\
+z{|}~";                                                                    z{|}~";
+    print_fontified_linebreaks(string, font);                                  print_fontified_linebreaks(string, font);
+    font_free(font);                                                           font_free(font);
+}                                                                          }
+   _  _ _    _  _     _   _  __  ___    _   ____                         <
+  | |( | ) _| || |_  | | (_)/ / ( _ )  ( ) / /\ \                        <
+  | | V V |_  ..  _|/ __)  / /  / _ \/\|/ | |  | |                       <
+  |_|     |_      _|\__ \ / /_ | (_>  <   | |  | |                       <
+  (_)       |_||_|  (   //_/(_) \___/\/   | |  | |                       <
+                     |_|                   \_\/_/                        <
+                              __  ___   _  ____   _____                  <
+__/\__   _                   / / / _ \ / ||___ \ |___ /                  <
+\    / _| |_     _____      / / | | | || |  __) |  |_ \                  <
+/_  _\|_   _| _ |_____| _  / /  | |_| || | / __/  ___) |                 <
+  \/    |_|  ( )       (_)/_/    \___/ |_||_____||____/                  <
+             |/                                                          <
+ _  _    ____    __    _____   ___    ___          __                    <
+| || |  | ___|  / /_  |___  | ( _ )  / _ \  _  _  / / _____              <
+| || |_ |___ \ | '_ \    / /  / _ \ | (_) |(_)(_)/ / |_____|             <
+|__   _| ___) || (_) |  / /  | (_) | \__, | _  _ \ \ |_____|             <
+   |_|  |____/  \___/  /_/    \___/    /_/ (_)( ) \_\                    <
+                                              |/                         <
+__   ___    ____      _     ____    ____  ____   _____  _____   ____     <
+\ \ |__ \  / __ \    / \   | __ )  / ___||  _ \ | ____||  ___| / ___|    <
+ \ \  / / / / _` |  / _ \  |  _ \ | |    | | | ||  _|  | |_   | |  _     <
+ / / |_| | | (_| | / ___ \ | |_) || |___ | |_| || |___ |  _|  | |_| |    <
+/_/  (_)  \ \__,_|/_/   \_\|____/  \____||____/ |_____||_|     \____|    <
+           \____/                                                        <
+ _   _  ___      _  _  __ _      __  __  _   _   ___   ____    ___       <
+| | | ||_ _|    | || |/ /| |    |  \/  || \ | | / _ \ |  _ \  / _ \      <
+| |_| | | |  _  | || ' / | |    | |\/| ||  \| || | | || |_) || | | |     <
+|  _  | | | | |_| || . \ | |___ | |  | || |\  || |_| ||  __/ | |_| |     <
+|_| |_||___| \___/ |_|\_\|_____||_|  |_||_| \_| \___/ |_|     \__\_\     <
+                                                                         <
+ ____   ____   _____  _   _ __     ____        ____  ____   __ _____ __  <
+|  _ \ / ___| |_   _|| | | |\ \   / /\ \      / /\ \/ /\ \ / /|__  /| _| <
+| |_) |\___ \   | |  | | | | \ \ / /  \ \ /\ / /  \  /  \ V /   / / | |  <
+|  _ <  ___) |  | |  | |_| |  \ V /    \ V  V /   /  \   | |   / /_ | |  <
+|_| \_\|____/   |_|   \___/    \_/      \_/\_/   /_/\_\  |_|  /____|| |  <
+                                                                    |__| <
+__     __  /\         _         _                _                       <
+\ \   |_ ||/\|       ( )  __ _ | |__    ___   __| |  ___                 <
+ \ \   | |            \| / _` || '_ \  / __| / _` | / _ \                <
+  \ \  | |              | (_| || |_) || (__ | (_| ||  __/                <
+   \_\ | |     _____     \__,_||_.__/  \___| \__,_| \___|                <
+      |__|    |_____|                                                    <
+  __         _      _    _  _     _                                      <
+ / _|  __ _ | |__  (_)  (_)| | __| | _ __ ___   _ __    ___              <
+| |_  / _` || '_ \ | |  | || |/ /| || '_ ` _ \ | '_ \  / _ \             <
+|  _|| (_| || | | || |  | ||   < | || | | | | || | | || (_) |            <
+|_|   \__, ||_| |_||_| _/ ||_|\_\|_||_| |_| |_||_| |_| \___/             <
+      |___/           |__/                                               <
+                          _                                              <
+ _ __    __ _  _ __  ___ | |_  _   _ __   ____      ____  __ _   _       <
+| '_ \  / _` || '__|/ __|| __|| | | |\ \ / /\ \ /\ / /\ \/ /| | | |      <
+| |_) || (_| || |   \__ \| |_ | |_| | \ V /  \ V  V /  >  < | |_| |      <
+| .__/  \__, ||_|   |___/ \__| \__,_|  \_/    \_/\_/  /_/\_\ \__, |      <
+|_|        |_|                                               |___/       <
+        __ _ __    /\/|                                                  <
+ ____  / /| |\ \  |/\/                                                   <
+|_  / | | | | | |                                                        <
+ / / < <  | |  > >                                                       <
+/___| | | | | | |                                                        <
+       \_\|_|/_/                                                         <
+--- Line Differences ---
+EXPECT:  20)    _  _ _    _  _     _   _  __  ___    _   ____  
+EXPECT:  21)   | |( | ) _| || |_  | | (_)/ / ( _ )  ( ) / /\ \ 
+EXPECT:  22)   | | V V |_  ..  _|/ __)  / /  / _ \/\|/ | |  | |
+EXPECT:  23)   |_|     |_      _|\__ \ / /_ | (_>  <   | |  | |
+EXPECT:  24)   (_)       |_||_|  (   //_/(_) \___/\/   | |  | |
+EXPECT:  25)                      |_|                   \_\/_/ 
+EXPECT:  26)                               __  ___   _  ____   _____ 
+EXPECT:  27) __/\__   _                   / / / _ \ / ||___ \ |___ / 
+EXPECT:  28) \    / _| |_     _____      / / | | | || |  __) |  |_ \ 
+EXPECT:  29) /_  _\|_   _| _ |_____| _  / /  | |_| || | / __/  ___) |
+EXPECT:  30)   \/    |_|  ( )       (_)/_/    \___/ |_||_____||____/ 
+EXPECT:  31)              |/                                         
+EXPECT:  32)  _  _    ____    __    _____   ___    ___          __       
+EXPECT:  33) | || |  | ___|  / /_  |___  | ( _ )  / _ \  _  _  / / _____ 
+EXPECT:  34) | || |_ |___ \ | '_ \    / /  / _ \ | (_) |(_)(_)/ / |_____|
+EXPECT:  35) |__   _| ___) || (_) |  / /  | (_) | \__, | _  _ \ \ |_____|
+EXPECT:  36)    |_|  |____/  \___/  /_/    \___/    /_/ (_)( ) \_\       
+EXPECT:  37)                                               |/            
+EXPECT:  38) __   ___    ____      _     ____    ____  ____   _____  _____   ____ 
+EXPECT:  39) \ \ |__ \  / __ \    / \   | __ )  / ___||  _ \ | ____||  ___| / ___|
+EXPECT:  40)  \ \  / / / / _` |  / _ \  |  _ \ | |    | | | ||  _|  | |_   | |  _ 
+EXPECT:  41)  / / |_| | | (_| | / ___ \ | |_) || |___ | |_| || |___ |  _|  | |_| |
+EXPECT:  42) /_/  (_)  \ \__,_|/_/   \_\|____/  \____||____/ |_____||_|     \____|
+EXPECT:  43)            \____/                                                    
+EXPECT:  44)  _   _  ___      _  _  __ _      __  __  _   _   ___   ____    ___  
+EXPECT:  45) | | | ||_ _|    | || |/ /| |    |  \/  || \ | | / _ \ |  _ \  / _ \ 
+EXPECT:  46) | |_| | | |  _  | || ' / | |    | |\/| ||  \| || | | || |_) || | | |
+EXPECT:  47) |  _  | | | | |_| || . \ | |___ | |  | || |\  || |_| ||  __/ | |_| |
+EXPECT:  48) |_| |_||___| \___/ |_|\_\|_____||_|  |_||_| \_| \___/ |_|     \__\_\
+EXPECT:  49)                                                                     
+EXPECT:  50)  ____   ____   _____  _   _ __     ____        ____  ____   __ _____ __ 
+EXPECT:  51) |  _ \ / ___| |_   _|| | | |\ \   / /\ \      / /\ \/ /\ \ / /|__  /| _|
+EXPECT:  52) | |_) |\___ \   | |  | | | | \ \ / /  \ \ /\ / /  \  /  \ V /   / / | | 
+EXPECT:  53) |  _ <  ___) |  | |  | |_| |  \ V /    \ V  V /   /  \   | |   / /_ | | 
+EXPECT:  54) |_| \_\|____/   |_|   \___/    \_/      \_/\_/   /_/\_\  |_|  /____|| | 
+EXPECT:  55)                                                                     |__|
+EXPECT:  56) __     __  /\         _         _                _       
+EXPECT:  57) \ \   |_ ||/\|       ( )  __ _ | |__    ___   __| |  ___ 
+EXPECT:  58)  \ \   | |            \| / _` || '_ \  / __| / _` | / _ \
+EXPECT:  59)   \ \  | |              | (_| || |_) || (__ | (_| ||  __/
+EXPECT:  60)    \_\ | |     _____     \__,_||_.__/  \___| \__,_| \___|
+EXPECT:  61)       |__|    |_____|                                    
+EXPECT:  62)   __         _      _    _  _     _                          
+EXPECT:  63)  / _|  __ _ | |__  (_)  (_)| | __| | _ __ ___   _ __    ___  
+EXPECT:  64) | |_  / _` || '_ \ | |  | || |/ /| || '_ ` _ \ | '_ \  / _ \ 
+EXPECT:  65) |  _|| (_| || | | || |  | ||   < | || | | | | || | | || (_) |
+EXPECT:  66) |_|   \__, ||_| |_||_| _/ ||_|\_\|_||_| |_| |_||_| |_| \___/ 
+EXPECT:  67)       |___/           |__/                                   
+EXPECT:  68)                           _                                        
+EXPECT:  69)  _ __    __ _  _ __  ___ | |_  _   _ __   ____      ____  __ _   _ 
+EXPECT:  70) | '_ \  / _` || '__|/ __|| __|| | | |\ \ / /\ \ /\ / /\ \/ /| | | |
+EXPECT:  71) | |_) || (_| || |   \__ \| |_ | |_| | \ V /  \ V  V /  >  < | |_| |
+EXPECT:  72) | .__/  \__, ||_|   |___/ \__| \__,_|  \_/    \_/\_/  /_/\_\ \__, |
+EXPECT:  73) |_|        |_|                                               |___/ 
+EXPECT:  74)         __ _ __    /\/|
+EXPECT:  75)  ____  / /| |\ \  |/\/ 
+EXPECT:  76) |_  / | | | | | |      
+EXPECT:  77)  / / < <  | |  > >     
+EXPECT:  78) /___| | | | | | |      
+EXPECT:  79)        \_\|_|/_/       
+
+--- Valgrind Log from: test-results/raw/prob2-04-valgrd.tmp ---
+==297223== Memcheck, a memory error detector
+==297223== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==297223== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==297223== Command: ./test_banlet_funcs2 load_font_1
+==297223== Parent PID: 297222
+==297223== 
+==297223== Invalid read of size 4
+==297223==    at 0x109A96: print_fontified (banlet_funcs.c:90)
+==297223==    by 0x109BCC: print_fontified_linebreaks (banlet_funcs.c:141)
+==297223==    by 0x10959A: main (test_banlet_funcs2.c:84)
+==297223==  Address 0x0 is not stack'd, malloc'd or (recently) free'd
+==297223== 
+==297223== 
+==297223== Process terminating with default action of signal 11 (SIGSEGV)
+==297223==  Access not within mapped region at address 0x0
+==297223==    at 0x109A96: print_fontified (banlet_funcs.c:90)
+==297223==    by 0x109BCC: print_fontified_linebreaks (banlet_funcs.c:141)
+==297223==    by 0x10959A: main (test_banlet_funcs2.c:84)
+==297223==  If you believe this happened as a result of a stack
+==297223==  overflow in your program's main thread (unlikely but
+==297223==  possible), you can try to increase the size of the
+==297223==  main thread stack using the --main-stacksize= flag.
+==297223==  The main thread stack size used in this run was 8388608.
+==297223== 
+==297223== HEAP SUMMARY:
+==297223==     in use at exit: 51 bytes in 2 blocks
+==297223==   total heap usage: 3 allocs, 1 frees, 51 bytes allocated
+==297223== 
+==297223== 11 bytes in 1 blocks are still reachable in loss record 1 of 2
+==297223==    at 0x483DFAF: realloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==297223==    by 0x109B2A: print_fontified_linebreaks (banlet_funcs.c:135)
+==297223==    by 0x10959A: main (test_banlet_funcs2.c:84)
+==297223== 
+==297223== 40 bytes in 1 blocks are still reachable in loss record 2 of 2
+==297223==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==297223==    by 0x1098FA: find_linebreaks (banlet_funcs.c:53)
+==297223==    by 0x109ADA: print_fontified_linebreaks (banlet_funcs.c:129)
+==297223==    by 0x10959A: main (test_banlet_funcs2.c:84)
+==297223== 
+==297223== LEAK SUMMARY:
+==297223==    definitely lost: 0 bytes in 0 blocks
+==297223==    indirectly lost: 0 bytes in 0 blocks
+==297223==      possibly lost: 0 bytes in 0 blocks
+==297223==    still reachable: 51 bytes in 2 blocks
+==297223==         suppressed: 0 bytes in 0 blocks
+==297223== 
+==297223== For lists of detected and suppressed errors, rerun with: -s
+==297223== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+

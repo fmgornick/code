@@ -1,0 +1,11 @@
+{
+    // Tests locating linebreak indices in a string
+    char string[]="If you lie to\nthe compiler,\nit will get\nits revenge.\n-Henry Spencer";
+    int count = -1;
+    int *linebreaks = find_linebreaks(string, &count);
+    printf("count: %d\n",count);
+    printf("array: "); print_int_array(linebreaks, count); printf("\n");
+    free(linebreaks);
+}
+count: 5
+array: [13, 27, 39, 52, 67]

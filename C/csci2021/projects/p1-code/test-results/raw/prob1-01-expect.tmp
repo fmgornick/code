@@ -1,0 +1,7 @@
+{
+    // Tests replacing characters in a string
+    char string[]="A A B B A";
+    string_replace_char(string, 'A', 'X');
+    printf("result: '%s'\n", string);
+}
+result: 'X X B B X'

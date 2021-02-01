@@ -1,0 +1,37 @@
+print
+structure
+add Rick
+add Morty
+print
+structure
+add Summer
+add Jerry
+add Beth
+add Tinyrick
+print
+structure
+contains Jerry
+contains Rick
+contains Unity
+contains President
+add Jerry
+add Beth
+save rm.hashset
+clear
+print
+structure
+add Birdperson
+add Squanchy
+structure
+load rm.hashset
+structure
+expand
+print
+structure
+add Birdperson
+add Squanchy
+add Picklerick
+structure
+expand
+structure
+bye
