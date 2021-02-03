@@ -1,15 +1,15 @@
-==287370== Memcheck, a memory error detector
-==287370== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==287370== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
-==287370== Command: ./test_banlet_funcs1 string_replace_char_2
-==287370== Parent PID: 287369
-==287370== 
-==287370== 
-==287370== HEAP SUMMARY:
-==287370==     in use at exit: 0 bytes in 0 blocks
-==287370==   total heap usage: 0 allocs, 0 frees, 0 bytes allocated
-==287370== 
-==287370== All heap blocks were freed -- no leaks are possible
-==287370== 
-==287370== For lists of detected and suppressed errors, rerun with: -s
-==287370== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==78893== Memcheck, a memory error detector
+==78893== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==78893== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==78893== Command: ./test_banlet_funcs1 string_replace_char_2
+==78893== Parent PID: 78892
+==78893== 
+==78893== 
+==78893== HEAP SUMMARY:
+==78893==     in use at exit: 0 bytes in 0 blocks
+==78893==   total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+==78893== 
+==78893== All heap blocks were freed -- no leaks are possible
+==78893== 
+==78893== For lists of detected and suppressed errors, rerun with: -s
+==78893== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

@@ -1,6 +1,7 @@
 // banlet_funcs.c: support functions for the banlet_main program.
 
 #include "banlet.h"
+#include <string.h>
 
 // PROBLEM 1: Replace instances of character 'old' with 'new' in the
 // string 'str'.  May use the strlen() library function to determine
@@ -12,7 +13,10 @@
 // char *s2="A A B B A"; string_replace_char(s2, 'B', 'Y'); // s2 is "A A Y Y A"
 // char *s3="A A B B A"; string_replace_char(s3, ' ', '-'); // s3 is "A-A-B-B-A"
 void string_replace_char(char *str, char old, char new){
-  for (int i=0; i<strlen(str); i++) {
+  int length = strlen(str);
+
+  // iterate through replacing each character
+  for (int i=0; i<length; i++) {
     if (str[i] == old) str[i] = new;
   }
 }
@@ -29,7 +33,10 @@ void string_replace_char(char *str, char old, char new){
 // count_linebreaks("Hi\nThere") ->  2
 // count_linebreaks("O\nM\nG")   ->  3
 int count_linebreaks(char *msg){
+  // this includes one at the end so it starts with one
   int num_newlines = 1;
+
+  // iterate through and increment num_newlines every time newline is found
   for (int i=0; i<strlen(msg); i++) {
     if (msg[i] == '\n') num_newlines++;
   }
@@ -49,10 +56,15 @@ int count_linebreaks(char *msg){
 // // nbreaks is now 2
 // // breaks is now [5, 11]
 int *find_linebreaks(char *msg, int *nbreaks){
+  // changes value of nbreaks
   *nbreaks = count_linebreaks(msg);
+
+  // allocate size with number of breaks
   int *breaks = malloc(*nbreaks * sizeof(int));
 
   int index = 0;
+
+  // iterate through, adding index position of each newline when found
   for (int i=0; i<strlen(msg); i++) {
     if (msg[i] == '\n') {
       breaks[index] = i;
@@ -60,6 +72,7 @@ int *find_linebreaks(char *msg, int *nbreaks){
     }
   }
 
+  // adds newline index at length of string
   breaks[index] = strlen(msg);
   return breaks;
 }
@@ -87,13 +100,14 @@ int *find_linebreaks(char *msg, int *nbreaks){
 // |  _  ||  __/| || || (_) ||_|
 // |_| |_| \___||_||_| \___/ (_)
 void print_fontified(char *msg, int length, font_t *font){
+  // iterates through each line of the word
   for (int i=0; i<font->height; i++) {
+
+    // iterates through each letter
     for (int j=0; j<length; j++) {
-      for (int k=0; k<font->glyphs[(int) msg[j]].width; k++) {
-        printf("%c", font->glyphs[(int) msg[j]].data[i][k]);
-      }
+      printf("%s", font->glyphs[(int) msg[j]].data[i]);
     }
-    if (i < font->height) printf("\n");
+    printf("\n");
   }
 }
 
@@ -126,24 +140,29 @@ void print_fontified(char *msg, int length, font_t *font){
 //  \____| \__,_||_|   |_|    \___/     
 void print_fontified_linebreaks(char *msg, font_t *font){
   int nbreaks;
+  // creates array containing index positions of linebreaks
+  // memory allocation done in find_linebreaks()
   int *breaks = find_linebreaks(msg, &nbreaks);
 
-  char *word = (char*) malloc(0);
-  int start = -1;
+  // creates string of length msg that can be mutated
+  // also sets word equal to msg swapping out '\n' with '\0'
+  char *word = (char*) malloc(1+strlen(msg)*sizeof(char));
+  for (int i=0; i<strlen(msg); i++) word[i] = msg[i];
+  word[strlen(msg)] = '\0';
+  string_replace_char(word,'\n','\0');
 
+  // in order to free the whole string, we need to point to the first element,
+  // so I created a temp to change the pointer while word keeps pointing to
+  // the same spot
+  char *tmp = word;
   for (int i=0; i<nbreaks; i++) {
-    word = (char*) realloc(word, sizeof(char) * (breaks[i]-start));
-    for (int j=0; j<breaks[i]-start-1; j++) {
-      word[j] = msg[start+j+1];
-    }
-    word[breaks[i]-start-1] = '\0';
-
-    print_fontified(word,strlen(word),font);
-    start = breaks[i];
+    print_fontified(tmp,strlen(tmp),font);
+    // goes to next word in string after null terminator
+    tmp += strlen(tmp) + 1;
   }
 
-  free(word);
   free(breaks);
+  free(word);
 }
 
 // PROVIDED: Initializes a glyph to mostly X's except for its
@@ -196,7 +215,7 @@ void glyph_init(glyph_t *glyph, int codepoint){
 // font_t struct then (2) allocates memory for an array of glyph_t
 // structs of length NUM_ASCII_GLYPHS (a constant defined in
 // banlet.h). Sets the font->glyphs field to be the allocated array of
-// glyphs.  Reads the font->height field from teh first line of the
+// glyphs.  Reads the font->height field from the first line of the
 // file.  Iterates over each element of the glyphs array and calls the
 // glyph_init() function on it to populate it with default data.  Then
 // proceeds to read glyphs from the file. Glyphs are read by reading
@@ -213,8 +232,43 @@ void glyph_init(glyph_t *glyph, int codepoint){
 // codepoint with fscanf() returns EOF (end of file). This causes the
 // routine to return the allocated font_t data for use elsewhere.
 font_t *font_load(char *filename){
-  // WRITE ME
-  return NULL;}
+  // open file and return if it's empty
+  FILE *f = fopen(filename,"r");
+  if (f == NULL) return NULL;
+
+  // read first line of file to obtain height
+  int height;
+  fscanf(f,"height: %d",&height);
+
+  // allocate memory for font and glyph structs
+  font_t *font = malloc(sizeof(font_t));
+  glyph_t *glyphs = malloc(NUM_ASCII_GLYPHS * sizeof(glyph_t));
+
+  // initialize glyph values
+  for (int i=0; i<NUM_ASCII_GLYPHS; i++) {
+    glyph_init(&glyphs[i], i);
+  }
+
+  // initialize font values
+  font->height = height;
+  font->glyphs = glyphs;
+  
+  int codepoint;
+
+  while (1) {
+    // read line containing codpoint into codpoint variable
+    if (fscanf(f,"%d",&codepoint) == EOF) break;
+
+    // read following lines into each glyph array element
+    for (int i=0; i<height; i++) {
+      if (fscanf(f,"%s",glyphs[codepoint].data[i]) == EOF) break;
+      string_replace_char(glyphs[codepoint].data[i],'@',' ');
+    }
+  }
+
+  fclose(f);
+  return font;
+}
 
 
 
@@ -222,5 +276,7 @@ font_t *font_load(char *filename){
 // the glyph array, then frees the font itself. Hint: this funciton
 // should be 2 lines long.
 void font_free(font_t *font){
-  // WRITE ME
+  free(font->glyphs);
+  free(font);
+  return;
 }

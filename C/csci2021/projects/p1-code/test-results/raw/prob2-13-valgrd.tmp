@@ -1,0 +1,15 @@
+==80230== Memcheck, a memory error detector
+==80230== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==80230== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==80230== Command: ./banlet_main data/font_capsonly.txt KATZ:_ALL\ YOUR_BASS\ ARE_BELONG\ TO_US!!!
+==80230== Parent PID: 80228
+==80230== 
+==80230== 
+==80230== HEAP SUMMARY:
+==80230==     in use at exit: 0 bytes in 0 blocks
+==80230==   total heap usage: 6 allocs, 6 frees, 35,364 bytes allocated
+==80230== 
+==80230== All heap blocks were freed -- no leaks are possible
+==80230== 
+==80230== For lists of detected and suppressed errors, rerun with: -s
+==80230== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

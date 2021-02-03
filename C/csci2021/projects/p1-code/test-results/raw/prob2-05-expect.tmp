@@ -1,0 +1,59 @@
+{
+    // Tests load_font() on the font_mini.txt file
+    // ALSO checks that free_font() function deallocates.
+    char *font_file = "data/font_mini.txt";
+    font_t *font = font_load(font_file);
+    char *string =
+" !\"#$%&'()\n\
+*+,-./0123\n\
+456789:;<=\n\
+>?@ABCDEFG\n\
+HIJKLMNOPQ\n\
+RSTUVWXYZ[\n\
+\\]^_`abcde\n\
+fghijklmno\n\
+pqrstuvwxy\n\
+z{|}~";
+    print_fontified_linebreaks(string, font);
+    font_free(font);
+}
+            _          
+  |||-|-|-(| O/() / /\ 
+  o  -|-|-_|)/O(_X |  |
+                    \/ 
+             _   _ _ 
+\|/_|_ __  // \/| )_)
+/|\ | o  o/ \_/ |/__)
+      /              
+     _  _ __ _  _      
+|_|_|_ |_  /(_)(_|oo/--
+  |  _)|_)/ (_)  |oo\--
+                   /   
+ _   __      _  _ _  _ _ __
+\ ) /  \ /\ |_)/ | \|_|_/__
+/o | (|//--\|_)\_|_/|_| \_|
+    \__                    
+   ___                _  _  _ 
+|_| |   ||/| |\/||\ |/ \|_)/ \
+| |_|_\_||\|_|  || \|\_/|  \_X
+                              
+ _  _____                  __ _
+|_)(_  | | |\  /\    /\/\_/ /| 
+| \__) | |_| \/  \/\/ /\ | /_|_
+                               
+  _ /\                 
+\  |    \ _.|_  _ _| _ 
+ \_|     (_||_)(_(_|(/_
+      __               
+  _                       
+_|_ _ |_ o o| |._ _ ._  _ 
+ | (_|| || ||<|| | || |(_)
+    _|    _|              
+                          
+._  _.._ __|_             
+|_)(_|| _> |_|_|\/\/\/><\/
+|    |                  / 
+   ,-|-. /\/
+_ _| | |_   
+/_ | | |    
+   `-|-'    
