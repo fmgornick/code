@@ -1,0 +1,287 @@
+                           _________________
+
+                            HW 03 QUESTIONS
+                           _________________
+
+
+Write your answers to the questions below directly in this text file to
+prepare for the associated quiz. Credit for the HW is earned by
+completing the online quiz.
+
+
+PROBLEM 1: Two-Pass Input and malloc()
+======================================
+
+  One frequently encounters the following situation when reading files
+  - The file contains some data that is to be read into a dynamically
+    allocated array
+  - There is no indication of how much data is in the file
+
+  C programs commonly use a *two-pass* input strategy to handle this
+  situation
+  1. Read through the file once to count items in the file, the allocate
+     memory for an array of that size
+  2. Back up to the beginning of the file and read data from the file
+     into the array
+
+  The provided program `twopass.c' demonstrates this technique along
+  with several other input / formatting techniques.
+
+
+A
+~
+
+  Compile and run the `twopass.c' program on the two provided text files
+  `nums1.txt' and `nums2.txt'.  Paste the output the program produces
+  below.
+
+nums1.txt
+Reading double values from file 'nums1.txt'
+[0] :     1.00 == 1.0000e+00
+[1] :     2.00 == 2.0000e+00
+[2] :     3.00 == 3.0000e+00
+[3] :     4.00 == 4.0000e+00
+[4] :     5.00 == 5.0000e+00
+[5] :     6.00 == 6.0000e+00
+[6] :     7.00 == 7.0000e+00
+[7] :     8.00 == 8.0000e+00
+[8] :     9.00 == 9.0000e+00
+[9] :    10.00 == 1.0000e+01
+
+nums2.txt
+Reading double values from file 'nums2.txt'
+[0] :     4.35 == 4.3523e+00
+[1] : 37066.25 == 3.7066e+04
+[2] :   307.07 == 3.0707e+02
+[3] :     0.05 == 5.1072e-02
+[4] :   613.85 == 6.1385e+02
+[5] :  9443.33 == 9.4433e+03
+[6] : 84099.99 == 8.4100e+04
+[7] : 28202.73 == 2.8203e+04
+
+
+B
+~
+
+  Examine the function `read_all_doubles()' in `twopass.c' and describe
+  which lines/blocks of code carry out the following actions. Use the
+  provided comments in the file as a guide.
+
+  - Opens the file for reading and checks for errors
+
+  FILE *fin = fopen(filename, "r");        // open the file
+  if(fin == NULL){                         // check file opened successfully
+    return NULL;
+  }
+
+
+  - Counts all the doubles in the file
+
+  double tmp;                              // temporary space to read one double
+  int count = 0;                           // count number of doubles in file
+  while(1){                                // first input pass: indefinite loop to count doubles
+    int ret = fscanf(fin, "%lf", &tmp);    // try to read a double
+    if(ret == EOF){                        // check if End Of File reached, break from loop if so 
+      break;
+    }
+    count++;                               // successfully read a double, increment count
+  }
+
+
+  - Allocates memory for doubles in the file
+
+  double *data =                           // allocate space for the array after counting
+    malloc(sizeof(double) * count);
+
+
+  - Moves the file read position to the beginning of the file
+
+  rewind(fin);                             // rewind to beginning of file
+
+
+  - Closes the file when reading is complete
+
+  fclose(fin);                             // close the file as all reading is done now
+
+
+C
+~
+
+  In your answer to the previous problem, you should have identified a
+  use of `malloc()' in `read_all_doubles()'.  Where is this memory
+  `free()'d and why? /Note: This question is similar to a lecture
+  exercise on when to free() memory that has been malloc()'d./
+
+  it's freed after being called in the main function because the
+  read_all_doubles() function must return the data, so the data's 
+  memory can't be freed until main() recieves it.
+
+
+D
+~
+
+  Examine how the doubles read from file are printed in the `main()'
+  function. Discuss below the format specifiers used by `printf()' and
+  the width/precision modifiers that are used to get a "table-like"
+  appearance.  You may wish to consult the Manual page on `printf()'
+  such as the one here:
+
+  <https://man7.org/linux/man-pages/man3/printf.3.html>
+
+
+Optional Enrichment: Reading without Storing
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  One minor irritation in `read_all_doubles()' is the following code:
+  ,----
+  |   double tmp;                              // temporary space to read one double
+  |   ...;
+  |   while(1){                                // first input pass: indefinite loop to count doubles
+  |     int ret = fscanf(fin, "%lf", &tmp);    // try to read a double
+  |     ...;
+  |   }
+  `----
+  This loop is counting the doubles in an input file but discarding
+  them.  Avoiding the need to allocate the `tmp' variable is desirable
+  and can be done using some more advanced format specifiers in
+  `fscanf() / scanf()' that indicate "read a double but do not store it
+  anywhere". This allows the counting loop to happen without need for
+  any additional space for doubles.
+
+  Look how to get `fscanf()' to parse items like doubles without
+  requiring space to store the result.
+
+
+PROBLEM 2: Number conversions
+=============================
+
+A
+~
+
+  Fill in the following table of equivalences.  Filling in the table
+  from top to bottom is advantageous as earlier rows can sometimes be
+  used to infer lower values. Feel free to make use of any ASCII table
+  or the table.c program provided in the week 3 lecture code pack.
+
+  ,----
+  | |-----+------+-----+-----------+--------------|
+  | | Dec | Hex  | Oct | Binary    | Char         |
+  | |-----+------+-----+-----------+--------------|
+  | |   9 | 0x09 |  11 | 0000 1001 | TAB          |
+  | |  10 | 0x0A |  12 | 0000 1010 | \n (newline) |
+  | |  32 | 0x20 |  40 | 0010 0000 | SPACE        |
+  | |  50 | 3x02 |  62 | 0011 0010 | ?            |
+  | |  65 | 0x41 | 101 | 0100 0001 | A            |
+  | |  66 | 4x02 | 102 | 0100 0010 | ?            |
+  | |  79 | 0x4F | 117 | 0100 1111 | O            |
+  | |  80 | 0x50 | 120 | 0101 0000 | P            |
+  | |  91 | 0x5B | 133 | 0101 1011 | [            |
+  | |  97 | 0x61 | 141 | 0110 0001 | ?            |
+  | | 122 | 0x7A | 172 | 0111 1010 | z            |
+  | | 145 | 0x91 | 221 | 1001 0001 | none         |
+  | | 160 | 0xA0 | 240 | 1010 0000 | none         |
+  | | 180 | 0xB4 | 264 | 1011 0100 | none         |
+  | | 255 | 0xFF | 377 | 1111 1111 | none         |
+  | |-----+------+-----+-----------+--------------|
+  `----
+
+
+B
+~
+
+  Fill in the bits, hex, and decimal values for the given examples. The
+  first example is completed for you. Assume all of these are 32 bit
+  unsigned integers.
+  ,----
+  |   COMPLETED
+  |   Binary:   0000 0000  0000 0000  0001 1000  1110 1001  
+  |             0    0     0    0     1    8     E    9
+  |   Hex   :   0018E9
+  |   Decimal:  6377
+  | 
+  | 
+  |   NUMBER 1
+  |   Binary:   0000 0000  0010 1111  0011 1010  1000 1101  
+  |             0    0     2    F     3    A     8    D
+  |   Hex   :   002F3A8D
+  |   Decimal:  3095181
+  | 
+  | 
+  |   NUMBER 2
+  |   Binary:   0111 1111  1000 0011  0101 1010  0000 1011  
+  |             7    F     8    3     5    A     0    B
+  |   Hex   :   7F835A0B
+  |   Decimal:  2139314699
+  `----
+
+
+PROBLEM 3: Signed Integer Conversions
+=====================================
+
+A
+~
+
+  Apply the steps involved in converting the following positive binary
+  number to it's two's complement negation in 8-bit signed
+  format. Recall the steps are
+  - Invert the bits
+  - Add one
+  Apply these steps to the following number:
+  ,----
+  | 0111 1100  = 0x7C = 124 (decimal)
+  `----
+
+  The result is the two's complement representation of -124.
+
+  Convert back to positive via the same process
+  - Invert the bits
+  - Add one
+  to show that the original bits are gotten back.
+
+
+B
+~
+
+  Complete the following table of equivalences assuming 8-bit
+  twos-complement signed integers. The rightmost column is the inverse
+  of the binary representation: flip 1's to 0's, and vice versa.
+
+  ,----
+  | |------+------+-----------+-----------|
+  | |  Dec |  Hex | Binary    | Inverse   |
+  | |------+------+-----------+-----------|
+  | |   +5 | 0x05 | 0000 0101 | 1111 1010 |
+  | |   -5 | 0xFA | 1111 1011 | 0000 0100 |
+  | |  +32 | 0x20 | 0010 0000 | 1101 1111 |
+  | |  -32 | 0xE0 | 1110 0000 | 0001 1111 |
+  | | +127 | 0x7F | 0111 1111 | 1000 0000 |
+  | | -127 | 0x81 | 1000 0001 | 0111 1110 |
+  | | -128 | 0x80 | 1000 0000 | 0111 1111 |
+  | |   +2 | 0x02 | 0000 0010 | 1111 1101 |
+  | |   -2 | 0xFE | 1111 1110 | 0000 0001 |
+  | |   +1 | 0x01 | 0000 0001 | 1111 1110 |
+  | |   -1 | 0xFF | 1111 1111 | 0000 0000 |
+  | |    0 | 0x00 | 0000 0000 | 0000 0000 |
+  | |------+------+-----------+-----------|
+  `----
+
+
+PROBLEM 4: Converting Strings to Numbers
+========================================
+
+  Inspect the program in the code pack called `convert.c'.  Compile and
+  run it using
+  ,----
+  | > gcc convert.c
+  | > ./a.out
+  `----
+
+  Describe briefly what kind of conversion is being done by the
+  `convert()' function given.
+  - A. What kind of data is input?
+  - B. What result is produced by the function?
+  - C. How is a success versus an error reported?
+  - D. Why is this kind of conversion needed?
+  - E. What built-in C function (useful for the assignment) does this
+    conversion function use and how is its calling convention different
+    from convert()?
