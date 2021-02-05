@@ -1,0 +1,37 @@
+Hashset Application
+Commands:
+  hashcode <item>  : prints out the numeric hash code for the given key (does not change the hash set)
+  contains <item>  : prints the value associated with the given item or NOT PRESENT
+  add <item>       : inserts the given item into the hash set, reports existing items
+  print            : prints all items in the hash set in the order they were addded
+  structure        : prints detailed structure of the hash set
+  clear            : reinitializes hash set to be empty with default size
+  save <file>      : writes the contents of the hash set to the given file
+  load <file>      : clears the current hash set and loads the one in the given file
+  next_prime <int> : if <int> is prime, prints it, otherwise finds the next prime and prints it
+  expand           : expands memory size of hash set to reduce its load factor
+  bye              : exit the program
+HS|> hashcode A
+65
+HS|> hashcode C
+67
+HS|> hashcode D
+68
+HS|> hashcode a
+97
+HS|> hashcode Rick
+1801677138
+HS|> hashcode Morty
+521644699469
+HS|> hashcode Birdperson
+8318822995102689602
+HS|> hashcode Gearhead
+7233173975803716935
+HS|> hashcode Unity
+521644109397
+HS|> print
+HS|> contains Rick
+NOT PRESENT
+HS|> contains Morty
+NOT PRESENT
+HS|> bye

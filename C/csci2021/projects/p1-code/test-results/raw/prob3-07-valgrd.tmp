@@ -1,0 +1,15 @@
+==199840== Memcheck, a memory error detector
+==199840== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==199840== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==199840== Command: ./hashset_main -echo
+==199840== Parent PID: 199839
+==199840== 
+==199840== 
+==199840== HEAP SUMMARY:
+==199840==     in use at exit: 0 bytes in 0 blocks
+==199840==   total heap usage: 3 allocs, 3 frees, 1,008 bytes allocated
+==199840== 
+==199840== All heap blocks were freed -- no leaks are possible
+==199840== 
+==199840== For lists of detected and suppressed errors, rerun with: -s
+==199840== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

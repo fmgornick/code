@@ -1,0 +1,77 @@
+Hashset Application
+Commands:
+  hashcode <item>  : prints out the numeric hash code for the given key (does not change the hash set)
+  contains <item>  : prints the value associated with the given item or NOT PRESENT
+  add <item>       : inserts the given item into the hash set, reports existing items
+  print            : prints all items in the hash set in the order they were addded
+  structure        : prints detailed structure of the hash set
+  clear            : reinitializes hash set to be empty with default size
+  save <file>      : writes the contents of the hash set to the given file
+  load <file>      : clears the current hash set and loads the one in the given file
+  next_prime <int> : if <int> is prime, prints it, otherwise finds the next prime and prints it
+  expand           : expands memory size of hash set to reduce its load factor
+  bye              : exit the program
+HS|> add A
+HS|> add B
+HS|> add C
+HS|> add D
+HS|> add E
+HS|> add F
+HS|> add G
+HS|> add H
+HS|> add I
+HS|> add J
+HS|> add K
+HS|> add L
+HS|> add M
+HS|> add N
+HS|> add O
+HS|> add P
+HS|> add Q
+HS|> add R
+HS|> add S
+HS|> add T
+HS|> add U
+HS|> add V
+HS|> add W
+HS|> add X
+HS|> add Y
+HS|> add Z
+HS|> add a
+HS|> add b
+HS|> add c
+HS|> add d
+HS|> add e
+HS|> add f
+HS|> add g
+HS|> add h
+HS|> add i
+HS|> add j
+HS|> add k
+HS|> add l
+HS|> add m
+HS|> add n
+HS|> add o
+HS|> add p
+HS|> add q
+HS|> add r
+HS|> add s
+HS|> add t
+HS|> add u
+HS|> add v
+HS|> add w
+HS|> add x
+HS|> add y
+HS|> add z
+HS|> structure
+item_count: 52
+table_size: 5
+order_first: A
+order_last : z
+load_factor: 10.4000
+[ 0] : {120 x >>y} {115 s >>t} {110 n >>o} {105 i >>j} {100 d >>e} {90 Z >>a} {85 U >>V} {80 P >>Q} {75 K >>L} {70 F >>G} {65 A >>B} 
+[ 1] : {121 y >>z} {116 t >>u} {111 o >>p} {106 j >>k} {101 e >>f} {86 V >>W} {81 Q >>R} {76 L >>M} {71 G >>H} {66 B >>C} 
+[ 2] : {122 z >>NULL} {117 u >>v} {112 p >>q} {107 k >>l} {102 f >>g} {97 a >>b} {87 W >>X} {82 R >>S} {77 M >>N} {72 H >>I} {67 C >>D} 
+[ 3] : {118 v >>w} {113 q >>r} {108 l >>m} {103 g >>h} {98 b >>c} {88 X >>Y} {83 S >>T} {78 N >>O} {73 I >>J} {68 D >>E} 
+[ 4] : {119 w >>x} {114 r >>s} {109 m >>n} {104 h >>i} {99 c >>d} {89 Y >>Z} {84 T >>U} {79 O >>P} {74 J >>K} {69 E >>F} 
+HS|> bye

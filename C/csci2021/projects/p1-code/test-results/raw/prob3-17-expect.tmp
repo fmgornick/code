@@ -1,0 +1,25 @@
+>> cat test-results/ver1.tmp
+5 4
+  1 Unity
+  2 BethsMom
+  3 Gaia
+  4 Rick
+>> cat test-results/ver2.tmp
+5 8
+  1 Unity
+  2 BethsMom
+  3 Gaia
+  4 Rick
+  5 Morty
+  6 Jerry
+  7 Birdperson
+  8 Summer
+>> cat test-results/ver3.tmp
+5 7
+  1 Unity
+  2 BethsMom
+  3 Gaia
+  4 Rick
+  5 Gearhead
+  6 Squanchy
+  7 Jaguar

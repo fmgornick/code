@@ -1,0 +1,106 @@
+Hashset Application
+Commands:
+  hashcode <item>  : prints out the numeric hash code for the given key (does not change the hash set)
+  contains <item>  : prints the value associated with the given item or NOT PRESENT
+  add <item>       : inserts the given item into the hash set, reports existing items
+  print            : prints all items in the hash set in the order they were addded
+  structure        : prints detailed structure of the hash set
+  clear            : reinitializes hash set to be empty with default size
+  save <file>      : writes the contents of the hash set to the given file
+  load <file>      : clears the current hash set and loads the one in the given file
+  next_prime <int> : if <int> is prime, prints it, otherwise finds the next prime and prints it
+  expand           : expands memory size of hash set to reduce its load factor
+  bye              : exit the program
+HS|> add Rick
+HS|> add Morty
+HS|> add Beth
+HS|> structure
+item_count: 3
+table_size: 5
+order_first: Rick
+order_last : Beth
+load_factor: 0.6000
+[ 0] : 
+[ 1] : 
+[ 2] : {1752458562 Beth >>NULL} 
+[ 3] : {1801677138 Rick >>Morty} 
+[ 4] : {521644699469 Morty >>Beth} 
+HS|> clear
+HS|> structure
+item_count: 0
+table_size: 5
+order_first: NULL
+order_last : NULL
+load_factor: 0.0000
+[ 0] : 
+[ 1] : 
+[ 2] : 
+[ 3] : 
+[ 4] : 
+HS|> add Birdperson
+HS|> add Unity
+HS|> add BetaSeven
+HS|> structure
+item_count: 3
+table_size: 5
+order_first: Birdperson
+order_last : BetaSeven
+load_factor: 0.6000
+[ 0] : 
+[ 1] : 
+[ 2] : {521644109397 Unity >>BetaSeven} {8318822995102689602 Birdperson >>Unity} 
+[ 3] : {7311142453874287938 BetaSeven >>NULL} 
+[ 4] : 
+HS|> clear
+HS|> structure
+item_count: 0
+table_size: 5
+order_first: NULL
+order_last : NULL
+load_factor: 0.0000
+[ 0] : 
+[ 1] : 
+[ 2] : 
+[ 3] : 
+[ 4] : 
+HS|> clear
+HS|> structure
+item_count: 0
+table_size: 5
+order_first: NULL
+order_last : NULL
+load_factor: 0.0000
+[ 0] : 
+[ 1] : 
+[ 2] : 
+[ 3] : 
+[ 4] : 
+HS|> add Squanchy
+HS|> add Tammy
+HS|> add Jessica
+HS|> structure
+item_count: 3
+table_size: 5
+order_first: Squanchy
+order_last : Jessica
+load_factor: 0.6000
+[ 0] : {521526927700 Tammy >>Jessica} 
+[ 1] : {27412377300591946 Jessica >>NULL} 
+[ 2] : 
+[ 3] : 
+[ 4] : {8748351601899827539 Squanchy >>Tammy} 
+HS|> clear
+HS|> clear
+HS|> clear
+HS|> structure
+item_count: 0
+table_size: 5
+order_first: NULL
+order_last : NULL
+load_factor: 0.0000
+[ 0] : 
+[ 1] : 
+[ 2] : 
+[ 3] : 
+[ 4] : 
+HS|> bye

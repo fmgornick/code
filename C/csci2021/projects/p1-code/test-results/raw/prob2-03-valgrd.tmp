@@ -1,15 +1,15 @@
-==79781== Memcheck, a memory error detector
-==79781== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==79781== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
-==79781== Command: ./test_banlet_funcs2 print_fontified_linebreak_3
-==79781== Parent PID: 79780
-==79781== 
-==79781== 
-==79781== HEAP SUMMARY:
-==79781==     in use at exit: 0 bytes in 0 blocks
-==79781==   total heap usage: 2 allocs, 2 frees, 145 bytes allocated
-==79781== 
-==79781== All heap blocks were freed -- no leaks are possible
-==79781== 
-==79781== For lists of detected and suppressed errors, rerun with: -s
-==79781== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==198966== Memcheck, a memory error detector
+==198966== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==198966== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==198966== Command: ./test_banlet_funcs2 print_fontified_linebreak_3
+==198966== Parent PID: 198965
+==198966== 
+==198966== 
+==198966== HEAP SUMMARY:
+==198966==     in use at exit: 0 bytes in 0 blocks
+==198966==   total heap usage: 2 allocs, 2 frees, 145 bytes allocated
+==198966== 
+==198966== All heap blocks were freed -- no leaks are possible
+==198966== 
+==198966== For lists of detected and suppressed errors, rerun with: -s
+==198966== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

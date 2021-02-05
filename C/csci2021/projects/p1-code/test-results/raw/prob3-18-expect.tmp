@@ -1,0 +1,154 @@
+Hashset Application
+Commands:
+  hashcode <item>  : prints out the numeric hash code for the given key (does not change the hash set)
+  contains <item>  : prints the value associated with the given item or NOT PRESENT
+  add <item>       : inserts the given item into the hash set, reports existing items
+  print            : prints all items in the hash set in the order they were addded
+  structure        : prints detailed structure of the hash set
+  clear            : reinitializes hash set to be empty with default size
+  save <file>      : writes the contents of the hash set to the given file
+  load <file>      : clears the current hash set and loads the one in the given file
+  next_prime <int> : if <int> is prime, prints it, otherwise finds the next prime and prints it
+  expand           : expands memory size of hash set to reduce its load factor
+  bye              : exit the program
+HS|> next_prime 5
+5
+HS|> next_prime 6
+7
+HS|> next_prime 10
+11
+HS|> next_prime 22
+23
+HS|> next_prime 186
+191
+HS|> next_prime 2021
+2027
+HS|> load data/rm.hashset
+HS|> structure
+item_count: 6
+table_size: 5
+order_first: Rick
+order_last : Tinyrick
+load_factor: 1.2000
+[ 0] : {7738144525137111380 Tinyrick >>NULL} 
+[ 1] : 
+[ 2] : {1752458562 Beth >>Tinyrick} 
+[ 3] : {125779953153363 Summer >>Jerry} {1801677138 Rick >>Morty} 
+[ 4] : {521611142474 Jerry >>Beth} {521644699469 Morty >>Summer} 
+HS|> expand
+HS|> structure
+item_count: 6
+table_size: 11
+order_first: Rick
+order_last : Tinyrick
+load_factor: 0.5455
+[ 0] : 
+[ 1] : 
+[ 2] : 
+[ 3] : {125779953153363 Summer >>Jerry} {521644699469 Morty >>Summer} 
+[ 4] : {521611142474 Jerry >>Beth} 
+[ 5] : 
+[ 6] : 
+[ 7] : 
+[ 8] : {1752458562 Beth >>Tinyrick} {1801677138 Rick >>Morty} 
+[ 9] : {7738144525137111380 Tinyrick >>NULL} 
+[10] : 
+HS|> print
+  1 Rick
+  2 Morty
+  3 Summer
+  4 Jerry
+  5 Beth
+  6 Tinyrick
+HS|> expand
+HS|> structure
+item_count: 6
+table_size: 23
+order_first: Rick
+order_last : Tinyrick
+load_factor: 0.2609
+[ 0] : 
+[ 1] : 
+[ 2] : 
+[ 3] : 
+[ 4] : 
+[ 5] : 
+[ 6] : 
+[ 7] : 
+[ 8] : 
+[ 9] : 
+[10] : {7738144525137111380 Tinyrick >>NULL} 
+[11] : 
+[12] : {1752458562 Beth >>Tinyrick} 
+[13] : 
+[14] : {125779953153363 Summer >>Jerry} {1801677138 Rick >>Morty} 
+[15] : 
+[16] : 
+[17] : {521644699469 Morty >>Summer} 
+[18] : 
+[19] : 
+[20] : 
+[21] : 
+[22] : {521611142474 Jerry >>Beth} 
+HS|> print
+  1 Rick
+  2 Morty
+  3 Summer
+  4 Jerry
+  5 Beth
+  6 Tinyrick
+HS|> expand
+HS|> structure
+item_count: 6
+table_size: 47
+order_first: Rick
+order_last : Tinyrick
+load_factor: 0.1277
+[ 0] : {125779953153363 Summer >>Jerry} 
+[ 1] : 
+[ 2] : 
+[ 3] : 
+[ 4] : 
+[ 5] : 
+[ 6] : {1801677138 Rick >>Morty} 
+[ 7] : 
+[ 8] : 
+[ 9] : 
+[10] : 
+[11] : 
+[12] : 
+[13] : 
+[14] : 
+[15] : 
+[16] : {521611142474 Jerry >>Beth} 
+[17] : 
+[18] : {1752458562 Beth >>Tinyrick} 
+[19] : 
+[20] : 
+[21] : 
+[22] : 
+[23] : 
+[24] : 
+[25] : 
+[26] : 
+[27] : 
+[28] : 
+[29] : 
+[30] : 
+[31] : 
+[32] : 
+[33] : 
+[34] : 
+[35] : 
+[36] : 
+[37] : 
+[38] : 
+[39] : 
+[40] : 
+[41] : 
+[42] : 
+[43] : 
+[44] : {7738144525137111380 Tinyrick >>NULL} 
+[45] : {521644699469 Morty >>Summer} 
+[46] : 
+HS|> bye

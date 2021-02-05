@@ -1,0 +1,15 @@
+==200021== Memcheck, a memory error detector
+==200021== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==200021== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==200021== Command: ./hashset_main -echo
+==200021== Parent PID: 200020
+==200021== 
+==200021== 
+==200021== HEAP SUMMARY:
+==200021==     in use at exit: 0 bytes in 0 blocks
+==200021==   total heap usage: 53 allocs, 53 frees, 8,208 bytes allocated
+==200021== 
+==200021== All heap blocks were freed -- no leaks are possible
+==200021== 
+==200021== For lists of detected and suppressed errors, rerun with: -s
+==200021== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

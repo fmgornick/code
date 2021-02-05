@@ -1,0 +1,45 @@
+Hashset Application
+Commands:
+  hashcode <item>  : prints out the numeric hash code for the given key (does not change the hash set)
+  contains <item>  : prints the value associated with the given item or NOT PRESENT
+  add <item>       : inserts the given item into the hash set, reports existing items
+  print            : prints all items in the hash set in the order they were addded
+  structure        : prints detailed structure of the hash set
+  clear            : reinitializes hash set to be empty with default size
+  save <file>      : writes the contents of the hash set to the given file
+  load <file>      : clears the current hash set and loads the one in the given file
+  next_prime <int> : if <int> is prime, prints it, otherwise finds the next prime and prints it
+  expand           : expands memory size of hash set to reduce its load factor
+  bye              : exit the program
+HS|> add Birdperson
+HS|> add Squanchy
+HS|> add Unity
+HS|> print
+  1 Birdperson
+  2 Squanchy
+  3 Unity
+HS|> structure
+item_count: 3
+table_size: 5
+order_first: Birdperson
+order_last : Unity
+load_factor: 0.6000
+[ 0] : 
+[ 1] : 
+[ 2] : {521644109397 Unity >>NULL} {8318822995102689602 Birdperson >>Squanchy} 
+[ 3] : 
+[ 4] : {8748351601899827539 Squanchy >>Unity} 
+HS|> clear
+HS|> print
+HS|> structure
+item_count: 0
+table_size: 5
+order_first: NULL
+order_last : NULL
+load_factor: 0.0000
+[ 0] : 
+[ 1] : 
+[ 2] : 
+[ 3] : 
+[ 4] : 
+HS|> bye

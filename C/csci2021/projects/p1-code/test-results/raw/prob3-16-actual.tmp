@@ -1,0 +1,79 @@
+Hashset Application
+Commands:
+  hashcode <item>  : prints out the numeric hash code for the given key (does not change the hash set)
+  contains <item>  : prints the value associated with the given item or NOT PRESENT
+  add <item>       : inserts the given item into the hash set, reports existing items
+  print            : prints all items in the hash set in the order they were addded
+  structure        : prints detailed structure of the hash set
+  clear            : reinitializes hash set to be empty with default size
+  save <file>      : writes the contents of the hash set to the given file
+  load <file>      : clears the current hash set and loads the one in the given file
+  next_prime <int> : if <int> is prime, prints it, otherwise finds the next prime and prints it
+  expand           : expands memory size of hash set to reduce its load factor
+  bye              : exit the program
+HS|> add Summer
+HS|> add Tammy
+HS|> add Lincler
+HS|> structure
+item_count: 3
+table_size: 5
+order_first: Summer
+order_last : Lincler
+load_factor: 0.6000
+[ 0] : {521526927700 Tammy >>Lincler} 
+[ 1] : 
+[ 2] : 
+[ 3] : {32199663544068428 Lincler >>NULL} {125779953153363 Summer >>Tammy} 
+[ 4] : 
+HS|> load data/rm.hashset
+HS|> structure
+item_count: 6
+table_size: 5
+order_first: Rick
+order_last : Tinyrick
+load_factor: 1.2000
+[ 0] : {7738144525137111380 Tinyrick >>NULL} 
+[ 1] : 
+[ 2] : {1752458562 Beth >>Tinyrick} 
+[ 3] : {125779953153363 Summer >>Jerry} {1801677138 Rick >>Morty} 
+[ 4] : {521611142474 Jerry >>Beth} {521644699469 Morty >>Summer} 
+HS|> add Lincler
+HS|> add Tammy
+HS|> structure
+item_count: 8
+table_size: 5
+order_first: Rick
+order_last : Tammy
+load_factor: 1.6000
+[ 0] : {521526927700 Tammy >>NULL} {7738144525137111380 Tinyrick >>Lincler} 
+[ 1] : 
+[ 2] : {1752458562 Beth >>Tinyrick} 
+[ 3] : {32199663544068428 Lincler >>Tammy} {125779953153363 Summer >>Jerry} {1801677138 Rick >>Morty} 
+[ 4] : {521611142474 Jerry >>Beth} {521644699469 Morty >>Summer} 
+HS|> load data/alphabet.hashset
+HS|> structure
+item_count: 52
+table_size: 5
+order_first: A
+order_last : z
+load_factor: 10.4000
+[ 0] : {120 x >>y} {115 s >>t} {110 n >>o} {105 i >>j} {100 d >>e} {90 Z >>a} {85 U >>V} {80 P >>Q} {75 K >>L} {70 F >>G} {65 A >>B} 
+[ 1] : {121 y >>z} {116 t >>u} {111 o >>p} {106 j >>k} {101 e >>f} {86 V >>W} {81 Q >>R} {76 L >>M} {71 G >>H} {66 B >>C} 
+[ 2] : {122 z >>NULL} {117 u >>v} {112 p >>q} {107 k >>l} {102 f >>g} {97 a >>b} {87 W >>X} {82 R >>S} {77 M >>N} {72 H >>I} {67 C >>D} 
+[ 3] : {118 v >>w} {113 q >>r} {108 l >>m} {103 g >>h} {98 b >>c} {88 X >>Y} {83 S >>T} {78 N >>O} {73 I >>J} {68 D >>E} 
+[ 4] : {119 w >>x} {114 r >>s} {109 m >>n} {104 h >>i} {99 c >>d} {89 Y >>Z} {84 T >>U} {79 O >>P} {74 J >>K} {69 E >>F} 
+HS|> load test-results/not_there.tmp
+ERROR: could not open file 'test-results/not_there.tmp'
+load failed
+HS|> structure
+item_count: 52
+table_size: 5
+order_first: A
+order_last : z
+load_factor: 10.4000
+[ 0] : {120 x >>y} {115 s >>t} {110 n >>o} {105 i >>j} {100 d >>e} {90 Z >>a} {85 U >>V} {80 P >>Q} {75 K >>L} {70 F >>G} {65 A >>B} 
+[ 1] : {121 y >>z} {116 t >>u} {111 o >>p} {106 j >>k} {101 e >>f} {86 V >>W} {81 Q >>R} {76 L >>M} {71 G >>H} {66 B >>C} 
+[ 2] : {122 z >>NULL} {117 u >>v} {112 p >>q} {107 k >>l} {102 f >>g} {97 a >>b} {87 W >>X} {82 R >>S} {77 M >>N} {72 H >>I} {67 C >>D} 
+[ 3] : {118 v >>w} {113 q >>r} {108 l >>m} {103 g >>h} {98 b >>c} {88 X >>Y} {83 S >>T} {78 N >>O} {73 I >>J} {68 D >>E} 
+[ 4] : {119 w >>x} {114 r >>s} {109 m >>n} {104 h >>i} {99 c >>d} {89 Y >>Z} {84 T >>U} {79 O >>P} {74 J >>K} {69 E >>F} 
+HS|> bye
