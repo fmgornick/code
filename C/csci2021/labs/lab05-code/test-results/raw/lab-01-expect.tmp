@@ -1,0 +1,2 @@
+>> ./test_quiz_filter QUESTIONS.txt | md5sum -c QUESTIONS.md5
+-: OK
