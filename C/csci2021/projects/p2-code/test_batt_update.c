@@ -1,4 +1,8 @@
 // test_batt_update.c: testing program for functions in batt_update.c
+//
+// Mon Feb 22 06:29:10 PM CST 2021 : update to fix incorrect bit
+// patterns which were expected on some tests.
+
 #include <string.h>
 #include <math.h>
 #include <stdio.h>
@@ -458,7 +462,7 @@ int main(int argc, char *argv[]){
     BATT_STATUS_PORT  = -1;
     BATT_DISPLAY_PORT = -1;
     batt_t batt = {
-      .mlvolts = 7427,
+      .mlvolts = 3713,
       .percent = 89,
       .mode = 1,
     };
@@ -471,9 +475,31 @@ int main(int argc, char *argv[]){
     BATT_DISPLAY_PORT = *dispint;
     printf("Display based on dispint:\n");
     print_batt_display();
-  }
+  } // ENDTEST
 
   else if( strcmp( test_name, "set_display_from_batt() level 5" )==0 ) {
+    PRINT_TEST;
+    // 90% is lowest percentage at which 5 bars will be shown
+    BATT_VOLTAGE_PORT = -1;
+    BATT_STATUS_PORT  = -1;
+    BATT_DISPLAY_PORT = -1;
+    batt_t batt = {
+      .mlvolts = 7440,
+      .percent = 90,
+      .mode = 2,
+    };
+    int ret = set_display_from_batt(batt, dispint);
+    printf("ret: %d\n",ret);
+    printf("%-18s : %s\n%-18s : %s\n",
+           "dispint bits", bitstr(*dispint, INT_BITS),
+           "index", bitstr_index(INT_BITS));
+    printf("\n");  print_ports();  printf("\n");
+    BATT_DISPLAY_PORT = *dispint;
+    printf("Display based on dispint:\n");
+    print_batt_display();
+  } // ENDTEST
+
+  else if( strcmp( test_name, "set_display_from_batt() level 5 V" )==0 ) {
     PRINT_TEST;
     // 90% is lowest percentage at which 5 bars will be shown
     BATT_VOLTAGE_PORT = -1;
@@ -493,29 +519,7 @@ int main(int argc, char *argv[]){
     BATT_DISPLAY_PORT = *dispint;
     printf("Display based on dispint:\n");
     print_batt_display();
-  }
-
-  else if( strcmp( test_name, "set_display_from_batt() level 5" )==0 ) {
-    PRINT_TEST;
-    // 90% is lowest percentage at which 5 bars will be shown
-    BATT_VOLTAGE_PORT = -1;
-    BATT_STATUS_PORT  = -1;
-    BATT_DISPLAY_PORT = -1;
-    batt_t batt = {
-      .mlvolts = 7427,
-      .percent = 89,
-      .mode = 1,
-    };
-    int ret = set_display_from_batt(batt, dispint);
-    printf("ret: %d\n",ret);
-    printf("%-18s : %s\n%-18s : %s\n",
-           "dispint bits", bitstr(*dispint, INT_BITS),
-           "index", bitstr_index(INT_BITS));
-    printf("\n");  print_ports();  printf("\n");
-    BATT_DISPLAY_PORT = *dispint;
-    printf("Display based on dispint:\n");
-    print_batt_display();
-  }
+  } // ENDTEST
 
   else if( strcmp( test_name, "set_display_from_batt() error" )==0 ) {
     PRINT_TEST;
@@ -554,7 +558,7 @@ int main(int argc, char *argv[]){
     printf("\n");  print_ports();  printf("\n");
     printf("Display based on BATT_DISPLAY_PORT:\n");
     print_batt_display();
-  }
+  } // ENDTEST
 
   else if( strcmp( test_name, "batt_update() 7291 P" )==0 ) {
     PRINT_TEST;
@@ -567,7 +571,7 @@ int main(int argc, char *argv[]){
     printf("\n");  print_ports();  printf("\n");
     printf("Display based on BATT_DISPLAY_PORT:\n");
     print_batt_display();
-  }
+  } // ENDTEST
 
   else if( strcmp( test_name, "batt_update() error" )==0 ) {
     PRINT_TEST;
@@ -581,7 +585,7 @@ int main(int argc, char *argv[]){
     printf("\n");  print_ports();  printf("\n");
     printf("Display based on BATT_DISPLAY_PORT:\n");
     print_batt_display();
-  }
+  } // ENDTEST
 
   else{
     printf("No test named '%s' found\n",test_name);

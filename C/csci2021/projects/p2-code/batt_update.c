@@ -2,7 +2,7 @@
 #include "batt.h"
 
 // array of int representations of 7 bit patterns
-int pattern[10] = {63,3,109,103,83,118,126,35,127,119};
+int pattern[10] = {63,6,91,79,102,109,125,7,127,111};
 
 int set_batt_from_ports(batt_t *batt) {
   // voltage can't be negative so it returns a 1
