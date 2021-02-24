@@ -1,6 +1,9 @@
 // batt_sim.c: DO NOT MODIFY
 //
 // Battery dispplay simulator support functions.
+//
+// Mon Feb 22 06:29:10 PM CST 2021 : update to fix incorrect bit
+// patterns which were expected on some tests.
 
 #include <stdio.h>
 #include <stdlib.h>
