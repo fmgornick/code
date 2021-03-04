@@ -1,0 +1,224 @@
+                           _________________
+
+                            HW 07 QUESTIONS
+                           _________________
+
+
+- Name: (FILL THIS in)
+- X.500: (THE kauf0095 IN kauf0095@umn.edu)
+
+Write your answers to the questions below directly in this text file to
+prepare for the associated quiz.
+
+
+PROBLEM 1: Division and Assembly Errors
+=======================================
+
+A: Incorrect Types
+~~~~~~~~~~~~~~~~~~
+
+  Examine the following codes.
+  - `dodiv_main.c' contains a main function which calls the `dodiv()'
+    function
+  - `dodiv_badtypes.s' contains the function written in assembly but has
+    an error which leads to incorrect results.
+
+  Compile and run the codes and report your results with
+  ,----
+  | > gcc -g dodiv_main.c dodiv_badtype.s
+  `----
+  Identify which assembly instructions are incorrect and why.
+
+  0 / 11 = 3 rem 9
+  you should use movl not movq because you're working with the mem address of 
+  integers
+
+
+B: Correct Version
+~~~~~~~~~~~~~~~~~~
+
+  After identifying the error in `dodiv_badtypes.s', correct the errors
+  and paste your whole code below. Make sure to compile and test the
+  code.
+
+
+C: Segmentation Fault
+~~~~~~~~~~~~~~~~~~~~~
+
+  Examine the codes below.
+  - `dodiv_main.c' contains a main function which calls the `dodiv()'
+    function
+  - `dodiv_segfault.s' contains the function written in assembly but has
+    a bad memory error in it.
+
+  Compile the code and run it. Make sure to include debug information
+  and run under Valgrind.
+  ,----
+  | > gcc -g dodiv_main.c dodiv_segfault.s
+  | > valgrind ./a.out
+  `----
+  After running it, report your output. Look very carefully at the out
+  of bounds address which is identified by valgrind as an 'Invalid
+  Write'.  Determine why the strange and SMALL memory address shows up
+  in and why it is problematic.  What differences are present in this
+  version over your corrected version that explain the trouble?
+
+  before the division, rdx holds the memory location of the quot variable, but
+  after the division, the remainder is stored inside rdx and it no longer contains
+  a mem address.  Now when you try to dereference rdx, it produces a segfault
+  because 
+
+
+D: Calling from Assembly
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+  The C code in `dodiv_main.c' provides a main function that can also be
+  written in assembly though setting up calls to `printf()' are a bit
+  tedious.  Analyze the assembly version provided in `dodiv_main_asm.s'
+  and answer the following questions. Focus on filling in the following
+  C-Assembly correspondence table.
+
+  ---------------------------------------------------------------------
+   Location in                                            Assembly     
+   main()            C Code                               Instructions 
+  ---------------------------------------------------------------------
+   Call to dodiv()   int numer = 42;                                   
+                     int denom = 11;                                   
+                     &quot                                             
+                     &rem                                              
+  ---------------------------------------------------------------------
+   Call to printf()  printf("%d / %d = %d rem %d\n",...)               
+   arguments         printf(..., quot)                                 
+                     printf(..., rem)                                  
+  ---------------------------------------------------------------------
+
+  Also describe what the following two bits of assembly do:
+  - Beginning of main(): `subq $8, %rsp'
+  - End of main(): `addq $8, %rsp'
+
+
+PROBLEM 2: Binary Analysis
+==========================
+
+  The two files verify_main.c and verify.o can be compiled together to
+  form an executable as in the following.
+  ,----
+  | > gcc verify.o verify_main.c
+  | > ./a.out
+  | Complete this sentence by C creator Dennis Ritchie:
+  | C has the power of assembly language and the convenience of ...
+  | pizza?
+  | Have a nice tall glass of ... NOPE.
+  | > 
+  `----
+
+  The intent of the executable is to enter the correct string to
+  complete a sentence.  Unfortunately the source code for the verify()
+  function in verify.o has been lost.  This problem analyzes how one
+  might determine the correct answer without source code.
+
+
+A: strings utility for binaries
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  Make use of the `strings' program which is available on most Unix
+  platforms. This program shows the ASCII strings present in a binary
+  object such as verify.o. Run it by typing:
+  ,----
+  | > strings verify.o
+  `----
+  Show the results you of the run for you answer and speculate about
+  what strings seem probable as completions to the sentence in
+  verify_main.
+
+
+B: nm utility to show symbol names
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  Run the `nm' utility which is short for "names". It produces the set
+  of symbols present in a binary file.
+  ,----
+  | > nm verify.o
+  `----
+  Such symbols are identified by 1-letter codes such as
+  - T/t : program instructions (text) in the object
+  - D/d : data defined in the objects
+  - U : undefined symbols in the object which must come from other
+    objects
+
+  Show the output of you run of `nm' and speculate on what variable
+  might contain the completion to the sentences.
+
+  i'd assume answers contains the answer to the quote
+
+
+C: GDB with Assembly
+~~~~~~~~~~~~~~~~~~~~
+
+  The binary utilities mentioned can give some insight and perhaps
+  enable problems like this to be "brute forced": once all possible
+  answers are known, try all of them until something works.
+
+  However, `gdb' can provide a faster route as it handles assembly code
+  as easily as C code.  Take the following approach.
+
+  1. Run gdb on the executable resulting from compiling verify_main.c
+     and verify.o
+  2. In TUI mode, use the command
+     ,----
+     | (gdb) layout asm
+     `----
+
+     to show assembly code for the program being debugged. This is
+     necessary when dealing with binary files like verify.o.  If you
+     neglected to run `gdb' in TUI mode, you can enable it with
+     ,----
+     | (gdb) tui enable
+     `----
+  3. Set a breakpoint on the function that verifies the input.
+  4. Run the program to the breakpoint. You will need to enter a guess
+     for the sentence completion but anything will work to move the
+     program forward.
+  5. Once the verifying function is entered, look for a string
+     comparison to be done, likely using the `strcmp()' function.  Step
+     forwards to just before this function. Use the `stepi' instruction
+     to step forward by single assembly instructions or `nexti' to move
+     single instructions forward bypassing function `call' instructions.
+  6. Immediately preceding this call will be some movement of pointers
+     into registers which are the arguments to the function. You should
+     inspect the strings pointed to by these registers.
+  7. You can print the values of registers as various things in `gdb'
+     using the `print' command and C-style casting. Examples are below.
+     Note register names are preceded with a dollar sign ($).
+     ,----
+     |    (gdb) print (int) $rax
+     |    $1 = -8448
+     |    (gdb) print (char *) $rax
+     |    $2 = 0x7fffffffdf00 "cruft\n"
+     |    (gdb) print (double) $rax
+     |    $3 = 140737488346880
+     |    (gdb) print (int *) $rax
+     |    $4 = (int *) 0x7fffffffdf00
+     `----
+  8. The `x' command in GDB is also useful in these settings as it
+     /examines/ memory at a specified location: if a register contains a
+     pointer, the contents of the memory at that location are printed.
+     ,----
+     | (gdb) p $rsi                    # print value in rax
+     | $1 = 93824992239674
+     | (gdb) x $rsi                    # examine location pointed to by rax
+     | 0x55555555603a: 0x65737361      
+     | (gdb) x/d $rsi                  # examine location as decimal
+     | 0x55555555603a: 1702064993      
+     | (gdb) x/s $rsi                  # examine location as a string
+     | 0x55555555603a: "some string\n"
+     `----
+  9. Look particularly at "argument" registers which are used to pass
+     information to functions like `strcmp()'.  Some of these should
+     contain pointers to the string entered and the correct string.
+
+  Give the correct string to enter to complete the sentence.
+
+  rsi is the second argument register, so strcmp will check that against our
+  input, so "print (char *) $rsi" yields "assembly language\n" which is the 
+  correct answer.  "x/s $rsi" also works
