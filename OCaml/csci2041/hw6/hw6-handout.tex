@@ -1,0 +1,179 @@
+\documentclass[fleqn]{article}
+\usepackage{csci2041}
+
+\title{Homework 6}
+\author{}\date{}
+\begin{document}
+\maketitle
+
+\textbf{Homework Due:} Wednesday, March 10 at 5 pm.
+
+The second part of the course is to prove the correctness of OCaml programs by induction. The focus of Homework 6 will be on OCaml lists.
+
+\section*{Prepare Your Homework 6 Directory}
+
+\begin{code}
+cd ~/csci2041
+./setup hw6
+cd hw6
+\end{code}
+
+\section*{Relevant OCaml code}
+
+\begin{code}
+let rec append l1 l2 =
+  match l1 with
+  | [] -> l2
+  | h :: t -> h :: append t l2
+
+let rec length l =
+  match l with
+  | [] -> 0
+  | h :: t -> 1 + length t
+
+let rec sum l =
+  match l with
+  | [] -> 0
+  | h :: t -> h + sum t
+
+let rec filter p l =
+  match l with
+  | [] -> []
+  | h :: t -> if p h then h :: filter p t else filter p t
+\end{code}
+
+\section*{Problem 1 (30 points)}
+
+Prove the following theorem by induction. Use the lecture notes as a style guide.
+
+\begin{theorem}
+  For any type \InlineCode{a} and any value \InlineCode{l} of type \InlineCode{a list}, we have
+  \[
+    \InlineCode{append l []} = \InlineCode{l}
+  \]
+\end{theorem}
+
+\section*{Problem 2 (30 points)}
+
+Prove the following theorem by induction. Use the lecture notes as a style guide.
+
+\begin{theorem}
+  For any two values \InlineCode{l1} and \InlineCode{l2} of type \InlineCode{int list}, we have
+  \[
+    \InlineCode{sum (append l1 l2)} = \InlineCode{sum l1 + sum l2}
+  \]
+\end{theorem}
+
+\section*{Bonus Problem (10 points)}
+
+Prove the following theorem by induction. Use the lecture notes as a style guide.
+
+\begin{theorem}
+  For any type \InlineCode{a} and any value \InlineCode{p} of type \InlineCode{a -> bool}, any value \InlineCode{l} of type \InlineCode{a list}, we have
+  \[
+    \InlineCode{filter p (filter p l)} = \InlineCode{filter p l}
+  \]
+\end{theorem}
+
+\section*{Submission}
+
+You need to typeset or scan your homework as one single file \Verb|hw6.pdf| within the directory \Verb|hw6|, and submit it to GitHub as you did in earlier homework assignments. It is encouraged to use professional typesetting software such as \LaTeX{} and you can reuse the code in \Verb|hw6-handout.tex| for your work. Otherwise, your hand-writing must be clear and legible, and it must be scanned and consolidated as one single file \Verb|hw6.pdf|. Submissions consisting of multiple image files are not acceptable.
+
+If you plan to hand-write your solutions, please practice scanning your documents \emph{now,} and reserve enough time before the homework deadline for scanning your work. Claiming that you have done the homework before the deadline but somehow cannot scan or typeset your solution will not grant you a special deadline extension. You need to use late days to cover such mistakes.
+
+\section*{Grading}
+
+\subsection*{Generic rubric for all mathematical proofs}
+
+\subsubsection*{Principles}
+\begin{enumerate}
+  \item Mathematical correctness is the most important. The format is less an issue.
+
+    We give points even if you are not following the template with ``Domain'', ``Property'', and ``Inductive order'', though it is difficult to achieve mathematical correctness without specifying these components.
+
+  \item Any reasoning solely based on intuition (\emph{e.g.,} ``the \InlineCode{append} function will concatenate two lists'' without proving it) will be completely ignored. The grading is done as if intuitive reasoning was not written. It is still important to have correct intuition to construct a rigorous proof, but the intuition itself is not a proof.
+\end{enumerate}
+
+\subsubsection*{Components of induction and case analysis}
+\begin{enumerate}
+  \item It is important to say you are working on \emph{values.} (Otherwise, your induction probably would not work.)
+  \item It is important to write out the property and inductive order correctly. (Otherwise, it is unclear what kinds of induction you are doing.) For case analysis, you still need to write out the property.
+  \item It is important to explicitly mark or declare the usage of the inductive hypothesis. (Otherwise, the reasoning is considered unclear.)
+\end{enumerate}
+
+\subsubsection*{Three levels of correctness}
+\begin{description}
+  \item[Correct:] Mathematically correct with reasonable steps (using the notes as the guideline), and with correct usage of the lemmas or inductive hypothesis. The following mistakes are ignored:
+  \begin{itemize}
+    \item Minor mistakes that can be fixed by adjusting parentheses, such as
+      \begin{itemize}
+        \item \InlineCode{append (l1, l2)} or \InlineCode{append (l1 l2)} instead of \InlineCode{append l1 l2}
+      \end{itemize}
+  \end{itemize}
+
+  \item[Requiring Changes:]
+    Making non-trivial mistakes or missing important steps, but with a correct structure with enough details. It must be similar to a correct answer, in the sense that a TA must be able to reconstruct a correct answer from what was written without significant global changes. The following mistakes belong to this category:
+    \begin{itemize}
+      \item Using single elements as singleton lists.
+        \begin{itemize}
+          \item \InlineCode{append l x} instead of \InlineCode{append l [x]}
+        \end{itemize}
+      \item Using \InlineCode{::} for list concatenation.
+        \begin{itemize}
+          \item \InlineCode{l1 :: l2} for two lists \InlineCode{l1} and \InlineCode{l2} of the same type.
+        \end{itemize}
+      \item Directly state (without a proof) that a \InlineCode{list} value must be of the form \InlineCode{[x1; x2; \ldots; x3]}.
+    \end{itemize}
+  \item[Wrong:] Having severe errors so that a TA could not fix the answer with only local changes.
+\end{description}
+
+\subsubsection*{How to mark the inductive hypothesis}
+
+(Either works!)
+
+\begin{itemize}
+  \item
+    Mark its usage right at the spot where it is used. For example, ``by the inductivie hypothesis on \InlineCode{t}''.
+
+  \item
+    State clearly the implication of the inductive hypothesis for a particular case as part of the regular mathematical reasoning. For example, it is okay to state the consequence of the inductive hypothesis on the tail of a list in the beginning of the case such as ``the inductive hypothesis implies that $P(\InlineCode{t})$ holds.''
+\end{itemize}
+
+\subsection*{Problems 1 and 2}
+
+If the proof does not follow the structure at all, then 30/30 if mathematically correct, 15/30 if ``Require Changes'', and 0/30 pts if Wrong.
+
+\begin{itemize}
+  \item Domain:
+    \begin{itemize}
+      \item Valueness: 2 points
+      \item Type: 2 points
+    \end{itemize}
+  \item Property and inductive order: 8 points
+  \item Base case: 8 points
+    \begin{itemize}
+      \item Correct: 8/8
+      \item Requiring Changes: 4/8
+      \item Wrong: 0/8
+    \end{itemize}
+  \item Inductive case (marking or declaration of inductive hypothesis is graded separately): 8 points
+    \begin{itemize}
+      \item Correct: 8/8
+      \item Requiring Changes: 4/8
+      \item Wrong: 0/8
+    \end{itemize}
+  \item Marking or declaration of the inductive hypothesis: 2 points.
+    \begin{itemize}
+      \item Mark the inductive hypothesis clearly: 2/2
+      \item State the implication of the inductive hypothesis clearly, maybe in the beginning of a case: 2/2
+      \item Otherwise: 0/2
+    \end{itemize}
+\end{itemize}
+
+\subsection*{Bonus Problem}
+
+10/10 if mathematically correct, 5/10 if ``Require Changes'', and 0/10 points if Wrong.
+
+\end{document}
+
+\end{document}

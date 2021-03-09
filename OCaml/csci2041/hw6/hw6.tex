@@ -1,0 +1,194 @@
+\documentclass[fleqn]{article}
+\usepackage{amsmath}
+\usepackage{csci2041}
+
+\title{Homework 6}
+\author{Fletcher Gornick}\date{March 8, 2021}
+\begin{document}
+\maketitle
+
+\section*{Problem 1}
+
+\begin{code}
+let rec append l1 l2 =
+  match l1 with
+  | [] -> l2
+  | h :: t -> h :: append t l2
+\end{code}
+
+\begin{theorem}
+  For any type \InlineCode{a} and any value \InlineCode{l} of type \InlineCode{a list}, we have
+  \[
+    \InlineCode{append l []} = \InlineCode{l}
+  \]
+\end{theorem}
+
+\begin{description}
+    \item[Domain] All values of type \InlineCode{a list}.
+    \item[Property] \emph{P}(\InlineCode{l}): \InlineCode{append l []} = \InlineCode{l}.
+    \item[Inductive order] \emph{R}(\InlineCode{l1},\InlineCode{l2}): \InlineCode{l1} is a 
+        proper suffix of \InlineCode{l2}.
+\end{description}
+
+\begin{enumerate}
+    \item \InlineCode{l} = \InlineCode{[]}. \\
+        Left-hand side: \InlineCode{append [] []} = \InlineCode{[]}. \\
+        Right-hand side: \InlineCode{[]}. \\
+        Both sides agree.
+
+    \item \InlineCode{l} = \InlineCode{h :: t}. \\
+        Left-hand side:
+        \[
+            \InlineCode{append (h :: t) []} = \InlineCode{h :: (append t [])}
+        \]
+
+        Right-hand side:
+        \[
+            \InlineCode{l} = \InlineCode{h :: t}
+        \]
+
+        It is thus sufficient to show that \InlineCode{append t []} = \InlineCode{t},
+        which is exactly \emph{P}(\InlineCode{t}).  \emph{P}(\InlineCode{t}) is implied
+        by the inductive hypothesis because \InlineCode{t} is a proper suffix of \InlineCode{l}.
+        That is, \emph{R}(\InlineCode{t},\InlineCode{l}).
+\end{enumerate}
+        
+
+
+
+
+
+\section*{Problem 2 (30 points)}
+
+\begin{code}
+let rec sum l =
+  match l with
+  | [] -> 0
+  | h :: t -> h + sum t
+
+let rec append l1 l2 =
+  match l1 with
+  | [] -> l2
+  | h :: t -> h :: append t l2
+\end{code}
+\begin{theorem}
+  For any two values \InlineCode{l1} and \InlineCode{l2} of type \InlineCode{int list}, we have
+  \[
+    \InlineCode{sum (append l1 l2)} = \InlineCode{sum l1 + sum l2}
+  \]
+\end{theorem}
+
+\begin{description}
+    \item[Domain] All values of type \InlineCode{a list}.
+    \item[Property] \emph{P}(\InlineCode{l1}): for any value \InlineCode{l2} of type 
+        \InlineCode{a list}, \InlineCode{sum (append l1 l2)} = \InlineCode{sum l1 + sum l2}.
+    \item[Inductive order] \emph{R}(\InlineCode{l1},\InlineCode{l2}): \InlineCode{l1} is a 
+        proper suffix of \InlineCode{l2}.
+\end{description}
+
+\begin{enumerate}
+    \item \InlineCode{l1} = \InlineCode{[]}. \\
+        Left-hand side: \InlineCode{sum (append [] l2)} = \InlineCode{sum l2}. \\
+        Right-hand side: \InlineCode{sum [] + sum l2} = \InlineCode{0 + sum l2} 
+        = \InlineCode{l2}. \\
+        Both sides agree.
+
+    \item \InlineCode{l1} = \InlineCode{h :: t}. \\
+        Left-hand side:
+        \begin{align*}
+            &  \InlineCode{sum (append (h :: t) l2)} && \\
+            &= \InlineCode{sum (h :: append t l2)} && \\
+            &= \InlineCode{h + sum (append t l2)}
+        \end{align*}
+
+        Right-hand side:
+        \begin{align*}
+            &  \InlineCode{sum (h :: t) + sum l2} && \\
+            &= \InlineCode{(h + sum t) + sum l2} && \\
+            &= \InlineCode{h + (sum t + sum l2)}
+        \end{align*}
+
+        It is thus sufficient to show that \InlineCode{sum (append t l2)} = 
+        \InlineCode{sum t + sum l2}, which is exactly \emph{P}(\InlineCode{t}).  
+        \emph{P}(\InlineCode{t}) is implied by the inductive hypothesis because 
+        \InlineCode{t} is a proper suffix of \InlineCode{l1}.  That is, 
+        \emph{R}(\InlineCode{t},\InlineCode{l1}).
+\end{enumerate}
+
+
+
+
+
+
+\section*{Bonus Problem (10 points)}
+
+\begin{code}
+let rec filter p l =
+  match l with
+  | [] -> []
+  | h :: t -> if p h then h :: filter p t else filter p t
+\end{code}
+
+\begin{theorem}
+  For any type \InlineCode{a} and any value \InlineCode{p} of type \InlineCode{a -> bool}, any value \InlineCode{l} of type \InlineCode{a list}, we have
+  \[
+    \InlineCode{filter p (filter p l)} = \InlineCode{filter p l}
+  \]
+\end{theorem}
+
+\begin{description}
+    \item[Domain] All values of type \InlineCode{a list}.
+    \item[Property] \emph{P}(\InlineCode{l}): \InlineCode{filter p (filter p l)}
+        = \InlineCode{filter p l}.
+    \item[Inductive order] \emph{R}(\InlineCode{l1},\InlineCode{l2}): \InlineCode{l1} is a 
+        proper suffix of \InlineCode{l2}.
+\end{description}
+
+\begin{enumerate}
+    \item \InlineCode{l} = \InlineCode{[]}. \\
+        \InlineCode{filter p (filter p [])} = \InlineCode{filter p []}.
+
+    \item \InlineCode{l} = \InlineCode{h :: t}. \\
+        \begin{align*}
+            &  \InlineCode{filter p (filter p (h :: t))} && \\
+            &= \InlineCode{filter p (if p h then h :: filter p t else filter p t)}
+        \end{align*}
+
+        The result critically depends on the value of \InlineCode{p h}, which is of type
+        \InlineCode{bool}.  We can thus proceed by case analysis. 
+
+        \begin{description}
+            \item[Domain] All values of type \InlineCode{bool}.  That is, \InlineCode{true}
+                and \InlineCode{false}.
+            \item[Property] \emph{Q(b)}: If \InlineCode{p h} = \emph{b}, then
+                \InlineCode{filter p (filter p (h :: t))} = \InlineCode{filter p (h :: t)}
+        \end{description}
+
+        \begin{enumerate}[(a)]
+            \item \InlineCode{p h} = \emph{b} = \InlineCode{true}.
+                \begin{align*}
+                    &  \InlineCode{filter p (filter p (h :: t))} && \\
+                    &= \InlineCode{filter p (if p h then h :: filter p t else filter p t)} && \\
+                    &= \InlineCode{filter p (if true then h :: filter p t else filter p t)} && \\
+                    &= \InlineCode{filter p (h :: filter p t)} && \\
+                    &= \InlineCode{if p h then h :: filter p (filter p t) else filter p (filter p t)} && \\
+                    &= \InlineCode{if true then h :: filter p (filter p t) else filter p (filter p t)} && \\
+                    &= \InlineCode{h :: filter p (filter p t)}
+                \end{align*}
+
+            \item \InlineCode{p h} = \emph{b} = \InlineCode{false}.
+                \begin{align*}
+                    &  \InlineCode{filter p (filter p (h :: t))} && \\
+                    &= \InlineCode{filter p (if p h then h :: filter p t else filter p t)} && \\
+                    &= \InlineCode{filter p (if false then h :: filter p t else filter p t)} && \\
+                    &= \InlineCode{filter p (filter p t)}
+                \end{align*}
+        \end{enumerate}
+
+        In both cases, it is sufficient to show that \InlineCode{filter p (filter p t)} = 
+        \InlineCode{filter p t}, which is exactly \emph{P}(\InlineCode{t}).  \emph{P}(\InlineCode{t})
+        is implied by the inductive hypothesis because \InlineCode{t} is a proper suffix of
+        \InlineCode{l}.  That is, \emph{R}(\InlineCode{t},\InlineCode{l}).
+\end{enumerate}
+
+\end{document}
