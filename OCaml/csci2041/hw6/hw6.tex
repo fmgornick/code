@@ -90,7 +90,7 @@ let rec append l1 l2 =
     \item \InlineCode{l1} = \InlineCode{[]}. \\
         Left-hand side: \InlineCode{sum (append [] l2)} = \InlineCode{sum l2}. \\
         Right-hand side: \InlineCode{sum [] + sum l2} = \InlineCode{0 + sum l2} 
-        = \InlineCode{l2}. \\
+        = \InlineCode{sum l2}. \\
         Both sides agree.
 
     \item \InlineCode{l1} = \InlineCode{h :: t}. \\
