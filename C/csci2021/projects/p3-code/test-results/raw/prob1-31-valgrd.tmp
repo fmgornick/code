@@ -1,0 +1,15 @@
+==2381624== Memcheck, a memory error detector
+==2381624== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==2381624== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==2381624== Command: ./batt_main 6301 V
+==2381624== Parent PID: 2381623
+==2381624== 
+==2381624== 
+==2381624== HEAP SUMMARY:
+==2381624==     in use at exit: 0 bytes in 0 blocks
+==2381624==   total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+==2381624== 
+==2381624== All heap blocks were freed -- no leaks are possible
+==2381624== 
+==2381624== For lists of detected and suppressed errors, rerun with: -s
+==2381624== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

@@ -1,0 +1,24 @@
+{
+    // Checks that only bit 2 of BATT_STATUS_PORT is used for
+    // determining the Voltage/Percent mode. Bit 2 is 0 but other bits
+    // are set in this test
+    BATT_VOLTAGE_PORT = 6277;
+    BATT_STATUS_PORT  = 0b01110110;
+    BATT_DISPLAY_PORT = -1;
+    batt_t actual = {};            // all 0s
+    int ret = set_batt_from_ports(&actual);
+    printf("ret: %d\n",ret);
+    printf("actual = "); print_batt(actual);
+    print_ports();
+}
+---OUTPUT---
+ret: 0
+actual = {
+  .mlvolts = 3138,
+  .percent = 17,
+  .mode    = 2,
+}
+BATT_VOLTAGE_PORT  : 6277
+BATT_STATUS_PORT   : 000 00000
+BATT_DISPLAY_PORT  : 111 11111 1 11 1111111 1111111 1111111
+index              :  29    24   21      14       7       0
