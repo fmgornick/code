@@ -1,0 +1,12 @@
+#+TITLE: order3_asm Tests
+#+TESTY: PREFIX="prob1"
+#+TESTY: USE_VALGRIND=1
+
+* All Tests
+#+TESTY: program='./order3_asm'
+
+#+BEGIN_SRC text
+r t v: 12 13 17
+q e d:  2  5  9
+i j k: 24 27 29
+#+END_SRC
