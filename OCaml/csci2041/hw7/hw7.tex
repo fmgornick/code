@@ -87,7 +87,7 @@ let rec sum_tree =
 \end{theorem}
 
 \begin{description}
-    \item[Domain] All values of type \InlineCode{a tree}.
+    \item[Domain] All values of type \InlineCode{int tree}.
     \item[Property] \emph{P}(\InlineCode{t}): \InlineCode{sum_tree (flip_tree t)} 
         = \InlineCode{sum_tree t}.
     \item[Inductive order] \emph{R}(\InlineCode{t1},\InlineCode{t2}): \InlineCode{t1} is a 
@@ -224,6 +224,11 @@ let list_of_tree t = list_of_tree_helper t []
     \InlineCode{length (list_of_tree t)} = \InlineCode{size_tree t}
   \]
 \end{theorem}
+
+\begin{description}
+    \item[Domain] All values of type \InlineCode{a tree}.
+    \item[Property] \emph{P}(\InlineCode{t}): \InlineCode{length (list_of_tree t)} = \InlineCode{size_tree t}. \\
+\end{description}
 
 The function \InlineCode{length (list_of_tree t)} can be rewritten as 
 \InlineCode{length (list_of_tree_helper t [])}.  As proven in \emph{Lemma 3},
