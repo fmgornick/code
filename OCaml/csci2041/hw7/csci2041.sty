@@ -1,0 +1,77 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{csci2041}
+
+\RequirePackage[margin=.8in]{geometry}
+
+\RequirePackage{parskip}
+
+\RequirePackage{xparse}
+
+\RequirePackage{amsmath}
+\RequirePackage{amsthm}
+\RequirePackage{newpxtext}
+\RequirePackage{newpxmath}
+\RequirePackage{mathtools}
+
+\RequirePackage{microtype}
+\RequirePackage[inline]{enumitem}
+\RequirePackage{xcolor}
+\RequirePackage{adjustbox}
+\RequirePackage{booktabs}
+\RequirePackage{titling}
+
+\RequirePackage{lscape}
+\RequirePackage{pdflscape}
+
+\RequirePackage{varwidth}
+\RequirePackage{fvextra}
+\RequirePackage{hyperref}
+
+\ProcessOptions\relax
+
+\NewDocumentCommand{\settitlespace}{mm}{%
+  \setlength{\droptitle}{#1}%
+  \posttitle{\par\end{center}\vspace{#2}}%
+}
+
+\DefineVerbatimEnvironment{code}{Verbatim}{frame=single,rulecolor=gray}
+\newadjustboxcmd{\MarkCode}{margin=1.5pt 3pt,bgcolor=lightgray!20}
+\NewDocumentCommand{\InlineCode}{m}{\MarkCode{\upshape\Verb{#1}}}
+
+\newadjustboxenv{note}{cfbox=red,varwidth=\textwidth}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{definition}{Definition}
+
+\NewDocumentCommand\NewPairedDelimiter{mmmm}{
+  \NewDocumentCommand#2{mmm}{
+    \IfNoValueTF{##2}
+      {\IfBooleanTF{##1}
+        {\mleft#3##3\mright#4}
+        {#3##3#4}}
+      {\mathopen{##2#3}##3\mathclose{##2#4}}
+  }
+  \NewDocumentCommand#1{som}{#2{##1}{##2}{##3}}
+}
+
+\NewPairedDelimiter{\Braces}{\RawBraces}{\{}{\}}
+\NewPairedDelimiter{\Parens}{\RawParens}{(}{)}
+\NewPairedDelimiter{\Angles}{\RawAngles}{\langle}{\rangle}
+\NewPairedDelimiter{\Brackets}{\RawBrackets}{[}{]}
+\NewPairedDelimiter{\BBrackets}{\RawBBrackets}{\llbracket}{\rrbracket}
+\NewPairedDelimiter{\Floor}{\RawFloor}{\lfloor}{\rfloor}
+
+\NewDocumentCommand\NewTripleDelimiter{mmmmm}{%
+  \NewDocumentCommand#2{mmmm}{%
+    \IfNoValueTF{##2}
+      {\IfBooleanTF{##1}
+        {\mleft#3##3\middle#4##4\mright#5}
+        {#3##3#4##4#5}}
+      {\mathopen{##2#3}##3{##2#4}##4\mathclose{##2#5}}%
+  }
+  \NewDocumentCommand#1{somm}{#2{##1}{##2}{##3}{##4}}
+}
+\NewTripleDelimiter{\MySubset}{\RawMySubset}{\{}{\mid}{\}}
+\NewTripleDelimiter{\Subst}{\RawSubst}{[}{/}{]}

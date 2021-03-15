@@ -1,0 +1,242 @@
+\documentclass[fleqn]{article}
+\usepackage{csci2041}
+
+\title{Homework 7}
+\author{Fletcher Gornick}\date{March 12, 2021}
+\begin{document}
+\maketitle
+
+\section*{Problem 1 (30 points)}
+
+\begin{code}
+type 'a tree = Leaf | Branch of 'a tree * 'a * 'a tree
+
+let rec flip_tree =
+  fun t ->
+  match t with
+  | Leaf -> Leaf
+  | Branch (left, root, right) ->
+    Branch (flip_tree right, root, flip_tree left)
+\end{code}
+
+\begin{theorem}
+  For any type \InlineCode{a} and any value \InlineCode{t} of type \InlineCode{a tree}, we have
+  \[
+    \InlineCode{flip_tree (flip_tree t)} = \InlineCode{t}
+  \]
+\end{theorem}
+
+\begin{description}
+    \item[Domain] All values of type \InlineCode{a tree}.
+    \item[Property] \emph{P}(\InlineCode{t}): \InlineCode{flip_tree (flip_tree t)} 
+        = \InlineCode{t}.
+    \item[Inductive order] \emph{R}(\InlineCode{t1},\InlineCode{t2}): \InlineCode{t1} is a 
+        proper subtree of \InlineCode{t2}.
+\end{description}
+
+\begin{enumerate}
+    \item \InlineCode{t} = \InlineCode{Leaf}. \\
+        Left-hand side: \InlineCode{flip_tree (flip_tree Leaf)} = 
+        \InlineCode{flip_tree Leaf} = \InlineCode{Leaf}. \\
+        Right-hand side: \InlineCode{Leaf}. \\
+        Both sides agree.
+
+    \item \InlineCode{t} = \InlineCode{Branch (left, root, right)}. \\
+        Left-hand side:
+        \begin{align*}
+            &  \InlineCode{flip_tree (flip_tree (Branch (left, root, right)))} && \\
+            &= \InlineCode{flip_tree (Branch ((flip_tree right), root, (flip_tree left)))} && \\
+            &= \InlineCode{Branch (flip_tree (flip_tree left), root, flip_tree (flip_tree right))}
+        \end{align*}
+
+        Right-hand side:
+        \begin{align*}
+            &  \InlineCode{Branch (left, root, right)}
+        \end{align*}
+
+        It is thus sufficient to show that 
+        \begin{align*}
+            \InlineCode{flip_tree (flip_tree left)} = \InlineCode{left} \\
+            \InlineCode{flip_tree (flip_tree right)} = \InlineCode{right}
+        \end{align*}
+
+        Which is exactly \emph{P}(\InlineCode{left}) and \emph{P}(\InlineCode{right}).
+        \emph{P}(\InlineCode{left}) and \emph{P}(\InlineCode{right}) are implied by the
+        inductive hypothesis because both \InlineCode{left} and \InlineCode{right} are 
+        proper subtrees of \InlineCode{t}.  That is, \emph{R}(\InlineCode{left},\InlineCode{t})
+        and \emph{R}(\InlineCode{right},\InlineCode{t}).
+
+\end{enumerate}
+
+\section*{Problem 2 (30 points)}
+
+\begin{code}
+let rec sum_tree =
+  fun t ->
+  match t with
+  | Leaf -> 0
+  | Branch (left, root, right) ->
+    sum_tree left + root + sum_tree right
+\end{code}
+
+\begin{theorem}
+  For any value \InlineCode{t} of type \InlineCode{int tree}, we have
+  \[
+    \InlineCode{sum_tree (flip_tree t)} = \InlineCode{sum_tree t}
+  \]
+\end{theorem}
+
+\begin{description}
+    \item[Domain] All values of type \InlineCode{a tree}.
+    \item[Property] \emph{P}(\InlineCode{t}): \InlineCode{sum_tree (flip_tree t)} 
+        = \InlineCode{sum_tree t}.
+    \item[Inductive order] \emph{R}(\InlineCode{t1},\InlineCode{t2}): \InlineCode{t1} is a 
+        proper subtree of \InlineCode{t2}.
+\end{description}
+
+\begin{enumerate}
+    \item \InlineCode{t} = \InlineCode{Leaf}. \\
+        Left-hand side: \InlineCode{sum_tree (flip_tree Leaf)} = \InlineCode{sum_tree Leaf} = 
+        \InlineCode{0}. \\
+        Right-hand side: \InlineCode{sum_tree Leaf} = \InlineCode{0}. \\
+        Both sides agree.
+
+    \item \InlineCode{t} = \InlineCode{Branch (left, root, right)}. \\
+        Left-hand side:
+        \begin{align*}
+            &  \InlineCode{sum_tree (flip_tree (Branch (left, root, right)))} && \\
+            &= \InlineCode{sum_tree (Branch ((flip_tree right), root, (flip_tree left)))} && \\
+            &= \InlineCode{sum_tree (flip_tree right) + root + sum_tree (flip_tree left)} && \\
+            &= \InlineCode{sum_tree (flip_tree left) + root + sum_tree (flip_tree right)} 
+        \end{align*}
+
+        Right-hand side:
+        \begin{align*}
+            &  \InlineCode{sum_tree (Branch (left, root, right))} && \\
+            &= \InlineCode{sum_tree left + root + sum_tree right}
+        \end{align*}
+
+        It is thus sufficient to show that 
+        \begin{align*}
+            \InlineCode{sum_tree (flip_tree left)} = \InlineCode{sum_tree left} \\
+            \InlineCode{sum_tree (flip_tree right)} = \InlineCode{sum_tree right}
+        \end{align*}
+
+        Which is exactly \emph{P}(\InlineCode{left}) and \emph{P}(\InlineCode{right}).
+        \emph{P}(\InlineCode{left}) and \emph{P}(\InlineCode{right}) are implied by the
+        inductive hypothesis because both \InlineCode{left} and \InlineCode{right} are 
+        proper subtrees of \InlineCode{t}.  That is, \emph{R}(\InlineCode{left},\InlineCode{t})
+        and \emph{R}(\InlineCode{right},\InlineCode{t}).
+
+\end{enumerate}
+
+\begin{align*} \\\\\\ \end{align*}
+
+\section*{Bonus Problem (10 points)}
+
+\begin{code}
+let rec length l =
+  match l with
+  | [] -> 0
+  | h :: t -> 1 + length t
+
+let rec size_tree =
+  fun t ->
+  match t with
+  | Leaf -> 0
+  | Branch (left, _, right) ->
+    size_tree left + 1 + size_tree right
+
+let rec list_of_tree_helper =
+  fun t l ->
+  match t with
+  | Leaf -> l
+  | Branch (left, root, right) ->
+    list_of_tree_helper left (root :: list_of_tree_helper right l)
+
+let list_of_tree t = list_of_tree_helper t []
+\end{code}
+
+\begin{lemma}
+    For any type \InlineCode{a}, any value \InlineCode{t} of type \InlineCode{a tree}, and any
+    value \InlineCode{l} of type \InlineCode{a list}, we have
+    \[
+        \InlineCode{length (list_of_tree_helper t l)} = \InlineCode{size_tree t + length l}
+    \]
+\end{lemma}
+
+\begin{description}
+    \item[Domain] All values of type \InlineCode{a tree} and \InlineCode{a list}.
+    \item[Property] \emph{P}(\InlineCode{t}): \InlineCode{length (list_of_tree_helper t l)} 
+        = \InlineCode{size_tree t + length l}.
+    \item[Inductive order] \emph{R}(\InlineCode{t1},\InlineCode{t2}): \InlineCode{t1} is a 
+        proper subtree of \InlineCode{t2}.
+\end{description}
+
+\begin{enumerate}
+    \item \InlineCode{t} = \InlineCode{Leaf}. \\
+        Left-hand side: \InlineCode{length (list_of_tree_helper Leaf l)} = 
+        \InlineCode{length l}. \\
+        Right-hand side: \InlineCode{size_tree Leaf + length l} = \InlineCode{0 + length l}
+        = \InlineCode{length l}. \\
+        Both sides agree.
+
+
+    \item \InlineCode{t} = \InlineCode{Branch (left, root, right)}. \\
+        Left-hand side:
+        \begin{align*}
+            &  \InlineCode{length (list_of_tree_helper (Branch (left, root, right)) l)} && \\
+            &= \InlineCode{length (list_of_tree_helper left (root :: list_of_tree_helper right l))} && \\
+            &= \InlineCode{size_tree left + length (root :: (list_of_tree_helper right l))} && \\
+            &= \InlineCode{size_tree left + 1 + length (list_of_tree_helper right l)} && \\
+            &= \InlineCode{size_tree left + 1 + size_tree right + length l}
+        \end{align*}
+        Since the trees \InlineCode{left} and \InlineCode{right} are proper subtrees of 
+        \InlineCode{t}, that is, \emph{R}(\InlineCode{left},\InlineCode{t}) and 
+        \emph{R}(\InlineCode{right},\InlineCode{t}), \emph{P}(\InlineCode{left}) and 
+        \emph{P}(\InlineCode{right}) are implied by the inductive hypothesis.  This means
+
+        \begin{align*}
+            \InlineCode{length (list_of_tree_helper left)} = \InlineCode{size_tree left + length l} \\
+            \InlineCode{length (list_of_tree_helper right)} = \InlineCode{size_tree right + length l} \\
+        \end{align*}
+        Which is why these equalies are made above in \emph{Left-hand side}. \\
+
+        Right-hand side:
+        \begin{align*}
+            &  \InlineCode{size_tree t + length l} && \\
+            &= \InlineCode{size_tree left + 1 + size_tree right + length l}
+        \end{align*}
+
+        Again, both sides agree.
+
+        Therefore, by the principle of mathematical induction, the claim 
+        \InlineCode{length (list_of_tree_helper t l)} = \InlineCode{size_tree t + length l}
+        must hold for all values \InlineCode{t} and \InlineCode{l} of type \InlineCode{a tree}
+        and \InlineCode{a list} respectively. \\\\
+\end{enumerate}
+
+
+
+\begin{theorem}
+  For any type \InlineCode{a} and any value \InlineCode{t} of type \InlineCode{a tree}, we have
+  \[
+    \InlineCode{length (list_of_tree t)} = \InlineCode{size_tree t}
+  \]
+\end{theorem}
+
+The function \InlineCode{length (list_of_tree t)} can be rewritten as 
+\InlineCode{length (list_of_tree_helper t [])}.  As proven in \emph{Lemma 3},
+\InlineCode{length (list_of_tree_helper t l)} = \InlineCode{size_tree t + length l},
+so we can apply this to our new case, giving us
+\InlineCode{length (list_of_tree_helper t [])} = \InlineCode{size_tree t + length []}.
+Finally, since \InlineCode{length []} = \InlineCode{0}, we have
+\InlineCode{length (list_of_tree_helper t [])} = \InlineCode{size_tree t + 0} = 
+\InlineCode{size_tree t}.
+
+Again, since \InlineCode{length (list_of_tree_helper t [])} can be rewritten as
+\InlineCode{length (list_of_tree t)}, we can conclude that
+\InlineCode{length (list_of_tree t)} = \InlineCode{size_tree t}.
+
+
+\end{document}
