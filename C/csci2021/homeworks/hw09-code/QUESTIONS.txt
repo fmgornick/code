@@ -1,0 +1,170 @@
+                           _________________
+
+                            HW 09 QUESTIONS
+                           _________________
+
+
+Write your answers to the questions below directly in this text file to
+prepare for the associated quiz. Credit for the HW is earned by
+completing the online quiz.
+
+
+PROBLEM 1: Movement Mistakes
+============================
+
+  Analyze the files `posneg_main.c' and `posneg_asm.s'.  The C code uses
+  a function in assembly and the assembly function has a common bug in
+  it.
+
+
+A
+~
+
+  Compile the files together and run the resulting program. Make sure
+  that you understand how to run a `gcc' command to compile the two
+  files, C and assembly code, to produce an executable.
+
+  After running the resulting program, explain why the output appears
+  strange based on the local variables defined in `posneg_main.c' and
+  the purpose of the function in `posneg_asm.s'.
+
+  it's comparing quadwords, but the values are integers which are only 4 bytes,
+  so in order to tell if a number is negative, the leading bit must be a 1, which
+  is only the case when you do cmpl instead of cmpq
+
+
+B
+~
+
+  Analyze the code in `posneg_asm.s' carefully and compare the `movX /
+  cmpX' instructions used in the first few lines against the types of
+  variables in the `posneg_main.c' code.  You may want to step into this
+  function in GDB to look at the register values after the `movX'
+  instruction. Find a bug in this sequence and describe why it causes
+  the loaded value to appear negative.
+
+
+C
+~
+
+  Fix the bug in `posneg_asm.s' and paste your corrected code below.
+
+  .text
+  .global posneg
+  posneg:
+          movq    (%rdi),%rsi
+          cmpl    $0,%esi
+          jl      .NEG
+          movl    $0,%eax
+          ret
+  .NEG:
+          movl    $1,%eax
+          ret
+
+
+PROBLEM 2: Convert C to Assembly
+================================
+
+  Convert the C function in the file `col_check.c' to x86-64
+  assembly. Note that the parameter is a packed struct, not a pointer to
+  a struct.
+
+  ,----
+  | typedef struct{
+  |   int cur;            // current value in collatz sequence
+  |   int step;           // step number in collatz sequence
+  | } colinfo_t;
+  | // |       | Byte |   Byte | Packed |
+  | // | Field | Size | Offset |   Bits |
+  | // |-------+------+--------+--------|
+  | // | cur   |    4 |     +0 |   0-31 |
+  | // | step  |    4 |     +4 |  32-64 |
+  | 
+  | int col_check(colinfo_t info){
+  |   // Analyzes values in the packed struct arg
+  |   // info to detect errors in it. An int
+  |   // comprised of set error bits is
+  |   // returned. Bit 0: cur field was 0 or
+  |   // below, Bit 1: step was negative, Bit 2:
+  |   // cur was 1 but step is negative.
+  | 
+  |   int cur = info.cur;
+  |   int step = info.step;
+  |   int errs = 0;
+  |   if(cur <= 0){
+  |     errs = errs | 0x1; // 0b0001
+  |   }
+  |   if(step < 0){
+  |     errs = errs | 0x2; // 0b0010
+  |   }
+  |   if(cur==1 && step < 0){
+  |     errs = errs | 0x4; // 0b0100
+  |   }
+  |   
+  |   return errs;
+  | }
+  `----
+
+
+PROBLEM 3: Valgrind Debugging Assembly
+======================================
+
+A
+~
+
+  Study the C file `badstack.c' which presents a small `main()' function
+  which calls `inc_larger()'.  Compile this file and run the resulting
+  executable.
+
+  After you are comfortable with the C version, examine similar
+  `badstack_asm.s' file which encodes the same two functions and
+  algorithm but has bugs.  Compile and run this file and show the
+  results.
+
+
+B
+~
+
+  While there is output produced by `badstack_asm.s' in most cases, it
+  will not complete successfully.  To gain insight into what is
+  happening, recompile the program with Debugging information by passing
+  an additional flag to `gcc'.  Then run the program under Valgrind to
+  show more information on the nature of the problem. Show the output
+  from Valgrind below.
+
+  Jump to the invalid address stated on the next line
+
+C
+~
+
+  Analyze the Valgrind output carefully. It should contain one major
+  error. Copy and paste the output that pertains to the error below and
+  describe what you think might be going on.  Relate anything you see in
+  the output to the values for variables that show up in
+  `badstack_asm.s', particularly anything that is labeled as a 'Invalid
+  Address' is relevant. As a hint, the problem lies with data that is in
+  the stack.
+
+jumping to the wrong address most likely means that it isn't going to the correct
+return adress, which means the stack pointer (%rsp) wasn't resized before the
+function call.
+
+D
+~
+
+  Use your knowledge of what has happened to repair the buggy `main()'
+  function in `badstack_asm.s'.  Describe the changes required below.
+  After fixing the code, compile and run it to make sure that it
+  performs correctly and identically to `badstack.c' does. You will
+  likely need to make changes towards the beginning of `main()' and just
+  prior to its `ret' instruction.
+
+  Hint: You may also compile `badstack.c' to assembly code and examine
+  the first 5-8 instructions in `main()' to see how it manipulates the
+  stack to make space for local variables. Keep in mind that you should
+  compile with the `-Og' option to optimize for debugging and that the
+  setup generated by the compiler is somewhat more complex than required
+  in the hand-coded `badstack_asm.s'.  You may also examine
+  complementary stack manipulations near `ret' at the end of `main()'.
+
+  subtract 16 from the stack before calling the function, then add it later.
