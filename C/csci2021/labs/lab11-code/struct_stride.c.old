@@ -1,0 +1,103 @@
+// struct_stride.c: Comparison of struct layouts and cache
+// effects. Structs have their fields laid out sequentially in memory.
+// This can create strides when visiting the same field in arrays of
+// structs. For efficiency, one sometime sees structs where each field
+// is an array of values which means all values are sequential.
+//
+// Study this code and and add optimized versions of the algorithms in
+// the locations indicated.
+
+#include <stdlib.h>
+#include <time.h>
+#include <stdio.h>
+
+#define MAX_ITER 10             // number of times to repeat summing
+
+typedef struct {                // fields are individual ints
+  int a;
+  int b;
+} int_field_t;
+
+typedef struct {                // fields are arrays of ints
+  int *a_arr;
+  int *b_arr;
+} arr_field_t;
+
+int main(int argc, char *argv[]){
+  if(argc < 2){
+    printf("usage: %s <length> \n",argv[0]);
+    return 1;
+  }
+  int length = atoi(argv[1]);
+  clock_t begin, end;           // Variables for timing
+  double cpu_time;
+  int sum;                      // sum of elements in structs
+
+  ////////////////////////////////////////////////////////////////////////////////
+  // int_field approach
+
+  int_field_t *int_field_arr =     // allocate/initialize int_field array
+    malloc(sizeof(int_field_t)*length);
+  for(int i=0; i<length; i++){
+    int_field_arr[i].a = +i;
+    int_field_arr[i].b = -i;
+  }
+
+  begin = clock();                 // begin timing
+  sum = 0;                         // initialize sum
+  for(int iter=0; iter<MAX_ITER; iter++){
+    for(int i=0; i<length; i++){   // sum a fields
+      sum += int_field_arr[i].a;
+    }
+    for(int i=0; i<length; i++){   // sum b fields
+      sum += int_field_arr[i].b;
+    }
+  }
+  end = clock();                   // end timing and report
+
+  cpu_time = ((double) (end - begin)) / CLOCKS_PER_SEC;
+  printf("%14s CPU usage: %.4e sec   sum: %d\n", "int_field",cpu_time,sum);
+  free(int_field_arr);             // free memory
+
+  ////////////////////////////////////////////////////////////////////////////////
+  // arr_field approach
+
+  arr_field_t arr_field = {        // allocate/initialize arr_field struct
+    .a_arr = malloc(sizeof(int)*length),
+    .b_arr = malloc(sizeof(int)*length)
+  };
+  for(int i=0; i<length; i++){
+    arr_field.a_arr[i] = +i;
+    arr_field.b_arr[i] = -i;
+  }
+
+  begin = clock();                 // begin timing
+  sum = 0;                         // initialize sum
+  for(int iter=0; iter<MAX_ITER; iter++){
+    for(int i=0; i<length; i++){   // sum a fields
+      sum += arr_field.a_arr[i];
+    }
+    for(int i=0; i<length; i++){   // sum b fields
+      sum += arr_field.b_arr[i];
+    }
+  }
+  end = clock();                   // get later moment to compare to start
+  cpu_time = ((double) (end - begin)) / CLOCKS_PER_SEC;
+
+  printf("%14s CPU usage: %.4e sec   sum: %d\n", "arr_field",cpu_time,sum);
+  free(arr_field.a_arr);           // free memory
+  free(arr_field.b_arr);
+
+  ////////////////////////////////////////////////////////////////////////////////
+  // OPTIMIZED int_field approach
+
+  // Your code here for timing and execution
+
+  ////////////////////////////////////////////////////////////////////////////////
+  // OPTIMIZED arr_field approach
+
+  // Your code here for timing and execution
+
+
+  return 0;
+}
