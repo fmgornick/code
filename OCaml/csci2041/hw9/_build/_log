@@ -1,0 +1,6 @@
+### Starting build.
+# Target: hw9_stack.ml.depends, tags: { extension:ml, file:hw9_stack.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep.opt -modules hw9_stack.ml > hw9_stack.ml.depends
+# Target: hw9_stack.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:hw9_stack.cmo, file:hw9_stack.ml, implem, ocaml, quiet }
+/usr/bin/ocamlc.opt -c -o hw9_stack.cmo hw9_stack.ml
+# Compilation successful.
