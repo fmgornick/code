@@ -1,0 +1,140 @@
+                           __________________
+
+                            LAB 12 QUESTIONS
+                           __________________
+
+
+
+
+
+Lab Instructions
+================
+
+  Follow the instructions below to experiment with topics related to
+  this lab.
+  - For sections marked QUIZ, fill in an (X) for the appropriate
+    response in this file. Use the command `make test-quiz' to see if
+    all of your answers are correct.
+  - For sections marked CODE, complete the code indicated. Use the
+    command `make test-code' to check if your code is complete.
+  - DO NOT CHANGE any parts of this file except the QUIZ sections as it
+    may interfere with the tests otherwise.
+  - If your `QUESTIONS.txt' file seems corrupted, restore it by copying
+    over the `QUESTIONS.txt.bk' backup file.
+  - When you complete the exercises, check your answers with `make test'
+    and if all is well, create a zip file with `make zip' and upload it
+    to Gradescope. Ensure that the Autograder there reflects your local
+    results.
+  - IF YOU WORK IN A GROUP only one member needs to submit and then add
+    the names of their group.
+
+
+CODE: `function_v_macro.c' Program
+==================================
+
+  There is nearly complete code provided in the `function_v_macro.c'
+  file which implements 3 variants of a `row_sums_XXX()' function.
+  Complete the TODO items for each of the 3 functions so that it
+  compiles and reports run times for the 3 variants.  Correct execution
+  will produce output that looks like the following:
+  ,----
+  | > ./func_v_macro 100 100000
+  |  row_sums_function: 1.2345e+00 secs
+  |     row_sums_macro: 1.2345e+00 secs
+  |    row_sums_direct: 1.2345e+00 secs
+  `----
+  NOTE: the times above are not accurate but reflect the format of the
+  output.
+
+  You will analyze several aspects of the timing and reasons for the 3
+  different variants.
+
+
+QUIZ: Analyzing `function_v_macro.c' Runs
+=========================================
+
+  After completing the code in `func_v_macro.c', compile it via `make'
+  and then examine the timing results for the 3 variants by running on
+  the following parameters.
+  ,----
+  | # RUN ON csel-kh1250-NN machines like in project 4
+  | > ./func_v_macro 100 100000
+  | ...
+  `----
+
+
+  Which of the following indicates the relative speed ordering of the 3
+  variants (slowest to fastest).
+  ,----
+  |       SLOWEST .................................... FASTEST
+  | - ( ) row_sums_direct / row_sums_function / row_sums_macro
+  | - ( ) row_sums_macro / row_sums_direct / row_sums_function
+  | - ( ) row_sums_function / row_sums_direct / row_sums_macro
+  | - (X) row_sums_function / row_sums_macro / row_sums_direct
+  `----
+
+  Examine the results of running ONLY the compiler's preprocessor on the
+  program which can be done via the command:
+  ,----
+  | > gcc -E func_v_macro.c > preprocessed.c
+  `----
+
+  After running this command the file `preprocessed.c' now contains the
+  all text transformations made by the preprocessor to the original
+  source. The file will be quite long, ~2500 lines of code. What appears
+  for the first few thousand lines of code in the preprocessed file?
+  - (X) Lots of C type declarations and function prototypes for standard
+    functions like `atoi()' and `malloc()'; these are the results of
+    #include'ing header files. Some of the original C code appears after
+    the declarations.
+  - ( ) A long sequence of assembly instructions. These instructions are
+    what allow the C code to be loaded and run. The original C code
+    appears after the initial assembly.
+  - ( ) The translation of the original C code into assembly but before
+    optimization phases in the compiler.
+
+  Examine the code near the end of the `preprocessed.c' file.
+
+  Which of the following best describes how the `row_sums_function()'
+  code has changed?
+  - (X) It has not changed much; only comments have been removed.
+  - ( ) The body of the `mget() / vset()' functions have been inserted
+    at the point they were called.
+  - ( ) An optimized assembly code version of these functions appears.
+
+  Which of the following best describes how the `row_sums_macro()' code
+  has changed?
+  - ( ) It has not changed much; only comments have been removed.
+  - (X) The body of the `MGET() / VSET()' functions have been inserted
+    at the point they were called.
+  - ( ) An optimized assembly code version of these functions appears.
+
+  Which of the following are valid reasons that calling a function in a
+  tight computational loop might interfere with the compiler's ability
+  to produce fast code?
+  - ( ) Calling a function requires specific registers to be used to
+    pass arguments
+  - ( ) Calling a function means that all callee save registers might
+    change thus reducing the number of registers available for use in
+    the calling function.
+  - ( ) Calling a function jumps control to a different part of code
+    which may put more pressure on the instruction and data cache.
+  - (X) Actually all of these are reasons that functions calls mess up
+    optimization and this relation explains why the Macro versions
+    perform better as they force inlining of the function body enabling
+    further optimizations by the compiler.
+
+  Which of the following might explain the timing differences between
+  the Macro and Direct variants?
+  - ( ) The Macro inlines the computation of matrix / vector data
+    indices so it allows better speedup than the Direct variant.
+  - (X) The Direct variant uses a simpler iteration pattern through the
+    data in the matrix / vector thus avoiding the need to do
+    multiply+add to while calculating positions in the array and running
+    faster.
+  - ( ) The Direct method utilizes a loop unrolling technique to improve
+    processor pipelining thereby preforming faster than the Macro
+    variant.
+  - ( ) The Macro method utilizes a loop unrolling technique to improve
+    processor pipelining thereby preforming faster than the Direct
+    variant.
