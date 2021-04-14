@@ -58,198 +58,109 @@ int main (int argc, char *argv[]) {
     free(array);
     list_free(list);
     bst_free(tree);
-  }
 
-  // 'albt'
-  if (argc == 4 || (strchr(mode,'a') != NULL && strchr(mode,'l') != NULL && strchr(mode,'b') != NULL && strchr(mode,'t') != NULL)) {
-    // first line of display, this spacing looks the prettiest imo
-    printf("\n%10s %10s %12s %12s %12s %12s\n","LENGTH","SEARCHES","array","list","binary","tree");
-    // iterate through each length
-    for (int i=minpow; i<=maxpow; i++) {
-      length = 2 << (i-1);
-      searches = 2 * length * repeats;
-      // plug in values that were calculated earlier
+    // 'albt'
+    if (argc == 4 || (strchr(mode,'a') != NULL && strchr(mode,'l') != NULL && strchr(mode,'b') != NULL && strchr(mode,'t') != NULL)) {
+      // first line of display, this spacing looks the prettiest imo
+      if (i == minpow) printf("\n%10s %10s %12s %12s %12s %12s\n","LENGTH","SEARCHES","array","list","binary","tree");
+      // lines containing the data of the functions
       printf("%10d %10d %12.4e %12.4e %12.4e %12.4e\n",length,searches,array_time,list_time,bas_time,bst_time);
     }
-    printf("\n");
-    return 0;
-  }
 
-  // everything from now on is basically the same as the if statement above
-  // with a couple alterations, so I won't add unneccessary comments
-  // 'alb'
-  else if (strchr(mode,'a') != NULL && strchr(mode,'l') != NULL && strchr(mode,'b') != NULL) {
-    printf("\n%10s %10s %12s %12s %12s\n","LENGTH","SEARCHES","array","list","binary");
-    for (int i=minpow; i<=maxpow; i++) {
-      length = 2 << (i-1);
-      searches = 2 * length * repeats;
+    // everything from now on is basically the same as the if statement above
+    // with a couple alterations, so I won't add unneccessary comments
+    // 'alb'
+    else if (strchr(mode,'a') != NULL && strchr(mode,'l') != NULL && strchr(mode,'b') != NULL) {
+      if (i == minpow) printf("\n%10s %10s %12s %12s %12s\n","LENGTH","SEARCHES","array","list","binary");
       printf("%10d %10d %12.4e %12.4e %12.4e\n",length,searches,array_time,list_time,bas_time);
     }
-    printf("\n");
-    return 0;
-  }
 
-  // 'alt'
-  else if (strchr(mode,'a') != NULL && strchr(mode,'l') != NULL && strchr(mode,'t') != NULL) {
-    printf("\n%10s %10s %12s %12s %12s\n","LENGTH","SEARCHES","array","list","tree");
-    for (int i=minpow; i<=maxpow; i++) {
-      length = 2 << (i-1);
-      searches = 2 * length * repeats;
+    // 'alt'
+    else if (strchr(mode,'a') != NULL && strchr(mode,'l') != NULL && strchr(mode,'t') != NULL) {
+      if (i == minpow) printf("\n%10s %10s %12s %12s %12s\n","LENGTH","SEARCHES","array","list","tree");
       printf("%10d %10d %12.4e %12.4e %12.4e\n",length,searches,array_time,list_time,bst_time);
     }
-    printf("\n");
-    return 0;
-  }
 
-  // 'abt'
-  else if (strchr(mode,'a') != NULL && strchr(mode,'b') != NULL && strchr(mode,'t') != NULL) {
-    printf("\n%10s %10s %12s %12s %12s\n","LENGTH","SEARCHES","array","binary","tree");
-    for (int i=minpow; i<=maxpow; i++) {
-      length = 2 << (i-1);
-      searches = 2 * length * repeats;
+    // 'abt'
+    else if (strchr(mode,'a') != NULL && strchr(mode,'b') != NULL && strchr(mode,'t') != NULL) {
+      if (i == minpow) printf("\n%10s %10s %12s %12s %12s\n","LENGTH","SEARCHES","array","binary","tree");
       printf("%10d %10d %12.4e %12.4e %12.4e\n",length,searches,array_time,bas_time,bst_time);
     }
-    printf("\n");
-    return 0;
-  }
 
-  // 'lbt'
-  else if (strchr(mode,'l') != NULL && strchr(mode,'b') != NULL && strchr(mode,'t') != NULL) {
-    printf("\n%10s %10s %12s %12s %12s\n","LENGTH","SEARCHES","list","binary","tree");
-    for (int i=minpow; i<=maxpow; i++) {
-      length = 2 << (i-1);
-      searches = 2 * length * repeats;
+    // 'lbt'
+    else if (strchr(mode,'l') != NULL && strchr(mode,'b') != NULL && strchr(mode,'t') != NULL) {
+      if (i == minpow) printf("\n%10s %10s %12s %12s %12s\n","LENGTH","SEARCHES","list","binary","tree");
       printf("%10d %10d %12.4e %12.4e %12.4e\n",length,searches,list_time,bas_time,bst_time);
     }
-    printf("\n");
-    return 0;
-  }
 
-  // 'al'
-  else if (strchr(mode,'a') != NULL && strchr(mode,'l') != NULL) {
-    printf("\n%10s %10s %12s %12s\n","LENGTH","SEARCHES","array","list");
-    for (int i=minpow; i<=maxpow; i++) {
-      length = 2 << (i-1);
-      searches = 2 * length * repeats;
+    // 'al'
+    else if (strchr(mode,'a') != NULL && strchr(mode,'l') != NULL) {
+      if (i == minpow) printf("\n%10s %10s %12s %12s\n","LENGTH","SEARCHES","array","list");
       printf("%10d %10d %12.4e %12.4e\n",length,searches,array_time,list_time);
     }
-    printf("\n");
-    return 0;
-  }
 
-  // 'ab'
-  else if (strchr(mode,'a') != NULL && strchr(mode,'b') != NULL) {
-    printf("\n%10s %10s %12s %12s\n","LENGTH","SEARCHES","array","binary");
-    for (int i=minpow; i<=maxpow; i++) {
-      length = 2 << (i-1);
-      searches = 2 * length * repeats;
+    // 'ab'
+    else if (strchr(mode,'a') != NULL && strchr(mode,'b') != NULL) {
+      if (i == minpow) printf("\n%10s %10s %12s %12s\n","LENGTH","SEARCHES","array","binary");
       printf("%10d %10d %12.4e %12.4e\n",length,searches,array_time,bas_time);
     }
-    printf("\n");
-    return 0;
-  }
 
-  // 'at'
-  else if (strchr(mode,'a') != NULL && strchr(mode,'t') != NULL) {
-    printf("\n%10s %10s %12s %12s\n","LENGTH","SEARCHES","array","tree");
-    for (int i=minpow; i<=maxpow; i++) {
-      length = 2 << (i-1);
-      searches = 2 * length * repeats;
+    // 'at'
+    else if (strchr(mode,'a') != NULL && strchr(mode,'t') != NULL) {
+      if (i == minpow) printf("\n%10s %10s %12s %12s\n","LENGTH","SEARCHES","array","tree");
       printf("%10d %10d %12.4e %12.4e\n",length,searches,array_time,bst_time);
     }
-    printf("\n");
-    return 0;
-  }
 
-  // 'lb'
-  else if (strchr(mode,'l') != NULL && strchr(mode,'b') != NULL) {
-    printf("\n%10s %10s %12s %12s\n","LENGTH","SEARCHES","list","binary");
-    for (int i=minpow; i<=maxpow; i++) {
-      length = 2 << (i-1);
-      searches = 2 * length * repeats;
+    // 'lb'
+    else if (strchr(mode,'l') != NULL && strchr(mode,'b') != NULL) {
+      if (i == minpow) printf("\n%10s %10s %12s %12s\n","LENGTH","SEARCHES","list","binary");
       printf("%10d %10d %12.4e %12.4e\n",length,searches,list_time,bas_time);
     }
-    printf("\n");
-    return 0;
-  }
 
-  // 'lt'
-  else if (strchr(mode,'l') != NULL && strchr(mode,'t') != NULL) {
-    printf("\n%10s %10s %12s %12s\n","LENGTH","SEARCHES","list","tree");
-    for (int i=minpow; i<=maxpow; i++) {
-      length = 2 << (i-1);
-      searches = 2 * length * repeats;
+    // 'lt'
+    else if (strchr(mode,'l') != NULL && strchr(mode,'t') != NULL) {
+      if (i == minpow) printf("\n%10s %10s %12s %12s\n","LENGTH","SEARCHES","list","tree");
       printf("%10d %10d %12.4e %12.4e\n",length,searches,list_time,bst_time);
     }
-    printf("\n");
-    return 0;
-  }
 
-  // 'bt'
-  else if (strchr(mode,'b') != NULL && strchr(mode,'t') != NULL) {
-    printf("\n%10s %10s %12s %12s\n","LENGTH","SEARCHES","binary","tree");
-    for (int i=minpow; i<=maxpow; i++) {
-      length = 2 << (i-1);
-      searches = 2 * length * repeats;
+    // 'bt'
+    else if (strchr(mode,'b') != NULL && strchr(mode,'t') != NULL) {
+      if (i == minpow) printf("\n%10s %10s %12s %12s\n","LENGTH","SEARCHES","binary","tree");
       printf("%10d %10d %12.4e %12.4e\n",length,searches,bas_time,bst_time);
     }
-    printf("\n");
-    return 0;
-  }
 
-  // 'a'
-  else if (strcmp(mode,"a") == 0) {
-    printf("\n%10s %10s %12s\n","LENGTH","SEARCHES","array");
-    for (int i=minpow; i<=maxpow; i++) {
-      length = 2 << (i-1);
-      searches = 2 * length * repeats;
+    // 'a'
+    else if (strcmp(mode,"a") == 0) {
+      if (i == minpow) printf("\n%10s %10s %12s\n","LENGTH","SEARCHES","array");
       printf("%10d %10d %12.4e\n",length,searches,array_time);
     }
-    printf("\n");
-    return 0;
-  }
 
-  // 'l'
-  else if (strcmp(mode,"l") == 0) {
-    printf("\n%10s %10s %12s\n","LENGTH","SEARCHES","list");
-    for (int i=minpow; i<=maxpow; i++) {
-      length = 2 << (i-1);
-      searches = 2 * length * repeats;
+    // 'l'
+    else if (strcmp(mode,"l") == 0) {
+      if (i == minpow) printf("\n%10s %10s %12s\n","LENGTH","SEARCHES","list");
       printf("%10d %10d %12.4e\n",length,searches,list_time);
     }
-    printf("\n");
-    return 0;
-  }
 
-  // 'b'
-  else if (strcmp(mode,"b") == 0) {
-    printf("\n%10s %10s %12s\n","LENGTH","SEARCHES","binary");
-    for (int i=minpow; i<=maxpow; i++) {
-      length = 2 << (i-1);
-      searches = 2 * length * repeats;
+    // 'b'
+    else if (strcmp(mode,"b") == 0) {
+      if (i == minpow) printf("\n%10s %10s %12s\n","LENGTH","SEARCHES","binary");
       printf("%10d %10d %12.4e\n",length,searches,bas_time);
     }
-    printf("\n");
-    return 0;
-  }
 
-  // 't'
-  else if (strcmp(mode,"t") == 0) {
-    printf("\n%10s %10s %12s\n","LENGTH","SEARCHES","tree");
-    for (int i=minpow; i<=maxpow; i++) {
-      length = 2 << (i-1);
-      searches = 2 * length * repeats;
+    // 't'
+    else if (strcmp(mode,"t") == 0) {
+      if (i == minpow) printf("\n%10s %10s %12s\n","LENGTH","SEARCHES","tree");
       printf("%10d %10d %12.4e\n",length,searches,bst_time);
     }
-    printf("\n");
-    return 0;
-  }
 
-  // if incorrect letters typed, give this error and exit
-  else {
-    printf("\nmake sure to type 'a', 'l', 'b', and/or 't'\n\n");
-    return 1;
+    // if incorrect letters typed, give this error and exit
+    else {
+      printf("\nmake sure to type 'a', 'l', 'b', and/or 't'\n\n");
+      return 1;
+    }
   }
+  printf("\n");
+  return 0;
 }
 
 // these functions all basically act the same but for different structures
