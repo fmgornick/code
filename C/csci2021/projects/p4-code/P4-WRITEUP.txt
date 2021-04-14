@@ -1,0 +1,207 @@
+                              ____________
+
+                               P4 WRITEUP
+                              ____________
+
+
+- Name: (FILL THIS in)
+- NetID: (THE kauf0095 IN kauf0095@umn.edu)
+
+Answer the questions below according to the project specification. Write
+your answers directly in this text file and submit it along with your
+code.
+
+
+PROBLEM 1: sumdiag_OPTM()
+=========================
+
+  Do your timing study on csel-keller1250-NN.cselabs.umn.edu
+
+
+(A) Paste Source Code
+~~~~~~~~~~~~~~~~~~~~~
+
+  Paste a copy of your source code for the function `sumdiag_OPTM()'
+
+  ####################### YOUR ANSWER HERE #########################
+
+  int sumdiag_OPTM(matrix_t mat, vector_t vec) {
+    int len=vec.len, rows=mat.rows, cols=mat.cols;
+    for (int i=0; i<len; i++) VSET(vec,i,0);
+
+    if (cols % 2 == 0) {
+      for (int r=0; r<rows; r++) {
+        for (int c=0; c<cols-1; c+=2) {
+          vec.data[c - r + cols - 1] += MGET(mat,r,c);
+          vec.data[c - r + cols] += MGET(mat,r,c+1);
+        }
+      }
+    }
+
+    else {
+      for (int r=0; r<rows; r++) {
+        for (int c=0; c<cols-2; c+=2) {
+          vec.data[c - r + cols - 1] += MGET(mat,r,c);
+          vec.data[c - r + cols] += MGET(mat,r,c+1);
+        }
+        vec.data[len - r - 1] += MGET(mat,r,cols-1);
+      }
+    }
+
+    return 0;
+  }
+
+  ##################################################################
+
+
+(B) Timing on csel-kh1250-NN
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  Paste a copy of the results of running `sumdiag_benchmark' on
+  csel-kh1250-NN.cselabs.umn.edu in the space below which shows how your
+  performance optimizations improved on the baseline codes.
+
+  ####################### YOUR ANSWER HERE #########################
+
+  ==== Matrix Diagonal Sum Benchmark Version 2 ====
+  ------ Tuned for csel-kh1250-NN machines --------
+    SIZE       BASE       OPTM  SPDUP POINTS 
+    512  5.6740e-03 1.2190e-03   4.65   3.65 
+    1024 6.1700e-03 2.4080e-03   2.56   1.56 
+    1101 7.9020e-03 2.7860e-03   2.84   1.84 
+    2048 8.8077e-02 1.0255e-02   8.59   7.59 
+    4099 3.7282e-01 4.2851e-02   8.70   7.70 
+    6001 9.3711e-01 9.2441e-02  10.14   9.14 
+    8191 2.3029e+00 1.7271e-01  13.33  12.33 
+  RAW POINTS: 43.81
+  TOTAL POINTS: 35 / 35
+
+  ##################################################################
+
+
+(C) Optimizations
+~~~~~~~~~~~~~~~~~
+
+  Describe in some detail the optimizations you used to speed the code
+  up.  THE CODE SHOULD CONTAIN SOME COMMENTS already to describe these
+  but in the section below, describe in English the techniques you used
+  to make the code run faster.  Format your descriptions into discrete
+  chunks such as.
+        Optimization 1: Blah bla blah... This should make run
+        faster because yakkety yakeety yak.
+
+        Optimization 2: Blah bla blah... This should make run
+        faster because yakkety yakeety yak.
+
+        ...  Optimization N: Blah bla blah... This should make run
+        faster because yakkety yakeety yak.
+  Full credit solutions will have a least two optimizations and describe
+  WHY these improved performance in at least a couple sentences.
+
+  ####################### YOUR ANSWER HERE #########################
+
+  Optimization 1: I created variables len, rows, cols which come from the 
+  vector_t and matrix_t struct respectively.  This should make the function run
+  faster because we don't need to enter the struct every time we need to access
+  a value.
+
+  Optimization 2: I iterated through the matrix column by column, then row by 
+  row.  This should make the function run faster because each index is being 
+  accessed sequentially, meaning that there's no needless jumping.  This allows
+  a big chunk of the matrix (or maybe even the whole matrix) to be cached, and
+  make it very fast accessing values.
+
+  Optimization 3: I just did all the calculations for what the index should be
+  for the vector in the same line as where I accessed it's index.  I did this
+  instead of declaring new variables, because these variables are only being
+  used once per iteration of the column loop anyway.
+
+  Optimization 4: I had the vector update two values in each for loop iteration
+  of the columns, this allows for the two operations to be done in parallel, 
+  essentially cutting the time to sum up all the diagonals in half.  There was 
+  also the case that the number of columns was odd, so I added a conditional 
+  and made that case do one extra index per column loop.
+
+  ##################################################################
+
+
+PROBLEM 2: Timing Search Algorithms
+===================================
+
+  Do your timing study on csel-kh1250-NN.cselabs.umn.edu. In most cases,
+  report times larger than 1e-03 seconds as times shorter than this are
+  unreliable. Run searches for more repetitions to lengthen run times.
+
+
+(A) Min Size for Algorithmic Differences
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  Determine the size of input array where one starts to see a measurable
+  difference in the performance of the linear and logarithmic
+  algorithms.  Produce a timing table which includes all algorithms
+  which clearly demonstrates an uptick in the times associated with some
+  while others remain much lower.  Identify what size this appears to be
+  a occur.
+
+  ####################### YOUR ANSWER HERE #########################
+
+  ##################################################################
+
+
+(B) Linear Search in List vs Array
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  Determine whether the linear array and linked list search remain
+  approximately at the same performance level as size increases to large
+  data or whether one begins to become favorable over other. Determine
+  the approximate size at which this divergence becomes obvious. Discuss
+  reasons WHY this difference arises.
+
+  ####################### YOUR ANSWER HERE #########################
+
+  ##################################################################
+
+
+(C) Binary Search in Tree vs Array
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  Compare the binary array search and binary tree search on small to
+  very large arrays. Determine if there is a size at which the
+  performance of these two begins to diverge. If so, describe why this
+  might be happening based on your understanding of the data structures
+  and the memory system. If not, describe why you believe there is
+  little performance difference between the two.
+
+  ####################### YOUR ANSWER HERE #########################
+
+  ##################################################################
+
+
+(D) Caching Effects on Algorithms
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  It is commonly believed that memory systems that feature a Cache will
+  lead to arrays performing faster than linked structures such as Linked
+  Lists and Binary Search Trees. Describe whether your timings confirm
+  or refute this belief.  Address both types of algorithms in your
+  answer:
+  - What effects does Cache have on Linear Search in arrays and lists
+    and why?
+  - What effects does Cache have on Binary Search in arrays and trees
+    and why?
+
+  ####################### YOUR ANSWER HERE #########################
+
+  ##################################################################
+
+
+(E) OPTIONAL MAKEUP CREDIT
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  If you decided to make use of a table of function pointers/structs
+  which is worth makeup credit, describe your basic design for this
+  below.
+
+  ####################### YOUR ANSWER HERE #########################
+
+  ##################################################################
