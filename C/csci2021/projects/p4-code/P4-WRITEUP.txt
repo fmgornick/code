@@ -145,6 +145,24 @@ PROBLEM 2: Timing Search Algorithms
 
   ####################### YOUR ANSWER HERE #########################
 
+  For me, I start to see a noticeable difference for each structure when the
+  length is around 1024 or 2^10.  This is with the repetitions set at 1000 
+  though.  With a length of 512 there is also a noticeable difference with each
+  time exceeding 1.0000e-02, but it becomes more clear with a size of 1024.
+
+  > ./search_benchmark 4 12 1000
+
+  LENGTH   SEARCHES        array         list       binary         tree
+      16      32000   1.4260e-03   1.4640e-03   1.1070e-03   1.0080e-03
+      32      64000   1.0900e-03   1.3300e-03   6.1700e-04   5.1400e-04
+      64     128000   4.5000e-03   6.8260e-03   1.2710e-03   8.4600e-04
+     128     256000   1.2094e-02   2.3335e-02   2.6650e-03   1.9420e-03
+     256     512000   4.0208e-02   8.8198e-02   7.3560e-03   7.5760e-03
+     512    1024000   1.6289e-01   3.5424e-01   2.8403e-02   2.6844e-02
+    1024    2048000   5.3737e-01   1.5929e+00   6.6744e-02   5.6646e-02
+    2048    4096000   2.1252e+00   1.8336e+01   1.5820e-01   1.3462e-01
+    4096    8192000   8.2376e+00   9.2566e+01   3.1703e-01   2.8832e-01
+
   ##################################################################
 
 
@@ -158,6 +176,36 @@ PROBLEM 2: Timing Search Algorithms
   reasons WHY this difference arises.
 
   ####################### YOUR ANSWER HERE #########################
+
+  With really low structure sizes the linked list actually starts off better.
+  When the size ranges from 2 to 16 the linked usually performs just a bit 
+  faster.  The array starts to perform better at a length of around 32.  Then 
+  at a size of 64, the array starts to run over twice as fast as the linked 
+  list.  But it isn't until we reach a size of 4096 that the array search
+  becomes an order of magnitude better.  
+
+  This is most likely because large sums of memory can be cached for easy 
+  access by the cpu when using an array, but when working with a linked list, 
+  you're using pointers to hop around in main memory, this can slow it down 
+  quite a bit.  This also helps explain why the linked list actually runs a 
+  little faster with smaller sizes, because caching can be an expensive 
+  operation, and isn't really useful until you're using a big array.
+
+  > ./search_benchmark 1 12 1000 al
+
+  LENGTH   SEARCHES        array         list
+       2       4000   3.9000e-05   3.7000e-05
+       4       8000   9.1000e-05   6.0000e-05
+       8      16000   1.4100e-04   1.1100e-04
+      16      32000   3.1900e-04   2.7900e-04
+      32      64000   8.6700e-04   1.0920e-03
+      64     128000   3.8260e-03   8.0350e-03
+     128     256000   1.4006e-02   2.8044e-02
+     256     512000   4.9176e-02   1.0207e-01
+     512    1024000   1.6178e-01   3.8646e-01
+    1024    2048000   6.2311e-01   1.8057e+00
+    2048    4096000   2.3245e+00   1.9070e+01
+    4096    8192000   9.0837e+00   8.8630e+01
 
   ##################################################################
 
@@ -173,6 +221,31 @@ PROBLEM 2: Timing Search Algorithms
   little performance difference between the two.
 
   ####################### YOUR ANSWER HERE #########################
+
+  These two structures seem to work at the same speed no matter the size.  The
+  tree structure is usually a bit more efficient than the array for the most
+  part.  The reason the tree is slightly faster is because when running the 
+  binary operations on the array, it'll most likely cache the elements arround
+  a spoot, but binary search hops around and isn't very sequential, so the 
+  extra expense of caching array elements ultimately doesn't help speed it up
+  much.  This difference is only minimal, and because the searching method is
+  O(n*log(n)) for both structures, they don't diverge.
+
+  > ./search_benchmark 1 12 1000 bt
+
+  LENGTH   SEARCHES       binary         tree
+       2       4000   6.9000e-05   6.6000e-05
+       4       8000   1.4500e-04   1.4200e-04
+       8      16000   2.9000e-04   1.4400e-04
+      16      32000   3.6900e-04   3.3500e-04
+      32      64000   5.5200e-04   4.7000e-04
+      64     128000   1.3330e-03   8.3600e-04
+     128     256000   2.6700e-03   2.1300e-03
+     256     512000   7.6750e-03   5.7210e-03
+     512    1024000   3.0182e-02   2.7762e-02
+    1024    2048000   7.1390e-02   6.0444e-02
+    2048    4096000   1.5610e-01   1.4007e-01
+    4096    8192000   3.2925e-01   3.2310e-01
 
   ##################################################################
 
@@ -192,16 +265,22 @@ PROBLEM 2: Timing Search Algorithms
 
   ####################### YOUR ANSWER HERE #########################
 
+  Caching has a very positive affect when using linear search do go through an
+  array.  It definitely shows in the results as well.  As the sizes get larger,
+  the arrays become more and more efficient than the linked lists.  This is
+  because we're moving sequentially through both, so when caching a hunk of
+  memory, most of that memory will actually be relevant.  That's why the linear
+  search array is more efficient than the linked list at higher sizes.
+
+  With binary search on the other hand, caching doesn't really help.  The 
+  results actually show that the binary search tree is usually a bit more 
+  efficient than the binary search array.  This is because when we're on a
+  specific element in a binary array.  The next element won't be arround the 
+  current element, instead we will need to jump to another location on the 
+  array.  The computer has no clue which elements we're jumping to until we
+  make the jump, so it'll just take a bunch of elements near it, and most 
+  likely we won't actually need any of them.  This essentially makes caching
+  useless for binary search.
+
   ##################################################################
 
-
-(E) OPTIONAL MAKEUP CREDIT
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-  If you decided to make use of a table of function pointers/structs
-  which is worth makeup credit, describe your basic design for this
-  below.
-
-  ####################### YOUR ANSWER HERE #########################
-
-  ##################################################################
