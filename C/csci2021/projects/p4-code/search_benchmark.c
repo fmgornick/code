@@ -170,7 +170,7 @@ double array_timer(int *array, int length, int searches) {
   clock_t begin, end;
   // set the beginning before the function runs
   begin = clock();
-  for (int i=0; i<searches; i++) linear_array_search(array, length, i % length);
+  for (int i=0; i<searches; i++) linear_array_search(array, length, i);
   // find the time after the function ends
   end = clock();
   // calculate and return the final time
@@ -181,7 +181,7 @@ double array_timer(int *array, int length, int searches) {
 double list_timer(list_t *list, int length, int searches) {
   clock_t begin, end;
   begin = clock();
-  for (int i=0; i<searches; i++) linkedlist_search(list, length, i % length);
+  for (int i=0; i<searches; i++) linkedlist_search(list, length, i);
   end = clock();
   return ((double) (end - begin)) / CLOCKS_PER_SEC;
 }
@@ -190,7 +190,7 @@ double list_timer(list_t *list, int length, int searches) {
 double bas_timer(int *array, int length, int searches) {
   clock_t begin, end;
   begin = clock();
-  for (int i=0; i<searches; i++) binary_array_search(array, length, i % length);
+  for (int i=0; i<searches; i++) binary_array_search(array, length, i);
   end = clock();
   return ((double) (end - begin)) / CLOCKS_PER_SEC;
 }
@@ -199,7 +199,7 @@ double bas_timer(int *array, int length, int searches) {
 double bst_timer(bst_t *tree, int length, int searches) {
   clock_t begin, end;
   begin = clock();
-  for (int i=0; i<searches; i++) binary_tree_search(tree, length, i % length);
+  for (int i=0; i<searches; i++) binary_tree_search(tree, length, i);
   end = clock();
   return ((double) (end - begin)) / CLOCKS_PER_SEC;
 }
