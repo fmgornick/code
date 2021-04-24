@@ -27,7 +27,7 @@
 #include <sys/time.h>
 #include "matvec.h"
 
-int mget(matrix_t mat, int i, int j){
+void mget(matrix_t mat, int i, int j){
   return mat.data[i*mat.cols + j];
 }
 int vset(vector_t vec, int i, int x){
