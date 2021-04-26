@@ -63,6 +63,14 @@ PROBLEM 1: colmins_main.c
   that is used to avoid a large amount of repeated code to time the
   multiple functions.
 
+  minfuncs_t funcs[] = {
+    {"col_mins1",col_mins1},
+    {"col_mins2",col_mins2},
+    {"col_mins3",col_mins3},
+    {"col_mins4",col_mins4},
+    {"col_mins5",col_mins5},
+    {NULL, NULL}
+
 
 PROBLEM 2: Comparisons in colmins_funcs.c
 =========================================
@@ -77,6 +85,9 @@ PROBLEM 2: Comparisons in colmins_funcs.c
     of the matrix?
   - What local variables are used versus main memory gets/sets?
 
+  It's using column major which is not very good.  The function uses macros
+  instead of regular getters / setters
+
 
 (B) col_mins2 Comparison
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -86,6 +97,10 @@ PROBLEM 2: Comparisons in colmins_funcs.c
   - Any differences in memory access pattern
   - Any differences in use of local variables/main memory
   - Any differences in speed
+
+  col_mins2 has the same memory access pattern, but it also uses local 
+  variables to store values instead of calling the macro every time.  This
+  should save a bit of time but not much
 
 
 (C) col_mins3 Comparison
@@ -104,6 +119,8 @@ PROBLEM 2: Comparisons in colmins_funcs.c
   - Any differences in memory access pattern
   - Any differences in use of local variables/main memory
   - Any differences in speed that might be due to the new optimizations
+
+  the memory accessing patterns are still the same
 
 
 (D) col_mins4 Comparison
