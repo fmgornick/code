@@ -6,12 +6,25 @@ void buildHeap(int A[], int size);
 void heapify(int A[], int size, int i);
 void printArray(int A[], int size);
 
-int main() {
-  int arr[] = {10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
-  printArray(arr, 10);
-  heapSort(arr, 10);
-  printArray(arr, 10);
+class Heap {
+public:
+  int size;
+  int *arr;
+};
 
+int main() {
+  Heap h;
+  h.size = 20;
+
+  h.arr = (int *)malloc(h.size * sizeof(int));
+  for (int i = 0; i < h.size; i++)
+    h.arr[i] = h.size - i;
+
+  printArray(h.arr, h.size);
+  heapSort(h.arr, h.size);
+  printArray(h.arr, h.size);
+
+  free(h.arr);
   return 0;
 }
 
