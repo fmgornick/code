@@ -1,0 +1,50 @@
+\documentclass[11pt]{article}
+
+\usepackage{setspace}
+\usepackage[top=2cm,bottom=2cm,left=2.5cm,right=2.5cm,marginparwidth=1.75cm]{geometry}
+\usepackage[hidelinks,urlcolor=cyan]{hyperref}
+\urlstyle{same}
+
+\title{Image Processing Design Research}
+\author{Fletcher Gornick}
+\date{September 15, 2021}
+
+\spacing{1.4}
+\begin{document}
+\maketitle
+
+After searching for existing image processing methods, I stumbled upon OpenCV and found 
+some interesting information on the GeeksForGeeks website \cite{geek}.
+I learned that OpenCV is an open-source library with tools to implement computer vision.
+It treats an image as a two-dimensional function $f(x,y)$ where the value at each coordinate
+defines the intensity / grey level of that pixel.  Then the program can alter this data thus
+applying a specific filter to the image.
+
+Another cool image processing technique that I found was on another persons open-source old
+school game engine project \cite{werem}.  Although not 100\% applicable to the drone project,
+it does contain some interesting image processing techniques that may actually be useful later.
+In order to render an image in 3D space, it uses two 2D images.  The first is a colored image
+used to represent the terrain, and the second is a greyscale image where each pixel represents
+the height of the colored pixel in the first image.  This rendered image actually uses voxels,
+or volumetric-pixels, so the objects displayed have actual volume, as opposed to the current
+polygon system where objects are only represented on their surface (which can lead to glitches
+where you can see the weird video-game dimenstion inside of objects).  But voxels aren't really
+used much today because GPUs are more catered to creating tons of triangles in the polygon game
+design system.
+
+Lastly, I checked out a book covering the fundamentals of image processing \cite{young}.  In it,
+I learned that a digital image is represented in a 2D discrete space derived from a 2D continuous
+space through sampling, or digitization.  An image is broken up into rows and columns, and at the
+intersection of each row and column lies a pixel with a specific grey level.  Now when it comes to 
+transforming digital images, there are different kinds of operations you can apply to an input 
+image to create a desired output, and they can be classified by one of 3 categories.  Thee first 
+is a point operation, where an output pixel at a specific coordinate is only dependent on the input 
+pixel at the same coordinate.  Then there's the local operation, where an output pixel is dependent 
+upon the corresponding input as well as it's neighbors.  Finally there's the global operation where 
+each pixel in the output is dependent on every single pixel in the input.  Hopefully these 
+techniques will be very useful when it comes to designing my very own image processing software for 
+the drone project.
+
+\bibliographystyle{apalike}
+\bibliography{sources}
+\end{document}
