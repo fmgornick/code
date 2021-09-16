@@ -1,0 +1,75 @@
+\documentclass[11pt]{article}
+
+\usepackage{setspace}
+\usepackage{enumitem}
+\usepackage{relsize}
+\usepackage[top=2cm,bottom=2cm,left=2.5cm,right=2.5cm,marginparwidth=1.75cm]{geometry}
+\setlength{\parindent}{0cm}
+
+\title{4512 Homework 1}
+\author{Fletcher Gornick}
+\date{September 16, 2021}
+
+\spacing{1.5}
+\begin{document}
+ \maketitle 
+
+ \section*{Section 1.4 Question 3}
+ Find the general solution: $\frac{dy}{dt} = 1 - t + y^2 - ty^2$.
+
+ \section*{Section 1.5 Question 12}
+ given $\frac{dp}{dt} = bp^2 - ap, \quad a,b > 0$, show that 
+ $p(t)$ approaches $0$ as $t \rightarrow \infty$ if $p_0 < a/b$.
+
+ \section*{Section 1.8 Question 13}
+ Find the orthogonal trajectory: $y^2 - x^2 = c$.
+
+ \section*{Section 1.8 Question 18}
+ $y(t)$ = number of living bacteria at time $t$. \\
+
+ $T(t)$ = number of toxins at time $t$. \\
+ Also, production of toxins begin at time $t=0$, so $T(0) = 0$. \\
+
+ Finally, $\frac{dT}{dt} = c$.
+
+ \begin{enumerate}[label=(\alph*)]
+
+   \item \textbf{Find a first-order differential equation satisfied by $y(t)$}
+
+     $\frac{dy}{dt} = $ (bacteria birth) - (bacteria death). \\
+     Bacteria grows proportionally to the amount present $y$ with a proportionality 
+     constant $b$. \\
+     Bacteria dies proportionally to both the amount present $y$ and the number of 
+     toxins present $T$.  The proportionality constant for bacteria death is $a$. \\
+     Therefore, $\frac{dy}{dt} \propto y - yT = by - ayT = y(b - aT)$. \\
+
+   \item \textbf{Solve the differential equation to obtain $y(t)$. What happens to
+     $y(t)$ as $t \rightarrow \infty$?}
+
+     First let's find $T(t)$...
+     $$\frac{dT}{dt} = c \Rightarrow T(t) = \int c \; dt = ct + C$$
+     Since $T(0) = 0$, we know $C = 0$, so $T(t) = ct$.  Now we can plug this into
+     our equation for $\frac{dy}{dt}$.
+
+     $$\frac{dy}{dt} = y(b-aT) = y(b-act) \Rightarrow \int \frac{dy}{y}
+     = \int (b-act) \; dt \Rightarrow \ln{|y(t)|} = bt - \frac{1}{2}act^2 + C_1$$
+
+     Ultimately giving us... 
+     $$\mathlarger{\mathlarger{\mathlarger{y(t) = Ce^{bt - \frac{1}{2}act^2}}}}$$
+
+     As $t \rightarrow \infty$, the exponent in the equation is becoming more and 
+     more negative.  This is because $-\frac{1}{2}act^2$ is growing much faster than
+     $bt$, so the exponent approaches $-\infty$, making the whole equation approach 
+     zero.  This basically means that the bacteria is slowly getting wiped out by the
+     toxins.
+
+ \end{enumerate}
+
+ \section*{Section 1.10 Question 5}
+ Show that the solution $y(t)$ of the initial value problem exists on the given
+ interval... 
+ $$\mathlarger{\mathlarger{
+   y' = y + e^{-y} + e^{-t}, \quad y(0) = 0, \quad 0 \leq t \leq 1
+ }}$$.
+
+\end{document}
