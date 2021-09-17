@@ -1,7 +1,9 @@
 \documentclass[11pt]{article}
 
 \usepackage{setspace}
+\usepackage{amsmath}
 \usepackage{enumitem}
+\usepackage{amsfonts} 
 \usepackage{relsize}
 \usepackage[top=2cm,bottom=2cm,left=2.5cm,right=2.5cm,marginparwidth=1.75cm]{geometry}
 \setlength{\parindent}{0cm}
@@ -16,10 +18,36 @@
 
  \section*{Section 1.4 Question 3}
  Find the general solution: $\frac{dy}{dt} = 1 - t + y^2 - ty^2$.
+ $$\frac{dy}{dt} = 1 - t + y^2 - ty^2 \Rightarrow
+ \frac{dy}{dt} = (y^2+1)(1-t) \Rightarrow
+ \int \frac{dy}{1+y^2} = \int (1-t) \; dt \Rightarrow
+ \arctan(y) = -\frac{1}{2}t^2+t+C$$
+
+ so $y = tan(-\frac{1}{2}t^2+t+C)$ in the interval 
+ $-k \frac{\pi}{2} < -\frac{1}{2}t^2+t+C < k \frac{\pi}{2}$
+ for some $k \in \mathbb{N}$.
 
  \section*{Section 1.5 Question 12}
  given $\frac{dp}{dt} = bp^2 - ap, \quad a,b > 0$, show that 
  $p(t)$ approaches $0$ as $t \rightarrow \infty$ if $p_0 < a/b$.
+
+ First thing to do is separate this equation...
+$$\frac{dp}{dt}=bp^2-ap \; \Rightarrow \; \int_{p_0}^{p} \frac{dp}{bp^2-ap} = 
+\int_{t_0}^{t} dt$$
+
+Now to solve the first integral, we can first note that $bp^2-ap$ can be rewritten as
+$p(bp-a)$, then we can separate these by finding values $A$ and $B$ such that
+$\frac{1}{p(bp-a)} = \frac{A}{p} + \frac{B}{bp-a}$...
+$$A(bp-a)+Bp = 1 \quad \Rightarrow \quad A = \frac{-1}{a}, \; B = \frac{b}{a}$$
+
+Now we can plug these values in and solve our integral...
+$$\frac{1}{a} \int_{p_0}^{p} \frac{-1}{p} + \frac{b}{bp-a} \; dp \;\; = \;\;
+\frac{1}{a}\ln{\left|\frac{p_0(bp-a)}{p(bp_0-a)}\right|} \;=\; t-t_0 \;\; \Rightarrow
+\;\; \frac{p_0(bp-a)}{p(bp_0-a)} \; = \; e^{a(t-t_0)} $$
+
+After simplifying, we get 
+$\mathlarger{p(t) \;=\; \frac{ap_0}{bp_0 + (a-bp_0)e^{a(t-t_0)}}}$.  As you can see,
+as $t \rightarrow \infty$, the denominator gets larger, and $p(t)$ approaches 0.
 
  \section*{Section 1.8 Question 13}
  Find the orthogonal trajectory: $y^2 - x^2 = c$.
@@ -68,8 +96,6 @@
  \section*{Section 1.10 Question 5}
  Show that the solution $y(t)$ of the initial value problem exists on the given
  interval... 
- $$\mathlarger{\mathlarger{
-   y' = y + e^{-y} + e^{-t}, \quad y(0) = 0, \quad 0 \leq t \leq 1
- }}$$.
+ $$\mathlarger{y' = y + e^{-y} + e^{-t}, \quad y(0) = 0, \quad 0 \leq t \leq 1}$$.
 
 \end{document}
