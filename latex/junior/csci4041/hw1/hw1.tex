@@ -27,9 +27,9 @@
 
   Starting with the max number of nodes, we first know that a tree of height 0 has 1 node.
   Also, any time height goes up by 1, we add double the nodes of the previous level, so the
-  number of nodes is $\sum_{k=0}^{h}2^{k} = 2^{h+1}-1$.  Since there are $2^h$ leaves in a
-  full heap of height $h$, and only 1 in the most incomplete heap, then there are $2^h-1$ less
-  nodes, so the least number of elements is $(2^{h+1}-1) - (2^h-1) = 2^h$.
+  number of nodes is $\sum_{k=0}^{h}2^{k} = 2^{h+1}-1$.  Since there are $2^h$ nodes in the
+  bottom level of a full heap of height $h$, and only 1 in the most incomplete heap, then 
+  there are $2^h-1$ less nodes, so the least number of elements is $(2^{h+1}-1) - (2^h-1) = 2^h$.
 
  \subsection*{6.1-2}
   \textbf{Show that an $n-$element heap has height $\lf \lg n \rf$.}
