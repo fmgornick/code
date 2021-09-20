@@ -1,4 +1,3 @@
-
 \documentclass[11pt]{article}
 
 \usepackage{setspace}
@@ -16,7 +15,7 @@
 
 \title{4041 Homework 1}
 \author{Fletcher Gornick}
-\date{September 16, 2021}
+\date{September 20, 2021}
 
 \spacing{1.5}
 \begin{document}
@@ -39,33 +38,110 @@
   we know that $\lf \lg{(2^h)} \rf = \lf \lg{(2^{h+1}-1)} \rf = h$ as well as for any value $n$
   between them.
  \subsection*{6.1-3}
-  Show that in any subtree of a max-heap, the root of the subtree contains the largest 
-  value occurring anywhere in that subtree.
- \subsection*{6.1-4}
-  Where in a max-heap might the smallest element reside, assuming that all elements are 
-  distinct?
- \subsection*{6.1-5}
-  Is an array that is in sorted order a min-heap?
- \subsection*{6.1-6}
-  Is the array with values $\langle 23, 17, 14, 6, 13, 10, 1, 5, 7, 12 \rangle$ a max heap?
- \subsection*{6.1-7}
-  Show that, with the array representation for storing an n-element heap, the leaves are 
-  the nodes indexed by $\lf n/2 \rf + 1, \lf n/2 \rf + 2, ..., n$.
+  \textbf{Show that in any subtree of a max-heap, the root of the subtree contains the largest 
+  value occurring anywhere in that subtree.}
 
+  The property of a max-heap is that the value of the root is greater than the values of it's 
+  children nodes.  We can treat the children nodes as roots of their own subtrees, and follow
+  this logic until we reach leaves.  And since the children of a node must be less than the
+  parent, it follows that all the descendents of the root of a subtree must also be less than
+  the root.  This is a transitive property by the way.
+ \subsection*{6.1-4}
+  \textbf{Where in a max-heap might the smallest element reside, assuming that all elements are 
+  distinct?}
+
+  While it is guarunteed by the property of a max heap that children nodes are smaller than parents,
+  there's no rule among nodes on the same level, so all we can be sure of is that the smallest node
+  will be a leaf, because if the smallest node had children, then they must be smaller which is a 
+  contradiction.
+ \subsection*{6.1-5}
+  \textbf{Is an array that is in sorted order a min-heap?}
+
+  Yes, Assuming the heap is constructed where a node is \verb arr[i] and it's child nodes are 
+  \verb arr[2i] and \verb arr[2i+1] .  Under this assumption, the property of a min-heap must be
+  satisfied, because \verb arr[2i] and \verb arr[2i+1] must be greater than (or equal to) 
+  \verb arr[i] for all $i \geq 1$.
+ \subsection*{6.1-6}
+
+  \textbf{Is the array with values $\langle 23, 17, 14, 6, 13, 10, 1, 5, 7, 12 \rangle$ a max heap?}
+
+  No.  \texttt{arr[4] = 6}, this value has two child nodes, \texttt{arr[4*2] = arr[8]} and
+  \texttt{arr[4*2+1] = arr[9]}.  Since \texttt{arr[9] = 7} $>$ \texttt{arr[4] = 6}, this array cannot
+  represent a max-heap because the property of a max-heap has been violated (parent node is less than
+  child node).
+ \subsection*{6.1-7}
+  \textbf{Show that, with the array representation for storing an n-element heap, the leaves are 
+  the nodes indexed by $\lf n/2 \rf + 1, \lf n/2 \rf + 2, ..., n$.}
+
+  In order to show that the listed indexes represent leaves, we must show that starting from 
+  $\lf n/2 \rf + 1$ there exists no child node.  Say \texttt{arr[1]} represents the first index of the
+  array, and \texttt{arr[n]} represents the last element.  Take an arbitrary node \texttt{arr[i]}, it's
+  left child is indexed at $2i$ and it's right child is indexed at $2i+1$.  So if we can prove that the
+  left child of $\verb arr [\lf n/2 \rf + 1]$
+  is out of the array's bounds, then it follows that any node indexed after it also cannot have a child 
+  node, thus making it a leaf.
+  $$\verb left (\verb arr [\lf n/2 \rf + 1]) \;=\; \verb arr [2(\lf n/2 \rf + 1)] \;=\; 
+  \verb arr [2\lf n/2 \rf + 2] \;\geq\; \verb arr [n+1] \quad \text{(which does not exist).}$$
  \section*{6.2}
  \subsection*{6.2-3}
-  What is the effect of calling MAX-HEAPIFY$(A,i)$ when the element $A[i]$ is larger than its 
-  children?
+  \textbf{What is the effect of calling MAX-HEAPIFY$(A,i)$ when the element $A[i]$ is larger than its 
+  children?}
+
+  Nothing.  Since the element is already in it's correct place, heapify will just immediately return.
  \subsection*{6.2-4}
-  What is the effect of calling MAX-HEAPIFY$(A,i)$ for \textit{i $>$ A.heap-size/2}?
+  \textbf{What is the effect of calling MAX-HEAPIFY$(A,i)$ for \textit{i $>$ A.heap-size/2}?}
+
+ Again, nothing.  Since the element is already a leaf, there's no children to compare it to, so heapify
+ will just return.
  \subsection*{6.2-5}
-  The code for MAX-HEAPIFY is quite efficient in terms of constant factors, except possibly 
+  \textbf{The code for MAX-HEAPIFY is quite efficient in terms of constant factors, except possibly 
   for the recursive call in line 10, which might cause some compilers to produce inefficient 
   code. Write an efficient MAX-HEAPIFY that uses an iterative control construct (a loop) 
-  instead of recursion.
+  instead of recursion.}
+
+  \begin{verbatim}
+  max-heapify(A,i)
+    largest = i
+    while true
+      left = left(i)    // 2i
+      right = right(i)  // 2i+1
+      
+      if (left < A.length and A[left] > A[largest])
+        largest = left
+      if (right < A.length and A[right] > A[largest])
+        largest = right
+
+      if (largest != i)
+        swap(A[i], A[largest])
+        i = largest
+      else return
+  \end{verbatim}
 
  \section*{6.3}
  \subsection*{6.3-3}
- Show that there are at most $\lc n/2^{h+1} \rc$ nodes of height $h$ in any $n$-element heap.
+ \textbf{Show that there are at most $\lc n/2^{h+1} \rc$ nodes of height $h$ in any $n$-element heap.}
  
+ From 6.1-7, we know that nodes indexed by $\lf n/2 \rf + 1, \; \lf n/2 \rf + 1, \; ... \;,\; n$
+ are leaves.  This means that there are $n/2 + 1$ leaves if $n$ is odd, and $n/2$ leaves if n is even,
+ therefore the number of leaves is equivalent to $\lc n/2 \rc$.  We can use this property to inductively 
+ prove that for any height $h$ of a heap, there are at most $\lc n/2^{h+1} \rc$ nodes. \\
+
+ Starting with the base case, we can let $n_0$ denote the number of nodes at height $h=0$ on the heap.
+ Since any nodes with a height of 0 are considered leaves (because there's nothing below them), then we
+ can conclude that $n_0 \;=\; \lc n/2 \rc \;=\; \lc n/2^{0+1} \rc$, therefore the base case holds. \\
+
+ Now for the inductive step.  Assuming, for some $k \in \mathbb{N} : 0 \leq k < h$, that 
+ $ n_k \leq \lc n/2^{k+1} \rc $, we will show that $n_{k+1} \leq \lc n/2^{k+2} \rc$.  First note that if $n_k$
+ is even, then the nodes at height $k+1$ have exactly two children per node, so $n_{k+1}=n_k/2=\lc n_k/2 \rc$. 
+ And if $n_k$ is odd, then one of the nodes at height $k+1$ has only one child, and the rest have two, so
+ $n_{k+1} = \lf n_k/2 \rf + 1 = \lc n_k/2 \rc$.  Knowing this, we can now proceed with our inductive step.
+ \begin{align*}
+   && n_{k+1} &= \lc \frac{n_k}{2} \rc && \\
+   && &\leq \lc \frac{\lc n/2^{k+1} \rc}{2} \rc && \\
+   && &= \lc \frac{n}{2^{k+2}} \rc &&
+ \end{align*}
+
+ Since the claim holds for both the base case and the inductive step, the claim that there are at most 
+ $\lc n/2^{h+1} \rc$ nodes in a tree of height $h$ holds for all $h \geq 0$.
+
 \end{document}
