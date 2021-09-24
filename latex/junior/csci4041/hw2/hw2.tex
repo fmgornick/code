@@ -1,0 +1,170 @@
+\documentclass[11pt]{article}
+
+\usepackage{setspace}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{amsfonts} 
+\usepackage{relsize}
+\usepackage[top=2cm,bottom=2cm,left=2.5cm,right=2.5cm,marginparwidth=1.75cm]{geometry}
+\setlength{\parindent}{0cm}
+
+\def\lc{\left\lceil}   
+\def\rc{\right\rceil}
+\def\lf{\left\lfloor}   
+\def\rf{\right\rfloor}
+
+\title{4041 Homework 1}
+\author{Fletcher Gornick}
+\date{September 20, 2021}
+
+\spacing{1.5}
+\begin{document}
+ \maketitle 
+ \section*{6.5}
+
+ \subsection*{6.5-8}
+ \textbf{The operation \texttt{HEAP-DELETE(A,i)} deletes the item in node $i$ from heap $A$. 
+ Give an implementation of \texttt{HEAP-DELETE} that runs in $O(\lg n)$ time for an $n$-element 
+ max-heap.}
+ \begin{verbatim}
+
+HEAP-DELETE(A,i)
+  if (i < 1 or i > A.heap-size)
+    return error "not a valid node"
+
+  else
+    swap(A[i], A[A.heap-size])
+    popVal = A[A.heap-size]
+    A.heap-size -= 1
+
+    HEAP-INCREASE-KEY(A,i,A[i])
+    MAX-HEAPIFY(A,i)
+    return popVal
+ \end{verbatim}
+\newpage
+
+ \subsection*{6.5-9}
+ \textbf{Give an $O(n \lg k)$-time algorithm to merge $k$ sorted lists into one sorted list, 
+ where $n$ is the total number of elements in all the input lists. (\textit{Hint:} a min-heap 
+ for k-way merging.)} \\
+
+ The most efficient way to sort pre-sorted lists into one large list is to use a priority queue, 
+ or more specifically, a min-heap.  First thing to do is put the first elements of each list into 
+ a binary heap structure.  Once this is done, we can pop the root node, and replace it with it's 
+ corresponding next element, then the priority queue will heapify everything for us in $\lg k$ 
+ time.  We keep appending the root nodes of the min-heap onto our new sorted list until all the 
+ lists in the heap have been emptied.  When an array runs out of elements in our min-heap, we can 
+ just call \texttt{HEAP-DELETE} to completely remove the node for us, and finally continue until 
+ every element has been removed from the heap. \\
+
+ It takes $O(k)$ time to build the heap out of the lists.  Each value is extracted from the heap 
+ in constant time $O(1)$, but we extract $n$ times, so we can treat it as $O(n)$.  And for 
+ re-organizing the heap, it takes $O(\lg k)$ time, which is called $n$ times (for each time an
+ element is removed) making it $O(n \lg k)$.  Finally there are the times where we need to delete 
+ an element from the heap when a list runs out of elements.  This takes $O(\lg k)$ time, and is 
+ called $k$ times, making it $O(k \lg k)$.  Therefore our whole algorithm runs in 
+ $O(k) + O(n) + O(n \lg k) + O(k \lg k) = O(n \lg k)$ time. \\
+
+ Technically the above time complexities weren't 100\% accurate because every time 
+ \texttt{HEAP-DELETE} is called, there's one less element on the heap, making it's run time a bit 
+ more efficient than $k \lg k$.  This also makes the \texttt{HEAPIFY} call a bit more efficient too, 
+ because instead of $n \lg k$, it's more like $n_1 \lg k + n_2 \lg (k-1) + \dots + n_k \lg 1$, where 
+ $n_1, \dots, n_k$ represent the number of elements in each input list.  But this is essentially 
+ equal to $n \lg k$, and big-O notation is pretty lenient.
+ \newpage
+
+ \section*{2.3}
+
+ \subsection*{2.3-2}
+ \textbf{Rewrite the \texttt{MERGE} procedure so that it does not use sentinels, instead stopping 
+ once either array $L$ or $R$ has had all its elements copied back to $A$ and then copying the 
+ remainder of the other array back into $A$.}
+
+ \begin{verbatim}
+MERGE(A,p,q,r)
+  n1 = q - p + 1 
+  n2 = r - q 
+
+  new arr L[1 ... n1+1]
+  for (int i = 1; i <= n1; i++)
+    L[i] = A[p + i - 1]
+
+  new arr R[1 ... n2+1]
+  for (int j = 1; j <= n1; j++)
+    L[i] = A[q + j]
+
+  int i,j = 1
+  int k = p;
+  while (i <= n1 and j <= n2)
+    if (L[i] < R[j])
+      A[k++] = L[i++]         // assignment followed by increment
+    else
+      A[k++] = R[j++]         
+
+  if (i <= n1)
+    for (; i <= n1; i++)      // initial condition already stated => not necessary
+      A[k++] = L[i]           // k incremented after assignment, and i incremented 
+  if (j <= n2)                // through the for loop
+    for (; j <= n2; j++)
+      A[k++] = R[j]
+
+ \end{verbatim}
+ 
+ \subsection*{2.3-3}
+ \textbf{Use mathematical induction to show that when $n$ is an exact power of 2, the solution 
+ of the recurrence}
+ \[
+   T(n) = 
+   \begin{cases}
+     2 & \text{if } n = 2, \\
+     2T(n/2) + n & \text{if } n = 2^k, \text{for } k > 1
+   \end{cases}
+ \]
+ \textbf{is $T(n) = n \lg n$.} \\
+
+ BASE CASE: $n = 2$.  $2 \lg 2 = 2$, so the base case holds. \\
+
+ INDUCTIVE STEP: Assume $T(a) = a \lg a$ is true if $a = 2^b$ for some $b \in \mathbb{Z}, b > 1$. 
+ We can use this assumption to show that $T(c) = c \lg c$, where $c = 2^{b+1}$.
+ \begin{align*}
+   && T(c) &= T(2^{b+1}) && \\
+   && &= 2T(2^b) + 2^{b+1} && \\
+   && &= 2 \cdot 2^b \lg (2^b) + 2^{b+1} && \\
+   && &= 2^{b+1}(\lg(2^b) + 1) && \\
+   && &= 2^{b+1}(\lg(2^b) + \lg(2)) && \\
+   && &= 2^{b+1}\lg(2 \cdot 2^b) && \\
+   && &= 2^{b+1}\lg(2^{b+1}) && \\
+   && &= c \lg c && \\
+ \end{align*}
+
+ Since we know that $T(2) = 2 \lg 2$ (base case), and that $T(2^k) = 2^k \lg (2^k) \Rightarrow
+ T(2^{k+1}) = 2^{k+1} \lg (2^{k+1})$ for $k > 1$ (inductive step), we know that the solution 
+ to the above recurrence must be $T(n) = n \lg n$. \newpage
+
+ \subsection*{2.3-4}
+ \textbf{We can express insertion sort as a recursive procedure as follows. In order to sort 
+ $A[1 \ldots n]$ we recursively sort $A[1 \ldots n-1]$ and then insert $A[n]$ into the sorted array 
+ $A[1 \ldots n-1]$. Write a recurrence for the running time of this recursive version of insertion 
+ sort.}
+
+ \subsection*{2.3-5}
+ \textbf{Referring back to the searching problem (see Exercise 2.1-3), observe that if the sequence 
+ A is sorted, we can check the midpoint of the sequence against $v$ and eliminate half of the sequence 
+ from further consideration. The binary search algorithm repeats this procedure, halving the size of 
+ the remaining portion of the sequence each time. Write pseudocode, either iterative or recursive, 
+ for binary search. Argue that the worst-case running time of binary search is $\Theta (\lg n)$.}
+
+ \section*{7.2}
+
+ \subsection*{7.2-1}
+ \textbf{Use the substitution method to prove that the recurrence $T(n) = T(n-1) + \Theta (n)$ has the
+ solution $T(n) = \Theta (n^2)$, as claimed at the beginning of Section 7.2.}
+
+ \section*{7.3}
+
+ \subsection*{7.3-1}
+ \textbf{Why do we analyze the expected running time of a randomized algorithm and not its worst-case 
+ running time?}
+
+\end{document}
+
