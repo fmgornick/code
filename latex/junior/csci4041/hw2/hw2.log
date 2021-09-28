@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  27 SEP 2021 23:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  28 SEP 2021 18:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -234,12 +234,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 148--149
  []
 
 [5]
-Underfull \hbox (badness 10000) in paragraph at lines 204--205
+Underfull \hbox (badness 10000) in paragraph at lines 205--206
 
  []
 
-[6] [7]
-Underfull \hbox (badness 10000) in paragraph at lines 229--230
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 229--231
+
+ []
+
+[7]
+Underfull \hbox (badness 10000) in paragraph at lines 241--242
 
  []
 
@@ -249,13 +254,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 229--230
 ### semi simple group (level 1) entered at line 20 (\begingroup)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 2069 strings out of 480608
- 29580 string characters out of 5903631
- 281736 words of memory out of 5000000
- 17971 multiletter control sequences out of 15000+600000
- 540577 words of font info for 55 fonts, out of 8000000 for 9000
+ 2074 strings out of 480608
+ 29626 string characters out of 5903631
+ 282736 words of memory out of 5000000
+ 17974 multiletter control sequences out of 15000+600000
+ 541222 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 30i,9n,27p,220b,466s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 30i,13n,27p,220b,466s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmbx10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/
 cm/cmbx12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/c
@@ -271,7 +276,7 @@ b></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
 /usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></
 usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pf
 b>
-Output written on hw2.pdf (8 pages, 157397 bytes).
+Output written on hw2.pdf (8 pages, 158273 bytes).
 PDF statistics:
  87 PDF objects out of 1000 (max. 8388607)
  62 compressed objects within 1 object stream
