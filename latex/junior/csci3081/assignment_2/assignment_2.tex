@@ -1,0 +1,41 @@
+\documentclass[11pt]{article}
+
+\usepackage{setspace}
+\usepackage[top=2cm,bottom=2cm,left=2.5cm,right=2.5cm,marginparwidth=1.75cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[hidelinks,urlcolor=cyan]{hyperref}
+\urlstyle{same}
+
+\title{Project Coding Style Research}
+\author{Fletcher Gornick}
+\date{September 27, 2021}
+
+\spacing{1.5}
+\begin{document}
+\maketitle
+
+Before giving my novice opinion on the Google C++ Style Guide, I thought I'd take a look at the 
+meta surrounding it.  From what I've found, there are very mixed thoughts on Google's approach 
+to how C++ code should be written.  It seems as though the public consensus is that this style 
+guide is focused most on making code more compatible with Google's existing code base.  That 
+matter aside, I do believe that the guide is actually very insightful with only a few minor 
+exceptions.  My short answer as to if I'll use Google's C++ style directly, is no, I'll definitely 
+use the guide as a sort of template to guide my process, but different projects should be approached 
+in different ways.  Although following one format for projects can lead to a very flexible and 
+extensible program, it's much better to approach a problem your own way, this is what ultimately 
+leads to strides in the development of new technology.  But for the most part, I'll probably loosely 
+follow the guide supplied by Google.  With that in mind, I'd like to mention a couple topics that 
+I, along with many others, don't necessarily agree with. 
+
+The first topic that I think should be mentioned is Google's take on exceptions.  I'm sure most 
+other kids on this assignment are bringing up the same point, but it's definitely something that 
+can't be ignored.  It was on a Quora post by Brian Bi where I found information about Google's 
+take on exceptions \cite{brian}.  Essentially, their take is that you shouldn't use them because 
+of their own code base, they say it would be a hassle to introduce exceptions to their existing 
+exception-free code.  Now while they may be right that introducing exceptions now on their humungous 
+project would be quite difficult, for anyone starting their own project, exceptions are a great way 
+to debug errors in your program, and should definitely be adopted.
+
+\bibliographystyle{apalike}
+\bibliography{sources}
+\end{document}
