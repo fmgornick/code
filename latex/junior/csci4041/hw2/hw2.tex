@@ -183,16 +183,20 @@ int BINARY_SEARCH_HELPER(A, val, p, r) {
   if (A[q] < val) 
     return BINARY_SEARCH_HELPER(A, val, q+1, r)
 }\end{verbatim}
- This algorithm has a worst case running time of $\Theta(\lg n)$ because every recursive call of $T(n)$ 
- has run time of $T(n/2) + \Theta(1)$, so if we say $n$ is a power of 2, and set it equal to $2^k$ for some $k$, 
- we can solve this relation using induction.  First, for the base case $n=1$, $T(1) = 0$ because we don't 
- need to do a compare.  Next, if we assume $T(2^k) = \Theta(\lg 2^k) = \Theta(k)$ for some $k$, we can show $
- T(2^{k+1}) = \Theta(k+1)$...
- $$T(2^{k+1}) = T(2^k) + \Theta(1) = \Theta(k) + \Theta(1) = \Theta(k+1)$$
+Before trying to solve for complexity, we should first figure out a recurrence relation for our algorithm. 
+First, note that if our array is of size 1, it takes constant time for output.  Then if $n>1$, it takes 
+time $T(n/2) + \Theta (1)$, this gives us the following recurrence (assuming $n$ is a power of $k$)... 
+ \[
+   T(n) = 
+   \begin{cases}
+     \Theta (1) & \text{if } n = 1, \\
+     T(n/2) + \Theta (1) & \text{if } n = 2^k, \text{for } k > 1
+   \end{cases}
+ \]
 
- Therefore the complexity of binary search with an array size of $2^k$ is $\Theta (k)$.  Now if we say 
- $n = 2^k$, we get that the run time complexity of binary search for an array of size $n$ is $\Theta (\lg n)$.
-
+ Plugging in $2^k$ for n, we get 
+ $$T(n) = T(2^k) = T(2^{k-1}) + \Theta (1) = T(2^{k-2}) + \Theta (1) + \Theta (1) \Rightarrow
+ \Theta \Big(\displaystyle\sum_{i=1}^{k} 1\Big) = \Theta (k) = \Theta (\lg 2^k) = \Theta (\lg n)$$
  \section*{7.2}
 
  \subsection*{7.2-1}
