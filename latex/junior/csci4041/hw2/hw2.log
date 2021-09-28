@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  24 SEP 2021 00:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  27 SEP 2021 19:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -228,7 +228,22 @@ Underfull \hbox (badness 10000) in paragraph at lines 125--126
 
  []
 
-[4] [5] (./hw2.aux) )
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 148--149
+
+ []
+
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 200--201
+
+ []
+
+[6] [7]
+Underfull \hbox (badness 10000) in paragraph at lines 225--226
+
+ []
+
+[8] (./hw2.aux) )
 (\end occurred inside a group at level 1)
 
 ### semi simple group (level 1) entered at line 20 (\begingroup)
@@ -255,10 +270,10 @@ b></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
 ></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
 </usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.
 pfb>
-Output written on hw2.pdf (5 pages, 143339 bytes).
+Output written on hw2.pdf (8 pages, 149269 bytes).
 PDF statistics:
- 72 PDF objects out of 1000 (max. 8388607)
- 51 compressed objects within 1 object stream
+ 83 PDF objects out of 1000 (max. 8388607)
+ 59 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
