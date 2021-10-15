@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  12 OCT 2021 16:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  13 OCT 2021 09:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -315,7 +315,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 173--176
 File: select.png Graphic file (type png)
 <use select.png>
 Package pdftex.def Info: select.png  used on input line 177.
-(pdftex.def)             Requested size: 263.78305pt x 238.48878pt.
+(pdftex.def)             Requested size: 234.4763pt x 211.99228pt.
 [6 <./select.png>]
 Overfull \hbox (16.60722pt too wide) in paragraph at lines 198--198
 []   \OT1/cmtt/m/n/10.95 else if (x.p.p == x.p) return x.p    \\ element alread
@@ -348,7 +348,7 @@ mr10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
 b></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
 ></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
 
-Output written on hw3.pdf (7 pages, 173956 bytes).
+Output written on hw3.pdf (7 pages, 174096 bytes).
 PDF statistics:
  79 PDF objects out of 1000 (max. 8388607)
  55 compressed objects within 1 object stream

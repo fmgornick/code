@@ -174,10 +174,11 @@
  subtract off the length of the first half of the array, then recursively call the selection algorithm 
  to look for the new $i$ index. The algorithm would look something like this...\\
 
-\includegraphics[scale=0.9]{select.png}
+\includegraphics[scale=0.8]{select.png}
 
 I made this image myself but just formatted it similar to the \texttt{RANDOMIZED-SELECT} function in 
-9.2 of the textbook
+9.2 of the textbook.  Also the last else statement where I call \texttt{SELECT}, it should be $i-k$ as 
+the last parameter, not $i$.
  \newpage
 
  \section*{21.3}
@@ -191,7 +192,6 @@ I made this image myself but just formatted it similar to the \texttt{RANDOMIZED
      while (root != root.p) root = root.p   \\ find root node of set
      while (x != x.p)                   \\ connect nodes to root node and go up
        tmp = x.p                        \\ the set until reaching root
-       x.p = root 
        x.p = root                       \\ tmp keeps track of parent node
        x = tmp 
     return root
