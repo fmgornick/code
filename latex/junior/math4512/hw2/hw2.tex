@@ -1,0 +1,192 @@
+\documentclass[11pt]{article}
+
+\usepackage{setspace}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{amsfonts} 
+\usepackage{relsize}
+\usepackage[top=2cm,bottom=2cm,left=2.5cm,right=2.5cm,marginparwidth=1.75cm]{geometry}
+\setlength{\parindent}{0cm}
+
+\renewcommand{\l}{\lambda}
+
+\title{4512 Homework 2}
+\author{Fletcher Gornick}
+\date{October 11, 2021}
+\spacing{1.5}
+
+\begin{document}
+ \maketitle 
+
+ \section*{Section 2.2 Problem 6}
+ \textbf{Solve the initial-value problem.}
+ $$2\frac{d^2y}{dt^2} + \frac{dy}{dt} - 10y = 0 \;,\; y(1) = 5, y'(1) = 2$$
+
+ We can rewrite $y$ as $e^{\l t}$ to give us the equation 
+ $2\l^2 e^{\l t} + \l e^{\l t} - 10e^{\l t} = 0$, setting $t = 0$, we get 
+ $2\l^2 + \l - 10 = (2\l + 5)(\l - 2) = 0$, therefore $\l = \frac{-5}{2}, 2$, giving us the 
+ general equation for t, $y(t) = c_1e^{\frac{-5}{2}t} + c_2e^{2t}$, where $y(1) = 5, y'(1) = 2$.
+ We can rewrite this in matrix notation to solve for $c_1$ and $c_2$ plugging 1 in for $t$.
+\begin{align*}
+&& \begin{bmatrix} e^{\frac{-5}{2}} & e^2 \\ \frac{-5}{2}e^{\frac{-5}{2}} & 2e^2 \end{bmatrix} 
+\begin{bmatrix} c_1 \\ c_2 \end{bmatrix} &= \begin{bmatrix} y(1) \\ y'(1) \end{bmatrix} && \\
+&& \Rightarrow \begin{bmatrix} c_1 \\ c_2 \end{bmatrix} &= 
+\begin{bmatrix} e^{\frac{-5}{2}} & e^2 \\ \frac{-5}{2}e^{\frac{-5}{2}} & 2e^2 \end{bmatrix}^{-1}
+\begin{bmatrix} 5 \\ 2 \end{bmatrix} && \\
+&& \Rightarrow \begin{bmatrix} c_1 \\ c_2 \end{bmatrix} &= 
+\frac{1}{2e^{-1/2} + \frac{5}{2}e^{-1/2}} 
+\begin{bmatrix}
+2e^2 & -e^2 \\ \frac{5}{2}e^{\frac{-5}{2}} & e^{\frac{-5}{2}} \end{bmatrix}
+\begin{bmatrix} 5 \\ 2 \end{bmatrix} && \\
+  && \Rightarrow c_1 &= \frac{2}{9}e^{\frac{1}{2}}\Big(10e^2 - 2e^2\Big) && \\
+  && c_2 &= \frac{2}{9}e^{\frac{1}{2}}\Big(\frac{25}{2}e^{\frac{-5}{2}} + 2e^{\frac{-5}{2}}\Big)
+\end{align*}
+After simplifying, we get $c_1 = \frac{16}{9}e^{\frac{5}{2}}$, and $c_2 = \frac{29}{9}e^{-2}$.  
+Finally, we can plug these values in to find the solution to the initial value problem. 
+$$y(t) = \frac{1}{9}\Big(16e^{\frac{-5}{2}(t-1)}+29e^{2t-2}\Big)$$
+\newpage
+
+ \section*{Section 2.2.1 Problem 6}
+ \textbf{Solve the initial-value problem.}
+ $$\frac{d^2y}{dt^2} + 2\frac{dy}{dt} + 5y = 0 \;,\; y(0) = 0, y'(0) = 2$$
+ Again, We can rewrite $y$ as $e^{\l t}$ to give us a new equation 
+ $\l^2 e^{\l t} + 2\l e^{\l t} + 5e^{\l t} = 0$.  Setting $t=0$ gives us a new equation 
+ $\l^2 + 2\l + 5 = 0$.  We can plug this equation into the quadratic formula to get 
+ $\l = \frac{-2 \pm \sqrt{(-2)^2 - 4 \cdot 5}}{2} = -1 \pm 2i$, giving us the general 
+ equation $y(t) = b_1e^{(-1+2i)t} + b_2e^{(-1-2i)t}$.  For the first complex root $\l_1 = -1+2i$, 
+ we can apply Euler's formula to get $e^{\l_1 t} = e^{(-1+2i)t} = e^{-t}\cos(2t) + ie^{-t}\sin(2t)$ 
+ which is a complex-valued solution to $y'' + 2y' + 5y = 0$. \\
+ 
+ Since, by \textit{Lemma 1} from section 2.2.1 of 
+ the textbook, both Re$\{e^{\l_1 t}\} = e^{-t}\cos(2t)$ and Im$\{e^{\l_1 t}\} = e^{-t}\sin(2t)$ 
+ are two linearly independent, real-valued solutions to the above equation, we can rewrite the general
+ solution to the initial-value problem as 
+ $$y(t) = e^{-t}[c_1\cos(2t) + c_2\sin(2t)]$$
+ Plugging $0$ in for $t$ we get that $y(0) = e^0 [c_1\cos(0) + c_2\sin(0)] = c_1 = 0$, which gives us 
+ a new equation $y(t) = c_2e^{-t}\sin(2t)$.  We can now differentiate and plug in 0 to solve for $c_2$. 
+ $$y'(t) = -c_2e^{-t}sin(2t) + 2c_2e^{-t}cos(2t) \;\Rightarrow\; y'(0) = 2c_2 = 2 \;\Rightarrow\; 
+ c_2 = 1$$
+ Now we can plug the values we found for our two constants to give us the solution to the initial 
+ value problem. 
+ $$\mathlarger{\mathlarger{y(t) = e^{-t}sin(2t)}}$$
+ 
+ \newpage
+
+ \section*{Section 2.2.2 Problem 6}
+ \textbf{Solve the initial-value problem.}
+ $$\frac{d^2y}{dt^2} + 2\frac{dy}{dt} + y = 0 \;,\; y(2) = 1, y'(2) = -1$$
+ Again, applying $y = e^{\l t}$, we get $\l^2 e^{\l t} + 2\l e^{\l t} + e^{\l t} = 0$, and plugging 
+ 0 in for $t$, we get $\l^2 + 2\l + 1 = 0$, which can be simplified to $(\l + 1)^2 = 0$, giving us 
+ $\l = -1$ as our only solution with a multiplicity of 2.  As stated in Section 2.2.2 of the textbook, 
+ we can yield two linearly independent solutions to the equation by multiplying one of them by $t$.  
+ This gives us the general solution $y(t) = c_1e^{-t} + c_2te^{-t}$.  We can now solve for the Wronskian 
+ of the matrix at time $t=2$, and plug in the corresponding values $y(2)=1,y'(2)=-1$ like so...
+\begin{align*}
+&& \begin{bmatrix} e^{-2} & 2e^{-2} \\ -e^{-2} & e^{-2} - 2e^{-2} \end{bmatrix}
+\begin{bmatrix} c_1 \\ c_2 \end{bmatrix} &= \begin{bmatrix} y(2) \\ y'(2) \end{bmatrix} && \\
+&& \Rightarrow \begin{bmatrix} c_1 \\ c_2 \end{bmatrix} &=
+\begin{bmatrix} e^{-2} & 2e^{-2} \\ -e^{-2} & -e^{-2} \end{bmatrix} ^{-1}
+  \begin{bmatrix} 1 \\ -1 \end{bmatrix} && \\
+    && \Rightarrow \begin{bmatrix} c_1 \\ c_2 \end{bmatrix} &= \frac{1}{-e^{-4} + 2e^{-4}}
+\begin{bmatrix} -e^{-2} & -2e^{-2} \\ e^{-2} & e^{-2} \end{bmatrix}
+\begin{bmatrix} 1 \\ -1 \end{bmatrix} && \\
+  && \Rightarrow c_1 &= e^4(-e^{-2}+2e^{-2}) = e^2 && \\
+  && \Rightarrow c_2 &= e^4(e^{-2}-e^{-2}) = 0 &&
+\end{align*}
+Now we can plug the values we found for $c_1$ and $c_2$ to give us our final solution.
+$$\mathlarger{\mathlarger{y(t) = e^{2-t}}}$$
+ \newpage
+
+ \section*{Section 2.4 Problem 6}
+ \textbf{Solve the initial-value problem.}
+ $$y'' + 4y' + 4y = t^{5/2}e^{-2t} \;,\; y(0) = 0, y'(0) = 0$$
+ We can write the general solution to this differential equation as $y(t) = c_1y_1(t) + c_2y_2(t) + y_p(t)$, 
+ where $c_1y_1(t) + c_2y_2(t)$ is the general solution to $y'' + 4y' + 4y = 0$, otherwise known as the 
+ complementary equation.  So we can solve for the complementary equation just like we would any normal 
+ homogenous differential equation.
+ $$y'' + 4y' + 4y = 0 \;\;\Rightarrow\;\; \l^2e^{\l t} + 4\l e^{\l t} + 4e^{\l t} = 0 
+ \;\;\Rightarrow\;\; \l^2 + 4\l + 4 = 0 \;\;\Rightarrow\;\; \l = -2$$
+ Since $\l = -2$ with a multiplicity of 2, we can now write our general solution to the initail value problem
+ as $y(t) = c_1e^{-2t} + c_2te^{-2t} + y_p(t)$.  Now, to find a particular solution $y_p$ that satisfies the 
+ differential equation.  Since the right side of the equation isn't an easy polynomial multiplied by an 
+ exponential, we must use variation of parameters to solve for the particular solution.  Let's call the equation 
+ on the right-hand side $r(x)$ for simplicity sake.  The solution to the particular equation $y_p$ can be written 
+ as $y_p(t) = u_1(t)y_1(t) + u_2(t)y_2(t)$ where 
+ $u_1'(t) = \frac{-r(t)y_2(t)}{W[y_1,y_2]}$, and $u_2'(t) = \frac{r(t)y_1(t)}{W[y_1,y_2]}$ as stated in section 
+ 2.4.  Thus, the formula for the particular solution can be written as 
+ $$y_p(t) = -y_1(t) \int \frac{y_2(t)r(t)}{W[y_1,y_2]}dt + y_2(t) \int \frac{y_1(t)r(t)}{W[y_1,y_2]}dt$$
+ $W[y_1,y_2]$ represents the Wronskian of the functions $y_1$ and $y_2$, so we can solve for $W$ like so...
+ \begin{align*}
+ W[y_1,y_2] \;=\; \begin{vmatrix} y_1(t) & y_2(t) \\ y_1'(t) & y_2'(t) \end{vmatrix}
+   \;=\; \begin{vmatrix} e^{-2t} & te^{-2t} \\ -2e^{-2t} & (1-2t)e^{-2t} \end{vmatrix}
+  \;=\; (1-2t)e^{-4t} + 2te^{-4t} \;=\; e^{-4t}
+ \end{align*}
+
+ Now we've attained every value needed to solve for our particular solution $y_p$.
+ $$y_p(t) = -e^{-2t} \int \frac{te^{-2t} \cdot t^{5/2}e^{-2t}}{e^{-4t}}dt
+ + te^{-2t} \int \frac{e^{-2t} \cdot t^{5/2}e^{-2t}}{e^{-4t}}dt$$
+
+ On the next page, we will solve for the particular solution.
+ \newpage
+ \begin{align*}
+   && y_p(t) &= -e^{-2t} \int \frac{te^{-2t} \cdot t^{5/2}e^{-2t}}{e^{-4t}}dt
+   + te^{-2t} \int \frac{e^{-2t} \cdot t^{5/2}e^{-2t}}{e^{-4t}}dt && \\
+   && &= -e^{-2t} \int \frac{t^{7/2}e^{-4t}}{e^{-4t}} dt 
+   + te^{-2t} \int \frac{t^{5/2}e^{-4t}}{e^{-4t}} dt && \\
+   && &= -e^{-2t} \int t^{7/2} dt + te^{-2t} \int t^{5/2} dt && \\
+   && &= \frac{-2}{9}t^{9/2}e^{-2t} + \frac{2}{7}t^{9/2}e^{-2t} && \\
+   && &= \frac{4}{63}t^{9/2}e^{-2t} &&
+ \end{align*}
+ So now we have our particular solution $y_p(t) = \frac{4}{63}t^{9/2}e^{-2t}$, so we can plug this into our 
+ general equation to get $y(t) = c_1e^{-2t} + c_2te^{-2t} + \frac{4}{63}t^{9/2}e^{-2t}$.  The last thing we 
+ need to do is solve for our constants $c_1$ and $c_2$.  We can use the same method from previous pages to 
+ do this.
+ \begin{align*}
+&& \begin{bmatrix} e^{-2t} & te^{-2t} \\ -2e^{-2t} & (1-2t)e^{-2t} \end{bmatrix}
+\begin{bmatrix} c_1 \\ c_2 \end{bmatrix} &= \begin{bmatrix} y(0) \\ y'(0) \end{bmatrix} && \\
+&& \Rightarrow \begin{bmatrix} c_1 \\ c_2 \end{bmatrix} &= 
+\begin{bmatrix} e^{-2t} & te^{-2t} \\ -2e^{-2t} & (1-2t)e^{-2t} \end{bmatrix} ^{-1}
+\begin{bmatrix} 0 \\ 0 \end{bmatrix} && \\
+&& \Rightarrow \begin{bmatrix} c_1 \\ c_2 \end{bmatrix} &= \frac{1}{e^{-4t}}
+\begin{bmatrix} (1-2t)e^{-2t} & -te^{-2t} \\ 2e^{-2t} & e^{-2t} \end{bmatrix}
+\begin{bmatrix} 0 \\ 0 \end{bmatrix} && \\
+&& \Rightarrow c_1 &= 0 && \\ && c_2 &= 0 && 
+ \end{align*}
+ So finally, with our complementary equation and particular equation, we have that the solution to the 
+ non-homogenous initial-value problem is
+ $$\mathlarger{\mathlarger{y(t) = \frac{4}{63}t^{9/2}e^{-2t}}}$$
+ \newpage
+
+ \section*{Section 2.6 Problem 1}
+ \textbf{It is found experimentally that a 1 kg mass stretches a spring 49/320 m. 
+ If the mass is pulled down an additional 1/4 m and released, find the amplitude, 
+ period, and frequency of the resulting motion, neglecting air resistance (use 
+ g = 9.8 $m/s^2$)} \\
+
+ We know by Newton's second law, $F = mg = 9.8 \cdot 1 = 9.8$.  Also from equation $(1)$ in section 2.6 
+ of the textbook, $F(t) = m\frac{d^2y}{dt^2} + c\frac{dy}{dt} + ky$.  Since the spring is stretched 
+ $49/320 = 0.153$ m, $y = 0.153$, and $\frac{d^2y}{dt^2} = \frac{dy}{dt} = 0$.  So now we have this 
+ equation $F(t) = ky \;\Rightarrow\; 9.8 = 0.153k \;\Rightarrow\; k = 64$. \\
+
+ Since there's no air resistance, our damping coefficient $c = 0$.  Also after the initial displacement 
+ of the spring, there is no external force, so we have the equation $m\frac{d^2y}{dt^2} + ky = 0$.
+ This equation can be rerwitten as $\frac{d^2y}{dt^2} + \omega_0^2 y = 0$, where $\omega_0^2 = k/m$.
+ From section 2.6 equation $(3)$, we know this equation has the general form 
+ $y(t) = c_1\cos(\omega_0 t) + c_2\sin(\omega_0 t)$. We can also solve for $\omega_0$, so we get 
+ $\omega_0 = \sqrt{k/m} = \sqrt{64/1} = 8$, thus our general equation is now 
+ $y(t) = c_1\cos(8t) + c_2\sin(8t)$ \\ 
+
+ Before finding our amplitude, period, and frequency, we must first solve for constants $c_1$ and $c_2$. 
+ This spring at time $t=0$ is initially displaced $0.25$m, so $0.25 = c_1\cos(0) + c_2\sin(0) \Rightarrow 
+ c_1 = 0.25$.  Also the initial velocity of the spring at time $t=0$ is $0$, so $0 = -8c_1\sin(0) + 
+ 8c_2\cos(0) \Rightarrow c_2 = 0$.  This gives us our final equation $y(t) = 0.25\cos(8t)$. \\ 
+
+ By Lemma 1 in section 2.6 of the textbook, we know our previous function $y(t)$ can be rewritten as 
+ $y(t) = R\cos(\omega_0 + \delta)$, where $R = \sqrt{c_1^2 + c_2^2} = \frac{1}{4}$, and 
+ $\delta = \arctan(\frac{c_2}{c_1}) = \arctan(0) = 0$.  In this case, $R$ represents the amplitude and 
+ $\omega_0$ represents the freqency, and thus the period $T = 2\pi / \omega_0$. \\
+
+ Therefore, we have an amplitude $A = R = \frac{1}{4}$, a frequency $f = \omega_0 = 8$, and a period 
+ $T = \frac{2\pi}{\omega_0} = \frac{\pi}{4}$.
+
+\end{document} 
