@@ -1,0 +1,205 @@
+\documentclass[11pt]{article}
+
+\usepackage{setspace}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{amsfonts} 
+\usepackage{relsize}
+\usepackage{graphicx}
+\usepackage[top=2cm,bottom=2cm,left=2.5cm,right=2.5cm,marginparwidth=1.75cm]{geometry}
+\setlength{\parindent}{0cm}
+
+\def\lc{\left\lceil}   
+\def\rc{\right\rceil}
+\def\lf{\left\lfloor}   
+\def\rf{\right\rfloor}
+
+\title{4041 Homework 4}
+\author{Fletcher Gornick}
+\date{October 24, 2021}
+
+\spacing{1.5}
+\begin{document}
+ \maketitle 
+ \section*{21.3}
+ \subsection*{21.3-3}
+ \textbf{Give a sequence of $m$ \texttt{make-set}, \texttt{union}, and \texttt{find-set} 
+ operations, $n$ of which are \texttt{make-set} operations, that takes $\Omega(m\lg n)$ time 
+ when we use union by rank only.} \\ 
+
+ First, we will note that there are $n$ elements, otherwise calling \texttt{make-set} $n$ times 
+ is pointless, so we'll call these nodes $x_1, x_2, \dots , x_n$.  If we're going to introduce 
+ $\lg n$ complexity into our operations, the only way I can think to do this would be to use 
+ \texttt{union} to link these elements in a sort of binary tree structure.  Let us also assume 
+ $n$ is a power of two, because if it's not, then we would need to call \texttt{union} extra 
+ times which would only further worsen our complexity, meaning we would still be bounded by 
+ $\Omega (m \lg n)$. \\
+
+ Our sequence will first call \texttt{make-set} $n$ times.  Then we will call \texttt{union} 
+ $n/2$ times to link pairs of nodes, then call it another $n/4$ times to link the pairs into 
+ groups of $4$.  We will keep calling \texttt{union} until all the nodes are linked in a sort 
+ of binary tree structure.  Assuming $n = 2^k$ for some $k$, the number of calls to union is 
+ $\frac{n}{2} + \frac{n}{4} + \dots + \frac{n}{n} = n-1$ (we actually know that any number of 
+ ways to call \texttt{union} is done in $n-1$ calls through the logic laid out in problem 
+ 15.2-6).  There are $k$ groups of these calls, each of which increases the tree's height by 
+ $1$.  So after we finish calling \texttt{union} $n-1$ times, we have a tree containing all 
+ the elements with a height of $k = \lg n$. \\
+
+ Finally we can call \texttt{find-set} $m$ times which traverses the tree in $\lg n$ time for 
+ each call, and with $m$ calls, we have a running time of $\Omega (m \lg n)$.  This is obviously 
+ assuming that \texttt{find-set} doesn't implement path compression, otherwise the running-time 
+ would improve with each call.  
+
+ \newpage
+
+ \subsection*{21.3-4}
+ \textbf{Suppose that we wish to add the operation \texttt{print-set(x)}, which is given a node 
+ $x$ and prints all the members of $x$’s set, in any order. Show how we can add just a single 
+ attribute to each node in a disjoint-set forest so that \texttt{print-set(x)} takes time 
+ linear in the number of members of $x$’s set and the asymptotic running times of the other 
+ operations are unchanged. Assume that we can print each member of the set in $O(1)$ time.} \\
+
+ Disjoint set forests already have rank variables in each of their nodes, so we can introduce 
+ a new variable to make printing the whole set linear time.  We can create a list member 
+ variable that contains each element in the set.  The best data structure for this list would 
+ probably be a linked list, as that allows us to easily adjust the size. \\
+
+ So every time we call \texttt{make-set(x)}, it'll add a single node linked list containing 
+ element $x$, which is done in $O(1)$ time, so \texttt{make-set} keeps it's same run-time.  
+ Then every time we call \texttt{union(x,y)}, it'll take the node with the 
+ higher rank (or an arbitrary one if the rank is equal), and it'll become the new root, 
+ appending the other set's root-node list member variable onto it's own.  So say 
+ \texttt{x.rank $\geq$ y.rank}, assuming $x$ and $y$ are the roots, then the list containing 
+ all the values in $x$ will get linked with the list containing all the values in $y$, thus 
+ the resulting list contains all the elements in the new unioned set. This link is also an 
+ $O(1)$ procedure, so \texttt{union} run-time is unchanged. Finally, since \texttt{find-set} 
+ doesn't need any changes to help our \texttt{print-set} function, it's run-time is also 
+ unchanged. \\
+
+ So our \texttt{print-set(x)} function first calls \texttt{find-set(x)} to get the root node.  
+ We know that the worst case for \texttt{find-set} if we're not even using union by rank is 
+ $O(n)$, which most likely is not the case, but we will just say it's $O(n)$.  Next, 
+ \texttt{print-set} just iterates through the linked-list member variable in the root node which 
+ is again $O(n)$.  So we have \texttt{print-set(x)} is $O(n) + O(n) = O(n)$ time, and is thus 
+ linear.
+ \newpage
+
+ \section*{15.2}
+ \subsection*{15.2-2}
+ \textbf{Give a recursive algorithm \texttt{matrix-chain-multiply(A,s,i,j)} that actually 
+ performs the optimal matrix-chain multiplication, given the sequence of matrices 
+ $\langle A_1, A_2, \dots , A_n \rangle$, the $s$ table computed by \texttt{matrix-chain-order}, 
+ and the indices $i$ and $j$. (The initial call would be 
+ \texttt{matrix-chain-multiply(A,s,1,n)}).} \\
+ 
+ In this example, $s$ represents the auxillary table where $s[i,j] = k$, $k$ representing the 
+ optimal position to split the matrices.  In other words, $A_i A_{i+1} \dots A_j$ is optimal 
+ when split between $A_k$ and $A_{k+1}$, making the new multiplication 
+ $(A_i \dots A_k)(A_{k+1} \dots A_j)$. \\
+
+ Knowing this, we can now get into what our algorithm should look like.  First note that if 
+ $i=j$, then $A_i$ and $A_j$ are the same matrix, so we don't need to do a multiplication, and 
+ we can just return $A_i$. 
+ Also if $j=i+1$ then we only have two matrices, so there's only one way to multiply them, 
+ and that's by simply returning $A_i \cdot A_j$. \\
+
+ Now is the actual recursive case.  We want the algorithm to return
+ $(A_i \dots A_k)(A_{k+1} \dots A_j)$, where $k$ is denoted by $s[i,j]$, and thus $k+1$ is 
+ defined as $s[i,j]+1$.  So our final case will recursively call \texttt{matrix-chain-multiply} 
+ from $i$ to $s[i,j]$, and multiply it by the recursive call from $s[i,j]+1$ to $j$, giving us 
+ an algorithm that looks like this...
+
+ \begin{verbatim}
+   matrix-chain-order(A,s,n)
+       return matrix-chain-multiply-helper(A,s,1,n)
+
+   matrix-chain-multiply-helper(A,s,i,j)
+       if (i == j) then return A_i
+       if (i == j-1) then return A_i * A_j 
+       return mcmh(A,s,i,s[i,j]) * mcmh(A,s,s[i,j]+1,j)
+ \end{verbatim}
+ PS: I abbreviated \texttt{matrix-chain-multiply-helper} to \texttt{mcmh} to make the algorithm 
+ look a little prettier.
+ \newpage
+
+ \subsection*{15.2-3}
+ \textbf{Prove that $P(n) \geq \frac{1}{4}2^n$ by induction (\textit{Hint:} Base cases are 
+ $n=1,2,3$).}
+ \[
+   P(n) = 
+   \begin{cases}
+     1 & \text{if } n = 1, \\
+     \displaystyle\sum_{k=1}^{n-1} P(k)P(n-k) & \text{if } n \geq 2.
+   \end{cases}
+ \]
+
+ Let's first look at the 3 base cases. 
+$$P(1) \;=\; 1 \;\geq\; \frac{1}{4}2^1$$
+$$P(2) \;=\; \displaystyle\sum_{k=1}^{1}P(k)P(2-k) \;=\; P(1)P(1) \;=\; 1 \;\geq\; 
+\frac{1}{4}2^2$$
+$$P(3) \;=\; \displaystyle\sum_{k=1}^{2}P(k)P(3-k) \;=\; P(1)P(2) + P(2)P(1) \;=\; 
+1 + 1 \;=\; 2 \;\geq\; \frac{1}{4}2^3$$ \\
+
+Now, since we know $P(n)$ holds for $n=1,2,3$, we can assume $P(k)$ is true for some $k > 1$, and 
+show that $P(k+1)$ must be true.  And by assuming $P(k)$ to be true, I mean 
+$P(k) \geq \frac{1}{4}2^k$.  We can proceed like so...
+\begin{align*}
+  && P(k+1) &= \displaystyle\sum_{l=1}^{k}P(l)P(k+1-l) && \\
+  && &= P(1)P(k) + P(2)P(k-1) + \dots + P(k-1)P(2) + P(k)P(1) && \\
+  && &\geq \frac{1}{4}2^k + P(2)P(k-1) + \dots + P(k-1)P(2) + \frac{1}{4}2^k \quad
+  \text{(inductive hypothesis)} && \\
+  && &\geq \frac{1}{4}2^k + \frac{1}{4}2^k && \\
+  && &= \frac{1}{2}2^k && \\
+  && &= \frac{1}{4}2^{k+1} &&
+\end{align*}
+Therefore, by the principle of mathematical induction, the statement $P(n) \geq \frac{1}{4}2^n$ 
+holds for all $n \in \mathbb{N}$.
+ \newpage
+
+ \subsection*{15.2-6}
+ \textbf{Show that a full parenthesization of an $n$-element expression has exactly $n-1$ pairs 
+ of parentheses.} \\
+
+ The easiest way to show that the full parenthesization of an $n$-element expression consists of 
+ $n-1$ pairs of parentheses is to use induction.  So let us first look at the base case.  When 
+ $n=1$ there's one element in the expression, so no multiplication is needed and therefore, no 
+ parenthesization either. $n-1=0$, so the base case holds.  Let's also look at $n=2$ even though 
+ it's not all that necessary, but with two matrices, they can just be multiplied together 
+ normally, but we must put parentheses around the two in order to make sure they get multiplied 
+ together first on an outer case, so $n=2$ leads to $1$ pair of parentheses, meaning the above 
+ statement still holds. \\
+
+ For our inductive step, we will use strong mathematical induction, so assuming the 
+ parenthesization of a $k$-element expression consists of  $k-1$ pairs of parentheses, AND that 
+ the parenthesization of all $l$-element expressions where $1 \leq l \leq k$ consists of $l-1$ 
+ pairs of parentheses, we will show that the full parenthesization of an expression with $k+1$ 
+ elements consist of $k$ pairs of parentheses. \\ 
+
+ Let's say that the optimal split of our $k+1$-element expression $A_1 \cdot A_2 \cdots A_{k+1}$ 
+ is at $A_l$, this gives us $(A_1 \cdots A_l)\cdot(A_{l+1} \cdots A_{k+1})$ As the best spot to 
+ split our big expression.  These two sub-expressions also have their own optimal parenthesization 
+ (including the parentheses I put on the outside of each of them).  And by our inductive hypothesis, 
+ since both these sub-expressions have less than $k+1$ elements, their optimal parenthesization is 
+ equal to the number of elements subtracted by $1$.  So the number of pairs of parentheses for 
+ $A_1 \cdots A_l$ is $l-1$, and the number of parentheses for $A_{l+1} \cdots A_{k+1}$ is 
+ $(k+1)-(l+1) = k-l$.  Now to find our how many pairs of parentheses we need for $k+1$ elements, 
+ we must first add them, so we now have $l-1+k-l=k-1$ pairs of parentheses.  Finally we need one 
+ more pair to group our entire expression, giving us $k-1+1=k$ pairs of parentheses, therefore, 
+ the statement holds for our inductive step as well. \\
+
+ In conclusion, by the principle of strong mathematical induction, the statement that a full 
+ parenthesization of an $n$-element expression has exactly $n-1$ pairs of parentheses holds 
+ for all $n \in \mathbb{N}$.
+ \newpage
+
+ \section*{15.4}
+ \subsection*{15.4-3}
+ \textbf{Give a memoized version of \texttt{lcs-length} that runs $O(mn)$ time.}
+ \newpage
+
+ \subsection*{15.4-5}
+ \textbf{Give an $O(n^2)$-time algorithm to find the longest monotonically increasing 
+ subsequence of a sequence of $n$ numbers.}
+ \newpage
+
+\end{document}
