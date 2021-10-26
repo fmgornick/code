@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  21 OCT 2021 13:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  25 OCT 2021 21:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -291,6 +291,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 100--105
  []
 
 [3]
+Underfull \hbox (badness 10000) in paragraph at lines 134--135
+
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 141--142
 
  []
@@ -315,16 +320,56 @@ Underfull \hbox (badness 10000) in paragraph at lines 178--189
 
  []
 
-[5] [6] [7] (./hw4.aux) )
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 197--198
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 199--207
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 208--212
+
+ []
+
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 234--235
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 236--239
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 240--246
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 247--254
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 255--258
+
+ []
+
+[7] (./hw4.aux) )
 (\end occurred inside a group at level 1)
 
 ### semi simple group (level 1) entered at line 21 (\begingroup)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 2805 strings out of 480608
- 39682 string characters out of 5903631
+ 2806 strings out of 480608
+ 39698 string characters out of 5903631
  294249 words of memory out of 5000000
- 18678 multiletter control sequences out of 15000+600000
+ 18679 multiletter control sequences out of 15000+600000
  540577 words of font info for 55 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  30i,10n,27p,266b,716s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -343,7 +388,7 @@ b></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
 /usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></
 usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pf
 b>
-Output written on hw4.pdf (7 pages, 151811 bytes).
+Output written on hw4.pdf (7 pages, 157685 bytes).
 PDF statistics:
  84 PDF objects out of 1000 (max. 8388607)
  60 compressed objects within 1 object stream

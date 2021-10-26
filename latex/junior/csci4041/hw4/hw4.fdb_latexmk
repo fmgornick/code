@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1634842626 "hw4.tex" "hw4.pdf" "hw4" 1634842626
+["pdflatex"] 1635215842 "hw4.tex" "hw4.pdf" "hw4" 1635215843
   "/usr/local/texlive/2020/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -68,9 +68,9 @@
   "/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1586288239 4811913 0be9a7e86c70a26e5e3042966bcd7097 ""
   "/usr/local/texlive/2020/texmf-var/web2c/pdftex/pdflatex.fmt" 1586288259 2432462 fd0fa20e9a3cb5f8169fd0ba1c955158 ""
   "/usr/local/texlive/2020/texmf.cnf" 1586288231 577 d60164b4589a341208aff7a667fbbdcb ""
-  "hw4.aux" 1634842626 8 a94a2480d3289e625eea47cd1b285758 "pdflatex"
-  "hw4.tex" 1634842624 10824 2452c393889457cb3209c0a883f772c8 ""
+  "hw4.aux" 1635215842 8 a94a2480d3289e625eea47cd1b285758 "pdflatex"
+  "hw4.tex" 1635215840 14857 902df9aaa102831ea3e477e65221078f ""
   (generated)
+  "hw4.log"
   "hw4.aux"
   "hw4.pdf"
-  "hw4.log"

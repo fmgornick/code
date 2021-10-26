@@ -131,7 +131,7 @@
      1 & \text{if } n = 1, \\
      \displaystyle\sum_{k=1}^{n-1} P(k)P(n-k) & \text{if } n \geq 2.
    \end{cases}
- \]
+ \] \\
 
  Let's first look at the 3 base cases. 
 $$P(1) \;=\; 1 \;\geq\; \frac{1}{4}2^1$$
@@ -194,12 +194,77 @@ holds for all $n \in \mathbb{N}$.
 
  \section*{15.4}
  \subsection*{15.4-3}
- \textbf{Give a memoized version of \texttt{lcs-length} that runs $O(mn)$ time.}
+ \textbf{Give a memoized version of \texttt{lcs-length} that runs $O(mn)$ time.} \\
+
+ Before writing the pseudocode, let's think about the cases first.  Assuming we're taking in 
+ arguments $X,Y$ which are the sequences, and $i,j$ which is the index of the of our array 
+ \texttt{c[0\dots m, 0\dots n]}, which represents the longest substring of our sequences $X_i$ 
+ and $Y_j$.  So if $i=0$ or $j=0$ then we have a $0$-length sequence, which means the longest 
+ common subsequence is $0$.  Now if $i \neq 0$ and $j \neq 0$, and $X_i = X_j$, then our longest 
+ common subsequence is the lcs of $X_{i-1}$ and $Y_{j-1}$ plus $1$ for our new character.  
+ Finally if $X_i \neq Y_j$ then our lcs is either the lcs of $X_{i-1}, Y_j$, or the lcs of 
+ $X_i, Y_{j-1}$, we choose whichever one is bigger.  \\
+
+ We can add memoization to this by initializing every value of \texttt{c[0\dots m, 0\dots n]} 
+ to negative infinity, so in our memoized algorithm, we first check if the value is positive, 
+ and if it is, then it's already been calculated, so we can return, so our algorithm looks like 
+ this... \\
+
+ \begin{verbatim}
+   lcs-length(X,Y)
+      for i to X.length
+         for j to Y.length 
+            c[i,j] = -inf
+      memoized-lookup-index(X, Y, X.length, Y.length)
+
+   memoized-lookup-index(X,Y,i,j)
+      if (c[i,j] >= 0) then return c[i,j]
+      if (i == 0 or j == 0) then c[i,j] = 0
+      else if (X_i == X_j) then c[i,j] = memoized-lookup-index(X,y,i-1,j-1)
+      else
+         a = memoized-lookup-index(X,y,i-1,j)
+         b = memoized-lookup-index(X,y,i,j-1)
+         c[i,j] = max(a,b)
+      return c[i,j]
+ \end{verbatim}
  \newpage
 
  \subsection*{15.4-5}
  \textbf{Give an $O(n^2)$-time algorithm to find the longest monotonically increasing 
- subsequence of a sequence of $n$ numbers.}
+ subsequence of a sequence of $n$ numbers.} \\
+
+ The easiest way to solve this problem without going through the whole dynamic programming 
+ process and finding a unique solution to this problem would be to utilize the longest 
+ common substring algorithm which was already provided to us in section 15.4. \\
+
+ First thing we do is copy the sequence into a new array, this way we can also keep track 
+ of the old one.  Next, we can sort our newly created array.  We can do this basically any 
+ way we want as long as it's $O(n^2)$ or better.  So let's just say we're using quicksort 
+ which is $O(n\lg n)$ average case and $O(n^2)$ worst case, and for the sake of simplicity, 
+ let's just say it's $O(n^2)$.  So now we have our original sequence of $n$ numbers in it's 
+ original order, and a new sorted sequence, both are length $n$. \\
+
+ Now we can call the \texttt{lsc-length} function on our two sequences (we'll call them $X$ 
+ and $Y$) which will output the arrays \texttt{b[1..n, 1...n]} and \texttt{c[0...n, 0...n]}. 
+ \texttt{c[i,j]} represents the length of the longest common subsequence for sequences
+ $X_i, Y_j$.  \texttt{b[i,j]} points to the table elemnent corresponding to the optimal 
+ subproblem, this is the array we will use to construct our optimal solution.  This algorithm 
+ has a running time of $O(mn)$ where $m$ and $n$ are the length of the two sequences.  Since 
+ the sequences we input both have length $n$, this algorithm runs in $O(n^2)$ time. \\
+
+ Finally, we can call \texttt{print-lcs} which takes in our auxillary table $b$ and prints 
+ out the subsequence we solved for.  This operation is done in $O(m+n)$ time.  Again, since 
+ the two sequences are length $n$, this algorithm has a $O(2n) = O(n)$ running time. \\
+
+ Putting it all together, we have our array copy with $O(n)$ running time, then a sort, 
+ which is $O(n^2)$ or $O(n \lg n)$ if we're talking average (or if we just use merge sort or 
+ heap sort).  Next is the algorithm that actually does the work, which is \texttt{lsc-length}, 
+ with an $O(n^2)$ running time.  And finally is our \texttt{print-lcs} function with $O(n)$ 
+ running time.  This gives us a new time complexity of $O(n) + O(n^2) + O(n^2) + O(n) = O(n^2)$.
+ This algorithm produces the longest monotonically increasing subsequence because if you take 
+ a sequence, and it's corresponding sorted sequence, the \texttt{lcs} procedure must produce the 
+ longest common substring, and it must be increasing because our second sequence is in increasing 
+ order.
  \newpage
 
 \end{document}
