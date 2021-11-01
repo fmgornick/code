@@ -1,0 +1,32 @@
+\documentclass[11pt]{article}
+
+\usepackage{setspace}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage[top=2cm,bottom=2cm,left=2.5cm,right=2.5cm,marginparwidth=1.75cm]{geometry}
+\setlength{\parindent}{0cm}
+\usepackage[hidelinks,urlcolor=cyan]{hyperref}
+\urlstyle{same}
+
+\title{\vspace{-2cm}Design Document}
+\author{The Droners}
+\date{October 30, 2021}
+
+\spacing{1.5}
+\begin{document}
+\maketitle
+\section*{Design Motivation}
+\input{motivation}
+
+\section*{Design}
+\input{design}
+
+\section*{Design Alternatives}
+\label{sec:alt}
+\input{alternatives}
+\newpage
+
+\bibliographystyle{apalike}
+\bibliography{sources}
+\end{document}
+

@@ -1,0 +1,17 @@
+The main goal for Iteration 1 was to build a solid foundation. It’s important that the foundation 
+of this software project is flexible to new functionality and has a fundamental logic running 
+throughout its architecture. \\
+
+We wanted our classes to be easy to understand when looking at the code.  To do this, we adopted 
+some of the SOLID design principles \cite{solid}.  We wanted every class to have one job, and we 
+wanted each to do it well.  We also hoped to make our filters good enough so they wouldn’t need 
+to be altered, while also making it easy to extend if a new filter was needed.  One of the 
+biggest things we were hoping to achieve was to keep our interfaces separate, this way it would 
+be easy to add something in as well as take something away, without needing to refactor our code. \\
+
+Most of our design inspiration came from the OpenCV \cite{geek}.  They have a very extensive library 
+with tons of computer vision functionality.  They are already considered to be the gold standard in 
+image processing, and they even have tons of documentation done in doxygen.  They also have an 
+edge detection algorithm that utilizes the laplace transform of a kernel, which we may implement 
+later to squeeze out some faster performance from our canny edge detection system for when we need 
+to use it in real time \cite{laplace}.
