@@ -1,0 +1,114 @@
+\documentclass[11pt]{article}
+
+\usepackage{setspace}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts} 
+\usepackage[hidelinks,urlcolor=cyan]{hyperref}
+\urlstyle{same}
+\usepackage[top=2cm,bottom=2cm,left=2.5cm,right=2.5cm,marginparwidth=1.75cm]{geometry}
+\setlength{\parindent}{0cm}
+
+\title{3283W Homework 10}
+\author{Fletcher Gornick}
+\date{November 24, 2021}
+
+\spacing{1.5}
+\begin{document}
+\maketitle
+\section*{8.1 - 5(f)}
+\spacing{2}
+\textbf{Find the sum of the series.} \quad 
+\(\mathbf{\displaystyle\sum_{n=1}^{\infty} \frac{1}{(2n-1)(2n+1)}}\)
+\begin{align*}
+  && \displaystyle\sum_{n=1}^{\infty} \frac{1}{(2n-1)(2n+1)} &= 
+  \displaystyle\sum_{n=1}^{\infty} \Big[\frac{A}{2n-1} + \frac{B}{2n+1} \Big] && 
+  \text{by partial fractions} \\
+  && &\Rightarrow A(2n+1) + B(2n-1) = 1 && \\
+  && &\Rightarrow A = \frac12, \quad B = -\frac12 && \text{by setting $n=\frac12,-\frac12$} \\ 
+  && \displaystyle\sum_{n=1}^{\infty} \frac12\Big[\frac{1}{2n-1} - \frac{1}{2n+1} \Big] &= 
+  \frac12 \Big[\displaystyle\sum_{n=1}^{\infty} \frac{1}{2n-1} - 
+  \displaystyle\sum_{n=1}^{\infty} \frac{1}{2n+1} \Big] && \text{linearity property of summations} \\
+  && &= \frac12 \Big[\displaystyle\sum_{n=1}^{\infty} \frac{1}{2n-1} -
+  \displaystyle\sum_{n=2}^{\infty} \frac{1}{2n-1} \Big] && 2n+1 = 2(n+1)-1 \\
+  && &= \frac12 \Big[\frac{1}{2(1)-1} + \displaystyle\sum_{n=2}^{\infty} \frac{1}{2n-1} - 
+  \displaystyle\sum_{n=2}^{\infty} \frac{1}{2n-1} \Big] && \text{pull out $n=1$ term} \\
+  && &= \displaystyle\frac{1}{2}\Big[\frac{1}{2(1)-1} + 0 \Big] = \displaystyle\frac{1}{2}
+\end{align*}
+
+Therefore, we have that the series \(\displaystyle\sum_{n=1}^{\infty} \frac{1}{(2n-1)(2n+1)}\) sums to 
+\(\displaystyle\frac{1}{2}\).
+\newpage
+
+\section*{8.1 - 11}
+\spacing{1.5}
+\textbf{Prove that if} \(\mathbf{\sum |a_n|}\) \textbf{converges, and} \(\mathbf{(b_n)}\)
+\textbf{is a bounded sequence, then} \(\mathbf{\sum a_n b_n}\) \textbf{converges.} \\
+
+We know \((b_n)\) is bounded, therefore there exists a value \(M\) such that \(M > |b_n|\) for all 
+\(n \in \mathbb N\).  We also know \(\sum |a_n|\) converges, therefore it must satisfy the 
+Cauchy criterion, meaning that for any \(\varepsilon > 0\) there exists an \(N \in \mathbb N\) such that 
+for all \(n \geq m \geq N\), \(|a_m + a_{m+1} + \dots a_n| < \varepsilon\) \\ 
+
+Since \(M > 0\), we know \(\frac{\varepsilon}{M} > 0\), and by the cauchy criterion, there exists \(N \in \mathbb N\) 
+such that for all \(n \geq m \geq N\), \(\displaystyle\sum_{k=m}^{n}|a_k| < \frac{\varepsilon}{M}\). \\ 
+
+Now we will show  \(\sum |a_n|\) converges by using the Cauchy criterion to show that for any \(\varepsilon > 0\), 
+\(\bigg| \displaystyle\sum_{k=m}^{n} a_k b_k \bigg| < \varepsilon\)
+
+\begin{align*}
+  && \bigg| \displaystyle\sum_{k=m}^{n} a_k b_k \bigg| \quad&\leq\quad \displaystyle\sum_{k=m}^{n} |a_k b_k| && 
+  \text{triangle inequality} \\ 
+  && &=\quad \displaystyle\sum_{k=m}^{n} |a_k||b_k| && \text{multiplicative property of absolute values} \\
+  && &<\quad \displaystyle\sum_{k=m}^{n} |a_k|M && (M > |b_n| \quad\forall\; n \;\in\; \mathbb N) \\
+  && &=\quad M \displaystyle\sum_{k=m}^{n} |a_k| && \text{linearity property of summations} \\
+  && &<\quad M \cdot \frac{\varepsilon}{M} && \text{defined above} \\
+  && &= \varepsilon &&
+\end{align*}
+
+Therefore, by the Cauchy criterion for series, \(\sum a_n b_n\) must converge.
+\newpage
+
+\section*{8.2 - 3(o)}
+\textbf{Does following series converge or diverge? justify your answer.} \quad
+\(\mathbf{\displaystyle\sum \frac{(n!)^2}{(2n)!}}\) \\ 
+
+We can proceed using the ratio test.  Setting \(a_n = \frac{(n!)^2}{(2n)!}\), we get 
+\begin{align*}
+  && \Big| \frac{a_{n+1}}{a_n} \Big| &= \bigg| \frac{[(n+1)!]^2(2n)!}{(n!)^2(2n+2)!} \bigg| && \\
+  && &= \frac{[(n+1)(n!)]^2(2n)!}{(n!)^2(2n+2)(2n+1)(2n)!} && \\
+  && &= \frac{(n+1)^2(n!)^2}{(n!)^2(2n+2)(2n+1)} && \\
+  && &= \frac{(n+1)(n+1)}{(2n+1)(2n+2)}
+\end{align*}
+
+We can use theorem 2.1 from chapter 4 of the book to get
+\[\lim_{x\to\infty} \frac{(n+1)(n+1)}{(2n+1)(2n+2)} = \frac{1}{4}\]
+Therefore, since \(\displaystyle\lim_{x\to\infty} \Big| \frac{a_{n+1}}{a_n} \Big| \;=\; \frac{1}{4} \;<\; 1\), 
+The series \(\displaystyle\sum \frac{(n!)^2}{(2n)!}\) must converge by the ratio test.
+\newpage
+
+\section*{8.2 - 15}
+\textbf{Prove that if a series is conditionally convergent, then the series of negative terms is 
+divergent.} \\ 
+
+We can represent our conditionally convergent series as \(\sum a_n\).  We can also let \(b_n\) denote 
+all the positive terms and \(c_n\) denote all the negative terms.  Note that 
+\[\sum_{n=0}^{\infty} b_n \;=\; \sum_{n=0}^{\infty} \frac{a_n + |a_n|}{2},\quad\quad 
+\sum_{n=0}^{\infty} c_n \;=\; \sum_{n=0}^{\infty} \frac{a_n - |a_n|}{2}\]
+This is true because for \(b_n\), if \(a_n \leq 0\), then \(\frac{a_n + |a_n|}{2} = 0\), and if \(a_n > 0\), 
+then \(\frac{a_n + |a_n|}{2} = a_n\).  Same goes for \(c_n\).  So now we can prove that the series of the 
+negative terms must be divergent via proof by contradiction. \\ 
+
+Assume, to the contrary, that \(\sum b_n\) converges to some value \(b\), and since \(\sum a_n\) is 
+conditionally convergent, \(\sum a_n\) must converge to some value \(a\).  Since \(\sum a_n\) is equal 
+to the sum of all it's positive and negative terms, it must be the case that \(\sum a_n = 
+\sum b_n + \sum c_n\), meaning \(a = b + \sum c_n\), and since \(a\) and \(b\) are both finite real numbers, 
+\(\sum c_n\) must also converge to some finite value \(c\). \\
+
+Since the series of positive terms converge, and the series of negative terms converge, it must be the case that 
+\(\sum |a_n|\) converges to \(|b| + |c| = b - c \in \mathbb R\) by theorem 1.4 from 8.1 of the textbook. 
+But \(\sum a_n\) is conditionally convergent, meaning \(\sum |a_n|\) must diverge, this is a contradiction.
+Therefore, it must be the case that the series of negative terms of a conditionally convergent series diverges.
+\newpage
+\end{document}
