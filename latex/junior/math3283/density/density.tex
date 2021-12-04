@@ -12,45 +12,39 @@
 
 \title{Density of $\mathbb{Q}$ in $\mathbb{R}$}
 \author{Fletcher Gornick}
-\date{November 1, 2021}
+\date{December 4, 2021}
 
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}[theorem]{Lemma}
 \newcommand\e{\varepsilon}
 
-\spacing{1.3}
+\spacing{1.5}
 \begin{document}
 \maketitle
 \begin{theorem}
   The set of rationals $\mathbb{Q}$ is dense in the set of real numbers $\mathbb{R}$. 
-  Meaning that between any two real numbers, there exists a rational number.
+  meaning that between any two real numbers, there exists a rational number.
 \end{theorem}
 
 \begin{proof}
-  Let us first take two arbitrary real numbers $x$ and $y$ such that $x<y$. Since $x<y$, 
+  Take two arbitrary real numbers $x$ and $y$ such that $x<y$. Since $x<y$, 
   we know $y-x>0$.  Then, by the Archimedean Principle, there exists an $n \in \mathbb{N}$ 
-  such that $$0 < \frac{1}{n} < y-x \;\;\Rightarrow\;\; x < x + \frac{1}{n} < y$$ Now we 
-  have the addition of a real number and a rational number exists between two reals, our 
-  next step is to show there exists a rational number between $x$ and $y$. \\
+  such that $$0 < \frac{1}{n} < y-x \;\;\Leftrightarrow\;\; x < x + \frac{1}{n} < y$$
   
-  Now we can take the set $S = \{z \in \mathbb{Z} \;:\; \frac{z}{n} \leq x\}$ where $x$ 
-  is our real number and $n$ is our natural number previously defined.  And since 
-  $x \geq \frac{z}{n}$ for all $z \in \mathbb{Z}$, $xn$ is an upper bound. \\
+  Take the set $S = \{z \in \mathbb{Z} \;:\; \frac{z}{n} \leq x\}$. Since 
+  $x \geq \frac{z}{n}$ for all $z \in S$, $xn$ is an upper bound. \\
 
-  Now, since our set $S$ is a nonempty subset of $\mathbb{Z}$, and is bounded from above, 
-  by \textit{\hyperref[L]{Lemma 2}}, the set contains a maximum value.  We can call this 
-  max value $m \in \mathbb{Z}$.  And since $xn$ is an upper bound of $S$,
+  Now, since $S$ is a nonempty subset of $\mathbb{Z}$ and is bounded from above, 
+  by \textit{\hyperref[L]{Lemma 2}}, $S$ contains a maximum value.  Call this 
+  maximum value $m \in \mathbb{Z}$.  Since $xn$ is an upper bound of $S$,
   $\frac{m}{n} \leq x$, and since $\frac{m}{n}$ is the maximum value satisfying the 
-  inequality, it must also be the case that $\frac{m+1}{n} > x$, giving us 
+  inequality, it must also be the case that $\frac{m+1}{n} > x$, giving us\dots
   $$\frac{m}{n} \;\leq\; x \;<\; \frac{m+1}{n}$$
-  We can take the fact that $x + \frac{1}{n} < y$ to finally show that there must exist a 
-  rational number between $x$ and $y$. 
+  Applying the fact that $x + \frac{1}{n} < y$, we have\dots
   $$x < \frac{m+1}{n} = \frac{m}{n} + \frac{1}{n} \leq x + \frac{1}{n} < y$$
 
-  So take our rational number $q$ to be $\frac{m+1}{n}$, giving us $$x < q < y$$
-  Thus, we've proved that for any two given real numbers, there exists a rational number 
-  in between, and therefore, the set of rationals $\mathbb{Q}$ is dense in the set of real 
-  numbers $\mathbb{R}$.
+  Thus, for any two real numbers, there exists a rational number 
+  in between them, and therefore $\mathbb{Q}$ is dense in $\mathbb{R}$.
 
 \end{proof}
 \newpage
