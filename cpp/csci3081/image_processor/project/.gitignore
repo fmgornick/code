@@ -1,0 +1,9 @@
+data
+lib
+*.o
+image_processor
+image_processor.dSYM
+*.png
+*_app
+/docs/html/*
+/docs/latex/*
