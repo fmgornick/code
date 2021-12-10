@@ -1,0 +1,338 @@
+\documentclass[11pt]{article}
+
+\usepackage{setspace}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{amsfonts} 
+\usepackage{mathtools}
+\usepackage{relsize}
+\usepackage{graphicx}
+\usepackage[top=2cm,bottom=2cm,left=2.5cm,right=2.5cm,marginparwidth=1.75cm]{geometry}
+\setlength{\parindent}{0cm}
+\usepackage{listings}
+\usepackage{clrscode3e}
+\def \n {\par \vspace{\baselineskip}}
+
+\def\lc{\left\lceil}   
+\def\rc{\right\rceil}
+\def\lf{\left\lfloor}   
+\def\rf{\right\rfloor}
+
+\title{\vspace{-1.0cm}4041 Homework 7}
+\author{Fletcher Gornick}
+\date{December 3, 2021}
+
+\spacing{1.5}
+\begin{document}
+ \maketitle 
+
+ \section*{23.1}
+ \subsection*{23.1-3}
+ \textbf{Show that if an edge \(\mathbf{(u,v)}\) is contained in some minimum spanning tree, then it
+ is a light edge crossing some cut of the graph.} \\ 
+
+
+ Let's first start with the definition of a minimum weight spanning tree.  Minimum spanning trees 
+ have two properties; first, they must not contain any cycles, this comes from the definition of a 
+ tree.  Second, the sum of all the weights of the edges must the smallest possible, hence the 
+ ``minimum weight''. \\
+
+ Let's call our minimum spanning tree \(T\), with it's correspond set of edges \(A\). Now let's 
+ assume, to the contrary, that our edge \((u,v)\) is contained in \(T\), but is not a light edge.  
+ Since this is a tree, if we remove the edge \((u,v)\), we'll have two disjoint subtrees, we'll call 
+ them \(T'_1\) and \(T'_2\).  Since these subtrees are disjoint, there exists a cut \((T'_1,T'_2)\) 
+ that respects \(A \setminus \{(u,v)\}\). \\ 
+
+ Now, in order for us to obtain a minimum spanning tree, we must choose an edge that crosses our 
+ cut, connecting the two disjoint subtrees, and creating a new minimum weight spanning tree.  We 
+ will call this edge \((x,y)\), and since our tree must have a minimum weight over all, it must be 
+ the case that \((x,y)\) is a light edge. \\
+
+ Now if we have our new tree \(T'\) containing minimum weight edge \((x,y)\), we can now re-introduce 
+ our edge \((u,v)\), but since both \((x,y)\) and \((u,v)\) cross the cut previously mentioned, then 
+ we have a cylce.  Therefore, we can exclude the edge with a larger weight, which would be \((u,v)\), 
+ thus giving us a new minimum weight spanning tree without \((u,v)\), which contradicts our original 
+ claim.
+ \newpage
+
+ \section*{23.2}
+ \subsection*{23.2-2}
+ \textbf{Suppose that we represent the graph \(\mathbf{G = (V,E)}\) as an adjacency matrix. Give a 
+ simple implementation of Prim’s algorithm for this case that runs in \(\mathbf{O(V^2)}\) time.} \\ 
+
+ This question asks us to implement our Prim's algorithm with an adjacency matrix and without using 
+ a priority queue.  If we want our algorithm to run in \(O(V^2)\) time then we can just create an 
+ array of key values indexed by their vertice number.  So node \(i\) would have a key of key[\(i\)], 
+ where key is our array. \\ 
+
+ This key array would be initialized with all \(\infty\)'s, then key[\textit{source node id}] would 
+ be set to 0.  Then, every time we ``extract'' the minimum vertex, we just go through and find the 
+ minimum, then once we find it, update it's value to \(\infty\).  So our implementation would look 
+ like this \dots
+
+ \singlespacing
+ \begin{codebox}
+   \Procname{\(\proc{PRIM-V2}(G,W,r)\)}
+   \li \(i \gets 0\)
+   \li array keys \(\gets\) new length-\(|V|\) array
+   \li \For each \(u \in G.V\)
+       \li \Do \(u.key \gets \infty\)
+       \li \(u.\pi \gets\) NIL
+       \li \(keys[i] \gets \infty\) 
+       \li \(u.id \gets i++\)
+   \End
+   \li \(r.keys[i] \gets 0\)
+   \li \(keys[r.id] \gets 0\)
+   \li \While true 
+   \li \Do 
+       double \(min \gets \infty\)
+       \li int \(min\_idx \gets 0\)
+       \li \For \(j \gets 0\) \To \(keys.length-1\)
+       \li \Do 
+           \If \(min > keys[j] \And keys[j] \not= -1\) 
+           \li \Then 
+               \(min \gets keys[j]\)
+               \li \(min\_idx \gets j\)
+               \li \(keys[j] \gets -1\)
+           \End 
+       \End
+       \li \If \(min < \infty\) 
+       \li \Then 
+           \For each \(k \in G.Adj[min\_idx]\) 
+           \li \Do 
+               \If \(-1 < keys[k] < \infty\) \And \(w(min\_idx,k) < keys[k]\)
+               \li \Then 
+                   \(k.\pi \gets min\_idx\)
+                   \li\(k.key \gets w(min\_idx,k)\)
+                   \li \(keys[k] \gets w(min\_idx,k)\)
+               \End 
+           \End 
+           \li \Else break 
+       \End
+
+       
+ \end{codebox}
+
+Setting keys[\textit{node}] equal to -1 is the equivalent of taking it out of the array, because we 
+are assuming no negative wieghts.
+ \newpage
+
+ \spacing{1.5}
+ \section*{24.3}
+ \subsection*{24.3-2}
+ \textbf{Give a simple example of a directed graph with negative-weight edges for which Dijkstra’s 
+ algorithm produces incorrect answers. Why doesn’t the proof of Theorem 24.6 go through when 
+ negative-weight edges are allowed?} \\
+ 
+ Take the graph of nodes \(a,b,c\), where our adjacency list / matrix contains 1 adjacent node for 
+ each node, giving us \(Adj[a] = b, Adj[b] = c, Adj[c] = a\).  Let's give each of these edges the 
+ following weights, \dots \(w(a,b) = 1, w(b,c) = 1, w(c,a) = -3\). \\ 
+
+ Say we want to use Dijkstra's algorithm to find the shortest path from node \(a\) to the others.
+ We would first initialize nodes with \(a\) as the source, meaning that \(a.d=0\) while the rest 
+ are \(\infty\).  Then we would create our set \(S\) of nodes representing out growing tree of 
+ nodes with a minimum distance from \(a\).  We would also have a priority queue \(Q\) with all the 
+ nodes. \\ 
+
+ First we pop off \(a\), because it has the only 0 weight, then union it with \(S\).  Now we call 
+ relex function on all adjacent nodes to \(a\), which is just \(b\), so \(b.d\) is upadated to 
+ \(a.d + w(a,b) = 0 + 1 = 1\).  And we get \(b.\pi = a\).  Next, we pop \(b\) from \(Q\), and 
+ union it with \(S\).  Then go through the adjacent nodes, which is just \(c\).  Now calling relax, 
+ we get \(c.d = b.d + w(b,c) = 1 + 1 = 2\), and \(c.\pi = b\).  Finally we do one last loop, 
+ popping off \(c\) from \(Q\), unioning it with \(S\).  Now, since we have negative weight edges, 
+ \(a.d\) gets updated from 0 to \(1 + 1 - 3 = -1\), and we're done because \(Q\) is now empty. \\ 
+
+ So with Dijkstra's algorithm, we have the shortest path from \(a\) to \(b, c\) and itself are of 
+ weight \(1,2,-1\) respectively.  But the true shortest paths from \(a\) to any other node, 
+ including itself is \(-\infty\), because we could just loop the whole cycle to reduce a path 
+ length by one every time, and do it infinite times. \\ 
+
+ The reason the theorem falls through for negative-weight edges is because we check for minimum 
+ weight assuming edges are always positive, so once we've called the relax function for every node 
+ in the \(Q\), there'd be no point to go any further, because any further iterations would find 
+ that the minimum couldn't be reduced.  This changes if instead we were to use negative-weight 
+ edges.
+
+ \newpage
+
+ \subsection*{24.3-6}
+ \textbf{We are given a directed graph \(\mathbf{G = (V,E)}\) on which each edge 
+ \(\mathbf{(u,v) \in E}\) has an associated value \(\mathbf{r(u,v)}\) which is a real number in the 
+ range \(\mathbf{0 \leq r(u,v) \leq 1}\) that represents the reliability of a communication channel 
+ from vertex \(\mathbf{u}\) to vertex \(\mathbf{v}\). We interpret \(\mathbf{r(u,v)}\) as the 
+ probability that the channel from \(\mathbf{u}\) to \(\mathbf{v}\) will not fail, and we assume 
+ that these probabilities are independent. Give an efficient algorithm to find the most reliable 
+ path between two given vertices.} \\ 
+
+ We can use a variation of Dijkstra's algorithm for this, but instead of comparing weight in the 
+ relax function, we can compare our reliability constant.  So our new relax function would look 
+ like this\dots
+\begin{lstlisting}[escapeinside={(*}{*)}]
+RELAX_R(u,v,r)
+  (*\textbf{if \(v.d < u.d * r(u,v)\)}*)
+     (*\(v.d = u.v * r(u,v)\)*)
+     (*\(v.\pi = u\)*)
+\end{lstlisting}
+
+In this case, for a given node \(v\), \(v.d\) represents the overall reliability from the source 
+node to \(v\), which is also in between 0 and 1.  And for this type of question, we're looking for 
+nodes with a larger reliability value, whereas in the original implementation we were looking for 
+smaller weights.  Since our \(d\) values are between 0 and 1 though, and they mean different things, 
+we will also need to change our initialize single source function like so \dots
+\begin{lstlisting}[escapeinside={(*}{*)}]
+INITIALIZE_SINGLE_SOURCE_R(G,s)
+  (*\textbf{for} each vertex \(v \in G.V\)*)
+     (*\(v.d = 0\)*)
+     (*\(v.\pi =\) NIL*)
+  (*\(s.d = 1\)*)
+\end{lstlisting}
+
+Since we don't yet have any paths from \(s\) to another node, the reliability is 0.  And since 
+\(s\) is our source, it starts at 100\% reliability, meaning \(s.d=1\). \\
+
+Now we can just used Dijkstra's algorithm like normal, except with these algorithms called instead. 
+One more caveat is that is that our priority queue \(Q\) should actually be a max-heap, because we 
+want higher reliability values.  So instead of EXTRACT-MIN, we would call EXTRACT-MAX.  Other than 
+that, we don't need to change anything else.  This algorithm runs just like Dijkstra's in 
+\(O(E\lg(V))\) time, assuming we're using a priority queue.
+ \newpage
+
+ \section*{25.1}
+ \subsection*{25.1-3}
+ \textbf{What does the matrix}
+ \[\mathbf{
+   L^{(0)} = \begin{pmatrix*}
+     0 && \infty && \infty && \cdots && \infty \\
+     \infty && 0 && \infty && \cdots && \infty \\
+     \infty && \infty && 0 && \cdots && \infty \\
+     \vdots && \vdots && \vdots && \ddots && \vdots \\
+     \infty && \infty && \infty && \cdots && 0
+   \end{pmatrix*}
+ }\]
+ \textbf{used in the shortest-paths algorithms correspond to in regular matrix multiplication?} \\ 
+
+ This matrix represents the identity matrix for shortest-path algorithms.  Basically, each \(i,j\) 
+ position on the matrix represents the length of the shortest 0-length path from \(i\) to \(j\).  
+ And since the only occasion where a 0-length path from \(i\) to \(j\) exists, is when \(i=j\), the 
+ entries where \(i \not= j\) contain \(\infty\) because you can't travel from a node to a different 
+ node with 0 steps.  The diagonal consists of 0's because the length of a path from one node to the 
+ same node is 0.
+ \newpage
+
+ \subsection*{25.1-4}
+ \textbf{Show that matrix multiplication defined by \texttt{EXTEND-SHORTEST-PATHS} is associative.} \\
+
+ We know that ordinary matrix multiplication is associative.  And if we look at the algorithm for 
+ \texttt{EXTEND-SHORTEST-PATHS}, we see that by simply replacing ``min'' with ``+'' and ``+'' with 
+ ``\(\cdot\)'', we get the actual algorithm for matrix multiplication.  So if we can show that this 
+ tropical semiring also obeys the associative property, then it suffices to show that our matrix 
+ multiplication defined by \texttt{EXTEND-SHORTEST-PATHS} is also associative. \\
+
+ Let's take 3 \(n \times n\) matrices \(X\), \(Y\), and \(Z\).  We will show that 
+ \((XYZ)_{ij} = (XY)_{il}Z_{lj} = X_{ik}(YZ)_{kj}\). 
+  \[(XY)_{ik}Z_{kj} = \min_{1 \leq a \leq n} (XY)_{ia} + Z_{aj} = \min_{1 \leq a \leq 1} 
+  \Big(\min_{1 \leq b \leq n} X_{ib} + Y_{ba}\Big) + Z_{aj}\]
+  Now for any given \(a\) where \(1 \leq a \leq n\), there exists a \(b\) where \(1 \leq b \leq n\) 
+  such that \(X_{ib} + Y_{ba}\) is a minimum.  Then you can take all the minimum values of 
+  \(X_{ib} + Y_{ba}\) for each \(a\), and add that with \(Z_{aj}\) for every possible \(a\).  Then, 
+  taking the minimum of those, you get the smalles possible value for \((XYZ)_{ij}\).  Thus, 
+  \((XY)_{ik}Z_{kj} = \displaystyle\min_{1 \leq a \leq 1} 
+  \displaystyle\min_{1 \leq b \leq n} X_{ib} + Y_{ba} + Z_{aj} = (XYZ)_{ij}\). We also have 
+  \[X_{il}(YZ)_{lj} = \min_{1 \leq a \leq n} X_{ia} + (YZ)_{aj} = \min_{1 \leq a \leq 1} 
+  X_ia + \Big(\min_{1 \leq b \leq n} Y_{ab} + Z_{bj}\Big)\]. 
+  Without loss of generality, we also get that this equates to \((XYZ)_{ij}\).  So we've shown that 
+  \[(XYZ)_{ij} = (XY)_{il}Z_{lj} = X_{ik}(YZ)_{kj}\]
+  Therefore, it must be the case that this new form of matrix multiplication is also associative.
+ \newpage
+
+ \subsection*{25.1-6}
+ \textbf{Suppose we also wish to compute the vertices on shortest paths in the algorithms of this 
+ section. Show how to compute the predecessor matrix \(\mathbf{\Pi}\) from the completed matrix 
+ \(\mathbf{L}\) of shortest-path weights in \(\mathbf{O(n^3)}\) time.} \\
+
+ We're givin matrix \(L\) where \(l_{ij}\) represents the weight of the shortest path from node 
+ \(i\) to \(j\).  So if we want to find the penultimate vertex representing the last node visited 
+ on the path from \(i\) to \(j\), we must find a vertex \(k\) such that \(l_{ik} + w(k,j) = l_{ij}\).
+ In other words, the shortest length path from \(i\) to \(k\) plus the weight of the edge from \(k\) 
+ to \(j\) should be the shortest length path from \(i\) to \(j\). \\ 
+
+ So for our algorithm, we can just denote our \(\pi_{ij}\) value as the number that corresponds to 
+ the penultimate node on the path from \(i\) to \(j\).  Assuming \(L\) (and consequently \(\Pi\)) 
+ is an \(n \times n\) matrix, the values in \(\pi_{ij}\) would range from 1 to \(n\).  Also 0 
+ corresponds to no penultimate node existing, i.e. the path from \(i\) to \(j\) doesn't exist, 
+ or \(i = j\), because if \(i = j\) then we don't need to know what came before.  Here's what our 
+ algorithm looks like\dots
+
+ \singlespacing
+ \begin{codebox}
+   \Procname{\(\proc{FIND-PREDECESSOR-MATRIX}(L,W)\)}
+   \li let \(\Pi\) be a new \(n \times n\) matrix of all zeros
+   \li \For \(i \gets 1\) \To \(n\) \Do
+   \li \For \(j \gets 1\) \To \(n\) \Do
+   \li \For \(k \gets 1\) \To \(n\) \Do
+   \li \If \(\;l_{ik} \;+\; w_{kj} \;=\; l_{ij}\) \Then 
+   \li \(\pi_{ij} \gets k\) \End \End \End \End 
+   \li \Return \(\Pi\)
+ \end{codebox}
+
+This algorithm has 3 for loops going through \(n\) elements each, making the running time \(O(n^3)\).
+ \newpage
+
+ \spacing{1.5}
+ \section*{25.2}
+ \subsection*{25.2-4}
+ \textbf{As it appears above, the Floyd-Warshall algorithm requires \(\mathbf{\Theta(n^3)}\) space, 
+ since we compute \(\mathbf{d^{(k)}_{ij}}\) for \(\mathbf{i,j,k = 1,2, \dots, n}\). Show that the 
+ following procedure, which simply drops all the superscripts, is correct, and thus only 
+ \(\mathbf{\Theta(n^2)}\) space is required.} \\ 
+
+ \singlespacing
+ \begin{codebox}
+   \Procname{\(\proc{FLOYD-WARSHALL'}(W)\)}
+   \li \(n \gets W.rows\)
+   \li \(D \gets W\)
+   \li \For \(k \gets 1\) \To \(n\) \Do
+   \li \For \(i \gets 1\) \To \(n\) \Do
+   \li \For \(j \gets 1\) \To \(n\) \Do
+   \li \(d_{ij}\gets \min(d_{ij}, d_{ik} + d_{kj})\)
+   \End \End \End 
+   \li \Return D
+ \end{codebox}
+ \spacing{1.5}
+ We know by definition, that if \(C = A \cdot B\), then \(c_{ij} = 
+ \displaystyle\sum_{k=1}^{n} a_{ik}b_{kj}\).  And we also know that \(D^k = D^{k-1}D\), so we can 
+ rewrite \(d^{(k)}_{ij} = \displaystyle\sum_{l=1}^{n} d^{(k-1)}_{il}d_{lj}\).  And using the tropical 
+ analogue by treating ``+'' as ``min'' and ``x'' as ``+'', we get \(d^{(k)}_{ij} = 
+ \displaystyle\min_{1 \leq l \leq n}  d^{(k-1)}_{il} + d_{lj}\).  This formula would give us the 
+ shortest \(k\)-length path from \(i\) to \(j\), but it doesn't take into account the fact that there 
+ could possibly be shorter paths of length less than \(k\). \\ 
+
+ To fix this, if we simply start with \(k=1\) and work up to \(k=n\), we can make sure we have the 
+ smallest path from \(i\) to \(j\) by taking \(\min(d_{ij}, d_{ik} + d_{kj})\), where \(d_{ij}\) is 
+ the shortest \(k-1\) or shorter length path.  We also initialize \(D\) to the identity matrix in 
+ question 25.1-3 to cover the zero-length case.  And through induction, by the time we've accounted 
+ for all paths of lenth \(1 \leq k \leq n\), \(d_{ij}\) will have the smallest weight.  This 
+ algorithm I described is exactly what's written above.  \\
+
+ Also, If you look at the original \texttt{FLOYD-WARSHALL} algorithm in the textbook, you see that 
+ the values for \(D^k\) are solely dependent on \(D^{k-1}\), so if for every iteration we find a new 
+ value for \(d^{(k)}_{ij}\), we know that the next \(d^{(k+1)}_{ij}\) value will only be dependent 
+ on \(D^k\), therefore, inductively, we only need to keep track of the \(k-1\) matrix to solve for 
+ the \(k\) matrix.
+ \newpage
+ Technically, if you wanted to make sure the algorithm does exactly what you want it to, you could 
+ just have two matrices, one for the \(k-1\) case, and one for the \(k\) case.  This would still 
+ only be \(O(n^2)\) space, but it's pretty clear that this is unnecessary. \\ 
+
+ The reason having two matrices is unnecessary is because every time we update a value in the \(D^k\) 
+ matrix, it's a new minimum, so calling \(d_{ij} = \min(d_{ij}, d_{ik} + d_{kj})\), even if 
+ \(d_{ik} + d_{kj}\) might actually correlate with the \(D^k\) matrix and not the \(D^{k-1}\) matrix, 
+ it's still finding the smallest possible value for either \(d^{(k)}_{ij}\) or \(d^{(k+1)}_{ij}\). 
+ And since \(k\) is increasing to \(n\), and any matrix \(D^m\) where \(m>n\) will have all the same 
+ values as \(D^n\) (because adding an edge that's already been used doesn't increase efficiency), we 
+ don't actually care if our value isn't 100\% reliant on \(D^{k-1}\).  Actually, not only is this 
+ way more space efficient, it's also faster, because on the cases where \(d_{ik}\) and \(d_{kj}\) 
+ were already found for \(D^k\), \(d_{ij}\) will approach it's answer even faster, because it's 
+ basically skipping the \(k-1\) step for free.
+
+\end{document}
