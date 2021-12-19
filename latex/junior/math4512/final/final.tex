@@ -23,13 +23,13 @@
 
  \textbf{2) We know that the SIR model is given by the equations}
  \[\mathbf{\frac{d}{dt} \begin{pmatrix*}[r] S \\ I \\ R\end{pmatrix*}
-   = \begin{pmatrix*}[r] -\beta S I \\ \beta A I - \delta I \\ \delta I\end{pmatrix*}}\]
+   = \begin{pmatrix*}[r] -\beta S I \\ \beta S I - \delta I \\ \delta I\end{pmatrix*}}\]
  \textbf{where the removal rate \(\delta\) and the infection rate \(\beta\) are positive 
  constants. We want to modify this model by changing the assumption that the infected population 
  keeps it's immunity. So we assume that the rate of change of the population susceptible to 
  infection is increased proportionally to \(R\). The new model is}
  \[\mathbf{\frac{d}{dt} \begin{pmatrix*}[r] S \\ I \\ R\end{pmatrix*} = 
- \begin{pmatrix*}[r] -\beta S I \\ \beta A I - \delta I \\ \delta I\end{pmatrix*}} + 
+ \begin{pmatrix*}[r] -\beta S I \\ \beta S I - \delta I \\ \delta I\end{pmatrix*}} + 
  \begin{pmatrix*}[r] \mu R \\ 0 \\ -\mu R \end{pmatrix*}, \quad \mu > 0.\]
  \textbf{Find the equilibrium points and determine if they are stable or not. Plot the phase 
  portrait. What happens to \((S(t),I(t),R(t))\) as \(t\) goes to infinity? (Consider only 
