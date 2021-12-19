@@ -1,0 +1,54 @@
+\documentclass[11pt]{article}
+
+\usepackage{setspace}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{amsfonts} 
+\usepackage{mathtools}
+\usepackage{relsize}
+\usepackage[top=2cm,bottom=2cm,left=2.5cm,right=2.5cm,marginparwidth=1.75cm]{geometry}
+\setlength{\parindent}{0cm}
+
+\renewcommand{\l}{\lambda}
+
+\title{4512 Final}
+\author{Fletcher Gornick}
+\date{December 18, 2021}
+\spacing{1}
+
+\begin{document}
+ \maketitle 
+ \textbf{1) Find the general solution of } \(\mathbf{\displaystyle\frac{d^4 y}{dt^4} + y = 0.}\)
+ \newpage
+
+ \textbf{2) We know that the SIR model is given by the equations}
+ \[\mathbf{\frac{d}{dt} \begin{pmatrix*}[r] S \\ I \\ R\end{pmatrix*}
+   = \begin{pmatrix*}[r] -\beta S I \\ \beta A I - \delta I \\ \delta I\end{pmatrix*}}\]
+ \textbf{where the removal rate \(\delta\) and the infection rate \(\beta\) are positive 
+ constants. We want to modify this model by changing the assumption that the infected population 
+ keeps it's immunity. So we assume that the rate of change of the population susceptible to 
+ infection is increased proportionally to \(R\). The new model is}
+ \[\mathbf{\frac{d}{dt} \begin{pmatrix*}[r] S \\ I \\ R\end{pmatrix*} = 
+ \begin{pmatrix*}[r] -\beta S I \\ \beta A I - \delta I \\ \delta I\end{pmatrix*}} + 
+ \begin{pmatrix*}[r] \mu R \\ 0 \\ -\mu R \end{pmatrix*}, \quad \mu > 0.\]
+ \textbf{Find the equilibrium points and determine if they are stable or not. Plot the phase 
+ portrait. What happens to \((S(t),I(t),R(t))\) as \(t\) goes to infinity? (Consider only 
+ \(S,I,R \geq 0\)).}
+ \newpage
+
+ \textbf{3) Consider the autonomous system}
+ \[\frac{d}{dt} \begin{bmatrix*}[r] x \\ y \end{bmatrix*} = 
+   \begin{bmatrix*}[r] x(a-by) \\ y(-c+dx) \end{bmatrix*}, \quad a,b,c,d > 0.\]
+ \textbf{Find the equilibrium points (only for \(x,y \geq 0\)) and determine (if possible)
+ their stability. Plot the phase portrait. Argue that, if \(x(t=0)\) and \(y(t=0\)) are positive, 
+ the corresponding orbit is periodic. (Hint: show that the orbits lie on the curves of the form 
+ \(dx -c \ln x + by - a \ln y = \) constant). Plot the phase portrait.}
+ \newpage 
+
+ \textbf{4) Use the Poincar\'{e}-Bendixson theorem to prove that a periodic orbit of the system}
+ \[\mathbf{\frac{d}{dt} \begin{bmatrix*}[r] x \\ y \end{bmatrix*} = 
+   \begin{bmatrix*}[r] \frac{1}{2}x-y - \frac{1}{2}x(x^2+y^2) \\ 
+   x+\frac{1}{2}y - \frac{1}{2}y(x^2+y^2) \end{bmatrix*}}\]
+ \textbf{lies on the circle \(x^2+y^2=1\). Sketch the phase portrait of the system. What happens 
+ to \((x(t),y(t))\) as \(t\) goes to infinity?}
+\end{document}
