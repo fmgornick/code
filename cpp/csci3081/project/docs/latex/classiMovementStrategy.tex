@@ -1,0 +1,108 @@
+\hypertarget{classiMovementStrategy}{}\section{i\+Movement\+Strategy Class Reference}
+\label{classiMovementStrategy}\index{i\+Movement\+Strategy@{i\+Movement\+Strategy}}
+
+
+This is the base class for all movement. Movement strategies can inherit this interface and when it\textquotesingle{}s active the Update method will be called the strategy then must correctly update the position and velocity so that the entity can move accordingly.  
+
+
+
+
+{\ttfamily \#include $<$i\+\_\+movement\+\_\+strategy.\+h$>$}
+
+
+
+Inheritance diagram for i\+Movement\+Strategy\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=338pt]{classiMovementStrategy__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for i\+Movement\+Strategy\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{classiMovementStrategy__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classiMovementStrategy_a715d79c2ed2353d1f38359398d6b5c88}\label{classiMovementStrategy_a715d79c2ed2353d1f38359398d6b5c88}} 
+\hyperlink{classiMovementStrategy_a715d79c2ed2353d1f38359398d6b5c88}{$\sim$i\+Movement\+Strategy} ()
+\begin{DoxyCompactList}\small\item\em Destroy the i Movement Strategy object. \end{DoxyCompactList}\item 
+virtual \hyperlink{classVector3}{Vector3} \hyperlink{classiMovementStrategy_aa9f5a07461c654a7497775696d20e990}{Get\+Position} ()=0
+\begin{DoxyCompactList}\small\item\em Get the Position object. \end{DoxyCompactList}\item 
+virtual \hyperlink{classVector3}{Vector3} \hyperlink{classiMovementStrategy_a92f20c8ebf7c4f7dde5743528b8e45b7}{Get\+Velocity} ()=0
+\begin{DoxyCompactList}\small\item\em Get the Velocity object. \end{DoxyCompactList}\item 
+virtual \hyperlink{classVector3}{Vector3} \hyperlink{classiMovementStrategy_a40ec6c329ca0842638af80cfd509b372}{Update\+Velocity} (double dt, \hyperlink{classVector3}{Vector3} current, \hyperlink{classVector3}{Vector3} target, double time)=0
+\begin{DoxyCompactList}\small\item\em Updates the velocity of the movement strategy. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classiMovementStrategy_a7933e9aa7f39f5b71095a993d63e12c6}\label{classiMovementStrategy_a7933e9aa7f39f5b71095a993d63e12c6}} 
+virtual bool {\bfseries is\+Moving} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This is the base class for all movement. Movement strategies can inherit this interface and when it\textquotesingle{}s active the Update method will be called the strategy then must correctly update the position and velocity so that the entity can move accordingly. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classiMovementStrategy_aa9f5a07461c654a7497775696d20e990}\label{classiMovementStrategy_aa9f5a07461c654a7497775696d20e990}} 
+\index{i\+Movement\+Strategy@{i\+Movement\+Strategy}!Get\+Position@{Get\+Position}}
+\index{Get\+Position@{Get\+Position}!i\+Movement\+Strategy@{i\+Movement\+Strategy}}
+\subsubsection{\texorpdfstring{Get\+Position()}{GetPosition()}}
+{\footnotesize\ttfamily virtual \hyperlink{classVector3}{Vector3} i\+Movement\+Strategy\+::\+Get\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the Position object. 
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{classVector3}{Vector3} 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classBeelineMovement_abfe070233bcdba668cd6f445b149f310}{Beeline\+Movement}, and \hyperlink{classPatrolStrategy_a6feda4df5165aaae0cc7b82aed578c79}{Patrol\+Strategy}.
+
+\mbox{\Hypertarget{classiMovementStrategy_a92f20c8ebf7c4f7dde5743528b8e45b7}\label{classiMovementStrategy_a92f20c8ebf7c4f7dde5743528b8e45b7}} 
+\index{i\+Movement\+Strategy@{i\+Movement\+Strategy}!Get\+Velocity@{Get\+Velocity}}
+\index{Get\+Velocity@{Get\+Velocity}!i\+Movement\+Strategy@{i\+Movement\+Strategy}}
+\subsubsection{\texorpdfstring{Get\+Velocity()}{GetVelocity()}}
+{\footnotesize\ttfamily virtual \hyperlink{classVector3}{Vector3} i\+Movement\+Strategy\+::\+Get\+Velocity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the Velocity object. 
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{classVector3}{Vector3} 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classPatrolStrategy_ae5f750fd8d06de17eb1d6b49ee125011}{Patrol\+Strategy}, and \hyperlink{classBeelineMovement_a20adc01dabe57edd17128b81ec49661a}{Beeline\+Movement}.
+
+\mbox{\Hypertarget{classiMovementStrategy_a40ec6c329ca0842638af80cfd509b372}\label{classiMovementStrategy_a40ec6c329ca0842638af80cfd509b372}} 
+\index{i\+Movement\+Strategy@{i\+Movement\+Strategy}!Update\+Velocity@{Update\+Velocity}}
+\index{Update\+Velocity@{Update\+Velocity}!i\+Movement\+Strategy@{i\+Movement\+Strategy}}
+\subsubsection{\texorpdfstring{Update\+Velocity()}{UpdateVelocity()}}
+{\footnotesize\ttfamily virtual \hyperlink{classVector3}{Vector3} i\+Movement\+Strategy\+::\+Update\+Velocity (\begin{DoxyParamCaption}\item[{double}]{dt,  }\item[{\hyperlink{classVector3}{Vector3}}]{current,  }\item[{\hyperlink{classVector3}{Vector3}}]{target,  }\item[{double}]{time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Updates the velocity of the movement strategy. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dt,delta} & time, drone current position, drone target position \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{classPatrolStrategy_ae73db6cc70f328fed21f9df276a64587}{Patrol\+Strategy}, and \hyperlink{classBeelineMovement_a6fd4a3d6f7be2cb6dfe623ce40fc55c4}{Beeline\+Movement}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/user/repo/project/simulation/include/i\+\_\+movement\+\_\+strategy.\+h\end{DoxyCompactItemize}

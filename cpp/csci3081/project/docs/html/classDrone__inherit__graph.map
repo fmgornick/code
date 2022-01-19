@@ -1,0 +1,4 @@
+<map id="Drone" name="Drone">
+<area shape="rect" id="node2" href="$classiMovableEntity.html" title="derived class of entity. This is an abstract class that represents entities that move. This class gets implemented by the Drone and Robot entities. " alt="" coords="5,189,160,413"/>
+<area shape="rect" id="node3" href="$classiEntity.html" title="The base class for all entities. Drones, Robots, Hospitals, and Recharge Stations are all entities..." alt="" coords="21,5,144,141"/>
+</map>

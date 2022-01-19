@@ -1,0 +1,53 @@
+\hypertarget{classCSVLogger}{}\section{C\+S\+V\+Logger Class Reference}
+\label{classCSVLogger}\index{C\+S\+V\+Logger@{C\+S\+V\+Logger}}
+
+
+logger for csv files. Puts vector information and strategy time information in a comma separated file.  
+
+
+
+
+{\ttfamily \#include $<$csv\+\_\+logger.\+h$>$}
+
+
+
+Inheritance diagram for C\+S\+V\+Logger\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=149pt]{classCSVLogger__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for C\+S\+V\+Logger\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=149pt]{classCSVLogger__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classCSVLogger_a6f6f8cce2294cf48ebfcee86d5afd365}\label{classCSVLogger_a6f6f8cce2294cf48ebfcee86d5afd365}} 
+void \hyperlink{classCSVLogger_a6f6f8cce2294cf48ebfcee86d5afd365}{Log} (\hyperlink{classVector3}{Vector3} $\ast$p, \hyperlink{classVector3}{Vector3} $\ast$d, double t, std\+::string msg)
+\begin{DoxyCompactList}\small\item\em logs position, direction, and time to csv file, along with an inputted message \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCSVLogger_ae59e4258b85bfb18452c6e37d4623257}\label{classCSVLogger_ae59e4258b85bfb18452c6e37d4623257}} 
+void \hyperlink{classCSVLogger_ae59e4258b85bfb18452c6e37d4623257}{Log} (\hyperlink{classVector3}{Vector3} $\ast$p, \hyperlink{classVector3}{Vector3} $\ast$d, double t)
+\begin{DoxyCompactList}\small\item\em same as the other logger command, but adds \char`\"{}\+N/\+A\char`\"{} for message \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classCSVLogger_a088a4194c2d461ca1e9561fd4283471b}\label{classCSVLogger_a088a4194c2d461ca1e9561fd4283471b}} 
+std\+::ofstream {\bfseries csv}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+logger for csv files. Puts vector information and strategy time information in a comma separated file. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/user/repo/project/simulation/include/\hyperlink{csv__logger_8h}{csv\+\_\+logger.\+h}\item 
+/home/user/repo/project/simulation/src/csv\+\_\+logger.\+cc\end{DoxyCompactItemize}

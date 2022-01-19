@@ -1,0 +1,5 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classiMovementStrategy.html" title="This is the base class for all movement. Movement strategies can inherit this interface and when it&#39;s..." alt="" coords="5,31,156,57"/>
+<area shape="rect" id="node2" href="$classBeelineMovement.html" title="Beeline movement&#45; will move directly towards a robot given a vector3 position. Extends iMovementStrat..." alt="" coords="204,5,344,32"/>
+<area shape="rect" id="node3" href="$classPatrolStrategy.html" title="Patrol movement&#45; Uses a sinusoidal strategy to move in a wave pattern across the map. " alt="" coords="217,56,331,83"/>
+</map>

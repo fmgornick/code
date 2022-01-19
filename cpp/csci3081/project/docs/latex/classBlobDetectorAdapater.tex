@@ -1,0 +1,225 @@
+\hypertarget{classBlobDetectorAdapater}{}\section{Blob\+Detector\+Adapater Class Reference}
+\label{classBlobDetectorAdapater}\index{Blob\+Detector\+Adapater@{Blob\+Detector\+Adapater}}
+
+
+The Blob\+Detector\+Adapter class that interfaces the \hyperlink{classFilter}{Filter} and Open\+CV. This class scans an image for the orange drone using contours and morphing. If found, the drone data is stored in the pixel in the top left corner.  
+
+
+
+
+{\ttfamily \#include $<$blob\+\_\+detector\+\_\+adapter.\+h$>$}
+
+
+
+Inheritance diagram for Blob\+Detector\+Adapater\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=233pt]{classBlobDetectorAdapater__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Blob\+Detector\+Adapater\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=233pt]{classBlobDetectorAdapater__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classBlobDetectorAdapater_a971b9d9cbbfb9bafed2d5401e344264d}\label{classBlobDetectorAdapater_a971b9d9cbbfb9bafed2d5401e344264d}} 
+\hyperlink{classBlobDetectorAdapater_a971b9d9cbbfb9bafed2d5401e344264d}{Blob\+Detector\+Adapater} ()
+\begin{DoxyCompactList}\small\item\em Construct a new Blob Detector Adapater object. \end{DoxyCompactList}\item 
+void \hyperlink{classBlobDetectorAdapater_a24f99498567e7b20b58a62aba78a759c}{Apply} (std\+::vector$<$ \hyperlink{classImage}{Image} $\ast$$>$ original, std\+::vector$<$ \hyperlink{classImage}{Image} $\ast$$>$ filtered)
+\begin{DoxyCompactList}\small\item\em The overwritten apply function from \hyperlink{classFilter}{Filter}. Converts the original imges to cv\+::\+Mat and then runs Open\+CV blob detection. \end{DoxyCompactList}\item 
+cv\+::\+Mat $\ast$ \hyperlink{classBlobDetectorAdapater_ae6cd1a0e7c6fdb0cdacdeba7bf472398}{Get\+Hsv\+Threshold\+Output} ()
+\begin{DoxyCompactList}\small\item\em This method is a generated getter for the output of a R\+G\+B\+\_\+\+Threshold. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::vector$<$ cv\+::\+Point $>$ $>$ $\ast$ \hyperlink{classBlobDetectorAdapater_a9e688d27a238071e9445c07ac69c4941}{Get\+Find\+Contours\+Output} ()
+\begin{DoxyCompactList}\small\item\em This method is a generated getter for the output of a Find\+\_\+\+Contours. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::vector$<$ cv\+::\+Point $>$ $>$ $\ast$ \hyperlink{classBlobDetectorAdapater_a7271f0c7a2797336777651fd7079fda6}{Get\+Filter\+Contours\+Output} ()
+\begin{DoxyCompactList}\small\item\em This method is a generated getter for the output of a Filter\+\_\+\+Contours. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classBlobDetectorAdapater_a8c71f0f6253daf534c338bba8e5aea85}\label{classBlobDetectorAdapater_a8c71f0f6253daf534c338bba8e5aea85}} 
+cv\+::\+Mat {\bfseries get\+Mat} (\hyperlink{classImage}{Image} $\ast$image)
+\item 
+\mbox{\Hypertarget{classBlobDetectorAdapater_aa9742425b9a1b8492a16a2ea20d115f8}\label{classBlobDetectorAdapater_aa9742425b9a1b8492a16a2ea20d115f8}} 
+void {\bfseries set\+Image} (cv\+::\+Mat mat, \hyperlink{classImage}{Image} $\ast$image)
+\item 
+void \hyperlink{classBlobDetectorAdapater_ad6089c689fcfb884fc32ca4e3676f6ec}{hsv\+Threshold} (cv\+::\+Mat \&, double\mbox{[}$\,$\mbox{]}, double\mbox{[}$\,$\mbox{]}, double\mbox{[}$\,$\mbox{]}, cv\+::\+Mat \&)
+\begin{DoxyCompactList}\small\item\em Segment an image based on color ranges. \end{DoxyCompactList}\item 
+void \hyperlink{classBlobDetectorAdapater_aef56ed7c89479ff1a5b771e48738ce21}{find\+Contours} (cv\+::\+Mat \&, bool, std\+::vector$<$ std\+::vector$<$ cv\+::\+Point $>$$>$ \&)
+\begin{DoxyCompactList}\small\item\em Finds contours in an image. \end{DoxyCompactList}\item 
+void \hyperlink{classBlobDetectorAdapater_a5a627a8ae0ac83881e70ee096c69bdbd}{filter\+Contours} (cv\+::\+Mat \&, std\+::vector$<$ std\+::vector$<$ cv\+::\+Point $>$$>$ \&, double, double, double, double, double, double, double\mbox{[}$\,$\mbox{]}, double, double, double, double, std\+::vector$<$ std\+::vector$<$ cv\+::\+Point $>$$>$ \&)
+\begin{DoxyCompactList}\small\item\em Filters through contours. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classBlobDetectorAdapater_a544feb9ee51956c0569a24b59a2b737d}\label{classBlobDetectorAdapater_a544feb9ee51956c0569a24b59a2b737d}} 
+cv\+::\+Mat {\bfseries hsv\+Threshold\+Output}
+\item 
+\mbox{\Hypertarget{classBlobDetectorAdapater_a4b59201e9c38c68bf833cc27ec9747dd}\label{classBlobDetectorAdapater_a4b59201e9c38c68bf833cc27ec9747dd}} 
+std\+::vector$<$ std\+::vector$<$ cv\+::\+Point $>$ $>$ {\bfseries find\+Contours\+Output}
+\item 
+\mbox{\Hypertarget{classBlobDetectorAdapater_ad8418b4a8984b5db6fab8c8e7bd3ddbb}\label{classBlobDetectorAdapater_ad8418b4a8984b5db6fab8c8e7bd3ddbb}} 
+std\+::vector$<$ std\+::vector$<$ cv\+::\+Point $>$ $>$ {\bfseries filter\+Contours\+Output}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The Blob\+Detector\+Adapter class that interfaces the \hyperlink{classFilter}{Filter} and Open\+CV. This class scans an image for the orange drone using contours and morphing. If found, the drone data is stored in the pixel in the top left corner. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classBlobDetectorAdapater_a24f99498567e7b20b58a62aba78a759c}\label{classBlobDetectorAdapater_a24f99498567e7b20b58a62aba78a759c}} 
+\index{Blob\+Detector\+Adapater@{Blob\+Detector\+Adapater}!Apply@{Apply}}
+\index{Apply@{Apply}!Blob\+Detector\+Adapater@{Blob\+Detector\+Adapater}}
+\subsubsection{\texorpdfstring{Apply()}{Apply()}}
+{\footnotesize\ttfamily void Blob\+Detector\+Adapater\+::\+Apply (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \hyperlink{classImage}{Image} $\ast$$>$}]{original,  }\item[{std\+::vector$<$ \hyperlink{classImage}{Image} $\ast$$>$}]{filtered }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+The overwritten apply function from \hyperlink{classFilter}{Filter}. Converts the original imges to cv\+::\+Mat and then runs Open\+CV blob detection. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em original} & \\
+\hline
+{\em filtered} & \\
+\hline
+\end{DoxyParams}
+The following code was generated using the G\+R\+IP pipeline generator. This generator easily creates Open\+CV pipeline code to quickley view what the output of an Open\+CV pipeline will be. More information on G\+R\+IP\+: \href{https://github.com/WPIRoboticsProjects/GRIP/releases/tag/v1.5.2}{\tt https\+://github.\+com/\+W\+P\+I\+Robotics\+Projects/\+G\+R\+I\+P/releases/tag/v1.\+5.\+2}
+
+This is the end of the G\+R\+IP generatored code
+
+Implements \hyperlink{classFilter_afab0d50af44a19a370ebe46c69b8ff4e}{Filter}.
+
+\mbox{\Hypertarget{classBlobDetectorAdapater_a5a627a8ae0ac83881e70ee096c69bdbd}\label{classBlobDetectorAdapater_a5a627a8ae0ac83881e70ee096c69bdbd}} 
+\index{Blob\+Detector\+Adapater@{Blob\+Detector\+Adapater}!filter\+Contours@{filter\+Contours}}
+\index{filter\+Contours@{filter\+Contours}!Blob\+Detector\+Adapater@{Blob\+Detector\+Adapater}}
+\subsubsection{\texorpdfstring{filter\+Contours()}{filterContours()}}
+{\footnotesize\ttfamily void Blob\+Detector\+Adapater\+::filter\+Contours (\begin{DoxyParamCaption}\item[{cv\+::\+Mat \&}]{,  }\item[{std\+::vector$<$ std\+::vector$<$ cv\+::\+Point $>$$>$ \&}]{,  }\item[{double}]{,  }\item[{double}]{,  }\item[{double}]{,  }\item[{double}]{,  }\item[{double}]{,  }\item[{double}]{,  }\item[{double}]{\mbox{[}$\,$\mbox{]},  }\item[{double}]{,  }\item[{double}]{,  }\item[{double}]{,  }\item[{double}]{,  }\item[{std\+::vector$<$ std\+::vector$<$ cv\+::\+Point $>$$>$ \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Filters through contours. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+Contours} & is the input vector of contours. \\
+\hline
+{\em min\+Area} & is the minimum area of a contour that will be kept. \\
+\hline
+{\em min\+Perimeter} & is the minimum perimeter of a contour that will be kept. \\
+\hline
+{\em min\+Width} & minimum width of a contour. \\
+\hline
+{\em max\+Width} & maximum width. \\
+\hline
+{\em min\+Height} & minimum height. \\
+\hline
+{\em max\+Height} & maximum height. \\
+\hline
+{\em solidity} & the minimum and maximum solidity of a contour. \\
+\hline
+{\em min\+Vertex\+Count} & minimum vertex Count of the contours. \\
+\hline
+{\em max\+Vertex\+Count} & maximum vertex Count. \\
+\hline
+{\em min\+Ratio} & minimum ratio of width to height. \\
+\hline
+{\em max\+Ratio} & maximum ratio of width to height. \\
+\hline
+{\em output} & vector of filtered contours. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBlobDetectorAdapater_aef56ed7c89479ff1a5b771e48738ce21}\label{classBlobDetectorAdapater_aef56ed7c89479ff1a5b771e48738ce21}} 
+\index{Blob\+Detector\+Adapater@{Blob\+Detector\+Adapater}!find\+Contours@{find\+Contours}}
+\index{find\+Contours@{find\+Contours}!Blob\+Detector\+Adapater@{Blob\+Detector\+Adapater}}
+\subsubsection{\texorpdfstring{find\+Contours()}{findContours()}}
+{\footnotesize\ttfamily void Blob\+Detector\+Adapater\+::find\+Contours (\begin{DoxyParamCaption}\item[{cv\+::\+Mat \&}]{,  }\item[{bool}]{,  }\item[{std\+::vector$<$ std\+::vector$<$ cv\+::\+Point $>$$>$ \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Finds contours in an image. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & The image to find contours in. \\
+\hline
+{\em external\+Only} & if only external contours are to be found. \\
+\hline
+{\em contours} & vector of contours to put contours in. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBlobDetectorAdapater_a7271f0c7a2797336777651fd7079fda6}\label{classBlobDetectorAdapater_a7271f0c7a2797336777651fd7079fda6}} 
+\index{Blob\+Detector\+Adapater@{Blob\+Detector\+Adapater}!Get\+Filter\+Contours\+Output@{Get\+Filter\+Contours\+Output}}
+\index{Get\+Filter\+Contours\+Output@{Get\+Filter\+Contours\+Output}!Blob\+Detector\+Adapater@{Blob\+Detector\+Adapater}}
+\subsubsection{\texorpdfstring{Get\+Filter\+Contours\+Output()}{GetFilterContoursOutput()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ cv\+::\+Point $>$ $>$ $\ast$ Blob\+Detector\+Adapater\+::\+Get\+Filter\+Contours\+Output (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This method is a generated getter for the output of a Filter\+\_\+\+Contours. 
+
+\begin{DoxyReturn}{Returns}
+Contours\+Report output from Filter\+\_\+\+Contours. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBlobDetectorAdapater_a9e688d27a238071e9445c07ac69c4941}\label{classBlobDetectorAdapater_a9e688d27a238071e9445c07ac69c4941}} 
+\index{Blob\+Detector\+Adapater@{Blob\+Detector\+Adapater}!Get\+Find\+Contours\+Output@{Get\+Find\+Contours\+Output}}
+\index{Get\+Find\+Contours\+Output@{Get\+Find\+Contours\+Output}!Blob\+Detector\+Adapater@{Blob\+Detector\+Adapater}}
+\subsubsection{\texorpdfstring{Get\+Find\+Contours\+Output()}{GetFindContoursOutput()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ cv\+::\+Point $>$ $>$ $\ast$ Blob\+Detector\+Adapater\+::\+Get\+Find\+Contours\+Output (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This method is a generated getter for the output of a Find\+\_\+\+Contours. 
+
+\begin{DoxyReturn}{Returns}
+Contours\+Report output from Find\+\_\+\+Contours. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBlobDetectorAdapater_ae6cd1a0e7c6fdb0cdacdeba7bf472398}\label{classBlobDetectorAdapater_ae6cd1a0e7c6fdb0cdacdeba7bf472398}} 
+\index{Blob\+Detector\+Adapater@{Blob\+Detector\+Adapater}!Get\+Hsv\+Threshold\+Output@{Get\+Hsv\+Threshold\+Output}}
+\index{Get\+Hsv\+Threshold\+Output@{Get\+Hsv\+Threshold\+Output}!Blob\+Detector\+Adapater@{Blob\+Detector\+Adapater}}
+\subsubsection{\texorpdfstring{Get\+Hsv\+Threshold\+Output()}{GetHsvThresholdOutput()}}
+{\footnotesize\ttfamily cv\+::\+Mat $\ast$ Blob\+Detector\+Adapater\+::\+Get\+Hsv\+Threshold\+Output (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This method is a generated getter for the output of a R\+G\+B\+\_\+\+Threshold. 
+
+The following is G\+R\+IP generatored helper functions \begin{DoxyReturn}{Returns}
+Mat output from R\+G\+B\+\_\+\+Threshold. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBlobDetectorAdapater_ad6089c689fcfb884fc32ca4e3676f6ec}\label{classBlobDetectorAdapater_ad6089c689fcfb884fc32ca4e3676f6ec}} 
+\index{Blob\+Detector\+Adapater@{Blob\+Detector\+Adapater}!hsv\+Threshold@{hsv\+Threshold}}
+\index{hsv\+Threshold@{hsv\+Threshold}!Blob\+Detector\+Adapater@{Blob\+Detector\+Adapater}}
+\subsubsection{\texorpdfstring{hsv\+Threshold()}{hsvThreshold()}}
+{\footnotesize\ttfamily void Blob\+Detector\+Adapater\+::hsv\+Threshold (\begin{DoxyParamCaption}\item[{cv\+::\+Mat \&}]{input,  }\item[{double}]{hue\mbox{[}$\,$\mbox{]},  }\item[{double}]{saturation\mbox{[}$\,$\mbox{]},  }\item[{double}]{value\mbox{[}$\,$\mbox{]},  }\item[{cv\+::\+Mat \&}]{output }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Segment an image based on color ranges. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & The image on which to perform the R\+GB threshold. \\
+\hline
+{\em red} & The min and max red. \\
+\hline
+{\em green} & The min and max green. \\
+\hline
+{\em blue} & The min and max blue. \\
+\hline
+{\em output} & The image in which to store the output. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/user/repo/project/image/include/\hyperlink{blob__detector__adapter_8h}{blob\+\_\+detector\+\_\+adapter.\+h}\item 
+/home/user/repo/project/image/src/blob\+\_\+detector\+\_\+adapter.\+cc\end{DoxyCompactItemize}

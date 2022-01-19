@@ -1,0 +1,75 @@
+\hypertarget{classFilterTest}{}\section{Filter\+Test Class Reference}
+\label{classFilterTest}\index{Filter\+Test@{Filter\+Test}}
+
+
+This is a series of unit tests to check how accurate my F\+FT image convolution filter works. In the image directory, there are a series of images with \char`\"{}expected\char`\"{} and \char`\"{}actual\char`\"{} suffixes. The expected comes from an online gaussian blur filter with size 13 kernel and an (i just guessed) standard deviation of 2. The site is \href{https://pinetools.com/blur-image}{\tt https\+://pinetools.\+com/blur-\/image}. The actual output comes from our image\+\_\+processor software, and I check to see how similar the pixel values are by summming up the differences and dividing by the size of the image.  
+
+
+
+
+Inheritance diagram for Filter\+Test\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=218pt]{classFilterTest__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Filter\+Test\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classFilterTest__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classFilterTest_a567f17364b9c42da462b48570e518611}\label{classFilterTest_a567f17364b9c42da462b48570e518611}} 
+void \hyperlink{classFilterTest_a567f17364b9c42da462b48570e518611}{Set\+Up} ()
+\begin{DoxyCompactList}\small\item\em Initialize our images with our \hyperlink{classImage}{Image} class (which uses stbi image). This way we can have an array of color variables to make it easy to compare R\+GB values. Also have a double to calculate the difference of our image. The difference is summed up by every pixel and divided by the size of the image. Our actual tests check to see if the difference is below a threshold of. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classFilterTest_a7e7482ea23023c3202bb9e5609d9413b}\label{classFilterTest_a7e7482ea23023c3202bb9e5609d9413b}} 
+\hyperlink{classImage}{Image} {\bfseries statue\+\_\+expected}
+\item 
+\mbox{\Hypertarget{classFilterTest_a81be93944fe9f57974da5c8bb6ac3617}\label{classFilterTest_a81be93944fe9f57974da5c8bb6ac3617}} 
+\hyperlink{classImage}{Image} {\bfseries david\+\_\+byrne\+\_\+expected}
+\item 
+\mbox{\Hypertarget{classFilterTest_a7273edc926ab2971cfc9e12e2b9d6555}\label{classFilterTest_a7273edc926ab2971cfc9e12e2b9d6555}} 
+\hyperlink{classImage}{Image} {\bfseries raccoon\+\_\+expected}
+\item 
+\mbox{\Hypertarget{classFilterTest_a3ef4a77ef46f52da74322edf24faeed0}\label{classFilterTest_a3ef4a77ef46f52da74322edf24faeed0}} 
+\hyperlink{classImage}{Image} {\bfseries charlie\+\_\+expected}
+\item 
+\mbox{\Hypertarget{classFilterTest_a09439a0fc55b7f5e4eb515951999bfe4}\label{classFilterTest_a09439a0fc55b7f5e4eb515951999bfe4}} 
+\hyperlink{classImage}{Image} {\bfseries statue\+\_\+actual}
+\item 
+\mbox{\Hypertarget{classFilterTest_a1f0639bf0a6e95d3a5eeb8977ba205ee}\label{classFilterTest_a1f0639bf0a6e95d3a5eeb8977ba205ee}} 
+\hyperlink{classImage}{Image} {\bfseries david\+\_\+byrne\+\_\+actual}
+\item 
+\mbox{\Hypertarget{classFilterTest_a076aa20d78baf77c030ee5add68fb30c}\label{classFilterTest_a076aa20d78baf77c030ee5add68fb30c}} 
+\hyperlink{classImage}{Image} {\bfseries raccoon\+\_\+actual}
+\item 
+\mbox{\Hypertarget{classFilterTest_a7058570c48eb0366c64432ea2f57cd3e}\label{classFilterTest_a7058570c48eb0366c64432ea2f57cd3e}} 
+\hyperlink{classImage}{Image} {\bfseries charlie\+\_\+actual}
+\item 
+\mbox{\Hypertarget{classFilterTest_a3cb5dd86460cee60ba6b3151c1d22bc6}\label{classFilterTest_a3cb5dd86460cee60ba6b3151c1d22bc6}} 
+\hyperlink{classColor}{Color} {\bfseries p\+\_\+expected}
+\item 
+\mbox{\Hypertarget{classFilterTest_a84d38a7b7bc094940ae6cb0eb85b2568}\label{classFilterTest_a84d38a7b7bc094940ae6cb0eb85b2568}} 
+\hyperlink{classColor}{Color} {\bfseries p\+\_\+actual}
+\item 
+\mbox{\Hypertarget{classFilterTest_a911c09fcff3001d56005f8e1cea98125}\label{classFilterTest_a911c09fcff3001d56005f8e1cea98125}} 
+double {\bfseries difference}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This is a series of unit tests to check how accurate my F\+FT image convolution filter works. In the image directory, there are a series of images with \char`\"{}expected\char`\"{} and \char`\"{}actual\char`\"{} suffixes. The expected comes from an online gaussian blur filter with size 13 kernel and an (i just guessed) standard deviation of 2. The site is \href{https://pinetools.com/blur-image}{\tt https\+://pinetools.\+com/blur-\/image}. The actual output comes from our image\+\_\+processor software, and I check to see how similar the pixel values are by summming up the differences and dividing by the size of the image. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/user/repo/project/tests/src/\hyperlink{fft__convolution__test_8cc}{fft\+\_\+convolution\+\_\+test.\+cc}\end{DoxyCompactItemize}

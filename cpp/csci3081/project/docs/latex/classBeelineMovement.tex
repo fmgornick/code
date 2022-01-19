@@ -1,0 +1,125 @@
+\hypertarget{classBeelineMovement}{}\section{Beeline\+Movement Class Reference}
+\label{classBeelineMovement}\index{Beeline\+Movement@{Beeline\+Movement}}
+
+
+Beeline movement-\/ will move directly towards a robot given a vector3 position. Extends \hyperlink{classiMovementStrategy}{i\+Movement\+Strategy} so each function overwrites the parent.  
+
+
+
+
+{\ttfamily \#include $<$beeline\+\_\+movement.\+h$>$}
+
+
+
+Inheritance diagram for Beeline\+Movement\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{classBeelineMovement__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Beeline\+Movement\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=342pt]{classBeelineMovement__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classBeelineMovement_abebb0d5ff296ed7498b43438fffaddc3}\label{classBeelineMovement_abebb0d5ff296ed7498b43438fffaddc3}} 
+\hyperlink{classBeelineMovement_abebb0d5ff296ed7498b43438fffaddc3}{Beeline\+Movement} (\hyperlink{classVector3}{Vector3} \hyperlink{classBeelineMovement_a78e1e59186f4e2082365c3d9816f96c5}{current}, \hyperlink{classVector3}{Vector3} \hyperlink{classBeelineMovement_a49239eec9d469db2fb34b4268a97da6e}{target}, double \hyperlink{classBeelineMovement_a580f1c87f104f067fb1ad09dbe3a83af}{speed})
+\begin{DoxyCompactList}\small\item\em Constructor taking in \hyperlink{classVector3}{Vector3} objects for current position, target position, and a double speed at which the drone is traveling at. \end{DoxyCompactList}\item 
+\hyperlink{classVector3}{Vector3} \hyperlink{classBeelineMovement_abfe070233bcdba668cd6f445b149f310}{Get\+Position} ()
+\begin{DoxyCompactList}\small\item\em Current position getter. \end{DoxyCompactList}\item 
+\hyperlink{classVector3}{Vector3} \hyperlink{classBeelineMovement_a20adc01dabe57edd17128b81ec49661a}{Get\+Velocity} ()
+\begin{DoxyCompactList}\small\item\em Current velocity getter. \end{DoxyCompactList}\item 
+\hyperlink{classVector3}{Vector3} \hyperlink{classBeelineMovement_a6fd4a3d6f7be2cb6dfe623ce40fc55c4}{Update\+Velocity} (double dt, \hyperlink{classVector3}{Vector3} \hyperlink{classBeelineMovement_a78e1e59186f4e2082365c3d9816f96c5}{current}, \hyperlink{classVector3}{Vector3} \hyperlink{classBeelineMovement_a49239eec9d469db2fb34b4268a97da6e}{target}, double time)
+\begin{DoxyCompactList}\small\item\em Function to update velocity, takes in a double for time and \hyperlink{classVector3}{Vector3} objects for current and target positions. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classBeelineMovement_a9f2f68a5122dd168827843801cb932db}\label{classBeelineMovement_a9f2f68a5122dd168827843801cb932db}} 
+bool {\bfseries is\+Moving} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classBeelineMovement_a78e1e59186f4e2082365c3d9816f96c5}\label{classBeelineMovement_a78e1e59186f4e2082365c3d9816f96c5}} 
+\hyperlink{classVector3}{Vector3} \hyperlink{classBeelineMovement_a78e1e59186f4e2082365c3d9816f96c5}{current}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classVector3}{Vector3} current-\/ current position. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classBeelineMovement_a49239eec9d469db2fb34b4268a97da6e}\label{classBeelineMovement_a49239eec9d469db2fb34b4268a97da6e}} 
+\hyperlink{classVector3}{Vector3} \hyperlink{classBeelineMovement_a49239eec9d469db2fb34b4268a97da6e}{target}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classVector3}{Vector3} target-\/ target position. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classBeelineMovement_a5fe0d89a9bad2fa05e662080accf924b}\label{classBeelineMovement_a5fe0d89a9bad2fa05e662080accf924b}} 
+\hyperlink{classVector3}{Vector3} \hyperlink{classBeelineMovement_a5fe0d89a9bad2fa05e662080accf924b}{velocity}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classVector3}{Vector3} velocity-\/ current velocity. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classBeelineMovement_a580f1c87f104f067fb1ad09dbe3a83af}\label{classBeelineMovement_a580f1c87f104f067fb1ad09dbe3a83af}} 
+double \hyperlink{classBeelineMovement_a580f1c87f104f067fb1ad09dbe3a83af}{speed}
+\begin{DoxyCompactList}\small\item\em double speed-\/ current speed \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classBeelineMovement_ad28d0dbbe30c429d3dd2b78c6c5c6a0f}\label{classBeelineMovement_ad28d0dbbe30c429d3dd2b78c6c5c6a0f}} 
+double \hyperlink{classBeelineMovement_ad28d0dbbe30c429d3dd2b78c6c5c6a0f}{distance\+Traveled}
+\begin{DoxyCompactList}\small\item\em double distance\+Traveled-\/ distace traveled using beeline \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Beeline movement-\/ will move directly towards a robot given a vector3 position. Extends \hyperlink{classiMovementStrategy}{i\+Movement\+Strategy} so each function overwrites the parent. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classBeelineMovement_abfe070233bcdba668cd6f445b149f310}\label{classBeelineMovement_abfe070233bcdba668cd6f445b149f310}} 
+\index{Beeline\+Movement@{Beeline\+Movement}!Get\+Position@{Get\+Position}}
+\index{Get\+Position@{Get\+Position}!Beeline\+Movement@{Beeline\+Movement}}
+\subsubsection{\texorpdfstring{Get\+Position()}{GetPosition()}}
+{\footnotesize\ttfamily \hyperlink{classVector3}{Vector3} Beeline\+Movement\+::\+Get\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Current position getter. 
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{classVector3}{Vector3} position 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classiMovementStrategy_aa9f5a07461c654a7497775696d20e990}{i\+Movement\+Strategy}.
+
+\mbox{\Hypertarget{classBeelineMovement_a20adc01dabe57edd17128b81ec49661a}\label{classBeelineMovement_a20adc01dabe57edd17128b81ec49661a}} 
+\index{Beeline\+Movement@{Beeline\+Movement}!Get\+Velocity@{Get\+Velocity}}
+\index{Get\+Velocity@{Get\+Velocity}!Beeline\+Movement@{Beeline\+Movement}}
+\subsubsection{\texorpdfstring{Get\+Velocity()}{GetVelocity()}}
+{\footnotesize\ttfamily \hyperlink{classVector3}{Vector3} Beeline\+Movement\+::\+Get\+Velocity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Current velocity getter. 
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{classVector3}{Vector3} velocity 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classiMovementStrategy_a92f20c8ebf7c4f7dde5743528b8e45b7}{i\+Movement\+Strategy}.
+
+\mbox{\Hypertarget{classBeelineMovement_a6fd4a3d6f7be2cb6dfe623ce40fc55c4}\label{classBeelineMovement_a6fd4a3d6f7be2cb6dfe623ce40fc55c4}} 
+\index{Beeline\+Movement@{Beeline\+Movement}!Update\+Velocity@{Update\+Velocity}}
+\index{Update\+Velocity@{Update\+Velocity}!Beeline\+Movement@{Beeline\+Movement}}
+\subsubsection{\texorpdfstring{Update\+Velocity()}{UpdateVelocity()}}
+{\footnotesize\ttfamily \hyperlink{classVector3}{Vector3} Beeline\+Movement\+::\+Update\+Velocity (\begin{DoxyParamCaption}\item[{double}]{dt,  }\item[{\hyperlink{classVector3}{Vector3}}]{current,  }\item[{\hyperlink{classVector3}{Vector3}}]{target,  }\item[{double}]{time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Function to update velocity, takes in a double for time and \hyperlink{classVector3}{Vector3} objects for current and target positions. 
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{classVector3}{Vector3} velocity 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classiMovementStrategy_a40ec6c329ca0842638af80cfd509b372}{i\+Movement\+Strategy}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/user/repo/project/simulation/include/\hyperlink{beeline__movement_8h}{beeline\+\_\+movement.\+h}\item 
+/home/user/repo/project/simulation/src/beeline\+\_\+movement.\+cc\end{DoxyCompactItemize}

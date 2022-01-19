@@ -1,0 +1,134 @@
+\hypertarget{classFindRobot}{}\section{Find\+Robot Class Reference}
+\label{classFindRobot}\index{Find\+Robot@{Find\+Robot}}
+
+
+This class takes in an image and using the image processing facade runs the logic on images to see if the robot is found.  
+
+
+
+
+{\ttfamily \#include $<$find\+\_\+robot.\+h$>$}
+
+
+
+Collaboration diagram for Find\+Robot\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classFindRobot__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classFindRobot_a55011d75f3703849bf1e8bd49ea72a4c}\label{classFindRobot_a55011d75f3703849bf1e8bd49ea72a4c}} 
+\hyperlink{classFindRobot_a55011d75f3703849bf1e8bd49ea72a4c}{Find\+Robot} ()
+\begin{DoxyCompactList}\small\item\em Construct a new Find \hyperlink{classRobot}{Robot} object. \end{DoxyCompactList}\item 
+void \hyperlink{classFindRobot_a27fed71d7793129a281fc7a3174d328b}{Take\+Picture} (\hyperlink{classVector3}{Vector3} $\ast$camera\+Position, \hyperlink{classImage}{Image} $\ast$rgb, \hyperlink{classImage}{Image} $\ast$depth)
+\begin{DoxyCompactList}\small\item\em Receives and image from the simulation, and runs the image processing facade on them. \end{DoxyCompactList}\item 
+bool \hyperlink{classFindRobot_ae26378cc41e2e3c61e4833ec0e7b1d76}{Can\+See\+Robot} (int \&outX, int \&outY)
+\begin{DoxyCompactList}\small\item\em This is the function that does all the logic work, it takes the processesd images and returns true of false if the robot is inside the images. It then returns the X and Y coordinates of where the robot is in the image. This information is stored in the top left pixel of the blob image. The format is ($<$1 or 0, can see$>$, $<$robot x$>$=\char`\"{}\char`\"{}$>$, $<$robot y$>$=\char`\"{}\char`\"{}$>$). \end{DoxyCompactList}\item 
+\hyperlink{classVector3}{Vector3} \hyperlink{classFindRobot_acab7123d6f276e150b87ea30f1f287d4}{Get\+Robot\+Location} (int x, int y)
+\begin{DoxyCompactList}\small\item\em Get the \hyperlink{classRobot}{Robot} Location object, from the X and Y coordinates from Can\+See\+Robot. This function requires the depth image be updated. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classFindRobot_a63e77c7b9a876332fc3fb411bb6644a9}\label{classFindRobot_a63e77c7b9a876332fc3fb411bb6644a9}} 
+void \hyperlink{classFindRobot_a63e77c7b9a876332fc3fb411bb6644a9}{Set\+Blob\+Image} (\hyperlink{classImage}{Image} $\ast$blob)
+\begin{DoxyCompactList}\small\item\em Sets the blob image. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classFindRobot_a1aac26d16ab0e8ffc3fd1c587b96991e}\label{classFindRobot_a1aac26d16ab0e8ffc3fd1c587b96991e}} 
+void \hyperlink{classFindRobot_a1aac26d16ab0e8ffc3fd1c587b96991e}{Set\+Depth\+Image} (\hyperlink{classImage}{Image} $\ast$depth)
+\begin{DoxyCompactList}\small\item\em Sets the depth image. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classFindRobot_a009faddfec003a049608fb535521c09f}\label{classFindRobot_a009faddfec003a049608fb535521c09f}} 
+\hyperlink{classImageProcessingFacade}{Image\+Processing\+Facade} $\ast$ \hyperlink{classFindRobot_a009faddfec003a049608fb535521c09f}{image\+Processor}
+\begin{DoxyCompactList}\small\item\em The image processing facade class. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classFindRobot_a68e82ba1b2ef89dd1a767e917b70bf2a}\label{classFindRobot_a68e82ba1b2ef89dd1a767e917b70bf2a}} 
+\hyperlink{classVector3}{Vector3} \hyperlink{classFindRobot_a68e82ba1b2ef89dd1a767e917b70bf2a}{camera\+Pos}
+\begin{DoxyCompactList}\small\item\em The position of the camera when the images were taken. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classFindRobot_a1c53be1c0b13581f8fe833090776cc21}\label{classFindRobot_a1c53be1c0b13581f8fe833090776cc21}} 
+\hyperlink{classImage}{Image} $\ast$ \hyperlink{classFindRobot_a1c53be1c0b13581f8fe833090776cc21}{last\+Image}
+\begin{DoxyCompactList}\small\item\em The last rgb image taken from the camera. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classFindRobot_a8560b99cd1110bb459af3d862b3695a3}\label{classFindRobot_a8560b99cd1110bb459af3d862b3695a3}} 
+\hyperlink{classImage}{Image} $\ast$ \hyperlink{classFindRobot_a8560b99cd1110bb459af3d862b3695a3}{depth\+Image}
+\begin{DoxyCompactList}\small\item\em The last depth image taken from the camera. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classFindRobot_ab57facf1a4ca4ae4a52c088d45949a41}\label{classFindRobot_ab57facf1a4ca4ae4a52c088d45949a41}} 
+\hyperlink{classImage}{Image} $\ast$ \hyperlink{classFindRobot_ab57facf1a4ca4ae4a52c088d45949a41}{blob\+Image}
+\begin{DoxyCompactList}\small\item\em This is the blob image from Open\+CV. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classFindRobot_ae5bfaf2d47f0db2af41661a3d844fa4a}\label{classFindRobot_ae5bfaf2d47f0db2af41661a3d844fa4a}} 
+\hyperlink{classImage}{Image} $\ast$ \hyperlink{classFindRobot_ae5bfaf2d47f0db2af41661a3d844fa4a}{canny\+Image}
+\begin{DoxyCompactList}\small\item\em This is the canny edge detect image from Image\+Processor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classFindRobot_aee4ed8c42df1924a51014976dcc6ac7a}\label{classFindRobot_aee4ed8c42df1924a51014976dcc6ac7a}} 
+bool \hyperlink{classFindRobot_aee4ed8c42df1924a51014976dcc6ac7a}{found\+Robot} = false
+\begin{DoxyCompactList}\small\item\em Is the robot found. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class takes in an image and using the image processing facade runs the logic on images to see if the robot is found. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classFindRobot_ae26378cc41e2e3c61e4833ec0e7b1d76}\label{classFindRobot_ae26378cc41e2e3c61e4833ec0e7b1d76}} 
+\index{Find\+Robot@{Find\+Robot}!Can\+See\+Robot@{Can\+See\+Robot}}
+\index{Can\+See\+Robot@{Can\+See\+Robot}!Find\+Robot@{Find\+Robot}}
+\subsubsection{\texorpdfstring{Can\+See\+Robot()}{CanSeeRobot()}}
+{\footnotesize\ttfamily bool Find\+Robot\+::\+Can\+See\+Robot (\begin{DoxyParamCaption}\item[{int \&}]{outX,  }\item[{int \&}]{outY }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This is the function that does all the logic work, it takes the processesd images and returns true of false if the robot is inside the images. It then returns the X and Y coordinates of where the robot is in the image. This information is stored in the top left pixel of the blob image. The format is ($<$1 or 0, can see$>$, $<$robot x$>$=\char`\"{}\char`\"{}$>$, $<$robot y$>$=\char`\"{}\char`\"{}$>$). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em outX} & \\
+\hline
+{\em outY} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classFindRobot_acab7123d6f276e150b87ea30f1f287d4}\label{classFindRobot_acab7123d6f276e150b87ea30f1f287d4}} 
+\index{Find\+Robot@{Find\+Robot}!Get\+Robot\+Location@{Get\+Robot\+Location}}
+\index{Get\+Robot\+Location@{Get\+Robot\+Location}!Find\+Robot@{Find\+Robot}}
+\subsubsection{\texorpdfstring{Get\+Robot\+Location()}{GetRobotLocation()}}
+{\footnotesize\ttfamily \hyperlink{classVector3}{Vector3} Find\+Robot\+::\+Get\+Robot\+Location (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the \hyperlink{classRobot}{Robot} Location object, from the X and Y coordinates from Can\+See\+Robot. This function requires the depth image be updated. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & \\
+\hline
+{\em y} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{classVector3}{Vector3} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classFindRobot_a27fed71d7793129a281fc7a3174d328b}\label{classFindRobot_a27fed71d7793129a281fc7a3174d328b}} 
+\index{Find\+Robot@{Find\+Robot}!Take\+Picture@{Take\+Picture}}
+\index{Take\+Picture@{Take\+Picture}!Find\+Robot@{Find\+Robot}}
+\subsubsection{\texorpdfstring{Take\+Picture()}{TakePicture()}}
+{\footnotesize\ttfamily void Find\+Robot\+::\+Take\+Picture (\begin{DoxyParamCaption}\item[{\hyperlink{classVector3}{Vector3} $\ast$}]{camera\+Position,  }\item[{\hyperlink{classImage}{Image} $\ast$}]{rgb,  }\item[{\hyperlink{classImage}{Image} $\ast$}]{depth }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Receives and image from the simulation, and runs the image processing facade on them. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em camera\+Position} & \\
+\hline
+{\em rgb} & \\
+\hline
+{\em depth} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/user/repo/project/simulation/include/\hyperlink{find__robot_8h}{find\+\_\+robot.\+h}\end{DoxyCompactItemize}

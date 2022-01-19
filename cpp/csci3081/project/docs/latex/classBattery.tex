@@ -1,0 +1,61 @@
+\hypertarget{classBattery}{}\section{Battery Class Reference}
+\label{classBattery}\index{Battery@{Battery}}
+
+
+battery class. \hyperlink{classDrone}{Drone} and \hyperlink{classRobot}{Robot} objects have batteries that deplete over time. This class is used to represent the life of our drone and robot movable entities.  
+
+
+
+
+{\ttfamily \#include $<$battery.\+h$>$}
+
+
+
+Collaboration diagram for Battery\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=219pt]{classBattery__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classBattery_a36a6234c583e3b3506f4a77e3eb49989}\label{classBattery_a36a6234c583e3b3506f4a77e3eb49989}} 
+\hyperlink{classBattery_a36a6234c583e3b3506f4a77e3eb49989}{Battery} ()
+\begin{DoxyCompactList}\small\item\em default constructor \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classBattery_a06a6a638724aeb3a1e45854a5e0e0b1c}\label{classBattery_a06a6a638724aeb3a1e45854a5e0e0b1c}} 
+\hyperlink{classBattery_a06a6a638724aeb3a1e45854a5e0e0b1c}{Battery} (double max, double remaining, bool is\+Empty)
+\begin{DoxyCompactList}\small\item\em constructor that takes arguments \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classBattery_a40f54aa571826d0109465539bbc304b9}\label{classBattery_a40f54aa571826d0109465539bbc304b9}} 
+double \hyperlink{classBattery_a40f54aa571826d0109465539bbc304b9}{Get\+Max\+Charge} ()
+\begin{DoxyCompactList}\small\item\em getter\+: returns battery\textquotesingle{}s capacity \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classBattery_a4abbd8d0e5005b17bfb6ed4e0038641a}\label{classBattery_a4abbd8d0e5005b17bfb6ed4e0038641a}} 
+double \hyperlink{classBattery_a4abbd8d0e5005b17bfb6ed4e0038641a}{Get\+Remaining\+Charge} ()
+\begin{DoxyCompactList}\small\item\em getter\+: returns charge left on battery \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classBattery_a2b7a3315b5e1ca9c74ee64acf0bb2168}\label{classBattery_a2b7a3315b5e1ca9c74ee64acf0bb2168}} 
+bool \hyperlink{classBattery_a2b7a3315b5e1ca9c74ee64acf0bb2168}{Is\+Empty} ()
+\begin{DoxyCompactList}\small\item\em acts as a getter of our no\+Charge member variable. Just returns true or false on whether or not the battery is depleted. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classBattery_af3e0488dbe063350f3ab9077487d1e12}\label{classBattery_af3e0488dbe063350f3ab9077487d1e12}} 
+void \hyperlink{classBattery_af3e0488dbe063350f3ab9077487d1e12}{Drain} (double percentage)
+\begin{DoxyCompactList}\small\item\em this method changes the actual battery level. This operation would usually be called by a drone in it\textquotesingle{}s update method. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classBattery_aa467c83e0fd2ea2d57d98f9e2dc341db}\label{classBattery_aa467c83e0fd2ea2d57d98f9e2dc341db}} 
+double \hyperlink{classBattery_aa467c83e0fd2ea2d57d98f9e2dc341db}{max\+Charge}
+\begin{DoxyCompactList}\small\item\em float depicting max charge of battery \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classBattery_a4d012fbe92b40862bab89ce0019b7c0a}\label{classBattery_a4d012fbe92b40862bab89ce0019b7c0a}} 
+double \hyperlink{classBattery_a4d012fbe92b40862bab89ce0019b7c0a}{remaining\+Charge}
+\begin{DoxyCompactList}\small\item\em float depicting remaining charge of battery \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classBattery_ac008f63a4d81761cc72fbae7356d8ff7}\label{classBattery_ac008f63a4d81761cc72fbae7356d8ff7}} 
+bool \hyperlink{classBattery_ac008f63a4d81761cc72fbae7356d8ff7}{no\+Charge}
+\begin{DoxyCompactList}\small\item\em boolean telling us whether or not bettery is depleted \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+battery class. \hyperlink{classDrone}{Drone} and \hyperlink{classRobot}{Robot} objects have batteries that deplete over time. This class is used to represent the life of our drone and robot movable entities. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/user/repo/project/simulation/include/\hyperlink{battery_8h}{battery.\+h}\end{DoxyCompactItemize}

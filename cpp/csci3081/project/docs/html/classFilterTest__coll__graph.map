@@ -1,0 +1,4 @@
+<map id="FilterTest" name="FilterTest">
+<area shape="rect" id="node3" href="$classImage.html" title="The main class for Image. Image is represented as a big unsigned character array, and alters values i..." alt="" coords="77,13,253,295"/>
+<area shape="rect" id="node4" href="$classColor.html" title="The main class for Color. We used a color class to make operations for color arithmatic easier..." alt="" coords="284,5,425,303"/>
+</map>

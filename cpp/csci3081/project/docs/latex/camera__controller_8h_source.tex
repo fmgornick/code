@@ -1,0 +1,38 @@
+\hypertarget{camera__controller_8h_source}{}\doxysection{camera\+\_\+controller.\+h}
+\label{camera__controller_8h_source}\index{/Users/Fletcher/csci3081/repo-\/team-\/0/project/simulation/include/camera\_controller.h@{/Users/Fletcher/csci3081/repo-\/team-\/0/project/simulation/include/camera\_controller.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef ICAMERA\_CONTROLLER\_H\_}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define ICAMERA\_CONTROLLER\_H\_}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}picojson.h"{}}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}picojson.h"{}}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{8 \textcolor{keyword}{class }\mbox{\hyperlink{classICameraResult}{ICameraResult}} \{}
+\DoxyCodeLine{9 \textcolor{keyword}{public}:}
+\DoxyCodeLine{11     \textcolor{keyword}{virtual} \mbox{\hyperlink{classICameraResult_a6c8f4f6c3748c00236bd588cf9410f8b}{\string~ICameraResult}}() \{\}}
+\DoxyCodeLine{12 \};}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{15 \textcolor{keyword}{struct }\mbox{\hyperlink{structRawCameraImage}{RawCameraImage}} \{}
+\DoxyCodeLine{16     \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}* data;}
+\DoxyCodeLine{17     \textcolor{keywordtype}{int} length;}
+\DoxyCodeLine{18 \};}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{21 \textcolor{keyword}{class }\mbox{\hyperlink{classICameraObserver}{ICameraObserver}} \{}
+\DoxyCodeLine{22 \textcolor{keyword}{public}:}
+\DoxyCodeLine{24     \textcolor{keyword}{virtual} \mbox{\hyperlink{classICameraObserver_a19344cb93ca790a0311c9c7bcc6e8eec}{\string~ICameraObserver}}() \{\}}
+\DoxyCodeLine{27     \textcolor{keyword}{virtual} \mbox{\hyperlink{classICameraResult}{ICameraResult}}* \mbox{\hyperlink{classICameraObserver_a6e683c918ac87d8c0ee2e17935cca503}{ProcessImages}}(\textcolor{keywordtype}{int} cameraId, \textcolor{keywordtype}{double} xPos, \textcolor{keywordtype}{double} yPos, \textcolor{keywordtype}{double} zPos, \textcolor{keyword}{const} std::vector<RawCameraImage>\& images, picojson::object\& details) \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{29     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classICameraObserver_a7d261bd08d570d05032e61b2d5252c88}{ImageProcessingComplete}}(\mbox{\hyperlink{classICameraResult}{ICameraResult}}* result) = 0;}
+\DoxyCodeLine{30 \};}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{33 \textcolor{keyword}{class }\mbox{\hyperlink{classICameraController}{ICameraController}} \{}
+\DoxyCodeLine{34 \textcolor{keyword}{public}:}
+\DoxyCodeLine{36     \textcolor{keyword}{virtual} \mbox{\hyperlink{classICameraController_a7f1b88c7e023ad218d461684dc0d4fe5}{\string~ICameraController}}() \{\}}
+\DoxyCodeLine{38     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classICameraController_af9fff22819969ca260f7f098f0cdebf4}{TakePicture}}(\textcolor{keywordtype}{int} cameraId) = 0;}
+\DoxyCodeLine{40     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classICameraController_ad3cf56dc052984b0e31e602f344c35db}{AddObserver}}(\mbox{\hyperlink{classICameraObserver}{ICameraObserver}}\& observer) = 0;}
+\DoxyCodeLine{42     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classICameraController_a5013bc29f6a0e7794a97646d868bf809}{RemoveObserver}}(\mbox{\hyperlink{classICameraObserver}{ICameraObserver}}\& observer) = 0;}
+\DoxyCodeLine{43 \};}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

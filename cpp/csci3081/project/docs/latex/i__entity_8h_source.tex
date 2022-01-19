@@ -1,0 +1,28 @@
+\hypertarget{i__entity_8h_source}{}\doxysection{i\+\_\+entity.\+h}
+\label{i__entity_8h_source}\index{/Users/Fletcher/csci3081/repo-\/team-\/0/project/simulation/include/i\_entity.h@{/Users/Fletcher/csci3081/repo-\/team-\/0/project/simulation/include/i\_entity.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#ifndef I\_ENTITY\_H\_}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#define I\_ENTITY\_H\_}}
+\DoxyCodeLine{6 \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{7 \textcolor{comment}{ * Includes}}
+\DoxyCodeLine{8 \textcolor{comment}{ ******************************************************************************/}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{vector3_8h}{vector3.h}}"{}}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{11 \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{12 \textcolor{comment}{ * Class Definitions}}
+\DoxyCodeLine{13 \textcolor{comment}{ ******************************************************************************/}}
+\DoxyCodeLine{20 \textcolor{keyword}{class }\mbox{\hyperlink{classiEntity}{iEntity}} \{}
+\DoxyCodeLine{21 \textcolor{keyword}{public}:}
+\DoxyCodeLine{25   \textcolor{keyword}{virtual} \mbox{\hyperlink{classiEntity_ab8633da01cab1d5a6aa565ac45a74c59}{\string~iEntity}}() \{\}}
+\DoxyCodeLine{29   \textcolor{keyword}{virtual} \textcolor{keywordtype}{int} \mbox{\hyperlink{classiEntity_afff83e95a9777dfaa7cf48bad6fbb79c}{GetID}}() = 0;}
+\DoxyCodeLine{33   \textcolor{keyword}{virtual} \textcolor{keyword}{const} std::string \&\mbox{\hyperlink{classiEntity_a7efc043b341158cf42b0559e3b284da4}{GetName}}() \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{37   \textcolor{keyword}{virtual} \mbox{\hyperlink{classVector3}{Vector3}} *\mbox{\hyperlink{classiEntity_ab996595bb1286cefb0bbdc245a9d1e5f}{GetPosition}}() = 0;}
+\DoxyCodeLine{41   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classiEntity_afa1966ac1964902c1e69907307ca03d4}{SetPosition}}(\mbox{\hyperlink{classVector3}{Vector3}} \&pos) = 0;}
+\DoxyCodeLine{45   \textcolor{comment}{// virtual iEntity* clone() const = 0;}}
+\DoxyCodeLine{46 \};}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// !I\_ENTITY\_H\_}}
+
+\end{DoxyCode}

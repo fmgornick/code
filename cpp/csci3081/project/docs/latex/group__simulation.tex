@@ -1,0 +1,71 @@
+\hypertarget{group__simulation}{}\section{Simulation Subsystem}
+\label{group__simulation}\index{Simulation Subsystem@{Simulation Subsystem}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classBattery}{Battery}
+\begin{DoxyCompactList}\small\item\em battery class. \hyperlink{classDrone}{Drone} and \hyperlink{classRobot}{Robot} objects have batteries that deplete over time. This class is used to represent the life of our drone and robot movable entities. \end{DoxyCompactList}\item 
+class \hyperlink{classBeelineMovement}{Beeline\+Movement}
+\begin{DoxyCompactList}\small\item\em Beeline movement-\/ will move directly towards a robot given a vector3 position. Extends \hyperlink{classiMovementStrategy}{i\+Movement\+Strategy} so each function overwrites the parent. \end{DoxyCompactList}\item 
+class \hyperlink{classBreadthFirstSearch}{Breadth\+First\+Search}
+\begin{DoxyCompactList}\small\item\em Beeline movement-\/ will move directly towards a robot given a vector3 position. extends \hyperlink{classiMovementStrategy}{i\+Movement\+Strategy} so each function overwrites the parent. \end{DoxyCompactList}\item 
+class \hyperlink{classCamera}{Camera}
+\begin{DoxyCompactList}\small\item\em The camera class. This class can be attached to any entity and act as a camera. When attached to the web app observer, it can receive pictures from the simulation and process the contents of them and return Camera\+Results. \end{DoxyCompactList}\item 
+class \hyperlink{classCompositeEntityFactory}{Composite\+Entity\+Factory}
+\begin{DoxyCompactList}\small\item\em Composite Entity Factory. This is the class that get\textquotesingle{}s called when creating new entities. Has an entity factory vector member variable to keep track of all the factories. Then when we want to create a new factory, it\textquotesingle{}s added to the vector to be referenced for entity creation. \end{DoxyCompactList}\item 
+class \hyperlink{classCompositeLogger}{Composite\+Logger}
+\begin{DoxyCompactList}\small\item\em composite logger that uses our other two terminal / csv loggers to record data \end{DoxyCompactList}\item 
+class \hyperlink{classConsoleLogger}{Console\+Logger}
+\item 
+class \hyperlink{classCSVLogger}{C\+S\+V\+Logger}
+\begin{DoxyCompactList}\small\item\em logger for csv files. Puts vector information and strategy time information in a comma separated file. \end{DoxyCompactList}\item 
+class \hyperlink{classDeapthFirstSearch}{Deapth\+First\+Search}
+\item 
+class \hyperlink{classDrone}{Drone}
+\begin{DoxyCompactList}\small\item\em Our actual drone that will be searching for the robot. Contains tons methods to update postion and velocity. Also has many search patterns to find the target robot. \end{DoxyCompactList}\item 
+class \hyperlink{classDroneFactory}{Drone\+Factory}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classDrone}{Drone} Factory. When called, it creates a new object of type \hyperlink{classDrone}{Drone}. This factory is never called directly, and is really only used through the composite entity factory. \end{DoxyCompactList}\item 
+class \hyperlink{classFindRobot}{Find\+Robot}
+\begin{DoxyCompactList}\small\item\em This class takes in an image and using the image processing facade runs the logic on images to see if the robot is found. \end{DoxyCompactList}\item 
+class \hyperlink{classHospital}{Hospital}
+\begin{DoxyCompactList}\small\item\em once our robot is found, we\textquotesingle{}re gonna want to rescue it by taking it to the hospital. Thus we need a hospital entity \end{DoxyCompactList}\item 
+class \hyperlink{classHospitalFactory}{Hospital\+Factory}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classHospital}{Hospital} Factory. When called, it creates a new object of type \hyperlink{classHospital}{Hospital}. This factory is never called directly, and is really only used through the composite entity factory. \end{DoxyCompactList}\item 
+class \hyperlink{classiEntity}{i\+Entity}
+\begin{DoxyCompactList}\small\item\em The base class for all entities. Drones, Robots, Hospitals, and Recharge Stations are all entities. This class is abstract, so it\textquotesingle{}s not meant to be instantiated. \end{DoxyCompactList}\item 
+class \hyperlink{classiEntityFactory}{i\+Entity\+Factory}
+\begin{DoxyCompactList}\small\item\em Entity factory interface. Used for our abstract factory method for making new entity objects at run time. Implementation is carried out by \hyperlink{classDroneFactory}{Drone\+Factory}, \hyperlink{classRobotFactory}{Robot\+Factory}, hospital\+Factory, and \hyperlink{classRechargeStationFactory}{Recharge\+Station\+Factory}. \end{DoxyCompactList}\item 
+class \hyperlink{classiLogger}{i\+Logger}
+\begin{DoxyCompactList}\small\item\em data logger interface. Used to log data on our drone for reasons unbenounced to me. If we wanted to further optimize our drone search and rescue system, we could use a machine learning algorithm to go through our data output files to find the optimal search pattern. This is a composite pattern and has two main logger methods. One for outputing to the terminal screen, and one for saving in a C\+SV file. \end{DoxyCompactList}\item 
+class \hyperlink{classiMovableEntity}{i\+Movable\+Entity}
+\begin{DoxyCompactList}\small\item\em derived class of entity. This is an abstract class that represents entities that move. This class gets implemented by the \hyperlink{classDrone}{Drone} and \hyperlink{classRobot}{Robot} entities. \end{DoxyCompactList}\item 
+class \hyperlink{classiMovementStrategy}{i\+Movement\+Strategy}
+\begin{DoxyCompactList}\small\item\em This is the base class for all movement. Movement strategies can inherit this interface and when it\textquotesingle{}s active the Update method will be called the strategy then must correctly update the position and velocity so that the entity can move accordingly. \end{DoxyCompactList}\item 
+class \hyperlink{classImageProcessingFacade}{Image\+Processing\+Facade}
+\begin{DoxyCompactList}\small\item\em The image processing facade, enables functionality with the image processor with easy to use functions that enable complicated functions with easy use. \end{DoxyCompactList}\item 
+class \hyperlink{classLoggerManager}{Logger\+Manager}
+\begin{DoxyCompactList}\small\item\em logger singleton class. \end{DoxyCompactList}\item 
+class \hyperlink{classPatrolStrategy}{Patrol\+Strategy}
+\begin{DoxyCompactList}\small\item\em Patrol movement-\/ Uses a sinusoidal strategy to move in a wave pattern across the map. \end{DoxyCompactList}\item 
+class \hyperlink{classRechargeStation}{Recharge\+Station}
+\begin{DoxyCompactList}\small\item\em if our drone runs low on battery and must recharge, then it visits one of these stations to replenish the battery \end{DoxyCompactList}\item 
+class \hyperlink{classRechargeStationFactory}{Recharge\+Station\+Factory}
+\begin{DoxyCompactList}\small\item\em Recharge Station Factory. When called, it creates a new object of type \hyperlink{classRechargeStation}{Recharge\+Station}. This factory is never called directly, and is really only used through the composite entity factory. \end{DoxyCompactList}\item 
+class \hyperlink{classRobot}{Robot}
+\begin{DoxyCompactList}\small\item\em robot is a movable entity. This robot will be placed randomly in minneapolis, and our goal is to use our drone to find this robot entity within a given time limit. \end{DoxyCompactList}\item 
+class \hyperlink{classRobotFactory}{Robot\+Factory}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classRobot}{Robot} Factory. When called, it creates a new object of type \hyperlink{classRobot}{Robot}. This factory is never called directly, and is really only used through the composite entity factory. \end{DoxyCompactList}\item 
+class \hyperlink{classSearchStrategy}{Search\+Strategy}
+\begin{DoxyCompactList}\small\item\em partent class for the search strategys \end{DoxyCompactList}\item 
+class \hyperlink{classVector3}{Vector3}
+\begin{DoxyCompactList}\small\item\em basic 3D vector class. Will be primarily used for entity position and velocity \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{group__simulation_gaeecad83c3d8ad32ebf60c9f49fda030f}\label{group__simulation_gaeecad83c3d8ad32ebf60c9f49fda030f}} 
+\hyperlink{group__simulation_gaeecad83c3d8ad32ebf60c9f49fda030f}{Simulation\+Facade\+::\+Simulation\+Facade} ()
+\begin{DoxyCompactList}\small\item\em Construct a new Simulation Facade object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This is the simulation subsystem 

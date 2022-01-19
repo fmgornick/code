@@ -1,0 +1,56 @@
+\hypertarget{classCompositeLogger}{}\section{Composite\+Logger Class Reference}
+\label{classCompositeLogger}\index{Composite\+Logger@{Composite\+Logger}}
+
+
+composite logger that uses our other two terminal / csv loggers to record data  
+
+
+
+
+{\ttfamily \#include $<$composite\+\_\+logger.\+h$>$}
+
+
+
+Inheritance diagram for Composite\+Logger\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=201pt]{classCompositeLogger__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Composite\+Logger\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=201pt]{classCompositeLogger__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classCompositeLogger_a10914598defb8bd5ab057508c831a031}\label{classCompositeLogger_a10914598defb8bd5ab057508c831a031}} 
+\hyperlink{classCompositeLogger_a10914598defb8bd5ab057508c831a031}{Composite\+Logger} ()
+\begin{DoxyCompactList}\small\item\em constructor. Adds loggers to our list member variable \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCompositeLogger_a84c0c034a72ddc1c7eeb3cfc47d1dcd5}\label{classCompositeLogger_a84c0c034a72ddc1c7eeb3cfc47d1dcd5}} 
+void \hyperlink{classCompositeLogger_a84c0c034a72ddc1c7eeb3cfc47d1dcd5}{Log} (\hyperlink{classVector3}{Vector3} $\ast$p, \hyperlink{classVector3}{Vector3} $\ast$d, double t)
+\begin{DoxyCompactList}\small\item\em log position of drone with message about it. Called every time we update. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCompositeLogger_a8548bd7dc7fbba8627b7a760a1022867}\label{classCompositeLogger_a8548bd7dc7fbba8627b7a760a1022867}} 
+void \hyperlink{classCompositeLogger_a8548bd7dc7fbba8627b7a760a1022867}{Add\+Logger} (\hyperlink{classiLogger}{i\+Logger} $\ast$logger)
+\begin{DoxyCompactList}\small\item\em adds a new logger to our list member variable \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classCompositeLogger_a7a74921303ccdead873c982e1a3ca59f}\label{classCompositeLogger_a7a74921303ccdead873c982e1a3ca59f}} 
+std\+::list$<$ \hyperlink{classiLogger}{i\+Logger} $\ast$ $>$ \hyperlink{classCompositeLogger_a7a74921303ccdead873c982e1a3ca59f}{loggers}
+\begin{DoxyCompactList}\small\item\em list of loggers used to record data \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+composite logger that uses our other two terminal / csv loggers to record data 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/user/repo/project/simulation/include/\hyperlink{composite__logger_8h}{composite\+\_\+logger.\+h}\item 
+/home/user/repo/project/simulation/src/composite\+\_\+logger.\+cc\end{DoxyCompactItemize}

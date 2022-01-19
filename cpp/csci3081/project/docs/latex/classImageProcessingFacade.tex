@@ -1,0 +1,85 @@
+\hypertarget{classImageProcessingFacade}{}\section{Image\+Processing\+Facade Class Reference}
+\label{classImageProcessingFacade}\index{Image\+Processing\+Facade@{Image\+Processing\+Facade}}
+
+
+The image processing facade, enables functionality with the image processor with easy to use functions that enable complicated functions with easy use.  
+
+
+
+
+{\ttfamily \#include $<$image\+\_\+processing\+\_\+facade.\+h$>$}
+
+
+
+Collaboration diagram for Image\+Processing\+Facade\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=270pt]{classImageProcessingFacade__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classImageProcessingFacade_ac8691c5159915b0f48d21a24576666ec}\label{classImageProcessingFacade_ac8691c5159915b0f48d21a24576666ec}} 
+\hyperlink{classImageProcessingFacade_ac8691c5159915b0f48d21a24576666ec}{Image\+Processing\+Facade} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \hyperlink{classImage}{Image} Processing Facade object. \end{DoxyCompactList}\item 
+void \hyperlink{classImageProcessingFacade_a320be6a053c96f9725f6526b0f4734c4}{Run\+Canny\+Edge\+Detect} (\hyperlink{classImage}{Image} $\ast$image, \hyperlink{classImage}{Image} $\ast$canny\+Image)
+\begin{DoxyCompactList}\small\item\em Runs the canny edge detect filter from image processor. \end{DoxyCompactList}\item 
+void \hyperlink{classImageProcessingFacade_ad65fe6e5f6db9aa5c45235b8e4486659}{Blob\+Detect} (\hyperlink{classImage}{Image} $\ast$image, \hyperlink{classImage}{Image} $\ast$blob\+Detect)
+\begin{DoxyCompactList}\small\item\em Runs blob detect filter from image processor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classImageProcessingFacade_ada20bac7f9fd22337ff810fd1786b5ee}\label{classImageProcessingFacade_ada20bac7f9fd22337ff810fd1786b5ee}} 
+\hyperlink{classFilter}{Filter} $\ast$ \hyperlink{classImageProcessingFacade_ada20bac7f9fd22337ff810fd1786b5ee}{canny\+Edge\+Detect\+Filter}
+\begin{DoxyCompactList}\small\item\em Reference to canny edge detect filter. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classImageProcessingFacade_a19ac9e618b71451afe7322eb0886aad8}\label{classImageProcessingFacade_a19ac9e618b71451afe7322eb0886aad8}} 
+\hyperlink{classFilter}{Filter} $\ast$ \hyperlink{classImageProcessingFacade_a19ac9e618b71451afe7322eb0886aad8}{blob\+Detect\+Filter}
+\begin{DoxyCompactList}\small\item\em Reference to blob detect filter. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The image processing facade, enables functionality with the image processor with easy to use functions that enable complicated functions with easy use. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classImageProcessingFacade_ad65fe6e5f6db9aa5c45235b8e4486659}\label{classImageProcessingFacade_ad65fe6e5f6db9aa5c45235b8e4486659}} 
+\index{Image\+Processing\+Facade@{Image\+Processing\+Facade}!Blob\+Detect@{Blob\+Detect}}
+\index{Blob\+Detect@{Blob\+Detect}!Image\+Processing\+Facade@{Image\+Processing\+Facade}}
+\subsubsection{\texorpdfstring{Blob\+Detect()}{BlobDetect()}}
+{\footnotesize\ttfamily void Image\+Processing\+Facade\+::\+Blob\+Detect (\begin{DoxyParamCaption}\item[{\hyperlink{classImage}{Image} $\ast$}]{image,  }\item[{\hyperlink{classImage}{Image} $\ast$}]{blob\+Detect }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Runs blob detect filter from image processor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em image} & \\
+\hline
+{\em blob\+Detect} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classImageProcessingFacade_a320be6a053c96f9725f6526b0f4734c4}\label{classImageProcessingFacade_a320be6a053c96f9725f6526b0f4734c4}} 
+\index{Image\+Processing\+Facade@{Image\+Processing\+Facade}!Run\+Canny\+Edge\+Detect@{Run\+Canny\+Edge\+Detect}}
+\index{Run\+Canny\+Edge\+Detect@{Run\+Canny\+Edge\+Detect}!Image\+Processing\+Facade@{Image\+Processing\+Facade}}
+\subsubsection{\texorpdfstring{Run\+Canny\+Edge\+Detect()}{RunCannyEdgeDetect()}}
+{\footnotesize\ttfamily void Image\+Processing\+Facade\+::\+Run\+Canny\+Edge\+Detect (\begin{DoxyParamCaption}\item[{\hyperlink{classImage}{Image} $\ast$}]{image,  }\item[{\hyperlink{classImage}{Image} $\ast$}]{canny\+Image }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Runs the canny edge detect filter from image processor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em image} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Image$\ast$ 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/user/repo/project/simulation/include/\hyperlink{image__processing__facade_8h}{image\+\_\+processing\+\_\+facade.\+h}\end{DoxyCompactItemize}

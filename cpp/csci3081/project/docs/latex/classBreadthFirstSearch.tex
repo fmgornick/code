@@ -1,0 +1,63 @@
+\hypertarget{classBreadthFirstSearch}{}\section{Breadth\+First\+Search Class Reference}
+\label{classBreadthFirstSearch}\index{Breadth\+First\+Search@{Breadth\+First\+Search}}
+
+
+Beeline movement-\/ will move directly towards a robot given a vector3 position. extends \hyperlink{classiMovementStrategy}{i\+Movement\+Strategy} so each function overwrites the parent.  
+
+
+
+
+{\ttfamily \#include $<$breadth\+\_\+first\+\_\+search.\+h$>$}
+
+
+
+Inheritance diagram for Breadth\+First\+Search\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=207pt]{classBreadthFirstSearch__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Breadth\+First\+Search\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=207pt]{classBreadthFirstSearch__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classBreadthFirstSearch_a5a9f84e4b10107e8e809349292f6ca76}\label{classBreadthFirstSearch_a5a9f84e4b10107e8e809349292f6ca76}} 
+\hyperlink{classBreadthFirstSearch_a5a9f84e4b10107e8e809349292f6ca76}{Breadth\+First\+Search} ()
+\begin{DoxyCompactList}\small\item\em default constructor \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classBreadthFirstSearch_a69eb7594b796343b19d5f8d4a67516d3}\label{classBreadthFirstSearch_a69eb7594b796343b19d5f8d4a67516d3}} 
+\hyperlink{classVector3}{Vector3} $\ast$ \hyperlink{classBreadthFirstSearch_a69eb7594b796343b19d5f8d4a67516d3}{Search} (\hyperlink{classVector3}{Vector3} current\+Pos)
+\begin{DoxyCompactList}\small\item\em Searching function for Breadth First Search. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classBreadthFirstSearch_a73ddb06824da940bbb5f8da61cf58419}\label{classBreadthFirstSearch_a73ddb06824da940bbb5f8da61cf58419}} 
+std\+::queue$<$ std\+::string $>$ \hyperlink{classBreadthFirstSearch_a73ddb06824da940bbb5f8da61cf58419}{Get\+Queue} ()
+\begin{DoxyCompactList}\small\item\em Returns Queue. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classBreadthFirstSearch_a2f7227457d7b1e77a1345f38bfb16d36}\label{classBreadthFirstSearch_a2f7227457d7b1e77a1345f38bfb16d36}} 
+bool \hyperlink{classBreadthFirstSearch_a2f7227457d7b1e77a1345f38bfb16d36}{Is\+Drone\+At\+Node} (\hyperlink{classVector3}{Vector3} current\+Pos)
+\begin{DoxyCompactList}\small\item\em Private bool to see the the drone is currently at the expected node or not. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classBreadthFirstSearch_a577ce5c2d8206b1b79f4de751960f3f4}\label{classBreadthFirstSearch_a577ce5c2d8206b1b79f4de751960f3f4}} 
+std\+::queue$<$ std\+::string $>$ \hyperlink{classBreadthFirstSearch_a577ce5c2d8206b1b79f4de751960f3f4}{queue}
+\begin{DoxyCompactList}\small\item\em Queue for \hyperlink{classBreadthFirstSearch}{Breadth\+First\+Search} searching. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Beeline movement-\/ will move directly towards a robot given a vector3 position. extends \hyperlink{classiMovementStrategy}{i\+Movement\+Strategy} so each function overwrites the parent. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/user/repo/project/simulation/include/\hyperlink{breadth__first__search_8h}{breadth\+\_\+first\+\_\+search.\+h}\item 
+/home/user/repo/project/simulation/src/breadth\+\_\+first\+\_\+search.\+cc\end{DoxyCompactItemize}

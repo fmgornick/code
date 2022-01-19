@@ -1,0 +1,271 @@
+\hypertarget{classDrone}{}\section{Drone Class Reference}
+\label{classDrone}\index{Drone@{Drone}}
+
+
+Our actual drone that will be searching for the robot. Contains tons methods to update postion and velocity. Also has many search patterns to find the target robot.  
+
+
+
+
+{\ttfamily \#include $<$drone.\+h$>$}
+
+
+
+Inheritance diagram for Drone\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classDrone__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Drone\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classDrone__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classDrone_ab692baa4be5c43b72990ce1b01bdc805}\label{classDrone_ab692baa4be5c43b72990ce1b01bdc805}} 
+\hyperlink{classDrone_ab692baa4be5c43b72990ce1b01bdc805}{Drone} ()
+\begin{DoxyCompactList}\small\item\em default constructor \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDrone_a8847d17aacd1efc2b64827de2b58c4c7}\label{classDrone_a8847d17aacd1efc2b64827de2b58c4c7}} 
+\hyperlink{classDrone_a8847d17aacd1efc2b64827de2b58c4c7}{Drone} (int \hyperlink{classDrone_a5aa543be4e70c00b14a38fef06bf6166}{id}, std\+::string \hyperlink{classDrone_ac5f6c269378659247acd057142542013}{name}, \hyperlink{classVector3}{Vector3} $\ast$pos, \hyperlink{classVector3}{Vector3} $\ast$vel, \hyperlink{classVector3}{Vector3} $\ast$dir, double \hyperlink{classDrone_a4cbe7d72da36c27cb58fa797240c9698}{speed}, \hyperlink{classBattery}{Battery} $\ast$b, \hyperlink{classCamera}{Camera} $\ast$\hyperlink{classDrone_aab172d13642014c08807fc71d04600d3}{camera})
+\begin{DoxyCompactList}\small\item\em drone constructor that takes in variable arguments \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDrone_a5e69f5ebe80ece53ccb2238a2b598d97}\label{classDrone_a5e69f5ebe80ece53ccb2238a2b598d97}} 
+int \hyperlink{classDrone_a5e69f5ebe80ece53ccb2238a2b598d97}{Get\+ID} ()
+\begin{DoxyCompactList}\small\item\em getter\+: returns entity identification number \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDrone_a8a80f440dcffdf3f2fe1766ef052ec52}\label{classDrone_a8a80f440dcffdf3f2fe1766ef052ec52}} 
+const std\+::string \& \hyperlink{classDrone_a8a80f440dcffdf3f2fe1766ef052ec52}{Get\+Name} () const
+\begin{DoxyCompactList}\small\item\em getter\+: returns drone name \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDrone_a68add193be6ffd58a10996609d2b711f}\label{classDrone_a68add193be6ffd58a10996609d2b711f}} 
+\hyperlink{classVector3}{Vector3} $\ast$ \hyperlink{classDrone_a68add193be6ffd58a10996609d2b711f}{Get\+Position} ()
+\begin{DoxyCompactList}\small\item\em getter\+: returns drone position \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDrone_abe072bd4609dc32fe0a6bb0cfd7ce5cc}\label{classDrone_abe072bd4609dc32fe0a6bb0cfd7ce5cc}} 
+void \hyperlink{classDrone_abe072bd4609dc32fe0a6bb0cfd7ce5cc}{Set\+Position} (\hyperlink{classVector3}{Vector3} \&pos)
+\begin{DoxyCompactList}\small\item\em setter\+: updates or initializes position \end{DoxyCompactList}\item 
+double \hyperlink{classDrone_ac8c535643f2be526c0ac8b0cc1fc49fc}{Get\+Speed} ()
+\begin{DoxyCompactList}\small\item\em Get the Speed value. \end{DoxyCompactList}\item 
+void \hyperlink{classDrone_af8cb12a403cf56145000f247689d0951}{Set\+Speed} (double \hyperlink{classDrone_a4cbe7d72da36c27cb58fa797240c9698}{speed})
+\begin{DoxyCompactList}\small\item\em Set the Speed value. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDrone_ad0dc4a3d3a3834a9c556ca272f1362ad}\label{classDrone_ad0dc4a3d3a3834a9c556ca272f1362ad}} 
+\hyperlink{classVector3}{Vector3} $\ast$ \hyperlink{classDrone_ad0dc4a3d3a3834a9c556ca272f1362ad}{Get\+Velocity} ()
+\begin{DoxyCompactList}\small\item\em getter\+: returns drone velocity \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDrone_a746a2a730a8d7a2e421ea3cfe7842732}\label{classDrone_a746a2a730a8d7a2e421ea3cfe7842732}} 
+void \hyperlink{classDrone_a746a2a730a8d7a2e421ea3cfe7842732}{Set\+Velocity} (\hyperlink{classVector3}{Vector3} \&vel)
+\begin{DoxyCompactList}\small\item\em setter\+: updates or initializes velocity \end{DoxyCompactList}\item 
+\hyperlink{classVector3}{Vector3} $\ast$ \hyperlink{classDrone_ad81e02cd82137d51ce68f4698812c949}{Get\+Direction} ()
+\begin{DoxyCompactList}\small\item\em Get the Direction vector. \end{DoxyCompactList}\item 
+void \hyperlink{classDrone_a2ef1fbc3da17a8d599d2969990eb9614}{Set\+Direction} (\hyperlink{classVector3}{Vector3} \&dir)
+\begin{DoxyCompactList}\small\item\em Set the Direction vector. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDrone_ab4d438ef285de22a8646bf3bcaba15da}\label{classDrone_ab4d438ef285de22a8646bf3bcaba15da}} 
+\hyperlink{classBattery}{Battery} $\ast$ \hyperlink{classDrone_ab4d438ef285de22a8646bf3bcaba15da}{Get\+Battery} ()
+\begin{DoxyCompactList}\small\item\em returns current battery life of drone \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDrone_abc6b79ccc7fdbc3bec8d539fc836c04d}\label{classDrone_abc6b79ccc7fdbc3bec8d539fc836c04d}} 
+void \hyperlink{classDrone_abc6b79ccc7fdbc3bec8d539fc836c04d}{Update} (double dt)
+\begin{DoxyCompactList}\small\item\em updates the drone position and other dynamic properties \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDrone_ab50f73e8debbadb3e4d31fd2bab94768}\label{classDrone_ab50f73e8debbadb3e4d31fd2bab94768}} 
+void \hyperlink{classDrone_ab50f73e8debbadb3e4d31fd2bab94768}{Camera\+Update} (double dt)
+\begin{DoxyCompactList}\small\item\em updates the camera \end{DoxyCompactList}\item 
+void \hyperlink{classDrone_a0e369b1d4bbc379387c8ea6a73d74525}{Set\+Robot\+Found} (\hyperlink{classVector3}{Vector3} \hyperlink{classDrone_ab52ab733570dcdb842df3b31ca4030ff}{robot\+Location}, \hyperlink{classVector3}{Vector3} hospital\+Location)
+\begin{DoxyCompactList}\small\item\em Set the \hyperlink{classRobot}{Robot} Found object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDrone_a667075abb1eb5c54be6418884a387d14}\label{classDrone_a667075abb1eb5c54be6418884a387d14}} 
+\hyperlink{classDrone_a667075abb1eb5c54be6418884a387d14}{$\sim$\+Drone} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \hyperlink{classDrone}{Drone} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDrone_a77ede44227d2345f1930ee940923ce55}\label{classDrone_a77ede44227d2345f1930ee940923ce55}} 
+\hyperlink{classDrone_a77ede44227d2345f1930ee940923ce55}{Drone} (const \hyperlink{classDrone}{Drone} \&drone)
+\begin{DoxyCompactList}\small\item\em Copy Constructor for drone. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDrone_a60993a186f448dbc930c262d3d7d17f5}\label{classDrone_a60993a186f448dbc930c262d3d7d17f5}} 
+void \hyperlink{classDrone_a60993a186f448dbc930c262d3d7d17f5}{operator=} (const \hyperlink{classDrone}{Drone} \&)
+\begin{DoxyCompactList}\small\item\em The = operator for the drone. \end{DoxyCompactList}\item 
+void \hyperlink{classDrone_a3987b919bf886857c139d2cde97d1d49}{Set\+Movement\+Startegy} (\hyperlink{classiMovementStrategy}{i\+Movement\+Strategy} $\ast$strategy)
+\begin{DoxyCompactList}\small\item\em Set the Movement Startegy object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDrone_acff4a233892a97186deab0cdca8b71d7}\label{classDrone_acff4a233892a97186deab0cdca8b71d7}} 
+void \hyperlink{classDrone_acff4a233892a97186deab0cdca8b71d7}{Set\+Search\+Strategy} (\hyperlink{classSearchStrategy}{Search\+Strategy} $\ast$search\+Strategy)
+\begin{DoxyCompactList}\small\item\em Sets the Search Strategy. \end{DoxyCompactList}\item 
+void \hyperlink{classDrone_ac9aa5a105012c7ba8be6542217e58242}{Set\+Rescue\+Drone} (\hyperlink{classDrone}{Drone} $\ast$\hyperlink{classDrone_ad5f726ad8f4c40ecf159ddb218346029}{rescue\+Drone})
+\begin{DoxyCompactList}\small\item\em Set the Rescue \hyperlink{classDrone}{Drone} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classDrone_a5aa543be4e70c00b14a38fef06bf6166}\label{classDrone_a5aa543be4e70c00b14a38fef06bf6166}} 
+int \hyperlink{classDrone_a5aa543be4e70c00b14a38fef06bf6166}{id}
+\begin{DoxyCompactList}\small\item\em integer ID of our drone \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDrone_ac5f6c269378659247acd057142542013}\label{classDrone_ac5f6c269378659247acd057142542013}} 
+std\+::string \hyperlink{classDrone_ac5f6c269378659247acd057142542013}{name}
+\begin{DoxyCompactList}\small\item\em drone name \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDrone_ae9fe2ea1c0fc66f852efb674b66661f3}\label{classDrone_ae9fe2ea1c0fc66f852efb674b66661f3}} 
+\hyperlink{classVector3}{Vector3} $\ast$ \hyperlink{classDrone_ae9fe2ea1c0fc66f852efb674b66661f3}{position}
+\begin{DoxyCompactList}\small\item\em 3D vector representing drone\textquotesingle{}s position \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDrone_ac3a222e76594ec66819cbc5c45f4bcc6}\label{classDrone_ac3a222e76594ec66819cbc5c45f4bcc6}} 
+\hyperlink{classVector3}{Vector3} $\ast$ \hyperlink{classDrone_ac3a222e76594ec66819cbc5c45f4bcc6}{velocity}
+\begin{DoxyCompactList}\small\item\em 3D vector representing drone\textquotesingle{}s velocity \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDrone_a09d9eeafc319e4f900033ce9af4fee86}\label{classDrone_a09d9eeafc319e4f900033ce9af4fee86}} 
+\hyperlink{classVector3}{Vector3} $\ast$ \hyperlink{classDrone_a09d9eeafc319e4f900033ce9af4fee86}{direction}
+\begin{DoxyCompactList}\small\item\em 3D vector representing drone\textquotesingle{}s direction \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDrone_a4cbe7d72da36c27cb58fa797240c9698}\label{classDrone_a4cbe7d72da36c27cb58fa797240c9698}} 
+double \hyperlink{classDrone_a4cbe7d72da36c27cb58fa797240c9698}{speed}
+\begin{DoxyCompactList}\small\item\em the speed the drone can move \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDrone_aa8177686267728ddaed8c6aaff11f605}\label{classDrone_aa8177686267728ddaed8c6aaff11f605}} 
+\hyperlink{classBattery}{Battery} $\ast$ \hyperlink{classDrone_aa8177686267728ddaed8c6aaff11f605}{battery}
+\begin{DoxyCompactList}\small\item\em battery object representing life remaining in drone \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDrone_a45d19476c877bea9175e2b3d491994fb}\label{classDrone_a45d19476c877bea9175e2b3d491994fb}} 
+\hyperlink{classiMovementStrategy}{i\+Movement\+Strategy} $\ast$ \hyperlink{classDrone_a45d19476c877bea9175e2b3d491994fb}{movement}
+\begin{DoxyCompactList}\small\item\em the movement strategy object for the drone \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDrone_aab172d13642014c08807fc71d04600d3}\label{classDrone_aab172d13642014c08807fc71d04600d3}} 
+\hyperlink{classCamera}{Camera} $\ast$ \hyperlink{classDrone_aab172d13642014c08807fc71d04600d3}{camera}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classCamera}{Camera} object for the drone. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDrone_a67e8d4713426b85ceacd4f93e5d13445}\label{classDrone_a67e8d4713426b85ceacd4f93e5d13445}} 
+double \hyperlink{classDrone_a67e8d4713426b85ceacd4f93e5d13445}{elapsed\+Time}
+\begin{DoxyCompactList}\small\item\em keeps track of elapsed time \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDrone_ac02d8033dcd953191995f71656e79ab4}\label{classDrone_ac02d8033dcd953191995f71656e79ab4}} 
+double \hyperlink{classDrone_ac02d8033dcd953191995f71656e79ab4}{camera\+Time}
+\begin{DoxyCompactList}\small\item\em The search strategy for the drone. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDrone_af504841d9023aa2d09b888da08a8de47}\label{classDrone_af504841d9023aa2d09b888da08a8de47}} 
+\hyperlink{classSearchStrategy}{Search\+Strategy} $\ast$ \hyperlink{classDrone_af504841d9023aa2d09b888da08a8de47}{search}
+\begin{DoxyCompactList}\small\item\em The search strategy for the drone. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDrone_a9225859e6bc82f8084cec5959e677303}\label{classDrone_a9225859e6bc82f8084cec5959e677303}} 
+bool \hyperlink{classDrone_a9225859e6bc82f8084cec5959e677303}{robot\+Found} = false
+\begin{DoxyCompactList}\small\item\em Has the robot been found for navigation. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDrone_aa1c4c871bc26db75720e8a9579007188}\label{classDrone_aa1c4c871bc26db75720e8a9579007188}} 
+bool \hyperlink{classDrone_aa1c4c871bc26db75720e8a9579007188}{patroling} = false
+\begin{DoxyCompactList}\small\item\em Should the drone start patroling, this happens if the drone starts in the bottom left corner. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDrone_ab52ab733570dcdb842df3b31ca4030ff}\label{classDrone_ab52ab733570dcdb842df3b31ca4030ff}} 
+\hyperlink{classVector3}{Vector3} \hyperlink{classDrone_ab52ab733570dcdb842df3b31ca4030ff}{robot\+Location}
+\begin{DoxyCompactList}\small\item\em The found robot\textquotesingle{}s location. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDrone_a1b2bf80f215cb6625861a638db908634}\label{classDrone_a1b2bf80f215cb6625861a638db908634}} 
+\hyperlink{classVector3}{Vector3} \hyperlink{classDrone_a1b2bf80f215cb6625861a638db908634}{starting\+Location}
+\begin{DoxyCompactList}\small\item\em The starting location of the drone. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDrone_a5ec481b8bb607b969903b41eaafd0769}\label{classDrone_a5ec481b8bb607b969903b41eaafd0769}} 
+bool \hyperlink{classDrone_a5ec481b8bb607b969903b41eaafd0769}{has\+Camera} = true
+\begin{DoxyCompactList}\small\item\em should this drone be taking pictures to search for the drone? \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDrone_ad5f726ad8f4c40ecf159ddb218346029}\label{classDrone_ad5f726ad8f4c40ecf159ddb218346029}} 
+\hyperlink{classDrone}{Drone} $\ast$ \hyperlink{classDrone_ad5f726ad8f4c40ecf159ddb218346029}{rescue\+Drone}
+\begin{DoxyCompactList}\small\item\em The drone that will rescue the robot. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Our actual drone that will be searching for the robot. Contains tons methods to update postion and velocity. Also has many search patterns to find the target robot. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classDrone_ad81e02cd82137d51ce68f4698812c949}\label{classDrone_ad81e02cd82137d51ce68f4698812c949}} 
+\index{Drone@{Drone}!Get\+Direction@{Get\+Direction}}
+\index{Get\+Direction@{Get\+Direction}!Drone@{Drone}}
+\subsubsection{\texorpdfstring{Get\+Direction()}{GetDirection()}}
+{\footnotesize\ttfamily \hyperlink{classVector3}{Vector3}$\ast$ Drone\+::\+Get\+Direction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get the Direction vector. 
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{classVector3}{Vector3} 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classiMovableEntity_a8705402280a16c7eb6a271d1be34e678}{i\+Movable\+Entity}.
+
+\mbox{\Hypertarget{classDrone_ac8c535643f2be526c0ac8b0cc1fc49fc}\label{classDrone_ac8c535643f2be526c0ac8b0cc1fc49fc}} 
+\index{Drone@{Drone}!Get\+Speed@{Get\+Speed}}
+\index{Get\+Speed@{Get\+Speed}!Drone@{Drone}}
+\subsubsection{\texorpdfstring{Get\+Speed()}{GetSpeed()}}
+{\footnotesize\ttfamily double Drone\+::\+Get\+Speed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the Speed value. 
+
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDrone_a2ef1fbc3da17a8d599d2969990eb9614}\label{classDrone_a2ef1fbc3da17a8d599d2969990eb9614}} 
+\index{Drone@{Drone}!Set\+Direction@{Set\+Direction}}
+\index{Set\+Direction@{Set\+Direction}!Drone@{Drone}}
+\subsubsection{\texorpdfstring{Set\+Direction()}{SetDirection()}}
+{\footnotesize\ttfamily void Drone\+::\+Set\+Direction (\begin{DoxyParamCaption}\item[{\hyperlink{classVector3}{Vector3} \&}]{dir }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Set the Direction vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dir} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classiMovableEntity_a631c4a8e24360bedecf1a675a18b10ef}{i\+Movable\+Entity}.
+
+\mbox{\Hypertarget{classDrone_a3987b919bf886857c139d2cde97d1d49}\label{classDrone_a3987b919bf886857c139d2cde97d1d49}} 
+\index{Drone@{Drone}!Set\+Movement\+Startegy@{Set\+Movement\+Startegy}}
+\index{Set\+Movement\+Startegy@{Set\+Movement\+Startegy}!Drone@{Drone}}
+\subsubsection{\texorpdfstring{Set\+Movement\+Startegy()}{SetMovementStartegy()}}
+{\footnotesize\ttfamily void Drone\+::\+Set\+Movement\+Startegy (\begin{DoxyParamCaption}\item[{\hyperlink{classiMovementStrategy}{i\+Movement\+Strategy} $\ast$}]{strategy }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the Movement Startegy object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em strategy} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDrone_ac9aa5a105012c7ba8be6542217e58242}\label{classDrone_ac9aa5a105012c7ba8be6542217e58242}} 
+\index{Drone@{Drone}!Set\+Rescue\+Drone@{Set\+Rescue\+Drone}}
+\index{Set\+Rescue\+Drone@{Set\+Rescue\+Drone}!Drone@{Drone}}
+\subsubsection{\texorpdfstring{Set\+Rescue\+Drone()}{SetRescueDrone()}}
+{\footnotesize\ttfamily void Drone\+::\+Set\+Rescue\+Drone (\begin{DoxyParamCaption}\item[{\hyperlink{classDrone}{Drone} $\ast$}]{rescue\+Drone }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the Rescue \hyperlink{classDrone}{Drone} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rescue\+Drone} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDrone_a0e369b1d4bbc379387c8ea6a73d74525}\label{classDrone_a0e369b1d4bbc379387c8ea6a73d74525}} 
+\index{Drone@{Drone}!Set\+Robot\+Found@{Set\+Robot\+Found}}
+\index{Set\+Robot\+Found@{Set\+Robot\+Found}!Drone@{Drone}}
+\subsubsection{\texorpdfstring{Set\+Robot\+Found()}{SetRobotFound()}}
+{\footnotesize\ttfamily void Drone\+::\+Set\+Robot\+Found (\begin{DoxyParamCaption}\item[{\hyperlink{classVector3}{Vector3}}]{robot\+Location,  }\item[{\hyperlink{classVector3}{Vector3}}]{hospital\+Location }\end{DoxyParamCaption})}
+
+
+
+Set the \hyperlink{classRobot}{Robot} Found object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em robot\+Location} & \\
+\hline
+{\em hospital\+Location} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDrone_af8cb12a403cf56145000f247689d0951}\label{classDrone_af8cb12a403cf56145000f247689d0951}} 
+\index{Drone@{Drone}!Set\+Speed@{Set\+Speed}}
+\index{Set\+Speed@{Set\+Speed}!Drone@{Drone}}
+\subsubsection{\texorpdfstring{Set\+Speed()}{SetSpeed()}}
+{\footnotesize\ttfamily void Drone\+::\+Set\+Speed (\begin{DoxyParamCaption}\item[{double}]{speed }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the Speed value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em speed} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/user/repo/project/simulation/include/\hyperlink{drone_8h}{drone.\+h}\item 
+/home/user/repo/project/simulation/src/drone.\+cc\end{DoxyCompactItemize}

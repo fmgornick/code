@@ -1,0 +1,43 @@
+\hypertarget{classiEntityFactory}{}\section{i\+Entity\+Factory Class Reference}
+\label{classiEntityFactory}\index{i\+Entity\+Factory@{i\+Entity\+Factory}}
+
+
+Entity factory interface. Used for our abstract factory method for making new entity objects at run time. Implementation is carried out by \hyperlink{classDroneFactory}{Drone\+Factory}, \hyperlink{classRobotFactory}{Robot\+Factory}, hospital\+Factory, and \hyperlink{classRechargeStationFactory}{Recharge\+Station\+Factory}.  
+
+
+
+
+{\ttfamily \#include $<$i\+\_\+entity\+\_\+factory.\+h$>$}
+
+
+
+Inheritance diagram for i\+Entity\+Factory\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classiEntityFactory__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for i\+Entity\+Factory\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=176pt]{classiEntityFactory__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classiEntityFactory_ab1ce8456ec513534a056c446d417aab7}\label{classiEntityFactory_ab1ce8456ec513534a056c446d417aab7}} 
+virtual \hyperlink{classiEntity}{i\+Entity} $\ast$ {\bfseries Create\+Entity} (picojson\+::object \&entity, \hyperlink{classCamera}{Camera} $\ast$camera)=0
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Entity factory interface. Used for our abstract factory method for making new entity objects at run time. Implementation is carried out by \hyperlink{classDroneFactory}{Drone\+Factory}, \hyperlink{classRobotFactory}{Robot\+Factory}, hospital\+Factory, and \hyperlink{classRechargeStationFactory}{Recharge\+Station\+Factory}. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/user/repo/project/simulation/include/\hyperlink{i__entity__factory_8h}{i\+\_\+entity\+\_\+factory.\+h}\end{DoxyCompactItemize}

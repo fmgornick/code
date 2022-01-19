@@ -1,0 +1,51 @@
+\hypertarget{classGaussianBlurFilter}{}\section{Gaussian\+Blur\+Filter Class Reference}
+\label{classGaussianBlurFilter}\index{Gaussian\+Blur\+Filter@{Gaussian\+Blur\+Filter}}
+
+
+The main class for \hyperlink{classGaussianBlurFilter}{Gaussian\+Blur\+Filter}, extends \hyperlink{classConvolutionFilter}{Convolution\+Filter}. Creates a 5 x 5 kernel to apply to each pixel and \hyperlink{classConvolutionFilter}{Convolution\+Filter} is used to iterate through the image to apply it. Gaussian Blur is different from Mean Blur in that the representation of each pixel isn\textquotesingle{}t equally distributed like Mean Blur.  
+
+
+
+
+{\ttfamily \#include $<$gaussian\+\_\+blur\+\_\+filter.\+h$>$}
+
+
+
+Inheritance diagram for Gaussian\+Blur\+Filter\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=212pt]{classGaussianBlurFilter__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Gaussian\+Blur\+Filter\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=212pt]{classGaussianBlurFilter__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classGaussianBlurFilter_a5b073291df50d87077650371c90af0f9}\label{classGaussianBlurFilter_a5b073291df50d87077650371c90af0f9}} 
+\hyperlink{classGaussianBlurFilter_a5b073291df50d87077650371c90af0f9}{Gaussian\+Blur\+Filter} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classGaussianBlurFilter_a371400ed538c678311cc950f8eaa5218}\label{classGaussianBlurFilter_a371400ed538c678311cc950f8eaa5218}} 
+\hyperlink{classGaussianBlurFilter_a371400ed538c678311cc950f8eaa5218}{$\sim$\+Gaussian\+Blur\+Filter} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classGaussianBlurFilter_a8260deac8ea6cda8e473bc6da0846bff}\label{classGaussianBlurFilter_a8260deac8ea6cda8e473bc6da0846bff}} 
+void \hyperlink{classGaussianBlurFilter_a8260deac8ea6cda8e473bc6da0846bff}{Apply} (std\+::vector$<$ \hyperlink{classImage}{Image} $\ast$$>$ original, std\+::vector$<$ \hyperlink{classImage}{Image} $\ast$$>$ filtered)
+\begin{DoxyCompactList}\small\item\em Apply function to be overridden by parents Apply function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+The main class for \hyperlink{classGaussianBlurFilter}{Gaussian\+Blur\+Filter}, extends \hyperlink{classConvolutionFilter}{Convolution\+Filter}. Creates a 5 x 5 kernel to apply to each pixel and \hyperlink{classConvolutionFilter}{Convolution\+Filter} is used to iterate through the image to apply it. Gaussian Blur is different from Mean Blur in that the representation of each pixel isn\textquotesingle{}t equally distributed like Mean Blur. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/user/repo/project/image/include/\hyperlink{gaussian__blur__filter_8h}{gaussian\+\_\+blur\+\_\+filter.\+h}\item 
+/home/user/repo/project/image/src/gaussian\+\_\+blur\+\_\+filter.\+cc\end{DoxyCompactItemize}

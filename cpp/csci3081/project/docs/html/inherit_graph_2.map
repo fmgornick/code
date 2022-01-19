@@ -1,0 +1,5 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classICameraController.html" title="The Camera Controller class controls and allows for monitoring of all cameras. " alt="" coords="5,5,147,32"/>
+<area shape="rect" id="node2" href="$classWebApp.html" title="A Web Application Sever that communicates with a web page through web sockets. " alt="" coords="201,5,275,32"/>
+<area shape="rect" id="node4" href="$classDroneApp.html" title="DroneApp" alt="" coords="195,56,281,83"/>
+</map>

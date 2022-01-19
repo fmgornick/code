@@ -1,0 +1,34 @@
+\hypertarget{breadth__first__search_8h_source}{}\doxysection{breadth\+\_\+first\+\_\+search.\+h}
+\label{breadth__first__search_8h_source}\index{/Users/Fletcher/csci3081/repo-\/team-\/0/project/simulation/include/breadth\_first\_search.h@{/Users/Fletcher/csci3081/repo-\/team-\/0/project/simulation/include/breadth\_first\_search.h}}
+\mbox{\hyperlink{breadth__first__search_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#ifndef BREADTH\_FIRST\_SEARCH\_H}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#define BREADTH\_FIRST\_SEARCH\_H}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{8 \textcolor{comment}{ * Includes}}
+\DoxyCodeLine{9 \textcolor{comment}{ ******************************************************************************/}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{search__strategy_8h}{search\_strategy.h}}"{}}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{vector3_8h}{vector3.h}}"{}}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <queue>}}
+\DoxyCodeLine{13 \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{14 \textcolor{comment}{ * Class Definitions}}
+\DoxyCodeLine{15 \textcolor{comment}{ ******************************************************************************/}}
+\DoxyCodeLine{21 \textcolor{keyword}{class }\mbox{\hyperlink{classBreadthFirstSearch}{BreadthFirstSearch}} : \textcolor{keyword}{public} \mbox{\hyperlink{classSearchStrategy}{SearchStrategy}} \{}
+\DoxyCodeLine{22     \textcolor{keyword}{public}:}
+\DoxyCodeLine{26         \mbox{\hyperlink{classBreadthFirstSearch_a5a9f84e4b10107e8e809349292f6ca76}{BreadthFirstSearch}}() \{}
+\DoxyCodeLine{27             \mbox{\hyperlink{classBreadthFirstSearch_a577ce5c2d8206b1b79f4de751960f3f4}{queue}}.push(\textcolor{stringliteral}{"{}1721335785"{}});}
+\DoxyCodeLine{28         \};}
+\DoxyCodeLine{32         \mbox{\hyperlink{classVector3}{Vector3}}* \mbox{\hyperlink{classBreadthFirstSearch_a69eb7594b796343b19d5f8d4a67516d3}{Search}}(\mbox{\hyperlink{classVector3}{Vector3}} currentPos);}
+\DoxyCodeLine{36         std::queue<std::string> \mbox{\hyperlink{classBreadthFirstSearch_a3d612af80ec42f7e6051edf77549711d}{GetQueue}}()\{}
+\DoxyCodeLine{37             \textcolor{keywordflow}{return} \mbox{\hyperlink{classBreadthFirstSearch_a577ce5c2d8206b1b79f4de751960f3f4}{queue}};}
+\DoxyCodeLine{38         \}}
+\DoxyCodeLine{39     \textcolor{keyword}{private}:}
+\DoxyCodeLine{43         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classBreadthFirstSearch_a2f7227457d7b1e77a1345f38bfb16d36}{IsDroneAtNode}}(\mbox{\hyperlink{classVector3}{Vector3}} currentPos);}
+\DoxyCodeLine{47         std::queue<std::string> \mbox{\hyperlink{classBreadthFirstSearch_a577ce5c2d8206b1b79f4de751960f3f4}{queue}};}
+\DoxyCodeLine{48     \};}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

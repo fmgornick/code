@@ -1,0 +1,4 @@
+<map id="SolarizationFilter" name="SolarizationFilter">
+<area shape="rect" id="node2" href="$classSimpleFilter.html" title="The main class for SimpleFilter, extends Filter. This filter does the brunt of the work when iteratin..." alt="" coords="23,145,154,237"/>
+<area shape="rect" id="node3" href="$classFilter.html" title="The main class for Filter. This is where all the filters are derived from. " alt="" coords="43,5,134,97"/>
+</map>

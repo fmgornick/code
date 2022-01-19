@@ -1,0 +1,53 @@
+\hypertarget{classCompositeEntityFactory}{}\section{Composite\+Entity\+Factory Class Reference}
+\label{classCompositeEntityFactory}\index{Composite\+Entity\+Factory@{Composite\+Entity\+Factory}}
+
+
+Composite Entity Factory. This is the class that get\textquotesingle{}s called when creating new entities. Has an entity factory vector member variable to keep track of all the factories. Then when we want to create a new factory, it\textquotesingle{}s added to the vector to be referenced for entity creation.  
+
+
+
+
+{\ttfamily \#include $<$composite\+\_\+entity\+\_\+factory.\+h$>$}
+
+
+
+Inheritance diagram for Composite\+Entity\+Factory\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=232pt]{classCompositeEntityFactory__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Composite\+Entity\+Factory\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=232pt]{classCompositeEntityFactory__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classCompositeEntityFactory_a6ecb6093a839b686c4693bf00713247f}\label{classCompositeEntityFactory_a6ecb6093a839b686c4693bf00713247f}} 
+void \hyperlink{classCompositeEntityFactory_a6ecb6093a839b686c4693bf00713247f}{Add\+Factory} (\hyperlink{classiEntityFactory}{i\+Entity\+Factory} $\ast$factory)
+\begin{DoxyCompactList}\small\item\em adds factory to vector. This vector is used to create entities of a specific type in the Create\+Entity function. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCompositeEntityFactory_a0f30a9a8443a04f0fa8f17a7bc2f0a58}\label{classCompositeEntityFactory_a0f30a9a8443a04f0fa8f17a7bc2f0a58}} 
+\hyperlink{classiEntity}{i\+Entity} $\ast$ \hyperlink{classCompositeEntityFactory_a0f30a9a8443a04f0fa8f17a7bc2f0a58}{Create\+Entity} (picojson\+::object \&entity, \hyperlink{classCamera}{Camera} $\ast$camera)
+\begin{DoxyCompactList}\small\item\em loops through vector of entity factories creating new entities until a null pointer isn\textquotesingle{}t returned. If the object doesn\textquotesingle{}t match the factory called, then they return null pointers. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classCompositeEntityFactory_a7dec8bde43fb44220a757c45eaa00435}\label{classCompositeEntityFactory_a7dec8bde43fb44220a757c45eaa00435}} 
+std\+::list$<$ \hyperlink{classiEntityFactory}{i\+Entity\+Factory} $\ast$ $>$ \hyperlink{classCompositeEntityFactory_a7dec8bde43fb44220a757c45eaa00435}{factories}
+\begin{DoxyCompactList}\small\item\em vector of \hyperlink{classiEntityFactory}{i\+Entity\+Factory} pointers \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Composite Entity Factory. This is the class that get\textquotesingle{}s called when creating new entities. Has an entity factory vector member variable to keep track of all the factories. Then when we want to create a new factory, it\textquotesingle{}s added to the vector to be referenced for entity creation. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/user/repo/project/simulation/include/\hyperlink{composite__entity__factory_8h}{composite\+\_\+entity\+\_\+factory.\+h}\item 
+/home/user/repo/project/simulation/src/composite\+\_\+entity\+\_\+factory.\+cc\end{DoxyCompactItemize}

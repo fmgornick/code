@@ -1,0 +1,4 @@
+<map id="ThresholdFilter" name="ThresholdFilter">
+<area shape="rect" id="node2" href="$classSimpleFilter.html" title="The main class for SimpleFilter, extends Filter. This filter does the brunt of the work when iteratin..." alt="" coords="17,145,148,237"/>
+<area shape="rect" id="node3" href="$classFilter.html" title="The main class for Filter. This is where all the filters are derived from. " alt="" coords="37,5,128,97"/>
+</map>

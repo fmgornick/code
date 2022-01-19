@@ -1,0 +1,7 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node2" href="$classFactoryTest.html" title="Integration tests for our composite factory pattern. These tests checks to see if our factory pattern..." alt="" coords="115,5,209,32"/>
+<area shape="rect" id="node3" href="$classFilterTest.html" title="This is a series of unit tests to check how accurate my FFT image convolution filter works..." alt="" coords="122,56,202,83"/>
+<area shape="rect" id="node4" href="$classFindRobotTest.html" title="FindRobotTest" alt="" coords="107,107,217,133"/>
+<area shape="rect" id="node5" href="$classRegressionTest.html" title="RegressionTest" alt="" coords="103,157,221,184"/>
+<area shape="rect" id="node6" href="$classSearchAlgoTest.html" title="SearchAlgoTest" alt="" coords="101,208,223,235"/>
+</map>

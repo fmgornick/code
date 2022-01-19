@@ -1,0 +1,36 @@
+\hypertarget{beeline__movement_8h_source}{}\doxysection{beeline\+\_\+movement.\+h}
+\label{beeline__movement_8h_source}\index{/Users/Fletcher/csci3081/repo-\/team-\/0/project/simulation/include/beeline\_movement.h@{/Users/Fletcher/csci3081/repo-\/team-\/0/project/simulation/include/beeline\_movement.h}}
+\mbox{\hyperlink{beeline__movement_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#ifndef BEELINE\_MOVEMENT\_H\_}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#define BEELINE\_MOVEMENT\_H\_}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{8 \textcolor{comment}{ * Includes}}
+\DoxyCodeLine{9 \textcolor{comment}{ ******************************************************************************/}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{drone_8h}{drone.h}}"{}}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}i\_movement\_strategy.h"{}}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{vector3_8h}{vector3.h}}"{}}}
+\DoxyCodeLine{13 \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{14 \textcolor{comment}{ * Class Definitions}}
+\DoxyCodeLine{15 \textcolor{comment}{ ******************************************************************************/}}
+\DoxyCodeLine{21 \textcolor{keyword}{class }\mbox{\hyperlink{classBeelineMovement}{BeelineMovement}} : \textcolor{keyword}{public} \mbox{\hyperlink{classiMovementStrategy}{iMovementStrategy}} \{}
+\DoxyCodeLine{22 \textcolor{keyword}{public}:}
+\DoxyCodeLine{27   \mbox{\hyperlink{classBeelineMovement_abebb0d5ff296ed7498b43438fffaddc3}{BeelineMovement}}(\mbox{\hyperlink{classVector3}{Vector3}} \mbox{\hyperlink{classBeelineMovement_a78e1e59186f4e2082365c3d9816f96c5}{current}}, \mbox{\hyperlink{classVector3}{Vector3}} \mbox{\hyperlink{classBeelineMovement_a49239eec9d469db2fb34b4268a97da6e}{target}}, \textcolor{keywordtype}{double} \mbox{\hyperlink{classBeelineMovement_a580f1c87f104f067fb1ad09dbe3a83af}{speed}});}
+\DoxyCodeLine{33   \mbox{\hyperlink{classVector3}{Vector3}} \mbox{\hyperlink{classBeelineMovement_abfe070233bcdba668cd6f445b149f310}{GetPosition}}();}
+\DoxyCodeLine{39   \mbox{\hyperlink{classVector3}{Vector3}} \mbox{\hyperlink{classBeelineMovement_a20adc01dabe57edd17128b81ec49661a}{GetVelocity}}();}
+\DoxyCodeLine{46   \mbox{\hyperlink{classVector3}{Vector3}} \mbox{\hyperlink{classBeelineMovement_a6fd4a3d6f7be2cb6dfe623ce40fc55c4}{UpdateVelocity}}(\textcolor{keywordtype}{double} dt, \mbox{\hyperlink{classVector3}{Vector3}} \mbox{\hyperlink{classBeelineMovement_a78e1e59186f4e2082365c3d9816f96c5}{current}}, \mbox{\hyperlink{classVector3}{Vector3}} \mbox{\hyperlink{classBeelineMovement_a49239eec9d469db2fb34b4268a97da6e}{target}}, \textcolor{keywordtype}{double} time);}
+\DoxyCodeLine{47   \textcolor{keywordtype}{bool} isMoving();}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49 \textcolor{keyword}{private}:}
+\DoxyCodeLine{53   \mbox{\hyperlink{classVector3}{Vector3}} \mbox{\hyperlink{classBeelineMovement_a78e1e59186f4e2082365c3d9816f96c5}{current}};}
+\DoxyCodeLine{57   \mbox{\hyperlink{classVector3}{Vector3}} \mbox{\hyperlink{classBeelineMovement_a49239eec9d469db2fb34b4268a97da6e}{target}};}
+\DoxyCodeLine{61   \mbox{\hyperlink{classVector3}{Vector3}} \mbox{\hyperlink{classBeelineMovement_a5fe0d89a9bad2fa05e662080accf924b}{velocity}};}
+\DoxyCodeLine{65   \textcolor{keywordtype}{double} \mbox{\hyperlink{classBeelineMovement_a580f1c87f104f067fb1ad09dbe3a83af}{speed}};}
+\DoxyCodeLine{69   \textcolor{keywordtype}{double} \mbox{\hyperlink{classBeelineMovement_ad28d0dbbe30c429d3dd2b78c6c5c6a0f}{distanceTraveled}};}
+\DoxyCodeLine{70 \};}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

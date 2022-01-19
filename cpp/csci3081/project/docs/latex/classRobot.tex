@@ -1,0 +1,70 @@
+\hypertarget{classRobot}{}\section{Robot Class Reference}
+\label{classRobot}\index{Robot@{Robot}}
+
+
+robot is a movable entity. This robot will be placed randomly in minneapolis, and our goal is to use our drone to find this robot entity within a given time limit.  
+
+
+
+
+{\ttfamily \#include $<$robot.\+h$>$}
+
+
+
+Inheritance diagram for Robot\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=172pt]{classRobot__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Robot\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=294pt]{classRobot__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classRobot_a4fc7c70ae20623f05e06f2ecb388b6c4}\label{classRobot_a4fc7c70ae20623f05e06f2ecb388b6c4}} 
+\hyperlink{classRobot_a4fc7c70ae20623f05e06f2ecb388b6c4}{Robot} ()
+\begin{DoxyCompactList}\small\item\em default constructor \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRobot_a1947e62ff7214534b8789a891e918334}\label{classRobot_a1947e62ff7214534b8789a891e918334}} 
+\hyperlink{classRobot_a1947e62ff7214534b8789a891e918334}{Robot} (int \hyperlink{classRobot_ad7fd8fd1721ae41eb67246b9b360e7a6}{id}, std\+::string \hyperlink{classRobot_ae11f12fef20c4252161c6b774a436f1d}{name}, \hyperlink{classVector3}{Vector3} $\ast$pos)
+\begin{DoxyCompactList}\small\item\em constructor that takes arguments \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRobot_a1342184ee0f68a87a00876cff4f57c40}\label{classRobot_a1342184ee0f68a87a00876cff4f57c40}} 
+int \hyperlink{classRobot_a1342184ee0f68a87a00876cff4f57c40}{Get\+ID} ()
+\begin{DoxyCompactList}\small\item\em getter\+: returns entity identification number \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRobot_a86cf5fdd49ff62fbf8643d7f49d2c058}\label{classRobot_a86cf5fdd49ff62fbf8643d7f49d2c058}} 
+const std\+::string \& \hyperlink{classRobot_a86cf5fdd49ff62fbf8643d7f49d2c058}{Get\+Name} () const
+\begin{DoxyCompactList}\small\item\em getter\+: returns entity name \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRobot_a7111d4ee778aa782489e711ceb1cd2bc}\label{classRobot_a7111d4ee778aa782489e711ceb1cd2bc}} 
+\hyperlink{classVector3}{Vector3} $\ast$ \hyperlink{classRobot_a7111d4ee778aa782489e711ceb1cd2bc}{Get\+Position} ()
+\begin{DoxyCompactList}\small\item\em getter\+: returns entity position \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRobot_a504c8f5b4ccd83f13500593ca05ad092}\label{classRobot_a504c8f5b4ccd83f13500593ca05ad092}} 
+void \hyperlink{classRobot_a504c8f5b4ccd83f13500593ca05ad092}{Set\+Position} (\hyperlink{classVector3}{Vector3} \&pos)
+\begin{DoxyCompactList}\small\item\em setter\+: updates or initializes position \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classRobot_ad7fd8fd1721ae41eb67246b9b360e7a6}\label{classRobot_ad7fd8fd1721ae41eb67246b9b360e7a6}} 
+int \hyperlink{classRobot_ad7fd8fd1721ae41eb67246b9b360e7a6}{id}
+\begin{DoxyCompactList}\small\item\em integer ID of our robot (may not be neccessary) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRobot_ae11f12fef20c4252161c6b774a436f1d}\label{classRobot_ae11f12fef20c4252161c6b774a436f1d}} 
+std\+::string \hyperlink{classRobot_ae11f12fef20c4252161c6b774a436f1d}{name}
+\begin{DoxyCompactList}\small\item\em robot name \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRobot_a824bd711291c3fa12736732c372e1701}\label{classRobot_a824bd711291c3fa12736732c372e1701}} 
+\hyperlink{classVector3}{Vector3} $\ast$ \hyperlink{classRobot_a824bd711291c3fa12736732c372e1701}{position}
+\begin{DoxyCompactList}\small\item\em 3D vector representing robot\textquotesingle{}s position \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+robot is a movable entity. This robot will be placed randomly in minneapolis, and our goal is to use our drone to find this robot entity within a given time limit. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/user/repo/project/simulation/include/\hyperlink{robot_8h}{robot.\+h}\end{DoxyCompactItemize}

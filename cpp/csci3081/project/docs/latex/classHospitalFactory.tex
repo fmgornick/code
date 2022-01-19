@@ -1,0 +1,44 @@
+\hypertarget{classHospitalFactory}{}\section{Hospital\+Factory Class Reference}
+\label{classHospitalFactory}\index{Hospital\+Factory@{Hospital\+Factory}}
+
+
+\hyperlink{classHospital}{Hospital} Factory. When called, it creates a new object of type \hyperlink{classHospital}{Hospital}. This factory is never called directly, and is really only used through the composite entity factory.  
+
+
+
+
+{\ttfamily \#include $<$hospital\+\_\+factory.\+h$>$}
+
+
+
+Inheritance diagram for Hospital\+Factory\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=176pt]{classHospitalFactory__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Hospital\+Factory\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=176pt]{classHospitalFactory__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classHospitalFactory_abadf830ce14fcba272af78611c97791d}\label{classHospitalFactory_abadf830ce14fcba272af78611c97791d}} 
+\hyperlink{classiEntity}{i\+Entity} $\ast$ \hyperlink{classHospitalFactory_abadf830ce14fcba272af78611c97791d}{Create\+Entity} (picojson\+::object \&entity, \hyperlink{classCamera}{Camera} $\ast$camera)
+\begin{DoxyCompactList}\small\item\em checks if type specified is hospital. If so it creates and returns a pointer to our new hospital object. But if the type doesn\textquotesingle{}t match, then it just returns a null pointer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classHospital}{Hospital} Factory. When called, it creates a new object of type \hyperlink{classHospital}{Hospital}. This factory is never called directly, and is really only used through the composite entity factory. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/user/repo/project/simulation/include/\hyperlink{hospital__factory_8h}{hospital\+\_\+factory.\+h}\item 
+/home/user/repo/project/simulation/src/hospital\+\_\+factory.\+cc\end{DoxyCompactItemize}

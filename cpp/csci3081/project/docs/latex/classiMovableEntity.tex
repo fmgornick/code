@@ -1,0 +1,110 @@
+\hypertarget{classiMovableEntity}{}\section{i\+Movable\+Entity Class Reference}
+\label{classiMovableEntity}\index{i\+Movable\+Entity@{i\+Movable\+Entity}}
+
+
+derived class of entity. This is an abstract class that represents entities that move. This class gets implemented by the \hyperlink{classDrone}{Drone} and \hyperlink{classRobot}{Robot} entities.  
+
+
+
+
+{\ttfamily \#include $<$i\+\_\+movable\+\_\+entity.\+h$>$}
+
+
+
+Inheritance diagram for i\+Movable\+Entity\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classiMovableEntity__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for i\+Movable\+Entity\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{classiMovableEntity__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classiMovableEntity_a7ef5def1645b30429c910bfd6a6b67ef}\label{classiMovableEntity_a7ef5def1645b30429c910bfd6a6b67ef}} 
+virtual \hyperlink{classiMovableEntity_a7ef5def1645b30429c910bfd6a6b67ef}{$\sim$i\+Movable\+Entity} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classiMovableEntity_a1723b1c151cd37c60d4dc8925e8fa571}\label{classiMovableEntity_a1723b1c151cd37c60d4dc8925e8fa571}} 
+virtual int \hyperlink{classiMovableEntity_a1723b1c151cd37c60d4dc8925e8fa571}{Get\+ID} ()=0
+\begin{DoxyCompactList}\small\item\em getter\+: returns entity identification number \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classiMovableEntity_a580ed40373852e32dd81bc3a92903d3e}\label{classiMovableEntity_a580ed40373852e32dd81bc3a92903d3e}} 
+virtual const std\+::string \& \hyperlink{classiMovableEntity_a580ed40373852e32dd81bc3a92903d3e}{Get\+Name} () const =0
+\begin{DoxyCompactList}\small\item\em getter\+: returns entity name \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classiMovableEntity_aba07ec07fb682e277e3e997256bda000}\label{classiMovableEntity_aba07ec07fb682e277e3e997256bda000}} 
+virtual \hyperlink{classVector3}{Vector3} $\ast$ \hyperlink{classiMovableEntity_aba07ec07fb682e277e3e997256bda000}{Get\+Position} ()=0
+\begin{DoxyCompactList}\small\item\em getter\+: returns entity position \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classiMovableEntity_afbf41c5d1499bfe87054a53de7d87fe8}\label{classiMovableEntity_afbf41c5d1499bfe87054a53de7d87fe8}} 
+virtual void \hyperlink{classiMovableEntity_afbf41c5d1499bfe87054a53de7d87fe8}{Set\+Position} (\hyperlink{classVector3}{Vector3} \&pos)=0
+\begin{DoxyCompactList}\small\item\em setter\+: updates or initializes position \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classiMovableEntity_a1285f3317ed9b2d59d8701711b5c3e67}\label{classiMovableEntity_a1285f3317ed9b2d59d8701711b5c3e67}} 
+virtual \hyperlink{classVector3}{Vector3} $\ast$ \hyperlink{classiMovableEntity_a1285f3317ed9b2d59d8701711b5c3e67}{Get\+Velocity} ()=0
+\begin{DoxyCompactList}\small\item\em getter\+: returns entity\textquotesingle{}s velocity \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classiMovableEntity_ab1b67096acd0e25f97ecceeeeed1c972}\label{classiMovableEntity_ab1b67096acd0e25f97ecceeeeed1c972}} 
+virtual void \hyperlink{classiMovableEntity_ab1b67096acd0e25f97ecceeeeed1c972}{Set\+Velocity} (\hyperlink{classVector3}{Vector3} \&vel)=0
+\begin{DoxyCompactList}\small\item\em setter\+: updates or initializes velocity \end{DoxyCompactList}\item 
+virtual \hyperlink{classVector3}{Vector3} $\ast$ \hyperlink{classiMovableEntity_a8705402280a16c7eb6a271d1be34e678}{Get\+Direction} ()=0
+\begin{DoxyCompactList}\small\item\em Get the Direction vector. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classiMovableEntity_a631c4a8e24360bedecf1a675a18b10ef}{Set\+Direction} (\hyperlink{classVector3}{Vector3} \&dir)=0
+\begin{DoxyCompactList}\small\item\em Set the Direction vector. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classiMovableEntity_a1d42f090ef93958ab543914669632da4}\label{classiMovableEntity_a1d42f090ef93958ab543914669632da4}} 
+virtual \hyperlink{classBattery}{Battery} $\ast$ \hyperlink{classiMovableEntity_a1d42f090ef93958ab543914669632da4}{Get\+Battery} ()=0
+\begin{DoxyCompactList}\small\item\em returns current battery life of entity \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classiMovableEntity_afa73b4b5381e1ad0668b1c468bc0970f}\label{classiMovableEntity_afa73b4b5381e1ad0668b1c468bc0970f}} 
+virtual void \hyperlink{classiMovableEntity_afa73b4b5381e1ad0668b1c468bc0970f}{Update} (double dt)=0
+\begin{DoxyCompactList}\small\item\em updates the entity\textquotesingle{}s position and other dynamic properties \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+derived class of entity. This is an abstract class that represents entities that move. This class gets implemented by the \hyperlink{classDrone}{Drone} and \hyperlink{classRobot}{Robot} entities. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classiMovableEntity_a8705402280a16c7eb6a271d1be34e678}\label{classiMovableEntity_a8705402280a16c7eb6a271d1be34e678}} 
+\index{i\+Movable\+Entity@{i\+Movable\+Entity}!Get\+Direction@{Get\+Direction}}
+\index{Get\+Direction@{Get\+Direction}!i\+Movable\+Entity@{i\+Movable\+Entity}}
+\subsubsection{\texorpdfstring{Get\+Direction()}{GetDirection()}}
+{\footnotesize\ttfamily virtual \hyperlink{classVector3}{Vector3}$\ast$ i\+Movable\+Entity\+::\+Get\+Direction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the Direction vector. 
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{classVector3}{Vector3} 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classDrone_ad81e02cd82137d51ce68f4698812c949}{Drone}.
+
+\mbox{\Hypertarget{classiMovableEntity_a631c4a8e24360bedecf1a675a18b10ef}\label{classiMovableEntity_a631c4a8e24360bedecf1a675a18b10ef}} 
+\index{i\+Movable\+Entity@{i\+Movable\+Entity}!Set\+Direction@{Set\+Direction}}
+\index{Set\+Direction@{Set\+Direction}!i\+Movable\+Entity@{i\+Movable\+Entity}}
+\subsubsection{\texorpdfstring{Set\+Direction()}{SetDirection()}}
+{\footnotesize\ttfamily virtual void i\+Movable\+Entity\+::\+Set\+Direction (\begin{DoxyParamCaption}\item[{\hyperlink{classVector3}{Vector3} \&}]{dir }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Set the Direction vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dir} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{classDrone_a2ef1fbc3da17a8d599d2969990eb9614}{Drone}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/user/repo/project/simulation/include/\hyperlink{i__movable__entity_8h}{i\+\_\+movable\+\_\+entity.\+h}\end{DoxyCompactItemize}

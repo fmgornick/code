@@ -1,0 +1,132 @@
+\hypertarget{classSimulationFacade}{}\section{Simulation\+Facade Class Reference}
+\label{classSimulationFacade}\index{Simulation\+Facade@{Simulation\+Facade}}
+
+
+Collaboration diagram for Simulation\+Facade\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSimulationFacade__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{group__simulation_gaeecad83c3d8ad32ebf60c9f49fda030f}{Simulation\+Facade} ()
+\begin{DoxyCompactList}\small\item\em Construct a new Simulation Facade object. \end{DoxyCompactList}\item 
+void \hyperlink{classSimulationFacade_a91e7955bf6f4c1998b7b4b8287e25812}{Create\+Entity\+Cmd} (picojson\+::object \&entity\+Data, \hyperlink{classICameraController}{I\+Camera\+Controller} \&camera\+Controller)
+\begin{DoxyCompactList}\small\item\em Get a Create\+Entity command from the J\+S\+ON scene and populate the entities and movable\+Entities array with the J\+S\+ON object. \end{DoxyCompactList}\item 
+void \hyperlink{classSimulationFacade_a7647c750c98ea6c40d82e66bb3ee13d6}{Add\+Entity} (\hyperlink{classiEntity}{i\+Entity} $\ast$entity)
+\begin{DoxyCompactList}\small\item\em Adds an \hyperlink{classiEntity}{i\+Entity} object to the entities vector. \end{DoxyCompactList}\item 
+void \hyperlink{classSimulationFacade_a18360b82dd112efe3dfb0f9faf618500}{Update\+Entities} (double dt)
+\begin{DoxyCompactList}\small\item\em Adds an \hyperlink{classiMovableEntity}{i\+Movable\+Entity} object to the movable\+Entities vector. \end{DoxyCompactList}\item 
+void \hyperlink{classSimulationFacade_a62c5da57349073c3f472346dd273b03a}{Update\+Simulation} (picojson\+::object \&return\+Value)
+\begin{DoxyCompactList}\small\item\em Sends all the staged changes in the simulation back to the UI. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classSimulationFacade_ac547735c0eb850583b9321bb65319e17}\label{classSimulationFacade_ac547735c0eb850583b9321bb65319e17}} 
+void {\bfseries Set\+Key} (const std\+::string \&key, int key\+Code)
+\item 
+\mbox{\Hypertarget{classSimulationFacade_a548f72a9ee7d092e64ef6b761c6e6af6}\label{classSimulationFacade_a548f72a9ee7d092e64ef6b761c6e6af6}} 
+bool {\bfseries Is\+Key\+Down} (const std\+::string \&key)
+\item 
+\mbox{\Hypertarget{classSimulationFacade_a1b91420670088f189bcc8281570cb176}\label{classSimulationFacade_a1b91420670088f189bcc8281570cb176}} 
+\hyperlink{classiEntity}{i\+Entity} $\ast$ {\bfseries get\+Entity} (int index)
+\item 
+\mbox{\Hypertarget{classSimulationFacade_a507d463dc1772f96a4791ff599826bcb}\label{classSimulationFacade_a507d463dc1772f96a4791ff599826bcb}} 
+int {\bfseries get\+Entities\+Count} ()
+\item 
+\mbox{\Hypertarget{classSimulationFacade_af5865c718eb75347923ebcb55d1ebfed}\label{classSimulationFacade_af5865c718eb75347923ebcb55d1ebfed}} 
+double {\bfseries get\+Elapsed\+Time} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classSimulationFacade_a6e44973f5bd3e4e27563050904dbf111}\label{classSimulationFacade_a6e44973f5bd3e4e27563050904dbf111}} 
+bool \hyperlink{classSimulationFacade_a6e44973f5bd3e4e27563050904dbf111}{json\+Has\+Name} (picojson\+::object \&data, std\+::string name)
+\begin{DoxyCompactList}\small\item\em Helper function that checks if the J\+S\+ON data has a field \textquotesingle{}name\textquotesingle{} that matchs the input name. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classSimulationFacade_aa6e2a84334ca9df9fa0c082b6f034217}\label{classSimulationFacade_aa6e2a84334ca9df9fa0c082b6f034217}} 
+std\+::vector$<$ \hyperlink{classiEntity}{i\+Entity} $\ast$ $>$ \hyperlink{classSimulationFacade_aa6e2a84334ca9df9fa0c082b6f034217}{entities}
+\begin{DoxyCompactList}\small\item\em an array to keep track of all the entities in the scene \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classSimulationFacade_a3939c46e992e2e0f405c2cfdc171de9e}\label{classSimulationFacade_a3939c46e992e2e0f405c2cfdc171de9e}} 
+std\+::vector$<$ \hyperlink{classiMovableEntity}{i\+Movable\+Entity} $\ast$ $>$ {\bfseries movable\+Entities}
+\item 
+\mbox{\Hypertarget{classSimulationFacade_a8e9b28e695ea8a69631f5c5544832761}\label{classSimulationFacade_a8e9b28e695ea8a69631f5c5544832761}} 
+double {\bfseries elapsed\+Time} = 0
+\item 
+\mbox{\Hypertarget{classSimulationFacade_a7dad85786b3fbc6f2d9084ae3b7cf87e}\label{classSimulationFacade_a7dad85786b3fbc6f2d9084ae3b7cf87e}} 
+\hyperlink{classCamera}{Camera} $\ast$ {\bfseries camera}
+\item 
+\mbox{\Hypertarget{classSimulationFacade_af18ba40080d8371eb5544ffa7fd70388}\label{classSimulationFacade_af18ba40080d8371eb5544ffa7fd70388}} 
+std\+::map$<$ std\+::string, int $>$ {\bfseries key\+Value}
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classSimulationFacade_a7647c750c98ea6c40d82e66bb3ee13d6}\label{classSimulationFacade_a7647c750c98ea6c40d82e66bb3ee13d6}} 
+\index{Simulation\+Facade@{Simulation\+Facade}!Add\+Entity@{Add\+Entity}}
+\index{Add\+Entity@{Add\+Entity}!Simulation\+Facade@{Simulation\+Facade}}
+\subsubsection{\texorpdfstring{Add\+Entity()}{AddEntity()}}
+{\footnotesize\ttfamily void Simulation\+Facade\+::\+Add\+Entity (\begin{DoxyParamCaption}\item[{\hyperlink{classiEntity}{i\+Entity} $\ast$}]{entity }\end{DoxyParamCaption})}
+
+
+
+Adds an \hyperlink{classiEntity}{i\+Entity} object to the entities vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSimulationFacade_a91e7955bf6f4c1998b7b4b8287e25812}\label{classSimulationFacade_a91e7955bf6f4c1998b7b4b8287e25812}} 
+\index{Simulation\+Facade@{Simulation\+Facade}!Create\+Entity\+Cmd@{Create\+Entity\+Cmd}}
+\index{Create\+Entity\+Cmd@{Create\+Entity\+Cmd}!Simulation\+Facade@{Simulation\+Facade}}
+\subsubsection{\texorpdfstring{Create\+Entity\+Cmd()}{CreateEntityCmd()}}
+{\footnotesize\ttfamily void Simulation\+Facade\+::\+Create\+Entity\+Cmd (\begin{DoxyParamCaption}\item[{picojson\+::object \&}]{entity\+Data,  }\item[{\hyperlink{classICameraController}{I\+Camera\+Controller} \&}]{camera\+Controller }\end{DoxyParamCaption})}
+
+
+
+Get a Create\+Entity command from the J\+S\+ON scene and populate the entities and movable\+Entities array with the J\+S\+ON object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity\+Data} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSimulationFacade_a18360b82dd112efe3dfb0f9faf618500}\label{classSimulationFacade_a18360b82dd112efe3dfb0f9faf618500}} 
+\index{Simulation\+Facade@{Simulation\+Facade}!Update\+Entities@{Update\+Entities}}
+\index{Update\+Entities@{Update\+Entities}!Simulation\+Facade@{Simulation\+Facade}}
+\subsubsection{\texorpdfstring{Update\+Entities()}{UpdateEntities()}}
+{\footnotesize\ttfamily void Simulation\+Facade\+::\+Update\+Entities (\begin{DoxyParamCaption}\item[{double}]{dt }\end{DoxyParamCaption})}
+
+
+
+Adds an \hyperlink{classiMovableEntity}{i\+Movable\+Entity} object to the movable\+Entities vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSimulationFacade_a62c5da57349073c3f472346dd273b03a}\label{classSimulationFacade_a62c5da57349073c3f472346dd273b03a}} 
+\index{Simulation\+Facade@{Simulation\+Facade}!Update\+Simulation@{Update\+Simulation}}
+\index{Update\+Simulation@{Update\+Simulation}!Simulation\+Facade@{Simulation\+Facade}}
+\subsubsection{\texorpdfstring{Update\+Simulation()}{UpdateSimulation()}}
+{\footnotesize\ttfamily void Simulation\+Facade\+::\+Update\+Simulation (\begin{DoxyParamCaption}\item[{picojson\+::object \&}]{return\+Value }\end{DoxyParamCaption})}
+
+
+
+Sends all the staged changes in the simulation back to the UI. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em return\+Value} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/user/repo/project/simulation/include/\hyperlink{simulation__facade_8h}{simulation\+\_\+facade.\+h}\item 
+/home/user/repo/project/simulation/src/simulation\+\_\+facade.\+cc\end{DoxyCompactItemize}

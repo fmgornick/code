@@ -1,0 +1,76 @@
+\hypertarget{web__app_8h_source}{}\doxysection{web\+\_\+app.\+h}
+\label{web__app_8h_source}\index{/Users/Fletcher/csci3081/repo-\/team-\/0/project/simulation/include/web\_app.h@{/Users/Fletcher/csci3081/repo-\/team-\/0/project/simulation/include/web\_app.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef WEB\_APP\_H\_}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define WEB\_APP\_H\_}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <map>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}WebServer.h"{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}camera\_controller.h"{}}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{simulation__facade_8h}{simulation\_facade.h}}"{}}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{camera_8h}{camera.h}}"{}}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include <chrono>}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <queue>}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <thread>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <mutex>}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <condition\_variable>}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{16 \textcolor{keyword}{class }\mbox{\hyperlink{classWebApp}{WebApp}} : \textcolor{keyword}{public} JSONSession, \mbox{\hyperlink{classICameraController}{ICameraController}}\{}
+\DoxyCodeLine{17 \textcolor{keyword}{public}:}
+\DoxyCodeLine{19     \mbox{\hyperlink{classWebApp_a9ba424099f42bdd456f52c4bba87d5b2}{WebApp}}();}
+\DoxyCodeLine{21     \textcolor{keyword}{virtual} \mbox{\hyperlink{classWebApp_aea8764197ebbcd256a07055b187a7fa8}{\string~WebApp}}();}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23     \textcolor{comment}{// *******************************************}}
+\DoxyCodeLine{24     \textcolor{comment}{// Methods used for simulation (edit these):}}
+\DoxyCodeLine{25     \textcolor{comment}{// *******************************************}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{28     \textcolor{keywordtype}{void} \mbox{\hyperlink{classWebApp_aa75704c331471269090aff776bf70c66}{CreateEntity}}(picojson::object\& entityData, \mbox{\hyperlink{classICameraController}{ICameraController}}\& cameraController);}
+\DoxyCodeLine{30     \textcolor{keywordtype}{void} \mbox{\hyperlink{classWebApp_a422feda1eac97b1aa1f69243387498c2}{Update}}(\textcolor{keywordtype}{double} dt);}
+\DoxyCodeLine{32     \textcolor{keywordtype}{void} \mbox{\hyperlink{classWebApp_ac7731245815aefcff7023a4dd10995ea}{FinishUpdate}}(picojson::object\& returnValue);}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34     \textcolor{comment}{// *******************************************}}
+\DoxyCodeLine{35     \textcolor{comment}{// Methods used for web page communication:}}
+\DoxyCodeLine{36     \textcolor{comment}{// (You shouldn't need to touch these)}}
+\DoxyCodeLine{37     \textcolor{comment}{// *******************************************}}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{40     \textcolor{keywordtype}{void} \mbox{\hyperlink{classWebApp_a0af5cfc12444f53e48609360eff95d76}{receiveJSON}}(picojson::value\& val);}
+\DoxyCodeLine{42     \textcolor{keywordtype}{void} \mbox{\hyperlink{classWebApp_ac1ae360aa44aeb9f2bccb53f6d7881b4}{ReceiveCommand}}(\textcolor{keyword}{const} std::string\& cmd, picojson::object\& data, picojson::object\& returnValue);}
+\DoxyCodeLine{44     \textcolor{keywordtype}{void} \mbox{\hyperlink{classWebApp_ae3ec2b1cf48fa4c1fd4dbd4b5b6ab1ab}{KeyUp}}(\textcolor{keyword}{const} std::string\& key, \textcolor{keywordtype}{int} keyCode);}
+\DoxyCodeLine{46     \textcolor{keywordtype}{void} \mbox{\hyperlink{classWebApp_a5ecf621134026359cdbae31480ceb204}{KeyDown}}(\textcolor{keyword}{const} std::string\& key, \textcolor{keywordtype}{int} keyCode);}
+\DoxyCodeLine{48     \textcolor{keywordtype}{bool} \mbox{\hyperlink{classWebApp_ada30b3adf08a8f51d113972e7d2d6ee6}{IsKeyDown}}(\textcolor{keyword}{const} std::string\& key);}
+\DoxyCodeLine{50     \textcolor{keywordtype}{void} \mbox{\hyperlink{classWebApp_a967d783a9f1be56fef662eee01b6e93a}{TakePicture}}(\textcolor{keywordtype}{int} cameraId);}
+\DoxyCodeLine{52     \textcolor{keywordtype}{void} \mbox{\hyperlink{classWebApp_a6ab15a70631109dc33d48e97da3eb050}{AddObserver}}(\mbox{\hyperlink{classICameraObserver}{ICameraObserver}}\& observer);}
+\DoxyCodeLine{54     \textcolor{keywordtype}{void} \mbox{\hyperlink{classWebApp_aa6c0e00182011fa15f0bd8fcbaf415a1}{RemoveObserver}}(\mbox{\hyperlink{classICameraObserver}{ICameraObserver}}\& observer);}
+\DoxyCodeLine{56     \textcolor{keywordtype}{void} \mbox{\hyperlink{classWebApp_a96282cfecb4a378e9d9ce6fff3b8e746}{ProcessImageQueue}}();}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59     }
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61 \textcolor{keyword}{private}:}
+\DoxyCodeLine{62     }
+\DoxyCodeLine{64     \mbox{\hyperlink{classSimulationFacade}{SimulationFacade}} \mbox{\hyperlink{classWebApp_a44d830c3509efde8ad1efdf28336106e}{simulation}};}
+\DoxyCodeLine{65     \textcolor{comment}{// Used for tracking time since last update}}
+\DoxyCodeLine{66     std::chrono::time\_point<std::chrono::system\_clock> start;}
+\DoxyCodeLine{67     \textcolor{comment}{// The total time the server has been running.}}
+\DoxyCodeLine{68     \textcolor{keywordtype}{double} time;}
+\DoxyCodeLine{69     \textcolor{comment}{// Camera observers}}
+\DoxyCodeLine{70     std::vector<ICameraObserver*> cameraObservers;}
+\DoxyCodeLine{71     \textcolor{comment}{// Image processing queue used for processing pictures that were taken}}
+\DoxyCodeLine{72     std::queue<picojson::object> imageQueue;}
+\DoxyCodeLine{73     \textcolor{comment}{// Thread that handles asynchronous processing}}
+\DoxyCodeLine{74     std::thread *imageProcessThread;}
+\DoxyCodeLine{75     \textcolor{comment}{// For synchronizing with the image queue}}
+\DoxyCodeLine{76     std::mutex imageProcessMutex;}
+\DoxyCodeLine{77     \textcolor{comment}{// For synchronizing with the commands and update}}
+\DoxyCodeLine{78     std::mutex updateMutex;}
+\DoxyCodeLine{79     \textcolor{comment}{// Condition variable that is used to notify thread of new images}}
+\DoxyCodeLine{80     std::condition\_variable imageProcessCond;}
+\DoxyCodeLine{81     \textcolor{comment}{// Stores whether the application is running or not.}}
+\DoxyCodeLine{82     \textcolor{keywordtype}{bool} running;}
+\DoxyCodeLine{83 \};}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85 }
+\DoxyCodeLine{86 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

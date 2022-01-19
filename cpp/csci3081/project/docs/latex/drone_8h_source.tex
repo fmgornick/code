@@ -1,0 +1,85 @@
+\hypertarget{drone_8h_source}{}\doxysection{drone.\+h}
+\label{drone_8h_source}\index{/Users/Fletcher/csci3081/repo-\/team-\/0/project/simulation/include/drone.h@{/Users/Fletcher/csci3081/repo-\/team-\/0/project/simulation/include/drone.h}}
+\mbox{\hyperlink{drone_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#ifndef DRONE\_H\_}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#define DRONE\_H\_}}
+\DoxyCodeLine{6 \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{7 \textcolor{comment}{ * Includes}}
+\DoxyCodeLine{8 \textcolor{comment}{ ******************************************************************************/}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{i__movable__entity_8h}{i\_movable\_entity.h}}"{}}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}i\_movement\_strategy.h"{}}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{search__strategy_8h}{search\_strategy.h}}"{}}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{patrol__strategy_8h}{patrol\_strategy.h}}"{}}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{beeline__movement_8h}{beeline\_movement.h}}"{}}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{camera_8h}{camera.h}}"{}}}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{18 \textcolor{comment}{ * Class Definitions}}
+\DoxyCodeLine{19 \textcolor{comment}{ ******************************************************************************/}}
+\DoxyCodeLine{26 \textcolor{keyword}{class }\mbox{\hyperlink{classDrone}{Drone}} : \textcolor{keyword}{public} \mbox{\hyperlink{classiMovableEntity}{iMovableEntity}}\{}
+\DoxyCodeLine{27 \textcolor{keyword}{public}:}
+\DoxyCodeLine{31   \mbox{\hyperlink{classDrone_ab692baa4be5c43b72990ce1b01bdc805}{Drone}}()}
+\DoxyCodeLine{32       : \mbox{\hyperlink{classDrone_a5aa543be4e70c00b14a38fef06bf6166}{id}}(0), \mbox{\hyperlink{classDrone_ac5f6c269378659247acd057142542013}{name}}(\textcolor{stringliteral}{"{}drone"{}}), \mbox{\hyperlink{classDrone_ae9fe2ea1c0fc66f852efb674b66661f3}{position}}(new \mbox{\hyperlink{classVector3}{Vector3}}), \mbox{\hyperlink{classDrone_ac3a222e76594ec66819cbc5c45f4bcc6}{velocity}}(new \mbox{\hyperlink{classVector3}{Vector3}}),}
+\DoxyCodeLine{33         \mbox{\hyperlink{classDrone_a09d9eeafc319e4f900033ce9af4fee86}{direction}}(new \mbox{\hyperlink{classVector3}{Vector3}}), \mbox{\hyperlink{classDrone_a4cbe7d72da36c27cb58fa797240c9698}{speed}}(0), \mbox{\hyperlink{classDrone_aa8177686267728ddaed8c6aaff11f605}{battery}}(new \mbox{\hyperlink{classBattery}{Battery}}), \mbox{\hyperlink{classDrone_aab172d13642014c08807fc71d04600d3}{camera}}(NULL), \mbox{\hyperlink{classDrone_a67e8d4713426b85ceacd4f93e5d13445}{elapsedTime}}(0), \mbox{\hyperlink{classDrone_ac02d8033dcd953191995f71656e79ab4}{cameraTime}}(0) ,}
+\DoxyCodeLine{34         \mbox{\hyperlink{classDrone_aa1c4c871bc26db75720e8a9579007188}{patroling}}(false), \mbox{\hyperlink{classDrone_a9225859e6bc82f8084cec5959e677303}{robotFound}}(false)}
+\DoxyCodeLine{35         \{ \}}
+\DoxyCodeLine{39   \mbox{\hyperlink{classDrone_a8847d17aacd1efc2b64827de2b58c4c7}{Drone}}(\textcolor{keywordtype}{int} \textcolor{keywordtype}{id}, std::string \mbox{\hyperlink{classDrone_ac5f6c269378659247acd057142542013}{name}}, \mbox{\hyperlink{classVector3}{Vector3}} *pos, \mbox{\hyperlink{classVector3}{Vector3}} *vel, \mbox{\hyperlink{classVector3}{Vector3}} *dir,}
+\DoxyCodeLine{40         \textcolor{keywordtype}{double} \mbox{\hyperlink{classDrone_a4cbe7d72da36c27cb58fa797240c9698}{speed}}, \mbox{\hyperlink{classBattery}{Battery}} *b, \mbox{\hyperlink{classCamera}{Camera}}* \mbox{\hyperlink{classDrone_aab172d13642014c08807fc71d04600d3}{camera}})}
+\DoxyCodeLine{41       : \mbox{\hyperlink{classDrone_a5aa543be4e70c00b14a38fef06bf6166}{id}}(\mbox{\hyperlink{classDrone_a5aa543be4e70c00b14a38fef06bf6166}{id}}), \mbox{\hyperlink{classDrone_ac5f6c269378659247acd057142542013}{name}}(\mbox{\hyperlink{classDrone_ac5f6c269378659247acd057142542013}{name}}), \mbox{\hyperlink{classDrone_ae9fe2ea1c0fc66f852efb674b66661f3}{position}}(pos), \mbox{\hyperlink{classDrone_ac3a222e76594ec66819cbc5c45f4bcc6}{velocity}}(vel), \mbox{\hyperlink{classDrone_a09d9eeafc319e4f900033ce9af4fee86}{direction}}(dir),}
+\DoxyCodeLine{42         \mbox{\hyperlink{classDrone_a4cbe7d72da36c27cb58fa797240c9698}{speed}}(\mbox{\hyperlink{classDrone_a4cbe7d72da36c27cb58fa797240c9698}{speed}}), \mbox{\hyperlink{classDrone_aa8177686267728ddaed8c6aaff11f605}{battery}}(b), \mbox{\hyperlink{classDrone_aab172d13642014c08807fc71d04600d3}{camera}}(\mbox{\hyperlink{classDrone_aab172d13642014c08807fc71d04600d3}{camera}}), \mbox{\hyperlink{classDrone_a67e8d4713426b85ceacd4f93e5d13445}{elapsedTime}}(0), \mbox{\hyperlink{classDrone_ac02d8033dcd953191995f71656e79ab4}{cameraTime}}(0),}
+\DoxyCodeLine{43         \mbox{\hyperlink{classDrone_aa1c4c871bc26db75720e8a9579007188}{patroling}}(false), \mbox{\hyperlink{classDrone_a9225859e6bc82f8084cec5959e677303}{robotFound}}(false)}
+\DoxyCodeLine{44         \{ \}}
+\DoxyCodeLine{48   \textcolor{keywordtype}{int} \mbox{\hyperlink{classDrone_a5e69f5ebe80ece53ccb2238a2b598d97}{GetID}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classDrone_a5aa543be4e70c00b14a38fef06bf6166}{id}}; \}}
+\DoxyCodeLine{52   \textcolor{keyword}{const} std::string \&\mbox{\hyperlink{classDrone_a257b7e584e5a5c00fa1e4a4c0fb021f6}{GetName}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classDrone_ac5f6c269378659247acd057142542013}{name}}; \}}
+\DoxyCodeLine{56   \mbox{\hyperlink{classVector3}{Vector3}} *\mbox{\hyperlink{classDrone_a1fb022561f2aa60b1c4177cab31a237f}{GetPosition}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classDrone_ae9fe2ea1c0fc66f852efb674b66661f3}{position}}; \}}
+\DoxyCodeLine{60   \textcolor{keywordtype}{void} \mbox{\hyperlink{classDrone_abe072bd4609dc32fe0a6bb0cfd7ce5cc}{SetPosition}}(\mbox{\hyperlink{classVector3}{Vector3}} \&pos) \{ *\mbox{\hyperlink{classDrone_ae9fe2ea1c0fc66f852efb674b66661f3}{position}} = pos; \}}
+\DoxyCodeLine{66   \textcolor{keywordtype}{double} \mbox{\hyperlink{classDrone_ac8c535643f2be526c0ac8b0cc1fc49fc}{GetSpeed}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classDrone_a4cbe7d72da36c27cb58fa797240c9698}{speed}}; \}}
+\DoxyCodeLine{72   \textcolor{keywordtype}{void} \mbox{\hyperlink{classDrone_af8cb12a403cf56145000f247689d0951}{SetSpeed}}(\textcolor{keywordtype}{double} \mbox{\hyperlink{classDrone_a4cbe7d72da36c27cb58fa797240c9698}{speed}}) \{ this-\/>speed = \mbox{\hyperlink{classDrone_a4cbe7d72da36c27cb58fa797240c9698}{speed}}; \}}
+\DoxyCodeLine{76   \mbox{\hyperlink{classVector3}{Vector3}} *\mbox{\hyperlink{classDrone_acd04dc1b726a04b8e793f33d9522fa53}{GetVelocity}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classDrone_ac3a222e76594ec66819cbc5c45f4bcc6}{velocity}}; \}}
+\DoxyCodeLine{80   \textcolor{keywordtype}{void} \mbox{\hyperlink{classDrone_a746a2a730a8d7a2e421ea3cfe7842732}{SetVelocity}}(\mbox{\hyperlink{classVector3}{Vector3}} \&vel) \{ *\mbox{\hyperlink{classDrone_ac3a222e76594ec66819cbc5c45f4bcc6}{velocity}} = vel; \}}
+\DoxyCodeLine{86   \mbox{\hyperlink{classVector3}{Vector3}} *\mbox{\hyperlink{classDrone_a1a77eaea50f95c6b5a4c19ab64cc3d0d}{GetDirection}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classDrone_a09d9eeafc319e4f900033ce9af4fee86}{direction}}; \}}
+\DoxyCodeLine{92   \textcolor{keywordtype}{void} \mbox{\hyperlink{classDrone_a2ef1fbc3da17a8d599d2969990eb9614}{SetDirection}}(\mbox{\hyperlink{classVector3}{Vector3}} \&dir) \{ *\mbox{\hyperlink{classDrone_a09d9eeafc319e4f900033ce9af4fee86}{direction}} = dir; \}}
+\DoxyCodeLine{96   \mbox{\hyperlink{classBattery}{Battery}} *\mbox{\hyperlink{classDrone_ad1e2b81375450bc6bffb2bf184279b3f}{GetBattery}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classDrone_aa8177686267728ddaed8c6aaff11f605}{battery}}; \}}
+\DoxyCodeLine{100   \textcolor{keywordtype}{void} \mbox{\hyperlink{classDrone_abc6b79ccc7fdbc3bec8d539fc836c04d}{Update}}(\textcolor{keywordtype}{double} dt);}
+\DoxyCodeLine{104   \mbox{\hyperlink{classDrone_a667075abb1eb5c54be6418884a387d14}{\string~Drone}}() \{\}}
+\DoxyCodeLine{108   \mbox{\hyperlink{classDrone_a77ede44227d2345f1930ee940923ce55}{Drone}}(\textcolor{keyword}{const} \mbox{\hyperlink{classDrone}{Drone}} \&drone) \{\}}
+\DoxyCodeLine{112   \textcolor{keywordtype}{void} \mbox{\hyperlink{classDrone_a60993a186f448dbc930c262d3d7d17f5}{operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{classDrone}{Drone}} \&) \{\}}
+\DoxyCodeLine{118   \textcolor{keywordtype}{void} \mbox{\hyperlink{classDrone_a3987b919bf886857c139d2cde97d1d49}{SetMovementStartegy}}(\mbox{\hyperlink{classiMovementStrategy}{iMovementStrategy}} *strategy) \{ \mbox{\hyperlink{classDrone_a45d19476c877bea9175e2b3d491994fb}{movement}} = strategy; \}}
+\DoxyCodeLine{122   \textcolor{keywordtype}{void} \mbox{\hyperlink{classDrone_acff4a233892a97186deab0cdca8b71d7}{SetSearchStrategy}}(\mbox{\hyperlink{classSearchStrategy}{SearchStrategy}} *searchStrategy) \{}
+\DoxyCodeLine{123     \mbox{\hyperlink{classDrone_af504841d9023aa2d09b888da08a8de47}{search}} = searchStrategy;}
+\DoxyCodeLine{124     \textcolor{keywordflow}{if}(\mbox{\hyperlink{classDrone_af504841d9023aa2d09b888da08a8de47}{search}} == \textcolor{keyword}{nullptr})\{}
+\DoxyCodeLine{125       \textcolor{keywordflow}{return};}
+\DoxyCodeLine{126     \}}
+\DoxyCodeLine{127     \mbox{\hyperlink{classDrone_af504841d9023aa2d09b888da08a8de47}{search}}-\/>\mbox{\hyperlink{classSearchStrategy_a2a9876ed7bd7c1ecf8f2255ba33a3d18}{ParseJson}}();}
+\DoxyCodeLine{128   \};}
+\DoxyCodeLine{129 }
+\DoxyCodeLine{130   \textcolor{comment}{//************************************************}}
+\DoxyCodeLine{131   \textcolor{comment}{// TEMPORARY PLEASE DELETE}}
+\DoxyCodeLine{132   \textcolor{comment}{//************************************************}}
+\DoxyCodeLine{133   \textcolor{comment}{//void SetKeyboard(float x, float y, float z, float a) \{ *direction = Vector3(x, y, z); \}}}
+\DoxyCodeLine{134 }
+\DoxyCodeLine{135 \textcolor{keyword}{private}:}
+\DoxyCodeLine{136   }
+\DoxyCodeLine{138   \textcolor{keywordtype}{int} \mbox{\hyperlink{classDrone_a5aa543be4e70c00b14a38fef06bf6166}{id}};}
+\DoxyCodeLine{140   std::string \mbox{\hyperlink{classDrone_ac5f6c269378659247acd057142542013}{name}};}
+\DoxyCodeLine{142   \mbox{\hyperlink{classVector3}{Vector3}} *\mbox{\hyperlink{classDrone_ae9fe2ea1c0fc66f852efb674b66661f3}{position}};}
+\DoxyCodeLine{144   \mbox{\hyperlink{classVector3}{Vector3}} *\mbox{\hyperlink{classDrone_ac3a222e76594ec66819cbc5c45f4bcc6}{velocity}};}
+\DoxyCodeLine{146   \mbox{\hyperlink{classVector3}{Vector3}} *\mbox{\hyperlink{classDrone_a09d9eeafc319e4f900033ce9af4fee86}{direction}};}
+\DoxyCodeLine{148   \textcolor{keywordtype}{double} \mbox{\hyperlink{classDrone_a4cbe7d72da36c27cb58fa797240c9698}{speed}};}
+\DoxyCodeLine{150   \mbox{\hyperlink{classBattery}{Battery}} *\mbox{\hyperlink{classDrone_aa8177686267728ddaed8c6aaff11f605}{battery}};}
+\DoxyCodeLine{152   \mbox{\hyperlink{classiMovementStrategy}{iMovementStrategy}} *\mbox{\hyperlink{classDrone_a45d19476c877bea9175e2b3d491994fb}{movement}};}
+\DoxyCodeLine{154   \mbox{\hyperlink{classCamera}{Camera}} *\mbox{\hyperlink{classDrone_aab172d13642014c08807fc71d04600d3}{camera}}; }
+\DoxyCodeLine{156   \textcolor{keywordtype}{double} \mbox{\hyperlink{classDrone_a67e8d4713426b85ceacd4f93e5d13445}{elapsedTime}} ;}
+\DoxyCodeLine{158   \textcolor{keywordtype}{double} \mbox{\hyperlink{classDrone_ac02d8033dcd953191995f71656e79ab4}{cameraTime}} ;}
+\DoxyCodeLine{160   \mbox{\hyperlink{classSearchStrategy}{SearchStrategy}} *\mbox{\hyperlink{classDrone_af504841d9023aa2d09b888da08a8de47}{search}};}
+\DoxyCodeLine{162   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classDrone_a9225859e6bc82f8084cec5959e677303}{robotFound}} = \textcolor{keyword}{false};}
+\DoxyCodeLine{164   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classDrone_aa1c4c871bc26db75720e8a9579007188}{patroling}} = \textcolor{keyword}{false};}
+\DoxyCodeLine{166   \mbox{\hyperlink{classVector3}{Vector3}} \mbox{\hyperlink{classDrone_ab52ab733570dcdb842df3b31ca4030ff}{robotLocation}};}
+\DoxyCodeLine{167 \};}
+\DoxyCodeLine{168 }
+\DoxyCodeLine{169 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// !DRONE\_H\_}}
+
+\end{DoxyCode}

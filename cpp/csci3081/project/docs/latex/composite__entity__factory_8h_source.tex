@@ -1,0 +1,32 @@
+\hypertarget{composite__entity__factory_8h_source}{}\doxysection{composite\+\_\+entity\+\_\+factory.\+h}
+\label{composite__entity__factory_8h_source}\index{/Users/Fletcher/csci3081/repo-\/team-\/0/project/simulation/include/composite\_entity\_factory.h@{/Users/Fletcher/csci3081/repo-\/team-\/0/project/simulation/include/composite\_entity\_factory.h}}
+\mbox{\hyperlink{composite__entity__factory_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#ifndef COMPOSITE\_ENTITY\_FACTORY\_H\_}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#define COMPOSITE\_ENTITY\_FACTORY\_H\_}}
+\DoxyCodeLine{6 \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{7 \textcolor{comment}{ * Includes}}
+\DoxyCodeLine{8 \textcolor{comment}{ ******************************************************************************/}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{drone__factory_8h}{drone\_factory.h}}"{}}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{hospital__factory_8h}{hospital\_factory.h}}"{}}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{i__entity__factory_8h}{i\_entity\_factory.h}}"{}}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{recharge__station__factory_8h}{recharge\_station\_factory.h}}"{}}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{robot__factory_8h}{robot\_factory.h}}"{}}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include <list>}}
+\DoxyCodeLine{16 \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{17 \textcolor{comment}{ * Class Definitions}}
+\DoxyCodeLine{18 \textcolor{comment}{ ******************************************************************************/}}
+\DoxyCodeLine{26 \textcolor{keyword}{class }\mbox{\hyperlink{classCompositeEntityFactory}{CompositeEntityFactory}} : \textcolor{keyword}{public} \mbox{\hyperlink{classiEntityFactory}{iEntityFactory}} \{}
+\DoxyCodeLine{27 \textcolor{keyword}{public}:}
+\DoxyCodeLine{28   \mbox{\hyperlink{classCompositeEntityFactory}{CompositeEntityFactory}}();}
+\DoxyCodeLine{33   \textcolor{keywordtype}{void} \mbox{\hyperlink{classCompositeEntityFactory_a6ecb6093a839b686c4693bf00713247f}{AddFactory}}(\mbox{\hyperlink{classiEntityFactory}{iEntityFactory}} *factory);}
+\DoxyCodeLine{39   \mbox{\hyperlink{classiEntity}{iEntity}} *\mbox{\hyperlink{classCompositeEntityFactory_a0f30a9a8443a04f0fa8f17a7bc2f0a58}{CreateEntity}}(picojson::object \&entity, \mbox{\hyperlink{classCamera}{Camera}} *camera);}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41 \textcolor{keyword}{private}:}
+\DoxyCodeLine{43   std::list<iEntityFactory *> \mbox{\hyperlink{classCompositeEntityFactory_a7dec8bde43fb44220a757c45eaa00435}{factories}};}
+\DoxyCodeLine{44 \};}
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// !COMPOSITE\_ENTITY\_FACTORY\_H\_}}
+
+\end{DoxyCode}

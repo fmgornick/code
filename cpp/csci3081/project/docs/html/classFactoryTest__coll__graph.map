@@ -1,0 +1,4 @@
+<map id="FactoryTest" name="FactoryTest">
+<area shape="rect" id="node3" href="$classCompositeEntityFactory.html" title="Composite Entity Factory. This is the class that get&#39;s called when creating new entities. Has an entity factory vector member variable to keep track of all the factories. Then when we want to create a new factory, it&#39;s added to the vector to be referenced for entity creation. " alt="" coords="93,132,295,239"/>
+<area shape="rect" id="node4" href="$classiEntityFactory.html" title="Entity factory interface. Used for our abstract factory method for making new entity objects at run t..." alt="" coords="130,5,258,83"/>
+</map>

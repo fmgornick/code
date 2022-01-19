@@ -1,0 +1,15 @@
+\hypertarget{sobel__filter_8h}{}\section{/home/user/repo/project/image/include/sobel\+\_\+filter.h File Reference}
+\label{sobel__filter_8h}\index{/home/user/repo/project/image/include/sobel\+\_\+filter.\+h@{/home/user/repo/project/image/include/sobel\+\_\+filter.\+h}}
+{\ttfamily \#include \char`\"{}filter.\+h\char`\"{}}\newline
+Include dependency graph for sobel\+\_\+filter.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=253pt]{sobel__filter_8h__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classSobelFilter}{Sobel\+Filter}
+\begin{DoxyCompactList}\small\item\em The main class for \hyperlink{classSobelFilter}{Sobel\+Filter}, extends \hyperlink{classFilter}{Filter}. For this filter, instead of outputing two separate images and pushing them onto the \hyperlink{classImage}{Image} $\ast$ vector, we instead chose to double the size of the image and put the image intensity on top and image gradient on bottom. Both image outputs are found by first applying 2 kernels for x and y intensity. The intensity gradient is found by taking the hypotenuse of of each pixel, and the direction gradient is found by taking the arctangent. More information can be found here\+: \href{https://towardsdatascience.com/canny-edge-detection-step-by-step-in-python-computer-vision-b49c3a2d8123}{\tt https\+://towardsdatascience.\+com/canny-\/edge-\/detection-\/step-\/by-\/step-\/in-\/python-\/computer-\/vision-\/b49c3a2d8123}. \end{DoxyCompactList}\end{DoxyCompactItemize}

@@ -1,0 +1,213 @@
+\hypertarget{classImage}{}\section{Image Class Reference}
+\label{classImage}\index{Image@{Image}}
+
+
+The main class for \hyperlink{classImage}{Image}. \hyperlink{classImage}{Image} is represented as a big unsigned character array, and alters values inside the image by using the color class. Class just contains getters, setters, and the big 3.  
+
+
+
+
+{\ttfamily \#include $<$image.\+h$>$}
+
+
+
+Collaboration diagram for Image\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=212pt]{classImage__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classImage_a58edd1c45b4faeb5f789b0d036d02313}\label{classImage_a58edd1c45b4faeb5f789b0d036d02313}} 
+\hyperlink{classImage_a58edd1c45b4faeb5f789b0d036d02313}{Image} ()
+\begin{DoxyCompactList}\small\item\em Constructor for no arguments. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classImage_afb0339b802ed560e69eb07358d30198f}\label{classImage_afb0339b802ed560e69eb07358d30198f}} 
+\hyperlink{classImage_afb0339b802ed560e69eb07358d30198f}{Image} (int width, int height)
+\begin{DoxyCompactList}\small\item\em Constructor for int width and int height arguments. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classImage_abb20937b3256735f0f7549d1b5e9c10d}\label{classImage_abb20937b3256735f0f7549d1b5e9c10d}} 
+\hyperlink{classImage_abb20937b3256735f0f7549d1b5e9c10d}{Image} (std\+::string filename)
+\begin{DoxyCompactList}\small\item\em Constructor for string filename argument. \end{DoxyCompactList}\item 
+\hyperlink{classImage_a50994051928f5e597226aea5139aea6d}{Image} (unsigned char $\ast$buffer, int width, int height)
+\begin{DoxyCompactList}\small\item\em Construct a new \hyperlink{classImage}{Image} object with a buffer as the argument. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classImage_aa44ed77d00d96d2c878b050835f828c4}\label{classImage_aa44ed77d00d96d2c878b050835f828c4}} 
+\hyperlink{classImage_aa44ed77d00d96d2c878b050835f828c4}{Image} (const \hyperlink{classImage}{Image} \&img)
+\begin{DoxyCompactList}\small\item\em Constructor for \hyperlink{classImage}{Image} image argument. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classImage_a0294f63700543e11c0f0da85601c7ae5}\label{classImage_a0294f63700543e11c0f0da85601c7ae5}} 
+\hyperlink{classImage_a0294f63700543e11c0f0da85601c7ae5}{$\sim$\+Image} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classImage_a3a9b278005e0731a93fe1d5d2cff7104}\label{classImage_a3a9b278005e0731a93fe1d5d2cff7104}} 
+void \hyperlink{classImage_a3a9b278005e0731a93fe1d5d2cff7104}{Save\+As} (std\+::string filename)
+\begin{DoxyCompactList}\small\item\em Save taking in a string argument filename to save to. \end{DoxyCompactList}\item 
+int \hyperlink{classImage_a4ab80d76fd124fd9de9b4fca8ae16186}{Get\+Width} ()
+\begin{DoxyCompactList}\small\item\em Width getter. \end{DoxyCompactList}\item 
+int \hyperlink{classImage_a4d6de643ee334ff52c85da9a62d9297d}{Get\+Height} ()
+\begin{DoxyCompactList}\small\item\em Height getter. \end{DoxyCompactList}\item 
+int \hyperlink{classImage_a04e02c5aa54d26422bbaa777b08de4c9}{Get\+Component\+Num} ()
+\begin{DoxyCompactList}\small\item\em Component number getter. \end{DoxyCompactList}\item 
+int \hyperlink{classImage_ad9ce272b2befc075fa720ac25f673202}{Get\+Size} ()
+\begin{DoxyCompactList}\small\item\em Size getter. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classImage_a5b9ba06409ad38e86a035ad18d8204d2}\label{classImage_a5b9ba06409ad38e86a035ad18d8204d2}} 
+void \hyperlink{classImage_a5b9ba06409ad38e86a035ad18d8204d2}{Get\+Pixel} (int x, int y, \hyperlink{classColor}{Color} \&p)
+\begin{DoxyCompactList}\small\item\em Pixel getter given arguments int x, int y, \hyperlink{classColor}{Color} p. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classImage_a88e6e6e7cbe530c84c17a342fa2eaf40}\label{classImage_a88e6e6e7cbe530c84c17a342fa2eaf40}} 
+void \hyperlink{classImage_a88e6e6e7cbe530c84c17a342fa2eaf40}{Set\+Pixel} (int x, int y, \hyperlink{classColor}{Color} \&p)
+\begin{DoxyCompactList}\small\item\em Pixel setter given arguments int x, int y, \hyperlink{classColor}{Color} p. \end{DoxyCompactList}\item 
+void \hyperlink{classImage_a558cfcb26f9f8abc82c32d85a25332f7}{Set\+Pixel\+Data} (int x, int y, \hyperlink{classColor}{Color} \&p)
+\begin{DoxyCompactList}\small\item\em Set the Pixel Data object, does not multiply values by 255. \end{DoxyCompactList}\item 
+unsigned char $\ast$ \hyperlink{classImage_a6337e9b91fb0aeb0b482d7e933543608}{Get\+Data} ()
+\begin{DoxyCompactList}\small\item\em Get the Data object. \end{DoxyCompactList}\item 
+void \hyperlink{classImage_a5fab96b8b5e873488b72185639790c92}{Set\+Data} (unsigned char $\ast$data)
+\begin{DoxyCompactList}\small\item\em Set the Data object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classImage_a4da7f72e4063bd0764caa635c0e0aaae}\label{classImage_a4da7f72e4063bd0764caa635c0e0aaae}} 
+void \hyperlink{classImage_a4da7f72e4063bd0764caa635c0e0aaae}{operator=} (const \hyperlink{classImage}{Image} \&img)
+\begin{DoxyCompactList}\small\item\em = operator given an \hyperlink{classImage}{Image} image \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classImage_a9a2c38d0f90325c4526e658463638a3d}\label{classImage_a9a2c38d0f90325c4526e658463638a3d}} 
+unsigned char $\ast$ {\bfseries image}
+\item 
+\mbox{\Hypertarget{classImage_ab8d12f635013c04159cd4d3d972bac88}\label{classImage_ab8d12f635013c04159cd4d3d972bac88}} 
+int {\bfseries width}
+\item 
+\mbox{\Hypertarget{classImage_a51df43db420c9c0b57536cb2dd36de5c}\label{classImage_a51df43db420c9c0b57536cb2dd36de5c}} 
+int {\bfseries height}
+\item 
+\mbox{\Hypertarget{classImage_ac6bbfcf18fdb753ab56cd0d6e21b8d76}\label{classImage_ac6bbfcf18fdb753ab56cd0d6e21b8d76}} 
+int {\bfseries components}
+\item 
+\mbox{\Hypertarget{classImage_af9a53c18c62335dae6139bfa04667cc5}\label{classImage_af9a53c18c62335dae6139bfa04667cc5}} 
+int {\bfseries size}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The main class for \hyperlink{classImage}{Image}. \hyperlink{classImage}{Image} is represented as a big unsigned character array, and alters values inside the image by using the color class. Class just contains getters, setters, and the big 3. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classImage_a50994051928f5e597226aea5139aea6d}\label{classImage_a50994051928f5e597226aea5139aea6d}} 
+\index{Image@{Image}!Image@{Image}}
+\index{Image@{Image}!Image@{Image}}
+\subsubsection{\texorpdfstring{Image()}{Image()}}
+{\footnotesize\ttfamily Image\+::\+Image (\begin{DoxyParamCaption}\item[{unsigned char $\ast$}]{buffer,  }\item[{int}]{width,  }\item[{int}]{height }\end{DoxyParamCaption})}
+
+
+
+Construct a new \hyperlink{classImage}{Image} object with a buffer as the argument. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classImage_a04e02c5aa54d26422bbaa777b08de4c9}\label{classImage_a04e02c5aa54d26422bbaa777b08de4c9}} 
+\index{Image@{Image}!Get\+Component\+Num@{Get\+Component\+Num}}
+\index{Get\+Component\+Num@{Get\+Component\+Num}!Image@{Image}}
+\subsubsection{\texorpdfstring{Get\+Component\+Num()}{GetComponentNum()}}
+{\footnotesize\ttfamily int Image\+::\+Get\+Component\+Num (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Component number getter. 
+
+\begin{DoxyReturn}{Returns}
+Int component\+Num. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classImage_a6337e9b91fb0aeb0b482d7e933543608}\label{classImage_a6337e9b91fb0aeb0b482d7e933543608}} 
+\index{Image@{Image}!Get\+Data@{Get\+Data}}
+\index{Get\+Data@{Get\+Data}!Image@{Image}}
+\subsubsection{\texorpdfstring{Get\+Data()}{GetData()}}
+{\footnotesize\ttfamily unsigned char $\ast$ Image\+::\+Get\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the Data object. 
+
+\begin{DoxyReturn}{Returns}
+unsigned$\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classImage_a4d6de643ee334ff52c85da9a62d9297d}\label{classImage_a4d6de643ee334ff52c85da9a62d9297d}} 
+\index{Image@{Image}!Get\+Height@{Get\+Height}}
+\index{Get\+Height@{Get\+Height}!Image@{Image}}
+\subsubsection{\texorpdfstring{Get\+Height()}{GetHeight()}}
+{\footnotesize\ttfamily int Image\+::\+Get\+Height (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Height getter. 
+
+\begin{DoxyReturn}{Returns}
+Int height. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classImage_ad9ce272b2befc075fa720ac25f673202}\label{classImage_ad9ce272b2befc075fa720ac25f673202}} 
+\index{Image@{Image}!Get\+Size@{Get\+Size}}
+\index{Get\+Size@{Get\+Size}!Image@{Image}}
+\subsubsection{\texorpdfstring{Get\+Size()}{GetSize()}}
+{\footnotesize\ttfamily int Image\+::\+Get\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Size getter. 
+
+\begin{DoxyReturn}{Returns}
+Int size. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classImage_a4ab80d76fd124fd9de9b4fca8ae16186}\label{classImage_a4ab80d76fd124fd9de9b4fca8ae16186}} 
+\index{Image@{Image}!Get\+Width@{Get\+Width}}
+\index{Get\+Width@{Get\+Width}!Image@{Image}}
+\subsubsection{\texorpdfstring{Get\+Width()}{GetWidth()}}
+{\footnotesize\ttfamily int Image\+::\+Get\+Width (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Width getter. 
+
+\begin{DoxyReturn}{Returns}
+Int width. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classImage_a5fab96b8b5e873488b72185639790c92}\label{classImage_a5fab96b8b5e873488b72185639790c92}} 
+\index{Image@{Image}!Set\+Data@{Set\+Data}}
+\index{Set\+Data@{Set\+Data}!Image@{Image}}
+\subsubsection{\texorpdfstring{Set\+Data()}{SetData()}}
+{\footnotesize\ttfamily void Image\+::\+Set\+Data (\begin{DoxyParamCaption}\item[{unsigned char $\ast$}]{data }\end{DoxyParamCaption})}
+
+
+
+Set the Data object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classImage_a558cfcb26f9f8abc82c32d85a25332f7}\label{classImage_a558cfcb26f9f8abc82c32d85a25332f7}} 
+\index{Image@{Image}!Set\+Pixel\+Data@{Set\+Pixel\+Data}}
+\index{Set\+Pixel\+Data@{Set\+Pixel\+Data}!Image@{Image}}
+\subsubsection{\texorpdfstring{Set\+Pixel\+Data()}{SetPixelData()}}
+{\footnotesize\ttfamily void Image\+::\+Set\+Pixel\+Data (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{\hyperlink{classColor}{Color} \&}]{p }\end{DoxyParamCaption})}
+
+
+
+Set the Pixel Data object, does not multiply values by 255. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & \\
+\hline
+{\em y} & \\
+\hline
+{\em p} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/user/repo/project/image/include/\hyperlink{image_8h}{image.\+h}\item 
+/home/user/repo/project/image/src/image.\+cc\end{DoxyCompactItemize}

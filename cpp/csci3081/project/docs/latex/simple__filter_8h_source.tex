@@ -1,0 +1,43 @@
+\hypertarget{simple__filter_8h_source}{}\doxysection{simple\+\_\+filter.\+h}
+\label{simple__filter_8h_source}\index{/Users/Fletcher/csci3081/repo-\/team-\/0/project/image/include/simple\_filter.h@{/Users/Fletcher/csci3081/repo-\/team-\/0/project/image/include/simple\_filter.h}}
+\mbox{\hyperlink{simple__filter_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#ifndef SIMPLE\_FILTER\_H\_}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#define SIMPLE\_FILTER\_H\_}}
+\DoxyCodeLine{6 \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{7 \textcolor{comment}{  * Includes}}
+\DoxyCodeLine{8 \textcolor{comment}{******************************************************************************/}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{filter_8h}{filter.h}}"{}}}
+\DoxyCodeLine{10 \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{11 \textcolor{comment}{ * Class Definitions}}
+\DoxyCodeLine{12 \textcolor{comment}{ ******************************************************************************/}}
+\DoxyCodeLine{22 \textcolor{keyword}{class }\mbox{\hyperlink{classSimpleFilter}{SimpleFilter}} : \textcolor{keyword}{public} \mbox{\hyperlink{classFilter}{Filter}} \{}
+\DoxyCodeLine{23 \textcolor{keyword}{public}:}
+\DoxyCodeLine{28   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classSimpleFilter_ad47d7f994aa0f80f9013d689b82a0b92}{ApplyAtPixel}}(\mbox{\hyperlink{classColor}{Color}} \&p) = 0;}
+\DoxyCodeLine{33   \textcolor{comment}{// Apply function used by derived classes}}
+\DoxyCodeLine{34   \textcolor{keywordtype}{void} \mbox{\hyperlink{classSimpleFilter_a66dc06c85d8a38487e3dddc3e1731f37}{Apply}}(std::vector<Image *> original, std::vector<Image *> filtered) \{}
+\DoxyCodeLine{35     \textcolor{comment}{// iterate through images in input vector}}
+\DoxyCodeLine{36     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < original.size(); i++) \{}
+\DoxyCodeLine{37       \textcolor{comment}{// set filtered image equal to original then iterate through filtered}}
+\DoxyCodeLine{38       \textcolor{comment}{// image}}
+\DoxyCodeLine{39       *filtered[i] = *original[i];}
+\DoxyCodeLine{40       \textcolor{comment}{// create reference to make access easier}}
+\DoxyCodeLine{41       \mbox{\hyperlink{classImage}{Image}} \&img = *filtered[i];}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43       \textcolor{comment}{// iterate through each pixel in the image}}
+\DoxyCodeLine{44       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < img.\mbox{\hyperlink{classImage_a4ab80d76fd124fd9de9b4fca8ae16186}{GetWidth}}(); j++) \{}
+\DoxyCodeLine{45         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} k = 0; k < img.\mbox{\hyperlink{classImage_a4d6de643ee334ff52c85da9a62d9297d}{GetHeight}}(); k++) \{}
+\DoxyCodeLine{46           \mbox{\hyperlink{classColor}{Color}} p;}
+\DoxyCodeLine{47           img.\mbox{\hyperlink{classImage_a5b9ba06409ad38e86a035ad18d8204d2}{GetPixel}}(j, k, p);}
+\DoxyCodeLine{48           \mbox{\hyperlink{classSimpleFilter_ad47d7f994aa0f80f9013d689b82a0b92}{ApplyAtPixel}}(p);}
+\DoxyCodeLine{49           img.\mbox{\hyperlink{classImage_a88e6e6e7cbe530c84c17a342fa2eaf40}{SetPixel}}(j, k, p);}
+\DoxyCodeLine{50         \}}
+\DoxyCodeLine{51       \}}
+\DoxyCodeLine{52     \}}
+\DoxyCodeLine{53   \}}
+\DoxyCodeLine{54 \};}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// !SIMPLE\_FILTER\_H\_}}
+
+\end{DoxyCode}

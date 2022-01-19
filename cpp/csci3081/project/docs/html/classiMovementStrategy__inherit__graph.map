@@ -1,0 +1,4 @@
+<map id="iMovementStrategy" name="iMovementStrategy">
+<area shape="rect" id="node2" href="$classBeelineMovement.html" title="Beeline movement&#45; will move directly towards a robot given a vector3 position. Extends iMovementStrat..." alt="" coords="5,211,171,406"/>
+<area shape="rect" id="node3" href="$classPatrolStrategy.html" title="Patrol movement&#45; Uses a sinusoidal strategy to move in a wave pattern across the map. " alt="" coords="195,189,349,428"/>
+</map>

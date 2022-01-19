@@ -1,0 +1,19 @@
+<map id="/home/user/repo/project/simulation/include/drone.h" name="/home/user/repo/project/simulation/include/drone.h">
+<area shape="rect" id="node2" href="$i__movable__entity_8h.html" title="i_movable_entity.h" alt="" coords="395,95,541,121"/>
+<area shape="rect" id="node8" href="$i__movement__strategy_8h_source.html" title="i_movement_strategy.h" alt="" coords="78,169,253,196"/>
+<area shape="rect" id="node9" href="$search__strategy_8h.html" title="search_strategy.h" alt="" coords="1029,95,1165,121"/>
+<area shape="rect" id="node18" href="$patrol__strategy_8h.html" title="patrol_strategy.h" alt="" coords="5,95,136,121"/>
+<area shape="rect" id="node19" href="$beeline__movement_8h.html" title="beeline_movement.h" alt="" coords="211,95,371,121"/>
+<area shape="rect" id="node20" href="$camera_8h.html" title="camera.h" alt="" coords="611,95,693,121"/>
+<area shape="rect" id="node3" href="$battery_8h.html" title="battery.h" alt="" coords="329,169,407,196"/>
+<area shape="rect" id="node4" href="$i__entity_8h_source.html" title="i_entity.h" alt="" coords="431,169,513,196"/>
+<area shape="rect" id="node5" href="$vector3_8h.html" title="vector3.h" alt="" coords="293,244,376,271"/>
+<area shape="rect" id="node21" href="$camera__controller_8h_source.html" title="camera_controller.h" alt="" coords="861,169,1011,196"/>
+<area shape="rect" id="node23" href="$find__robot_8h.html" title="find_robot.h" alt="" coords="537,169,636,196"/>
+<area shape="rect" id="node24" href="$image__processing__facade_8h.html" title="image_processing_facade.h" alt="" coords="525,244,728,271"/>
+<area shape="rect" id="node25" href="$image_8h.html" title="image.h" alt="" coords="832,468,907,495"/>
+<area shape="rect" id="node27" href="$filter_8h.html" title="filter.h" alt="" coords="862,393,925,420"/>
+<area shape="rect" id="node28" href="$canny__edge__detect_8h.html" title="canny_edge_detect.h" alt="" coords="705,319,865,345"/>
+<area shape="rect" id="node29" href="$blob__detector__adapter_8h.html" title="An adapter class for OpenCV. This class extends Filter. It uses OpenCV&#39;s blob detection algorithm..." alt="" coords="503,319,681,345"/>
+<area shape="rect" id="node26" href="$color_8h.html" title="color.h" alt="" coords="837,543,902,569"/>
+</map>

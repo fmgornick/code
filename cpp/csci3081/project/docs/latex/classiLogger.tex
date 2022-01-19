@@ -1,0 +1,43 @@
+\hypertarget{classiLogger}{}\section{i\+Logger Class Reference}
+\label{classiLogger}\index{i\+Logger@{i\+Logger}}
+
+
+data logger interface. Used to log data on our drone for reasons unbenounced to me. If we wanted to further optimize our drone search and rescue system, we could use a machine learning algorithm to go through our data output files to find the optimal search pattern. This is a composite pattern and has two main logger methods. One for outputing to the terminal screen, and one for saving in a C\+SV file.  
+
+
+
+
+{\ttfamily \#include $<$i\+\_\+logger.\+h$>$}
+
+
+
+Inheritance diagram for i\+Logger\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classiLogger__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for i\+Logger\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=133pt]{classiLogger__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classiLogger_a1809fbe5bc65d1c18de646e5173aa304}\label{classiLogger_a1809fbe5bc65d1c18de646e5173aa304}} 
+virtual void \hyperlink{classiLogger_a1809fbe5bc65d1c18de646e5173aa304}{Log} (\hyperlink{classVector3}{Vector3} $\ast$p, \hyperlink{classVector3}{Vector3} $\ast$d, double t)=0
+\begin{DoxyCompactList}\small\item\em log position, direction, and elapsed time of drone. Called every time we update. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+data logger interface. Used to log data on our drone for reasons unbenounced to me. If we wanted to further optimize our drone search and rescue system, we could use a machine learning algorithm to go through our data output files to find the optimal search pattern. This is a composite pattern and has two main logger methods. One for outputing to the terminal screen, and one for saving in a C\+SV file. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/user/repo/project/simulation/include/\hyperlink{i__logger_8h}{i\+\_\+logger.\+h}\end{DoxyCompactItemize}

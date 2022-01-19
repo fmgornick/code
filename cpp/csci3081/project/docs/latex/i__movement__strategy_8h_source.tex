@@ -1,0 +1,28 @@
+\hypertarget{i__movement__strategy_8h_source}{}\doxysection{i\+\_\+movement\+\_\+strategy.\+h}
+\label{i__movement__strategy_8h_source}\index{/Users/Fletcher/csci3081/repo-\/team-\/0/project/simulation/include/i\_movement\_strategy.h@{/Users/Fletcher/csci3081/repo-\/team-\/0/project/simulation/include/i\_movement\_strategy.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef I\_MOVEMENT\_STRATEGY\_H\_}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define I\_MOVEMENT\_STRATEGY\_H\_}}
+\DoxyCodeLine{7 \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{8 \textcolor{comment}{ * Includes}}
+\DoxyCodeLine{9 \textcolor{comment}{ ******************************************************************************/}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{vector3_8h}{vector3.h}}"{}}}
+\DoxyCodeLine{11 \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{12 \textcolor{comment}{ * Class Definitions}}
+\DoxyCodeLine{13 \textcolor{comment}{ ******************************************************************************/}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{23 \textcolor{keyword}{class }\mbox{\hyperlink{classiMovementStrategy}{iMovementStrategy}} \{}
+\DoxyCodeLine{24     \textcolor{keyword}{public}:}
+\DoxyCodeLine{29         \mbox{\hyperlink{classiMovementStrategy_a715d79c2ed2353d1f38359398d6b5c88}{\string~iMovementStrategy}}() \{\}}
+\DoxyCodeLine{35         \textcolor{keyword}{virtual} \mbox{\hyperlink{classVector3}{Vector3}} \mbox{\hyperlink{classiMovementStrategy_aa9f5a07461c654a7497775696d20e990}{GetPosition}}() = 0;}
+\DoxyCodeLine{41         \textcolor{keyword}{virtual} \mbox{\hyperlink{classVector3}{Vector3}} \mbox{\hyperlink{classiMovementStrategy_a92f20c8ebf7c4f7dde5743528b8e45b7}{GetVelocity}}() = 0;}
+\DoxyCodeLine{47         \textcolor{keyword}{virtual} \mbox{\hyperlink{classVector3}{Vector3}} \mbox{\hyperlink{classiMovementStrategy_a40ec6c329ca0842638af80cfd509b372}{UpdateVelocity}}(\textcolor{keywordtype}{double} dt, \mbox{\hyperlink{classVector3}{Vector3}} current, \mbox{\hyperlink{classVector3}{Vector3}} target, \textcolor{keywordtype}{double} time) = 0;}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49         \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} isMoving() \{\};}
+\DoxyCodeLine{50 \};}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

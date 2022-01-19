@@ -1,0 +1,7 @@
+<map id="iEntity" name="iEntity">
+<area shape="rect" id="node2" href="$classHospital.html" title="once our robot is found, we&#39;re gonna want to rescue it by taking it to the hospital. Thus we need a hospital entity " alt="" coords="5,211,128,391"/>
+<area shape="rect" id="node3" href="$classiMovableEntity.html" title="derived class of entity. This is an abstract class that represents entities that move. This class gets implemented by the Drone and Robot entities. " alt="" coords="152,189,307,413"/>
+<area shape="rect" id="node5" href="$classRechargeStation.html" title="if our drone runs low on battery and must recharge, then it visits one of these stations to replenish..." alt="" coords="331,211,485,391"/>
+<area shape="rect" id="node6" href="$classRobot.html" title="robot is a movable entity. This robot will be placed randomly in minneapolis, and our goal is to use ..." alt="" coords="509,211,632,391"/>
+<area shape="rect" id="node4" href="$classDrone.html" title="Our actual drone that will be searching for the robot. Contains tons methods to update postion and ve..." alt="" coords="168,461,291,832"/>
+</map>

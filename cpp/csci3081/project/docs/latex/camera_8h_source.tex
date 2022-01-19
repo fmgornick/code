@@ -1,0 +1,52 @@
+\hypertarget{camera_8h_source}{}\doxysection{camera.\+h}
+\label{camera_8h_source}\index{/Users/Fletcher/csci3081/repo-\/team-\/0/project/simulation/include/camera.h@{/Users/Fletcher/csci3081/repo-\/team-\/0/project/simulation/include/camera.h}}
+\mbox{\hyperlink{camera_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#ifndef CAMERA\_H\_}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#define CAMERA\_H\_}}
+\DoxyCodeLine{6 \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{7 \textcolor{comment}{ * Includes}}
+\DoxyCodeLine{8 \textcolor{comment}{ ******************************************************************************/}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}camera\_controller.h"{}}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{find__robot_8h}{find\_robot.h}}"{}}}
+\DoxyCodeLine{12 \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{13 \textcolor{comment}{ * Class Definitions}}
+\DoxyCodeLine{14 \textcolor{comment}{ ******************************************************************************/}}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{23 \textcolor{keyword}{class }\mbox{\hyperlink{classCamera}{Camera}} : \textcolor{keyword}{public} \mbox{\hyperlink{classICameraObserver}{ICameraObserver}} \{}
+\DoxyCodeLine{24 \textcolor{keyword}{public}:}
+\DoxyCodeLine{30     \textcolor{keyword}{struct }\mbox{\hyperlink{structCamera_1_1CameraResult}{CameraResult}} : \textcolor{keyword}{public} \mbox{\hyperlink{classICameraResult}{ICameraResult}} \{}
+\DoxyCodeLine{31         \textcolor{keywordtype}{bool} found;}
+\DoxyCodeLine{32         \textcolor{keywordtype}{double} pos[3];}
+\DoxyCodeLine{33     \};}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{42     \mbox{\hyperlink{classCamera_a94c943c9dbc0d75340f34d3816eec8fc}{Camera}}(\textcolor{keywordtype}{int} cameraId, \mbox{\hyperlink{classICameraController}{ICameraController}}* \mbox{\hyperlink{classCamera_aca1a708bb6132877f6be0b62cfe2c834}{controller}}) : \mbox{\hyperlink{classCamera_a4777e12d1a1138468a2d9023d8bff4ec}{id}}(\mbox{\hyperlink{classCamera_a4777e12d1a1138468a2d9023d8bff4ec}{id}}), \mbox{\hyperlink{classCamera_aca1a708bb6132877f6be0b62cfe2c834}{controller}}(\mbox{\hyperlink{classCamera_aca1a708bb6132877f6be0b62cfe2c834}{controller}}) \{}
+\DoxyCodeLine{43         \textcolor{keywordflow}{if}(\mbox{\hyperlink{classCamera_aca1a708bb6132877f6be0b62cfe2c834}{controller}})}
+\DoxyCodeLine{44             \mbox{\hyperlink{classCamera_aca1a708bb6132877f6be0b62cfe2c834}{controller}}-\/>\mbox{\hyperlink{classICameraController_ad3cf56dc052984b0e31e602f344c35db}{AddObserver}}(*\textcolor{keyword}{this});}
+\DoxyCodeLine{45         \mbox{\hyperlink{classCamera_a525dfb163566c33bcbf439714bc4f352}{findRobot}} = \textcolor{keyword}{new} \mbox{\hyperlink{classFindRobot}{FindRobot}}();}
+\DoxyCodeLine{46         \mbox{\hyperlink{classCamera_a80a8ae81e244769c5d5c36c6c994a04b}{robot}} = \textcolor{keyword}{false};}
+\DoxyCodeLine{47         \mbox{\hyperlink{classCamera_a38e395108a9ba7b0e0ce2d1110ec70d9}{robotLocation}} = \mbox{\hyperlink{classVector3}{Vector3}}();}
+\DoxyCodeLine{48     \}}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{55     \textcolor{keywordtype}{void} \mbox{\hyperlink{classCamera_a70dfc7f06d6e12855afadd358831cf3a}{TakePicture}}();}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{69     \mbox{\hyperlink{classICameraResult}{ICameraResult}}* \mbox{\hyperlink{classCamera_a792611ad34a1c595b61b7c72ce1d5e32}{ProcessImages}}(\textcolor{keywordtype}{int} cameraId, \textcolor{keywordtype}{double} xPos, \textcolor{keywordtype}{double} yPos, \textcolor{keywordtype}{double} zPos, }
+\DoxyCodeLine{70     \textcolor{keyword}{const} std::vector<RawCameraImage>\& images, picojson::object\& details) \textcolor{keyword}{const};}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{78     \textcolor{keywordtype}{void} \mbox{\hyperlink{classCamera_a28c3836707bdaf6e1a2098ec20460995}{ImageProcessingComplete}}(\mbox{\hyperlink{classICameraResult}{ICameraResult}}* result);}
+\DoxyCodeLine{85     \textcolor{keywordtype}{bool} \mbox{\hyperlink{classCamera_a7a88bbfa9d8529f4351f5a7396d5e80b}{isFound}}();}
+\DoxyCodeLine{91     \mbox{\hyperlink{classVector3}{Vector3}} \mbox{\hyperlink{classCamera_a23e1dc349268eafe666b83d0a3b831a2}{getRobotLocation}}();}
+\DoxyCodeLine{92 }
+\DoxyCodeLine{93 \textcolor{keyword}{private}:}
+\DoxyCodeLine{95     \mbox{\hyperlink{classICameraController}{ICameraController}}* \mbox{\hyperlink{classCamera_aca1a708bb6132877f6be0b62cfe2c834}{controller}};}
+\DoxyCodeLine{97     \mbox{\hyperlink{classFindRobot}{FindRobot}}* \mbox{\hyperlink{classCamera_a525dfb163566c33bcbf439714bc4f352}{findRobot}};}
+\DoxyCodeLine{99     \textcolor{keywordtype}{int} \mbox{\hyperlink{classCamera_a4777e12d1a1138468a2d9023d8bff4ec}{id}};}
+\DoxyCodeLine{101     \textcolor{keywordtype}{bool} \mbox{\hyperlink{classCamera_a80a8ae81e244769c5d5c36c6c994a04b}{robot}};}
+\DoxyCodeLine{103     \mbox{\hyperlink{classVector3}{Vector3}} \mbox{\hyperlink{classCamera_a38e395108a9ba7b0e0ce2d1110ec70d9}{robotLocation}};}
+\DoxyCodeLine{104 \};}
+\DoxyCodeLine{105 }
+\DoxyCodeLine{106 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

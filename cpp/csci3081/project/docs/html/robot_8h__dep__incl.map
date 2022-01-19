@@ -1,0 +1,9 @@
+<map id="/home/user/repo/project/simulation/include/robot.h" name="/home/user/repo/project/simulation/include/robot.h">
+<area shape="rect" id="node2" href="$i__entity__factory_8h.html" title="/home/user/repo/project\l/simulation/include/i\l_entity_factory.h" alt="" coords="279,95,457,151"/>
+<area shape="rect" id="node3" href="$drone__factory_8h.html" title="/home/user/repo/project\l/simulation/include/drone\l_factory.h" alt="" coords="5,199,192,255"/>
+<area shape="rect" id="node4" href="$composite__entity__factory_8h.html" title="/home/user/repo/project\l/simulation/include/composite\l_entity_factory.h" alt="" coords="259,303,477,359"/>
+<area shape="rect" id="node6" href="$hospital__factory_8h.html" title="/home/user/repo/project\l/simulation/include/hospital\l_factory.h" alt="" coords="267,199,469,255"/>
+<area shape="rect" id="node7" href="$recharge__station__factory_8h.html" title="/home/user/repo/project\l/simulation/include/recharge\l_station_factory.h" alt="" coords="494,199,701,255"/>
+<area shape="rect" id="node8" href="$robot__factory_8h.html" title="/home/user/repo/project\l/simulation/include/robot\l_factory.h" alt="" coords="725,199,909,255"/>
+<area shape="rect" id="node5" href="$factory__test_8cc.html" title="/home/user/repo/project\l/tests/src/factory_test.cc" alt="" coords="277,407,459,448"/>
+</map>

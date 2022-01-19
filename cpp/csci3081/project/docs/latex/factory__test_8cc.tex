@@ -1,0 +1,35 @@
+\hypertarget{factory__test_8cc}{}\section{/home/user/repo/project/tests/src/factory\+\_\+test.cc File Reference}
+\label{factory__test_8cc}\index{/home/user/repo/project/tests/src/factory\+\_\+test.\+cc@{/home/user/repo/project/tests/src/factory\+\_\+test.\+cc}}
+{\ttfamily \#include \char`\"{}composite\+\_\+entity\+\_\+factory.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}picojson.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}gtest/gtest.\+h\char`\"{}}\newline
+Include dependency graph for factory\+\_\+test.\+cc\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{factory__test_8cc__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classFactoryTest}{Factory\+Test}
+\begin{DoxyCompactList}\small\item\em Integration tests for our composite factory pattern. These tests checks to see if our factory pattern correctly takes in picojson objects and converts them to an object\textquotesingle{}s member variables. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{factory__test_8cc_abbe9e7c1f9ebe17d8af880a870149d19}\label{factory__test_8cc_abbe9e7c1f9ebe17d8af880a870149d19}} 
+\hyperlink{factory__test_8cc_abbe9e7c1f9ebe17d8af880a870149d19}{T\+E\+S\+T\+\_\+F} (\hyperlink{classFactoryTest}{Factory\+Test}, Create\+Drone)
+\begin{DoxyCompactList}\small\item\em test for drone factory. Makes sure our composite entity factory correctly calls the drone factory, and the drone factory initializes the data correctly \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{factory__test_8cc_a052b7a574a21a8833279558f0af85ad1}\label{factory__test_8cc_a052b7a574a21a8833279558f0af85ad1}} 
+\hyperlink{factory__test_8cc_a052b7a574a21a8833279558f0af85ad1}{T\+E\+S\+T\+\_\+F} (\hyperlink{classFactoryTest}{Factory\+Test}, Create\+Robot)
+\begin{DoxyCompactList}\small\item\em test for robot factory. Makes sure our composite entity factory correctly calls the robot factory, and the robot factory initializes the data correctly \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{factory__test_8cc_a75ab1deef1bd82b3252f8fbe3f7864e5}\label{factory__test_8cc_a75ab1deef1bd82b3252f8fbe3f7864e5}} 
+\hyperlink{factory__test_8cc_a75ab1deef1bd82b3252f8fbe3f7864e5}{T\+E\+S\+T\+\_\+F} (\hyperlink{classFactoryTest}{Factory\+Test}, Create\+Hospital)
+\begin{DoxyCompactList}\small\item\em test for hospital factory. Makes sure our composite entity factory correctly calls the hospital factory, and the hospital factory initializes the data correctly \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{factory__test_8cc_aa8c984b99cedefb024b6398c2552c718}\label{factory__test_8cc_aa8c984b99cedefb024b6398c2552c718}} 
+\hyperlink{factory__test_8cc_aa8c984b99cedefb024b6398c2552c718}{T\+E\+S\+T\+\_\+F} (\hyperlink{classFactoryTest}{Factory\+Test}, Create\+Recharge\+Station)
+\begin{DoxyCompactList}\small\item\em test for recharge station factory. Makes sure our composite entity factory correctly calls the recharge station factory, and the recharge station factory initializes the data correctly \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{factory__test_8cc_a732babc31ff63e5671d0748d4e9bda30}\label{factory__test_8cc_a732babc31ff63e5671d0748d4e9bda30}} 
+\hyperlink{factory__test_8cc_a732babc31ff63e5671d0748d4e9bda30}{T\+E\+S\+T\+\_\+F} (\hyperlink{classFactoryTest}{Factory\+Test}, Create\+Fake)
+\begin{DoxyCompactList}\small\item\em test to see that if our picojson object has a name that\textquotesingle{}s not recognized, the composite entity factory will just return a null pointer for the object \end{DoxyCompactList}\end{DoxyCompactItemize}

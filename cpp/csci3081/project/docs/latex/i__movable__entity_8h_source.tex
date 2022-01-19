@@ -1,0 +1,34 @@
+\hypertarget{i__movable__entity_8h_source}{}\doxysection{i\+\_\+movable\+\_\+entity.\+h}
+\label{i__movable__entity_8h_source}\index{/Users/Fletcher/csci3081/repo-\/team-\/0/project/simulation/include/i\_movable\_entity.h@{/Users/Fletcher/csci3081/repo-\/team-\/0/project/simulation/include/i\_movable\_entity.h}}
+\mbox{\hyperlink{i__movable__entity_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#ifndef I\_MOVABLE\_ENTITY\_H\_}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#define I\_MOVABLE\_ENTITY\_H\_}}
+\DoxyCodeLine{6 \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{7 \textcolor{comment}{ * Includes}}
+\DoxyCodeLine{8 \textcolor{comment}{ ******************************************************************************/}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{battery_8h}{battery.h}}"{}}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}i\_entity.h"{}}}
+\DoxyCodeLine{11 \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{12 \textcolor{comment}{ * Class Definitions}}
+\DoxyCodeLine{13 \textcolor{comment}{ ******************************************************************************/}}
+\DoxyCodeLine{20 \textcolor{keyword}{class }\mbox{\hyperlink{classiMovableEntity}{iMovableEntity}} : \textcolor{keyword}{public} \mbox{\hyperlink{classiEntity}{iEntity}} \{}
+\DoxyCodeLine{21 \textcolor{keyword}{public}:}
+\DoxyCodeLine{25   \textcolor{keyword}{virtual} \mbox{\hyperlink{classiMovableEntity_a7ef5def1645b30429c910bfd6a6b67ef}{\string~iMovableEntity}}() \{\}}
+\DoxyCodeLine{29   \textcolor{keyword}{virtual} \textcolor{keywordtype}{int} \mbox{\hyperlink{classiMovableEntity_a1723b1c151cd37c60d4dc8925e8fa571}{GetID}}() = 0;}
+\DoxyCodeLine{33   \textcolor{keyword}{virtual} \textcolor{keyword}{const} std::string \&\mbox{\hyperlink{classiMovableEntity_a3b5165abd5e0e3b174708d9dcdb5ea80}{GetName}}() \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{37   \textcolor{keyword}{virtual} \mbox{\hyperlink{classVector3}{Vector3}} *\mbox{\hyperlink{classiMovableEntity_a70722674d33e7a4136d59901a2ffc596}{GetPosition}}() = 0;}
+\DoxyCodeLine{41   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classiMovableEntity_afbf41c5d1499bfe87054a53de7d87fe8}{SetPosition}}(\mbox{\hyperlink{classVector3}{Vector3}} \&pos) = 0;}
+\DoxyCodeLine{45   \textcolor{keyword}{virtual} \mbox{\hyperlink{classVector3}{Vector3}} *\mbox{\hyperlink{classiMovableEntity_a72b82960a9c7d27e43e950776a98b151}{GetVelocity}}() = 0;}
+\DoxyCodeLine{49   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classiMovableEntity_ab1b67096acd0e25f97ecceeeeed1c972}{SetVelocity}}(\mbox{\hyperlink{classVector3}{Vector3}} \&vel) = 0;}
+\DoxyCodeLine{55   \textcolor{keyword}{virtual} \mbox{\hyperlink{classVector3}{Vector3}} *\mbox{\hyperlink{classiMovableEntity_a66c459f91e25db7be682e830eb857370}{GetDirection}}() = 0;}
+\DoxyCodeLine{61   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classiMovableEntity_a631c4a8e24360bedecf1a675a18b10ef}{SetDirection}}(\mbox{\hyperlink{classVector3}{Vector3}} \&dir) = 0;}
+\DoxyCodeLine{65   \textcolor{keyword}{virtual} \mbox{\hyperlink{classBattery}{Battery}} *\mbox{\hyperlink{classiMovableEntity_a2d1614c08aef724bafe7ef951928f56d}{GetBattery}}() = 0;}
+\DoxyCodeLine{69   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classiMovableEntity_afa73b4b5381e1ad0668b1c468bc0970f}{Update}}(\textcolor{keywordtype}{double} dt) = 0;}
+\DoxyCodeLine{73   \textcolor{comment}{// virtual iMovableEntity * clone() = 0;}}
+\DoxyCodeLine{74 \};}
+\DoxyCodeLine{75 }
+\DoxyCodeLine{76 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// !I\_MOVABLE\_ENTITY\_H\_}}
+
+\end{DoxyCode}

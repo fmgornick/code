@@ -1,0 +1,3 @@
+<map id="ConsoleLogger" name="ConsoleLogger">
+<area shape="rect" id="node2" href="$classiLogger.html" title="data logger interface. Used to log data on our drone for reasons unbenounced to me. If we wanted to further optimize our drone search and rescue system, we could use a machine learning algorithm to go through our data output files to find the optimal search pattern. This is a composite pattern and has two main logger methods. One for outputing to the terminal screen, and one for saving in a CSV file. " alt="" coords="29,5,100,83"/>
+</map>

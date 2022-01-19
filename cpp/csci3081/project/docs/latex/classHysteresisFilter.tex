@@ -1,0 +1,44 @@
+\hypertarget{classHysteresisFilter}{}\section{Hysteresis\+Filter Class Reference}
+\label{classHysteresisFilter}\index{Hysteresis\+Filter@{Hysteresis\+Filter}}
+
+
+The main class for \hyperlink{classHysteresisFilter}{Hysteresis\+Filter}, extends \hyperlink{classFilter}{Filter}. The hysteresis filter takes the output from the double-\/threshold filter and iterates through, changing all \textquotesingle{}weak\textquotesingle{} pixels into \textquotesingle{}strong\textquotesingle{} pixels if any of the surrounding pixels are \textquotesingle{}strong.\textquotesingle{} If not the pixel is set to black.  
+
+
+
+
+{\ttfamily \#include $<$hysteresis\+\_\+filter.\+h$>$}
+
+
+
+Inheritance diagram for Hysteresis\+Filter\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=172pt]{classHysteresisFilter__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Hysteresis\+Filter\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=172pt]{classHysteresisFilter__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classHysteresisFilter_af2d6c50bc0cfd609fbf7e90f01b03b1f}\label{classHysteresisFilter_af2d6c50bc0cfd609fbf7e90f01b03b1f}} 
+void \hyperlink{classHysteresisFilter_af2d6c50bc0cfd609fbf7e90f01b03b1f}{Apply} (std\+::vector$<$ \hyperlink{classImage}{Image} $\ast$$>$ original, std\+::vector$<$ \hyperlink{classImage}{Image} $\ast$$>$ filtered)
+\begin{DoxyCompactList}\small\item\em Apply function to be overridden by \hyperlink{classFilter}{Filter} Apply function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The main class for \hyperlink{classHysteresisFilter}{Hysteresis\+Filter}, extends \hyperlink{classFilter}{Filter}. The hysteresis filter takes the output from the double-\/threshold filter and iterates through, changing all \textquotesingle{}weak\textquotesingle{} pixels into \textquotesingle{}strong\textquotesingle{} pixels if any of the surrounding pixels are \textquotesingle{}strong.\textquotesingle{} If not the pixel is set to black. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/user/repo/project/image/include/hysteresis\+\_\+filter.\+h\item 
+/home/user/repo/project/image/src/hysteresis\+\_\+filter.\+cc\end{DoxyCompactItemize}

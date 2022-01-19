@@ -1,0 +1,24 @@
+var searchData=
+[
+  ['_7ecannyedgedetect',['~CannyEdgeDetect',['../classCannyEdgeDetect.html#a4ccdf28f996d538eb8aee486acfbaea3',1,'CannyEdgeDetect']]],
+  ['_7edoublethresholdfilter',['~DoubleThresholdFilter',['../classDoubleThresholdFilter.html#a5ebad435bdc4bfa13a936fdf243cb974',1,'DoubleThresholdFilter']]],
+  ['_7edrone',['~Drone',['../classDrone.html#a667075abb1eb5c54be6418884a387d14',1,'Drone']]],
+  ['_7efilter',['~Filter',['../classFilter.html#aa37dc017d133404b3a326f363ce36b8a',1,'Filter']]],
+  ['_7egaussianblurfilter',['~GaussianBlurFilter',['../classGaussianBlurFilter.html#a371400ed538c678311cc950f8eaa5218',1,'GaussianBlurFilter']]],
+  ['_7egreyscalefilter',['~GreyScaleFilter',['../classGreyScaleFilter.html#a4df05a609fabbc1d4f4c455c53840c68',1,'GreyScaleFilter']]],
+  ['_7eicameracontroller',['~ICameraController',['../classICameraController.html#a7f1b88c7e023ad218d461684dc0d4fe5',1,'ICameraController']]],
+  ['_7eicameraobserver',['~ICameraObserver',['../classICameraObserver.html#a19344cb93ca790a0311c9c7bcc6e8eec',1,'ICameraObserver']]],
+  ['_7eicameraresult',['~ICameraResult',['../classICameraResult.html#a6c8f4f6c3748c00236bd588cf9410f8b',1,'ICameraResult']]],
+  ['_7eientity',['~iEntity',['../classiEntity.html#ab8633da01cab1d5a6aa565ac45a74c59',1,'iEntity']]],
+  ['_7eimage',['~Image',['../classImage.html#a0294f63700543e11c0f0da85601c7ae5',1,'Image']]],
+  ['_7eimovableentity',['~iMovableEntity',['../classiMovableEntity.html#a7ef5def1645b30429c910bfd6a6b67ef',1,'iMovableEntity']]],
+  ['_7eimovementstrategy',['~iMovementStrategy',['../classiMovementStrategy.html#a715d79c2ed2353d1f38359398d6b5c88',1,'iMovementStrategy']]],
+  ['_7einvertfilter',['~InvertFilter',['../classInvertFilter.html#afa6cadf8ac9634aa9ee0967121865fbc',1,'InvertFilter']]],
+  ['_7emeanblurfilter',['~MeanBlurFilter',['../classMeanBlurFilter.html#a2341f00bf10c26adfd3ecaa1eb713963',1,'MeanBlurFilter']]],
+  ['_7epurplescalefilter',['~PurpleScaleFilter',['../classPurpleScaleFilter.html#ab5d76a8c1f8fa50bb1d2c905eb2cabc4',1,'PurpleScaleFilter']]],
+  ['_7esearchstrategy',['~SearchStrategy',['../classSearchStrategy.html#a682f312091a92abea5963922213f9040',1,'SearchStrategy']]],
+  ['_7esharpeningfilter',['~SharpeningFilter',['../classSharpeningFilter.html#af245f6418a3a1ce8f63a59da7916060d',1,'SharpeningFilter']]],
+  ['_7esolarizationfilter',['~SolarizationFilter',['../classSolarizationFilter.html#aa990626b72985179d6daa691650d2137',1,'SolarizationFilter']]],
+  ['_7ethresholdfilter',['~ThresholdFilter',['../classThresholdFilter.html#a5f7d71d8c0e78f533d9b1e4f5c43352e',1,'ThresholdFilter']]],
+  ['_7ewebapp',['~WebApp',['../classWebApp.html#aea8764197ebbcd256a07055b187a7fa8',1,'WebApp']]]
+];

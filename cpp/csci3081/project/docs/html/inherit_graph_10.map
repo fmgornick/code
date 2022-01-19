@@ -1,0 +1,6 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classiLogger.html" title="data logger interface. Used to log data on our drone for reasons unbenounced to me. If we wanted to further optimize our drone search and rescue system, we could use a machine learning algorithm to go through our data output files to find the optimal search pattern. This is a composite pattern and has two main logger methods. One for outputing to the terminal screen, and one for saving in a CSV file. " alt="" coords="5,56,76,83"/>
+<area shape="rect" id="node2" href="$classCompositeLogger.html" title="composite logger that uses our other two terminal / csv loggers to record data " alt="" coords="124,5,260,32"/>
+<area shape="rect" id="node3" href="$classConsoleLogger.html" title="ConsoleLogger" alt="" coords="133,56,251,83"/>
+<area shape="rect" id="node4" href="$classCSVLogger.html" title="logger for csv files. Puts vector information and strategy time information in a comma separated file..." alt="" coords="146,107,238,133"/>
+</map>

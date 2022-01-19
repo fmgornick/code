@@ -1,0 +1,109 @@
+\hypertarget{concrete__dec_8h_source}{}\doxysection{concrete\+\_\+dec.\+h}
+\label{concrete__dec_8h_source}\index{/Users/Fletcher/csci3081/repo-\/team-\/0/project/simulation/include/concrete\_dec.h@{/Users/Fletcher/csci3081/repo-\/team-\/0/project/simulation/include/concrete\_dec.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// /**}}
+\DoxyCodeLine{2 \textcolor{comment}{//  * @file concrete\_dec.h}}
+\DoxyCodeLine{3 \textcolor{comment}{//  */}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{comment}{// \#ifndef CONCRETE\_DEC\_H\_}}
+\DoxyCodeLine{6 \textcolor{comment}{// \#define CONCRETE\_DEC\_H\_}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{comment}{// \#include "{}battery\_decorator.h"{}}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{comment}{// /*******************************************************************************}}
+\DoxyCodeLine{11 \textcolor{comment}{//  * Class Definitions}}
+\DoxyCodeLine{12 \textcolor{comment}{//  ******************************************************************************/}}
+\DoxyCodeLine{13 \textcolor{comment}{// /**}}
+\DoxyCodeLine{14 \textcolor{comment}{//  * @brief Concrete instance of decorator class. Drone and Robot objects have}}
+\DoxyCodeLine{15 \textcolor{comment}{//  batteries that deplete}}
+\DoxyCodeLine{16 \textcolor{comment}{//  * over time.  This class is used to represent the life of our drone and}}
+\DoxyCodeLine{17 \textcolor{comment}{//  robot}}
+\DoxyCodeLine{18 \textcolor{comment}{//  * movable entities.}}
+\DoxyCodeLine{19 \textcolor{comment}{//  */}}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 \textcolor{comment}{// class ConcreteDec : public BatteryDecorator \{}}
+\DoxyCodeLine{22 \textcolor{comment}{// public:}}
+\DoxyCodeLine{23 \textcolor{comment}{//   /**}}
+\DoxyCodeLine{24 \textcolor{comment}{//    * @brief default constructor}}
+\DoxyCodeLine{25 \textcolor{comment}{//    */}}
+\DoxyCodeLine{26 \textcolor{comment}{//   ConcreteDec(iMovableEntity* ent) : BatteryDecorator(ent), maxCharge(10.0),}}
+\DoxyCodeLine{27 \textcolor{comment}{//   remainingCharge(10.0), noCharge(false) \{\}}}
+\DoxyCodeLine{28 \textcolor{comment}{//   /**}}
+\DoxyCodeLine{29 \textcolor{comment}{//    * @brief constructor that takes arguments}}
+\DoxyCodeLine{30 \textcolor{comment}{//    */}}
+\DoxyCodeLine{31 \textcolor{comment}{//   ConcreteDec(iMovableEntity* ent, double max, double remaining, bool}}
+\DoxyCodeLine{32 \textcolor{comment}{//   isEmpty)}}
+\DoxyCodeLine{33 \textcolor{comment}{//       : BatteryDecorator(ent), maxCharge(max), remainingCharge(remaining),}}
+\DoxyCodeLine{34 \textcolor{comment}{//       noCharge(isEmpty) \{\}}}
+\DoxyCodeLine{35 \textcolor{comment}{//   /**}}
+\DoxyCodeLine{36 \textcolor{comment}{//    * @brief getter: returns battery's capacity}}
+\DoxyCodeLine{37 \textcolor{comment}{//    */}}
+\DoxyCodeLine{38 \textcolor{comment}{//   double GetMaxCharge() \{ return maxCharge; \}}}
+\DoxyCodeLine{39 \textcolor{comment}{//   /**}}
+\DoxyCodeLine{40 \textcolor{comment}{//    * @brief getter: returns charge left on battery}}
+\DoxyCodeLine{41 \textcolor{comment}{//    */}}
+\DoxyCodeLine{42 \textcolor{comment}{//   double GetRemainingCharge() \{ return remainingCharge; \}}}
+\DoxyCodeLine{43 \textcolor{comment}{//   /**}}
+\DoxyCodeLine{44 \textcolor{comment}{//    * @brief acts as a getter of our noCharge member variable. Just returns}}
+\DoxyCodeLine{45 \textcolor{comment}{//    true}}
+\DoxyCodeLine{46 \textcolor{comment}{//    * or false on whether or not the battery is depleted.}}
+\DoxyCodeLine{47 \textcolor{comment}{//    */}}
+\DoxyCodeLine{48 \textcolor{comment}{//   bool IsEmpty() \{ return noCharge; \}}}
+\DoxyCodeLine{49 \textcolor{comment}{//   /**}}
+\DoxyCodeLine{50 \textcolor{comment}{//    * @brief this method changes the actual battery level.  This operation}}
+\DoxyCodeLine{51 \textcolor{comment}{//    would}}
+\DoxyCodeLine{52 \textcolor{comment}{//    * usually be called by a drone in it's update method.}}
+\DoxyCodeLine{53 \textcolor{comment}{//    */}}
+\DoxyCodeLine{54 \textcolor{comment}{//   void Drain(double percentage) \{}}
+\DoxyCodeLine{55 \textcolor{comment}{//     if (percentage >= remainingCharge) \{}}
+\DoxyCodeLine{56 \textcolor{comment}{//       remainingCharge = 0.0;}}
+\DoxyCodeLine{57 \textcolor{comment}{//       noCharge = true;}}
+\DoxyCodeLine{58 \textcolor{comment}{//     \} else}}
+\DoxyCodeLine{59 \textcolor{comment}{//       remainingCharge -\/= percentage;}}
+\DoxyCodeLine{60 \textcolor{comment}{//   \}}}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62 \textcolor{comment}{//    /**}}
+\DoxyCodeLine{63 \textcolor{comment}{//    * @brief getter: returns battery id}}
+\DoxyCodeLine{64 \textcolor{comment}{//    */}}
+\DoxyCodeLine{65 \textcolor{comment}{//   int GetID() \{ return GetEnt()-\/>GetID(); \}}}
+\DoxyCodeLine{66 \textcolor{comment}{//   /**}}
+\DoxyCodeLine{67 \textcolor{comment}{//    * @brief getter: returns battery name}}
+\DoxyCodeLine{68 \textcolor{comment}{//    */}}
+\DoxyCodeLine{69 \textcolor{comment}{//   const std::string \&GetName() const\{ return GetEnt()-\/>GetName(); \}}}
+\DoxyCodeLine{70 \textcolor{comment}{//   /**}}
+\DoxyCodeLine{71 \textcolor{comment}{//    * @brief getter: returns drone position}}
+\DoxyCodeLine{72 \textcolor{comment}{//    */}}
+\DoxyCodeLine{73 \textcolor{comment}{//   Vector3 *GetPosition() \{ return GetEnt()-\/>GetPosition(); \}}}
+\DoxyCodeLine{74 \textcolor{comment}{//   /**}}
+\DoxyCodeLine{75 \textcolor{comment}{//    * @brief setter: updates or initializes position}}
+\DoxyCodeLine{76 \textcolor{comment}{//    */}}
+\DoxyCodeLine{77 \textcolor{comment}{//   void SetPosition(Vector3 \&pos) \{ GetEnt()-\/>SetPosition(pos); \}}}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{79 \textcolor{comment}{//   void Update(double dt)\{}}
+\DoxyCodeLine{80 \textcolor{comment}{//     std::cout << GetMaxCharge() << std::endl;}}
+\DoxyCodeLine{81 \textcolor{comment}{//     GetEnt()-\/>Update(dt);}}
+\DoxyCodeLine{82 \textcolor{comment}{//   \}}}
+\DoxyCodeLine{83 }
+\DoxyCodeLine{84 \textcolor{comment}{//   Vector3 *GetVelocity()\{ return GetEnt()-\/>GetVelocity();\}}}
+\DoxyCodeLine{85 \textcolor{comment}{//   void SetVelocity(Vector3 \&vel) \{GetEnt()-\/>SetVelocity(vel);\}}}
+\DoxyCodeLine{86 \textcolor{comment}{//   Vector3 *GetDirection() \{return GetEnt()-\/>GetDirection();\}}}
+\DoxyCodeLine{87 \textcolor{comment}{//   void SetDirection(Vector3 \&dir) \{GetEnt()-\/>SetDirection(dir);\}}}
+\DoxyCodeLine{88 \textcolor{comment}{//   /*}}
+\DoxyCodeLine{89 \textcolor{comment}{//    * @brief Get the Speed value}}
+\DoxyCodeLine{90 \textcolor{comment}{//    *}}
+\DoxyCodeLine{91 \textcolor{comment}{//    * @return float}}
+\DoxyCodeLine{92 \textcolor{comment}{//    */}}
+\DoxyCodeLine{93 }
+\DoxyCodeLine{94 \textcolor{comment}{// private:}}
+\DoxyCodeLine{95 \textcolor{comment}{//   /** @brief float depicting max charge of battery */}}
+\DoxyCodeLine{96 \textcolor{comment}{//   double maxCharge;}}
+\DoxyCodeLine{97 \textcolor{comment}{//   /** @brief float depicting remaining charge of battery */}}
+\DoxyCodeLine{98 \textcolor{comment}{//   double remainingCharge;}}
+\DoxyCodeLine{99 \textcolor{comment}{//   /** @brief boolean telling us whether or not bettery is depleted */}}
+\DoxyCodeLine{100 \textcolor{comment}{//   bool noCharge;}}
+\DoxyCodeLine{101 \textcolor{comment}{// \};}}
+\DoxyCodeLine{102 }
+\DoxyCodeLine{103 \textcolor{comment}{// \#endif // !BATTERY\_H\_}}
+
+\end{DoxyCode}

@@ -1,0 +1,51 @@
+\hypertarget{classMeanBlurFilter}{}\section{Mean\+Blur\+Filter Class Reference}
+\label{classMeanBlurFilter}\index{Mean\+Blur\+Filter@{Mean\+Blur\+Filter}}
+
+
+The main class for \hyperlink{classMeanBlurFilter}{Mean\+Blur\+Filter}, extends \hyperlink{classConvolutionFilter}{Convolution\+Filter}. Creates a 3 x 3 kernel with all 1\textquotesingle{}s meaning that each pixel and the surrounding 8 get the same representation for the value of the current pixel. Kernel is applied in \hyperlink{classConvolutionFilter}{Convolution\+Filter} \hyperlink{classMeanBlurFilter_abb7824005c70b04aca6a24760f85cbc1}{Apply()} method.  
+
+
+
+
+{\ttfamily \#include $<$mean\+\_\+blur\+\_\+filter.\+h$>$}
+
+
+
+Inheritance diagram for Mean\+Blur\+Filter\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=198pt]{classMeanBlurFilter__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Mean\+Blur\+Filter\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=198pt]{classMeanBlurFilter__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMeanBlurFilter_a506584ed32d9343588264ec8e1ba3a83}\label{classMeanBlurFilter_a506584ed32d9343588264ec8e1ba3a83}} 
+\hyperlink{classMeanBlurFilter_a506584ed32d9343588264ec8e1ba3a83}{Mean\+Blur\+Filter} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMeanBlurFilter_a2341f00bf10c26adfd3ecaa1eb713963}\label{classMeanBlurFilter_a2341f00bf10c26adfd3ecaa1eb713963}} 
+\hyperlink{classMeanBlurFilter_a2341f00bf10c26adfd3ecaa1eb713963}{$\sim$\+Mean\+Blur\+Filter} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMeanBlurFilter_abb7824005c70b04aca6a24760f85cbc1}\label{classMeanBlurFilter_abb7824005c70b04aca6a24760f85cbc1}} 
+void \hyperlink{classMeanBlurFilter_abb7824005c70b04aca6a24760f85cbc1}{Apply} (std\+::vector$<$ \hyperlink{classImage}{Image} $\ast$$>$ original, std\+::vector$<$ \hyperlink{classImage}{Image} $\ast$$>$ filtered)
+\begin{DoxyCompactList}\small\item\em Apply function to be overridden by parents Apply function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+The main class for \hyperlink{classMeanBlurFilter}{Mean\+Blur\+Filter}, extends \hyperlink{classConvolutionFilter}{Convolution\+Filter}. Creates a 3 x 3 kernel with all 1\textquotesingle{}s meaning that each pixel and the surrounding 8 get the same representation for the value of the current pixel. Kernel is applied in \hyperlink{classConvolutionFilter}{Convolution\+Filter} \hyperlink{classMeanBlurFilter_abb7824005c70b04aca6a24760f85cbc1}{Apply()} method. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/user/repo/project/image/include/\hyperlink{mean__blur__filter_8h}{mean\+\_\+blur\+\_\+filter.\+h}\item 
+/home/user/repo/project/image/src/mean\+\_\+blur\+\_\+filter.\+cc\end{DoxyCompactItemize}

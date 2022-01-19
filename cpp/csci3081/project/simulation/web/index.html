@@ -1,0 +1,141 @@
+<html>
+	<head>
+		<title>3081 Project</title>
+		<link rel="stylesheet" type="text/css" href="css/main.css" />
+		<link rel="stylesheet" type="text/css" href="css/final.css" />
+		<script type="module" src="js/jquery-3.5.1.min.js"></script>
+		<script type="module" src="js/scaffolding.js"></script>
+		<script src="js/WSApi.js"></script>
+		<script type="module" src="js/main.js"></script>
+	</head>
+	<body>
+		<script id="vertexShader" type="x-shader/x-vertex">
+			out vec4 localPos;
+			void main() {
+				localPos = modelMatrix*vec4(position,1.0);
+				gl_Position = projectionMatrix *
+							  modelViewMatrix *
+							  vec4(position,1.0);
+			}
+		</script>
+	
+		<script id="fragmentShader" type="x-shader/x-fragment">
+			in vec4 localPos;
+			void main() {
+				vec3 dir = localPos.xyz-cameraPosition;
+				float dist = 1.0-(length(dir)/50.0);
+				dir = (dist*normalize(dir)/2.0) + 0.5;
+				gl_FragColor = vec4(dir.x, dir.y, dir.z, 1); 
+			}
+		</script>
+
+		<div id="loading-background" class="hide center loading-background">
+			<div class="tY-40">
+			  <H1 id="loading-text" class="loading-text">Project <b>Iris</b></H1>
+			  <!-- <%# <img src="https://starzoku.s3.amazonaws.com/images/alpha_logo.png" class="responsive loader-logo" /> %> -->
+			  <div id="loader">
+				<div class="m-a w-50">
+				  <div class="sk-cube-grid">
+					<div class="sk-cube sk-cube1 cube"></div>
+					<div class="sk-cube sk-cube2 cube"></div>
+					<div class="sk-cube sk-cube3 cube"></div>
+					<div class="sk-cube sk-cube4 cube"></div>
+					<div class="sk-cube sk-cube5 cube"></div>
+					<div class="sk-cube sk-cube6 cube"></div>
+					<div class="sk-cube sk-cube7 cube"></div>
+					<div class="sk-cube sk-cube8 cube"></div>
+					<div class="sk-cube sk-cube9 cube"></div>
+				  </div>
+				</div>
+			  </div>
+			</div>
+		  </div>
+
+		<style>
+			body, html { overflow: hidden; }
+		</style>
+
+		<script type="module">
+			$(document).ready(function(){
+				$("li[data-role='hover-dropdown-trigger']").on("mouseover", function(){
+					$(".hover-dropdown").each(function(){
+						$(this).hide();
+					});
+					let target = $(this).attr("href");
+					console.log("TARGET IS: "+target);
+					$(`${target}`).show();
+				});
+				$(".hover-dropdown").on("mouseleave", function(){
+					$(this).hide();
+				});
+			});
+		</script>
+		  <header>
+			<div class="container">
+				<div class="setting-control"> 
+				  <span style="padding-right: 10px;">Change View: </span>
+					<select id="entitySelect">
+					  <option value="-1">Select entity...</option>
+				  </select>
+				  <br>
+				  <span style="padding-right: 10px;">First Person View</span><input id="firstPerson" type="checkbox"><br>
+				  <span id="route-toggle" class="pr-10">Show Routes</span> 
+				</div>
+			  <nav id="navbar" class="nav-header">
+				<span class="left"><b class="brand" style="color:white;">CSCI3081W Project</b></span>
+				<span><!--img id="starzoku-logo starzoku-logo-mobile" class="logo" src="https://starzoku.s3.amazonaws.com/favicon-32x32.png"/--></span>
+				  <ul id="navbar" class="header-navbar right white">
+					<li id="camera-trigger" data-role="hover-dropdown-trigger" class="trigger"><i class="fas fa-camera"></i> Camera</li>
+					<li data-role="hover-dropdown-trigger" class="trigger" href="#environments"><i class="fas fa-globe"></i> Environment</li>
+					<div id="environments" class="hover-dropdown">
+						<ol>
+							<li data-role="scene-trigger" href="umn">UMN</li> 
+						</ol>
+					</div>
+					<li><a class="modal-button" href="#settings-modal"><i class="fas fa-cogs"></i> Settings</a></li> 
+					
+				  </ul>
+				 
+				</div>
+			  </nav>
+		  </header>
+
+		<div id ="alert-wrapper"></div>
+		<div id ="battery-wrapper"></div>
+		<div id="scene-container"></div>
+		<div id="camera-view-container" style="z-index:900000;position:absolute;"></div>
+		<div id="camera-container" style="z-index:-1;position:absolute;"></div>
+
+		<style>
+
+			div.c3081 > input, div.c3081 > select, div.c3081 > div {
+				width:100%;
+				text-align:center;
+			}
+
+			div.c3081 > H4 {
+				display:block;
+				margin: 0px 5px;
+			}
+
+		</style>
+
+
+
+		<div id="settings-modal" class="slim modal" data-unique="editor" data-role='modal'>
+			<div class="slim modal-box">
+				<div class="c3081">
+					<div class="center">
+						<H4>Simulation Speed</H4>	
+							<input type="range" min="1" max="100" value="10" class="slider" style="width:100%;" id="simSpeed">
+						<H4>Generate Entity</H4>
+							<a id="drone" data-role="generate" class="bttn">Create Drone</a>
+							<a id="robot" data-role="generate" class="bttn">Create Robot</a>
+							<a id="charger" data-role="generate" class="bttn">Create Charger</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</body>
+</html>

@@ -1,0 +1,45 @@
+\hypertarget{image_8h_source}{}\doxysection{image.\+h}
+\label{image_8h_source}\index{/Users/Fletcher/csci3081/repo-\/team-\/0/project/image/include/image.h@{/Users/Fletcher/csci3081/repo-\/team-\/0/project/image/include/image.h}}
+\mbox{\hyperlink{image_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#ifndef IMAGE\_H\_}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#define IMAGE\_H\_}}
+\DoxyCodeLine{6 \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{7 \textcolor{comment}{ * Includes}}
+\DoxyCodeLine{8 \textcolor{comment}{ ******************************************************************************/}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{color_8h}{color.h}}"{}}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{11 \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{12 \textcolor{comment}{ * Class Definitions}}
+\DoxyCodeLine{13 \textcolor{comment}{ ******************************************************************************/}}
+\DoxyCodeLine{21 \textcolor{keyword}{class }\mbox{\hyperlink{classImage}{Image}} \{}
+\DoxyCodeLine{22 \textcolor{keyword}{public}:}
+\DoxyCodeLine{27   \mbox{\hyperlink{classImage_a58edd1c45b4faeb5f789b0d036d02313}{Image}}();}
+\DoxyCodeLine{32   \mbox{\hyperlink{classImage_a58edd1c45b4faeb5f789b0d036d02313}{Image}}(\textcolor{keywordtype}{int} width, \textcolor{keywordtype}{int} height);}
+\DoxyCodeLine{37   \mbox{\hyperlink{classImage_abb20937b3256735f0f7549d1b5e9c10d}{Image}}(std::string filename);}
+\DoxyCodeLine{43   \mbox{\hyperlink{classImage_a58edd1c45b4faeb5f789b0d036d02313}{Image}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} *buffer, \textcolor{keywordtype}{int} width, \textcolor{keywordtype}{int} height);}
+\DoxyCodeLine{48   \mbox{\hyperlink{classImage_a58edd1c45b4faeb5f789b0d036d02313}{Image}}(\textcolor{keyword}{const} \mbox{\hyperlink{classImage}{Image}} \&img);}
+\DoxyCodeLine{53   \mbox{\hyperlink{classImage_a0294f63700543e11c0f0da85601c7ae5}{\string~Image}}();}
+\DoxyCodeLine{58   \textcolor{keywordtype}{void} \mbox{\hyperlink{classImage_a3a9b278005e0731a93fe1d5d2cff7104}{SaveAs}}(std::string filename);}
+\DoxyCodeLine{64   \textcolor{keywordtype}{int} \mbox{\hyperlink{classImage_a4ab80d76fd124fd9de9b4fca8ae16186}{GetWidth}}();}
+\DoxyCodeLine{70   \textcolor{keywordtype}{int} \mbox{\hyperlink{classImage_a4d6de643ee334ff52c85da9a62d9297d}{GetHeight}}();}
+\DoxyCodeLine{76   \textcolor{keywordtype}{int} \mbox{\hyperlink{classImage_a04e02c5aa54d26422bbaa777b08de4c9}{GetComponentNum}}();}
+\DoxyCodeLine{82   \textcolor{keywordtype}{int} \mbox{\hyperlink{classImage_ad9ce272b2befc075fa720ac25f673202}{GetSize}}();}
+\DoxyCodeLine{87   \textcolor{keywordtype}{void} \mbox{\hyperlink{classImage_a5b9ba06409ad38e86a035ad18d8204d2}{GetPixel}}(\textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y, \mbox{\hyperlink{classColor}{Color}} \&p);}
+\DoxyCodeLine{92   \textcolor{keywordtype}{void} \mbox{\hyperlink{classImage_a88e6e6e7cbe530c84c17a342fa2eaf40}{SetPixel}}(\textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y, \mbox{\hyperlink{classColor}{Color}} \&p);}
+\DoxyCodeLine{100   \textcolor{keywordtype}{void} \mbox{\hyperlink{classImage_a558cfcb26f9f8abc82c32d85a25332f7}{SetPixelData}}(\textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y, \mbox{\hyperlink{classColor}{Color}} \&p);}
+\DoxyCodeLine{106   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} *\mbox{\hyperlink{classImage_a6337e9b91fb0aeb0b482d7e933543608}{GetData}}();}
+\DoxyCodeLine{112   \textcolor{keywordtype}{void} \mbox{\hyperlink{classImage_a5fab96b8b5e873488b72185639790c92}{SetData}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} *data);}
+\DoxyCodeLine{117   \textcolor{keywordtype}{void} \mbox{\hyperlink{classImage_a4da7f72e4063bd0764caa635c0e0aaae}{operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{classImage}{Image}} \&img);}
+\DoxyCodeLine{118 }
+\DoxyCodeLine{119 \textcolor{keyword}{private}:}
+\DoxyCodeLine{120   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} *image;}
+\DoxyCodeLine{121   \textcolor{keywordtype}{int} width, height;}
+\DoxyCodeLine{122   \textcolor{keywordtype}{int} components, size;}
+\DoxyCodeLine{123   \textcolor{comment}{// size is used for the size of the image array, but it's not accessible even}}
+\DoxyCodeLine{124   \textcolor{comment}{// through getters}}
+\DoxyCodeLine{125 \};}
+\DoxyCodeLine{126 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

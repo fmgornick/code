@@ -1,0 +1,5 @@
+<map id="iLogger" name="iLogger">
+<area shape="rect" id="node2" href="$classCompositeLogger.html" title="composite logger that uses our other two terminal / csv loggers to record data " alt="" coords="5,131,167,237"/>
+<area shape="rect" id="node3" href="$classConsoleLogger.html" title="{ConsoleLogger\n||+ Log()\l}" alt="" coords="191,145,309,223"/>
+<area shape="rect" id="node4" href="$classCSVLogger.html" title="logger for csv files. Puts vector information and strategy time information in a comma separated file..." alt="" coords="333,138,425,230"/>
+</map>

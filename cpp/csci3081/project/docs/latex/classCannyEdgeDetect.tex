@@ -1,0 +1,60 @@
+\hypertarget{classCannyEdgeDetect}{}\section{Canny\+Edge\+Detect Class Reference}
+\label{classCannyEdgeDetect}\index{Canny\+Edge\+Detect@{Canny\+Edge\+Detect}}
+
+
+The main class for \hyperlink{classCannyEdgeDetect}{Canny\+Edge\+Detect}, extends \hyperlink{classFilter}{Filter}. This basically just applies each of the filters required for the canny edge algorthim in order,.  
+
+
+
+
+{\ttfamily \#include $<$canny\+\_\+edge\+\_\+detect.\+h$>$}
+
+
+
+Inheritance diagram for Canny\+Edge\+Detect\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=211pt]{classCannyEdgeDetect__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Canny\+Edge\+Detect\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=211pt]{classCannyEdgeDetect__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classCannyEdgeDetect_abe04677896a21d58d144783cc3aefb35}\label{classCannyEdgeDetect_abe04677896a21d58d144783cc3aefb35}} 
+\hyperlink{classCannyEdgeDetect_abe04677896a21d58d144783cc3aefb35}{Canny\+Edge\+Detect} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCannyEdgeDetect_a4ccdf28f996d538eb8aee486acfbaea3}\label{classCannyEdgeDetect_a4ccdf28f996d538eb8aee486acfbaea3}} 
+\hyperlink{classCannyEdgeDetect_a4ccdf28f996d538eb8aee486acfbaea3}{$\sim$\+Canny\+Edge\+Detect} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCannyEdgeDetect_a906422525db16b541c1765b431865e58}\label{classCannyEdgeDetect_a906422525db16b541c1765b431865e58}} 
+void \hyperlink{classCannyEdgeDetect_a906422525db16b541c1765b431865e58}{Apply} (std\+::vector$<$ \hyperlink{classImage}{Image} $\ast$$>$ original, std\+::vector$<$ \hyperlink{classImage}{Image} $\ast$$>$ filtered)
+\begin{DoxyCompactList}\small\item\em Apply function to be overridden by \hyperlink{classFilter}{Filter} Apply function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The main class for \hyperlink{classCannyEdgeDetect}{Canny\+Edge\+Detect}, extends \hyperlink{classFilter}{Filter}. This basically just applies each of the filters required for the canny edge algorthim in order,. 
+
+
+\begin{DoxyEnumerate}
+\item Greyscale
+\item Gaussian Blur
+\item Sobel
+\item Non-\/\+Max Suppression
+\item Double Threshold
+\item Hysteresis To see more information on how this works\+: \href{https://towardsdatascience.com/canny-edge-detection-step-by-step-in-python-computer-vision-b49c3a2d8123}{\tt https\+://towardsdatascience.\+com/canny-\/edge-\/detection-\/step-\/by-\/step-\/in-\/python-\/computer-\/vision-\/b49c3a2d8123} 
+\end{DoxyEnumerate}
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/user/repo/project/image/include/\hyperlink{canny__edge__detect_8h}{canny\+\_\+edge\+\_\+detect.\+h}\item 
+/home/user/repo/project/image/src/canny\+\_\+edge\+\_\+detect.\+cc\end{DoxyCompactItemize}

@@ -1,0 +1,55 @@
+\hypertarget{search__strategy_8h_source}{}\doxysection{search\+\_\+strategy.\+h}
+\label{search__strategy_8h_source}\index{/Users/Fletcher/csci3081/repo-\/team-\/0/project/simulation/include/search\_strategy.h@{/Users/Fletcher/csci3081/repo-\/team-\/0/project/simulation/include/search\_strategy.h}}
+\mbox{\hyperlink{search__strategy_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#ifndef SEARCH\_STRATEGY\_H}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#define SEARCH\_STRATEGY\_H}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{8 \textcolor{comment}{ * Includes}}
+\DoxyCodeLine{9 \textcolor{comment}{ ******************************************************************************/}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}i\_movement\_strategy.h"{}}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <unordered\_map>}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <sstream>}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include <list>}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#include <iterator>}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#include "{}picojson.h"{}}}
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{vector3_8h}{vector3.h}}"{}}}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#include <typeinfo>}}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23 \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{24 \textcolor{comment}{ * Class Definitions}}
+\DoxyCodeLine{25 \textcolor{comment}{ ******************************************************************************/}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{31 \textcolor{keyword}{class }\mbox{\hyperlink{classSearchStrategy}{SearchStrategy}} \{}
+\DoxyCodeLine{32 \textcolor{keyword}{public}:}
+\DoxyCodeLine{36     \mbox{\hyperlink{classSearchStrategy_a682f312091a92abea5963922213f9040}{\string~SearchStrategy}}() \{\}}
+\DoxyCodeLine{40     \textcolor{keyword}{virtual} \mbox{\hyperlink{classVector3}{Vector3}}* \mbox{\hyperlink{classSearchStrategy_a553ab817e74833f28e039099dd68d095}{Search}}(\mbox{\hyperlink{classVector3}{Vector3}} currentPos) = 0;}
+\DoxyCodeLine{44     \textcolor{keywordtype}{void} \mbox{\hyperlink{classSearchStrategy_a2a9876ed7bd7c1ecf8f2255ba33a3d18}{ParseJson}}();}
+\DoxyCodeLine{48     std::unordered\_map<std::string, Vector3*> \mbox{\hyperlink{classSearchStrategy_a53e78339c08d581fc0ab07048fc09a7f}{GetNodeMap}}()\{}
+\DoxyCodeLine{49         \textcolor{keywordflow}{return} \mbox{\hyperlink{classSearchStrategy_a5cb541743b9802dafd26c98bde3d9473}{nodemap}};}
+\DoxyCodeLine{50     \}}
+\DoxyCodeLine{54     std::unordered\_map<std::string, std::vector<std::string> > \mbox{\hyperlink{classSearchStrategy_a5e348e0efc7170f4e5b4c56b87e7ea16}{GetEdgesMap}}()\{}
+\DoxyCodeLine{55         \textcolor{keywordflow}{return} \mbox{\hyperlink{classSearchStrategy_a31e33ffc2c0b8a0f0cb9c346860d7567}{edgesmap}};}
+\DoxyCodeLine{56     \}}
+\DoxyCodeLine{59     std::unordered\_map<std::string, bool> \mbox{\hyperlink{classSearchStrategy_a5c18af53e9ef7929942abf435e3e50d6}{GetVisitedMap}}()\{}
+\DoxyCodeLine{60         \textcolor{keywordflow}{return} \mbox{\hyperlink{classSearchStrategy_af5d0b8c9e35fca03d26b66e6019b1464}{vistedmap}};}
+\DoxyCodeLine{61     \}}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65     \textcolor{keyword}{protected}:}
+\DoxyCodeLine{69         std::unordered\_map<std::string, Vector3*> \mbox{\hyperlink{classSearchStrategy_a5cb541743b9802dafd26c98bde3d9473}{nodemap}};}
+\DoxyCodeLine{73         std::unordered\_map<std::string, std::vector<std::string> > \mbox{\hyperlink{classSearchStrategy_a31e33ffc2c0b8a0f0cb9c346860d7567}{edgesmap}}; }
+\DoxyCodeLine{77         std::unordered\_map<std::string, bool> \mbox{\hyperlink{classSearchStrategy_af5d0b8c9e35fca03d26b66e6019b1464}{vistedmap}};}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{79 \};}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{81 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

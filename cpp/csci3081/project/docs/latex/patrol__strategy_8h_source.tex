@@ -1,0 +1,43 @@
+\hypertarget{patrol__strategy_8h_source}{}\doxysection{patrol\+\_\+strategy.\+h}
+\label{patrol__strategy_8h_source}\index{/Users/Fletcher/csci3081/repo-\/team-\/0/project/simulation/include/patrol\_strategy.h@{/Users/Fletcher/csci3081/repo-\/team-\/0/project/simulation/include/patrol\_strategy.h}}
+\mbox{\hyperlink{patrol__strategy_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#ifndef PATROL\_STRATEGY\_H\_}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#define PATROL\_STRATEGY\_H\_}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{8 \textcolor{comment}{* Includes}}
+\DoxyCodeLine{9 \textcolor{comment}{******************************************************************************/}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}i\_movement\_strategy.h"{}}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{vector3_8h}{vector3.h}}"{}}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{drone_8h}{drone.h}}"{}}}
+\DoxyCodeLine{13 \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{14 \textcolor{comment}{* Class Definitions}}
+\DoxyCodeLine{15 \textcolor{comment}{******************************************************************************/}}
+\DoxyCodeLine{20 \textcolor{keyword}{class }\mbox{\hyperlink{classPatrolStrategy}{PatrolStrategy}} : \textcolor{keyword}{public} \mbox{\hyperlink{classiMovementStrategy}{iMovementStrategy}} \{}
+\DoxyCodeLine{21    \textcolor{keyword}{public}:}
+\DoxyCodeLine{26     \mbox{\hyperlink{classPatrolStrategy_aeaeb0e61d05300c145f6ad00f2bf3106}{PatrolStrategy}}(\mbox{\hyperlink{classVector3}{Vector3}} curr, \textcolor{keywordtype}{double} \mbox{\hyperlink{classPatrolStrategy_af24bc14782cb9d0a6255c80f030a9fc6}{speed}});}
+\DoxyCodeLine{32     \mbox{\hyperlink{classVector3}{Vector3}} \mbox{\hyperlink{classPatrolStrategy_a6feda4df5165aaae0cc7b82aed578c79}{GetPosition}}();}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34     \mbox{\hyperlink{classVector3}{Vector3}} GetNextPosition();}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{41     \mbox{\hyperlink{classVector3}{Vector3}} \mbox{\hyperlink{classPatrolStrategy_ae5f750fd8d06de17eb1d6b49ee125011}{GetVelocity}}();}
+\DoxyCodeLine{47     \mbox{\hyperlink{classVector3}{Vector3}} \mbox{\hyperlink{classPatrolStrategy_ae73db6cc70f328fed21f9df276a64587}{UpdateVelocity}}(\textcolor{keywordtype}{double} dt, \mbox{\hyperlink{classVector3}{Vector3}} \mbox{\hyperlink{classPatrolStrategy_abab6509593cc5afebd56454e6f11ce27}{current}}, \mbox{\hyperlink{classVector3}{Vector3}} target, \textcolor{keywordtype}{double} time);}
+\DoxyCodeLine{48     \textcolor{keywordtype}{bool} isMoving();}
+\DoxyCodeLine{49     \textcolor{keywordtype}{bool} seesRobot();}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51 \textcolor{keyword}{private}:}
+\DoxyCodeLine{55 \mbox{\hyperlink{classVector3}{Vector3}} \mbox{\hyperlink{classPatrolStrategy_abab6509593cc5afebd56454e6f11ce27}{current}};}
+\DoxyCodeLine{59 \mbox{\hyperlink{classVector3}{Vector3}} \mbox{\hyperlink{classPatrolStrategy_a07a7744c8e0211134ed92a96601296be}{velocity}};}
+\DoxyCodeLine{63 \textcolor{keywordtype}{double} \mbox{\hyperlink{classPatrolStrategy_af24bc14782cb9d0a6255c80f030a9fc6}{speed}};}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{68 \textcolor{keywordtype}{double} \mbox{\hyperlink{classPatrolStrategy_abfd6cddc0d629f5e44f14b473700b139}{period}};}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{73 \textcolor{keywordtype}{double} \mbox{\hyperlink{classPatrolStrategy_acbc960092ae6109f081f8e081ad3f5d8}{amplitude}};}
+\DoxyCodeLine{77 \textcolor{keywordtype}{double} \mbox{\hyperlink{classPatrolStrategy_a892db7d386688ed7d9351d393ae8855a}{distanceTraveled}};}
+\DoxyCodeLine{78 \};}
+\DoxyCodeLine{79 }
+\DoxyCodeLine{80 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

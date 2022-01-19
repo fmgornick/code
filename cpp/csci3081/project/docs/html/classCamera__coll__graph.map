@@ -1,0 +1,9 @@
+<map id="Camera" name="Camera">
+<area shape="rect" id="node2" href="$classICameraObserver.html" title="A Camera Observer monitors results from all cameras. It will process the pictures returned asynchrono..." alt="" coords="83,586,304,693"/>
+<area shape="rect" id="node3" href="$classFindRobot.html" title="This class takes in an image and using the image processing facade runs the logic on images to see if..." alt="" coords="328,564,491,715"/>
+<area shape="rect" id="node4" href="$classImage.html" title="The main class for Image. Image is represented as a big unsigned character array, and alters values i..." alt="" coords="5,175,181,457"/>
+<area shape="rect" id="node5" href="$classVector3.html" title="basic 3D vector class. Will be primarily used for entity position and velocity " alt="" coords="457,189,596,443"/>
+<area shape="rect" id="node6" href="$classImageProcessingFacade.html" title="The image processing facade, enables functionality with the image processor with easy to use function..." alt="" coords="205,263,408,369"/>
+<area shape="rect" id="node7" href="$classFilter.html" title="The main class for Filter. This is where all the filters are derived from. " alt="" coords="261,5,352,97"/>
+<area shape="rect" id="node8" href="$classICameraController.html" title="The Camera Controller class controls and allows for monitoring of all cameras. " alt="" coords="662,579,839,700"/>
+</map>

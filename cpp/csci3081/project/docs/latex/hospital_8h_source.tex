@@ -1,0 +1,33 @@
+\hypertarget{hospital_8h_source}{}\doxysection{hospital.\+h}
+\label{hospital_8h_source}\index{/Users/Fletcher/csci3081/repo-\/team-\/0/project/simulation/include/hospital.h@{/Users/Fletcher/csci3081/repo-\/team-\/0/project/simulation/include/hospital.h}}
+\mbox{\hyperlink{hospital_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#ifndef HOSPITAL\_H\_}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#define HOSPITAL\_H\_}}
+\DoxyCodeLine{6 \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{7 \textcolor{comment}{ * Includes}}
+\DoxyCodeLine{8 \textcolor{comment}{ ******************************************************************************/}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}i\_entity.h"{}}}
+\DoxyCodeLine{10 \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{11 \textcolor{comment}{ * Class Definitions}}
+\DoxyCodeLine{12 \textcolor{comment}{ ******************************************************************************/}}
+\DoxyCodeLine{18 \textcolor{keyword}{class }\mbox{\hyperlink{classHospital}{Hospital}} : \textcolor{keyword}{public} \mbox{\hyperlink{classiEntity}{iEntity}} \{}
+\DoxyCodeLine{19 \textcolor{keyword}{public}:}
+\DoxyCodeLine{23   \mbox{\hyperlink{classHospital_a130b3a6c6e3dd35443437e1f5144b1ac}{Hospital}}() : \mbox{\hyperlink{classHospital_ad04682106dbb95ac699a4fc90436db0e}{id}}(0), \mbox{\hyperlink{classHospital_a26fa9b5e5ae30cc8db885c84e02fc2de}{name}}(\textcolor{stringliteral}{"{}hospital"{}}), \mbox{\hyperlink{classHospital_ae7d66c3913d623f18bb0dde46a624e61}{position}}(new \mbox{\hyperlink{classVector3}{Vector3}}) \{\}}
+\DoxyCodeLine{27   \mbox{\hyperlink{classHospital_a04ebe37898559edc3c5bcabe7679366e}{Hospital}}(\textcolor{keywordtype}{int} \textcolor{keywordtype}{id}, std::string \mbox{\hyperlink{classHospital_a26fa9b5e5ae30cc8db885c84e02fc2de}{name}}, \mbox{\hyperlink{classVector3}{Vector3}} *pos)}
+\DoxyCodeLine{28       : \mbox{\hyperlink{classHospital_ad04682106dbb95ac699a4fc90436db0e}{id}}(\mbox{\hyperlink{classHospital_ad04682106dbb95ac699a4fc90436db0e}{id}}), \mbox{\hyperlink{classHospital_a26fa9b5e5ae30cc8db885c84e02fc2de}{name}}(\mbox{\hyperlink{classHospital_a26fa9b5e5ae30cc8db885c84e02fc2de}{name}}), \mbox{\hyperlink{classHospital_ae7d66c3913d623f18bb0dde46a624e61}{position}}(pos) \{\}}
+\DoxyCodeLine{32   \textcolor{keywordtype}{int} \mbox{\hyperlink{classHospital_a4bb23b897139dd9881654e3a95ae530a}{GetID}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classHospital_ad04682106dbb95ac699a4fc90436db0e}{id}}; \}}
+\DoxyCodeLine{36   \textcolor{keyword}{const} std::string \&\mbox{\hyperlink{classHospital_a4cf9b062139ff050a00601526983b754}{GetName}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classHospital_a26fa9b5e5ae30cc8db885c84e02fc2de}{name}}; \}}
+\DoxyCodeLine{40   \mbox{\hyperlink{classVector3}{Vector3}} *\mbox{\hyperlink{classHospital_aa2d2a7cfd788594b914c2c8fe109ee18}{GetPosition}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classHospital_ae7d66c3913d623f18bb0dde46a624e61}{position}}; \}}
+\DoxyCodeLine{44   \textcolor{keywordtype}{void} \mbox{\hyperlink{classHospital_a712a53eb9795a0362c6aa543a49667eb}{SetPosition}}(\mbox{\hyperlink{classVector3}{Vector3}} \&pos) \{ *\mbox{\hyperlink{classHospital_ae7d66c3913d623f18bb0dde46a624e61}{position}} = pos; \}}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46 \textcolor{keyword}{private}:}
+\DoxyCodeLine{48   \textcolor{keywordtype}{int} \mbox{\hyperlink{classHospital_ad04682106dbb95ac699a4fc90436db0e}{id}};}
+\DoxyCodeLine{50   std::string \mbox{\hyperlink{classHospital_a26fa9b5e5ae30cc8db885c84e02fc2de}{name}};}
+\DoxyCodeLine{52   \mbox{\hyperlink{classVector3}{Vector3}} *\mbox{\hyperlink{classHospital_ae7d66c3913d623f18bb0dde46a624e61}{position}};}
+\DoxyCodeLine{53 \};}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// !HOSPITAL\_H\_}}
+
+\end{DoxyCode}

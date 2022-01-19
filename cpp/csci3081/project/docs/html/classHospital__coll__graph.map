@@ -1,0 +1,4 @@
+<map id="Hospital" name="Hospital">
+<area shape="rect" id="node2" href="$classiEntity.html" title="The base class for all entities. Drones, Robots, Hospitals, and Recharge Stations are all entities..." alt="" coords="5,64,128,200"/>
+<area shape="rect" id="node3" href="$classVector3.html" title="basic 3D vector class. Will be primarily used for entity position and velocity " alt="" coords="152,5,291,259"/>
+</map>

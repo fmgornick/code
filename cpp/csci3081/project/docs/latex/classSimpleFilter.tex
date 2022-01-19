@@ -1,0 +1,46 @@
+\hypertarget{classSimpleFilter}{}\section{Simple\+Filter Class Reference}
+\label{classSimpleFilter}\index{Simple\+Filter@{Simple\+Filter}}
+
+
+The main class for \hyperlink{classSimpleFilter}{Simple\+Filter}, extends \hyperlink{classFilter}{Filter}. This filter does the brunt of the work when iterating through an image. It\textquotesingle{}s an abstract class, so it\textquotesingle{}s initialized as one of it\textquotesingle{}s derived classes, so when it iterates through the image, it calls the \hyperlink{classSimpleFilter_ad47d7f994aa0f80f9013d689b82a0b92}{Apply\+At\+Pixel()} function that\textquotesingle{}s defined in each of it\textquotesingle{}s derived classes.  
+
+
+
+
+{\ttfamily \#include $<$simple\+\_\+filter.\+h$>$}
+
+
+
+Inheritance diagram for Simple\+Filter\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSimpleFilter__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Simple\+Filter\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=178pt]{classSimpleFilter__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classSimpleFilter_ad47d7f994aa0f80f9013d689b82a0b92}\label{classSimpleFilter_ad47d7f994aa0f80f9013d689b82a0b92}} 
+virtual void \hyperlink{classSimpleFilter_ad47d7f994aa0f80f9013d689b82a0b92}{Apply\+At\+Pixel} (\hyperlink{classColor}{Color} \&p)=0
+\begin{DoxyCompactList}\small\item\em Apply\+At\+Pixel function used by some of the filters to be overridden by \hyperlink{classFilter}{Filter} apply function. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classSimpleFilter_a4400a0f97e26e84a33befd537fb4fea8}\label{classSimpleFilter_a4400a0f97e26e84a33befd537fb4fea8}} 
+void \hyperlink{classSimpleFilter_a4400a0f97e26e84a33befd537fb4fea8}{Apply} (std\+::vector$<$ \hyperlink{classImage}{Image} $\ast$$>$ original, std\+::vector$<$ \hyperlink{classImage}{Image} $\ast$$>$ filtered)
+\begin{DoxyCompactList}\small\item\em Apply function to be overridden by \hyperlink{classFilter}{Filter} Apply function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The main class for \hyperlink{classSimpleFilter}{Simple\+Filter}, extends \hyperlink{classFilter}{Filter}. This filter does the brunt of the work when iterating through an image. It\textquotesingle{}s an abstract class, so it\textquotesingle{}s initialized as one of it\textquotesingle{}s derived classes, so when it iterates through the image, it calls the \hyperlink{classSimpleFilter_ad47d7f994aa0f80f9013d689b82a0b92}{Apply\+At\+Pixel()} function that\textquotesingle{}s defined in each of it\textquotesingle{}s derived classes. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/user/repo/project/image/include/\hyperlink{simple__filter_8h}{simple\+\_\+filter.\+h}\end{DoxyCompactItemize}

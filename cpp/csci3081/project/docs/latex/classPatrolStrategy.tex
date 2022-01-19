@@ -1,0 +1,134 @@
+\hypertarget{classPatrolStrategy}{}\section{Patrol\+Strategy Class Reference}
+\label{classPatrolStrategy}\index{Patrol\+Strategy@{Patrol\+Strategy}}
+
+
+Patrol movement-\/ Uses a sinusoidal strategy to move in a wave pattern across the map.  
+
+
+
+
+{\ttfamily \#include $<$patrol\+\_\+strategy.\+h$>$}
+
+
+
+Inheritance diagram for Patrol\+Strategy\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{classPatrolStrategy__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Patrol\+Strategy\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=342pt]{classPatrolStrategy__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classPatrolStrategy_aeaeb0e61d05300c145f6ad00f2bf3106}\label{classPatrolStrategy_aeaeb0e61d05300c145f6ad00f2bf3106}} 
+\hyperlink{classPatrolStrategy_aeaeb0e61d05300c145f6ad00f2bf3106}{Patrol\+Strategy} (\hyperlink{classVector3}{Vector3} curr, double \hyperlink{classPatrolStrategy_af24bc14782cb9d0a6255c80f030a9fc6}{speed})
+\begin{DoxyCompactList}\small\item\em Constructor taking in \hyperlink{classVector3}{Vector3} objects for current position and a double speed at which the drone is traveling at. \end{DoxyCompactList}\item 
+\hyperlink{classVector3}{Vector3} \hyperlink{classPatrolStrategy_a6feda4df5165aaae0cc7b82aed578c79}{Get\+Position} ()
+\begin{DoxyCompactList}\small\item\em Current position getter. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classPatrolStrategy_ab6e4fce9b8b0748eff4a6e5c16a0f0ed}\label{classPatrolStrategy_ab6e4fce9b8b0748eff4a6e5c16a0f0ed}} 
+\hyperlink{classVector3}{Vector3} {\bfseries Get\+Next\+Position} ()
+\item 
+\hyperlink{classVector3}{Vector3} \hyperlink{classPatrolStrategy_ae5f750fd8d06de17eb1d6b49ee125011}{Get\+Velocity} ()
+\begin{DoxyCompactList}\small\item\em Current velocity getter. \end{DoxyCompactList}\item 
+\hyperlink{classVector3}{Vector3} \hyperlink{classPatrolStrategy_ae73db6cc70f328fed21f9df276a64587}{Update\+Velocity} (double dt, \hyperlink{classVector3}{Vector3} \hyperlink{classPatrolStrategy_abab6509593cc5afebd56454e6f11ce27}{current}, \hyperlink{classVector3}{Vector3} target, double time)
+\begin{DoxyCompactList}\small\item\em Function to update velocity, takes in a double for time and \hyperlink{classVector3}{Vector3} objects for current and target positions. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classPatrolStrategy_a0dcec071144708be35e2c0e1e82af809}\label{classPatrolStrategy_a0dcec071144708be35e2c0e1e82af809}} 
+bool {\bfseries is\+Moving} ()
+\item 
+\mbox{\Hypertarget{classPatrolStrategy_a4a2659e51fb74d999374cb61cedb4d64}\label{classPatrolStrategy_a4a2659e51fb74d999374cb61cedb4d64}} 
+bool {\bfseries sees\+Robot} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classPatrolStrategy_abab6509593cc5afebd56454e6f11ce27}\label{classPatrolStrategy_abab6509593cc5afebd56454e6f11ce27}} 
+\hyperlink{classVector3}{Vector3} \hyperlink{classPatrolStrategy_abab6509593cc5afebd56454e6f11ce27}{current}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classVector3}{Vector3} current-\/ current position. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classPatrolStrategy_a07a7744c8e0211134ed92a96601296be}\label{classPatrolStrategy_a07a7744c8e0211134ed92a96601296be}} 
+\hyperlink{classVector3}{Vector3} \hyperlink{classPatrolStrategy_a07a7744c8e0211134ed92a96601296be}{velocity}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classVector3}{Vector3} velocity-\/ current velocity. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classPatrolStrategy_af24bc14782cb9d0a6255c80f030a9fc6}\label{classPatrolStrategy_af24bc14782cb9d0a6255c80f030a9fc6}} 
+double \hyperlink{classPatrolStrategy_af24bc14782cb9d0a6255c80f030a9fc6}{speed}
+\begin{DoxyCompactList}\small\item\em double speed-\/ current speed \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classPatrolStrategy_abfd6cddc0d629f5e44f14b473700b139}\label{classPatrolStrategy_abfd6cddc0d629f5e44f14b473700b139}} 
+double \hyperlink{classPatrolStrategy_abfd6cddc0d629f5e44f14b473700b139}{period}
+\begin{DoxyCompactList}\small\item\em double period -\/ period of the sinusoidal function \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classPatrolStrategy_acbc960092ae6109f081f8e081ad3f5d8}\label{classPatrolStrategy_acbc960092ae6109f081f8e081ad3f5d8}} 
+double \hyperlink{classPatrolStrategy_acbc960092ae6109f081f8e081ad3f5d8}{amplitude}
+\begin{DoxyCompactList}\small\item\em double amplitude -\/ amplitutde of the sinusoidal function \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classPatrolStrategy_a892db7d386688ed7d9351d393ae8855a}\label{classPatrolStrategy_a892db7d386688ed7d9351d393ae8855a}} 
+double \hyperlink{classPatrolStrategy_a892db7d386688ed7d9351d393ae8855a}{distance\+Traveled}
+\begin{DoxyCompactList}\small\item\em double distance\+Traveled-\/ distace traveled using beeline \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Patrol movement-\/ Uses a sinusoidal strategy to move in a wave pattern across the map. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classPatrolStrategy_a6feda4df5165aaae0cc7b82aed578c79}\label{classPatrolStrategy_a6feda4df5165aaae0cc7b82aed578c79}} 
+\index{Patrol\+Strategy@{Patrol\+Strategy}!Get\+Position@{Get\+Position}}
+\index{Get\+Position@{Get\+Position}!Patrol\+Strategy@{Patrol\+Strategy}}
+\subsubsection{\texorpdfstring{Get\+Position()}{GetPosition()}}
+{\footnotesize\ttfamily \hyperlink{classVector3}{Vector3} Patrol\+Strategy\+::\+Get\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Current position getter. 
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{classVector3}{Vector3} position 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classiMovementStrategy_aa9f5a07461c654a7497775696d20e990}{i\+Movement\+Strategy}.
+
+\mbox{\Hypertarget{classPatrolStrategy_ae5f750fd8d06de17eb1d6b49ee125011}\label{classPatrolStrategy_ae5f750fd8d06de17eb1d6b49ee125011}} 
+\index{Patrol\+Strategy@{Patrol\+Strategy}!Get\+Velocity@{Get\+Velocity}}
+\index{Get\+Velocity@{Get\+Velocity}!Patrol\+Strategy@{Patrol\+Strategy}}
+\subsubsection{\texorpdfstring{Get\+Velocity()}{GetVelocity()}}
+{\footnotesize\ttfamily \hyperlink{classVector3}{Vector3} Patrol\+Strategy\+::\+Get\+Velocity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Current velocity getter. 
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{classVector3}{Vector3} velocity 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classiMovementStrategy_a92f20c8ebf7c4f7dde5743528b8e45b7}{i\+Movement\+Strategy}.
+
+\mbox{\Hypertarget{classPatrolStrategy_ae73db6cc70f328fed21f9df276a64587}\label{classPatrolStrategy_ae73db6cc70f328fed21f9df276a64587}} 
+\index{Patrol\+Strategy@{Patrol\+Strategy}!Update\+Velocity@{Update\+Velocity}}
+\index{Update\+Velocity@{Update\+Velocity}!Patrol\+Strategy@{Patrol\+Strategy}}
+\subsubsection{\texorpdfstring{Update\+Velocity()}{UpdateVelocity()}}
+{\footnotesize\ttfamily \hyperlink{classVector3}{Vector3} Patrol\+Strategy\+::\+Update\+Velocity (\begin{DoxyParamCaption}\item[{double}]{dt,  }\item[{\hyperlink{classVector3}{Vector3}}]{current,  }\item[{\hyperlink{classVector3}{Vector3}}]{target,  }\item[{double}]{time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Function to update velocity, takes in a double for time and \hyperlink{classVector3}{Vector3} objects for current and target positions. 
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{classVector3}{Vector3} velocity 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classiMovementStrategy_a40ec6c329ca0842638af80cfd509b372}{i\+Movement\+Strategy}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/user/repo/project/simulation/include/\hyperlink{patrol__strategy_8h}{patrol\+\_\+strategy.\+h}\item 
+/home/user/repo/project/simulation/src/patrol\+\_\+strategy.\+cc\end{DoxyCompactItemize}

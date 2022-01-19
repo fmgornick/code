@@ -1,0 +1,94 @@
+\hypertarget{classVector3}{}\section{Vector3 Class Reference}
+\label{classVector3}\index{Vector3@{Vector3}}
+
+
+basic 3D vector class. Will be primarily used for entity position and velocity  
+
+
+
+
+{\ttfamily \#include $<$vector3.\+h$>$}
+
+
+
+Collaboration diagram for Vector3\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=184pt]{classVector3__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classVector3_a0f49191f7e001e7f7ae1cb49522118b4}\label{classVector3_a0f49191f7e001e7f7ae1cb49522118b4}} 
+\hyperlink{classVector3_a0f49191f7e001e7f7ae1cb49522118b4}{Vector3} ()
+\begin{DoxyCompactList}\small\item\em default constructor. Sets all the values to 0. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classVector3_ad53e22b52babdb90d423601f72467590}\label{classVector3_ad53e22b52babdb90d423601f72467590}} 
+\hyperlink{classVector3_ad53e22b52babdb90d423601f72467590}{Vector3} (float \hyperlink{classVector3_a7e2d3237b29a2f29d7b3d8b2934e35f2}{x}, float \hyperlink{classVector3_a86eb35a9fa2d5a49e7fad66a35fa9c13}{y}, float \hyperlink{classVector3_aa8c9461eb24bd2c364258078811a3e9d}{z})
+\begin{DoxyCompactList}\small\item\em contructor that takes in 3 arguments for x,y,z components \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classVector3_a318ef58f84d43f17592e454b02a63658}\label{classVector3_a318ef58f84d43f17592e454b02a63658}} 
+float \hyperlink{classVector3_a318ef58f84d43f17592e454b02a63658}{GetX} ()
+\begin{DoxyCompactList}\small\item\em getter\+: returns x value as float \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classVector3_a9196c9e0e158774889b66988765db2cf}\label{classVector3_a9196c9e0e158774889b66988765db2cf}} 
+float \hyperlink{classVector3_a9196c9e0e158774889b66988765db2cf}{GetY} ()
+\begin{DoxyCompactList}\small\item\em getter\+: returns y value as float \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classVector3_ade396bf7b5423cd1179c65633db7c2d2}\label{classVector3_ade396bf7b5423cd1179c65633db7c2d2}} 
+float \hyperlink{classVector3_ade396bf7b5423cd1179c65633db7c2d2}{GetZ} ()
+\begin{DoxyCompactList}\small\item\em getter\+: returns z value as float \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classVector3_aa9e0ca14708b98ed68f974df02ea797b}\label{classVector3_aa9e0ca14708b98ed68f974df02ea797b}} 
+float \hyperlink{classVector3_aa9e0ca14708b98ed68f974df02ea797b}{Get\+Magnitude} ()
+\begin{DoxyCompactList}\small\item\em uses the cartesian metric to find 3D magnitude and returns value as a float \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classVector3_a8a8cb236aae8602af246f4f56495f159}\label{classVector3_a8a8cb236aae8602af246f4f56495f159}} 
+\hyperlink{classVector3}{Vector3} \hyperlink{classVector3_a8a8cb236aae8602af246f4f56495f159}{Normalize} ()
+\begin{DoxyCompactList}\small\item\em returns a new vector with same direction, but new magnitude of 1 \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classVector3_ac1dcbe6eabbb2dad153b03b193942bbc}\label{classVector3_ac1dcbe6eabbb2dad153b03b193942bbc}} 
+float \hyperlink{classVector3_ac1dcbe6eabbb2dad153b03b193942bbc}{Dot\+Product} (\hyperlink{classVector3}{Vector3} v)
+\begin{DoxyCompactList}\small\item\em returns float corresponding to the two vector\textquotesingle{}s dot products \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classVector3_ae00f95998612e0682d1a20eae1ccf5cf}\label{classVector3_ae00f95998612e0682d1a20eae1ccf5cf}} 
+\hyperlink{classVector3}{Vector3} \hyperlink{classVector3_ae00f95998612e0682d1a20eae1ccf5cf}{Cross\+Product} (\hyperlink{classVector3}{Vector3} v)
+\begin{DoxyCompactList}\small\item\em returns new vector that\textquotesingle{}s the cross product of our current vector and the inputed vector argument \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classVector3_a00c0f567fcfe5e64ed29fa1f2b62031b}\label{classVector3_a00c0f567fcfe5e64ed29fa1f2b62031b}} 
+void \hyperlink{classVector3_a00c0f567fcfe5e64ed29fa1f2b62031b}{operator=} (\hyperlink{classVector3}{Vector3} v)
+\begin{DoxyCompactList}\small\item\em set current vector equal to input vector \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classVector3_a3132eab81d498564e8bf43d5084b8413}\label{classVector3_a3132eab81d498564e8bf43d5084b8413}} 
+\hyperlink{classVector3}{Vector3} \hyperlink{classVector3_a3132eab81d498564e8bf43d5084b8413}{operator+} (\hyperlink{classVector3}{Vector3} v)
+\begin{DoxyCompactList}\small\item\em adds two vectors and returns new sum vector \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classVector3_a35b5a53bd2745bb3f93604fd47524b7c}\label{classVector3_a35b5a53bd2745bb3f93604fd47524b7c}} 
+\hyperlink{classVector3}{Vector3} \hyperlink{classVector3_a35b5a53bd2745bb3f93604fd47524b7c}{operator-\/} (\hyperlink{classVector3}{Vector3} v)
+\begin{DoxyCompactList}\small\item\em subtracts two vectors and returns new difference vector \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classVector3_a3447410b65f3eb7c948f12e5bb7bc16d}\label{classVector3_a3447410b65f3eb7c948f12e5bb7bc16d}} 
+\hyperlink{classVector3}{Vector3} \hyperlink{classVector3_a3447410b65f3eb7c948f12e5bb7bc16d}{operator$\ast$} (\hyperlink{classVector3}{Vector3} v)
+\begin{DoxyCompactList}\small\item\em multiplies two vectors and returns new product vector \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classVector3_abe8452ab6fdaea6a1d1ce3700ad95867}\label{classVector3_abe8452ab6fdaea6a1d1ce3700ad95867}} 
+\hyperlink{classVector3}{Vector3} \hyperlink{classVector3_abe8452ab6fdaea6a1d1ce3700ad95867}{operator$\ast$} (float s)
+\begin{DoxyCompactList}\small\item\em multiplies current vector by a scalar and returns new product vector \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classVector3_a7d65a795d80f0ef439713c81e00f1ba1}\label{classVector3_a7d65a795d80f0ef439713c81e00f1ba1}} 
+\hyperlink{classVector3}{Vector3} \hyperlink{classVector3_a7d65a795d80f0ef439713c81e00f1ba1}{operator/} (\hyperlink{classVector3}{Vector3} v)
+\begin{DoxyCompactList}\small\item\em divides two vectors and returns new quotient vector \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classVector3_a8f6b9bba644d3933543ee8da443ebb40}\label{classVector3_a8f6b9bba644d3933543ee8da443ebb40}} 
+\hyperlink{classVector3}{Vector3} \hyperlink{classVector3_a8f6b9bba644d3933543ee8da443ebb40}{operator/} (float s)
+\begin{DoxyCompactList}\small\item\em divides current vector by a scalar and returns new quotient vector \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classVector3_a81cbc44d5084dd8713d66264d12d0480}\label{classVector3_a81cbc44d5084dd8713d66264d12d0480}} 
+bool \hyperlink{classVector3_a81cbc44d5084dd8713d66264d12d0480}{operator==} (\hyperlink{classVector3}{Vector3} v) const
+\begin{DoxyCompactList}\small\item\em returns boolean representing euality of the two vectors \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classVector3_a7e2d3237b29a2f29d7b3d8b2934e35f2}\label{classVector3_a7e2d3237b29a2f29d7b3d8b2934e35f2}} 
+float \hyperlink{classVector3_a7e2d3237b29a2f29d7b3d8b2934e35f2}{x}
+\begin{DoxyCompactList}\small\item\em value of our 3D array \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classVector3_a86eb35a9fa2d5a49e7fad66a35fa9c13}\label{classVector3_a86eb35a9fa2d5a49e7fad66a35fa9c13}} 
+float \hyperlink{classVector3_a86eb35a9fa2d5a49e7fad66a35fa9c13}{y}
+\begin{DoxyCompactList}\small\item\em value of our 3D array \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classVector3_aa8c9461eb24bd2c364258078811a3e9d}\label{classVector3_aa8c9461eb24bd2c364258078811a3e9d}} 
+float \hyperlink{classVector3_aa8c9461eb24bd2c364258078811a3e9d}{z}
+\begin{DoxyCompactList}\small\item\em value of our 3D array \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+basic 3D vector class. Will be primarily used for entity position and velocity 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/user/repo/project/simulation/include/\hyperlink{vector3_8h}{vector3.\+h}\end{DoxyCompactItemize}

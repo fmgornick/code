@@ -1,0 +1,75 @@
+\hypertarget{classFactoryTest}{}\section{Factory\+Test Class Reference}
+\label{classFactoryTest}\index{Factory\+Test@{Factory\+Test}}
+
+
+Integration tests for our composite factory pattern. These tests checks to see if our factory pattern correctly takes in picojson objects and converts them to an object\textquotesingle{}s member variables.  
+
+
+
+
+Inheritance diagram for Factory\+Test\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=211pt]{classFactoryTest__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Factory\+Test\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=298pt]{classFactoryTest__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classFactoryTest_ab6472ece25a6c39a969974d839c4fbfe}\label{classFactoryTest_ab6472ece25a6c39a969974d839c4fbfe}} 
+void \hyperlink{classFactoryTest_ab6472ece25a6c39a969974d839c4fbfe}{Set\+Up} ()
+\begin{DoxyCompactList}\small\item\em Sets up our strings for the picojson parser to turn into picojson objects. One for each our our objects, and one string for a fake object to see if our factory can catch this. Also creates a composite entity factory to actually create our objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classFactoryTest_a79ee36408a3bd0b9e3832aef0faf4aa9}\label{classFactoryTest_a79ee36408a3bd0b9e3832aef0faf4aa9}} 
+std\+::string \hyperlink{classFactoryTest_a79ee36408a3bd0b9e3832aef0faf4aa9}{drone\+\_\+json}
+\begin{DoxyCompactList}\small\item\em strings to be parsed by picojson \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classFactoryTest_a9aa8980ff0605062f20d1aa4930de3ee}\label{classFactoryTest_a9aa8980ff0605062f20d1aa4930de3ee}} 
+std\+::string {\bfseries robot\+\_\+json}
+\item 
+\mbox{\Hypertarget{classFactoryTest_a083b566a58b74697cdb363be436282e9}\label{classFactoryTest_a083b566a58b74697cdb363be436282e9}} 
+std\+::string {\bfseries hospital\+\_\+json}
+\item 
+\mbox{\Hypertarget{classFactoryTest_a6f96ef63a5f27273da007b8acf6653aa}\label{classFactoryTest_a6f96ef63a5f27273da007b8acf6653aa}} 
+std\+::string {\bfseries recharge\+Station\+\_\+json}
+\item 
+\mbox{\Hypertarget{classFactoryTest_ab97fe3337f18068d9bac86868e140abc}\label{classFactoryTest_ab97fe3337f18068d9bac86868e140abc}} 
+std\+::string {\bfseries fake\+\_\+json}
+\item 
+\mbox{\Hypertarget{classFactoryTest_ae385a634555c4972f9447b8524b1e3c4}\label{classFactoryTest_ae385a634555c4972f9447b8524b1e3c4}} 
+picojson\+::value \hyperlink{classFactoryTest_ae385a634555c4972f9447b8524b1e3c4}{drone}
+\begin{DoxyCompactList}\small\item\em picojson values representing data in their corresponding strings \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classFactoryTest_a294af5fb898c91dbe57e39c9fb02c526}\label{classFactoryTest_a294af5fb898c91dbe57e39c9fb02c526}} 
+picojson\+::value {\bfseries robot}
+\item 
+\mbox{\Hypertarget{classFactoryTest_aa9ccd66d84c4b78b2d8b40b8ed8fb047}\label{classFactoryTest_aa9ccd66d84c4b78b2d8b40b8ed8fb047}} 
+picojson\+::value {\bfseries hospital}
+\item 
+\mbox{\Hypertarget{classFactoryTest_a2ff2744762c80740ffc28a26ebb7873f}\label{classFactoryTest_a2ff2744762c80740ffc28a26ebb7873f}} 
+picojson\+::value {\bfseries recharge\+Station}
+\item 
+\mbox{\Hypertarget{classFactoryTest_aac81f20a5a2f99d7ffa57ce8e7bafebf}\label{classFactoryTest_aac81f20a5a2f99d7ffa57ce8e7bafebf}} 
+picojson\+::value {\bfseries fake}
+\item 
+\mbox{\Hypertarget{classFactoryTest_aa34ecf518b28d27c6be3a16e705a1208}\label{classFactoryTest_aa34ecf518b28d27c6be3a16e705a1208}} 
+\hyperlink{classCompositeEntityFactory}{Composite\+Entity\+Factory} \hyperlink{classFactoryTest_aa34ecf518b28d27c6be3a16e705a1208}{c}
+\begin{DoxyCompactList}\small\item\em composite factory to actually create the objects used by our program \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Integration tests for our composite factory pattern. These tests checks to see if our factory pattern correctly takes in picojson objects and converts them to an object\textquotesingle{}s member variables. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/user/repo/project/tests/src/\hyperlink{factory__test_8cc}{factory\+\_\+test.\+cc}\end{DoxyCompactItemize}

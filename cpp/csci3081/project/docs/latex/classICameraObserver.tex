@@ -1,0 +1,61 @@
+\hypertarget{classICameraObserver}{}\section{I\+Camera\+Observer Class Reference}
+\label{classICameraObserver}\index{I\+Camera\+Observer@{I\+Camera\+Observer}}
+
+
+A \hyperlink{classCamera}{Camera} Observer monitors results from all cameras. It will process the pictures returned asynchronously and act on results.  
+
+
+
+
+{\ttfamily \#include $<$camera\+\_\+controller.\+h$>$}
+
+
+
+Inheritance diagram for I\+Camera\+Observer\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=246pt]{classICameraObserver__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for I\+Camera\+Observer\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=246pt]{classICameraObserver__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classICameraObserver_a19344cb93ca790a0311c9c7bcc6e8eec}\label{classICameraObserver_a19344cb93ca790a0311c9c7bcc6e8eec}} 
+virtual \hyperlink{classICameraObserver_a19344cb93ca790a0311c9c7bcc6e8eec}{$\sim$\+I\+Camera\+Observer} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+virtual \hyperlink{classICameraResult}{I\+Camera\+Result} $\ast$ \hyperlink{classICameraObserver_aec871459f2c429b4334769021b72ec34}{Process\+Images} (int camera\+Id, double x\+Pos, double y\+Pos, double z\+Pos, const std\+::vector$<$ \hyperlink{structRawCameraImage}{Raw\+Camera\+Image} $>$ \&images, picojson\+::object \&details) const =0
+\item 
+\mbox{\Hypertarget{classICameraObserver_a7d261bd08d570d05032e61b2d5252c88}\label{classICameraObserver_a7d261bd08d570d05032e61b2d5252c88}} 
+virtual void \hyperlink{classICameraObserver_a7d261bd08d570d05032e61b2d5252c88}{Image\+Processing\+Complete} (\hyperlink{classICameraResult}{I\+Camera\+Result} $\ast$result)=0
+\begin{DoxyCompactList}\small\item\em After the asynchronous image processing is done, this method is called to synchronize the results with the simulation update loop. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A \hyperlink{classCamera}{Camera} Observer monitors results from all cameras. It will process the pictures returned asynchronously and act on results. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classICameraObserver_aec871459f2c429b4334769021b72ec34}\label{classICameraObserver_aec871459f2c429b4334769021b72ec34}} 
+\index{I\+Camera\+Observer@{I\+Camera\+Observer}!Process\+Images@{Process\+Images}}
+\index{Process\+Images@{Process\+Images}!I\+Camera\+Observer@{I\+Camera\+Observer}}
+\subsubsection{\texorpdfstring{Process\+Images()}{ProcessImages()}}
+{\footnotesize\ttfamily virtual \hyperlink{classICameraResult}{I\+Camera\+Result}$\ast$ I\+Camera\+Observer\+::\+Process\+Images (\begin{DoxyParamCaption}\item[{int}]{camera\+Id,  }\item[{double}]{x\+Pos,  }\item[{double}]{y\+Pos,  }\item[{double}]{z\+Pos,  }\item[{const std\+::vector$<$ \hyperlink{structRawCameraImage}{Raw\+Camera\+Image} $>$ \&}]{images,  }\item[{picojson\+::object \&}]{details }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Processes images asynchronously after a picture has been taken. This method will pass in the camera position and the raw images stored in jpg format. Do all your image processing here so that it does not slow down your simulation. The result will be passed to the Image\+Processing\+Complete(...) method. 
+
+Implemented in \hyperlink{classCamera_a792611ad34a1c595b61b7c72ce1d5e32}{Camera}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/user/repo/project/simulation/include/camera\+\_\+controller.\+h\end{DoxyCompactItemize}

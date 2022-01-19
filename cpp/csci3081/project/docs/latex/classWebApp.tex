@@ -1,0 +1,117 @@
+\hypertarget{classWebApp}{}\section{Web\+App Class Reference}
+\label{classWebApp}\index{Web\+App@{Web\+App}}
+
+
+A Web Application Sever that communicates with a web page through web sockets.  
+
+
+
+
+{\ttfamily \#include $<$web\+\_\+app.\+h$>$}
+
+
+
+Inheritance diagram for Web\+App\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=310pt]{classWebApp__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Web\+App\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classWebApp__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classWebApp_a9ba424099f42bdd456f52c4bba87d5b2}\label{classWebApp_a9ba424099f42bdd456f52c4bba87d5b2}} 
+\hyperlink{classWebApp_a9ba424099f42bdd456f52c4bba87d5b2}{Web\+App} ()
+\begin{DoxyCompactList}\small\item\em Initializes server. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classWebApp_aea8764197ebbcd256a07055b187a7fa8}\label{classWebApp_aea8764197ebbcd256a07055b187a7fa8}} 
+virtual \hyperlink{classWebApp_aea8764197ebbcd256a07055b187a7fa8}{$\sim$\+Web\+App} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classWebApp_aa75704c331471269090aff776bf70c66}\label{classWebApp_aa75704c331471269090aff776bf70c66}} 
+void \hyperlink{classWebApp_aa75704c331471269090aff776bf70c66}{Create\+Entity} (picojson\+::object \&entity\+Data, \hyperlink{classICameraController}{I\+Camera\+Controller} \&camera\+Controller)
+\begin{DoxyCompactList}\small\item\em Creates an entity based on J\+S\+ON data stored as an object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classWebApp_a422feda1eac97b1aa1f69243387498c2}\label{classWebApp_a422feda1eac97b1aa1f69243387498c2}} 
+void \hyperlink{classWebApp_a422feda1eac97b1aa1f69243387498c2}{Update} (double dt)
+\begin{DoxyCompactList}\small\item\em Updates the simulation. This may be called multiple times per frame. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classWebApp_ac7731245815aefcff7023a4dd10995ea}\label{classWebApp_ac7731245815aefcff7023a4dd10995ea}} 
+void \hyperlink{classWebApp_ac7731245815aefcff7023a4dd10995ea}{Finish\+Update} (picojson\+::object \&return\+Value)
+\begin{DoxyCompactList}\small\item\em Called after all updating is done. Entity should be returned to the UI. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classWebApp_a0af5cfc12444f53e48609360eff95d76}\label{classWebApp_a0af5cfc12444f53e48609360eff95d76}} 
+void \hyperlink{classWebApp_a0af5cfc12444f53e48609360eff95d76}{receive\+J\+S\+ON} (picojson\+::value \&val)
+\begin{DoxyCompactList}\small\item\em Receives J\+S\+ON from the web server. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classWebApp_ac1ae360aa44aeb9f2bccb53f6d7881b4}\label{classWebApp_ac1ae360aa44aeb9f2bccb53f6d7881b4}} 
+void \hyperlink{classWebApp_ac1ae360aa44aeb9f2bccb53f6d7881b4}{Receive\+Command} (const std\+::string \&cmd, picojson\+::object \&data, picojson\+::object \&return\+Value)
+\begin{DoxyCompactList}\small\item\em Handles specific commands from the web server. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classWebApp_ae3ec2b1cf48fa4c1fd4dbd4b5b6ab1ab}\label{classWebApp_ae3ec2b1cf48fa4c1fd4dbd4b5b6ab1ab}} 
+void \hyperlink{classWebApp_ae3ec2b1cf48fa4c1fd4dbd4b5b6ab1ab}{Key\+Up} (const std\+::string \&key, int key\+Code)
+\begin{DoxyCompactList}\small\item\em Handles the key up command. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classWebApp_a5ecf621134026359cdbae31480ceb204}\label{classWebApp_a5ecf621134026359cdbae31480ceb204}} 
+void \hyperlink{classWebApp_a5ecf621134026359cdbae31480ceb204}{Key\+Down} (const std\+::string \&key, int key\+Code)
+\begin{DoxyCompactList}\small\item\em Handles the key down command. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classWebApp_ada30b3adf08a8f51d113972e7d2d6ee6}\label{classWebApp_ada30b3adf08a8f51d113972e7d2d6ee6}} 
+bool \hyperlink{classWebApp_ada30b3adf08a8f51d113972e7d2d6ee6}{Is\+Key\+Down} (const std\+::string \&key)
+\begin{DoxyCompactList}\small\item\em Returns whether or not a key is pressed at any time. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classWebApp_a967d783a9f1be56fef662eee01b6e93a}\label{classWebApp_a967d783a9f1be56fef662eee01b6e93a}} 
+void \hyperlink{classWebApp_a967d783a9f1be56fef662eee01b6e93a}{Take\+Picture} (int camera\+Id)
+\begin{DoxyCompactList}\small\item\em Takes picture for a specific camera. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classWebApp_a6ab15a70631109dc33d48e97da3eb050}\label{classWebApp_a6ab15a70631109dc33d48e97da3eb050}} 
+void \hyperlink{classWebApp_a6ab15a70631109dc33d48e97da3eb050}{Add\+Observer} (\hyperlink{classICameraObserver}{I\+Camera\+Observer} \&observer)
+\begin{DoxyCompactList}\small\item\em Adds camera observers to the application. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classWebApp_aa6c0e00182011fa15f0bd8fcbaf415a1}\label{classWebApp_aa6c0e00182011fa15f0bd8fcbaf415a1}} 
+void \hyperlink{classWebApp_aa6c0e00182011fa15f0bd8fcbaf415a1}{Remove\+Observer} (\hyperlink{classICameraObserver}{I\+Camera\+Observer} \&observer)
+\begin{DoxyCompactList}\small\item\em Removes camera observers from the application. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classWebApp_a96282cfecb4a378e9d9ce6fff3b8e746}\label{classWebApp_a96282cfecb4a378e9d9ce6fff3b8e746}} 
+void \hyperlink{classWebApp_a96282cfecb4a378e9d9ce6fff3b8e746}{Process\+Image\+Queue} ()
+\begin{DoxyCompactList}\small\item\em Method that handles asynchronous image processing that runs on a separate thread. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classWebApp_a44d830c3509efde8ad1efdf28336106e}\label{classWebApp_a44d830c3509efde8ad1efdf28336106e}} 
+\hyperlink{classSimulationFacade}{Simulation\+Facade} \hyperlink{classWebApp_a44d830c3509efde8ad1efdf28336106e}{simulation}
+\begin{DoxyCompactList}\small\item\em The simulation facade variable. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classWebApp_ade3b0d137c31bcaea60af469894b1371}\label{classWebApp_ade3b0d137c31bcaea60af469894b1371}} 
+std\+::chrono\+::time\+\_\+point$<$ std\+::chrono\+::system\+\_\+clock $>$ {\bfseries start}
+\item 
+\mbox{\Hypertarget{classWebApp_a09f8129ef8dee870e1a3bbd73186a5a8}\label{classWebApp_a09f8129ef8dee870e1a3bbd73186a5a8}} 
+double {\bfseries time}
+\item 
+\mbox{\Hypertarget{classWebApp_a5eec6ab504bdf96a950a672ae2ae5bc3}\label{classWebApp_a5eec6ab504bdf96a950a672ae2ae5bc3}} 
+std\+::vector$<$ \hyperlink{classICameraObserver}{I\+Camera\+Observer} $\ast$ $>$ {\bfseries camera\+Observers}
+\item 
+\mbox{\Hypertarget{classWebApp_a87aeff57b477b3d59817ca4d75949e96}\label{classWebApp_a87aeff57b477b3d59817ca4d75949e96}} 
+std\+::queue$<$ picojson\+::object $>$ {\bfseries image\+Queue}
+\item 
+\mbox{\Hypertarget{classWebApp_acd58315657b2a6730fb41f94dd1b3471}\label{classWebApp_acd58315657b2a6730fb41f94dd1b3471}} 
+std\+::thread $\ast$ {\bfseries image\+Process\+Thread}
+\item 
+\mbox{\Hypertarget{classWebApp_a2af661a92e7115907feb4a7fdda5a541}\label{classWebApp_a2af661a92e7115907feb4a7fdda5a541}} 
+std\+::mutex {\bfseries image\+Process\+Mutex}
+\item 
+\mbox{\Hypertarget{classWebApp_a127b6e2e0d8cba5c46c84b27937b5ce4}\label{classWebApp_a127b6e2e0d8cba5c46c84b27937b5ce4}} 
+std\+::mutex {\bfseries update\+Mutex}
+\item 
+\mbox{\Hypertarget{classWebApp_a1b7510f19d30457f56949ce2baaa0307}\label{classWebApp_a1b7510f19d30457f56949ce2baaa0307}} 
+std\+::condition\+\_\+variable {\bfseries image\+Process\+Cond}
+\item 
+\mbox{\Hypertarget{classWebApp_a89daa67e60f8fe89ef555ceaa3159f53}\label{classWebApp_a89daa67e60f8fe89ef555ceaa3159f53}} 
+bool {\bfseries running}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+A Web Application Sever that communicates with a web page through web sockets. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/user/repo/project/simulation/include/web\+\_\+app.\+h\item 
+/home/user/repo/project/simulation/src/web\+\_\+app.\+cc\end{DoxyCompactItemize}

@@ -1,0 +1,44 @@
+\hypertarget{getting_started_overview_section}{}\section{Overview}\label{getting_started_overview_section}
+The first thing to do to get started is to navigate to the team Git\+Hub page at \href{https://github.umn.edu/umn-csci-3081-f21/repo-team-0}{\tt https\+://github.\+umn.\+edu/umn-\/csci-\/3081-\/f21/repo-\/team-\/0} . Then, in the code section, switch from the \textquotesingle{}main\textquotesingle{} branch to the \textquotesingle{}develop\textquotesingle{} branch. From there, click on the green \textquotesingle{}code\textquotesingle{} button, and copy the https link to your clipboard. Then, open the terminal on your local machine, and navigate to the place in your file directory where you want to have your code repository. Using mkdir, create the directory that you want to store the project in, i.\+e. \char`\"{}mkdir
+\textquotesingle{}my-\/proj\textquotesingle{}\char`\"{}. Then, cd into that repository, and run the command \char`\"{}git clone
+\textquotesingle{}url you copied to clipboard\textquotesingle{}\char`\"{}.\hypertarget{getting_started_setting_docker}{}\section{Setting up Docker}\label{getting_started_setting_docker}
+Our build relies on Docker to run,so after installing Docker, navigate to the repo-\/team-\/0 directory and run \textquotesingle{}bin/build-\/env.\+sh\textquotesingle{} to build the Docker image. This can take a while, but after the image has been built, you can run the Docker image by entering \textquotesingle{}bin/run-\/env.\+sh\textquotesingle{}. The project dependencies should now be functional and you should now be able to build and run the code.\hypertarget{getting_started_making_running}{}\section{Making and Running the Code}\label{getting_started_making_running}
+There are 6 different directories that you can make and run the code in. Make sure you\textquotesingle{}ve cd\textquotesingle{}d into the proper directory before running any of the respective commands. For project/image\+:
+
+
+\begin{DoxyEnumerate}
+\item run \textquotesingle{}make -\/j\textquotesingle{}.
+\item run \textquotesingle{}./image-\/processor-\/app $<$data/input\+\_\+img.\+png$>$ $<$filter$>$ $<$data/output\+\_\+img.\+png$>$\textquotesingle{}\+: in the project/image/ directory, there’s a data f lder where you can put in png images, then you can apply a filter to the i age by typing the above command.
+\end{DoxyEnumerate}
+
+For project/simulation and project/apps/web\+\_\+app\+:
+
+
+\begin{DoxyEnumerate}
+\item run \textquotesingle{}make -\/j\textquotesingle{}
+\item run \textquotesingle{}make run\textquotesingle{}
+\end{DoxyEnumerate}
+
+For project/apps/image\+\_\+processor\+\_\+app\+:
+\begin{DoxyEnumerate}
+\item run \textquotesingle{}make -\/j\textquotesingle{}
+\item run \textquotesingle{}./image-\/processor-\/app $<$data/input\+\_\+img.\+png$>$ $<$filter$>$ $<$data/output\+\_\+img.\+png$>$\textquotesingle{}\+:
+\end{DoxyEnumerate}
+
+For project/tests\+:
+\begin{DoxyEnumerate}
+\item run \textquotesingle{}make -\/j\textquotesingle{}
+\item run \textquotesingle{}make test\textquotesingle{}
+\end{DoxyEnumerate}
+
+For project\+:
+\begin{DoxyEnumerate}
+\item run \textquotesingle{}make -\/j\textquotesingle{} (if this leads to an error then just cd into simulation first and rum make, then the make in this directory should work)
+\item choose mode to run, either \textquotesingle{}make run\textquotesingle{} , \textquotesingle{}make test\textquotesingle{}, or \textquotesingle{}make i=$<$input\+\_\+file.\+png$>$ f=$<$filter$>$ o=$<$output\+\_\+file.\+png$>$ img\textquotesingle{}.
+\end{DoxyEnumerate}
+
+Make run runs the simulation as usual, make test runs the tests, and the last option allows for the image processor to be run.
+
+Finally, to remove the object files, you can use make clean in any of the respective directories. If you have any additional questions, the R\+E\+A\+D\+ME on the Git\+Hub page has additional instructions for running the code.
+
+If you\textquotesingle{}re running the simulation code, to see the actual simulation you will have to open a browser with the address \href{http://127.0.0.1:8080/}{\tt http\+://127.\+0.\+0.\+1\+:8080/} , otherwise the output will either be in your terminal (tests) or in a file (image processing application or web application). 

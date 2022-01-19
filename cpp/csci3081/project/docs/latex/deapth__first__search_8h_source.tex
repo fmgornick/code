@@ -1,0 +1,32 @@
+\hypertarget{deapth__first__search_8h_source}{}\doxysection{deapth\+\_\+first\+\_\+search.\+h}
+\label{deapth__first__search_8h_source}\index{/Users/Fletcher/csci3081/repo-\/team-\/0/project/simulation/include/deapth\_first\_search.h@{/Users/Fletcher/csci3081/repo-\/team-\/0/project/simulation/include/deapth\_first\_search.h}}
+\mbox{\hyperlink{deapth__first__search_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#ifndef DEAPTH\_FIRST\_SEARCH\_H}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#define DEAPTH\_FIRST\_SEARCH\_H}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{8 \textcolor{comment}{ * Includes}}
+\DoxyCodeLine{9 \textcolor{comment}{ ******************************************************************************/}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{search__strategy_8h}{search\_strategy.h}}"{}}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{vector3_8h}{vector3.h}}"{}}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <stack>}}
+\DoxyCodeLine{13 \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{14 \textcolor{comment}{ * Class Definitions}}
+\DoxyCodeLine{15 \textcolor{comment}{ ******************************************************************************/}}
+\DoxyCodeLine{21 \textcolor{keyword}{class }\mbox{\hyperlink{classDeapthFirstSearch}{DeapthFirstSearch}} : \textcolor{keyword}{public} \mbox{\hyperlink{classSearchStrategy}{SearchStrategy}} \{}
+\DoxyCodeLine{22 \textcolor{keyword}{public}:}
+\DoxyCodeLine{26   \mbox{\hyperlink{classDeapthFirstSearch_a17caed70389b812d14cdcada7c2e7e21}{DeapthFirstSearch}}() \{ \mbox{\hyperlink{classDeapthFirstSearch_a9aaa9441b4c7945e13dadfc5f33179b6}{stack}}.push(\textcolor{stringliteral}{"{}1721335785"{}}); \};}
+\DoxyCodeLine{30   \mbox{\hyperlink{classVector3}{Vector3}} *\mbox{\hyperlink{classDeapthFirstSearch_a3301b804af1bf6958170856d0ddbd017}{Search}}(\mbox{\hyperlink{classVector3}{Vector3}} currentPos);}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32   std::stack<std::string> GetStack() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classDeapthFirstSearch_a9aaa9441b4c7945e13dadfc5f33179b6}{stack}}; \}}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34 \textcolor{keyword}{private}:}
+\DoxyCodeLine{39   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classDeapthFirstSearch_aa1a9887380527839af4964c69984ecf0}{IsDroneAtNode}}(\mbox{\hyperlink{classVector3}{Vector3}} currentPos, std::string v);}
+\DoxyCodeLine{43   std::stack<std::string> \mbox{\hyperlink{classDeapthFirstSearch_a9aaa9441b4c7945e13dadfc5f33179b6}{stack}};}
+\DoxyCodeLine{44 \};}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

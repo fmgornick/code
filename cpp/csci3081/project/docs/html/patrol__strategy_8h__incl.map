@@ -1,0 +1,19 @@
+<map id="/home/user/repo/project/simulation/include/patrol_strategy.h" name="/home/user/repo/project/simulation/include/patrol_strategy.h">
+<area shape="rect" id="node2" href="$i__movement__strategy_8h_source.html" title="i_movement_strategy.h" alt="" coords="36,259,211,285"/>
+<area shape="rect" id="node3" href="$vector3_8h.html" title="vector3.h" alt="" coords="251,333,334,360"/>
+<area shape="rect" id="node5" href="$drone_8h.html" title="drone.h" alt="" coords="213,109,284,136"/>
+<area shape="rect" id="node6" href="$i__movable__entity_8h.html" title="i_movable_entity.h" alt="" coords="353,184,499,211"/>
+<area shape="rect" id="node10" href="$search__strategy_8h.html" title="search_strategy.h" alt="" coords="1009,184,1145,211"/>
+<area shape="rect" id="node19" href="$beeline__movement_8h.html" title="beeline_movement.h" alt="" coords="169,184,329,211"/>
+<area shape="rect" id="node20" href="$camera_8h.html" title="camera.h" alt="" coords="569,184,651,211"/>
+<area shape="rect" id="node7" href="$battery_8h.html" title="battery.h" alt="" coords="287,259,365,285"/>
+<area shape="rect" id="node8" href="$i__entity_8h_source.html" title="i_entity.h" alt="" coords="389,259,471,285"/>
+<area shape="rect" id="node21" href="$camera__controller_8h_source.html" title="camera_controller.h" alt="" coords="819,259,969,285"/>
+<area shape="rect" id="node23" href="$find__robot_8h.html" title="find_robot.h" alt="" coords="495,259,594,285"/>
+<area shape="rect" id="node24" href="$image__processing__facade_8h.html" title="image_processing_facade.h" alt="" coords="483,333,686,360"/>
+<area shape="rect" id="node25" href="$image_8h.html" title="image.h" alt="" coords="790,557,865,584"/>
+<area shape="rect" id="node27" href="$filter_8h.html" title="filter.h" alt="" coords="820,483,883,509"/>
+<area shape="rect" id="node28" href="$canny__edge__detect_8h.html" title="canny_edge_detect.h" alt="" coords="663,408,823,435"/>
+<area shape="rect" id="node29" href="$blob__detector__adapter_8h.html" title="An adapter class for OpenCV. This class extends Filter. It uses OpenCV&#39;s blob detection algorithm..." alt="" coords="461,408,639,435"/>
+<area shape="rect" id="node26" href="$color_8h.html" title="color.h" alt="" coords="795,632,860,659"/>
+</map>

@@ -1,0 +1,61 @@
+\hypertarget{classDroneApp}{}\section{Drone\+App Class Reference}
+\label{classDroneApp}\index{Drone\+App@{Drone\+App}}
+
+
+Inheritance diagram for Drone\+App\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=204pt]{classDroneApp__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Drone\+App\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classDroneApp__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classDroneApp_aee08991056bca317708c4600e9bafc9d}\label{classDroneApp_aee08991056bca317708c4600e9bafc9d}} 
+void {\bfseries receive\+J\+S\+ON} (picojson\+::value \&val)
+\item 
+\mbox{\Hypertarget{classDroneApp_aadf6c66066f167d8bdbd0e4d69f16e31}\label{classDroneApp_aadf6c66066f167d8bdbd0e4d69f16e31}} 
+void {\bfseries Receive\+Command} (const std\+::string \&cmd, picojson\+::object \&data, picojson\+::object \&return\+Value)
+\item 
+\mbox{\Hypertarget{classDroneApp_a9d9319844a7fe350933b7804c6972ab2}\label{classDroneApp_a9d9319844a7fe350933b7804c6972ab2}} 
+void {\bfseries Update} (double dt, picojson\+::object \&return\+Value)
+\item 
+\mbox{\Hypertarget{classDroneApp_ac551dcfe12694ab624268469652ae2f9}\label{classDroneApp_ac551dcfe12694ab624268469652ae2f9}} 
+void {\bfseries Key\+Up} (const std\+::string \&key, int key\+Code)
+\item 
+\mbox{\Hypertarget{classDroneApp_abd3255a9783ccfbc625bfa74a50238e9}\label{classDroneApp_abd3255a9783ccfbc625bfa74a50238e9}} 
+void {\bfseries Key\+Down} (const std\+::string \&key, int key\+Code)
+\item 
+\mbox{\Hypertarget{classDroneApp_a9fa8bb8d0f5d5f9ca9042ca884f29181}\label{classDroneApp_a9fa8bb8d0f5d5f9ca9042ca884f29181}} 
+bool {\bfseries Is\+Key\+Down} (const std\+::string \&key)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classDroneApp_a9c5deb39fbc163bab48cca209541cf9a}\label{classDroneApp_a9c5deb39fbc163bab48cca209541cf9a}} 
+std\+::chrono\+::time\+\_\+point$<$ std\+::chrono\+::system\+\_\+clock $>$ {\bfseries start}
+\item 
+\mbox{\Hypertarget{classDroneApp_a83d0cd27e1a51dd509134dd4ac3f2f0a}\label{classDroneApp_a83d0cd27e1a51dd509134dd4ac3f2f0a}} 
+double {\bfseries time}
+\item 
+\mbox{\Hypertarget{classDroneApp_ac92f3a39a20ebe12ceaac923c8f356d7}\label{classDroneApp_ac92f3a39a20ebe12ceaac923c8f356d7}} 
+\hyperlink{classDrone}{Drone} {\bfseries drone}
+\item 
+\mbox{\Hypertarget{classDroneApp_a6023eb4a0c54568a36c754b7c0fc72e0}\label{classDroneApp_a6023eb4a0c54568a36c754b7c0fc72e0}} 
+std\+::map$<$ std\+::string, int $>$ {\bfseries key\+Value}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/user/repo/project/simulation/include/drone\+\_\+app.\+h\end{DoxyCompactItemize}

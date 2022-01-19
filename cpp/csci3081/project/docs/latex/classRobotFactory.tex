@@ -1,0 +1,44 @@
+\hypertarget{classRobotFactory}{}\section{Robot\+Factory Class Reference}
+\label{classRobotFactory}\index{Robot\+Factory@{Robot\+Factory}}
+
+
+\hyperlink{classRobot}{Robot} Factory. When called, it creates a new object of type \hyperlink{classRobot}{Robot}. This factory is never called directly, and is really only used through the composite entity factory.  
+
+
+
+
+{\ttfamily \#include $<$robot\+\_\+factory.\+h$>$}
+
+
+
+Inheritance diagram for Robot\+Factory\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=176pt]{classRobotFactory__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Robot\+Factory\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=176pt]{classRobotFactory__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classRobotFactory_aa0428ce050880b0ff11429df875664ee}\label{classRobotFactory_aa0428ce050880b0ff11429df875664ee}} 
+\hyperlink{classiEntity}{i\+Entity} $\ast$ \hyperlink{classRobotFactory_aa0428ce050880b0ff11429df875664ee}{Create\+Entity} (picojson\+::object \&entity, \hyperlink{classCamera}{Camera} $\ast$camera)
+\begin{DoxyCompactList}\small\item\em checks if type specified is robot. If so it creates and returns a pointer to our new robot object. But if the type doesn\textquotesingle{}t match, then it just returns a null pointer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classRobot}{Robot} Factory. When called, it creates a new object of type \hyperlink{classRobot}{Robot}. This factory is never called directly, and is really only used through the composite entity factory. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/user/repo/project/simulation/include/\hyperlink{robot__factory_8h}{robot\+\_\+factory.\+h}\item 
+/home/user/repo/project/simulation/src/robot\+\_\+factory.\+cc\end{DoxyCompactItemize}

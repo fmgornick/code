@@ -1,0 +1,90 @@
+\hypertarget{find__robot_8h_source}{}\doxysection{find\+\_\+robot.\+h}
+\label{find__robot_8h_source}\index{/Users/Fletcher/csci3081/repo-\/team-\/0/project/simulation/include/find\_robot.h@{/Users/Fletcher/csci3081/repo-\/team-\/0/project/simulation/include/find\_robot.h}}
+\mbox{\hyperlink{find__robot_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#ifndef FIND\_ROBOT\_H}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#define FIND\_ROBOT\_H}}
+\DoxyCodeLine{4 \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{5 \textcolor{comment}{ * Includes}}
+\DoxyCodeLine{6 \textcolor{comment}{ ******************************************************************************/}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{image__processing__facade_8h}{image\_processing\_facade.h}}"{}}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{vector3_8h}{vector3.h}}"{}}}
+\DoxyCodeLine{9 \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{10 \textcolor{comment}{ * Class Definitions}}
+\DoxyCodeLine{11 \textcolor{comment}{ ******************************************************************************/}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{19 \textcolor{keyword}{class }\mbox{\hyperlink{classFindRobot}{FindRobot}} \{}
+\DoxyCodeLine{20 \textcolor{keyword}{public}:}
+\DoxyCodeLine{25   \mbox{\hyperlink{classFindRobot_a55011d75f3703849bf1e8bd49ea72a4c}{FindRobot}}() \{}
+\DoxyCodeLine{26     \mbox{\hyperlink{classFindRobot_a009faddfec003a049608fb535521c09f}{imageProcessor}} = \textcolor{keyword}{new} \mbox{\hyperlink{classImageProcessingFacade}{ImageProcessingFacade}}();}
+\DoxyCodeLine{27     this-\/>\mbox{\hyperlink{classFindRobot_ab57facf1a4ca4ae4a52c088d45949a41}{blobImage}} = \textcolor{keyword}{new} \mbox{\hyperlink{classImage}{Image}}();}
+\DoxyCodeLine{28     this-\/>\mbox{\hyperlink{classFindRobot_ae5bfaf2d47f0db2af41661a3d844fa4a}{cannyImage}} = \textcolor{keyword}{new} \mbox{\hyperlink{classImage}{Image}}();}
+\DoxyCodeLine{29   \}}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{39   \textcolor{keywordtype}{void} \mbox{\hyperlink{classFindRobot_a27fed71d7793129a281fc7a3174d328b}{TakePicture}}(\mbox{\hyperlink{classVector3}{Vector3}} *cameraPosition, \mbox{\hyperlink{classImage}{Image}} *rgb, \mbox{\hyperlink{classImage}{Image}} *depth) \{}
+\DoxyCodeLine{40     \textcolor{keywordflow}{if} (\mbox{\hyperlink{classFindRobot_aee4ed8c42df1924a51014976dcc6ac7a}{foundRobot}})}
+\DoxyCodeLine{41       \textcolor{keywordflow}{return};}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43     \mbox{\hyperlink{classFindRobot_a68e82ba1b2ef89dd1a767e917b70bf2a}{cameraPos}} = *cameraPosition;}
+\DoxyCodeLine{44     \mbox{\hyperlink{classFindRobot_a1c53be1c0b13581f8fe833090776cc21}{lastImage}} = rgb;}
+\DoxyCodeLine{45     \mbox{\hyperlink{classFindRobot_a8560b99cd1110bb459af3d862b3695a3}{depthImage}} = depth;}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47     \mbox{\hyperlink{classFindRobot_a009faddfec003a049608fb535521c09f}{imageProcessor}}-\/>\mbox{\hyperlink{classImageProcessingFacade_ad65fe6e5f6db9aa5c45235b8e4486659}{BlobDetect}}(rgb, this-\/>\mbox{\hyperlink{classFindRobot_ab57facf1a4ca4ae4a52c088d45949a41}{blobImage}});}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49     \mbox{\hyperlink{classColor}{Color}} data;}
+\DoxyCodeLine{50     \mbox{\hyperlink{classFindRobot_ab57facf1a4ca4ae4a52c088d45949a41}{blobImage}}-\/>\mbox{\hyperlink{classImage_a5b9ba06409ad38e86a035ad18d8204d2}{GetPixel}}(0, 0, data);}
+\DoxyCodeLine{51     \textcolor{keywordflow}{if} (data.\mbox{\hyperlink{classColor_a65df51367c71b8d2147e1db240e62429}{getR}}() == 1) \{}
+\DoxyCodeLine{52       \mbox{\hyperlink{classFindRobot_aee4ed8c42df1924a51014976dcc6ac7a}{foundRobot}} = \textcolor{keyword}{true};}
+\DoxyCodeLine{53       std::cout << \textcolor{stringliteral}{"{}[Find Robot] -\/ Robot Found!"{}} << std::endl;}
+\DoxyCodeLine{54       \mbox{\hyperlink{classFindRobot_ab57facf1a4ca4ae4a52c088d45949a41}{blobImage}}-\/>\mbox{\hyperlink{classImage_a3a9b278005e0731a93fe1d5d2cff7104}{SaveAs}}(\textcolor{stringliteral}{"{}data/images/blob.png"{}});}
+\DoxyCodeLine{55       rgb-\/>\mbox{\hyperlink{classImage_a3a9b278005e0731a93fe1d5d2cff7104}{SaveAs}}(\textcolor{stringliteral}{"{}data/images/blob-\/color.png"{}});}
+\DoxyCodeLine{56       depth-\/>\mbox{\hyperlink{classImage_a3a9b278005e0731a93fe1d5d2cff7104}{SaveAs}}(\textcolor{stringliteral}{"{}data/images/blob-\/depth.png"{}});}
+\DoxyCodeLine{57     \}}
+\DoxyCodeLine{58   \}}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{72   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classFindRobot_ae26378cc41e2e3c61e4833ec0e7b1d76}{CanSeeRobot}}(\textcolor{keywordtype}{int} \&outX, \textcolor{keywordtype}{int} \&outY) \{}
+\DoxyCodeLine{73     \mbox{\hyperlink{classColor}{Color}} data;}
+\DoxyCodeLine{74     \mbox{\hyperlink{classFindRobot_ab57facf1a4ca4ae4a52c088d45949a41}{blobImage}}-\/>\mbox{\hyperlink{classImage_a5b9ba06409ad38e86a035ad18d8204d2}{GetPixel}}(0, 0, data);}
+\DoxyCodeLine{75 }
+\DoxyCodeLine{76     outX = data.\mbox{\hyperlink{classColor_a5c32d43f4405ace1cdb1cd0e32593e1a}{getG}}() * \mbox{\hyperlink{classFindRobot_ab57facf1a4ca4ae4a52c088d45949a41}{blobImage}}-\/>\mbox{\hyperlink{classImage_a4ab80d76fd124fd9de9b4fca8ae16186}{GetWidth}}();}
+\DoxyCodeLine{77     outY = data.\mbox{\hyperlink{classColor_a099852b0829e9551169a90768146e61e}{getB}}() * \mbox{\hyperlink{classFindRobot_ab57facf1a4ca4ae4a52c088d45949a41}{blobImage}}-\/>\mbox{\hyperlink{classImage_a4d6de643ee334ff52c85da9a62d9297d}{GetHeight}}();}
+\DoxyCodeLine{78     \textcolor{keywordflow}{if} (data.\mbox{\hyperlink{classColor_a65df51367c71b8d2147e1db240e62429}{getR}}() == 1)}
+\DoxyCodeLine{79       std::cout << \textcolor{stringliteral}{"{}[Find Robot] -\/ Robot at ("{}} << outX << \textcolor{stringliteral}{"{}, "{}} << outY << \textcolor{stringliteral}{"{})"{}}}
+\DoxyCodeLine{80                 << std::endl;}
+\DoxyCodeLine{81     \textcolor{keywordflow}{return} data.\mbox{\hyperlink{classColor_a65df51367c71b8d2147e1db240e62429}{getR}}() == 1;}
+\DoxyCodeLine{82   \}}
+\DoxyCodeLine{83 }
+\DoxyCodeLine{92   \mbox{\hyperlink{classVector3}{Vector3}} \mbox{\hyperlink{classFindRobot_acab7123d6f276e150b87ea30f1f287d4}{GetRobotLocation}}(\textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y) \{}
+\DoxyCodeLine{93     \mbox{\hyperlink{classVector3}{Vector3}} location;}
+\DoxyCodeLine{94 }
+\DoxyCodeLine{95     std::cout << \textcolor{stringliteral}{"{}[Find robot] -\/ Camera Pos: ("{}} << \mbox{\hyperlink{classFindRobot_a68e82ba1b2ef89dd1a767e917b70bf2a}{cameraPos}}.\mbox{\hyperlink{classVector3_a318ef58f84d43f17592e454b02a63658}{GetX}}() << \textcolor{stringliteral}{"{}, "{}}}
+\DoxyCodeLine{96               << \mbox{\hyperlink{classFindRobot_a68e82ba1b2ef89dd1a767e917b70bf2a}{cameraPos}}.\mbox{\hyperlink{classVector3_a9196c9e0e158774889b66988765db2cf}{GetY}}() << \textcolor{stringliteral}{"{}, "{}} << \mbox{\hyperlink{classFindRobot_a68e82ba1b2ef89dd1a767e917b70bf2a}{cameraPos}}.\mbox{\hyperlink{classVector3_ade396bf7b5423cd1179c65633db7c2d2}{GetZ}}() << \textcolor{stringliteral}{"{})"{}}}
+\DoxyCodeLine{97               << std::endl;}
+\DoxyCodeLine{98     \mbox{\hyperlink{classColor}{Color}} info;}
+\DoxyCodeLine{99     \mbox{\hyperlink{classFindRobot_a8560b99cd1110bb459af3d862b3695a3}{depthImage}}-\/>\mbox{\hyperlink{classImage_a5b9ba06409ad38e86a035ad18d8204d2}{GetPixel}}(x, y, info);}
+\DoxyCodeLine{100 }
+\DoxyCodeLine{101     \mbox{\hyperlink{classVector3}{Vector3}} rgb(info.\mbox{\hyperlink{classColor_a65df51367c71b8d2147e1db240e62429}{getR}}(), info.\mbox{\hyperlink{classColor_a5c32d43f4405ace1cdb1cd0e32593e1a}{getG}}(), info.\mbox{\hyperlink{classColor_a099852b0829e9551169a90768146e61e}{getB}}());}
+\DoxyCodeLine{102     \mbox{\hyperlink{classVector3}{Vector3}} dirVector = (rgb -\/ \mbox{\hyperlink{classVector3}{Vector3}}(0.5, 0.5, 0.5)) * 2.0;}
+\DoxyCodeLine{103     \textcolor{keywordtype}{float} distance = (1.0 -\/ dirVector.\mbox{\hyperlink{classVector3_aa9e0ca14708b98ed68f974df02ea797b}{GetMagnitude}}()) * 50.0;}
+\DoxyCodeLine{104 }
+\DoxyCodeLine{105     \textcolor{keywordflow}{return} \mbox{\hyperlink{classFindRobot_a68e82ba1b2ef89dd1a767e917b70bf2a}{cameraPos}} + (dirVector.\mbox{\hyperlink{classVector3_a8a8cb236aae8602af246f4f56495f159}{Normalize}}() * distance);}
+\DoxyCodeLine{106   \}}
+\DoxyCodeLine{107 }
+\DoxyCodeLine{109   \textcolor{keywordtype}{void} \mbox{\hyperlink{classFindRobot_a63e77c7b9a876332fc3fb411bb6644a9}{SetBlobImage}}(\mbox{\hyperlink{classImage}{Image}} *blob) \{ \mbox{\hyperlink{classFindRobot_ab57facf1a4ca4ae4a52c088d45949a41}{blobImage}} = blob; \}}
+\DoxyCodeLine{111   \textcolor{keywordtype}{void} \mbox{\hyperlink{classFindRobot_a1aac26d16ab0e8ffc3fd1c587b96991e}{SetDepthImage}}(\mbox{\hyperlink{classImage}{Image}} *depth) \{ \mbox{\hyperlink{classFindRobot_a8560b99cd1110bb459af3d862b3695a3}{depthImage}} = depth; \}}
+\DoxyCodeLine{112 }
+\DoxyCodeLine{113 \textcolor{keyword}{private}:}
+\DoxyCodeLine{115   \mbox{\hyperlink{classImageProcessingFacade}{ImageProcessingFacade}} *\mbox{\hyperlink{classFindRobot_a009faddfec003a049608fb535521c09f}{imageProcessor}};}
+\DoxyCodeLine{116 }
+\DoxyCodeLine{118   \mbox{\hyperlink{classVector3}{Vector3}} \mbox{\hyperlink{classFindRobot_a68e82ba1b2ef89dd1a767e917b70bf2a}{cameraPos}};}
+\DoxyCodeLine{120   \mbox{\hyperlink{classImage}{Image}} *\mbox{\hyperlink{classFindRobot_a1c53be1c0b13581f8fe833090776cc21}{lastImage}};}
+\DoxyCodeLine{122   \mbox{\hyperlink{classImage}{Image}} *\mbox{\hyperlink{classFindRobot_a8560b99cd1110bb459af3d862b3695a3}{depthImage}};}
+\DoxyCodeLine{124   \mbox{\hyperlink{classImage}{Image}} *\mbox{\hyperlink{classFindRobot_ab57facf1a4ca4ae4a52c088d45949a41}{blobImage}};}
+\DoxyCodeLine{126   \mbox{\hyperlink{classImage}{Image}} *\mbox{\hyperlink{classFindRobot_ae5bfaf2d47f0db2af41661a3d844fa4a}{cannyImage}};}
+\DoxyCodeLine{128   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classFindRobot_aee4ed8c42df1924a51014976dcc6ac7a}{foundRobot}} = \textcolor{keyword}{false};}
+\DoxyCodeLine{129 \};}
+\DoxyCodeLine{130 }
+\DoxyCodeLine{131 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

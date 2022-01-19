@@ -1,0 +1,37 @@
+\hypertarget{blob__detector__adapter_8h}{}\section{/home/user/repo/project/image/include/blob\+\_\+detector\+\_\+adapter.h File Reference}
+\label{blob__detector__adapter_8h}\index{/home/user/repo/project/image/include/blob\+\_\+detector\+\_\+adapter.\+h@{/home/user/repo/project/image/include/blob\+\_\+detector\+\_\+adapter.\+h}}
+
+
+An adapter class for Open\+CV. This class extends \hyperlink{classFilter}{Filter}. It uses Open\+CV\textquotesingle{}s blob detection algorithm, but hides the complexity of converting an \textquotesingle{}\hyperlink{classImage}{Image}\textquotesingle{} object into a cv\+::\+Mat object. It is then able to run the blob detection algorithm.  
+
+
+{\ttfamily \#include \char`\"{}filter.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$opencv2/features2d.\+hpp$>$}\newline
+{\ttfamily \#include $<$opencv2/opencv.\+hpp$>$}\newline
+Include dependency graph for blob\+\_\+detector\+\_\+adapter.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{blob__detector__adapter_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{blob__detector__adapter_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classBlobDetectorAdapater}{Blob\+Detector\+Adapater}
+\begin{DoxyCompactList}\small\item\em The Blob\+Detector\+Adapter class that interfaces the \hyperlink{classFilter}{Filter} and Open\+CV. This class scans an image for the orange drone using contours and morphing. If found, the drone data is stored in the pixel in the top left corner. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+An adapter class for Open\+CV. This class extends \hyperlink{classFilter}{Filter}. It uses Open\+CV\textquotesingle{}s blob detection algorithm, but hides the complexity of converting an \textquotesingle{}\hyperlink{classImage}{Image}\textquotesingle{} object into a cv\+::\+Mat object. It is then able to run the blob detection algorithm. 
+
+\begin{DoxyAuthor}{Author}
+Jason Woitalla 
+\end{DoxyAuthor}

@@ -1,0 +1,32 @@
+<map id="/home/user/repo/project/simulation/include/vector3.h" name="/home/user/repo/project/simulation/include/vector3.h">
+<area shape="rect" id="node2" href="$i__entity_8h_source.html" title="/home/user/repo/project\l/simulation/include/i\l_entity.h" alt="" coords="394,95,572,151"/>
+<area shape="rect" id="node5" href="$beeline__movement_8h.html" title="/home/user/repo/project\l/simulation/include/beeline\l_movement.h" alt="" coords="734,407,933,463"/>
+<area shape="rect" id="node9" href="$patrol__strategy_8h.html" title="/home/user/repo/project\l/simulation/include/patrol\l_strategy.h" alt="" coords="957,407,1145,463"/>
+<area shape="rect" id="node25" href="$i__movement__strategy_8h_source.html" title="/home/user/repo/project\l/simulation/include/i\l_movement_strategy.h" alt="" coords="1074,95,1252,151"/>
+<area shape="rect" id="node26" href="$search__strategy_8h.html" title="/home/user/repo/project\l/simulation/include/search\l_strategy.h" alt="" coords="1328,199,1521,255"/>
+<area shape="rect" id="node27" href="$breadth__first__search_8h.html" title="/home/user/repo/project\l/simulation/include/breadth\l_first_search.h" alt="" coords="1655,303,1855,359"/>
+<area shape="rect" id="node29" href="$deapth__first__search_8h.html" title="/home/user/repo/project\l/simulation/include/deapth\l_first_search.h" alt="" coords="1386,303,1580,359"/>
+<area shape="rect" id="node30" href="$find__robot_8h.html" title="/home/user/repo/project\l/simulation/include/find\l_robot.h" alt="" coords="1605,95,1782,151"/>
+<area shape="rect" id="node3" href="$i__movable__entity_8h.html" title="/home/user/repo/project\l/simulation/include/i\l_movable_entity.h" alt="" coords="268,199,445,255"/>
+<area shape="rect" id="node10" href="$i__entity__factory_8h.html" title="/home/user/repo/project\l/simulation/include/i\l_entity_factory.h" alt="" coords="530,407,708,463"/>
+<area shape="rect" id="node18" href="$simulation__facade_8h.html" title="/home/user/repo/project\l/simulation/include/simulation\l_facade.h" alt="" coords="1508,823,1727,879"/>
+<area shape="rect" id="node22" href="$hospital_8h.html" title="/home/user/repo/project\l/simulation/include/hospital.h" alt="" coords="440,310,654,351"/>
+<area shape="rect" id="node23" href="$recharge__station_8h.html" title="/home/user/repo/project\l/simulation/include/recharge\l_station.h" alt="" coords="678,303,885,359"/>
+<area shape="rect" id="node24" href="$robot_8h.html" title="/home/user/repo/project\l/simulation/include/robot.h" alt="" coords="48,206,244,247"/>
+<area shape="rect" id="node4" href="$drone_8h.html" title="/home/user/repo/project\l/simulation/include/drone.h" alt="" coords="1162,310,1361,351"/>
+<area shape="rect" id="node14" href="$i__logger_8h.html" title="/home/user/repo/project\l/simulation/include/i\l_logger.h" alt="" coords="1780,407,1957,463"/>
+<area shape="rect" id="node21" href="$drone__app_8h_source.html" title="/home/user/repo/project\l/simulation/include/drone_app.h" alt="" coords="1169,414,1400,455"/>
+<area shape="rect" id="node6" href="$drone__factory_8h.html" title="/home/user/repo/project\l/simulation/include/drone\l_factory.h" alt="" coords="1004,511,1191,567"/>
+<area shape="rect" id="node7" href="$composite__entity__factory_8h.html" title="/home/user/repo/project\l/simulation/include/composite\l_entity_factory.h" alt="" coords="728,615,947,671"/>
+<area shape="rect" id="node8" href="$factory__test_8cc.html" title="/home/user/repo/project\l/tests/src/factory_test.cc" alt="" coords="747,726,928,767"/>
+<area shape="rect" id="node11" href="$hospital__factory_8h.html" title="/home/user/repo/project\l/simulation/include/hospital\l_factory.h" alt="" coords="287,511,490,567"/>
+<area shape="rect" id="node12" href="$recharge__station__factory_8h.html" title="/home/user/repo/project\l/simulation/include/recharge\l_station_factory.h" alt="" coords="514,511,721,567"/>
+<area shape="rect" id="node13" href="$robot__factory_8h.html" title="/home/user/repo/project\l/simulation/include/robot\l_factory.h" alt="" coords="746,511,930,567"/>
+<area shape="rect" id="node15" href="$console__logger_8h.html" title="/home/user/repo/project\l/simulation/include/console\l_logger.h" alt="" coords="1495,511,1695,567"/>
+<area shape="rect" id="node16" href="$composite__logger_8h.html" title="/home/user/repo/project\l/simulation/include/composite\l_logger.h" alt="" coords="1592,615,1811,671"/>
+<area shape="rect" id="node20" href="$csv__logger_8h.html" title="/home/user/repo/project\l/simulation/include/csv\l_logger.h" alt="" coords="1720,511,1897,567"/>
+<area shape="rect" id="node17" href="$logger__manager_8h.html" title="/home/user/repo/project\l/simulation/include/logger\l_manager.h" alt="" coords="1594,719,1785,775"/>
+<area shape="rect" id="node19" href="$web__app_8h_source.html" title="/home/user/repo/project\l/simulation/include/web_app.h" alt="" coords="1728,927,1948,968"/>
+<area shape="rect" id="node28" href="$search__algo__test_8cc.html" title="/home/user/repo/project\l/tests/src/search_algo\l_test.cc" alt="" coords="1526,407,1704,463"/>
+<area shape="rect" id="node31" href="$camera_8h.html" title="/home/user/repo/project\l/simulation/include/camera.h" alt="" coords="1596,206,1807,247"/>
+</map>

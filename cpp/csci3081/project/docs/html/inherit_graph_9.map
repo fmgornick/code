@@ -1,0 +1,8 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classiEntityFactory.html" title="Entity factory interface. Used for our abstract factory method for making new entity objects at run t..." alt="" coords="5,107,116,133"/>
+<area shape="rect" id="node2" href="$classCompositeEntityFactory.html" title="Composite Entity Factory. This is the class that get&#39;s called when creating new entities. Has an entity factory vector member variable to keep track of all the factories. Then when we want to create a new factory, it&#39;s added to the vector to be referenced for entity creation. " alt="" coords="164,5,341,32"/>
+<area shape="rect" id="node3" href="$classDroneFactory.html" title="Drone Factory. When called, it creates a new object of type Drone. This factory is never called direc..." alt="" coords="199,56,307,83"/>
+<area shape="rect" id="node4" href="$classHospitalFactory.html" title="Hospital Factory. When called, it creates a new object of type Hospital. This factory is never called..." alt="" coords="191,107,314,133"/>
+<area shape="rect" id="node5" href="$classRechargeStationFactory.html" title="Recharge Station Factory. When called, it creates a new object of type RechargeStation. This factory is never called directly, and is really only used through the composite entity factory. " alt="" coords="165,157,340,184"/>
+<area shape="rect" id="node6" href="$classRobotFactory.html" title="Robot Factory. When called, it creates a new object of type Robot. This factory is never called direc..." alt="" coords="199,208,306,235"/>
+</map>

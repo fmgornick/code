@@ -1,0 +1,27 @@
+\hypertarget{csv__logger_8h_source}{}\doxysection{csv\+\_\+logger.\+h}
+\label{csv__logger_8h_source}\index{/Users/Fletcher/csci3081/repo-\/team-\/0/project/simulation/include/csv\_logger.h@{/Users/Fletcher/csci3081/repo-\/team-\/0/project/simulation/include/csv\_logger.h}}
+\mbox{\hyperlink{csv__logger_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#ifndef CSV\_LOGGER\_H\_}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#define CSV\_LOGGER\_H\_}}
+\DoxyCodeLine{6 \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{7 \textcolor{comment}{ * Includes}}
+\DoxyCodeLine{8 \textcolor{comment}{ ******************************************************************************/}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{i__logger_8h}{i\_logger.h}}"{}}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{11 \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{12 \textcolor{comment}{ * Class Definitions}}
+\DoxyCodeLine{13 \textcolor{comment}{ ******************************************************************************/}}
+\DoxyCodeLine{19 \textcolor{keyword}{class }\mbox{\hyperlink{classCSVLogger}{CSVLogger}} : \textcolor{keyword}{public} \mbox{\hyperlink{classiLogger}{iLogger}} \{}
+\DoxyCodeLine{20 \textcolor{keyword}{public}:}
+\DoxyCodeLine{25   \textcolor{keywordtype}{void} \mbox{\hyperlink{classCSVLogger_a6f6f8cce2294cf48ebfcee86d5afd365}{Log}}(\mbox{\hyperlink{classVector3}{Vector3}} *p, \mbox{\hyperlink{classVector3}{Vector3}} *d, \textcolor{keywordtype}{double} t, std::string msg);}
+\DoxyCodeLine{29   \textcolor{keywordtype}{void} \mbox{\hyperlink{classCSVLogger_a6f6f8cce2294cf48ebfcee86d5afd365}{Log}}(\mbox{\hyperlink{classVector3}{Vector3}} *p, \mbox{\hyperlink{classVector3}{Vector3}} *d, \textcolor{keywordtype}{double} t);}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 \textcolor{keyword}{private}:}
+\DoxyCodeLine{32   std::ofstream csv;}
+\DoxyCodeLine{33 \};}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// !CSV\_LOGGER\_H\_}}
+
+\end{DoxyCode}

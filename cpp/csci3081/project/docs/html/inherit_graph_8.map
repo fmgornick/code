@@ -1,0 +1,8 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classiEntity.html" title="The base class for all entities. Drones, Robots, Hospitals, and Recharge Stations are all entities..." alt="" coords="5,81,69,108"/>
+<area shape="rect" id="node2" href="$classHospital.html" title="once our robot is found, we&#39;re gonna want to rescue it by taking it to the hospital. Thus we need a hospital entity " alt="" coords="143,5,219,32"/>
+<area shape="rect" id="node3" href="$classiMovableEntity.html" title="derived class of entity. This is an abstract class that represents entities that move. This class gets implemented by the Drone and Robot entities. " alt="" coords="122,56,241,83"/>
+<area shape="rect" id="node5" href="$classRechargeStation.html" title="if our drone runs low on battery and must recharge, then it visits one of these stations to replenish..." alt="" coords="117,107,245,133"/>
+<area shape="rect" id="node6" href="$classRobot.html" title="robot is a movable entity. This robot will be placed randomly in minneapolis, and our goal is to use ..." alt="" coords="152,157,211,184"/>
+<area shape="rect" id="node4" href="$classDrone.html" title="Our actual drone that will be searching for the robot. Contains tons methods to update postion and ve..." alt="" coords="293,56,355,83"/>
+</map>

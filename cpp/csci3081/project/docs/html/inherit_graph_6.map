@@ -1,0 +1,4 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classICameraObserver.html" title="A Camera Observer monitors results from all cameras. It will process the pictures returned asynchrono..." alt="" coords="5,5,141,32"/>
+<area shape="rect" id="node2" href="$classCamera.html" title="The camera class. This class can be attached to any entity and act as a camera. When attached to the ..." alt="" coords="189,5,263,32"/>
+</map>

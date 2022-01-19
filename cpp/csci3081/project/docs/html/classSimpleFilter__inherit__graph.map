@@ -1,0 +1,9 @@
+<map id="SimpleFilter" name="SimpleFilter">
+<area shape="rect" id="node3" href="$classDoubleThresholdFilter.html" title="Double Threshold takes in the value of the each pixel and decides if it is a strong or weak pixel bas..." alt="" coords="5,293,205,399"/>
+<area shape="rect" id="node4" href="$classGreyScaleFilter.html" title="The main class for GreyScaleFilter, extends SimpleFilter. Overrides the virtual ApplyAtPixel() functi..." alt="" coords="230,293,386,399"/>
+<area shape="rect" id="node5" href="$classInvertFilter.html" title="The main class for InvertFilter, extends SimpleFilter. A filter that flips the values of each pixel..." alt="" coords="411,293,541,399"/>
+<area shape="rect" id="node6" href="$classPurpleScaleFilter.html" title="The main class for PurpleScaleFilter, extends SimpleFilter. This filter will take an image and &quot;purpl..." alt="" coords="566,293,733,399"/>
+<area shape="rect" id="node7" href="$classSolarizationFilter.html" title="The main class for SolarizationFilter, extends SimpleFilter. Solarization filter basically runs the r..." alt="" coords="757,293,923,399"/>
+<area shape="rect" id="node8" href="$classThresholdFilter.html" title="The main class for ThresholdFilter, extends SimpleFilter. Threshold scans the image and if the lumina..." alt="" coords="948,285,1103,407"/>
+<area shape="rect" id="node2" href="$classFilter.html" title="The main class for Filter. This is where all the filters are derived from. " alt="" coords="517,5,608,97"/>
+</map>

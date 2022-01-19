@@ -1,0 +1,22 @@
+<map id="/home/user/repo/project/simulation/include/image_processing_facade.h" name="/home/user/repo/project/simulation/include/image_processing_facade.h">
+<area shape="rect" id="node2" href="$find__robot_8h.html" title="/home/user/repo/project\l/simulation/include/find\l_robot.h" alt="" coords="1501,109,1678,165"/>
+<area shape="rect" id="node3" href="$camera_8h.html" title="/home/user/repo/project\l/simulation/include/camera.h" alt="" coords="1484,213,1695,255"/>
+<area shape="rect" id="node4" href="$drone_8h.html" title="/home/user/repo/project\l/simulation/include/drone.h" alt="" coords="783,303,982,344"/>
+<area shape="rect" id="node10" href="$i__entity__factory_8h.html" title="/home/user/repo/project\l/simulation/include/i\l_entity_factory.h" alt="" coords="1223,392,1401,448"/>
+<area shape="rect" id="node18" href="$simulation__facade_8h.html" title="/home/user/repo/project\l/simulation/include/simulation\l_facade.h" alt="" coords="932,808,1151,864"/>
+<area shape="rect" id="node19" href="$web__app_8h_source.html" title="/home/user/repo/project\l/simulation/include/web_app.h" alt="" coords="1005,912,1225,953"/>
+<area shape="rect" id="node5" href="$beeline__movement_8h.html" title="/home/user/repo/project\l/simulation/include/beeline\l_movement.h" alt="" coords="1001,392,1199,448"/>
+<area shape="rect" id="node9" href="$patrol__strategy_8h.html" title="/home/user/repo/project\l/simulation/include/patrol\l_strategy.h" alt="" coords="789,392,977,448"/>
+<area shape="rect" id="node14" href="$i__logger_8h.html" title="/home/user/repo/project\l/simulation/include/i\l_logger.h" alt="" coords="218,392,395,448"/>
+<area shape="rect" id="node21" href="$drone__app_8h_source.html" title="/home/user/repo/project\l/simulation/include/drone_app.h" alt="" coords="534,399,765,441"/>
+<area shape="rect" id="node6" href="$drone__factory_8h.html" title="/home/user/repo/project\l/simulation/include/drone\l_factory.h" alt="" coords="741,496,928,552"/>
+<area shape="rect" id="node7" href="$composite__entity__factory_8h.html" title="/home/user/repo/project\l/simulation/include/composite\l_entity_factory.h" alt="" coords="1064,600,1283,656"/>
+<area shape="rect" id="node8" href="$factory__test_8cc.html" title="/home/user/repo/project\l/tests/src/factory_test.cc" alt="" coords="1083,711,1264,753"/>
+<area shape="rect" id="node11" href="$hospital__factory_8h.html" title="/home/user/repo/project\l/simulation/include/hospital\l_factory.h" alt="" coords="1211,496,1413,552"/>
+<area shape="rect" id="node12" href="$recharge__station__factory_8h.html" title="/home/user/repo/project\l/simulation/include/recharge\l_station_factory.h" alt="" coords="1438,496,1645,552"/>
+<area shape="rect" id="node13" href="$robot__factory_8h.html" title="/home/user/repo/project\l/simulation/include/robot\l_factory.h" alt="" coords="952,496,1136,552"/>
+<area shape="rect" id="node15" href="$console__logger_8h.html" title="/home/user/repo/project\l/simulation/include/console\l_logger.h" alt="" coords="5,496,205,552"/>
+<area shape="rect" id="node16" href="$composite__logger_8h.html" title="/home/user/repo/project\l/simulation/include/composite\l_logger.h" alt="" coords="187,600,405,656"/>
+<area shape="rect" id="node20" href="$csv__logger_8h.html" title="/home/user/repo/project\l/simulation/include/csv\l_logger.h" alt="" coords="281,496,458,552"/>
+<area shape="rect" id="node17" href="$logger__manager_8h.html" title="/home/user/repo/project\l/simulation/include/logger\l_manager.h" alt="" coords="261,704,451,760"/>
+</map>

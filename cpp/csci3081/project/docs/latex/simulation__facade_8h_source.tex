@@ -1,0 +1,55 @@
+\hypertarget{simulation__facade_8h_source}{}\doxysection{simulation\+\_\+facade.\+h}
+\label{simulation__facade_8h_source}\index{/Users/Fletcher/csci3081/repo-\/team-\/0/project/simulation/include/simulation\_facade.h@{/Users/Fletcher/csci3081/repo-\/team-\/0/project/simulation/include/simulation\_facade.h}}
+\mbox{\hyperlink{simulation__facade_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#ifndef SIMULATION\_FACADE\_H\_}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#define SIMULATION\_FACADE\_H\_}}
+\DoxyCodeLine{6 \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{7 \textcolor{comment}{ * Includes}}
+\DoxyCodeLine{8 \textcolor{comment}{ ******************************************************************************/}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}WebServer.h"{}}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}camera\_controller.h"{}}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{drone_8h}{drone.h}}"{}}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}i\_entity.h"{}}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{i__movable__entity_8h}{i\_movable\_entity.h}}"{}}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{camera_8h}{camera.h}}"{}}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{logger__manager_8h}{logger\_manager.h}}"{}}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#include <memory>}}
+\DoxyCodeLine{20 \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{21 \textcolor{comment}{ * Class Definitions}}
+\DoxyCodeLine{22 \textcolor{comment}{ ******************************************************************************/}}
+\DoxyCodeLine{23 \textcolor{keyword}{class }\mbox{\hyperlink{classSimulationFacade}{SimulationFacade}} \{}
+\DoxyCodeLine{24 \textcolor{keyword}{public}:}
+\DoxyCodeLine{30   \mbox{\hyperlink{group__simulation_gaeecad83c3d8ad32ebf60c9f49fda030f}{SimulationFacade}}();}
+\DoxyCodeLine{37   \textcolor{keywordtype}{void} \mbox{\hyperlink{classSimulationFacade_a91e7955bf6f4c1998b7b4b8287e25812}{CreateEntityCmd}}(picojson::object \&entityData,}
+\DoxyCodeLine{38                        \mbox{\hyperlink{classICameraController}{ICameraController}} \&cameraController);}
+\DoxyCodeLine{44   \textcolor{keywordtype}{void} \mbox{\hyperlink{classSimulationFacade_a7647c750c98ea6c40d82e66bb3ee13d6}{AddEntity}}(\mbox{\hyperlink{classiEntity}{iEntity}} *entity);}
+\DoxyCodeLine{50   \textcolor{keywordtype}{void} \mbox{\hyperlink{classSimulationFacade_a18360b82dd112efe3dfb0f9faf618500}{UpdateEntities}}(\textcolor{keywordtype}{double} dt);}
+\DoxyCodeLine{56   \textcolor{keywordtype}{void} \mbox{\hyperlink{classSimulationFacade_a62c5da57349073c3f472346dd273b03a}{UpdateSimulation}}(picojson::object \&returnValue);}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58   \textcolor{keywordtype}{void} SetKey(\textcolor{keyword}{const} std::string\& key, \textcolor{keywordtype}{int} keyCode);}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60   \textcolor{keywordtype}{bool} IsKeyDown(\textcolor{keyword}{const} std::string\& key);}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62   \mbox{\hyperlink{classiEntity}{iEntity}}* getEntity(\textcolor{keywordtype}{int} index) \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classSimulationFacade_aa6e2a84334ca9df9fa0c082b6f034217}{entities}}[0]; \}}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64   \textcolor{keywordtype}{int} getEntitiesCount() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classSimulationFacade_aa6e2a84334ca9df9fa0c082b6f034217}{entities}}.size(); \}}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66   \textcolor{keywordtype}{double} getElapsedTime() \{ \textcolor{keywordflow}{return} elapsedTime; \}}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68 \textcolor{keyword}{private}:}
+\DoxyCodeLine{71   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classSimulationFacade_a6e44973f5bd3e4e27563050904dbf111}{jsonHasName}}(picojson::object \&data, std::string name);}
+\DoxyCodeLine{73   std::vector<iEntity *> \mbox{\hyperlink{classSimulationFacade_aa6e2a84334ca9df9fa0c082b6f034217}{entities}};}
+\DoxyCodeLine{74   \textcolor{keywordtype}{double} elapsedTime = 0; }
+\DoxyCodeLine{75   \mbox{\hyperlink{classCamera}{Camera}}* camera;}
+\DoxyCodeLine{76   \textcolor{comment}{// Stores current state of key presses}}
+\DoxyCodeLine{77   std::map<std::string,int> keyValue;}
+\DoxyCodeLine{78 \};}
+\DoxyCodeLine{79 }
+\DoxyCodeLine{80 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

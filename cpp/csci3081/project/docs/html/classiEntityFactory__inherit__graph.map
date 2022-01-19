@@ -1,0 +1,7 @@
+<map id="iEntityFactory" name="iEntityFactory">
+<area shape="rect" id="node2" href="$classCompositeEntityFactory.html" title="Composite Entity Factory. This is the class that get&#39;s called when creating new entities. Has an entity factory vector member variable to keep track of all the factories. Then when we want to create a new factory, it&#39;s added to the vector to be referenced for entity creation. " alt="" coords="5,131,208,237"/>
+<area shape="rect" id="node3" href="$classDroneFactory.html" title="Drone Factory. When called, it creates a new object of type Drone. This factory is never called direc..." alt="" coords="232,145,360,223"/>
+<area shape="rect" id="node4" href="$classHospitalFactory.html" title="Hospital Factory. When called, it creates a new object of type Hospital. This factory is never called..." alt="" coords="384,145,512,223"/>
+<area shape="rect" id="node5" href="$classRechargeStationFactory.html" title="Recharge Station Factory. When called, it creates a new object of type RechargeStation. This factory is never called directly, and is really only used through the composite entity factory. " alt="" coords="537,145,711,223"/>
+<area shape="rect" id="node6" href="$classRobotFactory.html" title="Robot Factory. When called, it creates a new object of type Robot. This factory is never called direc..." alt="" coords="736,145,864,223"/>
+</map>

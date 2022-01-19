@@ -1,0 +1,18 @@
+<map id="Filter" name="Filter">
+<area shape="rect" id="node2" href="$classBlobDetectorAdapater.html" title="The BlobDetectorAdapter class that interfaces the Filter and OpenCV. This class scans an image for th..." alt="" coords="5,145,209,384"/>
+<area shape="rect" id="node3" href="$classCannyEdgeDetect.html" title="The main class for CannyEdgeDetect, extends Filter. This basically just applies each of the filters r..." alt="" coords="233,211,408,318"/>
+<area shape="rect" id="node4" href="$classConvolutionFilter.html" title="The main class for ConvolutionFilter, extends Filter. A basic convolution filter implementation. Each child class will have it&#39;s own kernel object and run the given apply kernel function. This class has a lot of extendability as long as the filter algorithm is the same. " alt="" coords="433,182,590,347"/>
+<area shape="rect" id="node8" href="$classHysteresisFilter.html" title="The main class for HysteresisFilter, extends Filter. The hysteresis filter takes the output from the ..." alt="" coords="614,226,737,303"/>
+<area shape="rect" id="node9" href="$classNonMaxFilter.html" title="The main class for NonMaxFilter, extends Filter. NonMax takes in two images, an intensity image and a..." alt="" coords="761,219,893,311"/>
+<area shape="rect" id="node10" href="$classSimpleFilter.html" title="The main class for SimpleFilter, extends Filter. This filter does the brunt of the work when iteratin..." alt="" coords="970,219,1101,311"/>
+<area shape="rect" id="node17" href="$classSobelFilter.html" title="The main class for SobelFilter, extends Filter. For this filter, instead of outputing two separate im..." alt="" coords="1125,226,1215,303"/>
+<area shape="rect" id="node5" href="$classGaussianBlurFilter.html" title="The main class for GaussianBlurFilter, extends ConvolutionFilter. Creates a 5 x 5 kernel to apply to ..." alt="" coords="54,439,230,546"/>
+<area shape="rect" id="node6" href="$classMeanBlurFilter.html" title="The main class for MeanBlurFilter, extends ConvolutionFilter. Creates a 3 x 3 kernel with all 1&#39;s mea..." alt="" coords="255,439,405,546"/>
+<area shape="rect" id="node7" href="$classSharpeningFilter.html" title="This is a convolution filter that uses a kernal found on Wikipedia that sharpens the image..." alt="" coords="430,439,593,546"/>
+<area shape="rect" id="node11" href="$classDoubleThresholdFilter.html" title="Double Threshold takes in the value of the each pixel and decides if it is a strong or weak pixel bas..." alt="" coords="617,439,817,546"/>
+<area shape="rect" id="node12" href="$classGreyScaleFilter.html" title="The main class for GreyScaleFilter, extends SimpleFilter. Overrides the virtual ApplyAtPixel() functi..." alt="" coords="841,439,997,546"/>
+<area shape="rect" id="node13" href="$classInvertFilter.html" title="The main class for InvertFilter, extends SimpleFilter. A filter that flips the values of each pixel..." alt="" coords="1022,439,1153,546"/>
+<area shape="rect" id="node14" href="$classPurpleScaleFilter.html" title="The main class for PurpleScaleFilter, extends SimpleFilter. This filter will take an image and &quot;purpl..." alt="" coords="1177,439,1344,546"/>
+<area shape="rect" id="node15" href="$classSolarizationFilter.html" title="The main class for SolarizationFilter, extends SimpleFilter. Solarization filter basically runs the r..." alt="" coords="1368,439,1535,546"/>
+<area shape="rect" id="node16" href="$classThresholdFilter.html" title="The main class for ThresholdFilter, extends SimpleFilter. Threshold scans the image and if the lumina..." alt="" coords="1559,432,1714,553"/>
+</map>

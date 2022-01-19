@@ -1,0 +1,59 @@
+\hypertarget{classThresholdFilter}{}\section{Threshold\+Filter Class Reference}
+\label{classThresholdFilter}\index{Threshold\+Filter@{Threshold\+Filter}}
+
+
+The main class for \hyperlink{classThresholdFilter}{Threshold\+Filter}, extends \hyperlink{classSimpleFilter}{Simple\+Filter}. Threshold scans the image and if the luminance of the image is above the input threshold it changes the pixel to white, otherwise the pixel turns black. This means the output image only has the colors black and white.  
+
+
+
+
+{\ttfamily \#include $<$threshold\+\_\+filter.\+h$>$}
+
+
+
+Inheritance diagram for Threshold\+Filter\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{classThresholdFilter__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Threshold\+Filter\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{classThresholdFilter__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classThresholdFilter_a12ba3301d876524d9790d20d4125774a}\label{classThresholdFilter_a12ba3301d876524d9790d20d4125774a}} 
+\hyperlink{classThresholdFilter_a12ba3301d876524d9790d20d4125774a}{Threshold\+Filter} ()
+\begin{DoxyCompactList}\small\item\em Constructor for no arguments. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classThresholdFilter_ac13253e54ab2cb9470c912dfc90c71e9}\label{classThresholdFilter_ac13253e54ab2cb9470c912dfc90c71e9}} 
+\hyperlink{classThresholdFilter_ac13253e54ab2cb9470c912dfc90c71e9}{Threshold\+Filter} (float threshold)
+\begin{DoxyCompactList}\small\item\em Constructor for float threshold argument. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classThresholdFilter_a5f7d71d8c0e78f533d9b1e4f5c43352e}\label{classThresholdFilter_a5f7d71d8c0e78f533d9b1e4f5c43352e}} 
+\hyperlink{classThresholdFilter_a5f7d71d8c0e78f533d9b1e4f5c43352e}{$\sim$\+Threshold\+Filter} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classThresholdFilter_a96ea6f3cc9e8c07ea1296dd5fb0088b5}\label{classThresholdFilter_a96ea6f3cc9e8c07ea1296dd5fb0088b5}} 
+void \hyperlink{classThresholdFilter_a96ea6f3cc9e8c07ea1296dd5fb0088b5}{Apply\+At\+Pixel} (\hyperlink{classColor}{Color} \&p)
+\begin{DoxyCompactList}\small\item\em Apply\+At\+Pixel function to be overridden by \hyperlink{classSimpleFilter}{Simple\+Filter} Apply function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classThresholdFilter_a70ebcb3343ab432b15f477bb882be3fb}\label{classThresholdFilter_a70ebcb3343ab432b15f477bb882be3fb}} 
+float {\bfseries threshold}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The main class for \hyperlink{classThresholdFilter}{Threshold\+Filter}, extends \hyperlink{classSimpleFilter}{Simple\+Filter}. Threshold scans the image and if the luminance of the image is above the input threshold it changes the pixel to white, otherwise the pixel turns black. This means the output image only has the colors black and white. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/user/repo/project/image/include/\hyperlink{threshold__filter_8h}{threshold\+\_\+filter.\+h}\item 
+/home/user/repo/project/image/src/threshold\+\_\+filter.\+cc\end{DoxyCompactItemize}

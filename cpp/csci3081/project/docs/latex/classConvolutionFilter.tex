@@ -1,0 +1,64 @@
+\hypertarget{classConvolutionFilter}{}\section{Convolution\+Filter Class Reference}
+\label{classConvolutionFilter}\index{Convolution\+Filter@{Convolution\+Filter}}
+
+
+The main class for \hyperlink{classConvolutionFilter}{Convolution\+Filter}, extends \hyperlink{classFilter}{Filter}. A basic convolution filter implementation. Each child class will have it\textquotesingle{}s own kernel object and run the given apply kernel function. This class has a lot of extendability as long as the filter algorithm is the same.  
+
+
+
+
+{\ttfamily \#include $<$convolution\+\_\+filter.\+h$>$}
+
+
+
+Inheritance diagram for Convolution\+Filter\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classConvolutionFilter__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Convolution\+Filter\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=198pt]{classConvolutionFilter__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classConvolutionFilter_a55f8a3bbe4c93bf849b7eecd1531e8a7}\label{classConvolutionFilter_a55f8a3bbe4c93bf849b7eecd1531e8a7}} 
+virtual void \hyperlink{classConvolutionFilter_a55f8a3bbe4c93bf849b7eecd1531e8a7}{Apply} (std\+::vector$<$ \hyperlink{classImage}{Image} $\ast$$>$ original, std\+::vector$<$ \hyperlink{classImage}{Image} $\ast$$>$ filtered)=0
+\begin{DoxyCompactList}\small\item\em The method inherited convolution filters call Apply\+Kernel in. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classConvolutionFilter_af37f2a6e6c7e9f95cf769494a5227b0d}\label{classConvolutionFilter_af37f2a6e6c7e9f95cf769494a5227b0d}} 
+void \hyperlink{classConvolutionFilter_af37f2a6e6c7e9f95cf769494a5227b0d}{Apply\+Kernel} (std\+::vector$<$ \hyperlink{classImage}{Image} $\ast$$>$ original, std\+::vector$<$ \hyperlink{classImage}{Image} $\ast$$>$ filtered)
+\begin{DoxyCompactList}\small\item\em The apply kernel algorithm. This function will work on any input images and run the kernel of the given size on the images. It now implements a fast Fourier transform algorithm to convolve our image in a faster exponential time. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classConvolutionFilter_a2750951441b1fceb7006192396a706ed}\label{classConvolutionFilter_a2750951441b1fceb7006192396a706ed}} 
+\hyperlink{classConvolutionFilter_a2750951441b1fceb7006192396a706ed}{Convolution\+Filter} (const \hyperlink{classConvolutionFilter}{Convolution\+Filter} \&filter)
+\begin{DoxyCompactList}\small\item\em Copy constructor Uses the = operator to simplify the function. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classConvolutionFilter_a8430a9858e927d8c8cdc5e0b500d1b40}\label{classConvolutionFilter_a8430a9858e927d8c8cdc5e0b500d1b40}} 
+void \hyperlink{classConvolutionFilter_a8430a9858e927d8c8cdc5e0b500d1b40}{operator=} (const \hyperlink{classConvolutionFilter}{Convolution\+Filter} \&filter)
+\begin{DoxyCompactList}\small\item\em Operator =. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classConvolutionFilter_aece66da70dad07df42e28623a5f6074d}\label{classConvolutionFilter_aece66da70dad07df42e28623a5f6074d}} 
+int {\bfseries kernel\+\_\+size}
+\item 
+\mbox{\Hypertarget{classConvolutionFilter_a9ee9eaa3837d893ad7b304219511d8e5}\label{classConvolutionFilter_a9ee9eaa3837d893ad7b304219511d8e5}} 
+double {\bfseries kernel\+\_\+sum}
+\item 
+\mbox{\Hypertarget{classConvolutionFilter_a57740ec890c05384b20d4a7ba17b4513}\label{classConvolutionFilter_a57740ec890c05384b20d4a7ba17b4513}} 
+double $\ast$ {\bfseries kernel}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The main class for \hyperlink{classConvolutionFilter}{Convolution\+Filter}, extends \hyperlink{classFilter}{Filter}. A basic convolution filter implementation. Each child class will have it\textquotesingle{}s own kernel object and run the given apply kernel function. This class has a lot of extendability as long as the filter algorithm is the same. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/user/repo/project/image/include/convolution\+\_\+filter.\+h\end{DoxyCompactItemize}

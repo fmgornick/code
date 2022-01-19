@@ -1,0 +1,199 @@
+\hypertarget{classColor}{}\section{Color Class Reference}
+\label{classColor}\index{Color@{Color}}
+
+
+The main class for \hyperlink{classColor}{Color}. We used a color class to make operations for color arithmatic easier. This makes it easy to add mutliply and set colors equal to eachother. The color class also makes it easy to get access to comonly used colors like black and white.  
+
+
+
+
+{\ttfamily \#include $<$color.\+h$>$}
+
+
+
+Collaboration diagram for Color\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=186pt]{classColor__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classColor_a9a742cbe9f9f4037f5d9f4e81a9b2428}\label{classColor_a9a742cbe9f9f4037f5d9f4e81a9b2428}} 
+\hyperlink{classColor_a9a742cbe9f9f4037f5d9f4e81a9b2428}{Color} ()
+\begin{DoxyCompactList}\small\item\em Constructor for no arguments. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classColor_a373c542c99fb83ce9c7c08aae76b2718}\label{classColor_a373c542c99fb83ce9c7c08aae76b2718}} 
+\hyperlink{classColor_a373c542c99fb83ce9c7c08aae76b2718}{Color} (float r, float g, float b)
+\begin{DoxyCompactList}\small\item\em Constructor for float red, float green, and float blue arguments. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classColor_a6e4627389673c8b5cce81bf3eec79938}\label{classColor_a6e4627389673c8b5cce81bf3eec79938}} 
+\hyperlink{classColor_a6e4627389673c8b5cce81bf3eec79938}{Color} (float r, float g, float b, float a)
+\begin{DoxyCompactList}\small\item\em Constructor for float red, float green, float blue, and float alpha arguments. \end{DoxyCompactList}\item 
+float \hyperlink{classColor_a65df51367c71b8d2147e1db240e62429}{getR} ()
+\begin{DoxyCompactList}\small\item\em Red value getter. \end{DoxyCompactList}\item 
+float \hyperlink{classColor_a5c32d43f4405ace1cdb1cd0e32593e1a}{getG} ()
+\begin{DoxyCompactList}\small\item\em Green value getter. \end{DoxyCompactList}\item 
+float \hyperlink{classColor_a099852b0829e9551169a90768146e61e}{getB} ()
+\begin{DoxyCompactList}\small\item\em Blue value getter. \end{DoxyCompactList}\item 
+float \hyperlink{classColor_a3bd02605f19eb70590822131bcdd8b08}{getA} ()
+\begin{DoxyCompactList}\small\item\em Alpha value getter. \end{DoxyCompactList}\item 
+float \hyperlink{classColor_a44b18556e2cc4cd58e3f5f35471262b5}{Get\+Luminance} ()
+\begin{DoxyCompactList}\small\item\em Luminance getter. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classColor_a8522aad9a86d305f7414ce26b50b48c2}\label{classColor_a8522aad9a86d305f7414ce26b50b48c2}} 
+void \hyperlink{classColor_a8522aad9a86d305f7414ce26b50b48c2}{set\+R\+G\+BA} (unsigned char $\ast$pixel)
+\begin{DoxyCompactList}\small\item\em R\+G\+BA setter given unsigned char aray of pixels. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classColor_a108cd7208329ed0bb1b52f6901150e40}\label{classColor_a108cd7208329ed0bb1b52f6901150e40}} 
+void \hyperlink{classColor_a108cd7208329ed0bb1b52f6901150e40}{set\+R\+G\+BA} (float r, float g, float b, float a)
+\begin{DoxyCompactList}\small\item\em R\+G\+BA setter given float values for r,g,b, and a. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classColor_ac6b45342df92b65e204fe83db9360e13}\label{classColor_ac6b45342df92b65e204fe83db9360e13}} 
+void \hyperlink{classColor_ac6b45342df92b65e204fe83db9360e13}{setR} (float r)
+\begin{DoxyCompactList}\small\item\em Red setter. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classColor_aa56d9de92a31ec8d647d1e4ec788789a}\label{classColor_aa56d9de92a31ec8d647d1e4ec788789a}} 
+void \hyperlink{classColor_aa56d9de92a31ec8d647d1e4ec788789a}{setG} (float g)
+\begin{DoxyCompactList}\small\item\em Green setter. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classColor_a42cac7186652ca335a08f6350e7e1e6a}\label{classColor_a42cac7186652ca335a08f6350e7e1e6a}} 
+void \hyperlink{classColor_a42cac7186652ca335a08f6350e7e1e6a}{setB} (float b)
+\begin{DoxyCompactList}\small\item\em Blue setter. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classColor_a3b254399aace09b24197673f060d868c}\label{classColor_a3b254399aace09b24197673f060d868c}} 
+void \hyperlink{classColor_a3b254399aace09b24197673f060d868c}{setA} (float a)
+\begin{DoxyCompactList}\small\item\em Alpha setter. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classColor_afa7cf91dee89475b96423a0eea0d079d}\label{classColor_afa7cf91dee89475b96423a0eea0d079d}} 
+void \hyperlink{classColor_afa7cf91dee89475b96423a0eea0d079d}{Clear} ()
+\begin{DoxyCompactList}\small\item\em Clear color function. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classColor_ac06dcf409ae64de5a67c7f6e69b6f44b}\label{classColor_ac06dcf409ae64de5a67c7f6e69b6f44b}} 
+void \hyperlink{classColor_ac06dcf409ae64de5a67c7f6e69b6f44b}{operator=} (const \hyperlink{classColor}{Color} \&color)
+\begin{DoxyCompactList}\small\item\em = operator given a \hyperlink{classColor}{Color} color \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classColor_a76d829819622c7da1f39adbc9fcc8785}\label{classColor_a76d829819622c7da1f39adbc9fcc8785}} 
+\hyperlink{classColor}{Color} \hyperlink{classColor_a76d829819622c7da1f39adbc9fcc8785}{operator+} (const \hyperlink{classColor}{Color} \&color)
+\begin{DoxyCompactList}\small\item\em 
+\begin{DoxyItemize}
+\item operator given a \hyperlink{classColor}{Color} color 
+\end{DoxyItemize}\end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classColor_a81e6990064f809bf8d0cc63a5e3300c6}\label{classColor_a81e6990064f809bf8d0cc63a5e3300c6}} 
+\hyperlink{classColor}{Color} \hyperlink{classColor_a81e6990064f809bf8d0cc63a5e3300c6}{operator-\/} (const \hyperlink{classColor}{Color} \&color)
+\begin{DoxyCompactList}\small\item\em 
+\begin{DoxyItemize}
+\item operator given a \hyperlink{classColor}{Color} color 
+\end{DoxyItemize}\end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classColor_a1e5aa9e5811e7711ebfe997fa8b7accd}\label{classColor_a1e5aa9e5811e7711ebfe997fa8b7accd}} 
+\hyperlink{classColor}{Color} \hyperlink{classColor_a1e5aa9e5811e7711ebfe997fa8b7accd}{operator$\ast$} (float scalar)
+\begin{DoxyCompactList}\small\item\em 
+\begin{DoxyItemize}
+\item operator given a float scalar 
+\end{DoxyItemize}\end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classColor_abd8c55279f5b9442ee149c7d670f32ad}\label{classColor_abd8c55279f5b9442ee149c7d670f32ad}} 
+\hyperlink{classColor}{Color} \hyperlink{classColor_abd8c55279f5b9442ee149c7d670f32ad}{operator$\ast$} (const \hyperlink{classColor}{Color} \&color)
+\begin{DoxyCompactList}\small\item\em 
+\begin{DoxyItemize}
+\item operator given a \hyperlink{classColor}{Color} color 
+\end{DoxyItemize}\end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classColor_a7ef1308bd6371f7816607fd7f00c4ed2}\label{classColor_a7ef1308bd6371f7816607fd7f00c4ed2}} 
+\hyperlink{classColor}{Color} \hyperlink{classColor_a7ef1308bd6371f7816607fd7f00c4ed2}{operator/} (float scalar)
+\begin{DoxyCompactList}\small\item\em / operator given a float scalar \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classColor_a493d3257d936fd306de590de1d7a0b21}\label{classColor_a493d3257d936fd306de590de1d7a0b21}} 
+int \hyperlink{classColor_a493d3257d936fd306de590de1d7a0b21}{operator==} (const \hyperlink{classColor}{Color} \&color)
+\begin{DoxyCompactList}\small\item\em equality operator for color variables \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classColor_af896082b138401e97e14bc72d6ef6285}\label{classColor_af896082b138401e97e14bc72d6ef6285}} 
+int \hyperlink{classColor_af896082b138401e97e14bc72d6ef6285}{operator!=} (const \hyperlink{classColor}{Color} \&color)
+\begin{DoxyCompactList}\small\item\em opposite of equality operator for color variables \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classColor_aba1c3be96b5e25fbae9c769d3491e333}\label{classColor_aba1c3be96b5e25fbae9c769d3491e333}} 
+static \hyperlink{classColor}{Color} \hyperlink{classColor_aba1c3be96b5e25fbae9c769d3491e333}{black} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{classColor}{Color} black. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classColor_aad4699ae003d7a86b5edc5fccdbaf4c8}\label{classColor_aad4699ae003d7a86b5edc5fccdbaf4c8}} 
+static \hyperlink{classColor}{Color} \hyperlink{classColor_aad4699ae003d7a86b5edc5fccdbaf4c8}{white} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{classColor}{Color} white. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classColor_a3958a556b47d2de3dd45c75aac833c20}\label{classColor_a3958a556b47d2de3dd45c75aac833c20}} 
+float {\bfseries r}
+\item 
+\mbox{\Hypertarget{classColor_a5defbb21620e480e556181772d665f34}\label{classColor_a5defbb21620e480e556181772d665f34}} 
+float {\bfseries g}
+\item 
+\mbox{\Hypertarget{classColor_a33e482be18d6ea31d2b403bee13683b7}\label{classColor_a33e482be18d6ea31d2b403bee13683b7}} 
+float {\bfseries b}
+\item 
+\mbox{\Hypertarget{classColor_a98047aee65fc3d825f88a76da728fd27}\label{classColor_a98047aee65fc3d825f88a76da728fd27}} 
+float {\bfseries a}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The main class for \hyperlink{classColor}{Color}. We used a color class to make operations for color arithmatic easier. This makes it easy to add mutliply and set colors equal to eachother. The color class also makes it easy to get access to comonly used colors like black and white. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classColor_a3bd02605f19eb70590822131bcdd8b08}\label{classColor_a3bd02605f19eb70590822131bcdd8b08}} 
+\index{Color@{Color}!getA@{getA}}
+\index{getA@{getA}!Color@{Color}}
+\subsubsection{\texorpdfstring{get\+A()}{getA()}}
+{\footnotesize\ttfamily float Color\+::getA (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Alpha value getter. 
+
+\begin{DoxyReturn}{Returns}
+Float alpha. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classColor_a099852b0829e9551169a90768146e61e}\label{classColor_a099852b0829e9551169a90768146e61e}} 
+\index{Color@{Color}!getB@{getB}}
+\index{getB@{getB}!Color@{Color}}
+\subsubsection{\texorpdfstring{get\+B()}{getB()}}
+{\footnotesize\ttfamily float Color\+::getB (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Blue value getter. 
+
+\begin{DoxyReturn}{Returns}
+Float blue. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classColor_a5c32d43f4405ace1cdb1cd0e32593e1a}\label{classColor_a5c32d43f4405ace1cdb1cd0e32593e1a}} 
+\index{Color@{Color}!getG@{getG}}
+\index{getG@{getG}!Color@{Color}}
+\subsubsection{\texorpdfstring{get\+G()}{getG()}}
+{\footnotesize\ttfamily float Color\+::getG (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Green value getter. 
+
+\begin{DoxyReturn}{Returns}
+Float green. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classColor_a44b18556e2cc4cd58e3f5f35471262b5}\label{classColor_a44b18556e2cc4cd58e3f5f35471262b5}} 
+\index{Color@{Color}!Get\+Luminance@{Get\+Luminance}}
+\index{Get\+Luminance@{Get\+Luminance}!Color@{Color}}
+\subsubsection{\texorpdfstring{Get\+Luminance()}{GetLuminance()}}
+{\footnotesize\ttfamily float Color\+::\+Get\+Luminance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Luminance getter. 
+
+\begin{DoxyReturn}{Returns}
+Float luminance. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classColor_a65df51367c71b8d2147e1db240e62429}\label{classColor_a65df51367c71b8d2147e1db240e62429}} 
+\index{Color@{Color}!getR@{getR}}
+\index{getR@{getR}!Color@{Color}}
+\subsubsection{\texorpdfstring{get\+R()}{getR()}}
+{\footnotesize\ttfamily float Color\+::getR (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Red value getter. 
+
+\begin{DoxyReturn}{Returns}
+Float red. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/user/repo/project/image/include/\hyperlink{color_8h}{color.\+h}\end{DoxyCompactItemize}

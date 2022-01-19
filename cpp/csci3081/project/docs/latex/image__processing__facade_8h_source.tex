@@ -1,0 +1,48 @@
+\hypertarget{image__processing__facade_8h_source}{}\doxysection{image\+\_\+processing\+\_\+facade.\+h}
+\label{image__processing__facade_8h_source}\index{/Users/Fletcher/csci3081/repo-\/team-\/0/project/simulation/include/image\_processing\_facade.h@{/Users/Fletcher/csci3081/repo-\/team-\/0/project/simulation/include/image\_processing\_facade.h}}
+\mbox{\hyperlink{image__processing__facade_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#ifndef IMAGE\_PROCESSING\_FACADE\_H}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#define IMAGE\_PROCESSING\_FACADE\_H}}
+\DoxyCodeLine{4 \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{5 \textcolor{comment}{ * Includes}}
+\DoxyCodeLine{6 \textcolor{comment}{ ******************************************************************************/}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{image_8h}{image.h}}"{}}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{filter_8h}{filter.h}}"{}}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{canny__edge__detect_8h}{canny\_edge\_detect.h}}"{}}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{blob__detector__adapter_8h}{blob\_detector\_adapter.h}}"{}}}
+\DoxyCodeLine{11 \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{12 \textcolor{comment}{ * Class Definitions}}
+\DoxyCodeLine{13 \textcolor{comment}{ ******************************************************************************/}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{21 \textcolor{keyword}{class }\mbox{\hyperlink{classImageProcessingFacade}{ImageProcessingFacade}} \{}
+\DoxyCodeLine{22 \textcolor{keyword}{public}:}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{28     \mbox{\hyperlink{classImageProcessingFacade_ac8691c5159915b0f48d21a24576666ec}{ImageProcessingFacade}}() \{}
+\DoxyCodeLine{29         \mbox{\hyperlink{classImageProcessingFacade_ada20bac7f9fd22337ff810fd1786b5ee}{cannyEdgeDetectFilter}} = \textcolor{keyword}{new} \mbox{\hyperlink{classCannyEdgeDetect}{CannyEdgeDetect}}();}
+\DoxyCodeLine{30         \mbox{\hyperlink{classImageProcessingFacade_a19ac9e618b71451afe7322eb0886aad8}{blobDetectFilter}} = \textcolor{keyword}{new} \mbox{\hyperlink{classBlobDetectorAdapater}{BlobDetectorAdapater}}();}
+\DoxyCodeLine{31     \};}
+\DoxyCodeLine{32     }
+\DoxyCodeLine{39     \textcolor{keywordtype}{void} \mbox{\hyperlink{classImageProcessingFacade_a320be6a053c96f9725f6526b0f4734c4}{RunCannyEdgeDetect}}(\mbox{\hyperlink{classImage}{Image}}* image, \mbox{\hyperlink{classImage}{Image}}* cannyImage) \{}
+\DoxyCodeLine{40         std::vector<Image*> input(1, image);}
+\DoxyCodeLine{41         std::vector<Image*> output(1, cannyImage);}
+\DoxyCodeLine{42         \mbox{\hyperlink{classImageProcessingFacade_ada20bac7f9fd22337ff810fd1786b5ee}{cannyEdgeDetectFilter}}-\/>\mbox{\hyperlink{classFilter_a7431e1f16621d96f8a63b37b6907bb04}{Apply}}(input, output);}
+\DoxyCodeLine{43     \}}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{51     \textcolor{keywordtype}{void} \mbox{\hyperlink{classImageProcessingFacade_ad65fe6e5f6db9aa5c45235b8e4486659}{BlobDetect}}(\mbox{\hyperlink{classImage}{Image}}* image, \mbox{\hyperlink{classImage}{Image}}* blobDetect) \{}
+\DoxyCodeLine{52         std::vector<Image*> input(1, image);}
+\DoxyCodeLine{53         std::vector<Image*> output(1, blobDetect);}
+\DoxyCodeLine{54         \mbox{\hyperlink{classImageProcessingFacade_a19ac9e618b71451afe7322eb0886aad8}{blobDetectFilter}}-\/>\mbox{\hyperlink{classFilter_a7431e1f16621d96f8a63b37b6907bb04}{Apply}}(input, output);}
+\DoxyCodeLine{55     \}}
+\DoxyCodeLine{56     }
+\DoxyCodeLine{57     }
+\DoxyCodeLine{58     \textcolor{keyword}{private}:}
+\DoxyCodeLine{60         \mbox{\hyperlink{classFilter}{Filter}}* \mbox{\hyperlink{classImageProcessingFacade_ada20bac7f9fd22337ff810fd1786b5ee}{cannyEdgeDetectFilter}};}
+\DoxyCodeLine{62         \mbox{\hyperlink{classFilter}{Filter}}* \mbox{\hyperlink{classImageProcessingFacade_a19ac9e618b71451afe7322eb0886aad8}{blobDetectFilter}};}
+\DoxyCodeLine{63    }
+\DoxyCodeLine{64 \};}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

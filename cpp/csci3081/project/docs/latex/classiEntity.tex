@@ -1,0 +1,55 @@
+\hypertarget{classiEntity}{}\section{i\+Entity Class Reference}
+\label{classiEntity}\index{i\+Entity@{i\+Entity}}
+
+
+The base class for all entities. Drones, Robots, Hospitals, and Recharge Stations are all entities. This class is abstract, so it\textquotesingle{}s not meant to be instantiated.  
+
+
+
+
+{\ttfamily \#include $<$i\+\_\+entity.\+h$>$}
+
+
+
+Inheritance diagram for i\+Entity\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classiEntity__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for i\+Entity\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=172pt]{classiEntity__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classiEntity_ab8633da01cab1d5a6aa565ac45a74c59}\label{classiEntity_ab8633da01cab1d5a6aa565ac45a74c59}} 
+virtual \hyperlink{classiEntity_ab8633da01cab1d5a6aa565ac45a74c59}{$\sim$i\+Entity} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classiEntity_afff83e95a9777dfaa7cf48bad6fbb79c}\label{classiEntity_afff83e95a9777dfaa7cf48bad6fbb79c}} 
+virtual int \hyperlink{classiEntity_afff83e95a9777dfaa7cf48bad6fbb79c}{Get\+ID} ()=0
+\begin{DoxyCompactList}\small\item\em Getter\+: returns entity identification number. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classiEntity_a4c71545cc2dec140595b5c1e1be8ac32}\label{classiEntity_a4c71545cc2dec140595b5c1e1be8ac32}} 
+virtual const std\+::string \& \hyperlink{classiEntity_a4c71545cc2dec140595b5c1e1be8ac32}{Get\+Name} () const =0
+\begin{DoxyCompactList}\small\item\em Getter\+: returns entity name. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classiEntity_a2e94d2de4d37792e6f491405ac259aeb}\label{classiEntity_a2e94d2de4d37792e6f491405ac259aeb}} 
+virtual \hyperlink{classVector3}{Vector3} $\ast$ \hyperlink{classiEntity_a2e94d2de4d37792e6f491405ac259aeb}{Get\+Position} ()=0
+\begin{DoxyCompactList}\small\item\em Getter\+: returns entity position. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classiEntity_afa1966ac1964902c1e69907307ca03d4}\label{classiEntity_afa1966ac1964902c1e69907307ca03d4}} 
+virtual void \hyperlink{classiEntity_afa1966ac1964902c1e69907307ca03d4}{Set\+Position} (\hyperlink{classVector3}{Vector3} \&pos)=0
+\begin{DoxyCompactList}\small\item\em Setter\+: updates or initializes position. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The base class for all entities. Drones, Robots, Hospitals, and Recharge Stations are all entities. This class is abstract, so it\textquotesingle{}s not meant to be instantiated. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/user/repo/project/simulation/include/i\+\_\+entity.\+h\end{DoxyCompactItemize}

@@ -1,0 +1,68 @@
+\hypertarget{classLoggerManager}{}\section{Logger\+Manager Class Reference}
+\label{classLoggerManager}\index{Logger\+Manager@{Logger\+Manager}}
+
+
+logger singleton class.  
+
+
+
+
+{\ttfamily \#include $<$logger\+\_\+manager.\+h$>$}
+
+
+
+Collaboration diagram for Logger\+Manager\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=263pt]{classLoggerManager__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classLoggerManager_a43331d83f7529a069c7832afcd0770de}\label{classLoggerManager_a43331d83f7529a069c7832afcd0770de}} 
+\hyperlink{classLoggerManager_a43331d83f7529a069c7832afcd0770de}{Logger\+Manager} (\hyperlink{classLoggerManager}{Logger\+Manager} \&other)=delete
+\begin{DoxyCompactList}\small\item\em singletons should not be cloneable. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classLoggerManager_a4e1527418f267a83b0e3cc99524d2ae2}\label{classLoggerManager_a4e1527418f267a83b0e3cc99524d2ae2}} 
+void \hyperlink{classLoggerManager_a4e1527418f267a83b0e3cc99524d2ae2}{operator=} (const \hyperlink{classLoggerManager}{Logger\+Manager} \&)=delete
+\begin{DoxyCompactList}\small\item\em singletons should not be cloneable. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classLoggerManager_a4c0d26e8fa84ef93b897bb74db482c86}\label{classLoggerManager_a4c0d26e8fa84ef93b897bb74db482c86}} 
+void \hyperlink{classLoggerManager_a4c0d26e8fa84ef93b897bb74db482c86}{Add\+Logger} (\hyperlink{classiLogger}{i\+Logger} $\ast$new\+Logger)
+\begin{DoxyCompactList}\small\item\em for logger extention, we call this function to add a new logger class keeping low coupling. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classLoggerManager_a82d701cebadecabc2089b36047fc00ba}\label{classLoggerManager_a82d701cebadecabc2089b36047fc00ba}} 
+void \hyperlink{classLoggerManager_a82d701cebadecabc2089b36047fc00ba}{Log} (\hyperlink{classVector3}{Vector3} $\ast$p, \hyperlink{classVector3}{Vector3} $\ast$d, double t)
+\begin{DoxyCompactList}\small\item\em log position of drone with message about it. Called every time we update. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classLoggerManager_a64389dbd7363b4003b64d37ed9f20602}\label{classLoggerManager_a64389dbd7363b4003b64d37ed9f20602}} 
+static \hyperlink{classLoggerManager}{Logger\+Manager} $\ast$ \hyperlink{classLoggerManager_a64389dbd7363b4003b64d37ed9f20602}{Get\+Instance} ()
+\begin{DoxyCompactList}\small\item\em controls access to the singleton instance. On first run, it creates the singleton object and places it into the static field. Any call after just returns the existing instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classLoggerManager_a76aa9e2191e3120990a550e064b2c691}\label{classLoggerManager_a76aa9e2191e3120990a550e064b2c691}} 
+\hyperlink{classLoggerManager_a76aa9e2191e3120990a550e064b2c691}{Logger\+Manager} ()
+\begin{DoxyCompactList}\small\item\em private constructor for our singleton \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classLoggerManager_a25bae278b474c581fd308c03a62e5b54}\label{classLoggerManager_a25bae278b474c581fd308c03a62e5b54}} 
+\hyperlink{classCompositeLogger}{Composite\+Logger} $\ast$ \hyperlink{classLoggerManager_a25bae278b474c581fd308c03a62e5b54}{cl}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classCompositeLogger}{Composite\+Logger} variable we use to actually log our data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classLoggerManager_a9e429d7778db1d6723a8d137187abd5c}\label{classLoggerManager_a9e429d7778db1d6723a8d137187abd5c}} 
+static \hyperlink{classLoggerManager}{Logger\+Manager} $\ast$ \hyperlink{classLoggerManager_a9e429d7778db1d6723a8d137187abd5c}{instance} = nullptr
+\begin{DoxyCompactList}\small\item\em instance of \hyperlink{classLoggerManager}{Logger\+Manager} \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+logger singleton class. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/user/repo/project/simulation/include/\hyperlink{logger__manager_8h}{logger\+\_\+manager.\+h}\item 
+/home/user/repo/project/simulation/src/logger\+\_\+manager.\+cc\end{DoxyCompactItemize}

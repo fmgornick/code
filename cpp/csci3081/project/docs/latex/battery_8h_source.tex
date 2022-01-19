@@ -1,0 +1,35 @@
+\hypertarget{battery_8h_source}{}\doxysection{battery.\+h}
+\label{battery_8h_source}\index{/Users/Fletcher/csci3081/repo-\/team-\/0/project/simulation/include/battery.h@{/Users/Fletcher/csci3081/repo-\/team-\/0/project/simulation/include/battery.h}}
+\mbox{\hyperlink{battery_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#ifndef BATTERY\_H\_}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#define BATTERY\_H\_}}
+\DoxyCodeLine{6 \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{7 \textcolor{comment}{ * Class Definitions}}
+\DoxyCodeLine{8 \textcolor{comment}{ ******************************************************************************/}}
+\DoxyCodeLine{15 \textcolor{keyword}{class }\mbox{\hyperlink{classBattery}{Battery}} \{}
+\DoxyCodeLine{16 \textcolor{keyword}{public}:}
+\DoxyCodeLine{20   \mbox{\hyperlink{classBattery_a36a6234c583e3b3506f4a77e3eb49989}{Battery}}() : \mbox{\hyperlink{classBattery_aa467c83e0fd2ea2d57d98f9e2dc341db}{maxCharge}}(10.0), \mbox{\hyperlink{classBattery_a4d012fbe92b40862bab89ce0019b7c0a}{remainingCharge}}(10.0), \mbox{\hyperlink{classBattery_ac008f63a4d81761cc72fbae7356d8ff7}{noCharge}}(false) \{\}}
+\DoxyCodeLine{24   \mbox{\hyperlink{classBattery_a06a6a638724aeb3a1e45854a5e0e0b1c}{Battery}}(\textcolor{keywordtype}{double} max, \textcolor{keywordtype}{double} remaining, \textcolor{keywordtype}{bool} isEmpty)}
+\DoxyCodeLine{25       : \mbox{\hyperlink{classBattery_aa467c83e0fd2ea2d57d98f9e2dc341db}{maxCharge}}(max), \mbox{\hyperlink{classBattery_a4d012fbe92b40862bab89ce0019b7c0a}{remainingCharge}}(remaining), \mbox{\hyperlink{classBattery_ac008f63a4d81761cc72fbae7356d8ff7}{noCharge}}(isEmpty) \{\}}
+\DoxyCodeLine{29   \textcolor{keywordtype}{double} \mbox{\hyperlink{classBattery_a40f54aa571826d0109465539bbc304b9}{GetMaxCharge}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classBattery_aa467c83e0fd2ea2d57d98f9e2dc341db}{maxCharge}}; \}}
+\DoxyCodeLine{33   \textcolor{keywordtype}{double} \mbox{\hyperlink{classBattery_a4abbd8d0e5005b17bfb6ed4e0038641a}{GetRemainingCharge}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classBattery_a4d012fbe92b40862bab89ce0019b7c0a}{remainingCharge}}; \}}
+\DoxyCodeLine{38   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classBattery_a2b7a3315b5e1ca9c74ee64acf0bb2168}{IsEmpty}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classBattery_ac008f63a4d81761cc72fbae7356d8ff7}{noCharge}}; \}}
+\DoxyCodeLine{43   \textcolor{keywordtype}{void} \mbox{\hyperlink{classBattery_af3e0488dbe063350f3ab9077487d1e12}{Drain}}(\textcolor{keywordtype}{double} percentage) \{}
+\DoxyCodeLine{44     \textcolor{keywordflow}{if} (percentage >= \mbox{\hyperlink{classBattery_a4d012fbe92b40862bab89ce0019b7c0a}{remainingCharge}}) \{}
+\DoxyCodeLine{45       \mbox{\hyperlink{classBattery_a4d012fbe92b40862bab89ce0019b7c0a}{remainingCharge}} = 0.0;}
+\DoxyCodeLine{46       \mbox{\hyperlink{classBattery_ac008f63a4d81761cc72fbae7356d8ff7}{noCharge}} = \textcolor{keyword}{true};}
+\DoxyCodeLine{47     \} \textcolor{keywordflow}{else}}
+\DoxyCodeLine{48       \mbox{\hyperlink{classBattery_a4d012fbe92b40862bab89ce0019b7c0a}{remainingCharge}} -\/= percentage;}
+\DoxyCodeLine{49   \}}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51 \textcolor{keyword}{private}:}
+\DoxyCodeLine{53   \textcolor{keywordtype}{double} \mbox{\hyperlink{classBattery_aa467c83e0fd2ea2d57d98f9e2dc341db}{maxCharge}};}
+\DoxyCodeLine{55   \textcolor{keywordtype}{double} \mbox{\hyperlink{classBattery_a4d012fbe92b40862bab89ce0019b7c0a}{remainingCharge}};}
+\DoxyCodeLine{57   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classBattery_ac008f63a4d81761cc72fbae7356d8ff7}{noCharge}};}
+\DoxyCodeLine{58 \};}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// !BATTERY\_H\_}}
+
+\end{DoxyCode}

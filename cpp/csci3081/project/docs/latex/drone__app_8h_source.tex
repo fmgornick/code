@@ -1,0 +1,44 @@
+\hypertarget{drone__app_8h_source}{}\doxysection{drone\+\_\+app.\+h}
+\label{drone__app_8h_source}\index{/Users/Fletcher/csci3081/repo-\/team-\/0/project/simulation/include/drone\_app.h@{/Users/Fletcher/csci3081/repo-\/team-\/0/project/simulation/include/drone\_app.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef DRONE\_APP\_H\_}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define DRONE\_APP\_H\_}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}WebServer.h"{}}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{drone_8h}{drone.h}}"{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <chrono>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <map>}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{comment}{// Web application for displaying a drone}}
+\DoxyCodeLine{10 \textcolor{keyword}{class }\mbox{\hyperlink{classDroneApp}{DroneApp}} : \textcolor{keyword}{public} JSONSession \{}
+\DoxyCodeLine{11 \textcolor{keyword}{public}:}
+\DoxyCodeLine{12   \textcolor{comment}{// Default constructor}}
+\DoxyCodeLine{13   \mbox{\hyperlink{classDroneApp}{DroneApp}}() : start(std::chrono::system\_clock::now()), time(0.0) \{\}}
+\DoxyCodeLine{14   \textcolor{comment}{// Destructor}}
+\DoxyCodeLine{15   \mbox{\hyperlink{classDroneApp}{\string~DroneApp}}() \{\}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17   \textcolor{comment}{// Receives JSON from the web server}}
+\DoxyCodeLine{18   \textcolor{keywordtype}{void} receiveJSON(picojson::value \&val);}
+\DoxyCodeLine{19   \textcolor{comment}{// Handles specific commands from the web server}}
+\DoxyCodeLine{20   \textcolor{keywordtype}{void} ReceiveCommand(\textcolor{keyword}{const} std::string \&cmd, picojson::object \&data,}
+\DoxyCodeLine{21                       picojson::object \&returnValue);}
+\DoxyCodeLine{22   \textcolor{comment}{// Handles the update command}}
+\DoxyCodeLine{23   \textcolor{keywordtype}{void} Update(\textcolor{keywordtype}{double} dt, picojson::object \&returnValue);}
+\DoxyCodeLine{24   \textcolor{comment}{// Handles the key up command}}
+\DoxyCodeLine{25   \textcolor{keywordtype}{void} KeyUp(\textcolor{keyword}{const} std::string \&key, \textcolor{keywordtype}{int} keyCode);}
+\DoxyCodeLine{26   \textcolor{comment}{// Handles the key down command}}
+\DoxyCodeLine{27   \textcolor{keywordtype}{void} KeyDown(\textcolor{keyword}{const} std::string \&key, \textcolor{keywordtype}{int} keyCode);}
+\DoxyCodeLine{28   \textcolor{comment}{// Returns whether or not a key is pressed at any time}}
+\DoxyCodeLine{29   \textcolor{keywordtype}{bool} IsKeyDown(\textcolor{keyword}{const} std::string \&key);}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 \textcolor{keyword}{private}:}
+\DoxyCodeLine{32   std::chrono::time\_point<std::chrono::system\_clock> start;}
+\DoxyCodeLine{33   \textcolor{keywordtype}{double} time;}
+\DoxyCodeLine{34   \mbox{\hyperlink{classDrone}{Drone}} drone;}
+\DoxyCodeLine{35   std::map<std::string, int> keyValue;}
+\DoxyCodeLine{36 \};}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// !DRONE\_APP\_H\_}}
+
+\end{DoxyCode}

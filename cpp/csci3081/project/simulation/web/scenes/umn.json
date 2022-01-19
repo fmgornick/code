@@ -1,0 +1,70 @@
+[
+    { "command": "reset", "params": {}},
+    {
+        "command": "createEntity",
+      	"params": {
+            "entityId": 0,
+            "name": "drone",
+            "type": "actor",
+      	    "path": "drone.glb",
+      	    "position": [0, 2.5, 0],
+      	    "scale": [0.15, 0.15, 0.15],
+      	    "rotation": [0, 0, 0],
+            "direction": [0, 0, 0],
+            "charge": 20.0,
+            "speed": 4.0,
+            "radius": 1.0,
+            "start": 2.0,
+            "duration": 2.0,
+            "offset": [0, 0.6, 0],
+            "cameras": [0]
+    	  }
+    },
+    {
+        "command": "createEntity",
+        "params": {
+            "entityId": 1,
+            "name": "hospital",
+            "type": "destination",
+            "path": "hospital.glb",
+            "position": [-40, 0, 2],
+            "scale": [1, 1, 1],
+            "direction": [1,0,0],
+            "radius": 1.0,
+            "rotation": [0, 0, 0],
+            "cameras": [1]
+        }
+    },
+    {
+        "command": "createEntity",
+        "params": {
+            "entityId": 2,
+            "name": "recharge station",
+            "type": "charger",
+            "path": "charger.glb",
+            "position": [50, 0, 20],
+            "scale": [1, 1, 1],
+            "direction": [1,0,0],
+            "radius": 1.0,
+            "rotation": [0, 0, 0],
+            "cameras": [2]
+        }
+    },
+    {
+        "command": "createEntity",
+        "params": {
+            "entityId": 3,
+            "name": "rescue drone",
+            "type": "actor",
+            "path": "drone_lp.glb",
+            "position": [-40.0, 2.5, 2],
+            "scale": [1, 1, 1],
+            "direction": [1,0,0],
+            "radius": 1.0,
+            "rotation": [0, 0, 0],
+            "start": 0.0,
+            "duration": 0.0,
+            "cameras": [3]
+        }
+    }
+]

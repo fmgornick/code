@@ -1,0 +1,29 @@
+\hypertarget{i__entity__factory_8h_source}{}\doxysection{i\+\_\+entity\+\_\+factory.\+h}
+\label{i__entity__factory_8h_source}\index{/Users/Fletcher/csci3081/repo-\/team-\/0/project/simulation/include/i\_entity\_factory.h@{/Users/Fletcher/csci3081/repo-\/team-\/0/project/simulation/include/i\_entity\_factory.h}}
+\mbox{\hyperlink{i__entity__factory_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#ifndef I\_ENTITY\_FACTORY\_H\_}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#define I\_ENTITY\_FACTORY\_H\_}}
+\DoxyCodeLine{6 \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{7 \textcolor{comment}{ * Includes}}
+\DoxyCodeLine{8 \textcolor{comment}{ ******************************************************************************/}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{camera_8h}{camera.h}}"{}}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{drone_8h}{drone.h}}"{}}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{hospital_8h}{hospital.h}}"{}}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}i\_entity.h"{}}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{i__movable__entity_8h}{i\_movable\_entity.h}}"{}}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}picojson.h"{}}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{recharge__station_8h}{recharge\_station.h}}"{}}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{robot_8h}{robot.h}}"{}}}
+\DoxyCodeLine{17 \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{18 \textcolor{comment}{ * Class Definition}}
+\DoxyCodeLine{19 \textcolor{comment}{ ******************************************************************************/}}
+\DoxyCodeLine{26 \textcolor{keyword}{class }\mbox{\hyperlink{classiEntityFactory}{iEntityFactory}} \{}
+\DoxyCodeLine{27 \textcolor{keyword}{public}:}
+\DoxyCodeLine{28   \textcolor{keyword}{virtual} \mbox{\hyperlink{classiEntity}{iEntity}} *CreateEntity(picojson::object \&entity, \mbox{\hyperlink{classCamera}{Camera}} *camera) = 0;}
+\DoxyCodeLine{29 \};}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// !I\_ENTITY\_FACTORY\_H\_}}
+
+\end{DoxyCode}

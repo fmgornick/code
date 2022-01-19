@@ -1,0 +1,6 @@
+<map id="ConvolutionFilter" name="ConvolutionFilter">
+<area shape="rect" id="node3" href="$classGaussianBlurFilter.html" title="The main class for GaussianBlurFilter, extends ConvolutionFilter. Creates a 5 x 5 kernel to apply to ..." alt="" coords="5,359,181,465"/>
+<area shape="rect" id="node4" href="$classMeanBlurFilter.html" title="The main class for MeanBlurFilter, extends ConvolutionFilter. Creates a 3 x 3 kernel with all 1&#39;s mea..." alt="" coords="206,359,357,465"/>
+<area shape="rect" id="node5" href="$classSharpeningFilter.html" title="This is a convolution filter that uses a kernal found on Wikipedia that sharpens the image..." alt="" coords="381,359,544,465"/>
+<area shape="rect" id="node2" href="$classFilter.html" title="The main class for Filter. This is where all the filters are derived from. " alt="" coords="236,5,327,97"/>
+</map>

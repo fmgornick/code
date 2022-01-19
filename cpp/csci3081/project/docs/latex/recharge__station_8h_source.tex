@@ -1,0 +1,34 @@
+\hypertarget{recharge__station_8h_source}{}\doxysection{recharge\+\_\+station.\+h}
+\label{recharge__station_8h_source}\index{/Users/Fletcher/csci3081/repo-\/team-\/0/project/simulation/include/recharge\_station.h@{/Users/Fletcher/csci3081/repo-\/team-\/0/project/simulation/include/recharge\_station.h}}
+\mbox{\hyperlink{recharge__station_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#ifndef RECHARGE\_STATION\_H\_}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#define RECHARGE\_STATION\_H\_}}
+\DoxyCodeLine{6 \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{7 \textcolor{comment}{ * Includes}}
+\DoxyCodeLine{8 \textcolor{comment}{ ******************************************************************************/}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{battery_8h}{battery.h}}"{}}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}i\_entity.h"{}}}
+\DoxyCodeLine{11 \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{12 \textcolor{comment}{ * Class Definitions}}
+\DoxyCodeLine{13 \textcolor{comment}{ ******************************************************************************/}}
+\DoxyCodeLine{19 \textcolor{keyword}{class }\mbox{\hyperlink{classRechargeStation}{RechargeStation}} : \textcolor{keyword}{public} \mbox{\hyperlink{classiEntity}{iEntity}} \{}
+\DoxyCodeLine{20 \textcolor{keyword}{public}:}
+\DoxyCodeLine{24   \mbox{\hyperlink{classRechargeStation_a2e5f2604cca1d47994be5572b6d6c439}{RechargeStation}}() : \mbox{\hyperlink{classRechargeStation_a9caf990cd46c4b31d3258a76799f1f58}{id}}(0), \mbox{\hyperlink{classRechargeStation_a4371be4616b798f2bdb5f8974dd5f53c}{name}}(\textcolor{stringliteral}{"{}recharge station"{}}), \mbox{\hyperlink{classRechargeStation_a6baf3e3e247af8cd9d9d5ab36eded6c1}{position}}(new \mbox{\hyperlink{classVector3}{Vector3}}) \{\}}
+\DoxyCodeLine{28   \mbox{\hyperlink{classRechargeStation_a97ec6d826842baa7a5cc759f49cf6ca9}{RechargeStation}}(\textcolor{keywordtype}{int} \textcolor{keywordtype}{id}, std::string \mbox{\hyperlink{classRechargeStation_a4371be4616b798f2bdb5f8974dd5f53c}{name}}, \mbox{\hyperlink{classVector3}{Vector3}} *pos)}
+\DoxyCodeLine{29       : \mbox{\hyperlink{classRechargeStation_a9caf990cd46c4b31d3258a76799f1f58}{id}}(\mbox{\hyperlink{classRechargeStation_a9caf990cd46c4b31d3258a76799f1f58}{id}}), \mbox{\hyperlink{classRechargeStation_a4371be4616b798f2bdb5f8974dd5f53c}{name}}(\mbox{\hyperlink{classRechargeStation_a4371be4616b798f2bdb5f8974dd5f53c}{name}}), \mbox{\hyperlink{classRechargeStation_a6baf3e3e247af8cd9d9d5ab36eded6c1}{position}}(pos) \{\}}
+\DoxyCodeLine{33   \textcolor{keywordtype}{int} \mbox{\hyperlink{classRechargeStation_a64b944545996c3006ffff5180ab4f25b}{GetID}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classRechargeStation_a9caf990cd46c4b31d3258a76799f1f58}{id}}; \}}
+\DoxyCodeLine{37   \textcolor{keyword}{const} std::string \&\mbox{\hyperlink{classRechargeStation_a16374a6240bdcb3d89c66f5aed58627b}{GetName}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classRechargeStation_a4371be4616b798f2bdb5f8974dd5f53c}{name}}; \}}
+\DoxyCodeLine{41   \mbox{\hyperlink{classVector3}{Vector3}} *\mbox{\hyperlink{classRechargeStation_ab01f0a46a9525d6857ea2ca7eae4bb39}{GetPosition}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classRechargeStation_a6baf3e3e247af8cd9d9d5ab36eded6c1}{position}}; \}}
+\DoxyCodeLine{45   \textcolor{keywordtype}{void} \mbox{\hyperlink{classRechargeStation_aeaf35aeefc07c2377f4d4534f059bb96}{SetPosition}}(\mbox{\hyperlink{classVector3}{Vector3}} \&pos) \{ *\mbox{\hyperlink{classRechargeStation_a6baf3e3e247af8cd9d9d5ab36eded6c1}{position}} = pos; \}}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47 \textcolor{keyword}{private}:}
+\DoxyCodeLine{49   \textcolor{keywordtype}{int} \mbox{\hyperlink{classRechargeStation_a9caf990cd46c4b31d3258a76799f1f58}{id}};}
+\DoxyCodeLine{51   std::string \mbox{\hyperlink{classRechargeStation_a4371be4616b798f2bdb5f8974dd5f53c}{name}};}
+\DoxyCodeLine{53   \mbox{\hyperlink{classVector3}{Vector3}} *\mbox{\hyperlink{classRechargeStation_a6baf3e3e247af8cd9d9d5ab36eded6c1}{position}};}
+\DoxyCodeLine{54 \};}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// !RECHARGE\_STATION\_H\_}}
+
+\end{DoxyCode}

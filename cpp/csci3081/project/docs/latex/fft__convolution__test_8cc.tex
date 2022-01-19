@@ -1,0 +1,33 @@
+\hypertarget{fft__convolution__test_8cc}{}\section{/home/user/repo/project/tests/src/fft\+\_\+convolution\+\_\+test.cc File Reference}
+\label{fft__convolution__test_8cc}\index{/home/user/repo/project/tests/src/fft\+\_\+convolution\+\_\+test.\+cc@{/home/user/repo/project/tests/src/fft\+\_\+convolution\+\_\+test.\+cc}}
+{\ttfamily \#include \char`\"{}image.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}gtest/gtest.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+Include dependency graph for fft\+\_\+convolution\+\_\+test.\+cc\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{fft__convolution__test_8cc__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classFilterTest}{Filter\+Test}
+\begin{DoxyCompactList}\small\item\em This is a series of unit tests to check how accurate my F\+FT image convolution filter works. In the image directory, there are a series of images with \char`\"{}expected\char`\"{} and \char`\"{}actual\char`\"{} suffixes. The expected comes from an online gaussian blur filter with size 13 kernel and an (i just guessed) standard deviation of 2. The site is \href{https://pinetools.com/blur-image}{\tt https\+://pinetools.\+com/blur-\/image}. The actual output comes from our image\+\_\+processor software, and I check to see how similar the pixel values are by summming up the differences and dividing by the size of the image. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{fft__convolution__test_8cc_afce3a61010988bd08c6011e86a7e5a05}\label{fft__convolution__test_8cc_afce3a61010988bd08c6011e86a7e5a05}} 
+\hyperlink{fft__convolution__test_8cc_afce3a61010988bd08c6011e86a7e5a05}{T\+E\+S\+T\+\_\+F} (\hyperlink{classFilterTest}{Filter\+Test}, Statue\+Blur)
+\begin{DoxyCompactList}\small\item\em check similarity between statue expected and actual blur \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{fft__convolution__test_8cc_a5370448ea46f16b0d238fd7809727fca}\label{fft__convolution__test_8cc_a5370448ea46f16b0d238fd7809727fca}} 
+\hyperlink{fft__convolution__test_8cc_a5370448ea46f16b0d238fd7809727fca}{T\+E\+S\+T\+\_\+F} (\hyperlink{classFilterTest}{Filter\+Test}, David\+Byrne\+Blur)
+\begin{DoxyCompactList}\small\item\em check similarity between image of David Byrne expected and actual blur \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{fft__convolution__test_8cc_ac91cb89e77e4a42ab4383b6a1d1e93a2}\label{fft__convolution__test_8cc_ac91cb89e77e4a42ab4383b6a1d1e93a2}} 
+\hyperlink{fft__convolution__test_8cc_ac91cb89e77e4a42ab4383b6a1d1e93a2}{T\+E\+S\+T\+\_\+F} (\hyperlink{classFilterTest}{Filter\+Test}, Raccoon\+Blur)
+\begin{DoxyCompactList}\small\item\em check similarity between picture of a raccon expected and actual blur \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{fft__convolution__test_8cc_a0fb7ce7c31b83f3a72f6328e68967ac6}\label{fft__convolution__test_8cc_a0fb7ce7c31b83f3a72f6328e68967ac6}} 
+\hyperlink{fft__convolution__test_8cc_a0fb7ce7c31b83f3a72f6328e68967ac6}{T\+E\+S\+T\+\_\+F} (\hyperlink{classFilterTest}{Filter\+Test}, Charlie\+Blur)
+\begin{DoxyCompactList}\small\item\em check similarity between picture of my dog Charlie expected and actual blur \end{DoxyCompactList}\end{DoxyCompactItemize}

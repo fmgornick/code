@@ -1,0 +1,34 @@
+\hypertarget{logger__manager_8h_source}{}\doxysection{logger\+\_\+manager.\+h}
+\label{logger__manager_8h_source}\index{/Users/Fletcher/csci3081/repo-\/team-\/0/project/simulation/include/logger\_manager.h@{/Users/Fletcher/csci3081/repo-\/team-\/0/project/simulation/include/logger\_manager.h}}
+\mbox{\hyperlink{logger__manager_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#ifndef LOGGER\_MANAGER\_H\_}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#define LOGGER\_MANAGER\_H\_}}
+\DoxyCodeLine{6 \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{7 \textcolor{comment}{ * Includes}}
+\DoxyCodeLine{8 \textcolor{comment}{ ******************************************************************************/}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{composite__logger_8h}{composite\_logger.h}}"{}}}
+\DoxyCodeLine{10 \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{11 \textcolor{comment}{ * Class Definitions}}
+\DoxyCodeLine{12 \textcolor{comment}{ ******************************************************************************/}}
+\DoxyCodeLine{17 \textcolor{keyword}{class }\mbox{\hyperlink{classLoggerManager}{LoggerManager}} \{}
+\DoxyCodeLine{18 \textcolor{keyword}{public}:}
+\DoxyCodeLine{22   \mbox{\hyperlink{classLoggerManager_a43331d83f7529a069c7832afcd0770de}{LoggerManager}}(\mbox{\hyperlink{classLoggerManager}{LoggerManager}} \&other) = \textcolor{keyword}{delete};}
+\DoxyCodeLine{26   \textcolor{keywordtype}{void} \mbox{\hyperlink{classLoggerManager_a4e1527418f267a83b0e3cc99524d2ae2}{operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{classLoggerManager}{LoggerManager}} \&) = \textcolor{keyword}{delete};}
+\DoxyCodeLine{32   \textcolor{keyword}{static} \mbox{\hyperlink{classLoggerManager}{LoggerManager}} *\mbox{\hyperlink{classLoggerManager_a9a4136e0526db5ac7baa320a9805c944}{GetInstance}}() \{}
+\DoxyCodeLine{33     \textcolor{keywordflow}{if} (\mbox{\hyperlink{classLoggerManager_a9e429d7778db1d6723a8d137187abd5c}{instance}} == \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{34       \mbox{\hyperlink{classLoggerManager_a9e429d7778db1d6723a8d137187abd5c}{instance}} = \textcolor{keyword}{new} \mbox{\hyperlink{classLoggerManager_a76aa9e2191e3120990a550e064b2c691}{LoggerManager}}();}
+\DoxyCodeLine{35     \textcolor{keywordflow}{return} \mbox{\hyperlink{classLoggerManager_a9e429d7778db1d6723a8d137187abd5c}{instance}};}
+\DoxyCodeLine{36   \}}
+\DoxyCodeLine{41   \textcolor{keywordtype}{void} \mbox{\hyperlink{classLoggerManager_a4c0d26e8fa84ef93b897bb74db482c86}{AddLogger}}(\mbox{\hyperlink{classiLogger}{iLogger}} *newLogger) \{ \mbox{\hyperlink{classLoggerManager_a25bae278b474c581fd308c03a62e5b54}{cl}}-\/>\mbox{\hyperlink{classCompositeLogger_a8548bd7dc7fbba8627b7a760a1022867}{AddLogger}}(newLogger); \}}
+\DoxyCodeLine{46   \textcolor{keywordtype}{void} \mbox{\hyperlink{classLoggerManager_a82d701cebadecabc2089b36047fc00ba}{Log}}(\mbox{\hyperlink{classVector3}{Vector3}} *p, \mbox{\hyperlink{classVector3}{Vector3}} *d, \textcolor{keywordtype}{double} t) \{ \mbox{\hyperlink{classLoggerManager_a25bae278b474c581fd308c03a62e5b54}{cl}}-\/>\mbox{\hyperlink{classCompositeLogger_a84c0c034a72ddc1c7eeb3cfc47d1dcd5}{Log}}(p, d, t); \}}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48 \textcolor{keyword}{private}:}
+\DoxyCodeLine{52   \mbox{\hyperlink{classLoggerManager_a76aa9e2191e3120990a550e064b2c691}{LoggerManager}}() : \mbox{\hyperlink{classLoggerManager_a25bae278b474c581fd308c03a62e5b54}{cl}}(new \mbox{\hyperlink{classCompositeLogger}{CompositeLogger}}) \{\}}
+\DoxyCodeLine{56   \textcolor{keyword}{static} \mbox{\hyperlink{classLoggerManager}{LoggerManager}} *\mbox{\hyperlink{classLoggerManager_a9e429d7778db1d6723a8d137187abd5c}{instance}};}
+\DoxyCodeLine{60   \mbox{\hyperlink{classCompositeLogger}{CompositeLogger}} *\mbox{\hyperlink{classLoggerManager_a25bae278b474c581fd308c03a62e5b54}{cl}};}
+\DoxyCodeLine{61 \};}
+\DoxyCodeLine{62 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// !LOGGER\_MANAGER\_H\_}}
+
+\end{DoxyCode}

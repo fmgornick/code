@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['saveas',['SaveAs',['../classImage.html#a3a9b278005e0731a93fe1d5d2cff7104',1,'Image']]],
+  ['search',['Search',['../classBreadthFirstSearch.html#a69eb7594b796343b19d5f8d4a67516d3',1,'BreadthFirstSearch::Search()'],['../classDeapthFirstSearch.html#a3301b804af1bf6958170856d0ddbd017',1,'DeapthFirstSearch::Search()'],['../classSearchStrategy.html#aa7fa1b7292b6a4ebbf370fbf148f6d8d',1,'SearchStrategy::Search()']]],
+  ['seta',['setA',['../classColor.html#a3b254399aace09b24197673f060d868c',1,'Color']]],
+  ['setb',['setB',['../classColor.html#a42cac7186652ca335a08f6350e7e1e6a',1,'Color']]],
+  ['setblobimage',['SetBlobImage',['../classFindRobot.html#a63e77c7b9a876332fc3fb411bb6644a9',1,'FindRobot']]],
+  ['setdata',['SetData',['../classImage.html#a5fab96b8b5e873488b72185639790c92',1,'Image']]],
+  ['setdepthimage',['SetDepthImage',['../classFindRobot.html#a1aac26d16ab0e8ffc3fd1c587b96991e',1,'FindRobot']]],
+  ['setdirection',['SetDirection',['../classDrone.html#a2ef1fbc3da17a8d599d2969990eb9614',1,'Drone::SetDirection()'],['../classiMovableEntity.html#a631c4a8e24360bedecf1a675a18b10ef',1,'iMovableEntity::SetDirection()']]],
+  ['setg',['setG',['../classColor.html#aa56d9de92a31ec8d647d1e4ec788789a',1,'Color']]],
+  ['setmovementstartegy',['SetMovementStartegy',['../classDrone.html#a3987b919bf886857c139d2cde97d1d49',1,'Drone']]],
+  ['setpixel',['SetPixel',['../classImage.html#a88e6e6e7cbe530c84c17a342fa2eaf40',1,'Image']]],
+  ['setpixeldata',['SetPixelData',['../classImage.html#a558cfcb26f9f8abc82c32d85a25332f7',1,'Image']]],
+  ['setposition',['SetPosition',['../classDrone.html#abe072bd4609dc32fe0a6bb0cfd7ce5cc',1,'Drone::SetPosition()'],['../classHospital.html#a712a53eb9795a0362c6aa543a49667eb',1,'Hospital::SetPosition()'],['../classiEntity.html#afa1966ac1964902c1e69907307ca03d4',1,'iEntity::SetPosition()'],['../classiMovableEntity.html#afbf41c5d1499bfe87054a53de7d87fe8',1,'iMovableEntity::SetPosition()'],['../classRechargeStation.html#aeaf35aeefc07c2377f4d4534f059bb96',1,'RechargeStation::SetPosition()'],['../classRobot.html#a504c8f5b4ccd83f13500593ca05ad092',1,'Robot::SetPosition()']]],
+  ['setr',['setR',['../classColor.html#ac6b45342df92b65e204fe83db9360e13',1,'Color']]],
+  ['setrescuedrone',['SetRescueDrone',['../classDrone.html#ac9aa5a105012c7ba8be6542217e58242',1,'Drone']]],
+  ['setrgba',['setRGBA',['../classColor.html#a8522aad9a86d305f7414ce26b50b48c2',1,'Color::setRGBA(unsigned char *pixel)'],['../classColor.html#a108cd7208329ed0bb1b52f6901150e40',1,'Color::setRGBA(float r, float g, float b, float a)']]],
+  ['setrobotfound',['SetRobotFound',['../classDrone.html#a0e369b1d4bbc379387c8ea6a73d74525',1,'Drone']]],
+  ['setsearchstrategy',['SetSearchStrategy',['../classDrone.html#acff4a233892a97186deab0cdca8b71d7',1,'Drone']]],
+  ['setspeed',['SetSpeed',['../classDrone.html#af8cb12a403cf56145000f247689d0951',1,'Drone']]],
+  ['setup',['SetUp',['../classFactoryTest.html#ab6472ece25a6c39a969974d839c4fbfe',1,'FactoryTest::SetUp()'],['../classFilterTest.html#a567f17364b9c42da462b48570e518611',1,'FilterTest::SetUp()']]],
+  ['setvelocity',['SetVelocity',['../classDrone.html#a746a2a730a8d7a2e421ea3cfe7842732',1,'Drone::SetVelocity()'],['../classiMovableEntity.html#ab1b67096acd0e25f97ecceeeeed1c972',1,'iMovableEntity::SetVelocity()']]],
+  ['sharpeningfilter',['SharpeningFilter',['../classSharpeningFilter.html#aa568777e139264384578b01231d2a6c1',1,'SharpeningFilter']]],
+  ['simulationfacade',['SimulationFacade',['../group__simulation.html#gaeecad83c3d8ad32ebf60c9f49fda030f',1,'SimulationFacade']]],
+  ['solarizationfilter',['SolarizationFilter',['../classSolarizationFilter.html#a3962aa863451ddb62f8be68a4fba3b05',1,'SolarizationFilter']]]
+];
