@@ -1,0 +1,3 @@
+[submodule "c/csci4061/PostedLabs"]
+	path = c/csci4061/PostedLabs
+	url = https://github.umn.edu/csci-4061-Spring-22/PostedLabs.git
