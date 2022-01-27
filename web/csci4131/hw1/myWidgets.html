@@ -2,58 +2,40 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-
+    <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="icon" href="old-man-jenkins.png">
-
     <title>Widgets</title>
-
-    <style>
-      nav {
-        font-family: Verdana, sans-serif;
-        border: 1px solid rgb(220,220,220);
-        border-collapse: collapse;
-        padding: 10px;
-        background-color: rgb(255,239,203);
-      }
-
-      h1 {
-        font-family: Verdana, sans-serif;
-      }
-
-      ol {
-        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-      }
-    </style>
   </head>
+  <body>
+    <nav>
+      <a href="myContacts.html">My Contacts</a>
+      <a href="myWidgets.html" class="active">My Widgets</a>
+    </nav>
 
-  <nav>
-    <a href="myContacts.html">My Contacts</a> |
-    <a href="myWidgets.html">My Widgets</a>
-  </nav>
+    <h1>Widgets List</h1>
 
-  <h1>Widgets List</h1>
-
-  <ol>
-    <li>
-      <p>My YouTube Widget</p>
-      <iframe 
-        width="560" 
-        height="315" 
-        src="https://www.youtube.com/embed/aOHwkraTqyI" 
-        title="YouTube video player" 
-        style="border: 0;"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-        allowfullscreen>
-      </iframe>
-    </li>
-    <li>
-      <p>My Twitter Widget</p>
-      <blockquote class="twitter-tweet">
-        <p lang="und" dir="ltr">OiI</p>
-        &mdash; Martha Stewart (@MarthaStewart) 
-        <a href="https://twitter.com/MarthaStewart/status/326365867111772160?ref_src=twsrc%5Etfw">April 22, 2013</a>
-      </blockquote> 
-      <script async src="https://platform.twitter.com/widgets.js"></script>
-    </li>
-  </ol>
+    <ol>
+      <li>
+        <p>My YouTube Widget</p>
+        <iframe 
+          width="560" 
+          height="315" 
+          src="https://www.youtube.com/embed/aOHwkraTqyI" 
+          title="YouTube video player" 
+          style="border: 0;"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen>
+        </iframe>
+      </li>
+      <li>
+        <p>My Twitter Widget</p>
+        <blockquote class="twitter-tweet">
+          <p lang="und" dir="ltr">OiI</p>
+          &mdash; Martha Stewart (@MarthaStewart) 
+          <a href="https://twitter.com/MarthaStewart/status/326365867111772160?ref_src=twsrc%5Etfw">April 22, 2013</a>
+        </blockquote> 
+        <script async src="https://platform.twitter.com/widgets.js"></script>
+      </li>
+    </ol>
+  </body>
 </html>

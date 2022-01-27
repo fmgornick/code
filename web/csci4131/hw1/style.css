@@ -1,0 +1,61 @@
+nav {
+  background-color: rgb(240,239,237);
+  overflow: hidden;
+}
+
+nav a {
+  float: left;
+  color: rgb(91,0,13);
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  font-family: Verdana, sans-serif;
+  transition: background-color 500ms ease-in-out;
+}
+
+nav a:hover {
+  background-color: rgb(200,199,198);
+}
+
+nav a.active {
+  background-color: rgb(255,204,51);
+}
+
+h1 {
+  font-family: Verdana, sans-serif;
+}
+
+table {
+  width: 100%;
+  border: rgb(220,220,220) solid 1px;
+  border-collapse: collapse;
+}
+
+th {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  text-align: center;
+  padding: 15px;
+  background-color: rgb(190,0,50);
+  color: white;
+}
+
+td {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  text-align: center;
+  border-bottom: 1px solid rgb(220,220,220);
+  color: rgb(122,0,25);
+  padding: 10px;
+}
+
+tr {
+  transition: background-color 500ms ease-in-out;
+}
+
+tr:hover {
+  background-color: rgb(210,210,210);
+}
+
+ol {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}

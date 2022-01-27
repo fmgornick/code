@@ -1,136 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="icon" href="old-man-jenkins.png">
-
     <title>Contacts</title>
-
-    <style>
-      nav {
-        font-family: Verdana, sans-serif;
-        border: 1px solid rgb(220,220,220);
-        border-collapse: collapse;
-        padding: 10px;
-        background-color: rgb(255,239,203);
-      }
-
-      h1 {
-        font-family: Verdana, sans-serif;
-      }
-
-      table {
-        width: 100%;
-        border: 1px solid rgb(220,220,220);
-        border-collapse: collapse;
-      }
-
-      th {
-        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-        text-align: center;
-        padding: 15px;
-        background-color: rgb(190,0,50);
-        color: white;
-      }
-
-      td {
-        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-        text-align: center;
-        border-bottom: 1px solid rgb(220,220,220);
-        color: rgb(122,0,25);
-        padding: 10px;
-      }
-
-      tr {
-        transition: background-color 500ms ease-in-out;
-      }
-
-      tr:hover {
-        background-color: rgb(210,210,210);
-      }
-    </style>
   </head>
+  <body>
+    <nav>
+      <a href="myContacts.html" class="active">My Contacts</a>
+      <a href="myWidgets.html">My Widgets</a>
+    </nav>
 
-  <nav>
-    <a href="myContacts.html">My Contacts</a> |
-    <a href="myWidgets.html">My Widgets</a>
-  </nav>
+    <h1>My University Contacts</h1>
 
-  <h1>My University Contacts</h1>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Location</th>
+        <th>Contact Information</th>
+        <th>Email</th>
+        <th>Website</th>
+      </tr>
 
-  <table>
-    <tr>
-      <th>Name</th>
-      <th>Location</th>
-      <th>Contact Information</th>
-      <th>Email</th>
-      <th>Website</th>
-    </tr>
+      <tr>
+        <td>Carl Sturtivant</td>
+        <td>
+          Kenneth H. Keller Hall <br>
+          Room 6-197 <br>
+          200 Union Street SE <br>
+          Minneapolis, MN 55455
+        </td>
+        <td>Fall 2021 Csci 4041 Professor</td>
+        <td><a href="mailto:carl@umn.edu">carl@umn.edu</a></td>
+        <td><a href="https://cse.umn.edu/cs/carl-sturtivant">CS Department Home Page</a></td>
+      </tr>
 
-    <tr>
-      <td>Carl Sturtivant</td>
-      <td>
-        Kenneth H. Keller Hall <br>
-        Room 6-197 <br>
-        200 Union Street SE <br>
-        Minneapolis, MN 55455
-      </td>
-      <td>Fall 2021 Csci 4041 Professor</td>
-      <td><a href="mailto:carl@umn.edu">carl@umn.edu</a></td>
-      <td><a href="https://cse.umn.edu/cs/carl-sturtivant">CS Department Home Page</a></td>
-    </tr>
+      <tr>
+        <td>Daniel Orban</td>
+        <td>
+          Kenneth H. Keller Hall <br>
+          Room 6-198 <br>
+          200 Union Street SE <br>
+          Minneapolis, MN 55455
+        </td>
+        <td>Fall 2021 Csci 3081W Professor</td>
+        <td><a href="mailto:dtorban@umn.edu">dtorban@umn.edu</a></td>
+        <td><a href="https://cse.umn.edu/cs/dan-orban">CS Department Home Page</a></td>
+      </tr>
 
-    <tr>
-      <td>Daniel Orban</td>
-      <td>
-        Kenneth H. Keller Hall <br>
-        Room 6-198 <br>
-        200 Union Street SE <br>
-        Minneapolis, MN 55455
-      </td>
-      <td>Fall 2021 Csci 3081W Professor</td>
-      <td><a href="mailto:dtorban@umn.edu">dtorban@umn.edu</a></td>
-      <td><a href="https://cse.umn.edu/cs/dan-orban">CS Department Home Page</a></td>
-    </tr>
+      <tr>
+        <td>Marvin Marshak</td>
+        <td>
+          Physics And Nanotechnology Building <br>
+          Room 330 <br>
+          115 Union Street SE <br>
+          Minneapolis, MN 55455
+        </td>
+        <td>Fall 2019 Phys 1301 Professor</td>
+        <td><a href="mailto:marshak@umn.edu">marshak@umn.edu</a></td>
+        <td><a href="https://cse.umn.edu/physics/marvin-marshak">Physics Department Home Page</a></td>
+      </tr>
 
-    <tr>
-      <td>Marvin Marshak</td>
-      <td>
-        Physics And Nanotechnology Building <br>
-        Room 330 <br>
-        115 Union Street SE <br>
-        Minneapolis, MN 55455
-      </td>
-      <td>Fall 2019 Phys 1301 Professor</td>
-      <td><a href="mailto:marshak@umn.edu">marshak@umn.edu</a></td>
-      <td><a href="https://cse.umn.edu/physics/marvin-marshak">Physics Department Home Page</a></td>
-    </tr>
+      <tr>
+        <td>Dan Challou</td>
+        <td>
+          Shepherd Labs <br>
+          Room 383 <br>
+          100 Union Street SE <br>
+          Minneapolis, MN 55455
+        </td>
+        <td>Spring 2022 Csci 4131 Professor</td>
+        <td><a href="mailto:chal0006@umn.edu">chal0006@umn.edu</a></td>
+        <td><a href="https://cse.umn.edu/cs/dan-challou">CS Department Home Page</a></td>
+      </tr>
 
-    <tr>
-      <td>Dan Challou</td>
-      <td>
-        Shepherd Labs <br>
-        Room 383 <br>
-        100 Union Street SE <br>
-        Minneapolis, MN 55455
-      </td>
-      <td>Spring 2022 Csci 4131 Professor</td>
-      <td><a href="mailto:chal0006@umn.edu">chal0006@umn.edu</a></td>
-      <td><a href="https://cse.umn.edu/cs/dan-challou">CS Department Home Page</a></td>
-    </tr>
-
-    <tr>
-      <td>Kate Jensen</td>
-      <td>
-        Shepherd Labs <br>
-        Room 389 <br>
-        100 Union Street SE <br>
-        Minneapolis, MN 55455
-      </td>
-      <td>Fall 2020 Csci 2011 Professor</td>
-      <td><a href="mailto:katej@umn.edu">katej@umn.edu</a></td>
-      <td><a href="https://cse.umn.edu/cs/kate-jensen">CS Department Home Page</a></td>
-    </tr>
-  </table>
+      <tr>
+        <td>Kate Jensen</td>
+        <td>
+          Shepherd Labs <br>
+          Room 389 <br>
+          100 Union Street SE <br>
+          Minneapolis, MN 55455
+        </td>
+        <td>Fall 2020 Csci 2011 Professor</td>
+        <td><a href="mailto:katej@umn.edu">katej@umn.edu</a></td>
+        <td><a href="https://cse.umn.edu/cs/kate-jensen">CS Department Home Page</a></td>
+      </tr>
+    </table>
+  </body>
 </html>
