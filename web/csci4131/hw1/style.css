@@ -1,8 +1,10 @@
+/* navigation bar */
 nav {
   background-color: rgb(240,239,237);
   overflow: hidden;
 }
 
+/* each link should change color when hovered over */
 nav a {
   float: left;
   color: rgb(91,0,13);
@@ -14,24 +16,28 @@ nav a {
   transition: background-color 500ms ease-in-out;
 }
 
+/* link turns dark blue when hovered over */
 nav a:hover {
   background-color: rgb(200,199,198);
 }
 
+/* link gets yellow background when it's the current page */
 nav a.active {
   background-color: rgb(255,204,51);
 }
 
+/* header */
 h1 {
   font-family: Verdana, sans-serif;
 }
 
+/* basic table border */
 table {
-  width: 100%;
   border: rgb(220,220,220) solid 1px;
   border-collapse: collapse;
 }
 
+/* header should have red background with white font */
 th {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   text-align: center;
@@ -40,22 +46,47 @@ th {
   color: white;
 }
 
+/* data fields should have alternating background with smaller black font */
 td {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   text-align: center;
   border-bottom: 1px solid rgb(220,220,220);
   color: rgb(122,0,25);
   padding: 10px;
+  font-size: 85%;
 }
 
-tr {
-  transition: background-color 500ms ease-in-out;
+/* alternates background from white to gray */
+tr:nth-child(odd) {
+  background-color: rgb(242,242,242);
 }
 
-tr:hover {
-  background-color: rgb(210,210,210);
-}
-
+/* list font style */
 ol {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+/* for keeping table and image next to eachother cleanly */
+.container {
+  display: flex;
+}
+
+/* table should take up 70% of container width */
+.table {
+  flex-basis: 70%;
+  margin: 10px;
+}
+
+/* image should take up remaining 30% width and be vertically centered */
+.image {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-basis: 30%;
+  margin: 30px;
+}
+
+/* makes sure image is contained in width */
+.image img {
+  width: 100%;
 }

@@ -1,0 +1,10 @@
+CC = gcc
+CFLAGS = -g -Wall
+LDFLAGS = -lm
+
+main: main.o apple.o
+main.o: main.c apple.h
+apple.o: apple.c apple.h
+clean:
+	rm -f *.o main
+

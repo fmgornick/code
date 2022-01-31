@@ -1,0 +1,12 @@
+put the script "grade.sh" into the same folder with list.c
+
+run the script by "sh grade.sh"
+
+the expected result is:
+1 2 6 10
+2 2 6 10
+2 3 6 10
+2 6 7 10
+2 6 10 11
+
+compilation success gives 2 points and each test case gives 1 points

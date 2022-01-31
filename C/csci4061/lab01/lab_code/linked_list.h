@@ -1,5 +1,6 @@
-typedef struct lnode {
-  int data;
+#define NULL 0
+typedef struct lnode {
+  int data;
   struct lnode *next;
 } NODE;
 

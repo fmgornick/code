@@ -1,0 +1,10 @@
+
+myprog: main.o apple.o
+	gcc main.o apple.o -o myprog
+main.o: main.c apple.h
+	gcc -c main.c
+apple.o: apple.c apple.h
+	gcc -c apple.c
+clean:
+	rm -f *.o myprog
+
