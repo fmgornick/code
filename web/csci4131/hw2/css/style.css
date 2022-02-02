@@ -78,15 +78,15 @@ ol {
 }
 
 /* image should take up remaining 30% width and be vertically centered */
-.image {
+#image {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   flex-basis: 30%;
+  justify-content: center;
   margin: 30px;
 }
 
 /* makes sure image is contained in width */
-.image img {
+img {
   width: 100%;
 }
