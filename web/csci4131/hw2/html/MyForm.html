@@ -21,7 +21,8 @@
     <table>
       <tr>
         <td><label for="name">Name</label></td>
-        <td><input type="text" id="name" name="name" required></td>
+        <td><input type="text" id="name" name="name" pattern="[a-zA-Z0-9\s]+"
+            title="Contact's name must be alphanumeric." required></td>
       </tr>
       <tr>
         <td><label for="category">Contact Category</label></td>
