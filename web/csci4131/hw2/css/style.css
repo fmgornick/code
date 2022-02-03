@@ -29,6 +29,7 @@ nav a.active {
 /* header */
 h1 {
   font-family: Verdana, sans-serif;
+  padding-left: 10px;
 }
 
 /* basic table border */
@@ -61,6 +62,25 @@ tr:nth-child(odd) {
   background-color: rgb(242,242,242);
 }
 
+tr {
+  transition: background-color 300ms ease-in-out;
+}
+
+.widgets {
+  flex-basis: 50%;
+  margin: 10px;
+}
+
+.martha {
+  height: 500px;
+  overflow-y: auto;
+}
+
+.password {
+  flex-basis: 50%;
+  margin: 10px;
+}
+
 /* list font style */
 ol {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -89,4 +109,9 @@ ol {
 /* makes sure image is contained in width */
 img {
   width: 100%;
+}
+
+td img {
+  width: 30px;
+  visibility: hidden;
 }
