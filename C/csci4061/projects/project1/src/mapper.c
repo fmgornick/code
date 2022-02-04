@@ -83,25 +83,23 @@ void freeInterDS(intermediateDS *root) {
 }
 
 // emit the <key, value> into intermediate DS
-// void emit(char *word, char *count) {
-//   valueList *oneMore = createNewValueListNode("1");
-// }
+// void emit(char *word, char *count) {}
 
 // map function
 void map(char *chunkData) {
   int i = 0;
   char *buffer;
+  // for each word in the file add the pair to our global linked list words
   while ((buffer = getWord(chunkData, &i)) != NULL) {
     words = insertPairToInterDS(words, buffer, "1");
   }
-  // you can use getWord to retrieve words from the
-  // chunkData one by one. Example usage in utils.h
 }
 
 // write intermediate data to separate word.txt files
 // Each file will have only one line : word 1 1 1 1 1 ...
 void writeIntermediateDS() {
   char filename[FILE_SIZE];
+  // for each word in our linked list
   for (intermediateDS *word = words; word != NULL; word = word->next) {
     // create new string that will be our file name
     sprintf(filename, "%s/%s.txt", mapOutDir, word->key);

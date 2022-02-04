@@ -49,16 +49,15 @@ void freeFinalDS(finalKeyValueDS *root) {
 
 // reduce function
 void reduce(char *key) {
-  // open inputted file
+  // open inputted file to read
   FILE *fd = fopen(key, "r");
-  // try to read whole file into chunkData buffer, otherwise do a 1025 byte
-  // chunk
+  // try to read whole file into chunkData buffer, otherwise do a
+  // 1024 byte chunk
   char chunkData[chunkSize];
   // placeholder for our actual word
   char *word;
   // variable representing # of occurrences of our word
   int count = 0;
-
   // read file into chunkData (loop if there's more than 1024 bytes)
   while (fread(chunkData, 1, chunkSize, fd) != 0) {
     int i = 0;
@@ -70,8 +69,8 @@ void reduce(char *key) {
       if (firstWord) {
         word = buffer;
         firstWord = 0;
-      } else
         // otherwise, convert the string into an integer and add it to our count
+      } else
         count += atoi(buffer);
     }
   }
@@ -82,11 +81,14 @@ void reduce(char *key) {
 // write the contents of the final intermediate structure
 // to output/ReduceOut/Reduce_reducerID.txt
 void writeFinalDS(int reducerID) {
-
   char filename[FILE_SIZE];
+  // create new string that will be our file name
   sprintf(filename, "output/ReduceOut/Reduce_%d.txt", reducerID);
+  // open file to write
   FILE *fd = fopen(filename, "w");
+  // for each word in our linked list
   for (finalKeyValueDS *word = words; word != NULL; word = word->next) {
+    // print the associated key and value
     fprintf(fd, "%s %d\n", word->key, word->value);
   }
   fclose(fd);
