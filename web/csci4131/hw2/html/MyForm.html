@@ -4,7 +4,7 @@
 
 <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" type="text/css" href="../css/form.css">
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
   <link rel="icon" href="../img/old-man-jenkins.png">
   <title>Form</title>
 </head>
@@ -16,12 +16,12 @@
     <a href="MyWidgets.html">My Widgets</a>
   </nav>
 
-  <h1>My Form</h1>
+  <h1 id="form_header">My Form</h1>
   <form method="POST" action="https://www-users.cselabs.umn.edu/~chal0006/echo.php">
-    <table>
+    <table id="form_table">
       <tr>
-        <td><label for="name">Name</label></td>
-        <td><input type="text" id="name" name="name" pattern="[a-zA-Z0-9\s]+"
+        <td class="form_data"><label for="name">Name</label></td>
+        <td class="form_data"><input type="text" id="name" name="name" pattern="[a-zA-Z0-9\s]+"
             title="Contact's name must be alphanumeric." required></td>
       </tr>
       <tr>
