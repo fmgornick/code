@@ -47,7 +47,7 @@ int main(int argc, char *argv[]) {
     // exit if forking fails
     if (pid == -1) {
       printf("error forking\n");
-      return -1;
+      exit(1);
     }
     // spawn mappers processes and run 'mapper' executable using exec
     if (pid == 0) {
@@ -78,7 +78,7 @@ int main(int argc, char *argv[]) {
     // exit if forking fails
     if (pid == -1) {
       printf("error forking\n");
-      return -1;
+      exit(1);
     }
     // spawn reducer processes and run 'reducer' executable using exec
     if (pid == 0) {
