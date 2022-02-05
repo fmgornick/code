@@ -50,7 +50,12 @@ void freeFinalDS(finalKeyValueDS *root) {
 // reduce function
 void reduce(char *key) {
   // open inputted file to read
-  FILE *fd = fopen(key, "r");
+  FILE *fd;
+  if ((fd = fopen(key, "r")) == NULL) {
+    printf("ERROR: fopen failed\n");
+    perror("fopen failed");
+    return;
+  }
   // try to read whole file into chunkData buffer, otherwise do a
   // 1024 byte chunk
   char chunkData[chunkSize];
@@ -83,15 +88,24 @@ void reduce(char *key) {
 void writeFinalDS(int reducerID) {
   char filename[FILE_SIZE];
   // create new string that will be our file name
-  sprintf(filename, "output/ReduceOut/Reduce_%d.txt", reducerID);
-  // open file to write
-  FILE *fd = fopen(filename, "w");
-  // for each word in our linked list
-  for (finalKeyValueDS *word = words; word != NULL; word = word->next) {
-    // print the associated key and value
-    fprintf(fd, "%s %d\n", word->key, word->value);
+  if (sprintf(filename, "output/ReduceOut/Reduce_%d.txt", reducerID) == -1) {
+    printf("ERROR: file path too long\n");
+    perror("file path too long");
+    return;
   }
-  fclose(fd);
+  // open file to write
+  FILE *fd;
+  if ((fd = fopen(filename, "w")) == NULL) {
+    printf("ERROR: failed to open file\n");
+    perror("failed to open file");
+  } else {
+    // for each word in our linked list
+    for (finalKeyValueDS *word = words; word != NULL; word = word->next) {
+      // print the associated key and value
+      fprintf(fd, "%s %d\n", word->key, word->value);
+    }
+    fclose(fd);
+  }
   freeFinalDS(words);
 }
 

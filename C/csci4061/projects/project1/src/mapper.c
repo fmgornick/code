@@ -105,16 +105,25 @@ void writeIntermediateDS() {
   // for each word in our linked list
   for (intermediateDS *word = words; word != NULL; word = word->next) {
     // create new string that will be our file name
-    sprintf(filename, "%s/%s.txt", mapOutDir, word->key);
-    // open file for writing
-    FILE *fd = fopen(filename, "w");
-    // input current word into file
-    fprintf(fd, "%s ", word->key);
-    // iterate through word's corresponding valueList to append counts to file
-    for (valueList *count = word->value; count != NULL; count = count->next) {
-      fprintf(fd, "%s ", count->value);
+    if (sprintf(filename, "%s/%s.txt", mapOutDir, word->key) == -1) {
+      printf("ERROR: file path too long\n");
+      perror("file path too long");
+      return;
     }
-    fclose(fd);
+    // open file for writing
+    FILE *fd;
+    if ((fd = fopen(filename, "w")) == NULL) {
+      printf("ERROR: failed to open file\n");
+      perror("failed to open file");
+    } else {
+      // input current word into file
+      fprintf(fd, "%s ", word->key);
+      // iterate through word's corresponding valueList to append counts to file
+      for (valueList *count = word->value; count != NULL; count = count->next) {
+        fprintf(fd, "%s ", count->value);
+      }
+      fclose(fd);
+    }
   }
   freeInterDS(words);
 }

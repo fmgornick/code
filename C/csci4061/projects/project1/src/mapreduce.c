@@ -46,13 +46,16 @@ int main(int argc, char *argv[]) {
     pid = fork();
     // exit if forking fails
     if (pid == -1) {
-      printf("error forking\n");
+      printf("ERROR: failed to fork\n");
+      perror("error forking\n");
       exit(1);
     }
     // spawn mappers processes and run 'mapper' executable using exec
     if (pid == 0) {
       sprintf(arg, "%d", i + 1);
       execl("mapper", "mapper", arg, NULL);
+      printf("ERROR: mapper %s failed to execute... errno: %d\n", arg, errno);
+      perror("mapper failed to execute\n");
     }
   }
 
@@ -77,13 +80,16 @@ int main(int argc, char *argv[]) {
     pid = fork();
     // exit if forking fails
     if (pid == -1) {
-      printf("error forking\n");
+      printf("ERROR: failed to fork\n");
+      perror("error forking\n");
       exit(1);
     }
     // spawn reducer processes and run 'reducer' executable using exec
     if (pid == 0) {
       sprintf(arg, "%d", i + 1);
       execl("reducer", "reducer", arg, NULL);
+      printf("ERROR: reducer %s failed to execute... errno: %d\n", arg, errno);
+      perror("reducer failed to execute\n");
     }
   }
 
