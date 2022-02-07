@@ -1,0 +1,8 @@
+services:
+  image:
+    container_name: p1
+    build: .
+    tty: true
+    stdin_open: true
+    volumes:
+      - .:/usr/src/project1
