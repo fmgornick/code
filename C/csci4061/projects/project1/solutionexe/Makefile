@@ -26,5 +26,15 @@ t4:
 v4:
 	valgrind ./mapreduce 32 32 test/T4/F4.txt
 
+t5:
+	./mapreduce 5 2 test/T5/F5.txt
+v5:
+	valgrind ./mapreduce 5 2 test/T5/F5.txt
+
+t6:
+	./mapreduce 5 2 test/T6/F6.txt
+v6:
+	valgrind ./mapreduce 5 2 test/T6/F6.txt
+
 clean:
 	rm -rf output

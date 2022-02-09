@@ -39,6 +39,16 @@ t4: $(EXE)
 v4: $(EXE)
 	valgrind ./mapreduce 32 32 test/T4/F4.txt
 
+t5: $(EXE)
+	./mapreduce 5 2 test/T5/F5.txt
+v5: $(EXE)
+	valgrind ./mapreduce 5 2 test/T5/F5.txt
+
+t6: $(EXE)
+	./mapreduce 5 2 test/T6/F6.txt
+v6: $(EXE)
+	valgrind ./mapreduce 5 2 test/T6/F6.txt
+
 clean:
 	rm mapreduce mapper reducer
 	rm -rf output
