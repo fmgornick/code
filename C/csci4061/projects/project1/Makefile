@@ -5,6 +5,8 @@ SRCDIR=src
 INCLDIR=include
 LIBDIR=lib
 
+EXE=mapper reducer mapreduce
+
 mapreduce: $(SRCDIR)/mapreduce.c $(LIBDIR)/utils.o mapper reducer
 	$(CC) $(CFLAGS) -I$(INCLDIR) $(LIBDIR)/utils.o $(SRCDIR)/mapreduce.c -o mapreduce
 
@@ -17,10 +19,25 @@ reducer: $(SRCDIR)/reducer.c $(LIBDIR)/utils.o
 .PHONY: clean t1
 
 #500KB
-t1:
-# 	make -i clean
-	make
+t1: $(EXE)
 	./mapreduce 5 2 test/T1/F1.txt
+v1: $(EXE)
+	valgrind ./mapreduce 5 2 test/T1/F1.txt
+
+t2: $(EXE)
+	./mapreduce 5 2 test/T2/F2.txt
+v2: $(EXE)
+	valgrind ./mapreduce 5 2 test/T2/F2.txt
+
+t3: $(EXE)
+	./mapreduce 1 1 test/T3/F3.txt
+v3: $(EXE)
+	valgrind ./mapreduce 1 1 test/T3/F3.txt
+
+t4: $(EXE)
+	./mapreduce 32 32 test/T4/F4.txt
+v4: $(EXE)
+	valgrind ./mapreduce 32 32 test/T4/F4.txt
 
 clean:
 	rm mapreduce mapper reducer

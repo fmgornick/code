@@ -122,6 +122,7 @@ void writeIntermediateDS() {
       for (valueList *count = word->value; count != NULL; count = count->next) {
         fprintf(fd, "%s ", count->value);
       }
+      fprintf(fd, "\n");
       fclose(fd);
     }
   }
