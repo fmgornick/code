@@ -1,0 +1,157 @@
+/* for keeping table and image next to eachother cleanly */
+.contacts_container {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  grid-template-columns: 250px auto 125px 300px;
+  grid-template-rows: auto 250px;
+  grid-gap: 10px 10px;
+  justify-items: stretch;
+}
+
+/* basic table border */
+.contacts_table {
+  grid-column: 1/4;
+  width: 100%;
+  border: rgb(220,220,220) solid 1px;
+  border-collapse: collapse;
+}
+
+/* alternates background from white to gray */
+.contacts_table tr:nth-child(odd) {
+  background-color: rgb(242,242,242);
+}
+
+.contacts_table tr {
+  transition: background-color 300ms ease-in-out;
+}
+
+/* header should have red background with white font */
+.contacts_table th {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  text-align: center;
+  padding: 15px;
+  background-color: rgb(190,0,50);
+  color: white;
+}
+
+/* data fields should have alternating background with smaller black font */
+.contacts_table td {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  text-align: center;
+  border-bottom: 1px solid rgb(220,220,220);
+  color: rgb(122,0,25);
+  padding: 5px;
+}
+
+.contacts_table img {
+  width: 30px;
+  visibility: hidden;
+}
+
+/* image should take up remaining 30% width and be vertically centered */
+.contacts_image figure {
+  margin: 0;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.contacts_image input {
+  height: 20px;
+  text-align: center;
+}
+
+.contacts_image figcaption {
+  line-height: 2;
+}
+
+.google_maps { 
+  grid-column: 1/3; 
+}
+
+.input_area { 
+  grid-column: 3/5; 
+}
+
+.input_table { 
+  height: 100%; 
+}
+
+.input_table img {
+  width: 80%;
+}
+
+.input_table {
+  line-height: 1.5;
+  border: rgb(220,220,220) solid 1px;
+  border-radius: 10px;
+  border-collapse: separate;
+}
+
+.input_table tr {
+  background-color: rgb(250,250,250);
+}
+
+.input_table td {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  text-align: center;
+  line-height: 2.2;
+  border: 1px solid rgb(220,220,220);
+  font-size: 10pt;
+  padding: 10px;
+}
+
+select {
+  width: 200px;
+  height: 25px;
+  font-size: 10pt;
+  font-family: Verdana, sans-serif;
+  border: 1px solid rgb(150, 150, 150);
+  border-radius: 5px;
+}
+
+#other {
+  width: 150px;
+  height: 20px;
+}
+
+#radius {
+  width: 50px;
+  height: 20px;
+}
+
+input[type="submit"] {
+  font-size: 10pt;
+  width: 75px;
+  height: 25px;
+}
+
+#contact_name {
+  width: 150px;
+}
+
+#start_location {
+  width: 200px;
+  height: 20px;
+  font-size: 9pt;
+}
+
+#transit_form {
+  line-height: 1;
+}
+
+.travel_mode {
+  line-height: 0.5;
+}
+
+input[type="radio"] {
+  transform: scale(1.4);
+  height: 10px;
+  width: 10px;
+}
+
+#go {
+  font-size: 10pt;
+  width: 40px;
+}
