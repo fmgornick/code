@@ -9,9 +9,9 @@
   <link rel="stylesheet" type="text/css" href="../css/MyContacts.css">
   <link rel="icon" href="../img/old-man-jenkins.png">
   <title>Contacts</title>
+  <script src="../js/MyContacts.js" defer></script>
   <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAeq7Ur39THdBJUPsXoP34vHryjJ5n34D8&libraries=places&callback=initMap"></script>
-  <script src="../js/MyContacts.js" defer></script>
 </head>
 
 <body>
@@ -151,12 +151,14 @@
         </figcaption>
       </figure>
     </div>
+    <div class="directions_list">
+    </div>
     <div class="google_maps" id="map">
     </div>
     <div class="input_area">
       <table class="input_table">
         <tr>
-          <td width="30%"><img src="../img/location.png" alt="location png"></td>
+          <td id="location_table"><img src="../img/location.png" alt="location png"></td>
           <td>
             <form id="nearby_search" onsubmit="return false">
               <label for="location_category">Find</label>
@@ -169,17 +171,17 @@
                 <option value="other">Other</option>
               </select><br>
 
-              <input type="hidden" id="other" name="other" placeholder="Enter Other Places"><br>
+              <input type="hidden" id="other" name="other"><br>
 
               <label for="radius">in</label>
               <input type="number" id="radius" name="radius" required> meters &nbsp;&nbsp;
 
-              <input type="submit" name="submit">
+              <input type="submit" name="submit" value="Submit">
             </form>
           </td>
         </tr>
         <tr>
-          <td width="30%"><img src="../img/route.png" alt="route png"></td>
+          <td id="route_table"><img src="../img/route.png" alt="route png"></td>
           <td>
             <form id="directions" onsubmit="return false">
               <label for="contact_name">Take me to:</label>
@@ -188,7 +190,7 @@
               </select><br>
 
               <label for="start_location">From</label>
-              <input type="address" id="start_location" name="start_location"><br>
+              <input type="text" id="start_location" name="start_location" placeholder="Default: Current Location"><br>
 
               <div id="travel_mode">
                 <input type="radio" id="walk" name="travel" value="WALKING" required>

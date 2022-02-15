@@ -10,7 +10,9 @@ let placeSelector = document.getElementById("location_category");
 let nameSelector = document.getElementById("contact_name");
 let table = document.querySelector("table.contacts_table");
 let prevWindow = false;
+let currentLocation;
 let markers = [];
+let directionsPanel;
 
 
 // create the map and center it at Coffman
@@ -22,7 +24,7 @@ function initMap() {
     zoom: 15,
     center: umn,
   });
-  // The marker, positioned at UMN
+  getLocation();
   initContactInfo();
   generateMarkers();
   initAutocomplete();
@@ -61,8 +63,7 @@ function initContactInfo() {
 function generateMarkers() {
   var geocoder = new google.maps.Geocoder();
   for (let i = 0; i < contacts.length; i++) {
-    var address = contacts[i].location;
-    geocoder.geocode({ 'address': address }, function(results, status) {
+    geocoder.geocode({ 'address': contacts[i].location }, function(results, status) {
       if (status == 'OK') {
         contacts[i].lat = results[0].geometry.location.lat();
         contacts[i].lng = results[0].geometry.location.lng();
@@ -73,7 +74,8 @@ function generateMarkers() {
           icon: icon
         });
         if (i == 0) marker.icon = "../img/goldy.png";
-        var window = generateWindow(marker, contacts[i].name, contacts[i].src, contacts[i].alt, contacts[i].location);
+        var address = contacts[i].info + ", ," + contacts[i].location;
+        var window = generateWindow(marker, contacts[i].name, contacts[i].src, contacts[i].alt, address);
         marker.addListener("click", () => {
           window.open({
             anchor: marker,
@@ -141,14 +143,17 @@ function initAutocomplete() {
 }
 
 
-// creates all the markers and info windows when populating search
-function generateNearbyMarkers(results, status) {
+function deleteMarkers() {
   if (markers.length > 0) {
     for (let i = 0; i < markers.length; i++)
       markers[i].setMap(null);
     markers.length = 0;
   }
+}
 
+// creates all the markers and info windows when populating search
+function generateNearbyMarkers(results, status) {
+  deleteMarkers();
   if (status == google.maps.places.PlacesServiceStatus.OK) {
     for (var i = 0; i < results.length; i++) {
       let marker = new google.maps.Marker({
@@ -182,17 +187,18 @@ function generateNearbyMarkers(results, status) {
 // calls the generateWindow function with data from form
 let nearby = document.getElementById("nearby_search");
 nearby.addEventListener("submit", function() {
-  var lat = contacts[0].lat;
-  var lng = contacts[0].lng;
-  var location = new google.maps.LatLng(lat, lng);
-
-  var type = this["location_category"].value;
-  if (type == "other") type = this["other"].value;
-  this["other"].value = "";
-
+  closePanel();
+  var request;
   var radius = this["radius"].value;
 
-  var request = { location: location, radius: radius, type: [type] };
+  if (this["location_category"].value == "other") {
+    var name = this["other"].value;
+    request = { location: currentLocation, radius: radius, name: name };
+  } else {
+    var type = this["location_category"].value;
+    request = { location: currentLocation, radius: radius, type: [type] };
+  }
+
   service = new google.maps.places.PlacesService(map);
   service.nearbySearch(request, generateNearbyMarkers);
 });
@@ -200,35 +206,63 @@ nearby.addEventListener("submit", function() {
 
 // adds directions for form input
 let directions = document.getElementById("directions");
-directions.addEventListener("submit", function() {
+directions.addEventListener("submit", async function() {
+  deleteMarkers();
+  closePanel();
+  openPanel();
   var startAddress = directions["start_location"].value;
   var end = contacts[this["contact_name"].selectedIndex].location;
   var request;
 
-  console.log(getLocation());
   if (startAddress.length > 0) request = { origin: startAddress, destination: end, travelMode: directions.travel.value }
-  else request = { origin: getLocation(), destination: end, travelMode: directions.travel.value }
+  else {
+    request = { origin: currentLocation, destination: end, travelMode: directions.travel.value }
+  }
 
   var directionsService = new google.maps.DirectionsService();
-  var directionsRenderer = new google.maps.DirectionsRenderer();
-  directionsRenderer.setMap(map);
+  directionsPanel = new google.maps.DirectionsRenderer({
+    map: map,
+    panel: document.querySelector(".directions_list")
+  });
 
   directionsService.route(request, function(result, status) {
     if (status == 'OK')
-      directionsRenderer.setDirections(result);
+      directionsPanel.setDirections(result);
   });
 });
 
-function getLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      return new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-    }, function(error) {
-      alert("location permission denied");
-    });
+function openPanel() {
+  var directions = document.querySelector(".directions_list").style;
+  document.querySelector(".google_maps").style.setProperty("grid-column", "2/3");
+  directions.setProperty("grid-row", "2/3");
+  directions.setProperty("grid-column", "1/2");
+}
+
+function closePanel() {
+  if (directionsPanel) {
+    directionsPanel.setMap(null);
+    directionsPanel.setPanel(null);
+
+    var directions = document.querySelector(".directions_list").style;
+    document.querySelector(".google_maps").style.setProperty("grid-column", "1/3");
+    directions.setProperty("grid-row", "3/3");
+    directions.setProperty("grid-column", "1/1");
   }
 }
 
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(returnPosition, errorFunc);
+  } else {
+    alert("Geolocation is not supported by this browser.");
+  }
+}
+function returnPosition(position) {
+  currentLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+}
+function errorFunc(error) {
+  alert(error);
+}
 
 // reveals textbox if user chooses other
 placeSelector.addEventListener("change", function() {
@@ -236,9 +270,11 @@ placeSelector.addEventListener("change", function() {
   let other = document.getElementById("other");
   if (placeCategory == "other") {
     other.type = "text";
+    other.placeholder = "Enter Other Places";
     other.required = "true";
   }
   else {
+    document.getElementById("other").value = "";
     document.getElementById("other").type = "hidden";
     other.required = "false";
   }
