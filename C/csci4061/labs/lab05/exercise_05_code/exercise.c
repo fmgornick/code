@@ -25,6 +25,7 @@ int numOfEntries(char *path) {
     count++;
   }
 
+  closedir(dir);
   return count;
 }
 
