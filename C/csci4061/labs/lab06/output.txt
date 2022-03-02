@@ -1,0 +1,3 @@
+Welcome to CSci 4061!
+Project 2 is due on Oct 29, 11:55 pm.
+Don't forget the README file in your submission!
