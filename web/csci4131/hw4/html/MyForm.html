@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+  <link rel="stylesheet" type="text/css" href="../css/MyForm.css">
+  <link rel="icon" href="../img/old-man-jenkins.png">
+  <title>Form</title>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAeq7Ur39THdBJUPsXoP34vHryjJ5n34D8&libraries=places&callback=initMap"></script>
+  <script src="../js/MyForm.js" defer></script>
+</head>
+
+<body>
+  <div class=navbar>
+    <a href="MyContacts.html">My Contacts</a>
+    <a href="MyForm.html" class="active">Form Input</a>
+    <a href="MyWidgets.html">My Widgets</a>
+    <a href="MyServer.html">My Server</a>
+  </div>
+
+  <h1 class="title form_title">My Form</h1>
+
+  <div class="page_container">
+    <div class="form_div">
+      <form method="POST" action="http://localhost:9001/MyForm.html">
+        <table id="form_table">
+          <tr>
+            <td class="form_data"><label for="name">Name</label></td>
+            <td class="form_data"><input type="text" id="name" name="name" pattern="[a-zA-Z0-9\s]+"
+                title="Contact's name must be alphanumeric." required></td>
+          </tr>
+          <tr>
+            <td><label for="category">Contact Category</label></td>
+            <td>
+              <select id="category" name="category" required>
+                <option disabled selected label=" "></option>
+                <option value="academic">Academic</option>
+                <option value="industry">Industry</option>
+                <option value="personal">Personal</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td><label for="location">Location</label></td>
+            <td><input type="text" id="location" name="location" required></td>
+          </tr>
+          <tr>
+            <td><label for="contact">Contact Information</label></td>
+            <td><input type="text" id="contact" name="contact" required></td>
+          </tr>
+          <tr>
+            <td><label for="email">Email</label></td>
+            <td><input type="email" id="email" name="email" required></td>
+          </tr>
+          <tr>
+            <td><label for="website">Website</label></td>
+            <td><input type="url" id="website" name="website" required></td>
+          </tr>
+          <tr>
+            <td><input type="reset" value="Clear"></td>
+            <td><input type="submit"></td>
+          </tr>
+        </table>
+      </form>
+    </div>
+    <div class="map_div" id="map">
+    </div>
+  </div>
+</body>
+
+</html>

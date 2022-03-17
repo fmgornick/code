@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<!-- API key: AIzaSyAeq7Ur39THdBJUPsXoP34vHryjJ5n34D8 -->
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+  <link rel="stylesheet" type="text/css" href="../css/MyContacts.css">
+  <link rel="icon" href="../img/old-man-jenkins.png">
+  <title>Contacts</title>
+  <script src="../js/MyContacts.js" defer></script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAeq7Ur39THdBJUPsXoP34vHryjJ5n34D8&libraries=places&callback=initMap"></script>
+</head>
+
+<body>
+  <div class="navbar">
+    <a href="MyContacts.html">My Contacts</a>
+    <a href="MyForm.html">Form Input</a>
+    <a href="MyWidgets.html" class="active">My Widgets</a>
+    <a href="MyServer.html">My Server</a>
+  </div>
+
+  <div class="title">
+    <h1>My University Contacts</h1>
+  </div>
+
+  <div class="contacts_container">
+    <table class="contacts_table">
+      <tr>
+        <th>Name</th>
+        <th>Contact Category</th>
+        <th>Location</th>
+        <th>Contact Information</th>
+        <th>Email</th>
+        <th>Website</th>
+      </tr>
+
+      <tr id="dan_challou">
+        <td>Dan Challou</td>
+        <td>Academic</td>
+        <td>
+          383 Shepherd Labs, <br>
+          100 Union Street SE, <br>
+          Minneapolis, MN 55455
+        </td>
+        <td>
+          Spring 2022 Csci 4131 Professor <br>
+          <div class="thumbnail">
+            <img src="../img/dallou.jpeg" alt="Image of Dr. Challou">
+          </div>
+        </td>
+        <td><a href="mailto:chal0006@umn.edu">chal0006@umn.edu</a></td>
+        <td><a href="https://cse.umn.edu/cs/dan-challou">CS Department Home Page</a></td>
+      </tr>
+
+      <tr id="melanie_gornick">
+        <td>Melanie Gornick</td>
+        <td>Personal</td>
+        <td>
+          11024 Aquila Bluffs Cir,<br>
+          Bloomington, MN 55438
+        </td>
+        <td>
+          Head Chair for Scleroderma Warriors 501(c)(3) <br>
+          <div class="thumbnail">
+            <img src="../img/mom.jpeg" alt="Image of my Mother">
+          </div>
+        </td>
+        <td><a href="mailto:melanie@sclerodermawarriors.org">melanie@sclerodermawarriors.org</a></td>
+        <td><a href="https://sclerodermawarriors.org/">Scleroderma Warriors Home Page</a></td>
+      </tr>
+
+      <tr id="marvin_marshak">
+        <td>Marvin Marshak</td>
+        <td>Academic</td>
+        <td>
+          330 Physics And Nanotechnology,<br>
+          115 Union Street SE, <br>
+          Minneapolis, MN 55455
+        </td>
+        <td>
+          Fall 2019 Phys 1301 Professor <br>
+          <div class="thumbnail">
+            <img src="../img/marv.jpeg" alt="Image of Marvin Marshak">
+          </div>
+        </td>
+        <td><a href="mailto:marshak@umn.edu">marshak@umn.edu</a></td>
+        <td><a href="https://cse.umn.edu/physics/marvin-marshak">Physics Department Home Page</a></td>
+      </tr>
+
+      <tr id="tyler_nelson">
+        <td>Tyler Nelson</td>
+        <td>Personal</td>
+        <td>
+          219 SE Eighth Ave APT C,<br>
+          Minneapolis, MN 55414
+        </td>
+        <td>
+          Student at University of Normandale Community College <br>
+          <div class="thumbnail">
+            <img src="../img/tiler.jpeg" alt="Image of Tyler">
+          </div>
+        </td>
+        <td><a href="mailto:tylernelson14@gmail.com">tylernelson14@gmail.com</a></td>
+        <td><a href="https://findtheinvisiblecow.com/">His Favorite Website</a></td>
+      </tr>
+
+      <tr id="courtney_preiner">
+        <td>Courtney Preiner</td>
+        <td>Industry</td>
+        <td>
+          Target Headquarters,<br>
+          1000 Nicollet Mall,<br>
+          Minneapolis, MN 55403
+        </td>
+        <td>
+          Target Technology Recruiter <br>
+          <div class="thumbnail">
+            <img src="../img/dog.jpeg" alt="Image of Target Mascot">
+          </div>
+        </td>
+        <td><a href="mailto:Courtney.Preiner@target.com">gorni025@umn.edu</a></td>
+        <td><a href="https://www.linkedin.com/in/courtney-preiner-521096ab/">Linkedin Profile</a></td>
+      </tr>
+
+      <tr id="carl_sturtivant">
+        <td>Carl Sturtivant</td>
+        <td>Academic</td>
+        <td>
+          6-197 Kenneth H. Keller Hall,<br>
+          200 Union Street SE,<br>
+          Minneapolis, MN 55455
+        </td>
+        <td>
+          Fall 2021 Csci 4041 Professor <br>
+          <div class="thumbnail">
+            <img src="../img/carl.jpeg" alt="Image of Carl Sturtivant">
+          </div>
+        </td>
+        <td><a href="mailto:carl@umn.edu">carl@umn.edu</a></td>
+        <td><a href="https://cse.umn.edu/cs/carl-sturtivant">CS Department Home Page</a></td>
+      </tr>
+    </table>
+    <div class="contacts_image">
+      <figure>
+        <img src="../img/gophers-mascot.png" alt="gophers mascot"><br>
+        <figcaption>
+          Coordinates: <input type="text" value="44.9727, -93.2354" readonly><br>
+          Distance to Target Location: <strong><span>0</span> m</strong>
+        </figcaption>
+      </figure>
+    </div>
+    <div class="directions_list">
+    </div>
+    <div class="google_maps" id="map">
+    </div>
+    <div class="input_area">
+      <table class="input_table">
+        <tr>
+          <td id="location_table"><img src="../img/location.png" alt="location png"></td>
+          <td>
+            <form id="nearby_search" onsubmit="return false">
+              <label for="location_category">Find</label>
+              <select id="location_category" name="location_category" required>
+                <option disabled selected label=" "></option>
+                <option value="restaurant">Restaurant</option>
+                <option value="hospital">Hospital</option>
+                <option value="parking">Parking</option>
+                <option value="supermarket">Supermarket</option>
+                <option value="other">Other</option>
+              </select><br>
+
+              <input type="hidden" id="other" name="other"><br>
+
+              <label for="radius">in</label>
+              <input type="number" id="radius" name="radius" required> meters &nbsp;&nbsp;
+
+              <input type="submit" name="submit" value="Submit">
+            </form>
+          </td>
+        </tr>
+        <tr>
+          <td id="route_table"><img src="../img/route.png" alt="route png"></td>
+          <td>
+            <form id="directions" onsubmit="return false">
+              <label for="contact_name">Take me to:</label>
+              <select id="contact_name" name="contact_name" required>
+                <option disabled selected label=" "></option>
+              </select><br>
+
+              <label for="start_location">From</label>
+              <input type="text" id="start_location" name="start_location" placeholder="Default: Current Location"><br>
+
+              <div id="travel_mode">
+                <input type="radio" id="walk" name="travel" value="WALKING" required>
+                <label for="walk">WALK</label>
+                <input type="radio" id="drive" name="travel" value="DRIVING">
+                <label for="drive">DRIVE</label>
+                <input type="radio" id="transit" name="travel" value="TRANSIT">
+                <label for="transit">TRANSIT</label>
+              </div>
+
+              <input id="go" type="submit" value="Go">
+            </form>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</body>
+
+</html>

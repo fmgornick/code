@@ -1,0 +1,52 @@
+/* form css */
+.page_container {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  grid-template-columns: 60% 40%;
+  grid-gap: 10px;
+  justify-items: center;
+}
+
+.form_div {
+  grid-column: 1/2;
+}
+
+#map {
+  height: 100%;
+}
+
+.map_div {
+  grid-column: 2/3;
+}
+
+#form_table {
+  width: 750px;
+  border: rgb(220,220,220) solid 1px;
+  border-radius: 10px;
+  border-collapse: separate;
+  margin: auto;
+  margin-top: 20px;
+}
+
+#form_table tr {
+  transition: background-color 300ms ease-in-out;
+  background-color: rgb(250,250,250);
+}
+
+#form_table tr:hover {
+  background-color: rgb(220,220,220);
+}
+
+#form_table td {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  text-align: center;
+  border: 1px solid rgb(220,220,220);
+  color: rgb(122,0,25);
+  padding: 20px;
+  font-size: 12pt;
+}
+
+.map_div {
+  width: 90%;
+}
