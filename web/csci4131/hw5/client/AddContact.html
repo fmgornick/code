@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"></script>
+    <title>Add Event</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expanded navbar-light bg-light">
+      <ul class="nav nav-pills">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="MyContacts.html">My Contacts</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link active" href="AddContact.html">Add Contact</a>
+        </li>
+      </ul>
+    </nav><br>
+    <br>
+    <div class="container mb-5">
+      <form name="addContact" method="post" action="/postContactEntry"
+            id="addContact">
+        <div class="form-group">
+          <label for="nameInput">Name</label>
+          <input type="text" id="nameInput" class="form-control" name="name"
+                 pattern="[a-zA-Z0-9\s]+" title="Name must be alphanumeric"
+                 required="">
+          <small id="nameHelp" class="form-text text-muted">
+            Name name must be alphanumeric</small>
+        </div>
+        <div class="form-group">
+          <label for="categoryInput">Category</label>
+          <select id="categoryInput" class="form-control" name="category">
+            <option>
+              Academic
+            </option>
+            <option>
+              Industry
+            </option>
+            <option>
+              Personal
+            </option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="locationInput">Location</label>
+          <input type="text" class="form-control" name="location"
+                 id="locationInput" required="" value="">
+        </div>
+        <div class="form-group">
+          <label for="infoInput">Contact Information</label>
+          <input id="infoInput" type="text" class="form-control" name="info"
+                 required="">
+        </div>
+        <div class="form-group">
+          <label for="emailInput">Email</label>
+          <input id="emailInput" type="email" class="form-control" name="email"
+                 required="">
+        </div>
+        <div class="form-group">
+          <label for="titleInput">Website Title</label>
+          <input id="titleInput" type="text" class="form-control" name="website_title"
+                 required="">
+        </div>
+        <div class="form-group">
+          <label for="urlInput">Website URL</label>
+          <input id="urlInput" type="url" class="form-control" name="url"
+                 required="">
+        </div>
+        <button type="submit" class="btn btn-block btn-primary">Submit</button>
+      </form>
+    </div>
+    <script>
+    </script>
+  </body>
+</html>
