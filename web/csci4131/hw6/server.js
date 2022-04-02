@@ -1,11 +1,12 @@
 // packages
 var express = require('express');
 var session = require('express-session');
-var mysql = require('mysql');
-var bcrypt = require('bcrypt');
-var bodyparser = require('body-parser');
+var upload = require('express-fileupload');
 var handlebars = require('express-handlebars').create();
+var mysql = require('mysql');
 var url = require('url');
+var bodyparser = require('body-parser');
+var bcrypt = require('bcrypt');
 var port = 9001;
 
 // set up database connection
@@ -28,6 +29,8 @@ const app = express();
 // middleware
 app.use(bodyparser.urlencoded({ extended: true }));
 app.use(bodyparser.json());
+
+app.use(upload());
 
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
@@ -145,3 +148,30 @@ app.post('/postContactEntry', function(req, res) {
   });
   res.redirect('/AllContacts');
 });
+
+app.post('/postFile', function(req, res) {
+  if (req.files) {
+    var obj = JSON.parse(req.files.file.data.toString());
+
+    var categories = ["academic", "industry", "personal"];
+    for (var i = 0; i < categories.length; i++) {
+      for (var j = 0; j < obj[categories[i]].length; j++) {
+        var values = {
+          contact_category: categories[i],
+          contact_name: obj[categories[i]][j].name,
+          contact_location: obj[categories[i]][j].location,
+          contact_info: obj[categories[i]][j].info,
+          contact_email: obj[categories[i]][j].email,
+          website_title: obj[categories[i]][j].website_title,
+          website_url: obj[categories[i]][j].url,
+        }
+        con.query("INSERT INTO contact_table SET ?", values, function(err, result) {
+          if (err) throw err;
+        });
+      }
+    }
+    res.redirect('/AllContacts');
+  }
+});
+
+// API KEY: 4X5TQHQDOKG0C6YP

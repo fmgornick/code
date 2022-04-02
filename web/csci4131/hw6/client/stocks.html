@@ -55,7 +55,7 @@
                 <td class="col-md-6">Company</td>
                 <td class="col-md-6">
                   <div class="form-group">
-                    <select name="Company">
+                    <select name="Company" id="sel">
                       <option value="MSFT">Microsoft</option>
                       <option value="BA">Boeing Company</option>
                       <option value="AAPL">Apple Inc</option>
@@ -67,7 +67,7 @@
               </tr>
               <tr>
                 <td colspan="2">
-                  <button type="button">Get Data</button>
+                  <button type="button" id="butt">Get Data</button>
                 </td>
               </tr>
 
@@ -81,10 +81,9 @@
             <tr>
               <th scope="col">Company-MetaData</th>
               <th scope="col">Stock-Info</th>
-
             </tr>
           </thead>
-          <tbody></tbody>
+          <tbody id="tBody"></tbody>
         </table>
       </div>
     </div>
@@ -93,8 +92,29 @@
 
 
   <script>
-        // TODO: Add Ajax call to Alphavantage TIME_SERRIES_DAILY
-        // TODO: Show the data in textarea tags
+    window.onload = function () {
+      document.getElementById("butt").addEventListener("click", function () {
+        var equity = document.getElementById("sel").value;
+
+        var url = 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=' + equity + '&interval=5min&apikey=4X5TQHQDOKG0C6YP';
+
+        $.ajax({
+          // type: "GET",
+          url: url,
+          contentType: "application/json",
+          dataType: 'json',
+          success: function (data) {
+            var outstring = '<td><textarea class="form-control rounded-0" rows="15">\n';
+            outstring += JSON.stringify(data["Meta Data"], null, '\t') + '\n';
+            outstring += '</textarea></td>\n<td><textarea class="form-control rounded-0" rows="15">\n';
+            outstring += JSON.stringify(data["Time Series (Daily)"], null, '\t') + '\n';
+            outstring += '</td>\n';
+
+            document.getElementById("tBody").innerHTML = outstring;
+          }
+        });
+      });
+    }
   </script>
 </body>
 

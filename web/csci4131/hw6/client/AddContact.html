@@ -40,6 +40,17 @@
     </ul>
   </nav><br>
   <br>
+
+  <div class=" container mb-5">
+    <form method="post" action="/postFile" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="fileInput" class="form-label">JSON File Input (Optional)</label>
+        <input type="file" id="fileInput" class="form-control" name="file">
+      </div>
+      <button type="submit" class="btn btn-block btn-primary">Submit</button>
+    </form>
+  </div>
+
   <div class="container mb-5">
     <form name="addContact" method="post" action="/postContactEntry" id="addContact">
       <div class="form-group">
