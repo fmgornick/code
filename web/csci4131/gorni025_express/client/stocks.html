@@ -1,0 +1,101 @@
+﻿<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+  <title>My Contacts</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-expanded navbar-light bg-light mb-5">
+    <ul class="nav nav-pills">
+      <li class="nav-item active">
+        <a class="nav-link active" href="/">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/AllContacts">All Contacts</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/MyContacts">My Contacts</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/addContact">Add Contact</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/stocks">Stocks Page</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/logout">LOGOUT</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <center>Welcome to Stock Page</center>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <table class="table table-bordered table-hover">
+            <tbody>
+              <tr>
+                <td class="col-md-6">Company</td>
+                <td class="col-md-6">
+                  <div class="form-group">
+                    <select name="Company">
+                      <option value="MSFT">Microsoft</option>
+                      <option value="BA">Boeing Company</option>
+                      <option value="AAPL">Apple Inc</option>
+                      <option value="AMZN">Amazon</option>
+                      <option value="NVDA">NVIDIA Corporation</option>
+                    </select>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <button type="button">Get Data</button>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div>
+        <table class="table" id="StockData">
+          <thead>
+            <tr>
+              <th scope="col">Company-MetaData</th>
+              <th scope="col">Stock-Info</th>
+
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+
+
+  <script>
+        // TODO: Add Ajax call to Alphavantage TIME_SERRIES_DAILY
+        // TODO: Show the data in textarea tags
+  </script>
+</body>
+
+</html>
