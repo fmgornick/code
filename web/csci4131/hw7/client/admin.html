@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/3320d69e49.js" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+  <title>Admin Page</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-expanded navbar-light bg-light mb-5">
+    <ul class="nav nav-pills">
+      <li class="nav-item">
+        <a class="nav-link" href="/">Home</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link active" href="/admin">Admin Page</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/AllContacts">All Contacts</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/MyContacts">My Contacts</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/addContact">Add Contact</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/stocks">Stocks Page</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/logout">LOGOUT</a>
+      </li>
+    </ul>
+    <a class="nav-item nav-link ml-auto" id="username" href="/admin"></a>
+  </nav>
+
+  <div class="container alert alert-danger alert-dismissible fade show" id="missingFields" hidden>
+    make sure to fill out all the fields!
+  </div>
+
+  <div class="container alert alert-danger alert-dismissible fade show" id="alreadyUsed" hidden>
+    this account name already exists! you must choose a new one
+  </div>
+
+  <div class="container alert alert-danger alert-dismissible fade show" id="currentUser" hidden>
+    you can't delete this current user!
+  </div>
+
+  <div class="container">
+    <button type="button" class="btn btn-outline_dark" onclick="newUser()">
+      <i class="fa-solid fa-plus"></i>
+      Add User
+    </button>
+  </div><br>
+
+  <div class="container">
+    <table class="table table-striped" id="userTable">
+      <thead class="bg-primary" style="color: white">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Login</th>
+          <th scope="col">New Password</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody id="userTableBody"></tbody>
+    </table>
+  </div>
+</body>
+
+<script>
+  var logins = [];
+
+  window.onload = function () {
+    getUsers();
+  }
+
+  function getUsers() {
+    var xmlhttp = new XMLHttpRequest();
+    var url = "getUsers";  // set the url to whatever you name the endpoint (route) in
+    // createServer.js
+
+    xmlhttp.onreadystatechange = function () {
+      if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        let arr = JSON.parse(xmlhttp.responseText);
+        var user = arr.pop();
+        document.getElementById("username").innerHTML = 'welcome ' + user + '!';
+        // var contactJsonObject = obj.contact;
+        createNdisplayusers(arr);
+      }
+    }
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+  }
+
+  function createNdisplayusers(arr) {
+    if (arr.length > 0) {
+      var outstring = '';
+      for (var i = 0; i < arr.length; i++) {
+        outstring += '<tr>\n';
+        outstring += '<td scope=\"col\">' + arr[i].acc_id + '</td>\n';
+        outstring += '<td scope=\"col\">' + arr[i].acc_name + '</td>\n';
+        outstring += '<td scope=\"col\">' + arr[i].acc_login + '</td>\n';
+        outstring += '<td scope=\"col\"></td>\n';
+        outstring += '<td scope=\"col\">\n'
+
+        outstring += '<button class=\"btn btn-link\" id=\"editButton\" onclick=\"edit(';
+        outstring += i;
+        outstring += ')\"><i class=\"fa-solid fa-pencil\"></i></button>\n';
+
+        outstring += '<button class=\"btn btn-link\" id=\"deleteButton\" onclick=\"deleteRow(';
+        outstring += arr[i].acc_id + ", \'" + arr[i].acc_login + "\'";
+        outstring += ')\"><i class=\"fa-solid fa-trash-can\"></i></button>\n';
+
+        outstring += '<button class=\"btn btn-link\" id=\"switchButton\" onclick=\"switchUser(\'';
+        outstring += arr[i].acc_login;
+        outstring += '\')\"><i class=\"fa-solid fa-play\"></i></button>\n';
+
+        outstring += '</td>\n'
+        outstring += '</tr>\n'
+
+        logins.push(arr[i].acc_login);
+      }
+      document.getElementById("userTableBody").innerHTML = outstring;
+    }
+  }
+
+  function newUser() {
+    if (!document.getElementById("newUserRow")) {
+      var outstring = '';
+      outstring += '<tr id=\"newUserRow\">\n';
+      outstring += '<td scope=\"col\"></td>\n';
+      outstring += '<td scope=\"col\"><input type=\"text\" id=\"newName\"></td>\n';
+      outstring += '<td scope=\"col\"><input type=\"text\" id=\"newLogin\"></td>\n';
+      outstring += '<td scope=\"col\"><input type=\"password\" id=\"newPassword\"></td>\n';
+      outstring += '<td scope=\"col\">\n'
+      outstring += '<button class=\"btn btn-link\" onclick=\"save()\"><i class=\"fa-solid fa-floppy-disk\"></i></button>\n';
+      outstring += '<button class=\"btn btn-link\" onclick=\"quit()\"><i class=\"fa-solid fa-xmark\"></i></button>\n';
+      outstring += '</td>\n';
+
+      document.getElementById("userTableBody").innerHTML += outstring;
+      document.addEventListener('keypress', function (e) {
+        if (e.keyCode === 13 || e.which === 13) {
+          save();
+        }
+      });
+    }
+  }
+
+  function save() {
+    var name = document.getElementById("newName").value;
+    var login = document.getElementById("newLogin").value;
+    var password = document.getElementById("newPassword").value;
+
+    if (name == '' || login == '' || password == '') {
+      document.getElementById("alreadyUsed").setAttribute("hidden", true);
+      document.getElementById("missingFields").removeAttribute("hidden");
+    }
+
+    else {
+      document.getElementById("missingFields").setAttribute("hidden", true);
+
+      var valid = true;
+      for (var i = 0; i < logins.length; i++) {
+        if (login == logins[i]) {
+          document.getElementById("alreadyUsed").removeAttribute("hidden");
+          valid = false;
+        }
+      }
+
+      if (valid) {
+        document.getElementById("alreadyUsed").setAttribute("hidden", true);
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", "/postUserEntry");
+        xhr.setRequestHeader("Accept", "application/json");
+        xhr.setRequestHeader("Content-Type", "application/json");
+
+        let data = {
+          "name": name,
+          "login": login,
+          "password": password
+        };
+
+        xhr.send(JSON.stringify(data));
+        getUsers();
+      }
+    }
+  }
+
+  function quit() {
+    document.getElementById("missingFields").setAttribute("hidden", true);
+    document.getElementById("alreadyUsed").setAttribute("hidden", true);
+    document.getElementById("userTable").deleteRow(-1);
+  }
+
+  function edit(rowNum) {
+    var row = document.getElementById("userTableBody").getElementsByTagName('tr')[rowNum].getElementsByTagName('td');
+    row[1].innerHTML = '<input type=\"text\" id=\"changedName\">';
+    row[2].innerHTML = '<input type=\"text\" id=\"changedLogin\">';
+    row[3].innerHTML = '<input type=\"password\" id=\"changedPassword\">';
+
+    var row4 = ''
+    row4 += '<button class=\"btn btn-link\" id=\"saveButton\" onclick=\"saveChanges(';
+    row4 += rowNum + ", " + row[0].innerHTML;
+    row4 += ')\"><i class=\"fa-solid fa-floppy-disk\"></i></button>\n';
+
+    row4 += '<button class=\"btn btn-link\" id=\"cancelButton\" onclick=\"getUsers()\"><i class=\"fa-solid fa-rotate-left\"></i></button>\n';
+
+    row[4].innerHTML = row4;
+
+    document.addEventListener('keypress', function (e) {
+      if (e.keyCode === 13 || e.which === 13) {
+        saveChanges(rowNum, row[0].innerHTML);
+      }
+    });
+  }
+
+  function saveChanges(rowNum, id) {
+    var newName = document.getElementById("changedName").value;
+    var newLogin = document.getElementById("changedLogin").value;
+    var newPassword = document.getElementById("changedPassword").value;
+
+    var valid = true;
+    for (var i = 0; i < logins.length; i++) {
+      if (newLogin == logins[i]) {
+        document.getElementById("alreadyUsed").removeAttribute("hidden");
+        valid = false;
+        edit(rowNum);
+      }
+    }
+
+    if (valid) {
+      document.getElementById("alreadyUsed").setAttribute("hidden", true);
+      let xhr = new XMLHttpRequest();
+      xhr.open("POST", "/updateUser");
+      xhr.setRequestHeader("Accept", "application/json");
+      xhr.setRequestHeader("Content-Type", "application/json");
+
+      let data = {
+        "id": id,
+        "newUser": newName,
+        "newLogin": newLogin,
+        "newPassword": newPassword
+      };
+
+      xhr.send(JSON.stringify(data));
+      getUsers();
+    }
+  }
+
+  function deleteRow(id, user) {
+    var userString = "welcome " + user + "!";
+    if (userString == document.getElementById("username").innerHTML)
+      document.getElementById("currentUser").removeAttribute("hidden");
+
+    else {
+      document.getElementById("currentUser").setAttribute("hidden", true);
+      let xhr = new XMLHttpRequest();
+      xhr.open("POST", "/deleteRow");
+      xhr.setRequestHeader("Accept", "application/json");
+      xhr.setRequestHeader("Content-Type", "application/json");
+
+      let data = {"id": id};
+      xhr.send(JSON.stringify(data));
+      getUsers();
+    }
+  }
+
+  function switchUser(user) {
+    document.getElementById("currentUser").setAttribute("hidden", true);
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "/switch");
+    xhr.setRequestHeader("Accept", "application/json");
+    xhr.setRequestHeader("Content-Type", "application/json");
+
+    let data = {"user": user};
+    xhr.send(JSON.stringify(data));
+    getUsers();
+  }
+
+</script>
+
+</html>

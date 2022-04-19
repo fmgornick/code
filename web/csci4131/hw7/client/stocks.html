@@ -1,0 +1,142 @@
+﻿<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+  <title>My Contacts</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-expanded navbar-light bg-light mb-5">
+    <ul class="nav nav-pills">
+      <li class="nav-item">
+        <a class="nav-link" href="/">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/admin">Admin Page</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/AllContacts">All Contacts</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/MyContacts">My Contacts</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/addContact">Add Contact</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link active" href="/stocks">Stocks Page</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/logout">LOGOUT</a>
+      </li>
+    </ul>
+    <a class="nav-item nav-link ml-auto" id="username" href="/admin"></a>
+  </nav>
+
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <center>Welcome to Stock Page</center>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <table class="table table-bordered table-hover">
+            <tbody>
+              <tr>
+                <td class="col-md-6">Company</td>
+                <td class="col-md-6">
+                  <div class="form-group">
+                    <select name="Company" id="sel">
+                      <option value="MSFT">Microsoft</option>
+                      <option value="BA">Boeing Company</option>
+                      <option value="AAPL">Apple Inc</option>
+                      <option value="AMZN">Amazon</option>
+                      <option value="NVDA">NVIDIA Corporation</option>
+                    </select>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <button type="button" id="butt">Get Data</button>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div>
+        <table class="table" id="StockData">
+          <thead>
+            <tr>
+              <th scope="col">Company-MetaData</th>
+              <th scope="col">Stock-Info</th>
+            </tr>
+          </thead>
+          <tbody id="tBody"></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+
+
+  <script>
+    window.onload = function () {
+      document.getElementById("butt").addEventListener("click", function () {
+        var equity = document.getElementById("sel").value;
+
+        var url = 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=' + equity + '&interval=5min&apikey=4X5TQHQDOKG0C6YP';
+
+        $.ajax({
+          // type: "GET",
+          url: url,
+          contentType: "application/json",
+          dataType: 'json',
+          success: function (data) {
+            var outstring = '<td><textarea class="form-control rounded-0" rows="15">\n';
+            outstring += JSON.stringify(data["Meta Data"], null, '\t') + '\n';
+            outstring += '</textarea></td>\n<td><textarea class="form-control rounded-0" rows="15">\n';
+            outstring += JSON.stringify(data["Time Series (Daily)"], null, '\t') + '\n';
+            outstring += '</td>\n';
+
+            document.getElementById("tBody").innerHTML = outstring;
+          }
+        });
+      });
+      getUsers();
+    }
+
+    function getUsers() {
+      var xmlhttp = new XMLHttpRequest();
+      var url = "getUsers";  // set the url to whatever you name the endpoint (route) in
+      // createServer.js
+
+      xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+          let arr = JSON.parse(xmlhttp.responseText);
+          var user = arr.pop();
+          document.getElementById("username").innerHTML = 'welcome ' + user + '!';
+        }
+      }
+      xmlhttp.open("GET", url, true);
+      xmlhttp.send();
+    }
+  </script>
+</body>
+
+</html>

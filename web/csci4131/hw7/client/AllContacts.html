@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/3320d69e49.js" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+  <title>All Contacts</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-expanded navbar-light bg-light mb-5">
+    <ul class="nav nav-pills">
+      <li class="nav-item">
+        <a class="nav-link" href="/">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/admin">Admin Page</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link active" href="/AllContacts">All Contacts</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/MyContacts">My Contacts</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/addContact">Add Contact</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/stocks">Stocks Page</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/logout">LOGOUT</a>
+      </li>
+      <li class="nav-item">
+        <button class="btn btn-link" onclick="downloadCSV()"><i class="fa-solid fa-file-export"></i></button>
+      </li>
+    </ul>
+    <a class="nav-item nav-link ml-auto" id="username" href="/admin"></a>
+  </nav>
+
+  <div class="container">
+    <table class="table table-striped" id="contactTable">
+      <thead>
+        <tr>
+          <th scope="col">Category</th>
+          <th scope="col">Name</th>
+          <th scope="col">Location</th>
+          <th scope="col">Contact Information</th>
+          <th scope="col">Email</th>
+          <th scope="col">Website</th>
+        </tr>
+      </thead>
+      <tbody id="contactTableBody"></tbody>
+    </table>
+  </div>
+  <script>
+
+    window.onload = function () {
+      var xmlhttp = new XMLHttpRequest();
+      var url = "getContacts";  // set the url to whatever you name the endpoint (route) in
+      // createServer.js
+
+      xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+          let arr = JSON.parse(xmlhttp.responseText);
+          // var contactJsonObject = obj.contact;
+          createNdisplaycontacts(arr);
+        }
+      }
+      xmlhttp.open("GET", url, true);
+      xmlhttp.send();
+
+      getUsers();
+    }
+
+    function createNdisplaycontacts(arr) {
+      if (arr.length > 0) {
+        var outstring = '';
+        for (var i = 0; i < arr.length; i++) {
+          outstring += '<tr>\n';
+          outstring += '<td scope=\"col\">' + arr[i].contact_category + '</td>\n';
+          outstring += '<td scope=\"col\">' + arr[i].contact_name + '</td>\n';
+          outstring += '<td scope=\"col\">' + arr[i].contact_location + '</td>\n';
+          outstring += '<td scope=\"col\">' + arr[i].contact_info + '</td>\n';
+          outstring += '<td scope=\"col\">' + arr[i].contact_email + '</td>\n';
+
+          var url = '<a href=\"' + arr[i].website_url + '\">';
+          url += arr[i].website_title + '</a>';
+
+          outstring += '<td scope=\"col\">' + url + '</td>\n';
+          outstring += '</tr>\n';
+        }
+        document.getElementById("contactTableBody").innerHTML = outstring;
+      }
+    }
+
+    function downloadCSV() {
+      var rows = document.getElementById("contactTableBody").getElementsByTagName('tr');
+
+      var csvText = '\'Name\',\'Category\',\'Location\',\'Contact Information\',\'Email\',\'Website\'\n';
+      for (var i = 0; i < rows.length; i++) {
+        csvText += '\"' + rows[i].getElementsByTagName('td')[1].innerHTML + '\",';
+        csvText += '\"' + rows[i].getElementsByTagName('td')[0].innerHTML + '\",';
+        csvText += '\"' + rows[i].getElementsByTagName('td')[2].innerHTML + '\",';
+        csvText += '\"' + rows[i].getElementsByTagName('td')[3].innerHTML + '\",';
+        csvText += '\"' + rows[i].getElementsByTagName('td')[4].innerHTML + '\",';
+        csvText += '\"' + rows[i].getElementsByTagName('a')[0].href + '\",';
+        csvText += '\n';
+      }
+
+      var element = document.createElement('a');
+      element.setAttribute('href', 'data:text/plain;charset=utf-8, ' + encodeURIComponent(csvText));
+      element.setAttribute('download', "contacts.csv");
+      element.click();
+    }
+
+    function getUsers() {
+      var xmlhttp = new XMLHttpRequest();
+      var url = "getUsers";  // set the url to whatever you name the endpoint (route) in
+      // createServer.js
+
+      xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+          let arr = JSON.parse(xmlhttp.responseText);
+          var user = arr.pop();
+          document.getElementById("username").innerHTML = 'welcome ' + user + '!';
+        }
+      }
+      xmlhttp.open("GET", url, true);
+      xmlhttp.send();
+    }
+  </script>
+</body>
+
+</html>

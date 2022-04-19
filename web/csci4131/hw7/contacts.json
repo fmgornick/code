@@ -1,0 +1,48 @@
+{
+  "academic": [
+    {
+      "name": "CSE-IT Specialist",
+      "location": "Kenneth H. Keller Hall, 200 Union St SE, Minneapolis, MN 55455",
+      "info": "CSE-IT HELP",
+      "email": "cseit@umn.edu",
+      "website_title": "CSE-IT Website",
+      "url": "https://cse.umn.edu/cseit"
+    },
+    {
+      "name": "Dr Challou",
+      "location": "Tate Hall",
+      "info": "4131 professor",
+      "email": "dan@umn.edu",
+      "website_title": "CSE Website",
+      "url": "https://cse.umn.edu/"
+    }
+  ],
+  "industry": [
+    {
+      "name": "Jake the Dog",
+      "location": "ooo",
+      "info": "a dog",
+      "email": "jake@the.dog",
+      "website_title": "Cartoon Network",
+      "url": "https://www.cartoonnetwork.com/"
+    },
+    {
+      "name": "Finn the Human",
+      "location": "ooo",
+      "info": "a human",
+      "email": "finn@the.human",
+      "website_title": "Cartoon Network",
+      "url": "https://www.cartoonnetwork.com/"
+    }
+  ],
+  "personal": [
+    {
+      "name": "Tyler Nelson",
+      "location": "219 SE Eighth Ave APT C",
+      "info": "buddy",
+      "email": "email@email.com",
+      "website_title": "Find the Invisible Cow",
+      "url": "https://findtheinvisiblecow.com/"
+    }
+  ]
+}

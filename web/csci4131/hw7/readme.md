@@ -1,0 +1,3 @@
+command to install all necessary packages...
+
+```npm i xml-js express express-session express-fileupload express-handlebars mysql url body-parser bcrypt```
