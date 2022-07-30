@@ -1,5 +1,5 @@
-*.sty
 *.aux
 *.fdb_latexmk
 *.fls
 *.log
+*.xml
