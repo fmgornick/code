@@ -1,4 +1,4 @@
 /target
 /Cargo.lock
-src/examples/
-src/inputs/
+src/examples/*.txt
+src/inputs/*.txt
