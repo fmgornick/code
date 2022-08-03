@@ -1,2 +1,4 @@
-inputs/*.txt
-examples/*.txt
+/target
+/Cargo.lock
+src/examples/
+src/inputs/
