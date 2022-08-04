@@ -22,13 +22,13 @@ mod tests {
 
     #[test]
     fn pt_one_test() {
-        let input = advent::read_file("examples", 1);
+        let input = advent::read_file("src/examples", 1);
         assert_eq!(part_one(&input), 7)
     }
 
     #[test]
     fn pt_two_test() {
-        let input = advent::read_file("examples", 1);
+        let input = advent::read_file("src/examples", 1);
         assert_eq!(part_two(&input), 5)
     }
 }
