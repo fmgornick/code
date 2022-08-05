@@ -1,32 +1,32 @@
 pub fn part_one(input: &str) -> u32 {
-    let mut depth: u32 = 0;
-    let mut horizontal: u32 = 0;
-    for line in input.lines() {
-        match line.split_once(' ').map(|(d, x)| (d, x.parse::<u32>())) {
-            Some(("forward", Ok(x))) => horizontal += x,
-            Some(("down", Ok(x))) => depth += x,
-            Some(("up", Ok(x))) => depth -= x,
-            _ => print!("error parsing input!!\n"),
-        }
-    }
+    let (depth, horizontal) = input
+        .lines()
+        .map(|line| line.split_once(' ').unwrap())
+        .fold((0, 0), |(depth, horizontal), (direction, val)| {
+            let v: u32 = val.parse::<u32>().unwrap();
+            match direction {
+                "down" => (depth + v, horizontal),
+                "up" => (depth - v, horizontal),
+                "forward" => (depth, horizontal + v),
+                _ => unreachable!(),
+            }
+        });
     depth * horizontal
 }
 
 pub fn part_two(input: &str) -> u32 {
-    let mut aim: u32 = 0;
-    let mut depth: u32 = 0;
-    let mut horizontal: u32 = 0;
-    for line in input.lines() {
-        match line.split_once(' ').map(|(d, x)| (d, x.parse::<u32>())) {
-            Some(("forward", Ok(x))) => {
-                horizontal += x;
-                depth += aim * x;
+    let (_, depth, horizontal) = input
+        .lines()
+        .map(|line| line.split_once(' ').unwrap())
+        .fold((0, 0, 0), |(a, d, h), (dir, val)| {
+            let v: u32 = val.parse::<u32>().unwrap();
+            match dir {
+                "down" => (a + v, d, h),
+                "up" => (a - v, d, h),
+                "forward" => (a, d + a * v, h + v),
+                _ => unreachable!(),
             }
-            Some(("down", Ok(x))) => aim += x,
-            Some(("up", Ok(x))) => aim -= x,
-            _ => print!("error parsing input!!\n"),
-        }
-    }
+        });
     depth * horizontal
 }
 
@@ -35,13 +35,13 @@ mod tests {
     use super::*;
 
     #[test]
-    fn pt_one_test() {
+    fn part_one_test() {
         let input = advent::read_file("src/examples", 2);
         assert_eq!(part_one(&input), 150)
     }
 
     #[test]
-    fn pt_two_test() {
+    fn part_two_test() {
         let input = advent::read_file("src/examples", 2);
         assert_eq!(part_two(&input), 900)
     }

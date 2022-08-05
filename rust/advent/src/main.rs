@@ -27,7 +27,7 @@ pub fn main() {
     match day {
         1 => solve!(day01, &input),
         2 => solve!(day02, &input),
-        // 3 => solve!(day03, &input),
+        3 => solve!(day03, &input),
         // 4 => solve!(day04, &input),
         // 5 => solve!(day05, &input),
         // 6 => solve!(day06, &input),

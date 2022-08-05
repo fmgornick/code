@@ -21,13 +21,13 @@ mod tests {
     use super::*;
 
     #[test]
-    fn pt_one_test() {
+    fn part_one_test() {
         let input = advent::read_file("src/examples", 1);
         assert_eq!(part_one(&input), 7)
     }
 
     #[test]
-    fn pt_two_test() {
+    fn part_two_test() {
         let input = advent::read_file("src/examples", 1);
         assert_eq!(part_two(&input), 5)
     }
