@@ -1,0 +1,105 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amsfonts} 
+\usepackage{amsthm}
+\usepackage{enumitem} 
+\usepackage{mathtools}
+\usepackage[top=2cm,bottom=2cm,left=2.5cm,right=2.5cm,marginparwidth=1.75cm]{geometry}
+\setlength{\parindent}{0cm}
+
+\newtheorem{theorem}{Theorem}
+
+\title{\vspace{-1.0cm}MATH 5615H Homework 1}
+\author{Fletcher Gornick}
+\date{September 7, 2022}
+
+\begin{document}
+ \maketitle
+
+ 1) Let \(x < y\) be distinct real numbers.  Prove that there exists an irrational number \(\alpha\) with
+ \(x < \alpha < y\).  (No cardinality argument allowed!)
+ \newpage
+
+ 2) Sketch the subsets of the \((x,y)\) plane \(\mathbb{R}^2\) specified by each of the following inequalities.
+ Explain your reasoning clearly.
+
+ \begin{enumerate}[label=(\roman*)]
+   \item \(x^2 + y^2 - 5 \leq 4x\)
+   \item \(|x^2 + y^2 - 5| \leq 4x\)
+   \item \(x^2 + y^2 - 5 \leq |4x|\)
+   \item \(|x^2 + y^2 - 5| \leq |4x|\)
+ \end{enumerate}
+ \newpage
+
+ 3) Suppose that \(f : \mathbb{R} \rightarrow \mathbb{R}\) is a function such that, for all \(x,y \in \mathbb{R}\),
+ we have \(f(x+y) = f(x) + f(y)\) and \(f(xy) = f(x) \cdot f(y)\).  Prove that either:
+
+ \begin{enumerate}[label=(\roman*)]
+   \item For all \(x \in \mathbb{R}\), \(f(x) = 0\); or
+   \item For all \(x \in \mathbb{R}\), \(f(x) = x\)
+ \end{enumerate}
+ (At some point in your argument, the fact that every positive real number has a real square root will be essential.)
+ \newpage
+
+ 4) For each finite list \(x_1, x_2, \dots, x_N\) of strictly positive real numbers, we set 
+ \begin{align*}
+   A_N (x_1, x_2, \dots, x_N) &= \frac{1}{N}(x_1 + x_2 + \dots + x_N) \quad \text{the ``arithmetic mean'' and} \\
+   G_N (x_1, x_2, \dots, x_N) &= \frac{1}{N}(x_1 \cdot x_2 \cdot \ldots \cdot x_N)^\frac{1}{N} \quad
+   \text{the ``geometric mean''.}
+ \end{align*}
+
+ It is always true that \(G_N (x_1, x_2, \dots, x_N) \leq A_N (x_1, x_2, \dots, x_N)\) and equality holds if and only 
+ if \(x_1 = x_2 = \ldots = x_N\).  Two proofs of this fact are developed below.
+
+ \begin{enumerate}[label=(\roman*)]
+  \item \begin{proof}
+     For each list \(x_1, x_2, \dots, x_N\), we let \(d(x_1, x_2, \dots, x_N)\) be the number of indicies \(l\) for which 
+     \(x_l \neq A_N (x_1, x_2, \dots, x_N)\).  If \(d(x_1, x_2, \dots, x_N) > 0\), then there must be two indicies \(i\) 
+     and \(j\) such that \(x_i < A_N (x_1, x_2, \dots, x_N) < x_j\).  Why?  If we select two such indicies \(i\) and \(j\), 
+     and form a new list \(x'_1, x'_2, \dots, x'_N\) by setting \(x'_l = x_l\) for \(l \neq i,j\) and 
+     \(x'_i = A_N (x_1, x_2, \dots, x_N)\) and \(x'_j = x_i + x_j - A_N (x_1, x_2, \dots, x_N)\) then\dots
+
+     \begin{enumerate}[label=(\alph*)]
+       \item \(x'_1, x'_2, \dots, x'_N\) is again a list of strictly positive real numbers.
+       \item For the two indicies \(i\) and \(j\) we chose, \(x'_i + x'_j = x_i + x_j\) and \(x'_i x'_j > x_i x_j\).
+     \end{enumerate}
+
+     Therefore, 
+     \begin{align*}
+       A_N (x'_1, x'_2, \dots, x'_N) &= A_N (x_1, x_2, \dots, x_N) \\
+       G_N (x'_1, x'_2, \dots, x'_N) &> G_N (x_1, x_2, \dots, x_N) \\
+       d_N (x'_1, x'_2, \dots, x'_N) &< d_N (x_1, x_2, \dots, x_N).
+     \end{align*}
+   \end{proof}
+     Explain why (a) and (b) are true, then use this to fashion one proof, using ``complete induction'' on the size of 
+     \(d(x_1, x_2, \dots, x_N)\).
+
+  \item \begin{proof}
+    A second proof establishes our result first for lists whose length is a power of 2, and then deduces the general case.
+    \begin{enumerate}[label=(\alph*)]
+      \item Check directly that if \(x_1\) and \(x_2\) are positive, then \(\frac{1}{2}(x_1 + x_2) \geq \sqrt{x_1 x_2}\), 
+        and that equality holds if and only if \(x_1 = x_2\).  This is our result for lists of length 2.
+
+      \item Now let \(k \geq 1\) be an integer.  For each list \(x_1, x_2, \dots, x_{2^{k+1}}\), check that
+        \begin{align*}
+          A_{2^{k+1}}(x_1, x_2, \dots, x_{2^{k+1}}) &= A_2 (A_{2^k} (x_1, \dots, x_{2^k}), 
+          A_{2^k} (x_{2^k + 1}, \dots, x_{2^{k+1}})) \quad \text{and} \\
+          G_{2^{k+1}}(x_1, x_2, \dots, x_{2^{k+1}}) &= G_2 (G_{2^k} (x_1, \dots, x_{2^k}), 
+          G_{2^k} (x_{2^k + 1}, \dots, x_{2^{k+1}}))
+        \end{align*}
+        Use this and (a) to prove, by induction on \(l\), that for all \(l \geq 1\), and lists \(x_1, x_2, \dots, x_{2^l}\)
+        \begin{align*}
+          A_{2^l} (x_1, x_2, \dots, x_{2^l}) \geq G_{2^l} (x_1, x_2, \dots, x_{2^l})
+        \end{align*}
+        with equality if and only if \(x_1 = x_2 = \ldots = x_{2^l}\).
+
+        
+      \item Let \(x_1, x_2, \dots, x_N\) be a list of arbitrary positive length \(N\), and select a positive integer \(l\)
+        such that \(2^l > N\).  By considering the list \(x'_1, x'_2, \dots, x'_{2^l}\) of length \(2^l\) formed by setting 
+        \(x'_j = x_j\) for \(1 \leq j \leq N\) and \(x'_j = A_N(x_1, \dots, x_N)\) for \(N+1 \leq j \leq 2^l\), deduce the 
+        general result.
+    \end{enumerate}
+  \end{proof}
+ \end{enumerate}
+\end{document}
