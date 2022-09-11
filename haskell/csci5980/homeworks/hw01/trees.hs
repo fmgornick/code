@@ -3,6 +3,8 @@ data Tree a
   | Node a (Tree a) (Tree a)
   deriving (Eq, Show)
 
+------------------------ SAMPLE INPUT ------------------------
+--------------------------------------------------------------
 int_tree =
   Node
     3
@@ -41,6 +43,11 @@ strs_tree =
         (Node [] Empty Empty)
     )
 
+--------------------------------------------------------------
+--------------------------------------------------------------
+
+--------------------------- PART 3 ---------------------------
+--------------------------------------------------------------
 size :: Tree a -> Int
 size Empty = 0
 size (Node _ l r) = 1 + size l + size r
@@ -61,6 +68,11 @@ concat :: Tree String -> String
 concat Empty = ""
 concat (Node str l r) = str ++ Main.concat l ++ Main.concat r
 
+--------------------------------------------------------------
+--------------------------------------------------------------
+
+--------------------------- PART 4 ---------------------------
+--------------------------------------------------------------
 list_tree_size :: Tree [a] -> Int
 list_tree_size Empty = 0
 list_tree_size (Node xs l r) = length xs + list_tree_size l + list_tree_size r
@@ -81,14 +93,44 @@ list_tree_concat :: Tree [String] -> String
 list_tree_concat Empty = ""
 list_tree_concat (Node xs l r) = foldr (++) "" xs ++ list_tree_concat l ++ list_tree_concat r
 
-tree_foldr :: (a -> b -> b) -> b -> Tree a -> b
-tree_foldr f acc t = case t of
-  Empty -> acc
-  -- Node x l r -> tree_foldr f (f x (tree_foldr f acc r)) l
-  Node x l r -> tree_foldr f (tree_foldr f (f x acc) r) l
+--------------------------------------------------------------
+--------------------------------------------------------------
 
-tree_foldl :: (a -> b -> a) -> a -> Tree b -> a
-tree_foldl f acc t = case t of
-  Empty -> acc
-  -- Node x l r -> tree_foldl f (f (tree_foldl f acc l) x) r
-  Node x l r -> tree_foldl f (tree_foldl f (f acc x) l) r
+--------------------------- PART 5 ---------------------------
+--------------------------------------------------------------
+fold_tree :: (a -> b -> b) -> b -> Tree a -> b
+fold_tree _ acc Empty = acc
+fold_tree f acc (Node x l r) = fold_tree f (fold_tree f (f x acc) l) r
+
+size_r :: Tree a -> Int
+size_r = fold_tree (\_ acc -> acc + 1) 0
+
+sum_r :: Num a => Tree a -> a
+sum_r = fold_tree (flip (+)) 0
+
+product_r :: Num a => Tree a -> a
+product_r = fold_tree (flip (*)) 1
+
+charcount_r :: Tree String -> Int
+charcount_r = fold_tree (\str acc -> acc + length str) 0
+
+concat_r :: Tree String -> String
+concat_r = fold_tree (flip (++)) ""
+
+list_tree_size_r :: Tree [a] -> Int
+list_tree_size_r = fold_tree (\list acc -> acc + foldr (\_ acc -> acc + 1) 0 list) 0
+
+list_tree_sum_r :: Tree [Int] -> Int
+list_tree_sum_r = fold_tree (\list acc -> acc + foldr (\x acc -> acc + x) 0 list) 0
+
+list_tree_product_r :: Tree [Int] -> Int
+list_tree_product_r = fold_tree (\list acc -> acc * foldr (\x acc -> acc * x) 1 list) 1
+
+list_tree_charcount_r :: Tree [String] -> Int
+list_tree_charcount_r = fold_tree (\list acc -> acc + foldr (\str acc -> acc + length str) 0 list) 0
+
+list_tree_concat_r :: Tree [String] -> String
+list_tree_concat_r = fold_tree (\list acc -> acc ++ foldr (++) "" list) ""
+
+--------------------------------------------------------------
+--------------------------------------------------------------
