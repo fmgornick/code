@@ -1,0 +1,51 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amsfonts} 
+\usepackage{amsthm}
+\usepackage{enumitem} 
+\usepackage{mathtools}
+\usepackage[top=2cm,bottom=2cm,left=2.5cm,right=2.5cm,marginparwidth=1.75cm]{geometry}
+\setlength{\parindent}{0cm}
+
+\newtheorem{theorem}{Theorem}
+
+\title{\vspace{-1.0cm}MATH 5615H Homework 2}
+\author{Fletcher Gornick}
+\date{September 15, 2022}
+
+\begin{document}
+ \maketitle
+  1) Let \(\epsilon > 0\) be a strictly positive real number. \\
+  \begin{enumerate}[label=(\roman*)]
+    \item Let \(z_0\) and \(w_0\) be complex numbers.  Prove that for all complex numbers \(z\) and \(w\),
+      \[
+        \text{if} \quad |z - z_0| < \frac{\epsilon}{2} \;\; 
+        \text{and} \;\; |w - w_0| < \frac{\epsilon}{2} \quad 
+        \text{then} \quad |(z + w) - (z_0 + w_0)| < \epsilon.
+      \] \\
+
+      In doing parts (ii) and (iii) below, the inequality \(\big||a| - |b|\big| \leq |a - b|\) for all \(a, b \in \mathbb{C}\)
+      will be helpful.
+
+    \item Let \(z_0\) and \(w_0\) be complex numbers.  Prove that, for all complex numbers \(z\) and \(w\),
+      \[
+        \text{if} \quad |z - z_0| < \min\Big(1, \frac{\epsilon}{2(1 + |w_0|)}\Big) \;\;
+        \text{and} \;\; |w - w_0| < \min\Big(1, \frac{\epsilon}{2(1 + |z_0|)}\Big) \quad
+        \text{then} \quad |zw - z_0w_0| < \epsilon.
+      \] \\
+
+    \item Let \(z_0 \neq 0\) be a non-zero complex number.  For all complex numbers \(z\), prove that
+      \[
+        \text{if} \quad |z - z_0| < \min\bigg(\frac{|z_0|}{2}, \frac{\epsilon|z_0|^2}{2}\bigg) \quad
+        \text{then} \quad z \neq 0 \;\; \text{and} \;\; \Big|\frac{1}{z} - \frac{1}{z_0}\Big| < \epsilon.
+      \] \\
+  \end{enumerate}
+  \newpage
+
+  2) Let \(a\), \(b\), \(\mu\), and \(\lambda\) be real numbers \(> 0\), with \(\lambda + \mu = 1\).  Prove that
+  \[a^\lambda b^\mu \leq \lambda a + \mu b.\]
+  (What in your previous work tells you this inequality is true when, in addition, \(\lambda\) and \(\mu\) are rational 
+  numbers?)
+
+\end{document}
