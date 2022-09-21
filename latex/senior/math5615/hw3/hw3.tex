@@ -1,0 +1,129 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amsfonts} 
+\usepackage{amsthm}
+\usepackage{enumitem} 
+\usepackage{mathtools}
+\usepackage[top=2cm,bottom=2cm,left=2.5cm,right=2.5cm,marginparwidth=1.75cm]{geometry}
+\setlength{\parindent}{0cm}
+
+\newtheorem{theorem}{Theorem}
+
+\title{\vspace{-1.0cm}MATH 5615H Homework 3}
+\author{Fletcher Gornick}
+\date{September 23, 2022}
+
+\begin{document}
+ \maketitle
+ \begin{enumerate}[leftmargin=0pt, label=\arabic*)]
+ \item if \(s_1 = \sqrt{2}\), and \(s_{n+1} = \sqrt{2 + \sqrt{s_n}} \;\; (n = 1,2,3,\dots)\),
+ prove that \(\{s_n\}\) converges, and that \(s_n < 2\) for \(n = 1, 2, 3, \dots\).
+ \newpage
+
+ \item Fix a positive number \(\alpha\).  Choose \(x_1 > \sqrt{\alpha}\), and define 
+ \(x_2, x_3, x_4, \dots\), by the recursion formula
+ \[x_{n+1} = \frac{1}{2}\bigg(x_n + \frac{\alpha}{x_n}\bigg).\]
+
+ \begin{enumerate}[label=(\alph*)]
+   \item Prove that \(\{x_n\}\) decreases monotonically and that \(\lim x_n = \sqrt{\alpha}\).
+   \item Put \(\epsilon_n = x_n - \sqrt{\alpha}\), and show that
+     \[\epsilon_{n+1} = \frac{\epsilon_n^2}{2x_n} < \frac{\epsilon_n^2}{2\sqrt{\alpha}}\]
+     so that setting \(\beta = 2 \sqrt{\alpha}\),
+     \[\epsilon_{n+1} < \beta\bigg(\frac{\epsilon_1}{\beta}\bigg)^{2^n} \quad (n = 1, 2, 3, \dots).\]
+
+   \item This is a good algorithm for computing square roots, since the recursion formula is simple and the 
+     convergence is extremely rapid.  For example, if \(\alpha = 3\) and \(x_1 = 2\), show that 
+     \(\epsilon/\beta < \frac{1}{10}\) and that therefore
+     \[\epsilon_5 < 4 \cdot 10^{-16}, \quad \epsilon_6 < 4 \cdot 10^{-32}.\]
+ \end{enumerate}
+ \newpage
+
+ \item Fix \(\alpha > 1\). Take \(x_1 > \sqrt{\alpha}\), and define
+ \[x_{n+1} = \frac{\alpha + x_n}{1 + x_n} = x_n + \frac{\alpha - x_n^2}{1 + x_n}\]
+
+ \begin{enumerate}[label=(\alph*)]
+   \item Prove that \(x_1 > x_3 > x_5 > \dots\).
+   \item Prove that \(x_2 < x_4 < x_6 < \dots\).
+   \item Prove that \(\lim x_n = \sqrt{\alpha}\).
+   \item Compare the rapidity of convergence of this process with the one described in the previous problem.
+ \end{enumerate}
+ \newpage
+
+ \item As is usual, for each real number \(t\) we write \([t]\) for the greatest integer \(\leq t\), e.g. 
+ \([\pi] = 3\) and \([-\pi] = -4\).  Observe that, for all real numbers \(s\) and \(t\), 
+ \(((s - [s]) = (t - [t])) \Leftrightarrow (s - t \text{ is an integer})\).  In particular, \(t - [t]\) is 
+ the unique real number \(x \in [0,1)\) such that \(t-x\) is an integer. \\
+
+ Fix an irrational number \(\alpha \in \mathbb{R}\), and define a sequence \(\{x_n\}_{n \geq 1}\) by 
+ setting, for each integer \(n \geq 1\), 
+ \[x_n = n\alpha - [n\alpha].\]
+
+ \begin{enumerate}[label=(\roman*)]
+   \item Check that \(\{x_n\}_{n \geq 1}\) is a sequence of distinct (that is, \(m \neq n \Rightarrow 
+     x_m \neq x_n\)) irrational numbers in the interval \((0,1)\). \\
+
+     Let \(N \geq 3\) be an integer, and partition the interval \([0,1]\) into \(N\) consecutive subintervals
+     \(I_1^N \cup I_2^N \cup \dots \cup I_N^N\) of length \(1/N\) by setting
+     \[I_j^N = \bigg[\Big(\frac{j-1}{N}\Big), \Big(\frac{j}{N}\Big) \bigg] \quad \text{for } 1 \leq j \leq N.\]
+
+     Of course, the union \(I_1^N \cup I_2^N \cup \dots \cup I_N^N\) is equal to \([0,1]\), and for distinct 
+     indicies \(j < k\), the intersection \(I_j^N \cap I_k^N\) is empty unless \(k = j+1\), in which case 
+     theis intersection consists of the single rational number \(j/N\).  Thus, by (i), each term \(x_n\) of 
+     our sequence lies in a unique subinterval \(I_j^N\).  Indeed, \(x_n\) lies in the interior 
+     \(\Big(\frac{j-1}{N}, \frac{j}{N}\Big)\) of that interval.
+
+     
+   \item Prove that at least one of the first \(N-1\) terms \(x_1, x_2, \dots, x_{N-1}\) of our sequence 
+     lies either in the first subinterval \(I_1^N = \Big[0,\frac{1}{N}\Big]\) or in the last subinterval 
+     \(I_1^N = \Big[1-\frac{1}{N},1\Big]\). (If not, why must some subinterval \(I_l^N\) with
+     \(2 \leq l \leq N-1\) contain two distinct terms \(x_j\) and \(x_k\) with \(1 \leq j < k < N-1\)? 
+     If this is true, what then can you say about \(x_{(k-j)}\)?)
+
+   \item Suppose that \(p \geq 1\) is an index such that \(x_p \in I_1^N\), and consider the subsequence 
+     \(\{x_{l_p}\}_{l \geq 1}\) of our original sequence.  Prove the following statements about it's 
+     behavior:  Suppose that the term \(x_{l_p}\) lies in the \(j\)th subinterval \(I_j^N\).  If \(j < N\),
+     then the nexy term  \(x_{(l+1)_p}\) lies either again in \(I_j^N\) or the next subinterval \(I_{j+1}^N\). 
+     If \(j = N\), then \(x_{(l+1)_p}\) lies either again in \(I_N^N\) or in the first subinterval \(I_1^N\). 
+     Moreover, at most \(1 + [1/(Nx_p)]\) consecutive terms of the subsequence \(\{x_{l_p}\}_{l \geq 1}\), 
+     can lie in any one subinterval \(I_k^N\).  (First observe and explain why \(
+     x_{(l+1)_p} = x_{l_p} + x_p - [x_{l_p} + x_p]\).)
+
+   \item Suppose that \(p \geq 1\) is an index such that \(x_p \in I_N^N\), and again consider the 
+     subsequence \(\{x_{l_p}\}_{l \geq 1}\).  Prove the following statements: Suppose that the term 
+     \(x_{l_p}\) lies in the \(j\)th subinterval \(I_j^N\).  If \(j > 1\), then the next term \(x_{(l+1)_p}\) 
+     lies either again in \(I_j^N\) or in the previous subinterval \(I_{j-1}^N\).  If \(j = 1\), then 
+     \(x_{(l+1)_p}\) lies either again in \(I_1^N\) or in the last subinterval \(I_N^N\).  At most 
+     \(1 + [1/(N(1 - x_p))]\) consecutive terms of the subsequence \(\{x_{l_p}\}_{l \geq 1}\) can lie in 
+     one subinterval \(I_k^N\).  (First observe and explain why \(x_{(l+1)_p} = x_{l_p} - (1 - x_p) - 
+     [x_{l_p} - (1 - x_p)]\).)
+
+   \item Let \(a < b\) be distinct real numbers in \([0,1]\). Prove that there are infinitely many indicies 
+     \(n\) for which \[a < x_n < b.\]
+
+    
+   \item Prove that there are infinitely many positive integers \(n\) such that the first seven digits (
+     counting from the left) of the usual (base 10) expression of \(2^n\) are \(7777777\dots\) .
+     (Why is \(\log_{10}(2)\) an irrational number? Why does \(n\log_{10}(2) - [n\log_{10}(2)]\) specify 
+     the digits of \(2^n\)?)
+     \newpage
+
+   \item Also deduce from (ii) the following statement: Let \(\alpha\) be an irrational number.  Then there 
+     exists a sequence \(\big\{\frac{p_l}{q_l}\big\}_{l \geq 1}\) of rational numbers (\(p_l \in \mathbb{Z}, 
+     q_l \in \mathbb{N^+}\)) with strictly increasing denominators 
+     \[1 \leq q_1 < q_2 < \hdots < q_l < q_{l+1} < \hdots\]
+     such that 
+     \[0 < \Big|\alpha - \frac{p_l}{q_l}\Big| < \frac{1}{q_l(q_l + 1)} \quad \text{for all } l \geq 1.\]
+  \end{enumerate}
+  \newpage
+
+  \item As is usual, for all strictly positive real exponents \(\lambda > 0\), we set \(0^\lambda = 0\).
+
+    Let \(\alpha\) be a real number with \(0 < \alpha < 1\).  Let \(\{x_n\}_{n \geq 0}\) be a sequence of 
+    real numbers, all \(\geq 0\), which converges to a real number \(L \geq 0\).  Prove that 
+    \[\lim_{n \to \infty} (x_n)^\alpha = L^\alpha.\]
+    (You may want to treat separately the cases \(L = 0\) and \(L > 0\).)
+
+
+ \end{enumerate}
+\end{document}
