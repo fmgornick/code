@@ -1,0 +1,67 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amsfonts} 
+\usepackage{amsthm}
+\usepackage{enumitem} 
+\usepackage{mathtools}
+\usepackage[top=2cm,bottom=2cm,left=2.5cm,right=2.5cm,marginparwidth=1.75cm]{geometry}
+\setlength{\parindent}{0cm}
+
+\newtheorem{theorem}{Theorem}
+
+\title{\vspace{-1.0cm}MATH 5615H Homework 4}
+\author{Fletcher Gornick}
+\date{September 26, 2022}
+
+\begin{document}
+ \maketitle
+ \begin{enumerate}[leftmargin=0pt, label=\arabic*)]
+   \item Let \(\{x_n\}_{n \geq 1}\) be a sequence of real numbers such that, for all indicies \(m, n \geq 1\), we have 
+     \[x_{m+n} \geq x_m + x_n.\]
+
+     Form an associated sequence \(\{y_n\}_{n \geq 1}\) by setting \(y_n = \frac{x_n}{n}\) for all \(n \geq 1\), and consider the set 
+     \(A = \{y_n \;|\; n \geq 1\}\) of real numbers which are its values.  Prove that:
+     \begin{enumerate}[label=(\roman*)]
+       \item If \(A\) is bounded above, then \(\{y_n\}_{n \geq 1}\) converges to \(\sup(A)\).
+
+       \item If \(A\) is not bounded above, then \(\displaystyle\lim_{n \to \infty} y_n = +\infty\).  
+
+         Warning: The sequence \(\{y_n\}_{n \geq 1}\) is not necessarily monotone.  A simple example is \(x_n = [n/5]\), so
+         \(\{y_n\}_{n \geq 1}\) is \(0,0,0,0,\frac{1}{5}, \frac{1}{6}, \frac{1}{7}, \frac{1}{8}, \frac{1}{9}, \frac{2}{10},
+         \frac{2}{11}, \frac{2}{12}, \frac{2}{13}, \frac{2}{14}, \frac{3}{15}, \frac{3}{16}, \dots\)
+     \end{enumerate}
+     \newpage
+     
+   \item Select a real number \(x_0\) with \(0 < x_0 < 1\), and use this to define a real sequence \(\{x_n\}_{n \geq 0}\) 
+     inductively by setting \(x_{n+1} = x_n - x_n^3\) for all \(n \geq 0\).
+     \begin{enumerate}[label=(\roman*)]
+       \item Prove that \(\{x_n\}_{n \geq 0}\) is a strictly decreasing sequence in the open interval \((0,1)\), and that 
+         \(\displaystyle\lim_{n \to \infty} x_n = 0\).
+
+       \item Prove that the sequence \(\Big\{\frac{1}{x_{n+1}^2} - \frac{1}{x_n^2}\Big\}_{n \geq 0}\) converges, and find (with 
+         proof) its limit.
+         
+       \item Evaluatee (with proof) the limit of the sequence \(\Big\{\frac{1}{(n+1)x_n^2}\Big\}_{n \geq 0}\) and then do the 
+         same for the sequence \(\{\sqrt{n}x_n\}_{n \geq 0}\).
+
+         Hint: \(\frac{1}{x_n^2} = \Big(\frac{1}{x_n^2} - \frac{1}{x_{n-1}^2}\Big) + \Big(\frac{1}{x_{n-1}^2} - 
+         \frac{1}{x_{n-2}^2}\Big) + \dots + \Big(\frac{1}{x_1^2} - \frac{1}{x_0^2}\Big) + \frac{1}{x_0^2}\)
+     \end{enumerate}
+     \newpage
+     
+   \item For each of the series of real non-negative terms listed below, decide (with proof) whether that series converges:
+   \begin{enumerate}
+     \item \(\displaystyle\sum_{n=1}^{\infty} \Big(\sqrt{n^4 + 1} - n^2\Big)\)
+
+     \item \(\displaystyle\sum_{n=1}^{\infty} \frac{1}{n^{1+\frac{1}{n}}}\)
+
+     \item \(\displaystyle\sum_{n=1}^{\infty} \frac{1}{(n!)^{\frac{1}{n}}} \quad\) (what does the AM-GM inequality tell you here?)
+
+     \item \(\displaystyle\sum_{n=1}^{\infty} \frac{a_n}{n} \quad \text{where} \;\; a_n = \begin{cases}
+       1, & \text{if 7 is not one of the digits in the usual (base 10) expression of n.} \\
+       0, & \text{if 7 is one of the digits of n.} \\
+     \end{cases}\)
+   \end{enumerate}
+ \end{enumerate}
+\end{document}
