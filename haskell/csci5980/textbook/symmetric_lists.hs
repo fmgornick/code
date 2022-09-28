@@ -1,11 +1,7 @@
 type SymList a = ([a], [a])
 
-toSL :: [a] -> SymList a
-toSL [] = ([], [])
-toSL xs = (us, reverse vs) where (us, vs) = splitAt (length xs `div` 2) xs
-
-fromSL :: SymList a -> [a]
-fromSL (xs, ys) = xs ++ reverse ys
+nilSL :: SymList a
+nilSL = ([], [])
 
 consSL :: a -> SymList a -> SymList a
 consSL x (xs, ys) = if null ys then ([x], xs) else (x : xs, ys)
@@ -32,3 +28,13 @@ initSL (xs, ys)
   | otherwise = (xs, tail ys)
   where
     (us, vs) = splitAt (length xs `div` 2) xs
+
+toSL :: [a] -> SymList a
+toSL [] = ([], [])
+toSL xs = (us, reverse vs) where (us, vs) = splitAt (length xs `div` 2) xs
+
+toSLBetter :: [a] -> SymList a
+toSLBetter = foldr consSL nilSL
+
+fromSL :: SymList a -> [a]
+fromSL (xs, ys) = xs ++ reverse ys
