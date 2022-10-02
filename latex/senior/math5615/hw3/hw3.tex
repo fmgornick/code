@@ -23,14 +23,14 @@
 
  \item Fix a positive number \(\alpha\).  Choose \(x_1 > \sqrt{\alpha}\), and define 
  \(x_2, x_3, x_4, \dots\), by the recursion formula
- \[x_{n+1} = \frac{1}{2}\bigg(x_n + \frac{\alpha}{x_n}\bigg).\]
+ \[x_{n+1} = \frac{1}{2}\left(x_n + \frac{\alpha}{x_n}\right).\]
 
  \begin{enumerate}[label=(\alph*)]
    \item Prove that \(\{x_n\}\) decreases monotonically and that \(\lim x_n = \sqrt{\alpha}\).
    \item Put \(\epsilon_n = x_n - \sqrt{\alpha}\), and show that
      \[\epsilon_{n+1} = \frac{\epsilon_n^2}{2x_n} < \frac{\epsilon_n^2}{2\sqrt{\alpha}}\]
      so that setting \(\beta = 2 \sqrt{\alpha}\),
-     \[\epsilon_{n+1} < \beta\bigg(\frac{\epsilon_1}{\beta}\bigg)^{2^n} \quad (n = 1, 2, 3, \dots).\]
+     \[\epsilon_{n+1} < \beta\left(\frac{\epsilon_1}{\beta}\right)^{2^n} \quad (n = 1, 2, 3, \dots).\]
 
    \item This is a good algorithm for computing square roots, since the recursion formula is simple and the 
      convergence is extremely rapid.  For example, if \(\alpha = 3\) and \(x_1 = 2\), show that 
@@ -65,18 +65,18 @@
 
      Let \(N \geq 3\) be an integer, and partition the interval \([0,1]\) into \(N\) consecutive subintervals
      \(I_1^N \cup I_2^N \cup \dots \cup I_N^N\) of length \(1/N\) by setting
-     \[I_j^N = \bigg[\Big(\frac{j-1}{N}\Big), \Big(\frac{j}{N}\Big) \bigg] \quad \text{for } 1 \leq j \leq N.\]
+     \[I_j^N = \left[\left(\frac{j-1}{N}\right), \left(\frac{j}{N}\right) \right] \quad \text{for } 1 \leq j \leq N.\]
 
      Of course, the union \(I_1^N \cup I_2^N \cup \dots \cup I_N^N\) is equal to \([0,1]\), and for distinct 
      indicies \(j < k\), the intersection \(I_j^N \cap I_k^N\) is empty unless \(k = j+1\), in which case 
      theis intersection consists of the single rational number \(j/N\).  Thus, by (i), each term \(x_n\) of 
      our sequence lies in a unique subinterval \(I_j^N\).  Indeed, \(x_n\) lies in the interior 
-     \(\Big(\frac{j-1}{N}, \frac{j}{N}\Big)\) of that interval.
+     \(\left(\frac{j-1}{N}, \frac{j}{N}\right)\) of that interval.
 
      
    \item Prove that at least one of the first \(N-1\) terms \(x_1, x_2, \dots, x_{N-1}\) of our sequence 
-     lies either in the first subinterval \(I_1^N = \Big[0,\frac{1}{N}\Big]\) or in the last subinterval 
-     \(I_1^N = \Big[1-\frac{1}{N},1\Big]\). (If not, why must some subinterval \(I_l^N\) with
+     lies either in the first subinterval \(I_1^N = \left[0,\frac{1}{N}\right]\) or in the last subinterval 
+     \(I_1^N = \left[1-\frac{1}{N},1\right]\). (If not, why must some subinterval \(I_l^N\) with
      \(2 \leq l \leq N-1\) contain two distinct terms \(x_j\) and \(x_k\) with \(1 \leq j < k < N-1\)? 
      If this is true, what then can you say about \(x_{(k-j)}\)?)
 
@@ -113,7 +113,7 @@
      q_l \in \mathbb{N^+}\)) with strictly increasing denominators 
      \[1 \leq q_1 < q_2 < \hdots < q_l < q_{l+1} < \hdots\]
      such that 
-     \[0 < \Big|\alpha - \frac{p_l}{q_l}\Big| < \frac{1}{q_l(q_l + 1)} \quad \text{for all } l \geq 1.\]
+     \[0 < \left|\alpha - \frac{p_l}{q_l}\right| < \frac{1}{q_l(q_l + 1)} \quad \text{for all } l \geq 1.\]
   \end{enumerate}
   \newpage
 
