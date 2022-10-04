@@ -1,0 +1,58 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amsfonts} 
+\usepackage{amsthm}
+\usepackage{enumitem} 
+\usepackage{mathtools}
+\usepackage[top=2cm,bottom=2cm,left=2.5cm,right=2.5cm,marginparwidth=1.75cm]{geometry}
+\setlength{\parindent}{0cm}
+
+\newtheorem{theorem}{Theorem}
+
+\title{\vspace{-1.0cm}MATH 5615H Homework 5}
+\author{Fletcher Gornick}
+\date{October 5, 2022}
+
+\begin{document}
+ \maketitle
+ \begin{enumerate}[leftmargin=0pt, label=\arabic*)]
+    \item Prove that the convergence of \(\sum a_n\) implies the convergence of 
+      \[\sum \frac{\sqrt{a_n}}{n},\]
+      if \(a_n \geq 0\).
+      \newpage
+
+    \item If \(\sum a_n\) converges, and if \(\{b_n\}\) is monotonic and bounded, prove that 
+      \(\sum a_n b_n\) converges.
+      \newpage
+
+    \item Let \(\{b_n\}_{n \geq 1}\) be a monotonic decreasing sequence of nonnegative real numbers.
+      Prove \[\text{If} \;\; \sum_{n=1}^{\infty}b_n \;\; \text{converges, then} 
+      \lim_{n \to \infty} nb_n = 0.\]
+      (The conclusion \(\displaystyle\lim_{n \to \infty} \left(\frac{n}{2}\right)b_n\)) is equivalent,
+      but more suggestive.  The crux of the problem is to show that the limit exists at all).  Give an 
+      example to show that the converse is false.
+      \newpage
+
+    \item Let \(\beta\) be a real number, and consider the series
+      \[
+        \sum_{n=1}^{\infty}\frac{a_n}{n} \;\; \text{where} \;\; a_n=
+        \begin{cases}
+          3, &\text{ if } n = 1 \mod 3 \\
+          4, &\text{ if } n = 2 \mod 3 \\
+          \beta, &\text{ if } n = 0 \mod 3 \\
+          
+        \end{cases}
+      \]
+      Let \(B\) be the set of all real numbers \(\beta\) for which this series is convergent.  Find, with 
+      proof, all elements of \(B\), or else prove that \(B\) is the empty set.
+      \newpage
+
+    \item Let \(\{z_n\}_{n \geq 0}\) be a complex sequence convergent to a complex number \(L\).  As usual, 
+      if \(N\) and \(l\) are integers with \(0 \leq l \leq N\), we write 
+      \(\begin{pmatrix} N \\ l \end{pmatrix}\) for the binomial coefficient 
+      \(\begin{pmatrix} N \\ l \end{pmatrix} = \left( \displaystyle\frac{N!}{l!(N-l)!} \right)\), where 
+      \(0!=1\).  Prove that
+      \[\lim_{N \to \infty} 2^{-N} \left( \sum_{l=0}^{N} \begin{pmatrix} N \\ l \end{pmatrix} z_l \right) = L\]
+ \end{enumerate}
+\end{document}
