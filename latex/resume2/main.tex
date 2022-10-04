@@ -1,0 +1,371 @@
+%%%%%%%%%%%%%%%%%
+% This is an sample CV template created using altacv.cls
+% (v1.3, 10 May 2020) written by LianTze Lim (liantze@gmail.com). Now compiles with pdfLaTeX, XeLaTeX and LuaLaTeX.
+%
+%% It may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%    http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2003/12/01 or later.
+%%%%%%%%%%%%%%%%
+
+%% If you need to pass whatever options to xcolor
+\PassOptionsToPackage{dvipsnames}{xcolor}
+
+%% If you are using \orcid or academicons
+%% icons, make sure you have the academicons
+%% option here, and compile with XeLaTeX
+%% or LuaLaTeX.
+% \documentclass[10pt,a4paper,academicons]{altacv}
+
+%% Use the "normalphoto" option if you want a normal photo instead of cropped to a circle
+% \documentclass[10pt,a4paper,normalphoto]{altacv}
+
+\documentclass[10pt,a4paper,ragged2e,withhyper]{altacv}
+
+%% AltaCV uses the fontawesome5 and academicons fonts
+%% and packages.
+%% See http://texdoc.net/pkg/fontawesome5 and http://texdoc.net/pkg/academicons for full list of symbols. You MUST compile with XeLaTeX or LuaLaTeX if you want to use academicons.
+
+% Change the page layout if you need to
+\geometry{left=1.25cm,right=1.25cm,top=1.5cm,bottom=1.5cm,columnsep=1.2cm}
+
+% The paracol package lets you typeset columns of text in parallel
+\usepackage{paracol}
+\usepackage{graphicx,wrapfig}
+
+% Change the font if you want to, depending on whether
+% you're using pdflatex or xelatex/lualatex
+\ifxetexorluatex
+  % If using xelatex or lualatex:
+  \setmainfont{Roboto Slab}
+  \setsansfont{Lato}
+  \renewcommand{\familydefault}{\sfdefault}
+\else
+  % If using pdflatex:
+  \usepackage[rm]{roboto}
+  \usepackage[defaultsans]{lato}
+  % \usepackage{sourcesanspro}
+  \renewcommand{\familydefault}{\sfdefault}
+\fi
+
+% Change the colours if you want to
+\definecolor{Black}{HTML}{000000}
+% \definecolor{SlateGrey}{HTML}{2E2E2E}
+% \definecolor{LightGrey}{HTML}{666666}
+% \definecolor{DarkPastelRed}{HTML}{450808}
+% \definecolor{PastelRed}{HTML}{8F0D0D}
+% \definecolor{GoldenEarth}{HTML}{E7D192}
+\colorlet{name}{black}
+\colorlet{tagline}{Black}
+\colorlet{heading}{Black}
+\colorlet{headingrule}{Black}
+\colorlet{subheading}{Black}
+\colorlet{accent}{Black}
+\colorlet{emphasis}{Black}
+\colorlet{body}{Black}
+
+% Change some fonts, if necessary
+\renewcommand{\namefont}{\Huge\rmfamily\bfseries}
+\renewcommand{\personalinfofont}{\footnotesize}
+\renewcommand{\cvsectionfont}{\LARGE\rmfamily\bfseries}
+\renewcommand{\cvsubsectionfont}{\large\bfseries}
+
+
+% Change the bullets for itemize and rating marker
+% for \cvskill if you want to
+\renewcommand{\itemmarker}{{\small\textbullet}}
+\renewcommand{\ratingmarker}{\faCircle}
+
+%% sample.bib contains your publications
+\addbibresource{sample.bib}
+
+\begin{document}
+
+%% Depending on your tastes, you may want to make fonts of itemize environments slightly smaller
+\AtBeginEnvironment{itemize}{\small}
+
+%% Set the left/right column width ratio to 6:4.
+\columnratio{0.6}
+
+% Start a 2-column paracol. Both the left and right columns will automatically
+% break across pages if things get too long.
+\begin{paracol}{2}
+
+\name{Fletcher Gornick}
+\tagline{}
+%% You can add multiple photos on the left or right
+% \photoR{2.8cm}{Globe_High}
+% \photoL{2.5cm}{Yacht_High,Suitcase_High}
+
+\personalinfo{%
+  % Not all of these are required!
+  \email{fletchermgornick@gmail.com}
+  \homepage{www.website.dev}
+  
+  \linkedin{fletcher-gornick}
+  \github{fmgornick}
+  % \itch{junferno.itch.io}
+  % \youtube{Junferno}
+  %% You MUST add the academicons option to \documentclass, then compile with LuaLaTeX or XeLaTeX, if you want to use \orcid or other academicons commands.
+  % \orcid{0000-0000-0000-0000}
+  %% You can add your own arbtrary detail with
+  %% \printinfo{symbol}{detail}[optional hyperlink prefix]
+  % \printinfo{\faPaw}{Hey ho!}[https://example.com/]
+  %% Or you can declare your own field with
+  %% \NewInfoFiled{fieldname}{symbol}[optional hyperlink prefix] and use it:
+  % \NewInfoField{gitlab}{\faGitlab}[https://gitlab.com/]
+  % \gitlab{your_id}
+}
+
+\makecvheader
+
+\cvsection{Experience}
+
+\cvevent{Software Engineer Intern, API Platform}{Target Technology}{Jun 2022 -- Aug 2022}{Minneapolis, MN}
+\begin{itemize}
+    \item Data provisioning in Hadoop, data pipeline automation with Python and Java, full-stack application development for database web portal in Express, documentation generation using SQL and JDBC
+    
+    \item Worked in an Agile team of 6, collaborating and communicating with other teams in different disciplines
+    
+\end{itemize}
+\cvtag{Hadoop}
+\cvtag{HDFS}
+\cvtag{Java}
+\cvtag{Maven}
+\cvtag{Python}
+\cvtag{SQL}
+\cvtag{JDBC}
+\cvtag{Node.js}
+\cvtag{JavaScript}
+\cvtag{Express}
+\cvtag{Git}
+\cvtag{Jenkins}
+\cvtag{Windows}
+
+\divider
+
+\cvevent{Innovation Developer Intern, Technology \& Operations}{RBC Royal Bank of Canada}{Jul 2020 -- Aug 2020}{Toronto, ON}
+\begin{itemize}
+    \item Full stack software development building internal applications: retrospectives web application with React front-end and Express back-end
+    
+    \item Led an Agile team of 4 as a returning intern, helping new developers get setup, moderated and managed changes from team
+    
+    \item Moderated source control, reviewed, tested, and debugged changes from all other development teams to new releases
+    
+    \item Conducted usability testing, moderated test sessions with design teams, presented and demonstrated solutions to senior executives
+\end{itemize}
+\cvtag{React}
+\cvtag{Node.js}
+\cvtag{TypeScript}
+\cvtag{Express}
+\cvtag{Git}
+\cvtag{Windows}
+
+\divider
+
+\cvevent{Innovation Developer Intern, Technology \& Operations}{RBC Royal Bank of Canada}{Jul 2019 -- Aug 2019}{Toronto, ON}
+\cvtag{Node.js}
+\cvtag{TypeScript}
+\cvtag{Java}
+\cvtag{Git}
+\cvtag{Angular}
+\cvtag{Spring}
+\cvtag{SQL}
+
+\cvsection{Projects}
+
+% \begin{wrapfigure}[1]{r}[-25pt]{1.5cm}
+% \vspace{-15pt}
+% \includegraphics[width=1.5cm]{icon_transparent.png}
+% \end{wrapfigure} 
+
+\cvevent{Wayward Bones}{2D digging + platformer game}{May 2022 \github{kevinjycui/WaywardBones}}{} 
+\begin{itemize}
+\item Designed and developed entire platforming enemy boss stage including entity movement, fixed bugs in other stages, moderated source control
+
+\item Programmed in-game enemy boss animation cycles and particles fitted to attack patterns, collaborating with artists and sound designers
+
+\end{itemize}
+\cvtag{C\#}
+\cvtag{Unity}
+\cvtag{Visual Studio}
+\cvtag{Git}
+
+\divider
+
+\cvevent{Desmos Renderer}{Fun graphing calculator art tool}{Apr 2021 \github{kevinjycui/DesmosBezierRenderer}}{} 
+\begin{itemize}
+\item A program that draws images and videos as curves on the Desmos Graphing Calculator using potrace and Bezier curve formulas
+\end{itemize}
+\cvtag{Python}
+\cvtag{OpenCV}
+\cvtag{Flask}
+\cvtag{HTML}
+\cvtag{JavaScript}
+\cvtag{FFmpeg}
+
+\divider
+
+% \cvsection{A Day of My Life}
+
+% % Adapted from @Jake's answer from http://tex.stackexchange.com/a/82729/226
+% % \wheelchart{outer radius}{inner radius}{
+% % comma-separated list of value/text width/color/detail}
+% \wheelchart{1.5cm}{0.5cm}{%
+%   6/8em/accent!30/{Sleep,\\beautiful sleep},
+%   3/8em/accent!40/Hopeful novelist by night,
+%   8/8em/accent!60/Daytime job,
+%   2/10em/accent/Sports and relaxation,
+%   5/6em/accent!20/Spending time with family
+% }
+
+% use ONLY \newpage if you want to force a page break for
+% ONLY the current column
+\newpage
+
+% \cvsection{Publications}
+
+% \nocite{*}
+
+% \printbibliography[heading=pubtype,title={\printinfo{\faBook}{Books}},type=book]
+
+% \divider
+
+% \printbibliography[heading=pubtype,title={\printinfo{\faFile*[regular]}{Journal Articles}},type=article]
+
+% \divider
+
+% \printbibliography[heading=pubtype,title={\printinfo{\faUsers}{Conference Proceedings}},type=inproceedings]
+
+%% Switch to the right column. This will now automatically move to the second
+%% page if the content is too long.
+\switchcolumn
+
+% \cvsection{My Life Philosophy}
+
+% \begin{quote}
+% ``Something smart or heartfelt, preferably in one sentence.''
+% \end{quote}
+
+\cvevent{Practice Bot}{Competitive programming utility bot}{Mar 2020 -- Jul 2021 \github{kevinjycui/Practice-Bot}}{} 
+\begin{itemize}
+\item An all-competitive-programming-purpose open source Discord bot, online judge to Discord
+\item Developed bot program, configured API connections and MariaDB database, setup AWS instance, moderated open-source contributions
+\item Used by over 800 Discord servers
+\end{itemize}
+\cvtag{Python}
+\cvtag{MariaDB}
+\cvtag{discord.py}
+\cvtag{AWS}
+\cvtag{Bash}
+\cvtag{Linux}
+
+\cvsection{Education}
+
+\cvevent{McGill University}{Candidate for B.Sc.\ in Computer Science}{2020 -- 2024}{Montreal, QC}
+CGPA: 3.9/4.0
+
+VP Finance of Game Dev Student's Society
+
+Fall 2022: Operating Systems, Artificial Intelligence, Algorithms, Software Engineering Project
+
+\cvsection{Skills}
+
+Skills I've worked with directly. Ordered by approximate proficiency/relevance.
+
+\divider
+
+\cvevent{Programming \& Other Languages}{}{}{}
+\cvtag{C++}
+\cvtag{Python}
+\cvtag{Java}
+\cvtag{JavaScript}
+\cvtag{C\#}
+\cvtag{Bash}
+\cvtag{C}
+\cvtag{Go}
+\cvtag{TypeScript}
+\cvtag{SQL}
+\cvtag{HTML+CSS}
+\cvtag{Arduino}
+\cvtag{\LaTeX}
+\cvtag{Rust}
+\cvtag{Scala}
+\cvtag{OCaml}
+\cvtag{MIPS Assembly}
+\cvtag{Haskell}
+\cvtag{Kotlin}
+\cvtag{R}
+
+\cvevent{Frameworks, Engines, Libs, \& Databases}{}{}{}
+\cvtag{Node.js}
+\cvtag{Maven}
+\cvtag{React}
+\cvtag{.NET}
+\cvtag{SDL}
+\cvtag{Unity}
+\cvtag{NumPy}
+\cvtag{OpenGL}
+\cvtag{Django}
+\cvtag{Hadoop}
+\cvtag{MySQL}
+\cvtag{MariaDB}
+\cvtag{OpenCV}
+
+\cvevent{Development Tools \& Environment}{}{}{}
+\cvtag{Git}
+\cvtag{UNIX/Linux}
+\cvtag{GNU}
+\cvtag{REST}\\
+\cvtag{Visual Studio}
+\cvtag{Vim}
+\cvtag{FFmpeg}
+\cvtag{AWS}
+
+\cvsection{Others}
+
+\cvachievement{\faIcon{youtube}}{Silver Play Button}{I run a YouTube channel with >100K subscribers as of 2022 covering topics in tech, math, linguistics, and gaming
+\homepage{youtube.com/c/Junferno}}
+
+\divider
+
+\cvachievement{\faTrophy}{Wayward Bones}{McGame Jam 2022 Audio Winner
+\itch{akjanklin.itch.io/wayward-bones}}
+\medskip
+
+% \cvsection{Languages}
+
+% \cvskill{English}{5}
+% \divider
+
+% \cvskill{Spanish}{4}
+% \divider
+
+% \cvskill{German}{3}
+
+% %% Yeah I didn't spend too much time making all the
+% %% spacing consistent... sorry. Use \smallskip, \medskip,
+% %% \bigskip, \vpsace etc to make ajustments.
+% \medskip
+
+% \divider
+
+% \cvsection{Referees}
+
+% % \cvref{name}{email}{mailing address}
+% \cvref{Prof.\ Alpha Beta}{Institute}{a.beta@university.edu}
+% {Address Line 1\\Address line 2}
+
+% \divider
+
+% \cvref{Prof.\ Gamma Delta}{Institute}{g.delta@university.edu}
+% {Address Line 1\\Address line 2}
+
+
+\end{paracol}
+
+
+\end{document}
