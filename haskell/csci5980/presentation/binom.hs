@@ -58,12 +58,43 @@ recBinom n r = if r == 0 || n == r
 -- need to compute each supproblem once
 
 -- this solution uses a n x r 2D array and only accesses the
--- values where i > j, which is a little space inefficient
+-- values where i > j, which is a little space inefficient (O(nr))
 -----------------------------------------------------------------
-dpBinom :: Int -> Int -> Int
-dpBinom n r = a ! (n, r) 
+tdBinom :: Int -> Int -> Int
+tdBinom n r = a ! (n, r) 
   where a = tabulate f ((0, 0), (n, r))
         f (i, j) = if j == 0 || i == j 
                then 1 
-               else a ! (i - 1, j) + a ! (i, j - 1)
+               else a ! (i - 1, j) + a ! (i - 1, j - 1)
+
+
+
+----------------------- BETTER DP BINOM -------------------------
+-- to better our space complexity, we can start with a bottom row 
+-- corresponding to r = 0, this row contains r+1 1s 0C0 to rC0
+
+-- next, we build the next row starting at 1c1 which is 1. now 
+-- 2C1 = 1C1 + 1C0 which is the second element of the first row 
+-- plus the first element of the current row, and the first 
+-- element of the current row just starts at 1
+
+-- since the first element of each row = 1 (kCk = 1) we can just 
+-- do a scanr1 taking the first element of the list each time, 
+-- we could also just do scanr with accumulator 1
+
+-- finally, we repeat this process of adding from the previous 
+-- row n-r times until we reach the last value which is nCr
+
+-- this version uses replicate to get the first row, then scanr1 
+-- does the first column of each subseqent row, meaning that the 
+-- actual computation for nCr comes from the r(n - r) additions
+
+-- also, we only have a list of length r + 1 that get's 
+-- overwritten on each call, so space is O(r)
+-----------------------------------------------------------------
+buBinom :: Int -> Int -> Int
+buBinom n r = head (apply (n - r) (scanr1 (+)) (replicate (r + 1) 1))
+
+apply :: Int -> (a -> a) -> a -> a
+apply n f x = apply (n - 1) f (f x)
 
