@@ -1,0 +1,45 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amsfonts} 
+\usepackage{amsthm}
+\usepackage{enumitem} 
+\usepackage{mathtools}
+\usepackage[top=2cm,bottom=2cm,left=2.5cm,right=2.5cm,marginparwidth=1.75cm]{geometry}
+\setlength{\parindent}{0cm}
+
+\newtheorem{theorem}{Theorem}
+
+\title{\vspace{-1.0cm}MATH 5615H Homework 6}
+\author{Fletcher Gornick}
+\date{October 14, 2022}
+
+\begin{document}
+ \maketitle
+ \begin{enumerate}[label=(\roman*)]
+   \item Let \(\{a_n\}_{n \geq 1}\) be a sequence of real numbers in \([0, 1)\) such that 
+     \(\displaystyle\sum_{n=1}^{\infty} a_n\) converges.  Prove that
+     \[\lim_{n \to \infty} (1 - a_1)(1 - a_2) \cdots (1 - a_n)\]
+     exists and is a \underline{strictly positive} real number.
+
+   \item For each integer \(l \geq 1\), let 
+     \[2 = p_1 < p_2 < \hdots < p_{M_l} < 2^l\]
+     be the list of prime numbers which are \(\leq 2^l\).
+
+     Prove that
+       \begin{align*}
+         \left(\frac{1}{1 - \frac{1}{p_1}}\right) \left(\frac{1}{1 - \frac{1}{p_2}}\right) \cdots 
+         \left(\frac{1}{1 - \frac{1}{p_{M_l}}}\right)
+         & > \left(\sum_{k=0}^{2^l} \frac{1}{p_1^k}\right) \left(\sum_{k=0}^{2^l} \frac{1}{p_2^k}\right)
+         \cdots \left(\sum_{k=0}^{2^l} \frac{1}{p_{M_l}^k}\right) \\
+         & \geq \sum_{n=1}^{2^l} \frac{1}{n}.
+       \end{align*}
+
+       
+     \item Conclude that the series \(\displaystyle\sum_{n=1}^{\infty}\frac{b_n}{n}\) where
+       \(\;\;b_n = \begin{cases}
+          1, &\text{ if n is prime} \\
+           0, &\text{ otherwise}
+         \end{cases}\;\;\) is divergent.
+ \end{enumerate}
+\end{document}
