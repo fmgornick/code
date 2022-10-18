@@ -101,6 +101,7 @@ funFib = 1 : 1 : zipWith (+) funFib (tail funFib)
 # Binom
 I'm sure most of us know what the formula for the binomial coefficients are, some of you know it as choose: $\begin{pmatrix}n\\ r\end{pmatrix} = \displaystyle\frac{n!}{r!(n-1)!}$.  We can define `binom` in terms of this definition like so:
 
+## Conventional Definition
 ```haskell
 binom :: Int -> Int -> Int
 binom n r = fact n `div` fact r * fact (n - r)
@@ -110,6 +111,7 @@ binom n r = fact n `div` fact r * fact (n - r)
 We can also define `binom` recursively:
 $\begin{pmatrix}n\\ r\end{pmatrix} = \begin{pmatrix}n - 1\\ r\end{pmatrix} + \begin{pmatrix}n - 1\\ r - 1\end{pmatrix}$.  The recursive definition of `binom` looks like this:
 
+## Recursive Definition
 ```haskell
 binom' :: Int -> Int -> Int
 binom' n r = if n == r || r == 0
@@ -119,6 +121,7 @@ binom' n r = if n == r || r == 0
 
 As it turns out, tuples are considered indexable values, so we can use our recursive definition for `binom` in our tabulate function like so:
 
+## Binom with Tabulate
 ```haskell
 tabulate :: Ix i => (i -> e) -> (i, i) -> Array i e
 tabulate f bounds = array bounds [(i, f i) | i <- range bounds]
@@ -142,6 +145,7 @@ We can optimize our space by introducing a new algorithm that only needs list of
 
 This algorithm is a little wacky so I'll show you a couple tools we'll be using
 
+## Space Efficient Binom
 ```haskell
 -- applies function against accumulator on each element of list (starting from right)
 foldr :: (a -> b -> b) -> b -> [a] -> b
