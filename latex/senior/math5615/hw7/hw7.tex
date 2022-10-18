@@ -1,0 +1,64 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amsfonts} 
+\usepackage{amsthm}
+\usepackage{enumitem} 
+\usepackage{mathtools}
+\usepackage[top=2cm,bottom=2cm,left=2cm,right=2.5cm,marginparwidth=1.75cm]{geometry}
+\setlength{\parindent}{0cm}
+
+\pagenumbering{gobble}
+\newtheorem{theorem}{Theorem}
+
+\begin{document}
+\begin{enumerate}
+  \item Let \(S\) be a non-empty set, and \(f: S \to [0, \infty)\) be a non-negative real-valued function.
+    For each finite non-empty subset \(A \subset S\), set 
+    \[\sigma(A) = \sum_{x \in A} f(x).\]
+
+    Suppose that the resulting set of non-negative real numbers 
+    \[\{\sigma(A) \mid A \subset S, \; A \text{ finite and non-empty}\}\] is bounded above.  
+    Prove that the subset of \(S\) 
+    \[T = \{x \in S \mid f(x) > 0\}\]
+    is at most countable.
+    \newpage
+
+  \item Let \((M, \rho)\) be a metric space, and \(A\) be a nonempty subset of \(M\).  For each \(x \in M\), set 
+    \[d(x, A) = \inf \{\rho(x,y) \mid y \in A\}.\]
+    \begin{enumerate}[label=(\roman*)]
+      \item Show that \(d(x, A) = 0\) if and only if \(x\) lies in the closure \(\bar A\) of \(A\)
+
+      \item Prove that \(|d(x_1,A) - d(x_2,A)| \leq \rho(x_1,x_2)\), for all \(x_1, x_2 \in M\).
+    \end{enumerate}
+    \newpage
+
+  \item \begin{enumerate}[label=(\roman*)]
+      \item Let \(\{x_n\}_{n \geq 0}\) and  \(\{y_n\}_{n \geq 0}\) be Cauchy sequences in a metric space 
+        \((M, \rho)\).  Prove that the sequence of non-negative numbers \(\{\rho(x_n,y_n)\}_{n \geq 0}\) is 
+        convergent.
+
+      \item Let \(\{x_n\}_{n \geq 0}\) and  \(\{y_n\}_{n \geq 0}\) be sequences which converge, respectively, 
+        to points \(x\) and \(y\) in a metric space \((M, \rho)\).  Prove that 
+        \(\rho(x,y) = \displaystyle\lim_{n \to \infty} \rho(x_n,y_n)\).
+    \end{enumerate} 
+    \newpage
+    
+  \item Let \(M\) be the set of all functions \(\mathbb{N}^+ \to [0,1]\), and for all \(f,g \in M\), set
+    \[\rho(f,g) = \sum_{\alpha=1}^{\infty} \frac{|f(\alpha) - g(\alpha)|}{2^\alpha}.\]
+
+    \begin{enumerate}[label=(\roman*)]
+      \item Prove that \((M,\rho)\) is a metric space.
+      
+      \item Let \(\{f_n\}_{n \geq 0}\) be a sequence in \(M\), and \(g\) be a point in \(M\).  Prove that 
+        \[\{f_n\}_{n \geq 0} \; \text{converges to} \; g \in (M,\rho) \;\Longleftrightarrow\;
+        \text{For each}\; \alpha \geq 1, \; \{f_n(\alpha)\}_{n \geq 0} \;\text{converges to}\; g(\alpha) \in [0,1].
+        \]
+        
+      \item Let \(\{f_n\}_{n \geq 0}\) be a sequence in \(M\).  Prove that there is a subequence 
+        \(\{f_{n_j}\}_{j \geq 0}\) which converges in \((M, \rho)\). (Cantor!)
+    \end{enumerate}
+
+\end{enumerate}
+\end{document}
+
