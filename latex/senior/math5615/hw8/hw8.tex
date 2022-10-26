@@ -1,0 +1,61 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amsfonts} 
+\usepackage{amsthm}
+\usepackage{enumitem} 
+\usepackage{mathtools}
+\usepackage[top=2cm,bottom=2cm,left=1.5cm,right=2cm,marginparwidth=1.75cm]{geometry}
+\setlength{\parindent}{0cm}
+
+\pagenumbering{gobble}
+\newtheorem{theorem}{Theorem}
+
+\begin{document}
+\begin{itemize}
+  \item [\textbf{4.1}] Suppose \(f\) is a real function defined on \(\mathbb{R}\) which satisfies 
+    \[\lim_{h \to 0} f(x+h) - f(x-h) = 0\]
+    for every \(x \in \mathbb{R}\).  Does this imply that \(f\) is continuous?
+    \newpage
+
+  \item [\textbf{4.23}] A real-valued function \(f\) defined \((a,b)\) is said to be \textit{convex} if
+    \[f(\lambda x + (1 - \lambda)y) \leq \lambda f(x) + (1 - \lambda) f(y)\]
+    whenever \(a < x < b, \;\; a < y < b, \;\; 0 < \lambda < 1\).  Prove that every convex function 
+    is continuous.  Prove that every increasing convex function of a convex function is convex. 
+    (For example, if \(f\) is convex, so is \(e^t\).)
+
+    If \(f\) is convex in \((a,b)\) and if \(a < s < t < u < b\), show that 
+    \[\frac{f(t) - f(s)}{t - s} \leq \frac{f(u) - f(s)}{u - s} \leq \frac{f(u) - f(t)}{u - t}.\]
+    \newpage
+
+  \item [\textbf{4.24}] Assume that \(f\) is a continuous real function defined in \((a,b)\) such that 
+    \[f \left(\frac{x + y}{2}\right) \leq \frac{f(x) + f(y)}{2}\]
+    for all \(x,y \in (a,b)\).  Prove that \(f\) is convex.
+    \newpage
+
+  \item [\textbf{4.31}]
+    It should be noted that the discontinuities of a monotonic function need not be isolated.  In fact, 
+    given any countable subset \(E\) of \((a,b)\), which may even be dense, we can construct a function 
+    \(f\), monotonic on \((a,b)\), discontinuous at every point of \(E\), and at no other point of 
+    \((a,b)\). 
+
+    To show this, let the points of \(E\) be arranged in a sequence \(\{x_n\}\), \(n = 1,2,3,\dots\). 
+    Let \(\{c_n\}\) be a sequence of positive numbers such that \(\sum c_n\) converges.  Define
+
+    \begin{equation} f(x) = \sum_{x_n < x} c_n \quad (a < x < b). \tag{31}\label{eq:f} \end{equation}
+
+    The summation is to be understood as follows: Sum over those indices \(n\) for which \(x_n < x\). 
+    If there are no points \(x_n\) to the left of \(x\), the sum is empty; following the usual 
+    convention, we define it to be zero.  Since \eqref{eq:f} converges absolutely, the order in which 
+    the terms are arranged is immaterial.
+
+    We leave the verification of the following properties of \(f\) to the reader:
+
+    \begin{enumerate}[label=(\alph*)]
+      \item \(f\) is monotonically increasing on \((a,b)\);
+      \item \(f\) is discontinuous at every point of \(E\); in fact, \(f(x_n+) - f(x_n-) = c_n.\)
+      \item \(f\) is continuous at every other point of \((a,b)\).
+      \item \(f(x-) = f(x)\) at all points of \((a,b)\).
+    \end{enumerate}
+\end{itemize}
+\end{document}
