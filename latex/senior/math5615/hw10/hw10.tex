@@ -1,0 +1,73 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amsfonts} 
+\usepackage{amsthm}
+\usepackage{enumitem} 
+\usepackage{mathtools}
+\usepackage[top=2cm,bottom=2cm,left=1.5cm,right=2cm,marginparwidth=1.75cm]{geometry}
+\setlength{\parindent}{0cm}
+
+\pagenumbering{gobble}
+\newtheorem{theorem}{Theorem}
+
+\begin{document}
+\begin{enumerate}
+  \item Let \(g \colon \mathbb{R} \to \mathbb{R}\) be a continuous function, and \(N \geq 1\) be a positive 
+    integer.  Suppose that 
+    \[\lim_{x \to +\infty} \frac{g(x)}{x^N} \;\;=\;\; \lim_{x \to -\infty} \frac{g(x)}{x^N} \;\;=\;\;0.\]
+    Form the function \(f \colon \mathbb{R} \to \mathbb{R}\), \(f(x) = x^N + g(x)\). \\
+    Prove that:
+    \begin{enumerate}[label=(\roman*)]
+      \item If \(N\) is odd, then \(f\) is surjective.
+      \item If \(N\) is even, then \(f\) assumes a minimum value.
+    \end{enumerate}
+  \newpage
+
+
+\item Let \(a\) and \(b\) be positive real numbers in the open interval \(\left(0,\tfrac{1}{2}\right)\).  
+  Suppose that \(g \colon \mathbb{R} \to \mathbb{R}\) is a function such that for all \(x \in \mathbb{R}\),
+    \[g\left(g(x)\right) = ag(x) + bx.\]
+    Prove that if \(g\) is continuous, then there exists a real number \(c\) such that for all \(x \in 
+    \mathbb{R}\), we have \(g(x) = cx\). \\
+
+    A program you might follow (in the first three steps, continuity of \(g\) plays no role):
+    \begin{enumerate}[label=(\roman*)]
+      \item Set \(g^0(x) = x\), and inductively define \(g^{n+1}(x) = g\left(g^n(x)\right)\) for all 
+        \(n \geq 1\) (so \(g' = g\), and \(g^n\) is the n-fold composite of \(g\) with itself for \(n \geq 2\)). 
+        Note that then 
+        \(\begin{pmatrix} g^{n+1}(x) \\ g^{n+2}(x) \end{pmatrix} = \begin{pmatrix} 0 & 1 \\ b & a \end{pmatrix}
+        \begin{pmatrix} g^n(x) \\ g^{n+1}(x) \end{pmatrix}\) for all \(n \geq 0\).  Prove that \(g\) is 
+        injective.
+      \item Check that the matrix \(\begin{pmatrix} 0 & 1 \\ b & a \end{pmatrix}\) has distinct real 
+      eigenvalues \(\lambda_1\) and \(\lambda_2\), where \(0 < \lambda_1 < 1\) and \(-\lambda_1 < \lambda_2 < 0\).
+      For all integers \(n \geq 0\) express \(g^n(x)\) in terms of \(x, g(x), \lambda_1, \lambda_2,\) and \(n\).
+      \item Prove that, for all \(x \in \mathbb{R}\), \(\displaystyle\lim_{n \to \infty} g^n(x) = 0\).
+      \item Prove that \(g(0) = 0\).
+      \item Prove that \(g\) is surjective, and therefore bijective, in view of (i).
+      \item As usual, write \(g^{-1}\) for the inverse of \(g\), and inductively define \(g^{-(n+1)}(x) = 
+        g^{-1}\left(g^{-n}(x)\right)\) for all \(n \geq 1\).  For all integers \(n \geq 1\) express \(g^{-n}(x)\) 
+        in terms of \(x, g(x), \lambda_1, \lambda_2,\) and \(n\).
+      \item Prove the statements:
+        \begin{itemize}
+          \item[] If there exists an \(x \in \mathbb{R}\) for which \(g(x) \neq \lambda_2 x\), then \(g\) is 
+            strictly increasing.
+          \item[] If there exists an \(x \in \mathbb{R}\) for which \(g(x) \neq \lambda_1 x\), then \(g\) is 
+            strictly deecreasing.
+        \end{itemize}
+      \item You're done! (vii) says it all.
+    \end{enumerate}
+  \newpage
+
+
+  \item
+    View the set of all real \(n \times n\) matrices as the Euclidean space \(\mathbb{R}^{n^2}\).  Then the 
+    determinant is a continuous function \(det \colon \mathbb{R}^{n^2} \to \mathbb{R}\) (after all, this is a 
+    polynomial function of the matrix elements), so the invertible matrices form an open subset 
+    \(\theta = det^{-1}(\mathbb{R} \setminus \{0\})\) in \(\mathbb{R}^{n^2}\).  What are the maximal connected 
+    subsets of \(\theta\)?
+  \newpage
+\end{enumerate}
+\end{document}
+
+
