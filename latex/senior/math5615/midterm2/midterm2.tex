@@ -1,0 +1,52 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amsfonts} 
+\usepackage{amsthm}
+\usepackage{enumitem} 
+\usepackage{mathtools}
+\usepackage[top=2cm,bottom=2cm,left=1.5cm,right=2cm,marginparwidth=1.75cm]{geometry}
+\setlength{\parindent}{0cm}
+
+\newtheorem{theorem}{Theorem}
+
+\pagenumbering{gobble}
+\title{\vspace{-1.0cm}MATH 5615H Midterm 2}
+\author{Fletcher Gornick}
+\date{November 16, 2022}
+
+\begin{document}
+\maketitle
+\newpage
+\begin{enumerate}
+  \item Let \(g \colon \mathbb{R} \to \mathbb{R}\) be a continuous function, and \(N \geq 1\) be a positive 
+    integer.  Suppose that
+    \[\lim_{x \to +\infty} \frac{g(x)}{x^N} \;=\; \lim_{x \to -\infty} \frac{g(x)}{x^N} \;=\; 0\]
+    and form the function
+    \[f \colon \mathbb{R} \to \mathbb{R} \quad f(x) = x^N + g(x).\]
+    Prove that:
+    \begin{enumerate}[label=(\alph*)]
+      \item For every bounded subset \(S \subset \mathbb{R}\), the preimage \(f^{-1}(S)\) is also bounded (but 
+        perhaps empty).
+      \item If \(N\) is odd, then \(f\) is surjective.
+      \item If \(N\) is even, then \(f\) assumes a minimum value.
+    \end{enumerate}
+    \newpage
+
+  \item \begin{enumerate}[label=(\alph*)]
+    \item Let \((M,p)\) be a metric space, and suppose that \(\{x_n\}_{n \geq 0}\) is a sequence in \(M\) 
+    convergent to a point \(z \in M\).  Prove that \(\{z\} \cup \{x_n \mid n \geq 0\}\) is a compact subset of 
+    \(M\).
+  \item Let \((M_1, \rho)\) and \((M_2, \mu)\) be metric spaces and \(f \colon M_1 \to M_2\) be a function.  
+    Prove that 
+      \[\text{\(f\) continuous} \iff \text{For every compact subset \(S \subset M_1\), restriction 
+      \(f|_S \colon S \to M_2\) continuous.}\]
+  \item Let \((M_1, \rho)\) and \((M_2, \mu)\) be metric spaces, and \(f \colon M_1 \to M_2\) be bijective and 
+    continuous.  Prove that given inverse \(f^{-1} \colon M_2 \to M_1\),
+      \[\text{\(f^{-1}\) continuous} \iff \text{For every compact subset 
+      \(S \subset M_2\), subset \(f^{-1}(S)\) compact in \(M_1\).}\]
+
+  \end{enumerate}
+\end{enumerate}
+\end{document}
+
