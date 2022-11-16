@@ -1,0 +1,38 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amsfonts} 
+\usepackage{amsthm}
+\usepackage{enumitem} 
+\usepackage{mathtools}
+\usepackage[top=2cm,bottom=2cm,left=1.5cm,right=2cm,marginparwidth=1.75cm]{geometry}
+\setlength{\parindent}{0cm}
+
+\pagenumbering{gobble}
+\newtheorem{theorem}{Theorem}
+
+\begin{document}
+  \begin{enumerate}
+    \item Let \((M, \rho)\) be a metric space, and \(f \colon M \to M\) be a function.
+      \begin{enumerate}[label=(\alph*)]
+        \item Suppose there exists a real number \(K\) with \(0 \leq K < 1\) such that for all \(x, x' \in M\) we have 
+          \[\rho\left(f(x), f(x')\right) \;\;\leq\;\; K\rho(x,x').\]
+          Prove that if \((M, \rho)\) is \underline{complete}, then for each \(x_0 \in M\) the sequence 
+          \(\{x_n\}_{n \geq 0}\) defined inductively by setting \(x_{n+1} = f(x_n)\) for all \(n \geq 0\) is convergent 
+          to a point \(y \in M\) such that \(f(y) = y\).  Moreover, there is only one point \(z \in M\) such that 
+          \(f(z) = z\), so the limit of the sequence \(\{x_n\}_{n \geq 0}\) is independent of the choice of \(x_0\) 
+          from which its inductive definition proceeds.  (Use the triangle inequality and convergence of the geometric 
+          series \(\displaystyle\sum_{\ell=0}^{\infty} K^\ell\) to show that \(\{x_n\}_{n \geq 0}\) is a Cauchy sequence.)
+
+        \item Suppose that for all \(x,x' \in M\), if \(x \neq x'\) then \(\rho\left(f(x), f(x')\right) < \rho(x,x')\).
+          Prove that if \((M, \rho)\) is \underline{compact}, then there exists a unique point \(y \in M\) such that 
+          \(f(y) = y\).  (Hint: Consider the function \(\varphi \colon M \to \mathbb{R},\; \varphi(x) = 
+          \rho\left(x,f(x)\right)\).) \\
+          Find a function \(f \colon \mathbb{R} \to \mathbb{R}\) such that for all \(s,t \in \mathbb{R}\)
+          \[0 < |s-t| \;\implies\; \left|f(s) - f(t)\right| < |s-t|\]
+          But there exists \underline{no} \(t \in \mathbb{R}\) suche that \(f(t) = t\). \\
+          (You may use the mean value theorem from calculus here.)  So ``compact'', rather than just ``complete'' is 
+          essential in this part.
+      \end{enumerate}
+  \end{enumerate}
+\end{document}
