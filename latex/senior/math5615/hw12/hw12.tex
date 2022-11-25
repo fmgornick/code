@@ -1,0 +1,78 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amsfonts} 
+\usepackage{amsthm}
+\usepackage{enumitem} 
+\usepackage{mathtools}
+\usepackage[top=2cm,bottom=2cm,left=1.25cm,right=2cm,marginparwidth=1.75cm]{geometry}
+\setlength{\parindent}{0cm}
+
+\newcommand{\R}{\mathbb{R}}
+
+\pagenumbering{gobble}
+\newtheorem{theorem}{Theorem}
+
+\begin{document}
+  \begin{enumerate}
+    \item Let \(I \subset \R\) be an open interval, and \(f \colon I \to \R\) be a convex function.
+      \begin{enumerate}
+        \item Prove that at each \(x \in I\), the right-hand derivative 
+          \[\lim_{h \to 0^+} \frac{f(x+h) - f(x)}{h} \;\;=\;\; f'_+(x)\]
+          and left-hand derivative
+          \[\lim_{h \to 0^-} \frac{f(x+h) - f(x)}{h} \;\;=\;\; f'_-(x)\]
+          of \(f\) both exist, and satisfy the inequality \[f'_-(x) \leq f'_+(x).\]
+
+        \item Prove that if \(x_1 < x_2\) are points of \(I\), then \(f'_+(x_1) \leq f'_-(x_2)\). \\
+          (In particular, both \(f'_-\) and \(f'_+\) are monotone increasing functions.)
+
+        \item Prove that at each \(x \in I\)
+          \[\lim_{y \to x^-} f'_-(y) = \lim_{y \to x^-} f'_+(y) = f'_-(x) \quad \text{and} \quad
+          \lim_{y \to x^+} f'_+(y) = \lim_{y \to x^+} f'_-(y) = f'_+(x).\]
+          Deduce that:
+          \[f \text{ is differentiable at } x \;\iff\; f'_- \text{ is continuous at } x \;\iff\;
+          f'_+ \text{ is continuous at } x\]
+
+        \item Prove that \(\{x \in I \mid f \text{ is not differentiable at } x\}\) is an at most countable 
+          set.
+      \end{enumerate}
+      \newpage
+
+    \item \textbf{Rudin 5-6:} Suppose
+      \begin{enumerate}
+        \item \(f\) is continuous for \(x \geq 0\),
+        \item \(f'(x)\) exists for \(x > 0\),
+        \item \(f(0) = 0\),
+        \item \(f'\) is monotonically increasing.
+      \end{enumerate}
+      Put \[g(x) \;=\; \frac{f(x)}{x} \quad (x > 0)\]
+      and prove that \(g\) is monotonically increasing.
+      \newpage
+
+    \item \textbf{Rudin 5-14:} Let \(f\) be a differentiable real function defined in \((a,b)\).  Prove that 
+      \(f\) is convex if and only if \(f'\) is monotonically increasing.  Assume next that \(f''(x)\) exists 
+      for every \(x \in (a,b)\), and prove that \(f\) is convex if and only if \(f''(x) \geq 0\) for all 
+      \(x \in (a,b)\).
+      \newpage
+
+    \item \textbf{Rudin 5-19:} Suppose \(f\) is defined on \((-1,1)\) and \(f'(0)\) exists.  Suppose 
+      \(-1 < \alpha_n < \beta_n < 1\), \(\alpha_n \to 0\), and \(\beta_n \to 0\) as \(n \to \infty\).  Define 
+      the differencee quotients
+      \[D_n \;=\; \frac{f(\beta_n) - f(\alpha_n)}{\beta_n - \alpha_n}.\]
+      Prove the following statements:
+      \begin{enumerate}
+        \item If \(\alpha_n < 0 < \beta_n\), then \(\lim D_n = f'(0)\).
+        \item If \(0 < \alpha_n < \beta_n\) and \(\left\{ \frac{\beta_n}{\beta_n - \alpha_n} \right\}\) is 
+          bounded, then \(\lim D_n = f'(0)\).
+        \item If \(f'\) is continuous on \((-1,1)\), then \(\lim D_n = f'(0)\).
+      \end{enumerate}
+
+      Give an example in which \(f\) is differentiable in \((-1,1)\) (but \(f'\) is not continuous at 0) and in 
+      which \(\alpha_n, \beta_n\) tend to \(0\) in such a way that \(\lim D_n\) exists but is different from \(f'(0)\).
+      \newpage
+
+    \item \textbf{Rudin 7-15:} Suppose \(f\) is a real continuous function on \(\R\), \(f_n(t) = f(nt)\) for 
+      \(n = 1,2,3,\hdots\), and \(\{f_n\}\) is equicontinuous on \([0,1]\).  What conclusion can you draw about 
+      \(f\)?
+  \end{enumerate}
+\end{document}
