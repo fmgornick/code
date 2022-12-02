@@ -1,0 +1,82 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amsfonts} 
+\usepackage{amsthm}
+\usepackage{enumitem} 
+\usepackage{mathtools}
+\usepackage[top=2cm,bottom=2cm,left=1.25cm,right=2cm,marginparwidth=1.75cm]{geometry}
+\setlength{\parindent}{0cm}
+
+\newcommand{\R}{\mathbb{R}}
+
+\pagenumbering{gobble}
+\newtheorem{theorem}{Theorem}
+
+\begin{document}
+  \begin{enumerate}
+    \item  Define \(f \colon \R \to \R\) as \(f(t) = \displaystyle\frac{3\sin(t)}{2 + \cos(t)}\).
+      \begin{enumerate}
+        \item Calculate \(f'(t)\), and show that \(0 < f'(t) < 1\) for all \(t \in \left(0, \frac{2\pi}{3}\right)\). 
+          Find the Taylor polynomial \(p_5(f; 0)\) of order \(5\) for \(f\) centered at \(0\).
+
+        \item Find the unique integer exponent \(\alpha\) such that \(\displaystyle\lim_{x \to 0^+} 
+          \left( \left(\frac{1}{f(x)}\right)^\alpha - \left(\frac{1}{x}\right)^\alpha\right)\) exists and is a real 
+          number \(\neq 0\).
+
+        \item Let \(x_0\) be a point of \(\left(0, \frac{2\pi}{3}\right]\), and define a sequence \(\{x_n\}_{n \geq 0}\) 
+          recursively by setting \(x_{n+1} = f(x_n)\), for all \(n \geq 0\).  Prove that this defines a strictly 
+          decreasing sequence and that \(\displaystyle\lim_{n \to \infty} x_n = 0\).  Find the unique real exponent 
+          \(\beta\) such that \(\displaystyle\lim_{n \to \infty} n^\beta x_n\) exists and is a real number \(\neq 0\), 
+          and evaluate this limit.
+      \end{enumerate}
+      \newpage
+
+    \item \begin{enumerate}
+        \item Let \(f \colon (-\alpha, \alpha) \to \R\) be a differentiable function.  Suppose that \(f''(0)\) exists, 
+          and \(f'(0) = f(0) = 0\).  Prove that the function \(g \colon (-\alpha, \alpha) \to \R\) defined as
+          \[
+            g(x) = \begin{cases}
+              f(\sqrt{x}) & \text{for } x \geq 0 \\
+              -f(\sqrt{-x}) & \text{for } x \leq 0
+            \end{cases}
+          \]
+          is differentiable, and \(g'\) is continuous at \(0\).
+
+        \item Let \(k\) be an integer \(\geq 1\), and \(f \colon (-\alpha, \alpha) \to \R\) be a \(k\)-times 
+          differentiable function.  Suppose that at \(0\), the \((k+1)^{\text{st}}\) derivative \(f^{(k+1)}(0)\) 
+          exists, and that \(f(0) = 0\).  Show that by setting
+          \[
+            g(x) = \begin{cases}
+              f(x)/x & \text{for } x \neq 0 \\
+              f'(0) & \text{for } x = 0
+            \end{cases},
+          \]
+          we define a \(k\)-times differentiable function \(g \colon (-\alpha, \alpha) \to \R\) and that the 
+          \(k^{\text{th}}\) derivative \(g^{(k)}\) is continuous at \(0\).  What are the values of \(g^{(\ell)}(0)\) 
+          for \(1 \leq \ell \leq k\)? \\
+          (If this holds for two functions \(f_1\) and \(f_2\), then it holds for any linear combination 
+          \(c_1f_1 + c_2f_2\) of them, and it is quite easy to see that the result is true for any polynomial 
+          function \(p(x)\) with \(p(0) = 0\).  So it will suffice to prove the result when \(f^{(\ell)}(0) = 0\) 
+          for \(1 \leq \ell \leq k+1\); this will simplify your bookkeeping.)
+      \end{enumerate}
+      \newpage
+
+    \item \textbf{Rudin 8.5:} Find the following limits
+      \begin{enumerate}
+        \item \(\displaystyle\lim_{x \to 0} \frac{e - (1+x)^{1/x}}{x}\).
+        \item \(\displaystyle\lim_{n \to \infty} \frac{n}{\log n}[n^{1/n} - 1]\).
+        \item \(\displaystyle\lim_{x \to 0} \frac{\tan x - x}{x(1 - \cos x)}\).
+        \item \(\displaystyle\lim_{x \to 0} \frac{x - \sin x}{\tan x - x}\).
+      \end{enumerate}
+      \newpage
+
+    \item \textbf{Rudin 8.18:} Define 
+      \begin{align*}
+        f(x) &= x^3 - \sin^2 x \tan x \\
+        g(x) &= 2x^2 - \sin^2 x \tan x.
+      \end{align*}
+      Find out, for each of these two functions, whether it is positive or negative for all 
+      \(x \in \left(0, \frac{\pi}{2}\right)\), or whether it changes sign.  Prove your answer.
+  \end{enumerate}
+\end{document}
