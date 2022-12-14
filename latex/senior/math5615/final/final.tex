@@ -1,0 +1,73 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amsfonts} 
+\usepackage{amsthm}
+\usepackage{enumitem} 
+\usepackage{mathtools}
+\usepackage[top=2cm,bottom=2cm,left=1.5cm,right=2cm,marginparwidth=1.75cm]{geometry}
+\setlength{\parindent}{0cm}
+
+\newcommand{\R}{\mathbb{R}}
+\newtheorem{theorem}{Theorem}
+
+\pagenumbering{gobble}
+\title{\vspace{-1.0cm}MATH 5615H Final}
+\author{Fletcher Gornick}
+\date{December 16, 2022}
+
+\begin{document}
+\maketitle
+\newpage
+\begin{enumerate}
+    \item \begin{enumerate}
+        \item For each real number \(x\), find (with proof)
+          \[\lim_{n \to \infty} \left(\cos \left(\frac{x}{\sqrt{n}}\right)\right)^n.\]
+
+        \item Find all real numbers \(\beta\) such that the series 
+          \[\sum_{n=1}^{\infty}\left( \left(1 + \frac{3}{n}\right)^n - e^3 + \frac{\beta}{n} \right)\]
+          converges, and prove your answer.
+
+        \item Let \(x_1\) be a real number \(>0\), and define a sequence \(\{x_n\}_{n \geq 1}\) recursively by setting
+          \[x_{n+1} = x_n + e^{-x_n} \quad \text{for all } n \geq 1.\]
+          Prove that \(\displaystyle\lim_{n \to \infty}\left(x_n - \ln(n)\right) = 0.\)
+    \end{enumerate}
+    \newpage
+
+    \item \begin{enumerate}
+        \item Let \((M, \rho)\) and \((M', \rho')\) be metric spaces, and \(x\) be a point of \(M\).  True or False: If 
+          \(f \colon M \to M'\) is a function, then (\(f\) is continuous at \(x\)) \(\iff\) (For \underline{\smash{every}} 
+          sequence \(\{x_n\}_{n \geq 1}\) in \(M\) which converges to \(x\), the sequence \(\{f(x_n)\}_{n \geq 1}\) is 
+          convergent in \(M'\))? (Do we really need to say ``to \(f(x)\)''?) Prove your answer.
+
+        \item In the closed unit square \([0,1] \times [0,1] \subset \R^2\), let \(D\) be a closed subset such that, for 
+          each \(x \in [0,1]\), the intersection \(\left(\{x\} \times [0,1]\right) \cap D\) is non-empty and connected.  Prove 
+          that \(D\) is connected, and that for some \(t \in [0,1]\), the point \((t,t)\) is a member of \(D\).
+
+        \item In Euclidean space \(\R^3\), suppose \(p_1, p_2, p_3,\) and \(p_4\) are four distinct non-coplanar points, and let 
+          \(T\) be the closed subset of \(\R^3\) which is the union of the six closed line segments which join pairs of these 
+          points (so \(T\) is the ``skeleton'' of the tetrahedron whose vertices are \(p_1, p_2, p_3,\) and \(p_4\)). Let 
+          \(\varphi \colon T \to \R\) be a continuous function.  Show that there is some \(\alpha \in \R\) whos preimage 
+          \(\varphi^{-1}\left(\{\alpha\}\right)\) has at least four members.
+    \end{enumerate}
+    \newpage
+
+    \item \begin{enumerate}
+        \item Prove that if \(\alpha\) and \(\beta\) are real numbers and \(|\alpha| > 1\), then the line \(y = \alpha x + \beta\) 
+          intersects the graph of \(y = \ln(1 + x^2)\) exactly once.
+
+        \item Let \(\alpha\) be a real number \(> 0\), and \(\{t_n\}_{n \geq 1}\) be a sequencee of \underline{\smash{non-zero}}
+          numbers in the interval \((-\alpha, \alpha)\) such that \(\displaystyle\lim_{n \to \infty} t_n = 0\).  Suppose that 
+          \(f \colon (-\alpha, \alpha) \to \R\) is a function such that:
+          \begin{enumerate}[label=(\roman*)]
+            \item \(f\) is \(k\)-times differentiable at 0, for some integer \(k \geq 1\).
+            \item \(f(t_n) = 0\) for all \(n \geq 1\).
+          \end{enumerate}
+          Prove that \(f(0) = f'(0) = \hdots = f^{(k)}(0) = 0\). \\
+          (If \(k \geq 2\) then \(f\) must be \((k-1)\)-times differentiable in some open interval which includes 0, so after 
+          perhaps reducing \(\alpha\) and replacing \(\{t_n\}_{n \geq 1}\) by a subsequence, you may as well assume that \(f\) 
+          is \((k-1)\)-times differentiable on \((-\alpha, \alpha)\).)
+    \end{enumerate}
+\end{enumerate}
+\end{document}
+
