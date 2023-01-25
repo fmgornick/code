@@ -1,0 +1,45 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,amsfonts,amsthm}
+\usepackage{enumitem} 
+\usepackage{mathtools}
+\usepackage[top=2cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
+\setlength{\parindent}{0cm}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\n}{\vspace{0.5cm}}
+
+\begin{document}
+\title{\vspace{-1cm}MATH 4152 Exercise 1}
+  \author{Fletcher Gornick}
+  \maketitle
+  \textbf{1.1-2)} Show that there are no wffs of length 2, 3, or 6, but that any other positive length is possible.
+  \begin{proof}
+    The shortest wff would just consist of one sentence symbol, written like so:
+    \[W_1 = A\]
+    In this case \(A\) is interchangeable with any sentence symbol, and this wff has length one.  The next shortest wff is written with the negation symbol, but must be wrapped in parentheses to group symbols with connectives:
+    \[W_4 = (\neg A)\]
+    This wff has length 4.  We can write a wff of length 5 using the conjunction symbol:
+    \[W_5 = (B \wedge C)\]
+
+    Now, given any wff of length \(k\), call it \(W_k\), we can form any \((k+3)\)-length wff by negating it, So if we can show that there exists wffs of length 7, 8, and 9, then we can create a new wff of larger length by just repeatedly negating one of the first 3.
+    \begin{align*}
+      W_7 \; \text{(length 7)} \; &= (\neg (\neg A)) \\
+      W_8 \; \text{(length 8)} \; &= (\neg (B \wedge C)) \\
+      W_9 \; \text{(length 9)} \; &= (D \wedge (E \wedge F))
+    \end{align*}
+
+    We can now write a formula for any word of length 10 or higher as a function of \(W_7,W_8,W_9\) defined above.
+    \[
+      W_n  = \begin{cases}
+        (\underbrace{\neg (\neg ( \hdots (\neg}_{(n-9)/3 \text{ times}} W_9) \hdots))), &\text{ if } n \equiv 0 \pmod 3 \\
+        (\underbrace{\neg (\neg ( \hdots (\neg}_{(n-7)/3 \text{ times}} W_7) \hdots))), &\text{ if } n \equiv 1 \pmod 3 \\
+        (\underbrace{\neg (\neg ( \hdots (\neg}_{(n-8)/3 \text{ times}} W_8) \hdots))), &\text{ if } n \equiv 2 \pmod 3 \\
+      \end{cases}
+    \]
+
+    Finally, we've shown that \(W_2\) and \(W_3\) cannot be made, because the smallest jump from \(W_1\) is to \(W_4\).  Since negation adds 3 to the length, and every other connective adds 4, it's easy to see that \(W_6\) cannot be constructed either (\(4+3=7 > 6\)).  So we can conclude that the only unachievable wffs are of length 2, 3, and 6.
+  \end{proof}
+\end{document}
