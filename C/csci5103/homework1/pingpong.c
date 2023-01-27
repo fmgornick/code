@@ -1,15 +1,27 @@
+/* CSCI 5103 Spring 2023
+ * Assignment# 1
+ * name: Flercher Gornick
+ * student id: 5579904
+ * x500 id: gorni025
+ * CSELABS machine: csel-kh1250-16.cselabs.umn.edu */
+
 #include <fcntl.h>
 #include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <sys/prctl.h>
+#include <sys/wait.h>
 #include <unistd.h>
 
 #define BUFSIZE 64
 
-int fd, limit;
+int fd, limit, terminated;
 
 /* parent and child signal handler, doesn't actually do anything */
-void handler(int signum) {}
+void sigusr_handler(int signum) {}
+
+/* signal handler for when process terminates unexpectedly */
+void unexpected_handler(int signum) { terminated = 1; }
 
 /* parent process (takes in child pid as an argument)*/
 void parent(int pid) {
@@ -18,24 +30,31 @@ void parent(int pid) {
 
   int count = 0;
   char buf[BUFSIZE] = {'\0'};
-  struct sigaction parent_sa;
+  struct sigaction usr2 = {0};
+  struct sigaction childterm = {0};
 
   /* set up sigaction for when parent recieves SIGUSR1 from child */
-  sigemptyset(&parent_sa.sa_mask);
-  parent_sa.sa_handler = handler;
-  sigaction(SIGUSR2, &parent_sa, NULL);
+  sigemptyset(&usr2.sa_mask);
+  usr2.sa_handler = sigusr_handler;
+  sigaction(SIGUSR2, &usr2, NULL);
 
-  /* this mask (used by sigsuspend) temporarily unblocks the SIGUSR2 signal as
-   * well as SIGINT making it so the parent process is suspended until these two
-   * specific signals are sent */
+  /* set up sigaction for when child terminates unexpectedly */
+  sigemptyset(&childterm.sa_mask);
+  childterm.sa_handler = unexpected_handler;
+  sigaction(SIGCHLD, &childterm, NULL);
+
+  /* this mask (used by sigsuspend) temporarily unblocks the SIGUSR2, SIGCHLD
+   * and SIGINT making it so the parent process is suspended until one of these
+   * three specific signals are sent */
   sigset_t pmask;
   sigfillset(&pmask);
   sigdelset(&pmask, SIGUSR2);
+  sigdelset(&pmask, SIGCHLD);
   sigdelset(&pmask, SIGINT);
 
-  /* loop until we've finished ping-ponging */
-  while (count < limit) {
-    /* write buffer to Logger file */
+  /* loop until we've finished ping-ponging or exit if child terminated */
+  while (count < limit && !terminated) {
+    /* write counter value to Logger file */
     sprintf(buf, "Parent %d\n", count++);
     write(fd, &buf, BUFSIZE);
 
@@ -43,8 +62,17 @@ void parent(int pid) {
      * signal sent back (NOTE: sigsuspend restores the previous set of masked
      * signals when it returns) */
     kill(pid, SIGUSR1);
-    sigsuspend(&pmask);
+    if (!terminated)
+      sigsuspend(&pmask);
   }
+
+  /* send message if unexpected termination occurs */
+  if (terminated)
+    printf("child process terminated unexpectedly\n");
+
+  /* wait for child process to terminate and delete reference to file */
+  close(fd);
+  wait(NULL);
 }
 
 void child() {
@@ -53,33 +81,53 @@ void child() {
 
   int count = 0;
   char buf[BUFSIZE] = {'\0'};
-  struct sigaction child_sa;
+  struct sigaction usr1 = {0};
+  struct sigaction parentterm = {0};
 
   /* set up sigaction for when parent recieves SIGUSR2 from parent */
-  sigemptyset(&child_sa.sa_mask);
-  child_sa.sa_handler = handler;
-  sigaction(SIGUSR1, &child_sa, NULL);
+  sigemptyset(&usr1.sa_mask);
+  usr1.sa_handler = sigusr_handler;
+  sigaction(SIGUSR1, &usr1, NULL);
 
-  /* this mask (used by sigsuspend) temporarily unblocks the SIGUSR1 signal as
-   * well as SIGINT making it so the child process is suspended until these two
-   * specific signals are sent */
+  /* set up sigaction for when parent terminates unexpectedly */
+  sigemptyset(&parentterm.sa_mask);
+  parentterm.sa_handler = unexpected_handler;
+  sigaction(SIGUSR2, &parentterm, NULL);
+
+  /* send SIGUSR2 signal to child if parent terminates */
+  prctl(PR_SET_PDEATHSIG, SIGUSR2);
+
+  /* this mask (used by sigsuspend) temporarily unblocks the SIGUSR1, SIGUSR2,
+   * and SIGINT making it so the parent process is suspended until one of these
+   * three specific signals are sent */
   sigset_t cmask;
   sigfillset(&cmask);
   sigdelset(&cmask, SIGUSR1);
+  sigdelset(&cmask, SIGUSR2);
   sigdelset(&cmask, SIGINT);
 
-  while (count < limit) {
+  /* loop until we've finished ping-ponging or exit if parent terminated */
+  while (count < limit && !terminated) {
     /* suspend parent process until SIGUSR1 signal sent back (NOTE: sigsuspend
      * restores the previous set of masked signals when it returns) */
-    sigsuspend(&cmask);
+    if (!terminated)
+      sigsuspend(&cmask);
 
-    /* write buffer to Logger file */
+    /* write counter value to Logger file */
     sprintf(buf, "Child %d\n", count++);
     write(fd, &buf, BUFSIZE);
 
     /* send SIGUSR2 signal to parent */
     kill(getppid(), SIGUSR2);
   }
+
+  /* send message if unexpected termination occurs */
+  if (terminated)
+    printf("parent process terminated unexpectedly\nyou may not see a prompt, "
+           "but the process terminated gracefully!!\n\n");
+
+  /* delete reference to file */
+  close(fd);
 }
 
 int main(int argc, char *argv[]) {
@@ -113,8 +161,5 @@ int main(int argc, char *argv[]) {
   else
     parent(pid);
 
-  /* wait for child process to terminate and close file descriptor */
-  wait(NULL);
-  close(fd);
   return 0;
 }
