@@ -3,7 +3,7 @@
  * name: Flercher Gornick
  * student id: 5579904
  * x500 id: gorni025
- * CSELABS machine: csel-kh1250-16.cselabs.umn.edu */
+ * CSELABS machine: csel-cuda-04 */
 
 #include <fcntl.h>
 #include <signal.h>
@@ -68,7 +68,8 @@ void parent(int pid) {
 
   /* send message if unexpected termination occurs */
   if (terminated)
-    printf("child process terminated unexpectedly\n");
+    printf("child process terminated unexpectedly\nyou may not see a prompt, "
+           "but the process terminated gracefully!!\n\n");
 
   /* wait for child process to terminate and delete reference to file */
   close(fd);
@@ -144,7 +145,7 @@ int main(int argc, char *argv[]) {
 
   /* create logger file (file descriptor is a global variable, so both child
    * processes can access it) */
-  fd = open("Logger", O_WRONLY | O_CREAT | O_APPEND);
+  fd = open("Logger", O_WRONLY | O_CREAT | O_APPEND | O_TRUNC);
 
   /* block both SIGUSR1 and SIGUSR2 signals from both processes to start off,
    * this way the processes can unblock to synchronize */
