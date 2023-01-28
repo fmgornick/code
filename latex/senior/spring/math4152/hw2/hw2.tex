@@ -1,0 +1,76 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,amsfonts,amsthm}
+\usepackage{enumitem} 
+\usepackage{mathtools}
+\usepackage[top=2cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
+\setlength{\parindent}{0cm}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\n}{\vspace{0.5cm}}
+
+\pagenumbering{gobble}
+
+\begin{document}
+\title{\vspace{-1.5cm}MATH 4152 Homework 2}
+  \author{Fletcher Gornick}
+  \maketitle
+  \begin{enumerate}
+    \item Consider the sentence: ``If humanity consists of mortals, and John is a member of humanity, then John is a mortal''.  State the basic components with no logical structure and pick letters for them.  Then write down a suitable well formed formula of LSL (Language of Sentential Logic).
+      \begin{align*}
+        A &: \text{``humanity consists of mortals''} \\
+        B &: \text{``John is a member of humanity''} \\
+        C &: \text{``John is a mortal''} \\
+      \end{align*}
+      \[\text{wff} = ((A \wedge B) \to C)\]
+
+    \item Translate the following two sentences into LSL using suggestive letters for transparency.
+      \begin{enumerate}[label=(\alph*)]
+        \item ``If John either skips a movie, or the gym, then he can finish the homework and visit his grandmother.''
+      \begin{align*}
+        M &: \text{``John goes to a movie''} \\
+        G &: \text{``John goes to the gym''} \\
+        H &: \text{``John finishes his homework''} \\
+        V &: \text{``John visits his grandmother''} \\
+      \end{align*}
+      \[\text{wff} = (((\neg M) \vee (\neg G)) \to (H \wedge V))\]
+
+        \item ``If John watches the movie and goes to the gym, then he will not (both) finish his homework and visit his grandmother.''
+      \[\text{wff} = ((M \wedge G) \to (\neg (H \wedge V)))\]
+      \end{enumerate}
+
+    \item \begin{enumerate}[label=(\alph*)]
+        \item What is the relationship between the two sentences from 2? \\
+          Simply put, (b) is the converse of (a), but more directly, (b) is the convers of (a)'s contrapositive.
+        \item How can the conjunction of the two sentences be stated more briefly and still be logically equivalent? \\
+          ``John can finish his homework and visit his grandmother if and only if he doesn't go to both a movie and the gym.''
+      \end{enumerate}
+      \newpage
+
+    \item Someone said: ``We are ready for them and their bahavior is not acceptable or professional''.  The person meant: ``These are really bad guys and (but) we are ready for them''.  Based on this meaning, which translations into LSL are correct?
+      \begin{align*}
+        R &: \text{``We are ready''} \\
+        A &: \text{``Their behavior is acceptable''} \\
+        P &: \text{``Their behavior is professional''} \\
+      \end{align*}
+      \begin{center}
+        \begin{minipage}[c]{0.5\linewidth}
+          \begin{enumerate}[label=(\alph*)]
+            \item \(((R \wedge (\neg A)) \vee P)\)
+            \item \((R \wedge ((\neg A) \vee P))\)
+            \item \((R \wedge ((\neg A) \vee (\neg P)))\)
+            \item \(((R \wedge (\neg A)) \wedge (\neg P))\)
+            \item \((R \wedge ((\neg A) \wedge (\neg P)))\)
+            \item \((R \wedge (\neg (A \wedge P)))\)
+            \item \((R \wedge (\neg (A \vee P)))\)
+          \end{enumerate}
+        \end{minipage}
+      \end{center}
+      the wff that follows most logically from the statement above is (g).  Distributing out the negation symbol gives us (e), and since multiple conjunctions are associative, (d) also works.  So (d), (e), and (g) are the correct translations.
+
+      This is assuming ``not acceptable or proffesional'' means \((\neg(\text{acceptable } \vee \text{ professional}))\).
+
+  \end{enumerate}
+\end{document}
