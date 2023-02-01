@@ -1,0 +1,102 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amsthm}
+\usepackage{fullpage}
+\usepackage{amsfonts}
+\usepackage{amssymb,multicol}
+\usepackage{graphicx}
+\usepackage{hyperref, enumitem}
+\usepackage{outlines}
+\usepackage{xcolor}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\n}{\vspace{0.5cm}}
+\newcommand{\mmod}{\;\%\;}
+
+\newtheorem*{theorem}{Theorem}
+
+\newlist{checklist}{itemize}{2}
+\setlist[checklist]{label=$\square$}
+
+\begin{document}
+  \begin{center}
+    {\Large Homework 1} \n
+
+    Fletcher Gornick
+  \end{center}
+
+  \begin{enumerate}
+    \item[0.] If you would like any of these problems to be graded for proficiency with the core skills, list the skill and the corresponding problem.
+      \begin{outline}
+        \1 2. Apply the definition of divisibility in a proof.
+          \2 problem 5
+        \1 3. Apply the definition of a unit modulo m in a proof.
+          \2 problem 3
+      \end{outline} \n
+
+    \item Write out all elements of \(\Z_8\) using two different collections of representatives for the equivalence classes. (Note: Your answer will have two different sets; each equivalence class in the first set should be equal to an equivalence class in the second set.)
+      \begin{align*}
+        \Z_8 &= \{\bar0,\bar1,\bar2,\bar3,\bar4,\bar5,\bar6,\bar7\} \\
+             &= \{\bar8,\bar9,\bar{10},\bar{11},\bar{12},\bar{13},\bar{14},\bar{15}\}
+      \end{align*}
+
+    \item Make a multiplication table for \(\Z_{10}\) Use it to identify the units (invertible elements) of \(\Z_{10}\).  What is \(\varphi(10)\)?
+      \[
+        \begin{tabular}[c]{l|l l l l l l l l l l}
+          \(\times\) & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\
+          \hline
+          0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+          1 & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\
+          2 & 0 & 2 & 4 & 6 & 8 & 0 & 2 & 4 & 6 & 8 \\
+          3 & 0 & 3 & 6 & 9 & 2 & 5 & 8 & 1 & 4 & 7 \\
+          4 & 0 & 4 & 8 & 2 & 6 & 0 & 4 & 8 & 2 & 6 \\
+          5 & 0 & 5 & 0 & 5 & 0 & 5 & 0 & 5 & 0 & 5 \\
+          6 & 0 & 6 & 2 & 8 & 4 & 0 & 6 & 2 & 8 & 4 \\
+          7 & 0 & 7 & 4 & 1 & 8 & 5 & 2 & 9 & 6 & 3 \\
+          8 & 0 & 8 & 6 & 4 & 2 & 0 & 8 & 6 & 4 & 2 \\
+          9 & 0 & 9 & 8 & 7 & 6 & 5 & 4 & 3 & 2 & 1 \\
+        \end{tabular}
+      \] 
+      This table shows us that \(1 \cdot 1 \equiv 1 \pmod{10}\), \(3 \cdot 7 \equiv 1 \pmod{10}\), and \(9 \cdot 9 \equiv 1 \pmod{10}\), so the units modulo 10 are 1,3,7, and 9.  This tells us \(\varphi(10) = 4\). \n
+      
+
+    \item Let \(n\) be a positive integer. Prove that \(n\) is a unit modulo \(5n-1\).
+
+      We can simply multiply \(n\) by 5 to give us \(5n = (5n-1) + 1\), this tells us
+      \[5n = (5n-1) + 1 \equiv 1 \pmod{5n-1}.\]
+      From above we see that 5 is the mulitplicative inverse of \(n\) modulo \(5n-1\) (by definition of multiplicative inverse).  So we can conclude that \(n\) is a unit modulo \(5n-1\) via the definition.
+      \newpage
+
+    \item Prove or disprove each of the following statements.
+      \begin{enumerate}[label=(\alph*)]
+        \item For positive integers \(n\) and \(N\) and any integer \(x\), \[(x \mmod N) \mmod n = x \mmod n.\]
+          This is false.  Take, for example, \(x = 10, n = 4, N = 5\), we have that \[(x \mmod N) \mmod n = (10 \mmod 5) \mmod 4 = 0 \mmod 4 = 0 \neq 2 = 10 \mmod 4 = x \mmod n.\]
+
+        \item For integers \(a,b,c\) and \(m\) with \(m,c > 0\), if \(a \equiv b \pmod{mc}\), then \(a \equiv b \pmod m\).
+          \begin{proof}
+            If \(a \equiv b \pmod{mc}\), then \(mc \mid (a-b)\) (by definition), that is, \[a-b = mck\] for some \(k \in \Z\).  Adding parentheses, we get that \[a-b = m (ck),\] and since \(ck \in \Z\), we have that \(a \equiv b \pmod m\) by definition of modular congruence.
+          \end{proof} \n
+      \end{enumerate}
+    
+    \item Suppose that \(a = bq + r\) for some integers \(a,b,q\) and \(r\).  Without using any properties of the gcd besides the definition as the largest common divisor of \(x\) and \(y\), prove that \(\gcd(a,b) = \gcd(b,r)\).  (Hint: \(x=y\) if and only if \(x \leq y\) and \(x \geq y\).)
+      \begin{proof}
+        Let \(c\) be the greatest common divisor of \(a\) and \(b\), or, in other words, let \(c\) be the largest integer such that \(c|a\) and \(c|b\).  Similarly, let \(d\) be the greatest common divisor of \(b\) and \(r\).  We show that \(c=d\).
+
+        First, note that if \(d|b\) and \(d|r\), then \(b = \ell d\), \(r = kd\) for \(k,\ell \in \Z\).  This then tells us that 
+        \[a = bq + r = (\ell d)q + (kd) = (\ell q + k)d,\]
+        and since \((\ell q+k) \in \Z\), \(d\) must divide \(a\) as well by definition of divisibility.  Now since \(d\) divides both \(a\) and \(b\), we know that \(d\) is a common divisor, we also know that \(c\) is the greatest common divisor of \(a\) and \(b\), so we can conclude that \(c \geq d\).
+
+        Just as we did above, we can write \(a = sc\), \(b = tc\) for some \(s,t \in \Z\).  Again, plugging in these values, we get
+        \begin{align*}
+          a = bq+r \iff r &= a-bq \\
+                          &= (sc) - (tc)q \\
+                          &= (s - tq)c
+        \end{align*}
+        Again, since \((s - tq) \in \Z\), we have that \(c\) divides \(r\) by definition of divisibility.  Now, since \(c|b\) and \(c|r\), we know that \(c\) is a common divisor of \(b\) and \(r\), but \(d\) is the greatest common divisor of \(b\) and \(r\), so \(c \leq d\).
+
+        In conclusion, since \(\gcd(a,b) \leq \gcd(b,r)\) and \(\gcd(a,b) \geq \gcd(b,r)\), it must be the case that \(\gcd(a,b) = \gcd(b,r)\).
+      \end{proof}
+      
+  \end{enumerate}
+\end{document}
