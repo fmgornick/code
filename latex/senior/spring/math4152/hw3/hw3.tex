@@ -1,0 +1,72 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,amsfonts,amsthm}
+\usepackage{enumitem} 
+\usepackage{mathtools}
+\usepackage{calligra}
+\usepackage[top=2cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
+\setlength{\parindent}{0cm}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\n}{\vspace{0.5cm}}
+
+\pagenumbering{gobble}
+
+\begin{document}
+\title{\vspace{-1.5cm}MATH 4152 Homework 3}
+  \author{Fletcher Gornick}
+  \maketitle
+  \begin{enumerate}
+    \item Let \(\alpha\) be a wff; let \(c\) be the number of places at which binary connective symbols \((\wedge, \vee, \to, \leftrightarrow)\) occur in \(\alpha\); let \(s\) be the number of places at which sentence symbols occur in \(\alpha\) (For example, if \(\alpha\) is \((A \to (\neg A))\) then \(c(\alpha) = 1\) and \(s(\alpha) = 2\).)  Show by using the induction principle that \(s(\alpha) = c(\alpha)+1\).
+
+      Specifically, do the following: 
+      \begin{enumerate}[label=(\alph*)]
+        \item Define a set \(\varPhi\) of all wffs that satisfy some property to use the Induction principle. \n
+
+          Let \(\varPhi\) be the set of all wffs such that \(\alpha \in \varPhi\) iff \(s(\alpha) = c(\alpha) + 1\). \n
+
+        \item Prove that all sentence symbols \(A_1,A_2,\hdots,A_n,\hdots\) belong to \(\varPhi\). \n
+
+          Base Case: For any given sentence symbol \(A_i\), we have that \(s(A_i) = 1\), and \(c(A_i) = 0\), so clearly every sentence symbol must be in our set \(\varPhi\). \n
+        \item Prove that \(\varPhi\) is closed under all five formula-building operations, and thus contains all wffs. \n
+
+          First note that for any sequence \(\alpha \in \varPhi\), it's negation \((\neg \alpha)\) must also be in \(\varPhi\), because negation doesn't change the number of binary connectives \(c\) or sentence symbols \(s\), so if \(s = c+1\) before the negation, then it will after. \n
+
+          Inductive Step: Now, for some \(k \in \N\), suppose the claim holds for all wffs with \(c \leq k\).  Let \(\alpha\) be any wff with \(0 \leq c(\alpha) \leq k\).  Similarly, let \(\beta\) be any wff with \(0 \leq c(\beta) \leq k\) with the added restriction that \(c(\alpha) + c(\beta) = k\).  By our inductive hypothesis, we know that \(s(\alpha) = c(\alpha) + 1\) and \(s(\beta) = c(\beta) + 1\), this tells us that \(s(\alpha) + s(\beta) = k + 2\).\n
+
+          For these two arbitrary wffs, we can choose wff \(\gamma = (\alpha \;\circ\; \beta)\), where \(\circ \in \{\wedge, \vee, \to, \leftrightarrow\}\). This joining of \(\alpha\) and \(\beta\) adds one new binary connective \(\circ \in \{\wedge, \vee, \to,\leftrightarrow\}\), and carries over the same number of sentence symbols.  So we have 
+          \begin{align*}
+            c(\gamma) &= c(\alpha) + c(\beta) + 1 = k+1 \\
+            s(\gamma) &= s(\alpha) + s(\beta) = k + 2 = c(\gamma) + 1.
+          \end{align*}
+
+          Therefore, it holds for the \(k+1\) case, and we can conclude that \(\varPhi\) is closed under the five formula-building operations. \n
+
+          Hence, by the induction principle, \(\varPhi\) must be the set of all wffs, and by the way \(\varPhi\) is defined, it follows that all possible wffs \(\alpha\) have the property \(s(\alpha) = c(\alpha) + 1\). 
+      \end{enumerate}
+
+
+    \newpage
+    \item Suppose that \(\alpha\) is a wff not containing the negation symbol \(\neg\).  Show that the length of \(\alpha\) (i.e., the number of symbols in the string) is odd.
+
+      \begin{enumerate}
+        \item Let \(\varPhi\) be the set of all wffs (not containing negation symbol) with odd length. \n
+
+        \item \(\varPhi\) must contain all sentence symbols because each sentence symbol has odd-length 1. \n
+
+        \item Suppose any wff with \(k\) binary connective symbols has odd length, we show that any wff with \(k+1\) binary connectives must also have odd length. \n
+
+          Let \(\gamma\) be any wff with \(k+1\) binary connectives, and represent it as \(\gamma = (\alpha \circ \beta)\), with \(\circ\) as the last binary connective symbol.  It must be the case that \(\alpha\) and \(\beta\) both have \(k\) or less binary connective symbols in their representation, and thus, both have odd length by our inductive hypothesis. \n
+
+          let \(\ell \colon S \to \N\) represent the length of each wff.  From above, we know \(\ell(\alpha) = 2a + 1\) and \(\ell(\beta) = 2b + 1\) for some \(a,b \in \N\), so plugging in for \(\gamma\),
+          \[\gamma = (\alpha \circ \beta) \iff \ell(\gamma) = 1 + \ell(\alpha) + 1 + \ell(\beta) + 1 = 2a + 1 + 2b + 1 + 3\]
+          \(\ell(\gamma) = 2(a+b) + 5\), so clearly \(\gamma\) has an odd length as well, so our inductive step holds and \(\gamma \in \varPhi\) as well.  Therefore, we can conclude that \(\varPhi\) is closed under the four binary formula-building operations. \n
+
+          Hence, by the induction principle, \(\varPhi\) must be the set of all wffs excluding the negation symbol.  By the way \(\varPhi\) is defined, we can conclude that all wffs (without \(\neg\)) have odd length.
+      \end{enumerate}
+
+  \end{enumerate}
+\end{document}
+
