@@ -1,0 +1,152 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amsfonts} 
+\usepackage{amsthm}
+\usepackage{blkarray}
+\usepackage{caption}
+\usepackage{enumitem} 
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage[top=2cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
+\setlength{\parindent}{0cm}
+\newcommand{\R}{\mathbb{R}}
+\newcommand\simpleGraph[1]{
+  \begin{tikzpicture}[every node/.style={circle,draw}]
+    \node (a) at (0,1) {};
+    \node (b) at (1,1) {};
+    \node (c) at (1,0) {};
+    \node (d) at (0,0) {};
+
+    \foreach \from/\to in {#1}
+      \draw (\from) -- (\to);
+  \end{tikzpicture}\hfil
+}
+\newcommand\itm[1]{\item[\textbf{#1}]}
+\newcommand{\incid}{{-}\!{\bullet}\!{-}}
+\newcommand{\n}{\vspace{0.5cm}}
+
+\def\lc{\left\lceil}   
+\def\rc{\right\rceil}
+\def\lf{\left\lfloor}   
+\def\rf{\right\rfloor}
+
+\newtheorem{theorem}{Theorem}
+
+\title{\vspace{-1.0cm}MATH 5707 Homework 2}
+\author{Fletcher Gornick}
+\date{February 7, 2023}
+
+\begin{document}
+\maketitle
+\begin{itemize}
+  \itm{2.1.6} Show that if \(G\) is a tree with \(\Delta \geq k\), then \(G\) has at least \(k\) vertices of degree one.
+  \begin{proof}
+    From theorems 1.1 and 2.1, we know \(\displaystyle\sum_{v \in V} d_G(v) = 2\varepsilon = 2\nu - 2.\)
+    Now we can let \(\ell\) denote the number of vertices with degree 1 in \(G\).  Without loss of generality, let \(v_1\) be our vertex with \(d_G(v_1) \geq k\).  Let the next \(\ell\) vertices \(v_2,v_3,\hdots,v_{\ell + 1}\) have degree 1, and the remaining \(\nu - \ell - 1\) vertices \(v_{\ell+2}, v_{\ell+3}, \hdots, v_{\nu}\) have degree \(\geq 2\).  This gives us the following inequality,
+    \[k + \ell + 2(\nu - \ell - 1) \;\;\leq\;\; d_G(v_1) + \sum_{i=2}^{\ell + 1} d_G(v_i) + \sum_{j=\ell+2}^{\nu} d_G(v_j) \;\;=\;\; \sum_{v \in V} d_G(v) \;\;=\;\; 2\nu - 2.\]
+    Simplifying the above inequality gives us \(k - \ell + (2\nu - 2) \leq 2\nu - 2 \iff k \leq \ell\), which gives us our desired result.  Thus, we can conclude that \(G\) must have at least \(k\) vertices of degree 1 if \(\Delta \geq k\).
+  \end{proof}
+  
+
+
+
+  \itm{2.1.12} A saturated hydrocarbon is a molecule \(C_m H_n\) in which every carbon atom has four bonds, every hydrogen atom has one bond, and no sequence of bonds forms a cycle.  Show that for every positive integer \(m\), \(C_m H_n\) can exist only if \(n = 2m + 2\).
+  \begin{proof}
+    Let \(G = (V, E)\) be a graph of our saturated hydrocarbon, with disjoint vertex sets \(V_1\) and \(V_2\) defined like so:
+    \begin{align*}
+      V_1 \subset V, \quad V_1 &= \{v \in V \mid v \text{ a carbon atom}\}  \text{ (\(m\) elements)} \\
+      V_2 \subset V, \quad V_2 &= \{v \in V \mid v \text{ a hydrogen atom}\}  \text{ (\(n\) elements)} \\
+      V_1 \cup V_2 &= V
+    \end{align*}
+
+    In order to classify our saturated hydrocarbon \(C_m H_n\) as a molecule, it must be connected.  It's also stated that no bonds form a cycle, making our graph \(G\) a connected acyclic graph, or in other words, a tree.  Under this classification, we can use the following equalities:
+
+    \begin{align*}
+      2(m+n) - 2 &= 2\nu - 2              & \text{(\(|V_1| + |V_2| = \nu\))}    \\
+                 &= 2\varepsilon          & \text{(Theorem 2.2)}                \\
+                 &= \sum_{v \in V} d_G(v) & \text{(Theorem 1.1)}                \\
+                 &= \sum_{v_1 \in V_1} d_G(v_1) + \sum_{v_2 \in V_2} d_G(v_2)   \\
+                 &= 4m + n.               & \text{(\(d_G(C) = 4, d_G(H) = 1\))} \\
+    \end{align*}
+
+    Rearranging terms, we get 
+    \[2m + 2n - 2 = 4m + n \quad\iff\quad n = 2m + 2.\]
+  \end{proof}
+  
+
+
+  \itm{2.2.2} Let \(G\) be connected and let \(e \in E\).  Show that
+    \begin{enumerate}[label=(\alph*)]
+      \item \(e\) is in every spanning tree of \(G\) if and only if \(e\) is a cut edge of \(G\);
+        \begin{enumerate}
+          \item[(\(\Rightarrow\))] If \(e\) is not a cut edge, then \(\omega(G-e) = \omega(G) = 1\), and thus \(G-e\) is connected.  By Corollary 2.4.1, \(G-e\) must contain a spanning tree, so there exists spanning tree not containing \(e\). \n
+
+          \item[(\(\Leftarrow\))] Suppose that \(e\) is a cut edge of \(G\), so \(\omega(G-e) > \omega(G) = 1\), thus \(G-e\) is disconnected.  This means that \(G-e\) cannot have a spanning tree, so it must be the case that \(e\) is in every spanning tree of \(G\). \qed \n
+        \end{enumerate}
+
+      \item \(e\) is in no spanning tree of \(G\) if and only if \(e\) is a loop of \(G\).
+          \begin{enumerate}
+            \item[(\(\Leftarrow\))] A loop is a cycle, so obviously if any graph \(G\) contains loop \(e\), it can't be a tree. \n
+
+            \item[(\(\Rightarrow\))] If \(G\) is connected, and \(e\) is not a loop then there exists a tree containing \(e\). \n
+
+          If \(e\) is not a loop, it must connect distinct nodes \(u,v \in V(G)\).  Take any spanning tree \(T\) of \(G\) (assumed not to already contain \(e\)), now add \(e\) to create graph \(T+e\).  This new graph must now contain a cycle \(C\) with \(e \in C\). \n
+
+          Take any edge \(e' \in C\) connecting arbitrary vertices \(x\) and \(y\).  Since \(e' \in C\), there are two distinct paths \(P_1, P_2\) from \(x\) to \(y\).  \(P_1\) is just the path \(xe'y\), and \(P_2\) is the new path including our new edge \(e\).  Now if we remove \(e'\) from \(T+e\), we get a new subgraph \(T+e-e'\).
+
+          This graph is again acyclic, because we've removed cycle edge \(e'\).  Now, for any vertices \(u,v \in V(T+e-e')\), we consider three cases to show \(T+e-e'\) is connected:
+
+            \begin{enumerate}
+              \item \(u,v \in V(C)\).  In this case we know these vertices were already connected in our cycle \(C\), so they're still connected when removing a single edge, and we can just take a subpath of \(P_2\).
+              \item \(u \not\in V(C), v \in V(C)\).  For this case, if \(e'\) isn't in our (\(u,v\))-path, then we know the same path is still there.  Otherwise, suppose (WLOG) the \((u,v)\)-path hits edge \(x\) first.  Since \(x \in V(C)\), we can again just take a subpath of \(P_2\) to reach \(v \in C\).
+              \item \(u,v \not\in V(C)\).  Finally, assuming \(e'\) is in our (\(u,v\))-path (otherwise it's trivial), we can again assume (WLOG) that our \((u,v)\)-path hits edge \(x\).  We know there exists a \((u,x)\)-path in \(T+e-e'\) because we didn't change anything with those edges.  Same thing for the (\(y,v\))-path, so we can just concatonate the \((u,x)\)-path with our (\(x,y\))-path \(P_2\), and finally add on the (\(y,v\))-path.  So it's clear our graph is still connected
+            \end{enumerate}
+
+          Since this graph no longer contains a cycle, and every vertex is still reachable, \(T+e-e'\) is connected and acyclic, meaning it's a tree containg \(e\). \n
+
+          So we can conclude that if \(e\) is not a loop, there's a spanning tree of \(G\) containing \(e\). \qed \n
+          \end{enumerate}
+    \end{enumerate}
+
+
+
+  \itm{2.2.3} Show that if \(G\) is loopless and has exactly one spanning tree \(T\), then \(G = T\).
+
+
+
+  \itm{2.2.5} Show that \(G\) contains at least \(\varepsilon - \nu + \omega\) distinct cycles.
+
+
+
+  \itm{2.4.1} Using the recursion formula of theorem 2.8, evaluate the number of spanning trees in \(K_{3,3}\).
+
+
+
+  \itm{2.4.5} \begin{enumerate}[label=(\alph*)]
+      \item Let \(H\) be a graph in which every two adjacent vertices are joined by \(k\) edges and let \(G\) be the underlying simple graph of \(H\).  Show that \(\tau(H) = k^{\nu-1} \tau(G)\).
+
+      \item Let \(H\) be the graph obtained from a graph \(G\) when each edge of \(G\) is replaced by a path of length \(k\).  Show that \(\tau(H) = k^{\varepsilon - \nu + 1} \tau(G)\).
+
+      \item Deduce from (b) tbat \(\tau(K_{2,n}) = n 2^{n-1}\).
+    \end{enumerate}
+
+
+
+  \itm{2.5.3} Can Kruskal's algorithm be adapted to find
+  \begin{enumerate}[label=(\alph*)]
+      \item a \textit{maximum}-weight tree in a weighted connected graph?
+
+      \item a minimum-weight maximal forest in a weighted graph?
+    \end{enumerate}
+    If so, how?
+
+
+
+  \itm{2.5.5} The \textit{tree graph} of a connected graph \(G\) is the graph whose vertices are spanning trees \(T_1, T_2, \hdots, T_{\tau}\) of \(G\), with \(T_i\) and \(T_j\) joined if and only if they have exactly \(\nu-2\) edges in common.  Show that the tree graph of any connected graph is connected.
+
+
+
+\end{itemize}
+
+\end{document}
