@@ -1,0 +1,52 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,amsfonts,amsthm}
+\usepackage{enumitem} 
+\usepackage{mathtools}
+\usepackage{calligra}
+\usepackage[top=2cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
+\setlength{\parindent}{0cm}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\n}{\vspace{0.5cm}}
+
+\pagenumbering{gobble}
+
+\begin{document}
+\title{\vspace{-1.5cm}MATH 4152 Homework 4}
+  \author{Fletcher Gornick}
+  \maketitle
+  Do the following for both wffs \(\alpha\) below.  By proceeding similarly as in the example done in class Wednesday and Friday, find \(\bar\nu(\alpha)\) for all 16 truth assignments \(\nu\) for \(\{A_1,A_2,A_3,A_4\}\).  As in the class example, reduce the number of t.a.'s \(\nu\) that you evaluate individually as much as possible.  In particular, find a way to reduce this number to at most eight.  I.e. at most eight for the \(\alpha\) in part (a), and at most eight for the \(\alpha\) in part (b).  (The more you reduce the numbers, the better.) \n
+
+  \begin{enumerate}[label=(\alph*)]
+    \item \(\alpha \colon (\neg (\underbrace{((\neg A_4) \vee (A_2 \vee A_3))}_{\beta} \to \underbrace{((\neg A_2) \vee A_1)}_{\gamma}))\)
+
+      From this, we see that \(\bar\nu(\gamma) = T \implies \bar\nu((\beta \to \gamma)) = T \implies \bar\nu(\alpha) = ((\neg (\beta \to \gamma))) = F\), so if \(\nu(A_1) = T\) or \(\nu(A_2) = F\), then \(\bar\nu(\alpha) = F\), so we need only check for \(\nu(A_1) = F\) and \(\nu(A_2) = T\). \n
+
+      If \(\nu(A_1) = F\) and \(\nu(A_2) = T\), then the consequent of the implication is false, and the antecedent must be true because \(\nu(A_2) = T \implies \bar\nu(((\neg A_4) \vee (A_2 \vee A_3))) = T\), so \(\bar\nu((\beta \to \gamma)) = F\), meaning \(\bar\nu(\alpha) = ((\neg (\beta \to \gamma))) = T\). \n
+
+      With this, we now have enough information to find \(\bar\nu(\alpha)\) for all t.a.'s \(\nu\), and we can note that our results are actually only dependent on \(\nu(A_1)\) and \(\nu(A_2)\).
+      \begin{center}
+        \begin{tabular}[c]{c|c|c}
+          \(\nu(A_1)\) & \(\nu(A_2)\) & \(\bar\nu(\alpha)\) \\
+          \hline
+          T & T & F \\
+          T & F & F \\
+          F & T & T \\
+          F & F & F \\
+        \end{tabular}
+      \end{center} \n
+      
+
+    \item \(\alpha \colon (\underbrace{(\underbrace{(\neg (A_1 \to (A_3 \vee (\neg A_2))))}_{\beta_1} \wedge \underbrace{(A_4 \wedge (\neg A_1))}_{\beta_2})}_{\beta} \to \underbrace{(\underbrace{(\neg (A_3 \vee A_2))}_{\gamma_1} \to \underbrace{(((\neg A_1) \wedge A_4) \vee A_3)}_{\gamma_2})}_{\gamma})\)
+
+      If \(A_2 = T\) or \(A_3 = T\) then \(\bar\nu(\gamma_1) = \bar\nu((\neg (A_3 \vee A_2))) = F\), meaning \(\bar\nu(\gamma) = \bar\nu((\gamma_1 \to \gamma_2)) = T\) automatically.  And since \(\bar\nu(\alpha) = \bar\nu((\beta \to \gamma))\), we have that \(\bar\nu(\alpha) = T\) for \(\nu(A_2) = T\) or \(\nu(A_3) = T\). \n
+
+      Now for \(\nu(A_1) = \nu(A_2) = F\), we have that \(\bar\nu((A_3 \vee (\neg A_2))) = T\), so \(\bar\nu((A_1 \to (A_3 \vee (\neg A_2)))) = T\) since the consequent of the implication is true.  Since \(\bar\nu(\beta_1)\) is just the negation of this, we have that \(\bar\nu(\beta_1) = F\), meaning that \(\bar\nu(\beta) = \bar\nu((\beta_1 \wedge \beta_2)) = F\).  Finally, since \(\bar\nu(\beta) = F\), \(\bar\nu(\alpha) = \bar\nu((\beta \to \gamma)) = T\) automatically by false antecedent. \n
+
+      In conclusion, \(\bar\nu(\alpha) = T\) for all truth assignments \(\nu\).
+  \end{enumerate}
+\end{document}
+
