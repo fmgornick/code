@@ -24,7 +24,7 @@
 }
 \newcommand\itm[1]{\item[\textbf{#1}]}
 \newcommand{\incid}{{-}\!{\bullet}\!{-}}
-\newcommand{\n}{\vspace{0.5cm}}
+\newcommand{\n}{\vspace{0.3cm}}
 
 \def\lc{\left\lceil}   
 \def\rc{\right\rceil}
@@ -42,7 +42,7 @@
 \begin{itemize}
   \itm{2.1.6} Show that if \(G\) is a tree with \(\Delta \geq k\), then \(G\) has at least \(k\) vertices of degree one.
   \begin{proof}
-    From theorems 1.1 and 2.1, we know \(\displaystyle\sum_{v \in V} d_G(v) = 2\varepsilon = 2\nu - 2.\)
+    From theorems 1.1 and 2.2, we know \(\displaystyle\sum_{v \in V} d_G(v) = 2\varepsilon = 2\nu - 2.\)
     Now we can let \(\ell\) denote the number of vertices with degree 1 in \(G\).  Without loss of generality, let \(v_1\) be our vertex with \(d_G(v_1) \geq k\).  Let the next \(\ell\) vertices \(v_2,v_3,\hdots,v_{\ell + 1}\) have degree 1, and the remaining \(\nu - \ell - 1\) vertices \(v_{\ell+2}, v_{\ell+3}, \hdots, v_{\nu}\) have degree \(\geq 2\).  This gives us the following inequality,
     \[k + \ell + 2(\nu - \ell - 1) \;\;\leq\;\; d_G(v_1) + \sum_{i=2}^{\ell + 1} d_G(v_i) + \sum_{j=\ell+2}^{\nu} d_G(v_j) \;\;=\;\; \sum_{v \in V} d_G(v) \;\;=\;\; 2\nu - 2.\]
     Simplifying the above inequality gives us \(k - \ell + (2\nu - 2) \leq 2\nu - 2 \iff k \leq \ell\), which gives us our desired result.  Thus, we can conclude that \(G\) must have at least \(k\) vertices of degree 1 if \(\Delta \geq k\).
@@ -89,33 +89,38 @@
           \begin{enumerate}
             \item[(\(\Leftarrow\))] A loop is a cycle, so obviously if any graph \(G\) contains loop \(e\), it can't be a tree. \n
 
-            \item[(\(\Rightarrow\))] If \(G\) is connected, and \(e\) is not a loop then there exists a tree containing \(e\). \n
-
-          If \(e\) is not a loop, it must connect distinct nodes \(u,v \in V(G)\).  Take any spanning tree \(T\) of \(G\) (assumed not to already contain \(e\)), now add \(e\) to create graph \(T+e\).  This new graph must now contain a cycle \(C\) with \(e \in C\). \n
-
-          Take any edge \(e' \in C\) connecting arbitrary vertices \(x\) and \(y\).  Since \(e' \in C\), there are two distinct paths \(P_1, P_2\) from \(x\) to \(y\).  \(P_1\) is just the path \(xe'y\), and \(P_2\) is the new path including our new edge \(e\).  Now if we remove \(e'\) from \(T+e\), we get a new subgraph \(T+e-e'\).
-
-          This graph is again acyclic, because we've removed cycle edge \(e'\).  Now, for any vertices \(u,v \in V(T+e-e')\), we consider three cases to show \(T+e-e'\) is connected:
-
-            \begin{enumerate}
-              \item \(u,v \in V(C)\).  In this case we know these vertices were already connected in our cycle \(C\), so they're still connected when removing a single edge, and we can just take a subpath of \(P_2\).
-              \item \(u \not\in V(C), v \in V(C)\).  For this case, if \(e'\) isn't in our (\(u,v\))-path, then we know the same path is still there.  Otherwise, suppose (WLOG) the \((u,v)\)-path hits edge \(x\) first.  Since \(x \in V(C)\), we can again just take a subpath of \(P_2\) to reach \(v \in C\).
-              \item \(u,v \not\in V(C)\).  Finally, assuming \(e'\) is in our (\(u,v\))-path (otherwise it's trivial), we can again assume (WLOG) that our \((u,v)\)-path hits edge \(x\).  We know there exists a \((u,x)\)-path in \(T+e-e'\) because we didn't change anything with those edges.  Same thing for the (\(y,v\))-path, so we can just concatonate the \((u,x)\)-path with our (\(x,y\))-path \(P_2\), and finally add on the (\(y,v\))-path.  So it's clear our graph is still connected
-            \end{enumerate}
-
-          Since this graph no longer contains a cycle, and every vertex is still reachable, \(T+e-e'\) is connected and acyclic, meaning it's a tree containg \(e\). \n
-
-          So we can conclude that if \(e\) is not a loop, there's a spanning tree of \(G\) containing \(e\). \qed \n
+            \item[(\(\Rightarrow\))] If \(G\) is connected, and \(e\) is not a loop then there exists a tree containing \(e\). \n\\
+              If \(\omega(G - e) > 1\), then \(e\) must be in every spanning tree of \(G\), so assume \(e\) is not a cut edge.\n\\
+              If there's a spanning tree \(T\) with \(E(T) \subset E(G)\) not containing \(e\), then we can add \(e\) to \(T\) creating a cycle.  Since \(T + e\) has cycle \(C\), we can simply remove some \(e' \in E(C)\) (\(e' \neq e\)). \n\\
+              We still have that every vertex in \(C-e'\) is connected, so \(T + e - e'\) must also still be connected, because the vertices that \(e'\) connected are still connected around our path \(C-e'\). \n\\
+              So we've now constructed a tree containing \(e\), meaning (b) must be true. \n
           \end{enumerate}
     \end{enumerate}
 
 
 
   \itm{2.2.3} Show that if \(G\) is loopless and has exactly one spanning tree \(T\), then \(G = T\).
+    \begin{proof}
+      Suppose \(G \neq T\).  If \(G\) not connected then \(G\) has exactly 0 spanning trees and we're done, so suppose \(G\) connected as well.
+
+      Since \(G \neq T\), there exists some edge \(e \in E(G)\) such that \(e \not\in E(T)\).  Now take \(T+e\).  Obviously \(T+e\) must contain some cycle \(C\) (\(T\) is maximally acyclic), so we can do the same steps outlined in 2.2.2 (b) (\(\Rightarrow\)) to create a new tree containing our edge \(e\), so \(G\) must have at least 2 distinct trees.
+
+      We can now conclude that the contrapositive statement defined above must hold.
+    \end{proof}
+  
 
 
 
   \itm{2.2.5} Show that \(G\) contains at least \(\varepsilon - \nu + \omega\) distinct cycles.
+    \begin{proof}
+      Let \(F\) be a spanning forest of \(G\), that is, adding any edge \(e \in E(G)\) not already in \(E(F)\) creates a cycle.  \(\nu(F) = \nu(G)\) obviously, and \(\omega(F) = \omega(G)\) because every connected component of \(G\) must be connected in \(F\), otherwise we can add an edge connecting two components which won't create a cycle, contradicting the fact that \(F\) is a spanning forest.
+
+      Each connected component \(F[V_i]\) of \(F\) must be acyclic (otherwise \(F\) is not acyclic), so \(F[V_i]\) must be a tree.  Therefore \(\varepsilon \left(F[V_i]\right) = |V_i| - 1\), which tells us
+      \[\varepsilon(F) = \sum_{i=1}^{\omega} \varepsilon \left(F[V_i]\right) = \sum_{i=1}^{\omega} \left(|V_i| - 1 \right) = \sum_{i=1}^{\omega} |V_i| - \omega = \nu - \omega.\]
+
+      Now, since \(F\) is a maximally acyclic subgraph of \(G\), adding any edge to \(F\) in \(G\) must produce a unique cyle, so there are \(\varepsilon - (\nu - \omega) = \varepsilon - \nu + \omega\) distinct cycles.
+    \end{proof}
+  
 
 
 
