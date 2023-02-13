@@ -15,7 +15,7 @@
 \setlength{\parindent}{0cm}
 
 \newcommand{\R}{\mathbb{R}}
-\newcommand{\n}{\vspace{0.5cm}}
+\newcommand{\n}{\vspace{0.3cm}}
 
 \def\lc{\left\lceil}   
 \def\rc{\right\rceil}
@@ -50,26 +50,36 @@
   \item Consider a system with a single CPU server in which jobs arrive at rate \(\textbf{A}\) jobs per unit time.  Each job requires average \(\textbf{S}\) units of CPU time.  Assume that the jobs arrive at \ul{random points in time}.  Moreover, assume that jobs are processed using the \ul{FCFS scheduling policy}.  There are no I/O operations involved in processing a job.
     \begin{enumerate}
       \item What is the CPU utilization, denoted by \(\textbf{U}\) in this system?  Express \(\textbf{U}\) in terms of \(\textbf{A}\) and \(\textbf{S}\). \n\\
-
+        period of time between each job is \(P = \frac{1}{A}\).  If it takes \(P\) units of CPU time for a job to arrive, and \(S\) units of time to complete a job, then the CPU is busy \(\frac{S}{P} = SA\) (should be between 0 and 1 unless jobs arrive too fast).  If there are more jobs then the CPU can handle it should just max out at 100\% CPU power, so \(U = \min(SA,1)\).  (From now on, we will assume \(SA \leq 1\).) \n
 
       \item Let the random variable \(X\) denote the number of jobs already present in the system when a new job arrives.
         \begin{enumerate}
           \item What is \(P(X=0)\)? This is the probability that a new arriving job finds the system idle. \n\\
-            CPU utilization \(\textbf{U} = 1 - P(X=0)\), so \(P(X=0) \)\n
+            CPU utilization \(U = 1 - P(X=0) = 1 - SA\), so \(P(X=0) = 1 - SA\). \n
 
-          \item What is the \(P(X>0)\)?  This is the probability that a new arriving job finds the system busy. \n\\
-            CPU utilization \(\textbf{U} =\) P(CPU busy), so \(P(X>0) = U\)\n
+          \item What is the \(P(X>0)\)?  This is the probability that a new arriving job finds the system busy.\n\\
+            CPU utilization \(U = P(\text{CPU busy}) = SA\), so \(P(X>0) = SA\). \n
         \end{enumerate}
 
       \item Let \(N\) denote the average number of jobs in this system and let \(T\) be the average turnaround time, i.e. the average amount of time a job spends in the system, starting from the instant when it enters the system to the point in time when it departs.  
 
-        (\(N\) is also the average value of the random variable \(X\).  Given that jobs arrive at random points in time, a newly arriving job would find the average number of jobs in the system equal to \(N\). Also, by \textit{Little's Law}, \(N = AT\).)  \textbf{What is the relationship between \(W\), \(N\) and \(U\)}?
+        (\(N\) is also the average value of the random variable \(X\).  Given that jobs arrive at random points in time, a newly arriving job would find the average number of jobs in the system equal to \(N\). Also, by \textit{Little's Law}, \(N = AT\).)  
 
-      \item With \ul{FCFS job scheduling discipline}, an arriving job has to wait for the completion of all of the jobs before it in the system.  \textbf{\ul{Ignoring}} the amount of service a job in the system may have already received, and assuming that each of these jobs would still require \(S\) units of service-time, \textbf{give an expression for the average turnaround time T in terms of \(S\), \(U\) and \(N\)}.
+        \ul{In the case when a newly arriving job finds the system busy}, let \(\textbf{W}\) denote the average (expected) number of jobs it finds already present in the system.
+
+        \textbf{What is the relationship between \(W\), \(N\) and \(U\)}? \n\\
+        \(N\) Is the expected number of jobs in the system, and \(W\) is the expected number of jobs in the system given there's at least one.  Also note that for \(n=0\), \(P(X = n) \wedge P(X > 0) = 0\), and for \(n \geq 1\), \(P(X = n) \wedge P(X > 0) = P(X = n)\).
+        \[N = AT = \sum_{n=0}^{\infty} n \cdot P(X=n) \implies W = \sum_{n=1}^{\infty} n \cdot \frac{P(X=n)}{P(X>0)}\]
+        And since \(0 \cdot P(X=0) = 0\), we can simply pull the \(\displaystyle\frac{1}{P(X>0)}\) out of the left summation to get 
+        \[W = \frac{1}{P(X>0)} \cdot \left( \sum_{n=1}^{\infty} n \cdot P(X=n) \right) = \frac{N}{U}.\]
+
+      \item With \ul{FCFS job scheduling discipline}, an arriving job has to wait for the completion of all of the jobs before it in the system.  \textbf{\ul{Ignoring}} the amount of service a job in the system may have already received, and assuming that each of these jobs would still require \(S\) units of service-time, \textbf{give an expression for the average turnaround time T in terms of \(S\), \(U\) and \(N\)}. \n\\
+        turnaround for job \(i, (1 \leq i \leq N)\), \(T(i) = \{\text{time for previous jobs}\} + \{\text{time for job } i\}\), giving us \[T(i) = \left( \sum_{j=1}^{i-1} S \right) + S = i \cdot S, \quad \text{so we can now express our equation for } T,\]
+        \[T = \text{CPU utilization} \cdot \frac{\text{total turnaround time}}{\text{number of jobs}} = U \cdot \frac{\displaystyle\sum_{i=1}^{N} i \cdot S}{N} = \frac{US(N)(N+1)}{2N} = \frac{US(N+1)}{2}.\]
 
       \item Using Little's Law, which says \(N=AT\), and the results from the part (d) above, \textbf{derive an expression for \(N\) in terms of the server utilization \(U\)}.
+        \[N=AT \iff N = \frac{UAS(N+1)}{2} \iff N = \frac{U^2(N+1)}{2} \iff N = \frac{U^2}{2-U^2}\]
     \end{enumerate}
-    \newpage
 
   \item Consider a real-time system consisting of two periodic tasks.  Assume these tasks only require the CPU and do not perform any I/O.  Task A has a period of 50 seconds and requires 25 seconds of CPU time.  Task B has a period of 70 seconds and requires 28 seconds of CPU time.
     \begin{enumerate}
@@ -85,7 +95,7 @@
             \draw[color=black, fill=green] (5,0) rectangle (7,1);
             \draw[color=black, fill=green] (7,0) rectangle (7.5,1);
             \draw[color=black, fill=yellow] (7.5,0) rectangle (7.8,1);
-            \draw[color=black, fill=green] (7.8,0) rectangle (10,1);
+            \draw[color=black, fill=yellow] (7.8,0) rectangle (10,1);
 
             \filldraw[black] (0,0) circle (0pt) node[anchor=north]{\small 0};
             \filldraw[black] (2.5,0) circle (0pt) node[anchor=north]{\small 25};
@@ -100,7 +110,7 @@
             \filldraw[black] (5.6,0.5) circle (0pt) node[anchor=west]{\small \(A_1\)};
             \filldraw[black] (6.95,0.5) circle (0pt) node[anchor=west]{\tiny \(A_1\)};
             \filldraw[black] (7.35,0.5) circle (0pt) node[anchor=west]{\tiny \(B_0\)};
-            \filldraw[black] (8.4,0.5) circle (0pt) node[anchor=west]{\small \(A_2\)};
+            \filldraw[black] (8.4,0.5) circle (0pt) node[anchor=west]{\small \(B_1\)};
 
             \draw [red] (8,1.5) [->] to [bend right] (7,1);
             \filldraw[black] (8,1.5) circle (0pt) node[anchor=west]{missed deadline for \(B_0\)};
@@ -166,6 +176,26 @@
      \End
      \li until false;
     \end{codebox}
+    Suppose turn = 1, and we're starting in process 0:
+
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+      \hline
+      \(P_0\) & 1 & 2 & 3 &   &   &   &   &   &   &    &   & 4 &   &   &   & 5 & 6 & 3 & 7 \\
+      \hline
+      \(P_1\) &   &   &   & 1 & 2 & 3 & 7 & 8 & 9 & 10 & 1 &   & 2 & 3 & 7 &   &   &   &   \\
+      \hline
+    \end{tabular}
+
+    This results in both processes in the critcal section, breaking mutual exclusion. \n
+
+    \begin{enumerate}[label=\arabic*)]
+      \item Process 0 starts first, sets it's flag to true, and enters the while loop on line 3 because it's not Process 0's turn.
+      \item Context switches and Process 1 does the same, this time it skips the while loop because it's Process 1's turn, then executes the critical section, sets it's flag to false, and loops back.
+      \item Context switches and Process 0 sees that flag[1] is set to false so it skips the while loop on line 4.
+      \item Context switches and Process 1 sets it's flag to true and again skips it's while loop because it's still process 1's turn, now Process 1 is in the critical section.
+      \item Context switches, Process 0 sets the turn value to 0, then loops back.  Process 0 can now skip the while loop because turn=0, so Process 0 now enters the critical section.
+      \item Now both processes are in the critical section and mutual exclusion is broken.
+    \end{enumerate}
     \newpage
 
   \item \textit{\ul{Definition (Counting Semaphore)}}: A semaphore that can have any arbitrary positive integer value, including value 0.  A signal operation increases the value by 1 if there is no waiting process.
