@@ -389,13 +389,23 @@
     \end{minipage} \n
     \newpage
 
+    For the \textit{deposit} function defined above, we first wait for available space, then the mutex to alter shared variables.  If items[i] = N, then Process i already filled it's N slots, so we signal spaceAvailable to give the other process access to the slot we would have filled, then we release the mutex and immediately return.
+
+    If items[i] \(<\) N, then we can add an item.  We calculate the slot by first starting at head, then incrementing the number of items we currently have in our buffer to find the next open (multiply this by 2 because each item has two parts), we then add i for the case that we're in process 2, and we need to offset by 1.  We insert the item into it's slot and increment the number of items deposited for this process.
+
+    If items[i] \(\leq\) items[\((i+1) \;\%\; 2\)], then we know the other process also deposited it's item into the corresponding slot, so we can signal that there's a new \textbf{complete} item available.  Then we just signal mutex and exit. \n
+
+    For the \textit{remove} function, it's pretty straightforward.  We wait for our semaphores, then grab our items (twice because there are two slots we grab from).  Now we decrement each value in the items array so the offset is correct for when the next producer deposits.  Finally, we update head and signal that there's spacee available (we do this twice because the items come in two parts, so we've essentially taken two items off the buffer). \n
+
   \item Write a \ul{monitor} called \textit{Aggregator} with one interface procedure named \textit{Add(integer n)}, which will be used by three asynchronous processes as described below.
 
     Each process will have some integer number \(n\), which it will report to the \textit{Aggregator} by calling its interface procedure \textit{Add(n)}.  This monitor method will return the sum of the three integer values reported by these three processes after all have reported their values.
 
     When a process calls \textit{Add(n)} and if the other two processes haven’t yet reported their values, the execution of this procedure will get suspended.  This execution will resume when all three values have been reported and the sum of these values can be returned as the return value of \textit{Add(n)}. \n\n
 
-\lstinputlisting[language=C++]{problem_8.c}
+    \begin{centering}
+      \lstinputlisting[language=C, xleftmargin=.3\textwidth, xrightmargin=.2\textwidth]{problem_8.c}
+    \end{centering}
     
 \end{enumerate}
 \end{document}

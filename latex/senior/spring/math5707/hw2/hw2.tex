@@ -35,7 +35,7 @@
 
 \title{\vspace{-1.0cm}MATH 5707 Homework 2}
 \author{Fletcher Gornick}
-\date{February 7, 2023}
+\date{February 14, 2023}
 
 \begin{document}
 \maketitle
@@ -116,15 +116,23 @@
       Let \(F\) be a spanning forest of \(G\), that is, adding any edge \(e \in E(G)\) not already in \(E(F)\) creates a cycle.  \(\nu(F) = \nu(G)\) obviously, and \(\omega(F) = \omega(G)\) because every connected component of \(G\) must be connected in \(F\), otherwise we can add an edge connecting two components which won't create a cycle, contradicting the fact that \(F\) is a spanning forest.
 
       Each connected component \(F[V_i]\) of \(F\) must be acyclic (otherwise \(F\) is not acyclic), so \(F[V_i]\) must be a tree.  Therefore \(\varepsilon \left(F[V_i]\right) = |V_i| - 1\), which tells us
-      \[\varepsilon(F) = \sum_{i=1}^{\omega} \varepsilon \left(F[V_i]\right) = \sum_{i=1}^{\omega} \left(|V_i| - 1 \right) = \sum_{i=1}^{\omega} |V_i| - \omega = \nu - \omega.\]
+      \[\varepsilon(F) = \sum_{i=1}^{\omega} \varepsilon \left(F[V_i]\right) = \sum_{i=1}^{\omega} \left(|V_i| - 1 \right) = \left( \sum_{i=1}^{\omega} |V_i| \right) - \omega = \nu - \omega.\]
 
-      Now, since \(F\) is a maximally acyclic subgraph of \(G\), adding any edge to \(F\) in \(G\) must produce a unique cyle, so there are \(\varepsilon - (\nu - \omega) = \varepsilon - \nu + \omega\) distinct cycles.
+      Now, since \(F\) is a maximally acyclic subgraph of \(G\), adding any edge to \(F\) in \(G\) must produce a unique cyle, so there are \(\varepsilon(G) - \varepsilon(F) = \varepsilon - (\nu - \omega) = \varepsilon - \nu + \omega\) distinct cycles.
     \end{proof}
+    \newpage
   
 
 
 
   \itm{2.4.1} Using the recursion formula of theorem 2.8, evaluate the number of spanning trees in \(K_{3,3}\).
+
+  % \includegraphics[width=0.95\textwidth]{1.jpeg} \\
+  % \includegraphics[width=0.95\textwidth]{2.jpeg} \\
+  % \includegraphics[width=0.95\textwidth]{3.jpeg} \\
+  % \includegraphics[width=0.95\textwidth]{4.jpeg} \\
+  \newpage
+  
 
 
 
