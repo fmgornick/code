@@ -1,0 +1,150 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amsthm}
+\usepackage{fullpage}
+\usepackage{amsfonts}
+\usepackage{amssymb,multicol}
+\usepackage{graphicx}
+\usepackage{hyperref, enumitem}
+\usepackage{outlines}
+\usepackage{xcolor}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\n}{\vspace{0.5cm}}
+\newcommand{\mmod}{\;\%\;}
+
+\newtheorem*{theorem}{Theorem}
+
+\newlist{checklist}{itemize}{2}
+\setlist[checklist]{label=$\square$}
+
+\begin{document}
+  \begin{center}
+    {\Large Homework 4} \n
+
+    Fletcher Gornick
+  \end{center}
+
+  \begin{enumerate}
+    \item[0.] If you would like any of these problems to be graded for proficiency with the core skills, list the skill and the corresponding problem.
+      \begin{outline}
+        \1 1. Using a known plaintext attack to determine the key of a cipher of any kind.
+          \2 problem 5
+        \1 2. Apply the definition of divisibility in a proof.
+          \2 problem 6
+      \end{outline} \n
+
+    \item Find all solutions to the linear congruence equation \[15x \equiv 6 \pmod 9\] or explain why no solution exists.
+      \begin{align*}
+        15x      &= 9x + 6x \\
+                 &\equiv 6x \pmod 9 \\
+        15x      &\equiv 6 \pmod 9 \\
+        \iff 6x  &\equiv 6 \pmod 9 \\
+        \iff 2x  &\equiv 2 \pmod 3
+      \end{align*}
+      \(2x \equiv 2 \pmod 3\) has exactly one solution because 2 and 3 are coprime.  The solution is pretty obvious, just 1.  So we can now plug this answer into our original congruence equation to get \(x \equiv 1 \pmod 3\), so \(x \equiv 1,4,7 \pmod 9\).
+
+    \item Solve each of the following simultaneous systems of congruences or explain why no solution exists.
+
+          The chinese remainder theorem states that for a system of congruences \(x \equiv a_i \pmod{m_i}\) with \(m_1, \hdots, m_n\) pairwise coprime, we can find a unique solution modulo \(N\)
+          \[x \equiv \left( \sum_{i=1}^{n} a_iy_iz_i \right) \pmod{N}, \text{ where } N = \prod_{i=1}^{n} m_i, \;\; y_i = \frac{N}{m_i}, \text{ and } z_i \equiv y_i^{-1} \pmod{m_i}.\]
+      \begin{enumerate}
+        \item \(\begin{cases}
+            x \equiv 5 \pmod{13} \\
+            x \equiv 2 \pmod{7} \\
+            x \equiv 4 \pmod{11} \\
+          \end{cases}\) \n\\
+          So for this question, it's clear that 13, 7, and 11 are all coprime, so the theorem applies here.  \(N = 13 \cdot 7 \cdot 11 = 1001\), \(a_1 = 5, a_2 = 2, a_3 = 4\), \(y_1 = 1001/13 = 77, y_2 = 1001/7 = 143, y_3 = 1001/11 = 91\)
+
+          \begin{minipage}{0.28\textwidth}
+            \begin{align*}
+              z_1      &\equiv 77^{-1} \pmod{13} \\
+                       &\equiv (-1)^{-1} \pmod{13} \\
+                       &\equiv -1 \pmod{13} \\
+              z_1      &\equiv 12 \pmod{13} \\
+            \end{align*}
+          \end{minipage}
+          \begin{minipage}{0.28\textwidth}
+            \begin{align*}
+              z_2      &\equiv 143^{-1} \pmod{7} \\
+                       &\equiv 3^{-1} \pmod{7} \\
+              1        &= 7 - 2 \cdot 3 \\
+              z_2      &\equiv -2 \pmod{7} \\
+                       &\equiv 5 \pmod{7} \\
+            \end{align*}
+          \end{minipage}
+          \begin{minipage}{0.28\textwidth}
+            \begin{align*}
+              z_3      &\equiv 91^{-1} \pmod{11} \\
+                       &\equiv 3^{-1} \pmod{11} \\
+              1        &= 4 \cdot 3 - 11 \\
+              z_3      &\equiv 4 \pmod{11} \\
+            \end{align*}
+          \end{minipage}
+
+          With this, we can now solve for \(x\).
+          \begin{align*}
+            x &\equiv a_1y_1z_1 + a_2y_2z_2 + a_3y_3z_3 \pmod{N} \\ 
+              &\equiv 5 \cdot 77 \cdot 12 + 2 \cdot 143 \cdot 5 + 4 \cdot 91 \cdot 4 \pmod{1001} \\
+              &\equiv 7506 \pmod{1001} \\
+              &\equiv 499 \pmod{1001}. \\
+          \end{align*}
+
+        \item \(\begin{cases}
+            x \equiv 3 \pmod{9} \\
+            x \equiv 2 \pmod{6} \\
+            x \equiv 1 \pmod{5} \\
+          \end{cases}\) \n
+
+          This system of congruences actually isn't solvable.  6 and 9 aren't coprime, so there's not necessarily a solution.  We can note that if \(x \equiv 3 \pmod 9\), then \(x \equiv 0 \pmod 3\).  Also, if \(x \equiv 2 \pmod 6\), then \(x \equiv 2 \pmod 3\).  But since \(0 \not\equiv 2 \pmod 3\), there's no \(x\) that can satisfy the above system of congruences.
+      \end{enumerate}
+
+    \item This exercise will help us work towards understanding square roots.
+      \begin{enumerate}
+        \item Let \(p\) be a prime number and let \(b\) be an integer such that \(x^2 \equiv b \pmod p\) has a solution.  Show that, if \(a_1\) and \(a_2\) are two such solutions, then \(a_1 \equiv a_2 \pmod p\) or \(a_1 \equiv -a_2 \pmod p\)
+        \item Provide a counterexample to show that the above statement is not necessarily true if \(p\) is not prime.  In other words, provide integers \(m, b, a_1\), and \(a_2\) such that \(a_1^2 \equiv b \pmod m\), \(a_2^2 \equiv b \pmod m\), but \(a_1 \not\equiv \pm a_2 \pmod m\). Make sure you explain why your counterexample is, in fact, a counterexample. \n\\
+          Take \(m=8, b=1, a_1=3, a_2=7\),
+
+          \begin{minipage}{0.28\textwidth}
+            \begin{align*}
+              3^2 &= 9 \\
+                  &\equiv 1 \pmod8 \\
+            \end{align*}
+          \end{minipage}
+          \begin{minipage}{0.28\textwidth}
+            \begin{align*}
+              7^2 &= 49 \\
+                  &\equiv 1 \pmod8 \\
+            \end{align*}
+          \end{minipage}
+          \begin{minipage}{0.28\textwidth}
+            \begin{align*}
+              3 &\not\equiv \pm 7 \pmod8. \\
+            \end{align*}
+          \end{minipage}
+      \end{enumerate}
+
+    \newpage
+    \item Prove that \(x^2 + y^2 = 95\) has no integer solutions.
+      \begin{proof}
+        If there did exist integers \(x\) and \(y\) such that \(x^2 + y^2 = 95\), then \(x^2 + y^2 \equiv 3 \pmod4\).
+        \begin{align*}
+          0^2 &\equiv 0 \pmod4 \\
+          1^2 &\equiv 1 \pmod4 \\
+          2^2 &\equiv 0 \pmod4 \\
+          3^2 &\equiv 1 \pmod4 \\
+        \end{align*}
+        Since, any integer \(z\) must be in one of the four equivalence classes \(\overline{0},\overline{1},\overline{2},\overline{3} \pmod4\), we can conclude that \(z^2 \equiv 0,1 \pmod4\), meaning that for any \(x,y \in \Z\), 
+
+        \[x^2 + y^2 \equiv \begin{cases}
+          0, &\text{ if } x \equiv y \equiv 0 \pmod4, \\
+          2, &\text{ if } x \equiv y \equiv 1 \pmod4, \\
+          1, &\text{ otherwise.} \\
+        \end{cases}\]
+
+        Therefore, since \(x^2 + y^2 \not\equiv 3 \pmod4\) for any \(x,y \in \Z\), we can conclude that \(x^2 + y^2 = 95\) has no integer solutions (via contraposition).
+      \end{proof}
+      
+  \end{enumerate}
+\end{document}
