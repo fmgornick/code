@@ -127,10 +127,10 @@
 
   \itm{2.4.1} Using the recursion formula of theorem 2.8, evaluate the number of spanning trees in \(K_{3,3}\).
 
-  % \includegraphics[width=0.95\textwidth]{1.jpeg} \\
-  % \includegraphics[width=0.95\textwidth]{2.jpeg} \\
-  % \includegraphics[width=0.95\textwidth]{3.jpeg} \\
-  % \includegraphics[width=0.95\textwidth]{4.jpeg} \\
+  \includegraphics[width=0.95\textwidth]{1.jpeg} \\
+  \includegraphics[width=0.95\textwidth]{2.jpeg} \\
+  \includegraphics[width=0.95\textwidth]{3.jpeg} \\
+  \includegraphics[width=0.95\textwidth]{4.jpeg} \\
   \newpage
   
 
@@ -138,25 +138,79 @@
 
   \itm{2.4.5} \begin{enumerate}[label=(\alph*)]
       \item Let \(H\) be a graph in which every two adjacent vertices are joined by \(k\) edges and let \(G\) be the underlying simple graph of \(H\).  Show that \(\tau(H) = k^{\nu-1} \tau(G)\).
+        \begin{proof}
+          From class, we proved \(\tau(G) = \det \left( \overline{L(G)}^{x_0,x_0} \right)\), where \(L(G)\) is defined as follows:
+          \[ L_{i,j} =
+            \begin{cases}
+            \deg(v_i), &\text{ if } i = j, \\
+            -1, &\text{ if } i \text{ adjacent to } j, \\
+            0, &\text{ otherwise}.
+            \end{cases}
+          \]
+        \(L(G)\) is a \(\nu \times \nu\) matrix, so \(\overline{L(G)}^{x_0,x_0}\) is a \((\nu-1) \times (\nu-1)\) matrix with determinant \(\tau(G)\). \n
 
-      \item Let \(H\) be the graph obtained from a graph \(G\) when each edge of \(G\) is replaced by a path of length \(k\).  Show that \(\tau(H) = k^{\varepsilon - \nu + 1} \tau(G)\).
+        For our new graph \(H\), every adjacent vertex now has \(k\) edges connecting them, whereas there was only 1 for each vertex pair in \(G\) (\(G\) assumed to be simple), so \(d_H(v_i) = k \cdot d_G(v_i)\) for all \(v_i \in V\).  Every off-diagonal entry of \(L(H)\) is also multiplied by \(K\), because every pair of adjacent vertices now have \(k\) edges pairing them.  We now have that 
+        \[\overline{L(H)}^{x_0,x_0} = k \cdot \overline{L(G)}^{x_0,x_0},\]\n
+        and since \(\overline{L(H)}^{x_0,x_0}\) has \(\nu - 1\) rows and columns, 
+        \[\tau(H) = \det \left( \overline{L(H)}^{x_0,x_0} \right) = k^{\nu-1} \cdot \det \left( \overline{L(G)}^{x_0,x_0} \right) = k^{\nu-1} \tau(G).\]
+        (Scaling a row by \(k\) multiplies the determinant by \(k\), and we scale \(\nu - 1\) rows.)
+        \end{proof}
 
-      \item Deduce from (b) tbat \(\tau(K_{2,n}) = n 2^{n-1}\).
+      \item Let \(H\) be the graph obtained from a graph \(G\) where each edge of \(G\) is replaced by a path of length \(k\).  Show that \(\tau(H) = k^{\varepsilon - \nu + 1} \tau(G)\).
+        \begin{proof}
+          First, let \(H\) be defined above, and for any edge \(e \in E(G)\), let \(P_e\) be it's corresponding path in \(H\).  There are two cases to consider for each edge \(e\) connecting vertices \(x,y \in G\) when calculating the number of spanning trees of \(H\).  For each of these cases, let \(T\) be any arbitrary spanning tree of \(G\), and let \(T'\) be any one of \(T\)'s corresponding spanning tree in \(H\). \n
+
+          Case 1: \(e \in T\).  In this case, we must have that every edge \(e' \in P_e\) must be in tree \(T'\) of \(H\), otherwise we wouldn't be able to connect \(x\) and \(y\) in \(H\).  If there did happen to exist another path from \(x\) to \(y\), then that path must also exist in \(T\), but that would mean \(T\) contains a cycle which is a contradiction.  So \(e \in T \implies P_e \in T'\). \n
+
+          Case 2: \(e \not\in T\).  In this case, exactly one edge \(e' \in P_e\) must be missing in \(T'\).  If more than one edge was missing in \(P_e\), then \(T'\) would no longer be connected.  If no edges in \(P_e\) are missing in \(T'\), then we would have 2 distinct paths from \(x\) to \(y\) in \(T'\).  \(P_e\) being the first path, and since \(e \not\in T\), there exists path \(P \in T\) connecting \(x\) and \(y\), so we can just concatenate the paths corresponding to each edge in \(P\) to create a new path \(P' \in T'\) connecting \(x\) and \(y\).  So \(e \not\in T \implies \exists! e' \in P_e \mid e' \not\in T'\). \n
+
+          Since \(\varepsilon(T) = \nu - 1\) for each tree \(T\) of \(G\), we have that there are always \(\varepsilon - \nu + 1\) edges missing in \(T\).  This must also be the case for \(T'\) of \(H\), but with the caveat that each edge is missing from a distinct \(k\)-length path \(P_e \in G\). \n
+
+          So there are \(\varepsilon - \nu + 1\) edges missing in \(T'\), each from a distinct path.  From each path there are \(k\) options for which edge to remove.  So for each spanning tree \(T\) of \(G\), there are exactly \(k^{\varepsilon - \nu + 1}\) options for spanning trees in \(H\), and since there are \(\tau(G)\) spanning trees for \(G\), we can conclude that \(\tau(H) = k^{\varepsilon - \nu + 1} \tau(G)\).
+        \end{proof}
+        
+
+      \item Deduce from (b) that \(\tau(K_{2,n}) = n 2^{n-1}\).
+        \begin{proof}
+          We can first start with simple complete graph \(K_2\).  Then we can add any \(n-1\) extra edges connecting our two nodes making a multigraph with one edge repeated \(n\) times.  This graph clearly has \(n\) spanning trees (we could also just deduce this by plugging in the formula derived in (a)). \\
+          Now, replacing each of these \(n\) edges with paths of length 2, we get another graph with the desired number of spanning trees by the formula derived in (b), this final graph is isomorphic to \(K_{2,n}\), so \(\tau(K_{2,n}) = n2^{n-1}\).
+        \end{proof}
     \end{enumerate}
+    \includegraphics[width=0.90\textwidth]{5.jpeg}
 
 
 
   \itm{2.5.3} Can Kruskal's algorithm be adapted to find
   \begin{enumerate}[label=(\alph*)]
-      \item a \textit{maximum}-weight tree in a weighted connected graph?
+      \item a \textit{maximum}-weight tree in a weighted connected graph? \n\\
+        Yes.  Simply just choose each link \(e_i\) so \(w(e_i)\) is as big as possible without creating a cycle instead.  The proof for this is essentially the same as for theorem 2.10. \n
 
-      \item a minimum-weight maximal forest in a weighted graph?
+        You could also just negate the weights of \(G\) then negate the weights of the resultant minimum-weight spanning tree to achieve a maximum-weight spanning tree. \n
+
+      \item a minimum-weight maximal forest in a weighted graph? \n\\
+        Yes.  You actually don't need to change the algorithm at all to do this.  Since Kruskal's algorithm stops when there's no edge that can be added without creating a cycle, it'll just stop when it finds a minimum-weight maximal forest.
+
+        \begin{proof}
+          Suppose it stopped at graph \(G[\{e_1, \hdots, e_{i-1}\}]\) before creating a maximal forest.  Then there would exist edge \(e_i\) not in our result such that \(G[\{e_1, \hdots, e_i\}]\) is acyclic, but that would imply that step 2 of Kruskal's algorithm could have been implemented further, which contradicts the stopping condition outlined in step 3 of Kruskal's algorithm.
+        \end{proof}
+        
     \end{enumerate}
-    If so, how?
 
 
 
   \itm{2.5.5} The \textit{tree graph} of a connected graph \(G\) is the graph whose vertices are spanning trees \(T_1, T_2, \hdots, T_{\tau}\) of \(G\), with \(T_i\) and \(T_j\) joined if and only if they have exactly \(\nu-2\) edges in common.  Show that the tree graph of any connected graph is connected.
+  \begin{proof}
+    Suppose, to the contrary, there's a connected graph that yields a disconnected tree graph.  In other words, for some connected graph \(G\), there exists spanning trees \(T_1, T_2\) such that there's no path from \(T_1\) to \(T_2\) in \(G\)'s tree graph.
+
+    Given spanning tree \(T_1\), choose \(T_2\) to be the spanning tree with the MOST edges in common with \(T_1\) while still being unreachable from \(T_1\) in our tree graph.  Let \(c(T_i, T_j)\) denote the number of edges in common between any spanning trees \(T_i, T_j\).  Clearly \(c(T_1,T_2) < \nu - 2\), otherwise there would be an edge between \(T_1\) and \(T_2\), making them connected.
+
+    Since \(T_1\) and \(T_2\) are distinct trees, we know there's an edge \(e_1 \in T_1\) not in \(T_2\).  And since \(T_2\) is maximally acyclic, \(T_2 + e_1\) must contain some cycle \(C\).  Since \(T_1\) has no cycles, there must exist an edge \(e_2 \in C\) such that \(e_2 \not\in T_1\).
+
+    Take new tree \(T_3 = (T_2 + e_1) - e_2\) (2.2.2 (b) \((\Rightarrow)\) shows why this is a tree).  Since \(e_2 \not\in T_1\), we know that removing it doesn't change the value of \(c(T_1,T_3)\), but adding \(e_1\) to \(T_3\) increments the number of common edges by one, so
+    \[c(T_1,T_3) = c(T_1,T_2) + 1,\]
+    Which contradicts our assumption that \(c(T_1,T_2)\) is the max.  Therefore the tree graph of any connected graph is connected.
+  \end{proof}
+  
 
 
 
