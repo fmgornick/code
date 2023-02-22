@@ -4,7 +4,6 @@ To compile, simply run:
 ```sh
 make
 ```
-
 This will output a `part1.o` object file and a `part1` executable.  We will only need the executable for the following steps.
 
 ## Run
@@ -12,8 +11,7 @@ you can run the code with the following command:
 ```sh
 ./part1 <num_items>
 ```
-`<num_items>` simply represents the number of items you want each producer to add to our bounded buffer.  Leaving this flag empty, or failing to provide an integer argument will result in the program defaulting the value of `<num_items>` to 100.
-
+`<num_items>` simply represents the number of items you want each producer to add to our bounded buffer.  Leaving this flag empty, or failing to provide an integer argument will result in the program defaulting the value of `<num_items>` to 100.  
 When this program finishes executing, you should have four new files: `producer_red.log`,  `producer_white.log`,  `producer_blue.log`, and `consumer.log`.  You can check that each file contains the correct output yourself.
 
 ## Clean

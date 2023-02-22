@@ -1,5 +1,5 @@
 CFLAGS = -Wall -g
-CC		 = gcc
+CC = gcc
 LIBS   = -lpthread -D_REENTRANT
 
 part1: part1.o
