@@ -1,6 +1,6 @@
 CFLAGS = -Wall -g
 CC = gcc
-LIBS   = -lpthread -D_REENTRANT
+LIBS = -lpthread -D_REENTRANT
 
 part1: part1.o
 	$(CC) $(LIBS) $^ -o $@
