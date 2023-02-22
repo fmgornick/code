@@ -81,7 +81,7 @@ void *produce(void *arg) {
 
     /* format time and num into new_item.info to add to buffer */
     gettimeofday(&time, NULL);
-    size = snprintf(new_item.info, INFOSIZE, "%-7s%-6d%ld-%d\n", 
+    size = snprintf(new_item.info, INFOSIZE, "%-7s%-6d%ld-%ld\n", 
                     color, new_item.num, time.tv_sec, time.tv_usec);
 
     /* add item to buffer, increment head and count 
@@ -140,7 +140,7 @@ void *consume() {
       num_producers_exited++;
     } else {
       gettimeofday(&time, NULL);
-      size = snprintf(buf, INFOSIZE, "%s\t%ld-%d\n", 
+      size = snprintf(buf, INFOSIZE, "%s\t%ld-%ld\n", 
                       new_item.info, time.tv_sec, time.tv_usec);
       write(fd, &buf, size);
     }
