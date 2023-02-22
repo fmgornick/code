@@ -29,10 +29,14 @@
   \begin{enumerate}
     \item[0.] If you would like any of these problems to be graded for proficiency with the core skills, list the skill and the corresponding problem.
       \begin{outline}
-        \1 1. Using a known plaintext attack to determine the key of a cipher of any kind.
-          \2 problem 5
-        \1 2. Apply the definition of divisibility in a proof.
-          \2 problem 6
+        \1 5. Using the Euclidean algorithm to find the inverse of (the class of) one number modulo another.
+          \2 problem 2(a)
+        \1 6. Showing that an equation cannot have integer solutions because it does not have solutions modulo some integer.
+          \2 problem 2(b)
+        \1 7. Using Euclid’s Lemma in a proof.
+          \2 problem 3(a)
+        \1 8. Using the Chinese Remainder Theorem either in a proof or to solve a modular system of equations.
+          \2 problem 2(a)
       \end{outline} \n
 
     \item Find all solutions to the linear congruence equation \[15x \equiv 6 \pmod 9\] or explain why no solution exists.
@@ -103,6 +107,20 @@
     \item This exercise will help us work towards understanding square roots.
       \begin{enumerate}
         \item Let \(p\) be a prime number and let \(b\) be an integer such that \(x^2 \equiv b \pmod p\) has a solution.  Show that, if \(a_1\) and \(a_2\) are two such solutions, then \(a_1 \equiv a_2 \pmod p\) or \(a_1 \equiv -a_2 \pmod p\)
+          \begin{proof}
+            If \(a_1\) and \(a_2\) are both solutions to \(x^2 \equiv b \pmod p\), then:
+            \begin{align*}
+              a_1^2 &\equiv a_2^2 \pmod p \\
+              \iff p &\mid (a_1^2 - a_2^2) & \text{(by definition of congruence)}\\
+              \iff p &\mid (a_1 + a_2)(a_1 - a_2) & \text{(difference of squares)}\\
+            \end{align*}
+            And by Euclid's Lemma, if \(p\) divides \((a_1 + a_2)(a_1 - a_2)\), then \(p\) must divide at least one of \((a_1 + a_2)\) or \((a_1 - a_2)\). \n
+
+            Case 1: \(p \mid (a_1 + a_2)\).  From the definition of congruence, we see \(a_1 \equiv -a_2 \pmod p\). \\
+            Case 2: \(p \mid (a_1 - a_2)\).  From the definition of congruence, we see \(a_1 \equiv a_2 \pmod p\). \n
+
+            Therefore, we can conclude that if \(a_1\) and \(a_2\) are both solutions to \(x^2 \equiv b \pmod p\), then \(a_1 \equiv \pm a_2 \pmod p\).
+         \end{proof}
         \item Provide a counterexample to show that the above statement is not necessarily true if \(p\) is not prime.  In other words, provide integers \(m, b, a_1\), and \(a_2\) such that \(a_1^2 \equiv b \pmod m\), \(a_2^2 \equiv b \pmod m\), but \(a_1 \not\equiv \pm a_2 \pmod m\). Make sure you explain why your counterexample is, in fact, a counterexample. \n\\
           Take \(m=8, b=1, a_1=3, a_2=7\),
 
@@ -125,7 +143,6 @@
           \end{minipage}
       \end{enumerate}
 
-    \newpage
     \item Prove that \(x^2 + y^2 = 95\) has no integer solutions.
       \begin{proof}
         If there did exist integers \(x\) and \(y\) such that \(x^2 + y^2 = 95\), then \(x^2 + y^2 \equiv 3 \pmod4\).
