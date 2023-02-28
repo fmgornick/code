@@ -1,0 +1,65 @@
+CSCI 5103 Assignment 3 Part 1
+
+CONTENTS
+
+  Part-1
+  ├── Makefile
+  ├── README
+  └── part1.c
+
+  - from hear on, every step should be done in the Part-1 directory
+
+
+COMPILE
+
+  to compile, simply run: make
+
+  - this will output a part1.o object file and a part1 executable as well as 
+    create a log directory.  We will only need the executable for the 
+    following steps
+
+  outputted contents:
+    Part-1
+    ├── Makefile
+    ├── README
+    ├── log
+    ├── part1
+    ├── part1.c
+    └── part1.o
+
+
+RUN
+
+  you can run the code with: ./part1 <num_items>
+
+  - <num_items> simply represents the number of items you want each producer to 
+    add to our bounded buffer.  Leaving this flag empty, or failing to provide 
+    an integer argument will result in the program defaulting the value of 
+    <num_items> to 100
+
+  - when this program finishes executing, you should have four new files 
+    in the newly created log directory: producer_red.log,  producer_white.log,  
+    producer_blue.log, and consumer.log.  You can check that each file 
+    contains the correct output yourself
+
+  outputted contents:
+    Part-1
+    ├── Makefile
+    ├── README
+    ├── log
+    │   ├── consumer.log
+    │   ├── producer_blue.log
+    │   ├── producer_red.log
+    │   └── producer_white.log
+    ├── part1
+    ├── part1.c
+    └── part1.o
+
+
+CLEAN
+
+  to restore this directory to just part1.c, Makefile, and this README, you can 
+  run: make clean
+
+  - This will remove the log directory, our object file, as well as our executable.
+

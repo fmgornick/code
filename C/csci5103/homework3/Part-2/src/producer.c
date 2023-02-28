@@ -1,14 +1,23 @@
+/* CSCI 5103 Spring 2023
+ * Assignment 3
+ * name: Flercher Gornick
+ * student id: 5579904
+ * x500 id: gorni025
+ * CSELABS machine: csel-cuda-04 */
+
 #include "part2.h"
 
 int main(int argc, char *argv[]) {
   int id;
   shared_vars_t *s;
 
+  /* get id of shared memory segment using key passed as arg from part2.c */
   if ((id = shmget(atoi(argv[1]), 0, 0)) < 0) {
     printf("producer: error getting shared memory\n");
     return 1;
   }
 
+  /* attach our shared vars struct to the segment corresponding to ID */
   s = (shared_vars_t *)shmat(id, NULL, 0);
   if (s == (void *)-1) {
     printf("producer: error attaching shared memory\n");
@@ -78,7 +87,7 @@ int main(int argc, char *argv[]) {
     pthread_cond_signal(&s->itemAvailable);
   }
 
-  /* close our file descriptor and finish thread execution */
+  /* detach mem segment, close our file descriptor, and exit */
   shmdt(s);
   close(fd);
   return 0;

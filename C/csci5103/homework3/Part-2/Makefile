@@ -1,9 +1,9 @@
-CFLAGS = -Wall -g
 CC = gcc
+CFLAGS = -Wall -g
 
 ROOT_DIR:=$(shell pwd)
-LIBS = -lpthread -D_REENTRANT
 INC = -I$(ROOT_DIR)/include
+LIBS = -lpthread -D_REENTRANT
 
 part2: build/part2.o bin/producer bin/consumer log
 	$(CC) $< -o $@ $(LIBS)

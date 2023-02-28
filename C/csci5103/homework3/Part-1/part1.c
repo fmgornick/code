@@ -46,7 +46,7 @@ void *produce(void *arg) {
 
   /* set logfile name based on color and open for appending with 
    * rw-r--r-- permissions */
-  sprintf(file, "producer_%s.log", color);
+  sprintf(file, "log/producer_%s.log", color);
   int fd = open(file, O_WRONLY | O_CREAT | O_APPEND | O_TRUNC, 0644);
 
   /* grapb the current producer value and this will be used for ordering 
@@ -111,8 +111,8 @@ void *consume() {
   char buf[INFOSIZE];
   int size;
   struct timeval time;
-  /* set logfile name open for appending with rw-r--r-- permissions */
-  int fd = open("consumer.log", O_WRONLY | O_CREAT | O_APPEND | O_TRUNC, 0644);
+  /* set logfile name and open for appending with rw-r--r-- permissions */
+  int fd = open("log/consumer.log", O_WRONLY | O_CREAT | O_APPEND | O_TRUNC, 0644);
 
   /* track the number of -1's recieved from producer threads 
    * loop until all the producers signal that they're done */
