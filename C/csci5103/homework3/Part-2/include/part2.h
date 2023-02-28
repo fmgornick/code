@@ -9,14 +9,15 @@
 #include <sys/shm.h>
 #include <sys/time.h>
 #include <unistd.h>
+#include <wait.h>
 
-#define ARGSIZE 20
-#define BUFSIZE 50
+#define IDSIZE   20
+#define BUFSIZE  50
 #define COLORSZE 6
-#define DEFAULT 100
+#define DEFAULT  100
 #define INFOSIZE 100
-#define KEY 69420
-#define KEYSIZE 10
+#define KEY      69420
+#define KEYSIZE  10
 
 typedef struct item {
   int num;

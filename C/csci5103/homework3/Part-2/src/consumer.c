@@ -1,4 +1,4 @@
-#include "../include/part2.h"
+#include "part2.h"
 
 int main(int argc, char *argv[]) {
   int id;
@@ -19,7 +19,7 @@ int main(int argc, char *argv[]) {
   int size;
   struct timeval time;
   /* set logfile name open for appending with rw-r--r-- permissions */
-  int fd = open("consumer.log", O_WRONLY | O_CREAT | O_APPEND | O_TRUNC, 0644);
+  int fd = open("log/consumer.log", O_WRONLY | O_CREAT | O_APPEND | O_TRUNC, 0644);
 
   /* track the number of -1's recieved from producer threads
    * loop until all the producers signal that they're done */
@@ -47,8 +47,8 @@ int main(int argc, char *argv[]) {
       num_producers_exited++;
     } else {
       gettimeofday(&time, NULL);
-      size = snprintf(buf, INFOSIZE, "%s\t%ld-%ld\n", new_item.info,
-                      time.tv_sec, time.tv_usec);
+      size = snprintf(buf, INFOSIZE, "%s\t%ld-%ld\n", 
+                      new_item.info, time.tv_sec, time.tv_usec);
       write(fd, &buf, size);
     }
 

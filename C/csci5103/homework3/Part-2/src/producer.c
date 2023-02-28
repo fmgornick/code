@@ -1,17 +1,17 @@
-#include "../include/part2.h"
+#include "part2.h"
 
 int main(int argc, char *argv[]) {
   int id;
   shared_vars_t *s;
 
   if ((id = shmget(atoi(argv[1]), 0, 0)) < 0) {
-    printf("consumer: error getting shared memory\n");
+    printf("producer: error getting shared memory\n");
     return 1;
   }
 
   s = (shared_vars_t *)shmat(id, NULL, 0);
   if (s == (void *)-1) {
-    printf("consumer: error attaching shared memory\n");
+    printf("producer: error attaching shared memory\n");
     return 2;
   }
 
@@ -22,7 +22,7 @@ int main(int argc, char *argv[]) {
 
   /* set logfile name based on color and open for appending with
    * rw-r--r-- permissions */
-  sprintf(file, "producer_%s.log", color);
+  sprintf(file, "log/producer_%s.log", color);
   int fd = open(file, O_WRONLY | O_CREAT | O_APPEND | O_TRUNC, 0644);
 
   /* grapb the current producer value and this will be used for ordering

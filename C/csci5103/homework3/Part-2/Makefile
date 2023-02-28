@@ -5,7 +5,7 @@ ROOT_DIR:=$(shell pwd)
 LIBS = -lpthread -D_REENTRANT
 INC = -I$(ROOT_DIR)/include
 
-part2: build/part2.o bin/producer bin/consumer
+part2: build/part2.o bin/producer bin/consumer log
 	$(CC) $< -o $@ $(LIBS)
 
 bin/producer: build/producer.o bin
@@ -23,5 +23,8 @@ build:
 bin:
 	mkdir bin
 
+log:
+	mkdir log
+
 clean:
-	-rm -rf *.log part2 bin build
+	-rm -rf part2 bin build log 
