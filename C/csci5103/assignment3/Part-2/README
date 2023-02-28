@@ -12,7 +12,7 @@ CONTENTS
       ├── part2.c
       └── producer.c
 
-  - from hear on, every step should be done in the Part-1 directory
+  - from hear on, every step should be done in the Part-2 directory
   
 
 COMPILE
@@ -20,7 +20,7 @@ COMPILE
   to compile, in the Part-2 directory, simply run: make
 
   - this will output object files producer.o, consumer.o, and part1.o in a newly 
-  created build directory
+    created build directory
 
   - this will also produce two new executables producer and consumer in a newly 
     created bin directory
@@ -90,7 +90,8 @@ RUN
 
 CLEAN
 
-  to restore this directory to just part1.c, Makefile, and this README, you can 
-  run: make clean
+  to restore this directory to the files outlined in CONTENTS, run: make clean
 
-  - This will remove the log directory, our object file, as well as our executable.
+  - This will remove the build, bin, and log directories, as well as our part2 
+    executable
+
