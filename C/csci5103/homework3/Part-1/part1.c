@@ -156,7 +156,7 @@ void *consume() {
   int errno;
   for (int i = 0; i < 3; i++) {
     if ((errno = pthread_join(producers[i], NULL))) {
-      fprintf(stderr, "pthread_create :%s\n", strerror(errno));
+      fprintf(stderr, "pthread_join :%s\n", strerror(errno));
       exit(1);
     }
   }
@@ -169,8 +169,10 @@ void *consume() {
 int main(int argc, char *argv[]) {
   /* default max_count to 100 if no user input, or the user 
    * doesn't input an argument properly */
-  if (argc == 2 && (max_count = atoi(argv[1])) < 0)
+  if (argc == 2 && (max_count = atoi(argv[1])) == 0) {
     printf("invalid argument... assigning 100\n");
+    max_count = 100;
+  }
 
   char *colors[3] = {"red", "white", "blue"};
   int errno;

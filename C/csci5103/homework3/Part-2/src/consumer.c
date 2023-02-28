@@ -1,6 +1,20 @@
-#include "part2.h"
+#include "../include/part2.h"
 
-void *consume() {
+int main(int argc, char *argv[]) {
+  int id;
+  shared_vars_t *s;
+
+  if ((id = shmget(atoi(argv[1]), 0, 0)) < 0) {
+    printf("consumer: error getting shared memory\n");
+    return 1;
+  }
+
+  s = (shared_vars_t *)shmat(id, NULL, 0);
+  if (s == (void *)-1) {
+    printf("consumer: error attaching shared memory\n");
+    return 2;
+  }
+
   char buf[INFOSIZE];
   int size;
   struct timeval time;
@@ -15,17 +29,17 @@ void *consume() {
      * 2) if the buffer is empty, give up the lock and wait to
      *    be signaled again
      * 3) otherwise, proceed with the lock */
-    pthread_mutex_lock(&lock);
-    while (count == 0)
-      while (pthread_cond_wait(&itemAvailable, &lock) != 0)
+    pthread_mutex_lock(&s->lock);
+    while (s->count == 0)
+      while (pthread_cond_wait(&s->itemAvailable, &s->lock) != 0)
         ;
 
     /* grab item from buffer (remove newline for logging),
      * increment tail, and decrement count */
-    struct item new_item = buffer[tail];
+    item_t new_item = s->buffer[s->tail];
     new_item.info[strcspn(new_item.info, "\n")] = 0;
-    tail = (tail + 1) % N;
-    count--;
+    s->tail = (s->tail + 1) % s->N;
+    s->count--;
 
     /* if producer sent a -1, then just increment num_producers_exited,
      * otherwise we want to add the data to our logfile */
@@ -40,21 +54,17 @@ void *consume() {
 
     /* release the lock, and signal that there's more space available
      * for the producers to add item(s) to our buffer */
-    pthread_mutex_unlock(&lock);
-    pthread_cond_signal(&spaceAvailable);
+    pthread_mutex_unlock(&s->lock);
+    pthread_cond_signal(&s->spaceAvailable);
   }
 
   /* wait for producer threads to finish executing
    * (they should all probably be done before we reach this anyways) */
-  int errno;
-  for (int i = 0; i < 3; i++) {
-    if ((errno = pthread_join(producers[i], NULL))) {
-      fprintf(stderr, "pthread_create :%s\n", strerror(errno));
-      exit(1);
-    }
-  }
+  for (int i = 0; i < 3; i++)
+    waitpid(atoi(argv[i + 2]), NULL, 0);
 
   /* close our file descriptor and finish thread execution */
+  shmdt(s);
   close(fd);
-  pthread_exit(NULL);
+  return 0;
 }

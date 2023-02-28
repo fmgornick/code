@@ -1,12 +1,27 @@
 CFLAGS = -Wall -g
 CC = gcc
+
+ROOT_DIR:=$(shell pwd)
 LIBS = -lpthread -D_REENTRANT
+INC = -I$(ROOT_DIR)/include
 
-part1: part1.o
-	$(CC) $^ -o $@ $(LIBS)
+part2: build/part2.o bin/producer bin/consumer
+	$(CC) $< -o $@ $(LIBS)
 
-part1.o: part1.c
-	$(CC) $(CFLAGS) -c $<
+bin/producer: build/producer.o bin
+	$(CC) $< -o $@ $(LIBS)
+
+bin/consumer: build/consumer.o bin
+	$(CC) $< -o $@ $(LIBS)
+
+build/%.o: src/%.c build
+	$(CC) $(CFLAGS) $(INC) -c $< -o $@
+
+build:
+	mkdir build
+
+bin:
+	mkdir bin
 
 clean:
-	-rm *.log part1.o part1
+	-rm -rf *.log part2 bin build

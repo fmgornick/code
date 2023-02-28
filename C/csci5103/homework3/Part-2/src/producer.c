@@ -1,7 +1,21 @@
-#include "part2.h"
+#include "../include/part2.h"
 
-void *produce(void *arg) {
-  char *color = arg;
+int main(int argc, char *argv[]) {
+  int id;
+  shared_vars_t *s;
+
+  if ((id = shmget(atoi(argv[1]), 0, 0)) < 0) {
+    printf("consumer: error getting shared memory\n");
+    return 1;
+  }
+
+  s = (shared_vars_t *)shmat(id, NULL, 0);
+  if (s == (void *)-1) {
+    printf("consumer: error attaching shared memory\n");
+    return 2;
+  }
+
+  char *color = argv[2];
   int size;
   char file[20];
   struct timeval time;
@@ -13,30 +27,30 @@ void *produce(void *arg) {
 
   /* grapb the current producer value and this will be used for ordering
    * our producers in a FCFS fashion */
-  pthread_mutex_lock(&lock);
-  int producer_num = current_producer;
-  current_producer = (current_producer + 1) % 3;
-  pthread_mutex_unlock(&lock);
+  pthread_mutex_lock(&s->lock);
+  int producer_num = s->current_producer;
+  s->current_producer = (s->current_producer + 1) % 3;
+  pthread_mutex_unlock(&s->lock);
 
   /* loop max_count times to add that many itmes
    * NOTE: we actually iterate one extra time to send -1 to consumer */
-  for (int i = 0; i <= max_count; i++) {
+  for (int i = 0; i <= s->max_count; i++) {
     /* 1) grab lock
      * 2) if there's no space left in our buffer, or we're not the
      *    correct producer process, then:
      *    a) signal a different producer to try the condition
      *    b) give up the lock and wait to be signaled again
      * 3) otherwise, proceed with the lock */
-    pthread_mutex_lock(&lock);
-    while (count == N || producer_num != current_producer) {
-      pthread_cond_signal(&spaceAvailable);
-      while (pthread_cond_wait(&spaceAvailable, &lock) != 0)
+    pthread_mutex_lock(&s->lock);
+    while (s->count == s->N || producer_num != s->current_producer) {
+      pthread_cond_signal(&s->spaceAvailable);
+      while (pthread_cond_wait(&s->spaceAvailable, &s->lock) != 0)
         ;
     }
 
     struct item new_item;
     /* check if we're at our finishing condition */
-    if (i < max_count)
+    if (i < s->max_count)
       new_item.num = i;
     else
       new_item.num = -1;
@@ -49,10 +63,10 @@ void *produce(void *arg) {
     /* add item to buffer, increment head and count
      * also change current_producer to the next one for a different
      * producer to jump into the critical section */
-    buffer[head] = new_item;
-    head = (head + 1) % N;
-    count++;
-    current_producer = (current_producer + 1) % 3;
+    s->buffer[s->head] = new_item;
+    s->head = (s->head + 1) % s->N;
+    s->count++;
+    s->current_producer = (s->current_producer + 1) % 3;
 
     /* throw the data into our logfile for all but the last case */
     if (new_item.num != -1)
@@ -60,11 +74,12 @@ void *produce(void *arg) {
 
     /* release the lock, and signal that there's a new item available
      * for the consumer to grab off our buffer */
-    pthread_mutex_unlock(&lock);
-    pthread_cond_signal(&itemAvailable);
+    pthread_mutex_unlock(&s->lock);
+    pthread_cond_signal(&s->itemAvailable);
   }
 
   /* close our file descriptor and finish thread execution */
+  shmdt(s);
   close(fd);
-  pthread_exit(NULL);
+  return 0;
 }
