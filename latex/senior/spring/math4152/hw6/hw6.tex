@@ -1,0 +1,69 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{enumitem} 
+\usepackage{mathtools}
+\usepackage{calligra}
+\usepackage[top=2cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
+\setlength{\parindent}{0cm}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\n}{\vspace{0.5cm}}
+
+\pagenumbering{gobble}
+
+\begin{document}
+\title{\vspace{-1.5cm}MATH 4152 Homework 6}
+  \author{Fletcher Gornick}
+  \maketitle
+  \begin{enumerate}
+    \item[\textbf{6(b)}] Let \(S\) be the set of sentence symbols that includes those in \(\Sigma = \{\alpha_1, \alpha_2, \hdots, \alpha_n\}\) and \(\tau\) (possibly more).  Show that \(\Sigma \vDash \tau\) iff every truth assignment for \(S\) which satisfies every element in \(\Sigma\) also satisfies \(\tau\).
+  \end{enumerate}
+
+  \begin{proof}
+    The first implication was proven in lecture, this homework is only meant to show the other direction, but I figured it'd be helpful to do both as practice, so \underline{\textbf{skip to page 2 for the converse}}. \n
+
+    Let \(S'\) be any set of sentence symbols including those in \(\alpha_1, \alpha_2, \hdots, \alpha_n\), and \(\tau\).
+    \begin{enumerate}
+      \item[\((\Rightarrow)\)] If \(\alpha_1, \alpha_2, \hdots, \alpha_n \vDash \tau\), then for every t.a. \(\nu\) on \(S'\) yielding \(\bar\nu(\alpha_1) = \bar\nu(\alpha_n) = \hdots = \bar\nu(\alpha_n) = T\), it follows that \(\bar\nu(\tau) = T\). \n
+
+        Assume \(\alpha_1, \alpha_2, \hdots, \alpha_n \vDash \tau\).  From this assumption, if we can show that for every t.a. \(\nu\) on \(S'\) satisfying \(\Sigma\), it must also satisfy \(\tau\), then we can apply the deduction rule to conclude the above implication must hold. \n
+
+        Now, let \(\nu\) be an arbitrary t.a. on \(S'\) satisfying \(\Sigma\) (that is, \(\bar\nu(\alpha_1) = \bar\nu(\alpha_2) = \hdots = \bar\nu(\alpha_n) = T\)).  If we can show that \(\bar\nu(\tau) = T\), then we can apply the universal generalization rule to show this is true for all t.a.'s satisfying \(\Sigma\). \n
+
+        By definintion of tautological implication, \(\alpha_1, \alpha_2, \hdots, \alpha_n \vDash \tau\) iff for every truth assignment \(\nu'\) on the set of sentence symbols in \(\alpha_1, \alpha_2, \hdots, \alpha_n\), and \(\tau\) for which \(\bar\nu'(\alpha_1) = \bar\nu'(\alpha_2) = \hdots = \bar\nu'(\alpha_n) = T\), it also holds that \(\bar\nu'(\tau) = T\). \n
+
+        The arbitrary t.a. \(\nu\) assigned above is defined for all sentence symboles \(A_i \in S'\).  Now let \(S\) be the set of all sentence symbols in \(\alpha_1, \alpha_2, \hdots, \alpha_n\), and \(\tau\).  Since \(\nu(A_i)\) defined for all \(A_i \in S'\), and \(S \subseteq S'\), it follows that \(\nu(A_i)\) is defined for all sentence symbols \(A_i \in S\). \n
+
+        Let \(\mu = \nu\restriction_S\) be the restriction of \(\nu\) on our subset \(S \subseteq S'\).  By 6(a), \(\bar\mu(\alpha_1) = \bar\nu(\alpha_1), \; \bar\mu(\alpha_2) = \bar\nu(\alpha_2), \; \hdots, \; \bar\mu(\alpha_n) = \bar\nu(\alpha_n)\), and \(\bar\mu(\tau) = \bar\nu(\tau)\).  And since \(\nu\) satisfies \(\Sigma\), we can conclude that \(\mu\) does as well, that is, \(\bar\mu(\alpha_1) = \bar\mu(\alpha_2) = \hdots = \bar\mu(\alpha_n) = T\). \n
+
+        But we're assuming \(\Sigma \vDash \tau\), meaning \(\bar\nu'(\tau) = T\) for arbitrary \(\nu'\) on \(S\) satisfying \(\Sigma\).  And sinse \(\mu\) is a t.a. on \(S\) satisfying \(\Sigma\), it must also hold that \(\bar\mu(\tau) = T\). \n
+
+        And again, applying 6(a), since \(\nu\) and \(\mu\) agree on all sentence symbols occuring in \(\tau\), we obtain that \(\bar\nu(\tau) = \bar\mu(\tau) = T\). \n
+
+        Finally, since \(\nu\) is a t.a. satisfying \(\Sigma\) chosen arbitrarily, and we've shown that \(\nu\) also satisfies \(\tau\), we can apply the universal generalization rule to conclude that for all \(\nu\) on \(S'\) satisfying \(\Sigma\), it must also be the case that \(\bar\nu(\tau) = T\).  Therefore, the forward implication must hold.
+
+      \item[\((\Leftarrow)\)] If, for every t.a. \(\nu\) on \(S'\) yielding \(\bar\nu(\alpha_1) = \bar\nu(\alpha_n) = \hdots = \bar\nu(\alpha_n) = T\), it follows that \(\bar\nu(\tau) = T\), then \(\alpha_1, \alpha_2, \hdots, \alpha_n \vDash \tau\). \n
+
+        Let \(S'\) be any set of sentence symbols containing those in \(\alpha_1, \alpha_2, \hdots, \alpha_n\), and \(\tau\) (possibly more), and let \(S\) be the set containing \textbf{only} those sentence symbols in \(\alpha_1, \alpha_2, \hdots, \alpha_n\), and \(\tau\) (\(S \subseteq S'\)). \n
+
+        Applying the deduction rule, assume that every t.a. \(\nu\) on \(S'\) yielding \(\bar\nu(\alpha_1) = \bar\nu(\alpha_n) = \hdots = \bar\nu(\alpha_n) = T\) also has the property that \(\bar\nu(\tau) = T\).  We must show that \(\alpha_1, \alpha_2, \hdots, \alpha_n \vDash \tau\). \n
+
+        By definintion of tautological implication, \(\alpha_1, \alpha_2, \hdots, \alpha_n \vDash \tau\) iff for every truth assignment \(\nu'\) on the set of sentence symbols in \(\alpha_1, \alpha_2, \hdots, \alpha_n\), and \(\tau\) (defined as \(S\)) for which \(\bar\nu'(\alpha_1) = \bar\nu'(\alpha_2) = \hdots = \bar\nu'(\alpha_n) = T\), it also holds that \(\bar\nu'(\tau) = T\). \n
+
+        Take arbitrary truth assignment \(\nu\) on \(S\) such that \(\bar\nu(\alpha_1) = \bar\nu(\alpha_2) = \hdots = \bar\nu(\alpha_n) = T\).  If we can show \(\bar\nu(\tau) = T\), then we can apply the universal generalization rule to show this is true for all possible truth assignments on \(S\) satisfying \(\Sigma\), and thus conclude \(\Sigma \vDash \tau\). \n
+
+        Now let \(\mu\) be an extension of \(\nu\) on \(S'\), in other words, \(\mu(A) = \nu(A)\) for all sentence symbols \(A \in S\), but potential sentence symbols \(B \in S' \setminus S\) can have any truth assignments \(\mu(B)\). \n
+
+        By 6(a), we know that for all wffs \(\alpha\) with sentence symbols in \(S\), \(\bar\mu(\alpha) = \bar\nu(\alpha)\).  And since the sentence symbols in \(\alpha_1, \alpha_2, \hdots, \alpha_n\), and \(\tau\) are in \(S\), we know that \(\bar\mu(\alpha_1) = \bar\nu(\alpha_1), \; \bar\mu(\alpha_2) = \bar\nu(\alpha_2), \;\hdots, \; \bar\mu(\alpha_n) = \bar\nu(\alpha_n)\), and \(\bar\mu(\tau) = \bar\nu(\tau)\). \n
+
+        Since \(\nu\) satisfying \(\Sigma\) was arbitrarily chosen, we now have that \(\bar\mu(\alpha_1) = \bar\nu(\alpha_1) = \hdots = \bar\mu(\alpha_n) = \bar\nu(\alpha_n) = T\).  Our initial assumtion was that every t.a. \(\nu'\) on \(S'\) yielding \(\bar\nu'(\alpha_1) = \bar\nu'(\alpha_n) = \hdots = \bar\nu'(\alpha_n) = T\) also yields \(\bar\nu'(\tau) = T\), and since \(\mu\) is one such truth assignment, we know (via the universal instantiation rule) that \(\bar\nu(\tau) = \bar\mu(\tau) = T\). \n
+
+        Finally, since \(\nu\) (satisfying \(\Sigma = \{\alpha_1, \hdots, \alpha_n\}\)) was chosen arbitrarily, and we've concluded that \(\bar\nu(\tau) = T\), we can now apply the universal generalization rule to prove that if \textbf{every} truth assignment \(\nu\) on \(S'\) satisfying \(\Sigma\) also satisfies \(\tau\), then \(\Sigma \vDash \tau\).
+    \end{enumerate}
+  \end{proof}
+  
+\end{document}
+
