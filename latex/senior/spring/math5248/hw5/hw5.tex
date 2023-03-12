@@ -1,0 +1,96 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amsthm}
+\usepackage{fullpage}
+\usepackage{amsfonts}
+\usepackage{amssymb,multicol}
+\usepackage{graphicx}
+\usepackage{hyperref, enumitem}
+\usepackage{outlines}
+\usepackage{xcolor}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\n}{\vspace{0.5cm}}
+\newcommand{\mmod}{\;\%\;}
+
+\newtheorem*{theorem}{Theorem}
+
+\newlist{checklist}{itemize}{2}
+\setlist[checklist]{label=$\square$}
+
+\hypersetup{
+  colorlinks=true,
+  urlcolor=blue!70!black
+}
+
+\begin{document}
+  \begin{center}
+    {\Large Homework 5} \n\\
+    Fletcher Gornick
+  \end{center}
+
+  \begin{enumerate}
+    \item[0.] If you would like any of these problems to be graded for proficiency with the core skills, list the skill and the corresponding problem.
+      \begin{outline}
+        \1 10. Using any theorem from the course to determine whether or not one number is a square modulo another.
+          \2 problem 1
+      \end{outline} \n
+
+    \item For the following values of \(y\) and \(p\), determine whether or not \(y\) is a square modulo \(p\).  If it is a square, find the principal square root of \(y\) modulo \(p\).  If it is not a square, justify your reasoning with a proof.
+
+      From lecture, we know that the following theorem is true
+      \begin{theorem}
+        For primes \(p \equiv 3 \pmod4\), if \(y\) is a square modulo \(p\), then \(y^{\frac{p+1}{4}} \;\%\; p\) is it's square root modulo \(p\).
+      \end{theorem}
+
+      Before jumping into the problems, first note that both 19 and 23 are equivalent to \(3 \pmod 4\).
+      
+      \begin{enumerate}
+        \item \(y = 7, \; p = 19\)
+          \[7^{\frac{19+1}{4}} \equiv 7^5 \equiv 7 \cdot 7^4 \equiv 7 \cdot 11^2 \equiv 7 \cdot 7 \equiv 11 \pmod{19}\]
+          So by definition of a principal square root, \(11 \equiv \sqrt7 \pmod{19}\) is the principal square root of \(7 \pmod{19}\). \n
+
+        \item \(y = 7, \; p = 23\) \n\\
+          7 is not a square modulo 23.
+          \begin{proof}
+            \[7^{\frac{23+1}{4}} \equiv 7^6 \equiv 3^3 \equiv 4 \pmod{23}\]
+            Since \(4^2 = 16 \not\equiv 7 \pmod{23}\), we can conclude that 7 is not a square \(\pmod{23}\) via the contrapositive of the statement above.
+          \end{proof}
+          
+
+      \end{enumerate}
+
+    \newpage
+    \item A friend sends you the encrypted message \(XI\) using a Hill cipher whose key you and your friend agreed at a previous meeting would be \(K = \begin{pmatrix} 1 & 2 \\ 4 & 17 \end{pmatrix}\).  What is the plaintext of the message your friend sent you? \n\\
+      \(\det(K) = 1 \cdot 17 - 2 \cdot 4 = 9\), it's easy to see without using the Euclidean algorithm that \(9 \cdot 3 \equiv 1 \pmod{26}\), so \(9^{-1} \equiv 3 \pmod{26}\).
+      We can now use this to solve for the inverse of our key \(K\):
+      \begin{align*}
+        K^{-1} &\equiv \det(K)^{-1} \cdot \text{adj}(K) \pmod{26} \\
+               &\equiv 3 \cdot \begin{pmatrix} 17 & -2 \\ -4 & 1 \end{pmatrix} \pmod{26} \\
+               &\equiv \begin{pmatrix} 25 & 20 \\ 14 & 3 \end{pmatrix} \pmod{26}
+      \end{align*}
+      The text \(XI\) has the value \((23,8)\), so we can use this to decrypt our ciphertext.
+      \[K^{-1}K \binom ab \equiv \binom ab \pmod{26} \implies \begin{pmatrix} 25 & 20 \\ 14 & 3 \end{pmatrix} \binom{23}{8} \equiv \binom ab \pmod{26}.\]
+      \[\begin{pmatrix} 25 & 20 \\ 14 & 3 \end{pmatrix} \binom{23}{8} \equiv \binom78 \pmod{26},\]
+      so we have that the plaintext was \((7,8) \implies HI\). \n
+
+    \item FTA Poem (\href{https://blogs.scientificamerican.com/roots-of-unity/prime-factorization-as-verse/}{Original}):
+
+        \begin{itemize}
+          \item[\(1\)] 21
+          \item[\(2\)] time waits for no man
+          \item[\(3\)] i understand
+          \item[\(2^2 = 4\)] time waits for no man, time waits for no man
+          \item[\(5\)] death waits with cold hands
+          \item[\(3 \times 2 = 6\)] i understand, but time waits for no man
+          \item[\(7\)] March 2023.  22, man
+          \item[\(2^3 = 8\)] time waits for no man, i understand
+          \item[\(3^2 = 9\)] i understand, time waits for no man
+          \item[\(2 \times 5 = 10\)] time waits for no man, but death waits with cold hands
+          \item[\(11\)] i'm the youngest old man that you know
+          \item[\(3 \times 2^2 = 12\)] i understand, but time waits for no man, time waits for no man
+          \item[\(13\)] if your souls in tact let me know
+        \end{itemize}
+  \end{enumerate}
+\end{document}
