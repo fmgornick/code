@@ -7,6 +7,7 @@
 \usepackage{caption}
 \usepackage{enumitem} 
 \usepackage{mathtools}
+\usepackage[table]{xcolor}
 \usepackage{tikz}
 \usepackage[top=2cm,bottom=2cm,left=1.75cm,right=2cm,marginparwidth=1.75cm]{geometry}
 \setlength{\parindent}{0cm}
@@ -26,6 +27,7 @@
 \newcommand\itm[1]{\item[\textbf{#1}]}
 \newcommand{\incid}{{-}\!{\bullet}\!{-}}
 \newcommand{\n}{\vspace{0.3cm}}
+\newcommand\cl{\cellcolor{blue!20}}
 
 \def\lc{\left\lceil}   
 \def\rc{\right\rceil}
@@ -104,19 +106,21 @@
                   From the above inequalities, we see that \(|S| \leq |N(S)|\), thus we can apply Hall's theorem to conclude that there exists a matching \(M\) that saturates each \(x \in X\).  Finally, since \(|X| = |Y|\), we know that this matching is perfect, so \(M\) is a 1-factor.  \n
 
                   Since we have 1-factor \(M\), and \(K_{n,n} \setminus M = K_{(n-1),(n-1)}\) has edge-disjoint 1-factors \(H_1, H_2, \hdots, H_{n-1}\), we now have that \(K_{n,n}\) has 1-factorization \(H_1, H_2, \hdots, H_{n-1}, M\), and is thus 1-factorable.
-                  % Let \(X = \{x_1, x_2, \hdots, x_n\}\) and \(Y = \{y_1, y_2, \hdots, y_n\}\) and \((X,Y)\) be our bipartition of \(K_{n,n}\).  We can now define each edge distinct 1-factor like so:
-                  % \[H_i := \{x_jy_k \mid 1 \leq j \leq n, \; k = j + i \;\%\; n\} \quad (H_i \subset K_{n,n}, \; 1 \leq i \leq n).\]
-
-                  % We know each \(H_i\) is a 1-factor because \(\ell = m \iff (\ell + i \;\%\; n) = (m + i \;\%\; n)\) (for \(1 \leq \ell,m \leq n\)), so each vertex \(x \in X\) is connected to a unique \(y \in Y\) and vice versa, so \(d_{H_i}(v) = 1\) for all \(v \in H_i\). \n
-
-                  % via contraposition, \(i \neq j \iff (\ell + i \;\%\; n) \neq (\ell + j \;\%\; n)\) (for \(1 \leq i,j \leq n\)), which tells us that \(uv \in H_i \iff uv \not\in H_j\) for \(i \neq j\), so \(H_i \cap H_j = \emptyset\) for all \(i \neq j\). \n
-
-                  % Finally, since each \(H_i\) edge-disjoint with \(n\) edges, taking the unions of all these subsets \(H_1 \cup H_2 \cup \hdots \cup H_n\) yields \(n^2\) total distinct edges which matches how many are in \(K_{n,n}\).  Therefore, \(\bigcup\limits_{i=1}^n H_i = K_{n,n}\), meaning \(K_{n,n}\) is 1-factorable. \n
                 \end{proof}
 
               \item[(\(K_{2n}\))]  
                 \begin{proof}
-                  penis
+                  We can construct a \(K_{2n}\)matching like so: \\
+                  For any \(n \geq 1\), we can name our verticies \(x, y_0, y_1, \hdots, y_{2n-2}\).  We can then define \(2n-1\) matchings \(H_0, H_1, \hdots, H_{2n-2}\):
+                  \[H_i := \{xy_i\} \cup \{y_jy_k \mid 0 \leq j,k < 2n-1, \; j \neq k \neq i, \; j+k \equiv 2i \pmod{2n-1}\}.\]
+
+                  Now that we have our matchings, we show that these (1) actually all map to distinct edges and (2) cover all edges. \n
+
+                  If we can show that \(i \neq j \iff 2i \not\equiv 2j \pmod{2n-1}\) for \(0 \leq i,j < 2n-1\), then it follows that all our matchings are edge-disjoint.  Since \(2n-1\) and 2 are coprime, we know 2 has a multiplicative inverse modulo \(2n-1\) (call it \(2^{-1})\) by Bezout's identity. \n
+
+                  Obviously if \(i=j\) then \(2i = 2j\), so \(2i \equiv 2j \pmod{2n-1}\).  Now if \(2i \equiv 2j \pmod{2n-1}\), then \(i \equiv 2^{-1} \cdot 2i \equiv 2^{-1} \cdot 2j \equiv j \pmod{2n-1}\).  Since \(0 \leq i,j < 2n-1\), we can conclude that \(i = j\).  So all these matchings are unique. \n
+
+                  for each \(i, \; 0 \leq i < 2n-1\), we have that \((i-1)+(i+1) \equiv (i-2)+(i+2) \equiv \hdots \equiv (i-(n-1))+(i-(n-1)) \equiv 2i \pmod{2n-1}\), so for each matching, we have \(n-1 \;\; y_jy_k\) edges, adding our \(xy_i\) edge, we have \(n\) edges for each matching, this gives us the desired matching size, so we can conclude this formulation yields a 1-factorization.
                 \end{proof}
                 
                 
@@ -138,7 +142,6 @@
     \end{enumerate}
 
 
-    \newpage
   \itm{5.2.1} Show that it is impossible, using \(1 \times 2\) rectangles, to exactly cover an \(8 \times 8\) square from which two opposite \(1 \times 1\) corner squares have been removed.
   \begin{proof}
     We can rewrite this \(8 \times 8\) board (with \(1 \times 2\) rectangles connecting adjacent squares) as the following graph \(G\) (figure (b)):
@@ -288,7 +291,7 @@
     
     A matching in \(G\) is analogous to a transversal of \(\F\), so \(G\) has a matching that saturates all vertices in \(X\) if and only if \((A_1, A_2, \hdots, A_m)\) has a system of distinct representatives. \n
 
-    \(\Big|\bigcup\limits_{i \in J} A_i \Big| \geq |J|\) for all subsets \(J\) of \(\{1,2,\hdots,m\}\) is analogous to saying that for all \(X' \subseteq X\), the number of distinct vertices adjacent to all the \(x_i \in X'\) is at least as big as the number of vertices in \(X'\), or in other words \(|N_G(X')| \geq |X'|\), which is exactly the right hand side of theorem 5.2. \n
+    \(\Big|\bigcup\limits_{i \in J} A_i \Big| \geq |J|\) for all subsets \(J\) of \(\{1,2,\hdots,m\}\) is analogous to saying that for all \(X' \subseteq X\), the number of distinct vertices adjacent to one of the \(x_i \in X'\) (number of \(a \in S\) such that \(a\) in some \(A_{i \in J} \)) is at least as big as the number of vertices in \(X'\), or in other words \(\Big|\bigcup\limits_{i \in J} A_i \Big| = |N_G(X')| \geq |X'| = |J|\). \n
 
     Now we have the following relation:
     \begin{align*}
@@ -302,6 +305,16 @@
 
 
   \itm{5.2.5} A \textit{line} of a matrix is a row or a column of the matrix.  Show that the minumum number of lines containing all the 1's of a (0,1)-matrix is equal to the maximum number of 1's, no two of which are in the same line.
+  \begin{proof}
+    Let this \((0,1)\)-matrix (call it \(A\)) be the adjacency matrix of bipartite graph \(G = (X \cup Y, E)\). \(X = \{x_1, x_2, \hdots, x_n\}, \; Y = \{y_1, y_2, \hdots, y_n\}, \; E := \{x_ix_j \colon 1 \leq i,j \leq n, \; a_{ij} = 1\}\). In this implementation, a line represents a vertex, and a 1 entry represents an edge. \n
+
+    The minimum number of lines containing all the 1's is equivalent to the minimum size of some set \(S \subset (X \cup Y)\) such that every edge is incident to some \(v \in S\).  In other words, this is the size of the minimum vertex cover \(\tau(G)\). \n
+
+    The maximum number of 1's, no two of which are in the same line can be rephrased as the maximum number of edges with unique incident vertices.  In other words, this is the size of the maximum matching \(\nu(G)\). \n
+
+    Now, K\"{o}nig's theorem simply states that \(\nu(G) = \tau(G)\) for bipartite graphs (which our formulation is), so we can conclude that the number of 1's lines containing all the 1's of a \((0,1)\)-matrix is equal to the number of 1's, no two of which are in the same line.
+  \end{proof}
+  
 
   \itm{5.5.1} A \textit{diagonal} of an \(n \times n\) matrix is a set of \(n\) entries no two of which belong to the same row or the same column.  The weight of a diagonal is the sum of the entries in it.  Find a minimum-weight diagonal in the following matrix:
   \[\begin{pmatrix}
@@ -312,4 +325,79 @@
     4  & 5  & 7  & 9  & 8  \\
   \end{pmatrix}\]
 \end{itemize}
+We can use problem 5.2.5 to outline a different process for finding a minimum-weight diagonal without the need to create a weighted bipartite graph \(K_{5,5}\).
+
+\begin{enumerate}
+  \item subtract each row by it's minimum element.  If this results in 5 line-independent 0's (minimum line covering is size 5), then this is clearly our minimum-weight matching.
+
+  \item if there are less than 5 line-independent 0's \((\nu(G) < 5)\), find a minimum line cover of the 0's in our resultant matrix, and find the minimum element of all the elements not in this cover.  Once we find this element, subtract all the non-covered elements by this number to get a new matrix with more zeros.
+
+  \item Repeat (2) until a minimum 0-cover requires 5 lines, once this is the case, we locate the positions of our maximum 0-independent elements (By K\"onig's theorem, we know this exists because \(\tau(G) = \nu(G)\)).
+\end{enumerate}
+
+
+
+
+  \[\left(\begin{array}{ccccc}
+    4  & 5  & 8  & 10 & 11 \\
+    7  & 6  & 5  & 7  & 4  \\
+    8  & 5  & 12 & 9  & 6  \\
+    6  & 6  & 13 & 10 & 7  \\
+    4  & 5  & 7  & 9  & 8  \\
+  \end{array}\right) \to
+  \left(\begin{array}{>{\columncolor{blue!20}}c>{\columncolor{blue!20}}cccc}
+    0 & 1 & 4 & 6 & 7 \\
+    3 & 2 & 1 & 3 & 0 \\
+    3 & 0 & 7 & 4 & 1 \\
+    0 & 0 & 7 & 4 & 1 \\
+    0 & 1 & 3 & 5 & 4 \\
+  \end{array}\right) \to
+  \left(\begin{array}{>{\columncolor{blue!20}}c>{\columncolor{blue!20}}cccc}
+    0 & 1 & 3 & 3 & 7 \\
+    \rowcolor{blue!20}
+    3 & 2 & 0 & 0 & 0 \\
+    3 & 0 & 6 & 1 & 1 \\
+    0 & 0 & 6 & 1 & 1 \\
+    0 & 1 & 2 & 2 & 4 \\
+  \end{array}\right)
+  \to \left(\begin{array}{>{\columncolor{blue!20}}ccccc}
+    0 & 1 & 2 & 2 & 6 \\
+    \rowcolor{blue!20}
+    3 & 2 & 0 & 0 & 0 \\
+    \rowcolor{blue!20}
+    3 & 0 & 5 & 0 & 0 \\
+    \rowcolor{blue!20}
+    0 & 0 & 5 & 0 & 0 \\
+    0 & 1 & 1 & 1 & 3 \\
+  \end{array}\right)\] 
+
+  \[\to \left(\begin{array}{ccccc}
+    \rowcolor{blue!20}
+    0 & 1 & 1 & 1 & 5 \\
+    \rowcolor{blue!20}
+    3 & 2 & 0 & 0 & 0 \\
+    \rowcolor{blue!20}
+    3 & 0 & 5 & 0 & 0 \\
+    \rowcolor{blue!20}
+    0 & 0 & 5 & 0 & 0 \\
+    \rowcolor{blue!20}
+    0 & 1 & 0 & 0 & 2 \\
+  \end{array}\right)
+  \to \left(\begin{array}{ccccc}
+    \cl 0 & 1 & 1 & 1 & 5 \\
+    3 & 2 & 0 & 0 & \cl 0 \\
+    3 & 0 & 5 & \cl 0 & 0 \\
+    0 & \cl 0 & 5 & 0 & 0 \\
+    0 & 1 & \cl 0 & 0 & 2 \\
+  \end{array}\right) \to
+  \left(\begin{array}{ccccc}
+    \cl 4  & 5  & 8  & 10 & 11 \\
+    7  & 6  & 5  & 7  & \cl 4  \\
+    8  & 5  & 12 & \cl 9  & 6  \\
+    6  & \cl 6  & 13 & 10 & 7  \\
+    4  & 5  & \cl 7  & 9  & 8  \\
+  \end{array}\right)\] \n
+
+  This gives us minimum diagonal weight of \(4 + 6 + 7 + 9 + 4 = 30\).
+% \includegraphics[width=0.97\textwidth]{hungarian.jpeg}
 \end{document}
