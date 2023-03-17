@@ -1,0 +1,84 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{enumitem} 
+\usepackage{mathtools}
+\usepackage{MnSymbol}
+\usepackage{calligra}
+\usepackage[top=2cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
+\setlength{\parindent}{0cm}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\n}{\vspace{0.5cm}}
+
+\pagenumbering{gobble}
+
+\begin{document}
+\title{\vspace{-1.5cm}MATH 4152 Homework 6}
+  \author{Fletcher Gornick}
+  \maketitle
+  \begin{enumerate}
+    \item Write down the associative and commutative laws for \(\vee\) and \(\leftrightarrow\).
+      \begin{enumerate}
+        \item[(\(\vee\))] given wffs \(\alpha, \beta, \gamma\) and truth evaluating function \(\bar\nu\), the following property holds:
+          \[\bar\nu(((\alpha \vee \beta) \vee \gamma)) = \bar\nu((\alpha \vee (\beta \vee \gamma))) \]
+
+        \item[(\(\leftrightarrow\))] given wffs \(\alpha, \beta, \gamma\) and truth evaluating function \(\bar\nu\), the following property holds:
+          \[\bar\nu(((\alpha \leftrightarrow \beta) \leftrightarrow \gamma)) = \bar\nu((\alpha \leftrightarrow (\beta \leftrightarrow \gamma))) \]
+      \end{enumerate} \n
+
+    \item Write down the tautological equivalences corresponding to associative and commutative laws for \(\vee\) and \(\leftrightarrow\). (I.e. use 4(b).)
+      \begin{itemize}
+        \item Commutative - For wffs \(\alpha, \beta\):
+          \[(\alpha \vee \beta) \models \leftmodels (\beta \vee \alpha) \quad\quad (\alpha \leftrightarrow \beta) \models \leftmodels (\beta \leftrightarrow \alpha)\]
+          which can also be rewritten as:
+          \[\models (\alpha \vee \beta) \leftrightarrow (\beta \vee \alpha) \quad \quad \models (\alpha \leftrightarrow \beta) \leftrightarrow (\beta \leftrightarrow \alpha)\]
+        \item Associative - For wffs \(\alpha, \beta, \gamma\):
+          \[((\alpha \vee \beta) \vee \gamma) \models \leftmodels (\alpha \vee (\beta \vee \gamma)) \quad\quad ((\alpha \leftrightarrow \beta) \leftrightarrow \gamma) \models \leftmodels (\alpha \leftrightarrow (\beta \leftrightarrow \gamma))\]
+          which can also be rewritten as:
+          \[\models ((\alpha \vee \beta) \vee \gamma) \leftrightarrow (\alpha \vee (\beta \vee \gamma)) \quad \quad \models ((\alpha \leftrightarrow \beta) \leftrightarrow \gamma) \leftrightarrow (\alpha \leftrightarrow (\beta \leftrightarrow \gamma))\]
+      \end{itemize} \n
+
+    \item For each of the four tautological equivalences in 2, write down the two corresponding tautological implications and their associated tautologies (obtained by using the simplist case of 4(a)).
+      \begin{itemize}
+        \item \((\alpha \vee \beta) \models \leftmodels (\beta \vee \alpha)\)
+          \begin{enumerate}
+            \item[(\(\models\))] \((\alpha \vee \beta) \models (\beta \vee \alpha)\)\\ associated tautology: \(\models ((\alpha \vee \beta) \to (\beta \vee \alpha))\)
+            \item[(\(\leftmodels\))] \((\beta \vee \alpha) \models (\alpha \vee \beta)\)\\ associated tautology: \(\models ((\beta \vee \alpha) \to (\alpha \vee \beta))\)
+          \end{enumerate} \n
+
+        \item \((\alpha \leftrightarrow \beta) \models \leftmodels (\beta \leftrightarrow \alpha)\)
+          \begin{enumerate}
+            \item[(\(\models\))] \((\alpha \leftrightarrow \beta) \models (\beta \leftrightarrow \alpha)\)\\ associated tautology: \(\models ((\alpha \leftrightarrow \beta) \to (\beta \leftrightarrow \alpha))\)
+            \item[(\(\leftmodels\))] \((\beta \leftrightarrow \alpha) \models (\alpha \leftrightarrow \beta)\)\\ associated tautology: \(\models ((\beta \leftrightarrow \alpha) \to (\alpha \leftrightarrow \beta))\)
+          \end{enumerate} \n
+
+        \item \(((\alpha \vee \beta) \vee \gamma) \models \leftmodels (\alpha \vee (\beta \vee \gamma))\)
+          \begin{enumerate}
+            \item[(\(\models\))] \(((\alpha \vee \beta) \vee \gamma) \models (\alpha \vee (\beta \vee \gamma))\)\\ associated tautology: \(\models (((\alpha \vee \beta) \vee \gamma) \to (\alpha \vee (\beta \vee \gamma)))\)
+            \item[(\(\leftmodels\))] \((\alpha \vee (\beta \vee \gamma)) \models ((\alpha \vee \beta) \vee \gamma)\)\\ associated tautology: \(\models ((\alpha \vee (\beta \vee \gamma)) \to ((\alpha \vee \beta) \vee \gamma))\)
+          \end{enumerate} \n
+
+        \item \(((\alpha \leftrightarrow \beta) \leftrightarrow \gamma) \models \leftmodels (\alpha \leftrightarrow (\beta \leftrightarrow \gamma))\)
+          \begin{enumerate}
+            \item[(\(\models\))] \(((\alpha \leftrightarrow \beta) \leftrightarrow \gamma) \models (\alpha \leftrightarrow (\beta \leftrightarrow \gamma))\)\\ associated tautology: \(\models (((\alpha \leftrightarrow \beta) \leftrightarrow \gamma) \to (\alpha \leftrightarrow (\beta \leftrightarrow \gamma)))\)
+            \item[(\(\leftmodels\))] \((\alpha \leftrightarrow (\beta \leftrightarrow \gamma)) \models ((\alpha \leftrightarrow \beta) \leftrightarrow \gamma)\)\\ associated tautology: \(\models ((\alpha \leftrightarrow (\beta \leftrightarrow \gamma)) \to ((\alpha \leftrightarrow \beta) \leftrightarrow \gamma))\)
+          \end{enumerate}
+      \end{itemize} \n
+
+    \item Write down the tautological equivalences corresponding to the two De Morgan's laws.
+      for wffs \(\alpha, \beta\):
+      \[(\neg (\alpha \wedge \beta)) \models \leftmodels ((\neg \alpha) \vee (\neg \beta)) \quad \quad (\neg (\alpha \vee \beta)) \models \leftmodels ((\neg \alpha) \wedge (\neg \beta))\]
+
+    \item For each of the two tautological equivalences in 4, write down the two corresponding tautological implications and their associated tautologies (obtained by using the simplist case of 4(a)).
+
+    \item Using the exportation, i.e. not using the truth tables and truth values, prove:
+      \begin{enumerate}
+        \item \(((A \wedge B) \to C), \; A,B \vDash C\)
+        \item \(((A \to B) \to C), \; (A \wedge B) \vDash C\)
+      \end{enumerate}
+  \end{enumerate}
+\end{document}
+
