@@ -1,0 +1,121 @@
+ \documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amsthm}
+\usepackage{fullpage}
+\usepackage{amsfonts}
+\usepackage{amssymb,multicol}
+\usepackage[colorlinks=true,urlcolor=blue]{hyperref}
+\usepackage{enumitem}
+\usepackage{xcolor,systeme}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ds}{\displaystyle}
+\newtheorem*{theorem}{Theorem}
+
+\newlist{checklist}{itemize}{2}
+\setlist[checklist]{label=$\square$}
+
+\newcommand{\n}{\vspace{0.3cm}}
+
+\begin{document}
+\begin{center}
+{\Large Homework 7}\\
+Due: Friday,  March 31 at 11:59pm\\
+
+
+\end{center}
+{\bf Instructions:} Submit a pdf of your solutions to the HW 7 assignment on Gradescope.  
+
+
+
+\begin{enumerate}
+\item[0.] If you would like any of these problems to be graded for proficiency with the core skills, list the skill and the corresponding problem. 
+
+
+\item  You are performing a ciphertext-only attack on a ciphertext that you know was encrypted using a Vigenere cipher.  If $y = (y_1, \ldots, y_{N})$ is a string of ciphertext of length $N$, let $$y_{\ell} = (y_1, y_{1+\ell}, y_{1+2\ell}, \ldots, y_{1+\ell\lfloor{\frac{N-1}{\ell}}\rfloor})$$ for each $0 < \ell <N$ ($\left\lfloor x \right\rfloor$ is the largest integer $\le x$).  Consider the following table of values of $\ell$ and $\mathrm{IndCo}(y_{\ell})$.
+
+\begin{center}
+    \begin{tabular}{ l | l | l | l }
+    $\ell$ & $\mathrm{IndCo}(y_\ell)$ &  $\ell$ & $\mathrm{IndCo}(y_\ell)$  \\ 
+    \hline
+    3 & 0.035 & 9  & 0.048\\ 
+    4 & 0.039 & 10 & 0.068  \\ 
+    5 & 0.063 & 11 & 0.034  \\
+    6 & 0.041  & 12 & 0.031  \\
+    7 & 0.022  &  13 & 0.050\\
+    8 & 0.033  &  14 & 0.039\\
+    \end{tabular}
+\end{center}
+
+Based on the table above, what do you think the key length is?  Explain your answer. (You may assume that your ciphertext is significantly longer than the key length.) \n
+
+In general, if the resulting index of coincidence for a given key of length \(\ell\) is higher than others, it means that there's a more likely chance that the actual key has a length that's some multiple of \(\ell\). \n
+
+In this table, keys of length 5 and 10 stick out as having IoCs closest to the english average 0.0686.  Since 10 is a multiple of 5, there's a likely chance that our key is of length 5.  This is because if 5 was actually the size of our key, then every 5th letter of our ciphertext would have the same IoC as every 5th letter of the plaintext, so if we took every 10th letter instead, that'd essentially just be like taking every 5th letter and throwing half our data. This explains why 10 would also have a high IoC. \n
+
+So I would assume the key has length 5 based off this data, but I would also check for keys of length 10 to be safe.
+
+\item   You are trying to attack a Vigenere cipher.  You have already determined that this Vigenere cipher has key length $4$.  If $\underline{s} = (s_0, \ldots, s_{N-1})$ is a string of ciphertext of length $N$ with $N \equiv 0 \pmod4$, let $s^{(j)} = (s_j,s_{4+j},\ldots,s_{N-4+j})$ be the substring of $s$ whose typical entry is $s_i$ for some $i \equiv j \pmod 4$.  Let $E_t(s^{(j)})$ be the encryption of the string $s^{(j)}$ by the shift cipher with key $t$ for $0 \leq t \leq 25$ and $0 \leq j \leq 3$ (i.e. the string obtained by taking $y^{(j)}$ and shifting each character forward by $t$ letters).  You compute the following table:
+
+\begin{center}
+    \begin{tabular}{ l | l | l | l }
+    $t$ & $\mathrm{MutIndCo}(s^{(0)},E_t(s^{{(1)}}))$ & $\mathrm{MutIndCo}(s^{(0)},E_t(s^{{(2)}}))$  & $\mathrm{MutIndCo}(s^{(0)},E_t(s^{{(3)}}))$  \\ \hline
+    3 & 0.057 & 0.031 & 0.036 \\     
+    5 & 0.035 & 0.041 & 0.054 \\ 
+    8& 0.052 & 0.072 & 0.042\\ 
+    11 & 0.064 & 0.058 & 0.039\\ 
+    16 & 0.029 & 0.065 & 0.068 \\ 
+    23 & 0.035 & 0.037 & 0.051
+    \end{tabular}
+      \begin{tabular}{ l | l | l}
+    $t$ & $\mathrm{MutIndCo}(s^{(1)},E_t(s^{{(2)}}))$ & $\mathrm{MutIndCo}(s^{(1)},E_t(s^{{(3)}}))$\\ \hline
+    3 & 0.033 & 0.041 \\     
+    5 & 0.039 & 0.069\\ 
+    8 & 0.051 & 0.038\\ 
+    11 & 0.037 & 0.061\\ 
+    16 & 0.045 & 0.052\\ 
+    23 & 0.061 & 0.035\\
+    \end{tabular}
+    \end{center} 
+    
+For the questions below, assume that,  values of $t$ not appearing in the table above gave rise values of $\mathrm{MutIndCo}(s^{(j)},E_t(s^{(k)}))$ that are unremarkable for all $0 \leq j<k \leq 3$.
+\begin{enumerate}
+\item Given that the key has the form $k = (k_0, k_1, k_2,k_3)$, based on the data above, what are all likely values of $k_1-k_0$, $k_2-k_0$, and $k_3-k_0$? Explain your answer. \n\\
+  The highest value for \(\mathrm{MutIndCo}(s^{(0)},E_t(s^{{(1)}}))\) is 0.064 when \(t=11\), so the likely values for \(k_1-k_0\) are 11 and \(-15\) (\(-15 \equiv 11 \pmod{26}\), and there's a chance that \(k_0 > k_1\)). \n
+
+  The resoning is the same for all other values, so we can conclude that:
+  \begin{align*}
+    k_1 - k_0 &= -15,11, \\
+    k_2 - k_0 &= -18,8, \\
+    k_3 - k_0 &= -10,16.
+  \end{align*}
+
+\item  For what value(s) of $t$, would you expect $\mathrm{MutIndCo}(s^{(2)},E_t(s^{(3)}))$ to be large? Explain your answer. \n\\
+  High mutual index of coincidence between \(s^{(0)}\) and \(E_t(s^{{(i)}})\) (dependent on \(t\)) corresponds to higher chance that the \(k_i = k_0 + t\).  So it's more likely that \(k_2 = k_0 + 8\) and \(k_3 = k_0 + 16\). \n
+
+  Via this logic, it's more likely that \(k_3 = k_0 + 16 = (k_2 - 8) + 16 = k_2 + 8\), so we would expect a large value for \(\mathrm{MutIndCo}(s^{(2)},E_t(s^{(3)}))\) when \(t=8\).
+\end{enumerate} \n
+
+\item Prove that the equation $r^{16}+17t=11$ has no solutions for integers $r$ and $t$.  (Hint: Fermat's Little Theorem is useful here.)
+  \begin{proof}
+    If \(r^{16} + 17t = 11\) has a solution, then it must also have solution modulo 17.  Via the contrapositive statement, if \(r^{16} + 17t \equiv 11 \pmod{17}\) has no solutions for integers \(r\) and \(t\), then neither does the equation outlined above.
+
+    For any \(r,t \in \Z\):
+    \begin{align*}
+      r^{16} + 17t &\equiv r^{16} & (17 \mid 17t \implies 17t \equiv 0 \pmod{17}) \\
+                   &\equiv 1 & (\text{Fermat's Little Theorem}) \\
+                   &\not\equiv 11 \pmod{17}
+    \end{align*}
+  \end{proof}
+  
+
+\item In this problem you will prove that the two statements of Fermat's Little Theorem are equivalent. See the parts below for precise statements of what you must prove. 
+\begin{enumerate}
+\item Prove that,  if \(p\) is prime and $$a^{p-1}\equiv \begin{cases} 0 \pmod{p} & \text{if } p\mid a \\ 1 \pmod{p} & \text{if } p\nmid a \end{cases},$$ then $$a^p\equiv a\pmod{p}.$$
+\item Prove that, if \(p\) is prime and $$a^p\equiv a\pmod{p},$$ then $$a^{p-1}\equiv \begin{cases} 0 \pmod{p} & \text{if } p\mid a \\ 1 \pmod{p} & \text{if } p\nmid a \end{cases}.$$
+\end{enumerate}
+
+\end{enumerate}
+
+
+\end{document}

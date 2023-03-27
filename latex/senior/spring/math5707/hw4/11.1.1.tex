@@ -1,0 +1,323 @@
+\resizebox{.9\textwidth}{!} {
+  \begin{tikzpicture}
+    \tikzset{
+      dot/.style = {circle, draw, fill=white, minimum size=#1, inner sep=0pt, outer sep=0pt},
+      dot/.default = 4pt
+    }
+    \node[dot,label=left:{\sm \(s\)}] (s) at (0,1) {};
+    \node[dot,label=right:{\sm \(t\)}] (t) at (6,1) {};
+
+    \node[dot,label=above:{\sm \(x_1\)}] (x1) at (2,2) {};
+    \node[dot,label=above:{\sm \(x_2\)}] (x2) at (4,2) {};
+    \node[dot,label=below:{\sm \(x_3\)}] (x3) at (4,0) {};
+    \node[dot,label=below:{\sm \(x_4\)}] (x4) at (2,0) {};
+
+    \path [draw=black, postaction={on each segment={mid arrow=black}}]
+    ;
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \tikzset{
+      dot/.style = {circle, draw, fill=white, minimum size=#1, inner sep=0pt, outer sep=0pt},
+      dot/.default = 4pt
+    }
+    \node[dot,label=left:{\sm \(s\)}] (s) at (0,1) {};
+    \node[dot,label=right:{\sm \(t\)}] (t) at (6,1) {};
+
+    \node[dot,label=above:{\sm \(x_1\)}] (x1) at (2,2) {};
+    \node[dot,label=above:{\sm \(x_2\)}] (x2) at (4,2) {};
+    \node[dot,label=below:{\sm \(x_3\)}] (x3) at (4,0) {};
+    \node[dot,label=below:{\sm \(x_4\)}] (x4) at (2,0) {};
+
+    \path [draw=black, postaction={on each segment={mid arrow=black}}]
+      (s) edge node[above] {\sm 1} (x1)
+      (s) -- (x1)
+
+      (x1) edge node[above] {\sm 1} (x2)
+      (x1) -- (x2)
+
+      (x2) edge node[above] {\sm 1} (t)
+      (x2) -- (t)
+    ;
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \tikzset{
+      dot/.style = {circle, draw, fill=white, minimum size=#1, inner sep=0pt, outer sep=0pt},
+      dot/.default = 4pt
+    }
+    \node[dot,label=left:{\sm \(s\)}] (s) at (0,1) {};
+    \node[dot,label=right:{\sm \(t\)}] (t) at (6,1) {};
+
+    \node[dot,label=above:{\sm \(x_1\)}] (x1) at (2,2) {};
+    \node[dot,label=above:{\sm \(x_2\)}] (x2) at (4,2) {};
+    \node[dot,label=below:{\sm \(x_3\)}] (x3) at (4,0) {};
+    \node[dot,label=below:{\sm \(x_4\)}] (x4) at (2,0) {};
+
+    \path [draw=black, postaction={on each segment={mid arrow=black}}]
+      (s) edge node[below] {\sm 1} (x1)
+      (s) -- (x1)
+
+      (x1) edge node[right] {\sm 1} (x4)
+      (x1) -- (x4)
+
+      (x4) edge node[above] {\sm 1} (x3)
+      (x4) -- (x3)
+
+      (x3) edge node[below] {\sm 1} (t)
+      (x3) -- (t)
+    ;
+  \end{tikzpicture}
+}
+
+\resizebox{.9\textwidth}{!} {
+  \begin{tikzpicture}
+    \tikzset{
+      dot/.style = {circle, draw, fill=white, minimum size=#1, inner sep=0pt, outer sep=0pt},
+      dot/.default = 4pt
+    }
+    \node[dot,label=left:{\sm \(s\)}] (s) at (0,1) {};
+    \node[dot,label=right:{\sm \(t\)}] (t) at (6,1) {};
+
+    \node[dot,label=above:{\sm \(x_1\)}] (x1) at (2,2) {};
+    \node[dot,label=above:{\sm \(x_2\)}] (x2) at (4,2) {};
+    \node[dot,label=below:{\sm \(x_3\)}] (x3) at (4,0) {};
+    \node[dot,label=below:{\sm \(x_4\)}] (x4) at (2,0) {};
+
+    \path [draw=black, postaction={on each segment={mid arrow=black}}]
+      (s) edge node[above] {\sm 1} (x1)
+      (s) -- (x1)
+
+      (x1) edge node[left] {\sm 1} (x4)
+      (x1) -- (x4)
+
+      (x4) edge node[above] {\sm 1} (x3)
+      (x4) -- (x3)
+
+      (x3) edge node[right] {\sm 1} (x2)
+      (x3) -- (x2)
+
+      (x2) edge node[above] {\sm 1} (t)
+      (x2) -- (t)
+    ;
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \tikzset{
+      dot/.style = {circle, draw, fill=white, minimum size=#1, inner sep=0pt, outer sep=0pt},
+      dot/.default = 4pt
+    }
+    \node[dot,label=left:{\sm \(s\)}] (s) at (0,1) {};
+    \node[dot,label=right:{\sm \(t\)}] (t) at (6,1) {};
+
+    \node[dot,label=above:{\sm \(x_1\)}] (x1) at (2,2) {};
+    \node[dot,label=above:{\sm \(x_2\)}] (x2) at (4,2) {};
+    \node[dot,label=below:{\sm \(x_3\)}] (x3) at (4,0) {};
+    \node[dot,label=below:{\sm \(x_4\)}] (x4) at (2,0) {};
+
+    \path [draw=black, postaction={on each segment={mid arrow=black}}]
+      (s) edge node[below] {\sm 1} (x4)
+      (s) -- (x4)
+
+      (x4) edge node[below] {\sm 1} (x3)
+      (x4) -- (x3)
+
+      (x3) edge node[below] {\sm 1} (t)
+      (x3) -- (t)
+    ;
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \tikzset{
+      dot/.style = {circle, draw, fill=white, minimum size=#1, inner sep=0pt, outer sep=0pt},
+      dot/.default = 4pt
+    }
+    \node[dot,label=left:{\sm \(s\)}] (s) at (0,1) {};
+    \node[dot,label=right:{\sm \(t\)}] (t) at (6,1) {};
+
+    \node[dot,label=above:{\sm \(x_1\)}] (x1) at (2,2) {};
+    \node[dot,label=above:{\sm \(x_2\)}] (x2) at (4,2) {};
+    \node[dot,label=below:{\sm \(x_3\)}] (x3) at (4,0) {};
+    \node[dot,label=below:{\sm \(x_4\)}] (x4) at (2,0) {};
+
+    \path [draw=black, postaction={on each segment={mid arrow=black}}]
+      (s) edge node[above] {\sm 1} (x4)
+      (s) -- (x4)
+
+      (x1) edge node[above] {\sm 1} (x2)
+      (x1) -- (x2)
+
+      (x2) edge node[above] {\sm 1} (t)
+      (x2) -- (t)
+
+      (x4) edge node[above] {\sm 1} (x3)
+      (x4) -- (x3)
+
+      (x3) edge node[above] {\sm 1} (x1)
+      (x3) -- (x1)
+    ;
+  \end{tikzpicture}
+}
+
+\resizebox{.9\textwidth}{!} {
+  \begin{tikzpicture}
+    \tikzset{
+      dot/.style = {circle, draw, fill=white, minimum size=#1, inner sep=0pt, outer sep=0pt},
+      dot/.default = 4pt
+    }
+    \node[dot,label=left:{\sm \(s\)}] (s) at (0,1) {};
+    \node[dot,label=right:{\sm \(t\)}] (t) at (6,1) {};
+
+    \node[dot,label=above:{\sm \(x_1\)}] (x1) at (2,2) {};
+    \node[dot,label=above:{\sm \(x_2\)}] (x2) at (4,2) {};
+    \node[dot,label=below:{\sm \(x_3\)}] (x3) at (4,0) {};
+    \node[dot,label=below:{\sm \(x_4\)}] (x4) at (2,0) {};
+
+    \path [draw=black, postaction={on each segment={mid arrow=black}}]
+      (s) edge node[above] {\sm 1} (x4)
+      (s) -- (x4)
+
+      (x4) edge node[above] {\sm 1} (x3)
+      (x4) -- (x3)
+
+      (x3) edge node[right] {\sm 1} (x2)
+      (x3) -- (x2)
+
+      (x2) edge node[above] {\sm 1} (t)
+      (x2) -- (t)
+    ;
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \tikzset{
+      dot/.style = {circle, draw, fill=white, minimum size=#1, inner sep=0pt, outer sep=0pt},
+      dot/.default = 4pt
+    }
+    \node[dot,label=left:{\sm \(s\)}] (s) at (0,1) {};
+    \node[dot,label=right:{\sm \(t\)}] (t) at (6,1) {};
+
+    \node[dot,label=above:{\sm \(x_1\)}] (x1) at (2,2) {};
+    \node[dot,label=above:{\sm \(x_2\)}] (x2) at (4,2) {};
+    \node[dot,label=below:{\sm \(x_3\)}] (x3) at (4,0) {};
+    \node[dot,label=below:{\sm \(x_4\)}] (x4) at (2,0) {};
+
+    \path [draw=black, postaction={on each segment={mid arrow=black}}]
+      (s) edge node[above] {\sm 2} (x1)
+      (s) -- (x1)
+
+      (x1) edge node[left] {\sm 1} (x4)
+      (x1) -- (x4)
+
+      (x1) edge node[above] {\sm 1} (x2)
+      (x1) -- (x2)
+
+      (x4) edge node[above] {\sm 1} (x3)
+      (x4) -- (x3)
+
+      (x3) edge node[right] {\sm 1} (x2)
+      (x3) -- (x2)
+
+      (x2) edge node[above] {\sm 2} (t)
+      (x2) -- (t)
+    ;
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \tikzset{
+      dot/.style = {circle, draw, fill=white, minimum size=#1, inner sep=0pt, outer sep=0pt},
+      dot/.default = 4pt
+    }
+    \node[dot,label=left:{\sm \(s\)}] (s) at (0,1) {};
+    \node[dot,label=right:{\sm \(t\)}] (t) at (6,1) {};
+
+    \node[dot,label=above:{\sm \(x_1\)}] (x1) at (2,2) {};
+    \node[dot,label=above:{\sm \(x_2\)}] (x2) at (4,2) {};
+    \node[dot,label=below:{\sm \(x_3\)}] (x3) at (4,0) {};
+    \node[dot,label=below:{\sm \(x_4\)}] (x4) at (2,0) {};
+
+    \path [draw=black, postaction={on each segment={mid arrow=black}}]
+      (s) edge node[above] {\sm 2} (x1)
+      (s) -- (x1)
+
+      (x4) edge node[left] {\sm 1} (x1)
+      (x4) -- (x1)
+
+      (x1) edge node[above] {\sm 1} (x2)
+      (x1) -- (x2)
+
+      (x2) edge node[above] {\sm 1} (t)
+      (x2) -- (t)
+
+      (x3) edge node[above] {\sm 1} (t)
+      (x3) -- (t)
+
+      (x4) edge node[above] {\sm 1} (x3)
+      (x4) -- (x3)
+    ;
+  \end{tikzpicture}
+}
+
+\begin{center}
+\resizebox{.6\textwidth}{!} {
+  \begin{tikzpicture}
+    \tikzset{
+      dot/.style = {circle, draw, fill=white, minimum size=#1, inner sep=0pt, outer sep=0pt},
+      dot/.default = 4pt
+    }
+    \node[dot,label=left:{\sm \(s\)}] (s) at (0,1) {};
+    \node[dot,label=right:{\sm \(t\)}] (t) at (6,1) {};
+
+    \node[dot,label=above:{\sm \(x_1\)}] (x1) at (2,2) {};
+    \node[dot,label=above:{\sm \(x_2\)}] (x2) at (4,2) {};
+    \node[dot,label=below:{\sm \(x_3\)}] (x3) at (4,0) {};
+    \node[dot,label=below:{\sm \(x_4\)}] (x4) at (2,0) {};
+
+    \path [draw=black, postaction={on each segment={mid arrow=black}}]
+      (s) edge node[above] {\sm 1} (x1)
+      (s) -- (x1)
+
+      (s) edge node[above] {\sm 1} (x4)
+      (s) -- (x4)
+
+      (x4) edge node[above] {\sm 1} (x3)
+      (x4) -- (x3)
+
+      (x1) edge node[above] {\sm 1} (x2)
+      (x1) -- (x2)
+
+      (x2) edge node[above] {\sm 2} (t)
+      (x2) -- (t)
+
+      (x3) edge node[right] {\sm 1} (x2)
+      (x3) -- (x2)
+    ;
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \tikzset{
+      dot/.style = {circle, draw, fill=white, minimum size=#1, inner sep=0pt, outer sep=0pt},
+      dot/.default = 4pt
+    }
+    \node[dot,label=left:{\sm \(s\)}] (s) at (0,1) {};
+    \node[dot,label=right:{\sm \(t\)}] (t) at (6,1) {};
+
+    \node[dot,label=above:{\sm \(x_1\)}] (x1) at (2,2) {};
+    \node[dot,label=above:{\sm \(x_2\)}] (x2) at (4,2) {};
+    \node[dot,label=below:{\sm \(x_3\)}] (x3) at (4,0) {};
+    \node[dot,label=below:{\sm \(x_4\)}] (x4) at (2,0) {};
+
+    \path [draw=black, postaction={on each segment={mid arrow=black}}]
+      (s) edge node[above] {\sm 1} (x1)
+      (s) -- (x1)
+
+      (s) edge node[above] {\sm 1} (x4)
+      (s) -- (x4)
+
+      (x4) edge node[above] {\sm 1} (x3)
+      (x4) -- (x3)
+
+      (x1) edge node[above] {\sm 1} (x2)
+      (x1) -- (x2)
+
+      (x2) edge node[above] {\sm 1} (t)
+      (x2) -- (t)
+
+      (x3) edge node[above] {\sm 1} (t)
+      (x3) -- (t)
+    ;
+  \end{tikzpicture}
+}
+\end{center}

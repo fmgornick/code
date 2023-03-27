@@ -1,0 +1,77 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amsthm}
+\usepackage{fullpage}
+\usepackage{amsfonts}
+\usepackage{outlines}
+\usepackage{amssymb,multicol}
+\usepackage[colorlinks=true,urlcolor=blue]{hyperref}
+\usepackage{enumitem}
+\usepackage{xcolor,systeme}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ds}{\displaystyle}
+\newtheorem*{theorem}{Theorem}
+\newcommand{\n}{\vspace{0.5cm}}
+
+\newlist{checklist}{itemize}{2}
+\setlist[checklist]{label=\(\square\)}
+
+\begin{document}
+  \begin{center}
+    {\Large Homework 6} \n\\
+    Fletcher Gornick
+  \end{center}
+
+\begin{enumerate}
+  \item[0.] If you would like any of these problems to be graded for proficiency with the core skills, list the skill and the corresponding problem. 
+      \begin{outline}
+        \1 8. Using the Chinese Remainder Theorem either in a proof or to solve a modular system of equations.
+          \2 problem 2(a) - I split the matrix modulo 21 into matrices modulo 3 and 7.
+      \end{outline} \n
+
+  \item Martha is sending a message talking about how great her sister is.  Martha has encrypted her message using a Hill cipher with a \(2\times 2\) key.  You know that she has encrypted the word ``best'' to the ciphertext ``JCTF''.  What are all possible keys to Martha's Hill cipher? (There may be one or more possible keys.)
+
+    ``BEST'' \(\to \begin{pmatrix} 1 & 18 \\ 4 & 19 \end{pmatrix}\), and ``JCTF'' \(\to \begin{pmatrix} 9 & 19 \\ 2 & 5 \end{pmatrix}\)
+    \[\begin{pmatrix} a & b \\ c & d \end{pmatrix}\begin{pmatrix} 1 & 18 \\ 4 & 19 \end{pmatrix} \equiv  \begin{pmatrix} 9 & 19 \\ 2 & 5 \end{pmatrix} \pmod{26}\]
+    \[\det \begin{pmatrix} 1 & 18 \\ 4 & 19 \end{pmatrix} = -53 \equiv 25 \pmod{26}\]
+    Since \(\gcd(25,26) = 0\), we have that this matrix is invertible modulo 26, meaning our hill cipher will only have one solution.  Clearly \(25^{-1} \equiv 25 \equiv -1 \pmod{26}\), as \(25 \equiv -1 \pmod{26}\), and \((-1)^2 = 1\), so we just multiply -1 by our adjugate matrix to get it's inverse.
+    \[\begin{pmatrix} 1 & 18 \\ 4 & 19 \end{pmatrix}^{-1} \equiv -1 \cdot \begin{pmatrix} 19 & -18 \\ -4 & 1 \end{pmatrix} \equiv \begin{pmatrix} 7 & 18 \\ 4 & 25 \end{pmatrix} \pmod{26}\]
+    \[\begin{pmatrix} a & b \\ c & d \end{pmatrix} \equiv \begin{pmatrix} 9 & 19 \\ 2 & 5 \end{pmatrix}\begin{pmatrix} 7 & 18 \\ 4 & 25 \end{pmatrix} \equiv \begin{pmatrix} 9 & 13 \\ 8 & 5 \end{pmatrix} \pmod{26}.\]
+
+    This tells us that the key to our hill cipher is ``JINF''. \n
+
+  \item Find all possible ordered pairs of integers \((x,y)\) with \(0 \le x,y<15\) satisfying the following system of congruences:
+    \[\systeme*{9x+12y\equiv 3\pmod{21}, 11x+5y\equiv 12\pmod{21}}\] 
+    or explain why no such integers exist.
+
+    \[\begin{pmatrix} 9 & 12 \\ 11 & 5 \end{pmatrix} \binom xy \equiv \binom{3}{12} \pmod{21}\]
+    \[\det \begin{pmatrix} 9 & 12 \\ 11 & 5 \end{pmatrix} = -87 \equiv 18 \pmod{21}\]
+
+    Since \(\gcd(18, 21) = 3\), this matrix is not invertible modulo 21, so there are potentially none or multiple solutions.  To check, we split into mod 3 and mod 7.
+    \[\begin{pmatrix} 0 & 0 \\ 2 & 2 \end{pmatrix} \binom xy \equiv \binom{0}{0} \pmod{3} \implies 2(x+y) \equiv 0 \pmod 3.\]
+    \begin{align*}
+      \binom xy &\equiv \begin{pmatrix} 2 & 5 \\ 4 & 5 \end{pmatrix}^{-1}\binom35 \equiv 4^{-1} \cdot \begin{pmatrix} 5 & -5 \\ -4 & 2 \end{pmatrix} \\
+                &\equiv 2 \cdot \begin{pmatrix} 5 & 2 \\ 3 & 2 \end{pmatrix} \binom35 \equiv \binom13 \pmod7
+    \end{align*}
+    So we have potential solutions \(\displaystyle\left\{ \binom{1}{3}, \binom{1}{10}, \binom{8}{3}, \binom{8}{10} \right\}\), but since the only \((x,y)\) pair that satisfies \(2(x+y) \equiv 0 \pmod3\) is \(\displaystyle\binom{8}{10}\), we have that \(x=8, y=10\) is our only solution with \(0 \leq x,y < 15\).  Although if we include \(x=15\), we have another solution: \(x=15,y=3\). \n
+
+  \item Vigen\`{e}re Cipher Basics
+    \begin{enumerate}
+      \item Encrypt `meet me in the alley after midnight' with the Vigen\`{e}re cipher with key `pandora'. \n\\
+        `meet me in the alley after midnight' + \((15,0,13,3,14,17,0)\) \\
+        \(\to\) `berw av ic tuh oclty nihvr biqqwxhi' \n
+
+      \item If you know that the plaintext ``yum, cookies'' has been encrypted to ``zun, cpolifs'' using a Vigen\`{e}re cipher, can you determine the key of that Vigen\`{e}re cipher? If so, state what the key is and list any assumptions you are making about the key. If not, what can you say about the key? \n\\
+        We technically can't be sure what the cipher key is based off this information.  Going off the pattern I've noticed I would guess that the key is ``ba'', but there's also the possibility that it's ``baba'', ``bababa'', ``babababa'', ``bababababa'', or any grouping of letters that starts with the string ``bababababa''. \n
+    \end{enumerate}
+
+    \newpage
+  \item Consider an alphabet with four characters: \(\spadesuit\), \(\heartsuit\), \(\diamondsuit\), and \(\clubsuit\).  Suppose that you have a text \(\underline{s}\) written in this alphabet which consists of \(70\) \(\spadesuit\)s,  \(18\) \(\heartsuit\)s, \(10\) \(\diamondsuit\)s, and \(2\) \(\clubsuit\)s.  What is \(\textrm{IndCo}(\underline{s})\)? \n\\
+    Let \(S := \{\spadesuit, \heartsuit, \diamondsuit, \clubsuit\}\), \(n = 70 + 18 + 10 + 2 = 100\), and for any \(s \in S\), let \(F_{s}\) be number of \(s\)'s in our text \(\underline{s}\):
+    \[\textrm{IndCo}(\underline{s}) = \frac{1}{n(n-1)} \sum_{s \in S} F_s (F_s-1) = \frac{1}{100 \cdot 99}(70 \cdot 69 + 18 \cdot 17 + 10 \cdot 9 + 2 \cdot 1) \approx 0.528\]
+
+
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,61 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{enumitem} 
+\usepackage{mathtools}
+\usepackage{MnSymbol}
+\usepackage{calligra}
+\usepackage[top=2cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
+\setlength{\parindent}{0cm}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\n}{\vspace{0.5cm}}
+
+\pagenumbering{gobble}
+
+\begin{document}
+\title{\vspace{-1.5cm}MATH 4152 Homework 8}
+  \author{Fletcher Gornick}
+  \maketitle
+  \begin{enumerate}
+    \item First, show that
+      \[\models (((A \to B) \to C) \to (B \to C))\]
+      By considering the following cases:
+      \begin{enumerate}[label=(\alph*)]
+        \item \(\nu(B) = F\)
+
+        \item \(\nu(C) = T\)
+
+        \item neither (a) nor (b), i.e. \(\nu(B) = T, \;\; \nu(C) = F\).
+      \end{enumerate}
+
+      Then show that
+      \[\models ((((A_1 \wedge A_2) \to (A_2 \wedge A_3)) \to (A_1 \wedge A_4)) \to ((A_2 \wedge A_3) \to (A_1 \wedge A_4)))\]
+      by suitably applying the first substitution to the tautology at the beginning of this question.
+
+    \item First, verify
+      \[(((A \to C) \vee (B \to C)) \leftrightarrow ((A \wedge B) \to C))\]
+      By considering the following cases:
+      \begin{enumerate}[label=(\alph*)]
+        \item \(\nu(A) = F\)
+
+        \item \(\nu(B) = F\)
+
+        \item neither (a) nor (b), i.e. \(\nu(A) = T, \;\; \nu(B) = T\).
+      \end{enumerate}
+
+      Then show, by using the substitution property and 4(a),(b), that
+      \newpage
+      \[(((A_1 \vee A_2) \to (A_3 \vee A_4)) \vee ((A_2 \vee A_3) \to (A_3 \vee A_4))), \; ((A_1 \vee A_2) \wedge (A_2 \vee A_3)) \;\models\; (A_3 \vee A_4)\]
+
+      Use the following substitutions:
+      \[A := (A_1 \vee A_3)\]
+      \begin{align}
+        (((A_1 \vee A_2) \to (A_3 \vee A_4)) \vee ((A_2 \vee A_3) \to (A_3 \vee A_4))) && \text{(Hypothesis)} \\
+        ((A_1 \vee A_2) \wedge (A_2 \vee A_3))                                         && \text{(Hypothesis)}
+      \end{align}
+  \end{enumerate}
+\end{document}
+
