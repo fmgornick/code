@@ -271,25 +271,90 @@
   
 
 
-  \itm{11.2.3} If \(\left(S, \overline{S}\right)\), and \(\left(T, \overline{T}\right)\) are minimum cuts in \(N\), show that \(\left(S \cap T, \overline{S \cap T}\right)\) and \(\left(S \cup T, \overline{S \cup T}\right)\) are also minimum cuts in \(N\). \n
+  \itm{11.2.3} If \(\left(S, \overline{S}\right)\) and \(\left(T, \overline{T}\right)\) are minimum cuts in \(N\), show that \(\left(S \cap T, \overline{S \cap T}\right)\) and \(\left(S \cup T, \overline{S \cup T}\right)\) are also minimum cuts in \(N\).
+  \begin{proof}
+    From 11.3, we know the value of the maximum flow of any network is equal to the capacity of it's minimum cut.  This means that for max flow \(f\), each edge across our minimum cut is \(f\)-saturated, and each edge going back is \(f\)-zero.  So if we can show this is the case for our two cuts \(\left(S \cap T, \overline{S \cap T}\right)\) and \(\left(S \cup T, \overline{S \cup T}\right)\), then we can conclude they are minimum cuts. \n
 
+    For any sets \(X,Y\), \(\overline{X \cap Y} = \overline{X} \cup \overline{Y}\), and \(\overline{X \cup Y} = \overline{X} \cap \overline{Y}\) by De Morgan's laws.  So we can rewrite our two cuts as \(\left(S \cap T, \overline{S} \cup \overline{T}\right)\) and \(\left(S \cup T, \overline{S} \cap \overline{T}\right)\) \n
+
+    First, for cut \(\left(S \cap T, \overline{S} \cup \overline{T}\right)\), we know every forward edge is \(f\)-saturated because if \(a \in \left(S \cap T, \overline{S} \cup \overline{T}\right)\), then it has it's tail in \(S\) as well as \(T\), it must also have it's head in either \(\overline{S}\) or \(\overline{T}\).  If \(a\) has head in \(\overline{S}\), then \(a \in (S, \overline{S})\), so it must be \(f\)-saturated (similarly for \(T\)). \n
+
+    Now take the reverse cut \(\left(\overline{S} \cup \overline{T}, S \cap T\right)\).  If \(a \in \left(\overline{S} \cup \overline{T}, S \cap T\right)\), then it's tail must be in one of \(\overline{S}\) or \(\overline{T}\), and it's head must be in both \(S\) and \(T\).  Clearly, if this is the case, then \(a \in (\overline{S}, S)\) or \(a \in (\overline{T}, T)\) (potentially both), and thus must be \(f\)-zero.  Otherwise, at least one of our assumed minimum cuts must have nonzero backflow (contradiction). \n
+
+    Since, for max flow \(f\), \(\left(S \cap T, \overline{S} \cup \overline{T}\right)\) has \(f\)-saturated forward arcs and \(f\)-zero backward arcs, we have that \(\text{val}(f) = \text{cap}\left( \left(S \cap T, \overline{S} \cup \overline{T}\right) \right)\), and we can conclude that \(\left(S \cap T, \overline{S \cap T}\right) = \left(S \cap T, \overline{S} \cup \overline{T}\right)\) is a min cut. \n
+
+    The proof for cut \(\left(S \cup T, \overline{S \cup T}\right)\) is essentially the same, so we can conclude that \(\left(S \cap T, \overline{S \cap T}\right)\) and \(\left(S \cup T, \overline{S \cup T}\right)\) are also minimum cuts in \(N\).
+  \end{proof} \n
+  
 
 
   \itm{3.1.1} \begin{enumerate}[label=(\alph*)]
     \item Show that if \(G\) is \(k\)-edge-connected, with \(k > 0\), and if \(E'\) is a set of \(k\) edges of \(G\), then \(\omega(G-E') \leq 2\).
+      \begin{proof}
+        Since \(G\) is \(k\)-edge-connected, it requires at least \(k\) edge removals to disconnect it, so for any set \(E\) with \(k-1\) edges, \(\omega(G - E) = 1\).
+      \end{proof}
+      
 
     \item For \(k > 0\), find a \(k\)-connected graph \(G\) and a set \(V'\) of \(k\) vertices of \(G\) such that \(\omega(G-V') > 2\).
+
+      \begin{center}
+      \begin{tikzpicture}
+        \tikzset{
+          dot/.style = {circle, draw, fill=white, minimum size=#1, inner sep=0pt, outer sep=0pt},
+          dot/.default = 6pt
+        }
+        \node[label=center:{\(G :=\)}] (G) at (-1,1) {};
+        \node[dot,label=left:{\(a\)}] (a) at (0,2) {};
+        \node[dot,label=right:{\(b\)}] (b) at (2,2) {};
+        \node[dot,label=right:{\(c\)}] (c) at (2,0) {};
+        \node[dot,label=left:{\(d\)}] (d) at (0,0) {};
+        \node[dot,label=above:{\(x\)}] (x) at (1,1) {};
+
+        \draw (a) -- (x);
+        \draw (b) -- (x);
+        \draw (c) -- (x);
+        \draw (d) -- (x);
+      \end{tikzpicture}
+      \end{center}
+
+      In this graph \(k(G) = 1\), and setting \(V' = \{x\}\) yields \(\omega(G - V') = 4\).
   \end{enumerate} \n
 
 
 
   \itm{3.1.2} Show that if \(G\) is \(k\)-edge-connected, then \(\varepsilon \geq \displaystyle\frac{k \nu}{2}\). \n
+    \begin{align*}
+      \varepsilon &= \frac12 \left(\sum_{v \in V} d_G(v)\right) & (\text{theorem 1.1}) \\
+                  &\geq \frac12 \left(\sum_{v \in V} \delta \right) & \left(\delta = \min \{d_G(v) \mid v \in V\}\right) \\
+                  &= \frac{\delta \nu}{2} & (\nu = |V|) \\
+                  &\geq \frac{k \nu}{2} & (\text{theorem 3.1}).
+    \end{align*} \n
+  
 
 
 
   \itm{3.2.2} Give an example to show that if \(P\) is a \((u,v)\)-path in a 2-connected graph \(G\), then \(G\) does not necessarily contain a \((u,v)\)-path \(Q\) internally-disjoint from \(P\).
 
+      \begin{center}
+      \begin{tikzpicture}
+        \tikzset{
+          dot/.style = {circle, draw, fill=white, minimum size=#1, inner sep=0pt, outer sep=0pt},
+          dot/.default = 6pt
+        }
+        \node[label=center:{\(G :=\)}] (G) at (-1,1) {};
+        \node[dot,label=left:{\(u\)}] (a) at (0,2) {};
+        \node[dot,label=right:{\(b\)}] (b) at (2,2) {};
+        \node[dot,label=right:{\(c\)}] (c) at (2,0) {};
+        \node[dot,label=left:{\(v\)}] (d) at (0,0) {};
 
+        \draw (a) -- (b) -- (c) -- (d);
+        \draw (b) -- (d);
+        \draw (a) -- (c);
+      \end{tikzpicture}
+      \end{center}
+      This graph is clearly 2-connected.  Now take path \(P = ubcv\), since \(uv\) isn't a path, there exists no path \(Q\) that doesn't contain vertices \(b\) and \(c\).  So \(P\) and \(Q\) cannot be internally-disjoint. \n
+
+      This doesn't contradict theorem 3.2 though.  For example, take \(P = ubv\), there's still internally-disjoint path \(Q = ucv\).
 
 \end{itemize}
 \end{document}
