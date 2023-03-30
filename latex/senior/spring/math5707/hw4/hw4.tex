@@ -291,7 +291,13 @@
   \itm{3.1.1} \begin{enumerate}[label=(\alph*)]
     \item Show that if \(G\) is \(k\)-edge-connected, with \(k > 0\), and if \(E'\) is a set of \(k\) edges of \(G\), then \(\omega(G-E') \leq 2\).
       \begin{proof}
-        Since \(G\) is \(k\)-edge-connected, it requires at least \(k\) edge removals to disconnect it, so for any set \(E\) with \(k-1\) edges, \(\omega(G - E) = 1\).
+        Since \(G\) is \(k\)-edge-connected, it requires at least \(k\) edge removals to disconnect it, so for subset \(F' \subset E'\) with \(k-1\) edges, \(\omega(G - F') = 1\). \n
+
+        Let \(e = uv\) be the last edge in \(E' \setminus F'\).  Since \(\omega(E' - F') = 1\), we know that either \(u\) and \(v\) are the only edges in \(G\), or at least one of \(u\) or \(v\) is connected to another \(w \in V(G)\), otherwise there would be more than one connected component. \n
+
+        If \(u\) and \(v\) are the only vertices in \(G\), then clearly removing edge \(e\) results in \(\omega(G-E') = 2\).  Otherwise, if both \(u\) and \(v\) are connected to 1+ extra vertice(s), then they still remain in their connected component after removing \(e\) and \(\omega(G-E') = 1\).  Finally, without loss of generality, if \(u\) is the only vertex connected to an extra, then it'll remain in it's connected component, but \(v\) will not, and \(\omega(G-E') = 2\). \n
+
+        Since, in all cases, we have that \(\omega(G-E') \leq 2\), our claim is proven.
       \end{proof}
       
 
@@ -352,7 +358,7 @@
         \draw (a) -- (c);
       \end{tikzpicture}
       \end{center}
-      This graph is clearly 2-connected.  Now take path \(P = ubcv\), since \(uv\) isn't a path, there exists no path \(Q\) that doesn't contain vertices \(b\) and \(c\).  So \(P\) and \(Q\) cannot be internally-disjoint. \n
+      This graph is clearly 2-connected.  Now take path \(P = ubcv\), since \(uv\) isn't a path, there exists no path \(Q\) that doesn't contain vertices \(b\) or \(c\).  So \(P\) and \(Q\) cannot be internally-disjoint. \n
 
       This doesn't contradict theorem 3.2 though.  For example, take \(P = ubv\), there's still internally-disjoint path \(Q = ucv\).
 
