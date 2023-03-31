@@ -1,0 +1,21 @@
+CSCI 5103 Assignment 5
+Gabe Fendrich, Fletcher Gornick
+
+
+all test cases worked fine on our VMs
+
+the start up for each test takes a bit because the producer does a sleep for 10 
+seconds to give other processes time to open the timedbuffer but i figured it'd 
+be best not to touch any files other than main.c.
+
+terminal prompt seems to always pop up once the consumer exits, so if the producer 
+doesn't exit until it times out from a full buffer, the producer exit prompt will
+show up after the terminal prompt is already back which is kinda wacky.
+
+no special instructions, i didn't really touch anything outside of the 4 functions 
+in main.c, so it should run with the basic:
+
+1 - make
+2 - sudo ./buffer_load
+3 - ./testcase.sh [1,2,3]
+4 - sudo ./buffer_unload
