@@ -2,9 +2,10 @@
  * CSCI 5103 Spring 2023
  * Assignment 3
  * name:       Gabe Fendrich, Flercher Gornick
- * student id: 1234567,       5579904
+ * student id: 5556448,       5579904
  * x500 id:    gorni025,      fendr012
- * CSELABS machine: csel-xsme-s23-csci5103-15
+ * CSELABS machine: csel-xsme-s23-csci5103-13
+ *                  csel-xsme-s23-csci5103-15
  */
 
 /*
