@@ -1,0 +1,96 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amsthm}
+\usepackage{outlines}
+\usepackage{fullpage}
+\usepackage{amsfonts}
+\usepackage{amssymb,multicol}
+\usepackage[colorlinks=true,urlcolor=blue]{hyperref}
+\usepackage{enumitem}
+\usepackage{xcolor,systeme}
+\usepackage[top=2cm,bottom=2cm,left=1.75cm,right=2cm,marginparwidth=1.75cm]{geometry}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\n}{\vspace{0.3cm}}
+\newtheorem*{theorem}{Theorem}
+
+\newlist{checklist}{itemize}{2}
+\setlist[checklist]{label=$\square$}
+
+\begin{document}
+\begin{center}
+{\Large Homework 8}\\
+Due: Friday,  April 7 at 11:59pm\\
+\end{center}
+
+\begin{enumerate}
+\item[0.] If you would like any of these problems to be graded for proficiency with the core skills, list the skill and the corresponding problem. 
+  \begin{outline}
+    \1 7. Using Euclid’s Lemma in a proof.
+      \2 problem 1
+    \1 9. Using Fermat’s Little Theorem either in a proof or in order to substantially simplify a computation.
+      \2 problem 1
+  \end{outline} \n
+
+\item Let $p$ and $q$ be distinct primes.  Show that for all $x \in \mathbb{Z}$, we have the congruence $x^{(p-1)(q-1)+1} \equiv x \pmod{pq}$.  (Hint: Use the Chinese Remainder Theorem to reframe the desired congruence as a system of two congruences--one modulo $p$ and one modulo $q$.)
+  \begin{proof}
+    First, note that for any prime \(s\) and integer \(t\), \(x \cdot \left(x^{s-1}\right)^{t-1} \equiv x \pmod s\), this is because if \(x \equiv 0 \pmod s\), then this obviously produces 0.  Otherwise \(x^{s-1} \equiv 1 \pmod s\) by Fermat's Little Theorem, and \(x \cdot (1)^{t-1} \equiv x \pmod s\).
+
+    With this, we get the following relation between \(x^{(p-1)(q-1)+1}\) and \(p\):
+    \[x^{(p-1)(q-1)+1} \equiv x \cdot x^{(p-1)(q-1)} \equiv x \cdot \left(x^{p-1}\right)^{q-1} \equiv x \pmod p\]
+    This can similarly be done for \(q\) to get the following system of congruences:
+    \[x^{(p-1)(q-1)+1} \equiv \begin{cases}
+      x \pmod p \\
+      x \pmod q \\
+    \end{cases}\]
+    So for some \(a,b \in \Z\), \(x^{(p-1)(q-1)+1} = ap+x = bq + x\) by definition of modular congruence, meaning \(ap = bq\).  Rearranging, we get \(a = \frac{bq}{p}\), and since \(a \in \Z\) we know \(p \mid bq\).  By Euclid's Lemma, \(p \mid b\) or \(p \mid q\), and since \(p\) and \(q\) are distinct primes, we know \(p \nmid q\), therefore \(p \mid b\).
+
+    Finally, since \(p \mid b\), we know there must exist some \(c \in \Z\) such that \(bq = cpq\), meaning that \(x^{(p-1)(q-1)+1} = cpq + x \implies x^{(p-1)(q-1)+1} \equiv x \pmod{pq}\).
+  \end{proof}
+  
+
+\item Determine the order of $12$ modulo $35$ without computing $12^a\%35$ for more than $7$ values of $a$ \n\\
+  \(35 = 5 \cdot 7 \implies 5,10,15,20,25,30,7,14,21,28 \text{ not relatively prime to } 35\), meaning \(\varphi(35) = 24\). \n
+
+  By Euler's Theorem, \(12^{\varphi(35)} \equiv 12^{24} \equiv 1 \pmod{35}\).  Now, by a theorem from class, if \(12^{24} \equiv 1 \pmod{35}\), and \(\ell\) is the order of 12 modulo 35, then \(\ell \mid 24\). So we can just check \(\ell = 2,3,4,6,8,12\).
+  \begin{align*}
+    12^2 &= 144 &\equiv 4 \pmod{35} \\
+    12^3 &= 12 \cdot 12^2 \equiv 12 \cdot 4 \equiv 48 &\equiv 13 \pmod{35} \\
+    12^4 &= 12^2 \cdot 12^2 \equiv 4 \cdot 4 &\equiv 16 \pmod{35} \\
+    12^6 &= 12^3 \cdot 12^3 \equiv 13 \cdot 13 = 169 &\equiv 29 \pmod{35} \\
+    12^8 &= 12^4 \cdot 12^4 \equiv 16 \cdot 16 = 256 &\equiv 11 \pmod{35} \\
+    12^{12} &= 12^6 \cdot 12^6 \equiv 29 \cdot 29 \equiv (-6) \cdot (-6) \equiv 36 &\equiv 1 \pmod{35}
+  \end{align*}
+  So the order of 12 modulo 35 is 12.
+
+\item Prove that, if $a$ is a primitive root modulo $p$, then $a^{-1}$ (the multiplicative inverse of $a$ modulo $p$) is also a primitive root modulo $p$. 
+  \begin{proof}
+    From class, we know that unit \(a\) is a primitive root modulo \(p\) if and only if it's order is \(\varphi(p)\).
+
+    Note that \(a \cdot a^{-1} \equiv 1 \pmod p\), so \(a^n \cdot (a^{-1})^n \equiv (a \cdot a^{-1})^n \equiv 1^n \equiv 1 \pmod p\) for all \(n \in \Z\).
+
+    Now suppose, to the contrary, \(a^{-1}\) is not a primitive root modulo \(p\), meaning there exists some \(m \in \Z, \; m < \varphi(p)\) such that \((a^{-1})^m \equiv 1 \pmod p\).  This would mean that \(a^m \equiv a^m \cdot (a^{-1})^m \equiv 1 \pmod p\).  This contradicts the fact that \(a\) is a primitive root, and thus has order \(\varphi(p)\).
+
+    Therefore, we can conclude that \(a^{-1}\) must also be a primitive root modulo \(p\).
+  \end{proof}
+  
+
+\item Explain why $5$ is not a primitive root modulo $20$ without computing \emph{any} of the powers of $5$ modulo $20$. 
+
+  Since \(5 \mid 20\), \(5x \equiv 0,5,10,15 \pmod{20}\) for all integers \(x\), and since \(5^n = 5 \cdot 5^{n-1}\), we know that \(5^n\) can only be congruent to a subset of \(\{0,5,10,15\}\) for any integer \(n \geq 1\), and thus cannot be a primitive root.
+
+\item Determine whether or not $3$ is a primitive root modulo $19$ without computing all of the powers of $3$ modulo $19$. 
+
+  3 is a primitive root if and only it's order (smallest exponent \(x\) such that \(3^x \equiv 1 \pmod{19}\)) is \(19-1 = 18\).  We also know that if \(\ell\) is the order of 3 modulo 19, then \(\ell \mid 18\) (because \(3^{18} \equiv 1 \pmod{19}\) by Fermat's Little Theorem).  This means the potential values for \(\ell\) are \(2,3,6,9,18\). 
+
+  If \(3^x \not\equiv 1 \pmod{19}\) for all \(x \in \{2,3,6,9\}\), we can conclude that 18 is the smallest exponent of 3 yielding a 1, concluding that 3 is a primitive root modulo 19.
+  \begin{align*}
+    3^2 &\equiv 9 \pmod{19} \\
+    3^3 = 27 &\equiv 8 \pmod{19} \\
+    3^6 \equiv 8 \cdot 8 = 64 &\equiv 7 \pmod{19} \\
+    3^9 \equiv 7 \cdot 8 = 56 &\equiv 18 \pmod{19}
+  \end{align*}
+  So we can conclude that 3 is a primitive root modulo 19.
+\end{enumerate}
+\end{document}
