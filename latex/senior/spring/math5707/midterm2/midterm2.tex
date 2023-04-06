@@ -68,9 +68,9 @@
 
 \newtheorem{theorem}{Theorem}
 
-\title{\vspace{-1.0cm}MATH 5707 Midterm 1}
+\title{\vspace{-1.0cm}MATH 5707 Midterm 2}
 \author{Fletcher Gornick}
-\date{April 5, 2023}
+\date{April 6, 2023}
 
 \begin{document}
 \maketitle
@@ -331,5 +331,15 @@
       \end{enumerate}
 
     \item (20 points) Let \(G = (X \cup Y, E)\) be a bipartite graph which is \(d\)-regular (all vertices have degree \(d\)) with \(d \geq 2\).  If \(G\) is connected, prove that \(G\) has no cut-edge, that is \(G - e\) is connected for every \(e \in E\).
+      \begin{proof}
+        Suppose, to the contrary, for connected graph \(G\), there exists some edge \(e = v_1v_2\) such that \(G - e\) disconnected.  Since removing an edge only affects the two vertices incident to it, we know the removal of this edge can only increase the number of components by 1.  So let \(V_1, V_2\) be the resulting components from the removal of \(e\), and without loss of generality, suppose \(v_1 \in V_1, \; v_2 \in V_2\) (If they were in the same component after, then \(G-e\) would still be connected). \n
+
+        \(G\) is comprised only of components \(G[V_1], G[V_2]\), and since these are subgraphs of \(G\), they must also be bipartite.  So let \(G[V_1] = (X_1 \cup Y_1, E)\) and \(G[V_2] = (X_2 \cup Y_2, E)\).  We attempt to arrive at a contradiction by showing neither of these can actually be bipartite. \n
+
+        Without loss of generality, take \(G[V_1] = (X_1 \cup Y_1, E)\) and suppose \(v_1 \in X_1\) (doesn't matter which side).  We know \(d_G(v) = d\) for all \(v \in V_1 \setminus \{v_1\}\), and \(d_G(v_1) = d-1\).  Now remember, from 4(a), for any bipartite graph \(G = (X,Y)\), \(\sum_{x \in X} d_G(x) = \sum_{y \in Y} d_G(y)\).  Using this, we get the following equality:
+        \[d|X_1| - 1 = d(|X_1| - 1) + (d - 1) = \sum_{x \in X_1} d_G(x) = \sum_{y \in Y_1} d_G(y) = d|Y_1|,\]
+        But this can only be possible when \(d = 1\), and we assume \(d \geq 2\), so our graph \(G[V_1]\) cannot be bipartite (similarly for \(G[V_2]\)), which is a contradiction.  Thus, we conclude that no connected \(d\)-regular bipartite graph can contain a cut edge (for \(d \geq 2\)).
+      \end{proof}
+      
   \end{enumerate}
 \end{document}
