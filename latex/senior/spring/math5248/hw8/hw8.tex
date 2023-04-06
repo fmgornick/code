@@ -1,5 +1,5 @@
 \documentclass[11pt]{article}
-\usepackage[utf8]{inputenc}
+
 \usepackage{amsmath,amsthm}
 \usepackage{outlines}
 \usepackage{fullpage}
@@ -78,7 +78,14 @@ Due: Friday,  April 7 at 11:59pm\\
 
 \item Explain why $5$ is not a primitive root modulo $20$ without computing \emph{any} of the powers of $5$ modulo $20$. 
 
-  Since \(5 \mid 20\), \(5x \equiv 0,5,10,15 \pmod{20}\) for all integers \(x\), and since \(5^n = 5 \cdot 5^{n-1}\), we know that \(5^n\) can only be congruent to a subset of \(\{0,5,10,15\}\) for any integer \(n \geq 1\), and thus cannot be a primitive root.
+  From lecture, we know primitive roots modulo \(n\) exist iff one of the following properties hold:
+  \begin{enumerate}[label=(\arabic*)]
+    \item \(n = p^e\), where \(p\) is an odd prime, and \(e\) is any positive integer,
+    \item \(n = 2p^e\), where \(p\) is an odd prime, and \(e\) is any positive integer,
+    \item \(n = 2\) or 4.
+  \end{enumerate}
+
+  Since \(20 = 5 \cdot 2 \cdot 2\), it falls into none of these categories, there cannot exist a primitive root modulo 20, so 5 definitely can't be a primitive root modulo 20.
 
 \item Determine whether or not $3$ is a primitive root modulo $19$ without computing all of the powers of $3$ modulo $19$. 
 
