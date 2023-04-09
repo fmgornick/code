@@ -1,0 +1,106 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{enumitem} 
+\usepackage{mathtools}
+\usepackage{MnSymbol}
+\usepackage{calligra}
+\usepackage[top=2cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
+\setlength{\parindent}{0cm}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\n}{\vspace{0.3cm}}
+
+\pagenumbering{gobble}
+
+\begin{document}
+
+\title{\vspace{-1.5cm}MATH 4152 Homework 9}
+  \author{Fletcher Gornick}
+  \maketitle
+
+  \begin{align*}
+    A_1^1 &\leftrightsquigarrow P \leftrightsquigarrow \text{``being a person''} \\
+    A_2^1 &\leftrightsquigarrow T \leftrightsquigarrow \text{``being a moment in time''} \\
+    A_1^2 &\leftrightsquigarrow F \leftrightsquigarrow \text{denotes if a given person can be fooled at a givent time} \\
+    v_1 &\leftrightsquigarrow x \leftrightsquigarrow \text{a person} \\
+    v_2 &\leftrightsquigarrow y \leftrightsquigarrow \text{a time}
+  \end{align*}
+  \begin{enumerate}
+    \item ``You can fool some of the people all of the time.'' \\
+      Provide two FOL translations based on the following two more detailed suggestions:
+      \begin{enumerate}
+        \item[(a1)] ``There are some people who can be fooled at every moment of time.''
+          \begin{align*}
+            &\exists x (P x \wedge \forall y (T y \to F x y)) \\
+            &\exists v_1 (A_1^1 v_1 \wedge \forall v_2 (A_2^1 v_2 \to A_1^2 v_1 v_2))
+          \end{align*}
+        \item[(a2)] ``At every moment of time, some person can be fooled''
+          \begin{align*}
+            &\forall y (T y \to \exists x (P x \wedge F x y)) \\
+            &\forall v_2 (A_2^1 v_2 \to \exists v_1 (A_1^1 v_1 \wedge A_1^2 v_1 v_2))
+          \end{align*}
+      \end{enumerate}
+
+    \item ``You can fool all of the people some of the time.''
+      \begin{enumerate}
+        \item[(b1)] ``There is a moment of time when all people can be fooled.''
+          \begin{align*}
+            &\exists y (T y \wedge \forall x (P x \to F x y)) \\
+            &\exists v_2 (A_2^1 v_2 \wedge \forall v_1 (A_1^1 v_1 \to A_2^2 v_1 v_2))
+          \end{align*}
+        \item[(b2)] ``Every person can be fooled at some moment of time.''
+          \begin{align*}
+            &\forall x (F x \to \exists y (T y \wedge F x y)) \\
+            &\forall v_1 (A_1^1 v_1 \to \exists v_2 (A_2^1 v_2 \wedge A_1^2 v_1 v_2))
+          \end{align*}
+      \end{enumerate}
+
+    \item ``You can't fool all the people all the time.''
+      \begin{enumerate}
+        \item[(c1)] ``It is not the case that every person can be fooled at every moment of time.''
+          \begin{align*}
+            &\neg (\forall x \forall y ((P x \wedge T y) \to F x y)) \\
+            &\neg (\forall v_1 \forall v_2 ((A_1^1 v_1 \wedge A_2^1 v_2) \to A_1^2 v_1 v_2))
+          \end{align*}
+        \item[(c2)] ``There is some person such that at some moment of time, that person cannot be fooled.''
+          \begin{align*}
+            &\exists x (P x \wedge \exists y (T y \wedge (\neg F x y))) \\
+            &\exists v_1 (A_1^1 v_1 \wedge \exists v_2 (A_2^1 v_2 \wedge (\neg A_1^2 v_1 v_2)))
+          \end{align*}
+        \item[(c3)] ``There is some person who can never be fooled.''
+          \begin{align*}
+            &\exists x (P x \wedge \forall y (T y \to (\neg F x y))) \\
+            &\exists v_1 (A_1^1 v_1 \wedge \forall v_2 (A_2^1 v_2 \to (\neg A_1^2 v_1 v_2)))
+          \end{align*}
+        \item[(c4)] ``At every moment of time, there is some person who cannot be fooled at that moment.''
+          \begin{align*}
+            &\forall y (T y \to \exists x (P x \wedge (\neg F x y))) \\
+            &\forall v_2 (A_2^1 v_2 \to \exists v_1 (A_1^1 v_1 \wedge (\neg A_1^2 v_1 v_2)))
+          \end{align*}
+      \end{enumerate}
+
+    \item Translat the following (official) wff back into english by using the correspondence
+      \begin{align*}
+        A_1^1 &\leftrightsquigarrow \text{``being a human female''}, \\
+        A_2^1 &\leftrightsquigarrow \text{``being a currently living human''}, \\
+        A_1^2 &\leftrightsquigarrow \text{(human) ancesterhood relationship}. \\
+      \end{align*}
+      Translate: \(\exists v_1 (A_1^1v_1 \wedge \forall v_2 (A_2^1v_2 \to A_1^2v_1v_2))\) \n\\
+      ``There is some female that has a (human) ancesterhood relationship with all living humans.''
+
+    \item Translate the above back into english using the correspondence between english and FOL that's used in questions (1), (2), and (3). \n\\
+      ``There are some people who can be fooled at every moment of time.''.  This is the same wff I got for 5(a1).
+
+    \item Consider a related wff to the one above:
+      \[\exists v_1 (A_1^1v_1 \to \forall v_2 (A_2^1v_2 \to A_1^2v_1v_2)).\]
+      Translate back into english using both the correspondence in (1), (2), (3), and (5), as well as the correspondence in (4).  Determine whether these english sentences are true or false. \n\\
+      ``There exists something where, if it's a female, then it's related to all living things.'' \\
+      ``There exists something where, if it's a person, then it can be fooled at all times.'' \n
+
+      Both of these are true because we could simply pick something that isn't a human or isn't a person satisfying our wff.
+  \end{enumerate}
+\end{document}
+
