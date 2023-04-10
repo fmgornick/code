@@ -1,0 +1,91 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amsthm}
+\usepackage{outlines}
+\usepackage{fullpage}
+\usepackage{amsfonts}
+\usepackage{amssymb,multicol}
+\usepackage[colorlinks=true,urlcolor=blue]{hyperref}
+\usepackage{enumitem}
+\usepackage{xcolor,systeme}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\n}{\vspace{0.25cm}}
+\newtheorem*{theorem}{Theorem}
+
+\newlist{checklist}{itemize}{2}
+\setlist[checklist]{label=$\square$}
+
+\begin{document}
+\begin{center}
+{\Large Homework 9}\\
+Due: Friday,  April 14 at 11:59pm\\
+
+
+\end{center}
+{\bf Instructions:} Submit a pdf of your solutions to the HW 9 assignment on Gradescope.  
+
+
+
+\begin{enumerate}
+\item[0.] If you would like any of these problems to be graded for proficiency with the core skills, list the skill and the corresponding problem. 
+  \begin{outline}
+    \1 10. Using any theorem from the course to determine whether or not one number is a square modulo another.
+      \2 problem 3
+  \end{outline} \n
+
+\item Bob and Alice would like to use the Diffie-Hellman Key Exchange to agree on a session key $k$. Alice and Bob agree on the prime $6829$ and the base $2$ modulo $6829$. Bob chooses a secret random number $x$ and tells Alice that $2^x\%6829$ is $5792$. Alice chooses $3$ as her secret exponent.  Answer the following questions without computing the value of $x$. 
+\begin{enumerate}
+\item What is the shared secret key $k$ that Alice and Bob will be using? \n\\
+  \(k \equiv (2^3)^x \equiv (2^x)^3 \equiv 5792^3 \equiv 4389 \pmod{6829}\).  So \(k = 4389\).
+
+\item You are able to gain access to the network Alice and Bob are using to communicate, so you decide to implement a interceptor attack with exponent $c=10$. What key does Bob think he and Alice agreed to? What key does Alice think they agreed to? \n\\
+  Alice recieves \(2^{10} \;\%\; 6829 = 1024\) from the interceptor, and adds her own exponent 3 to get key \(k_1 = 1024^3 \;\%\; 6829 = 4496\). \\
+  Bob sends \(5792\) to the interceptor, and the interceptor adds exponent 10 to get key \(k_2 = 5792^{10} \;\%\; 6829 = 3030\).
+\end{enumerate}	 \n
+
+\item You are setting up an RSA cipher with modulus $5021131$.  You may use the fact that $5021131 = 1907(2633)$.  (You may want to use a computer to do most of the computation on this problem.)
+\begin{enumerate}
+\item Is $5$ a valid encryption key?  If so, find the corresponding decryption key.  If not, explain why not. \n\\
+  Yes.  \(\varphi(5021131) = \varphi(1907) \cdot \varphi(2633) = 1906 \cdot 2632 = 5016592\). \(d \equiv 5^{-1} \equiv 2006637 \pmod {\varphi(5021131)}\), so we can decrypt using \(d = 2006637\).
+
+\item Is $7$ a valid encryption key?  If so, find the corresponding decryption key.  If not, explain why not. \n\\
+  No. \(\varphi(5021131) = 5016592 = 7 \cdot 716656\).  Since \(7 \mid 716656\), it cannot be a valid encryption key.
+
+\item The encryption key $e = 3$ is valid for the modulus $5021131$ and corresponds to the decryption key $d = 3344395$.  If you are setting up a public key with this information, what is all of the information that you would post publicly so that a friend could send you an encrypted message?  What is all of the information relevant to this cipher that you would keep secret? \n\\
+  You can send the modulus 5021131 and encrpytion key 3 publicly.  You should keep the calculated decryption key 3344395 private (as well as the two primes 1907 and 2633 that multiply into 5021131).
+
+\item If your plaintext is represented by $x = 884204$, use the encryption key $e = 3$ to encrypt $x$. \n\\
+  \(c \equiv m^e \pmod N \equiv 884204^3 \equiv 4491607 \pmod{5021131}\).
+
+
+\item You have received the ciphertext message $y = 384$.  Use the decryption key $d = 3344395$ to decrypt the message. \n\\
+  \(m \equiv m^{ed} \equiv c^d \pmod N \equiv 384^{3344395} \equiv 387243 \pmod{5021131}\).
+\end{enumerate} \n
+
+\item Use Euler's criterion to determine whether or not $19$ is a square modulo $107$. \n\\
+  Euler's criterion states that for odd prime \(p\) and integer \(a\) with \(\gcd(a,p) = 1\):
+  \[a^{\frac{p-1}{2}} \equiv \begin{cases}
+    1 \pmod p &\text{ if \(x^2 \equiv a \pmod p\) for some \(x \in \Z\),} \\
+    -1 \pmod p &\text{ otherwise.} \\
+  \end{cases}\]
+  Since \(19^{\frac{107-1}{2}} = 19^{53} \equiv 1 \pmod{107}\), 19 is a square modulo 107 by Euler's criterion. \n
+
+\item You know that an enemy has been encrypting messages using RSA and that the recipient's RSA modulus is $n = 580,799$.  (Because the RSA modulus is public information, this setup is plausible except for the very small size of $580,799$ as an RSA modulus.)  You would like to perform an attack on their RSA setup so that you can read their encrypted messages.  Magically, you have access to a square root oracle!  (This part of the setup is not plausible.  If square root oracles existed, RSA would not be secure.)  
+\begin{enumerate}
+\item You compute $1258^2 \equiv 420,966 \pmod{580,799}$ and ask your magical square root oracle for another square root of $420,966$ modulo $580,799$.  Your square root oracle tells you that $579541^2 \equiv 420,966 \pmod{580,799}$  Can you use the information given to you by the square root oracle to factor $580,799$?  If so, do it.  If not, explain why not. \n\\
+  No.  \(1258 = 580799 - 579541\), meaning \(1258 \equiv -579541\ \pmod{580799}\).  So all this oracle is really saying is that \(1258^2 \equiv (-1258)^2 \equiv 420966 \pmod {580799}\), which is not very useful (no new data is found). \n
+
+\item You compute $1234^2\equiv 361,158 \pmod{580,799}$ and ask your magical square root oracle for another square root of $361,158 $ modulo $580,799$. Your square root oracle tells you that $83,340^2\equiv 361,158 \pmod{580,799}$.  Can you use the information given to you by the square root oracle to factor $580,799$?  If so, do it.  If not, explain why not.
+  \begin{align*}
+    1234^2 &\equiv 83340^2 \pmod{580799} \\
+    \implies 0 &\equiv 1234^2 - 83340^2 \pmod{580799} \\
+    \implies k \cdot 580799 &= (1234 + 83340)(1234 - 83340) \\
+    \implies 1 &< \gcd(1234+83340, 580799)
+  \end{align*}
+  Since \(\gcd(84574, 580799) = 863\), we know \(863 \mid 580799\), and \(580799 / 863 = 673\), we can now conclude that \[580799 = 863 \cdot 673\]
+  via the numbers from our square root oracle.
+\end{enumerate}
+\end{enumerate}
+\end{document}
