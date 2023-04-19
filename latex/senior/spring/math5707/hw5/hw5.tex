@@ -1,0 +1,190 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amsfonts} 
+\usepackage{amsthm}
+\usepackage{blkarray}
+\usepackage{caption}
+\usepackage{enumitem} 
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usepackage[table]{xcolor}
+\usepackage{tikz}
+\usepackage{import}
+\usepackage[top=2cm,bottom=2cm,left=1.75cm,right=2cm,marginparwidth=1.75cm]{geometry}
+\setlength{\parindent}{0cm}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=blue,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\sm}{\scriptsize}
+\newcommand{\F}{\mathcal{F}}
+\newcommand\itm[1]{\item[\textbf{#1}]}
+\newcommand{\incid}{{-}\!{\bullet}\!{-}}
+\newcommand{\n}{\vspace{0.2cm}}
+\newcommand\cl{\cellcolor{blue!20}}
+
+\def\lc{\left\lceil}   
+\def\rc{\right\rceil}
+\def\lf{\left\lfloor}   
+\def\rf{\right\rfloor}
+
+\newtheorem{theorem}{Theorem}
+
+\title{\vspace{-1.5cm}MATH 5707 Homework 5}
+\author{Fletcher Gornick}
+\date{April 17, 2023}
+
+\begin{document}
+\maketitle
+\begin{itemize}
+  \itm{8.1.3} Show that if \(G\) has degree sequence \((d_1,d_2, \hdots, d_\nu)\) with \(d_1 \geq d_2 \geq \hdots \geq d_\nu\), then 
+  \[\chi \leq \max_i \min \{d_i+1, i\}.\]
+  \begin{proof}
+    If we can show this inequality holds for simple graphs, it follows for all graphs (adding edges only further skews this inequality), so assume \(G\) simple.  \(\chi \leq \Delta + 1\) by corollary 8.1.2, and \(\Delta \leq \nu-1\), otherwise \(G\) cannot be simple,  so we can see that \(1 \leq \chi \leq \nu\). \n
+
+    By corollary 8.1.1, every \(\chi\)-chromatic graph has at least \(\chi\) vertices with degree at least \(\chi-1\).  So \(d_1, d_2, \hdots, d_\chi \geq \chi-1\).  Isolating \(d_\chi\), we see that \(\min \{d_\chi + 1, \chi\} \geq \min \{\chi-1+1, \chi\} = \chi\). \n
+
+    Since \(\chi \leq \min \{d_\chi + 1, \chi\} \leq \max_i \min \{d_i+1, i\}\), the inequality above must hold.
+  \end{proof} \n
+  
+
+
+  \itm{8.1.4} Using exercise 8.1.3, show that \begin{enumerate}[label=(\alph*)]
+    \item \(\chi \leq \lc(2\varepsilon)^\frac12\rc\);
+      \[\lc(2\varepsilon)^{\frac12}\rc = \lc\left( \sum_{v \in V} d_G(v) \right)^\frac12\rc
+                                 \geq \lc\left( \sum_{i=1}^\chi d_i \right)^\frac12\rc
+                                 \geq \lc(\chi (\chi-1))^\frac12\rc
+                                 = (\chi^2)^\frac12
+                                 = \chi.\]
+      
+    \item \(\chi(G) + \chi(G^c) \leq \nu + 1\).
+      \begin{proof}
+        Define degree sequence for \(G^c\) as \((d_1^c, d_2^c, \hdots, d_\nu^c)\) where \(d_i^c = \nu-1-d_{\nu-i+1}\) (order is reversed because our sequence must be weakly decreasing to apply 8.1.3). \n
+
+        Let \(j\) be an index such that \(\min \{d_j+1, j\}\) is maximized, so \(\chi(G) \leq j\) and \(\chi(G) \leq d_j+1\).  Also let \(k\) be an index such that \(\min \{d_k^c+1, k\}=\min \{\nu-d_k, k\}\) is maximized, so \(\chi(G^c) \leq k\) and \(\chi(G^c) \leq \nu-d_{\nu-k+1}\). \n
+
+        If \(j+k \leq \nu+1\) then we're done, \(\chi(G)+\chi(G^c) \leq j+k \leq \nu+1\).  Otherwise if \(j+k > \nu+1\), then \(j > \nu+1-k\), meaning \(d_j \leq d_{\nu-k+1}\) (sequence weakly decreasing), so 
+        \[\chi(G) + \chi(G^c) \leq (d_j+1) + (\nu-d_{\nu-k+1}) \leq (d_j+1) + (\nu-d_j) = \nu+1. \qedhere\]
+      \end{proof}
+  \end{enumerate} \n
+
+
+  \itm{8.4.3} \begin{enumerate}[label=(\alph*)]
+    \item Show that if \(G\) is a tree, then \(\pi_k(G) = k(k-1)^{\nu-1}\).
+      \begin{proof}
+        For the trivial case, given \(k\) colors, there are \(k\) possible colorings of a one vertex graph. \(k(k-1)^{1-1} = k\), so this case holds. \n
+
+        By theorem 8.6, for \(G = (V,E)\) and any \(e \in E\), \(\pi_k(G) = \pi_k(G \setminus e) + \pi_k(G/e)\).  Now assume for all graphs \(G'=(V',E')\) with \(\nu' \leq \nu-1\), \(\pi_k(G') = k(k-1)^{\nu'-1}\), we show this equality holds for \(G\) as well. \n
+
+        Take any edge \(e \in E(G)\), \(G \setminus e\) is clearly disconnected (trees are minimally connected), so let \(G_1\) and \(G_2\) be the connected components of \(G \setminus e\).  Since coloring of one compnent doesn't affect coloring of another, we have \(\pi_k(G \setminus e) = \pi_k(G_1)\pi_2(G_2)\).  Now, let \(\nu_1 = \nu(G_1)\) and \(\nu_2 = \nu(G_2)\), since these components are also trees, we know \(\pi_k(G_1) = k(k-1)^{\nu_1-1}\) and \(\pi_k(G_2) = k(k-1)^{\nu_2-1}\) by the inductive hypothesis. \n
+
+        Now, Since \(\nu(G/e) = \nu(G)-1\), \(\varepsilon(G/e) = \varepsilon(G)-1\), and \(\omega(G/e) = \omega(G)\), and \(G\) is a tree, we can confirm \(G/e\) is a tree as well.  With this, we get the following equalities:
+        \begin{align*}
+          \pi_k(G) &= \pi_k(G \setminus e) - \pi_k(G / e) & \text{(Theorem 8.6)}\\
+                   &= \pi_k(G_1)\pi_k(G_2) - \pi_k(G / e) \\
+                   &= k(k-1)^{\nu_1-1}k(k-1)^{\nu_2-1} - k(k-1)^{\nu-2} & \text{(Inductive Hypothesis)}\\
+                   &= k^2(k-1)^{\nu-2} - k(k-1)^{\nu-2} \\
+                   &= k(k-1)^{\nu-1}
+        \end{align*}
+        Therefore, by the principle of strong mathematical induction, for tree \(G\), \(\pi_k(G) = k(k-1)^{\nu-1}\).
+      \end{proof}
+      
+    \item Deduce that if \(G\) is connected, then \(\pi_k(G) \leq k(k-1)^{\nu-1}\), and show that equality holds only when \(G\) is a tree.
+      \begin{proof}
+        Clearly, if any graph is connected, we can attain it by addeding edges from a tree (trees are minimally connected).  And since adding edges will only potentially reduce the number of proper cololorings, any graph \(G\) cannot have more proper colorings than it's spanning tree \(T\), that is \(\pi_k(G) \leq \pi_T(G) = k(k-1)^{\nu-1}\). \n
+
+        Now suppose to the contrary, there exists tree \(T\) with edge \(e = uv \not\in E(T)\), such that \(\pi_k(T+e) = k(k-1)^{\nu-1}\).  This can equivalently be stated as: For any \(k\) there exists no \(k\)-coloring of tree \(T\) where \(u\) and \(v\) recieve the same color (otherwise adding an edge between them reduces \(\pi_k(T+e)\) by 1). We show for \(k \geq 3\), this is not true. \n
+
+        Since every edge in a tree is a cut edge, we can simply take edge \(e' = u'v' \in E(T)\) such that \(T-e'\) has connected components \(T_1\) and \(T_2\) with \(u \in V(T_1)\), \(v \in V(T_2)\). \n
+
+        With at least 3 colors, give \(u\) and \(v\) the same color, then give \(u'\) and \(v'\) different colors, now we can fill out the rest of each component because their both (2-colorable) trees.  Finally add back edge \(e'\), this is still a proper coloring because \(u'\) and \(v'\) have different colors, but now our tree \(T\) has a proper coloring with \(u\) and \(v\) sharing a color, but this coloring doesn't work on \(T+e\), which is a contradiction.  Therefore, \(\pi_k(G) = k(k-1)^{\nu-1}\) only if \(G\) is a tree.
+      \end{proof}
+  \end{enumerate} \n
+
+
+  \itm{8.4.4} Show that if \(G\) is a cycle of length \(n\), then \(\pi_k(G) = (k-1)^n + (-1)^n(k-1)\).
+  \begin{proof}
+    Just like in 8.4.3(a), we proceed using strong induction.  For 0-length cycles, we have the trivial case, \(\pi_k = k = (k-1)^0 + (-1)^0(k-1)\).  If \(G\) is a loop, we have no proper coloring, and \(\pi_k = (k-1)^1 + (-1)^1(k-1) = 0\). \n
+
+    Now, suppose for all cycles \(C_\ell\) with \(1 < \ell < n\), \(\pi_k(C_\ell) = (k-1)^\ell + (-1)^\ell(k-1)\).  So take any \(e \in G\), since \(G/e\) is a cycle with one fewer vertices, we have that \(\pi_k(G/e) = (k-1)^{n-1} + (-1)^{n-1}(k-1)\) by the inductive hypothesis. \n
+
+    Since \(G\) is a cycle, removing any edge \(e\) makes \(G \setminus e\) a path, which is a type of tree, so we can use our result from 8.4.3(a) to say \(\pi_k(G \setminus e) = k(k-1)^{n-1}\).  Now we get the following equalities:
+    \begin{align*}
+      \pi_k(G) &= \pi_k(G \setminus e) - \pi_k(G / e) & \text{(Theorem 8.6)}\\
+               &= k(k-1)^{n-1} - \pi_k(G / e) & \text{(8.4.3(a))}\\
+               &= k(k-1)^{n-1} - ((k-1)^{n-1} + (-1)^{n-1}(k-1)) & \text{(Inductive Hypothesis)}\\
+               &= (k-1)^{n-1}(k-1) - (-1)^{n-1}(k-1) \\
+               &= (k-1)^n + (-1)^n(k-1)
+    \end{align*}
+        So by the principle of strong mathematical induction, for cycle \(G\) of length \(n\), the number of proper \(k\)-colorings \(\pi_k(G) = (k-1)^n + (-1)^n(k-1)\).
+  \end{proof} \n
+  
+
+
+  \itm{9.2.2} A plane graph is \textit{self-dual} if it is isomorphic to its dual.
+  \begin{enumerate}[label=(\alph*)]
+    \item Show that if \(G\) is self-dual, then \(\varepsilon = 2\nu-2\).
+      \begin{proof}
+        First, we prove Euler's Formula: \textit{for a connected plane graph}, \(\nu - \varepsilon  + \phi = 2\).  Using induction, for \(\phi=1\) our graph has just the unbounded face.  In this case there cannot be any cycles, so it must be a tree, hence \(\varepsilon = \nu-1\) by theorem 2.2.  So \(\nu - \varepsilon  + \phi = \nu - (\nu-1) + 1 = 2\). \n
+
+        Let \(G = (V,E)\) be a graph with \(n \geq 2\) faces, and assume all graphs with \(<n\) faces have \(\nu - \varepsilon  + \phi = 2\).  Take any non cut edge \(e \in E\), then \(\phi(G \setminus e) = \phi-1\),  \(\varepsilon(G \setminus e) = \varepsilon-1\), and \(\nu(G \setminus e) = \nu\), and 
+        \[\nu - \varepsilon + \phi = \nu - (\varepsilon - 1) + (\phi - 1) = \nu(G \setminus e) - \varepsilon(G \setminus e) + \phi(G \setminus e) = 2.\]
+        So \(\nu - \varepsilon + \phi = 2\) for all plane connected graph by strong induction.  Finally, since \(G\) is self-dual, we have that \(\nu = \phi\), and we can conclude \(\varepsilon = 2\nu-2\).
+      \end{proof}
+      
+    \item For each \(n \geq 4\), find a self-dual plane graph on \(n\) vertices. \n\\
+      Take an \((n-1)\)-vertex cycle (\(v_1, \hdots, v_{n-1}\)), and add a vertex \(v_n\) in the center connected to each vertex in the cycle. This will have \(n-1\) faces inside the cycle (\(f_1, \hdots, f_{n-1}\)) and one unbounded face \(f_n\). \n
+
+      To see what the dual looks like, you can put vertex \(f_i^*\) inside corresponding face \(f_i\) (\(1 \leq i\leq n-1\)), and final vertex \(f_n^*\) outside the cycle corresponding to \(f_n\).  You can now add edges \(e_k^*\) between vertices \(f_i^*,f_j^*\) corresponding to \textbf{bounded} faces \(f_i,f_j\) separated by \(e_j\).  This creates a new \((n-1)\)-vertex cycle. \n
+      
+      Finally, we can add an edge from each vertex in our new graph to \(f_n^*\), because it represents the unbounded face.  Now we can simply move \(f_n^*\) inside our cycle to get a graph identical to our original.
+  \end{enumerate} \n
+
+
+  \itm{9.3.3(a)} Show that if \(G\) is a simple planar graph with \(\nu \geq 11\), then \(G^c\) is nonplanar.
+    \begin{proof}
+      First note for \(v \in V(G)\), if \(d_G(v) \leq 5\), then \(d_{G^c}(v) \geq 5\) (assuming \(\nu \geq 11\)).  By corollary 9.5.3, \(\delta(G) \leq 5\), so we can assum \(\delta(G^c) \geq 5\).   Also \(\frac{5\nu}{2} > 3n + 6\) for all \(n \geq 11\), so we know \(\frac{5\nu}{2} > 3\nu + 6\), so
+      \[\underbrace{\varepsilon(G^c) = \frac{\sum_{v \in V} d_{G^c}(v)}2}_{\text{Theorem 1.1}} \geq \frac{\delta\nu}2 = \frac{5\nu}2 > 3\nu + 6.\]
+      Since \(\varepsilon(G^c) > 3\nu + 6\), \(G^c\) cannot be planar by corollary 9.5.2 (contrapositive).
+    \end{proof}
+    \newpage
+
+
+  \itm{9.6.2} Show that a plane triangulation \(G\) is 3-vertex colorable if and only if \(G\) is eulerian.
+  \begin{proof}
+    We proceed by proving both directions.
+    \begin{enumerate}
+      \item[\((\Rightarrow)\)] If a plane triangulation is 3 vertex colorable, then we can show that each vertex has even degree and is thus eulerian. \n
+
+        Choose any arbitrary vertex \(v \in V(G)\).  If \(d_G(v) = 2\), \(v\) has even degree, and we're done, so assume \(d_G(v) \geq 3\).  Since this graph is embedded in the plane, we can order the adjacent vertices in a clockwise orientation. \n
+
+        Choose random \(v_1\) adjacent to \(v\), then choose \(v_2\) which is the next vertex in our clockwise cycle.  Continue in this fashion until we've chosen all \(v_1, v_2, \hdots, v_{d_G(v)}\).  Since \(G\) is a triangulation, there always exists edge \(v_iv_j\) if \(j \equiv i+1 \pmod{d_G(v)}\).  So our vertices \(v_1, \hdots, v_{d_G(v)}\) form a cycle. \n
+
+        Now, we can choose \(v\) to be one color in our proper 3-coloring, meaning \(v_1, \hdots, v_{d_G(v)}\) must consist of only two other colors.  And since only even cycles are 2-colorable, we can conclude that \(d_G(v)\) is even. \n
+
+      \item[\((\Leftarrow)\)] We proceed using induction on the number of faces. \n
+
+        \(K_3\) is the smallest triangulation, it has one bounded face and is clearly eulerian and 3-vertex colorable. \n
+
+        Assume every near-triangulation with \(k\) bounded faces and internal vertices of even degree is 3-colorable (near-triangulation means all but potentially the unbounded face has degree 3).  We show this must be the case as well for \(k+1\) faces.  Take edge \(uv\) bodering the unbounded face, and choose vertex \(w\) adjacent to \(u\) and \(v\) such that \(uvw\) forms a bounded face. \n
+
+        If \(w\) touches the unbounded face, then \(uw\) or \(uv \in E\), so assume (WLOG) \(uw \in E\).  Then \(d_G(w)=2\), and \(G \setminus w\) is a \(k\)-faced graph with even degree internal vertices, and thus has a 3-coloring by the inductive hypothesis.  And since \(d_G(x) = 2\), adding \(x\) back can still be done using 3 colors. \n
+
+        Otherwise, if \(w\) not on the perimeter of \(G\), we can create an even cycle around \(w\) containing vertices \(u\) and \(v\), like how we did in the \((\Rightarrow)\) direction.  So removing the \(uv\) edge still leaves \(u\) and \(v\) 2-connected, but we lose a bounded face \(uvw\).  This new graph \(G \setminus uv\) must be 3-colorable by the inductive hypothesis, and since this edge lies on an even cycle, adding it back in won't affect the coloring.  Therefore \(G\) is 3-colorable as well. \n
+
+        Finally, since this holds for near-triangulations, it clearly holds for triangulations, so our claim is proven.
+    \end{enumerate}
+
+    Therefore, it must be the case for plane triangulation \(G\): \(G\) 3-colorable iff \(G\) eulerian.  I was a bit lost on this problem, so I used \href{https://faculty.math.illinois.edu/~west/pubs/eultri.pdf}{this paper} to help me understand.
+  \end{proof}
+  
+\end{itemize}
+\end{document}
