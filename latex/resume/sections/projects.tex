@@ -1,25 +1,37 @@
-\section{Projects}
+\cvsection{Projects}
 
-\denseouterlist{
-  \entrymid[\textbullet]
-    {\textbf{Program to Dynamically Configure Reverse Proxies}}
-    {}
-    {Wrote a program that converts json formatted files into readable configuration for Envoy Proxy.  
-    Used on Target API servers for run-time proxy updates.}
+\cvevent{Dynamic Proxy}{Envoy proxy configuration generator}{July 2022 \github{fmgornick/dynamic-proxy}}{} 
+\begin{itemize}
+\item Program for users to send configuration to envoy proxy at runtime, without the need to restart
+\item This allows us to add/delete/change the upstream destination of incoming traffic dynamically for real-time configuration updates
 
-  \entrymid[\textbullet]
-    {\textbf{Drone Search and Rescue Simulation}}
-    {}
-    {Used basic design patterns to build a drone search/rescue simulation in C++.}
+\end{itemize}
+\cvtag{Go}
+\cvtag{Envoy}
+\cvtag{bash}
+\cvtag{OpenSSL}
+\cvtag{Docker}
 
-  \entrymid[\textbullet]
-    {\textbf{Parsons Problem Generator}}
-    {}
-    {Wrote a program to generate quiz questions for students given file input.  
-    Produces both QTI and GIFT formatted questions, for Canvas and Moodle respectively.}
+\divider
 
-  \entrymid[\textbullet]
-    {\textbf{Seeds of Change Bioinformatics Research}}
-    {}
-    {Studied the habits of Leafcutter ants to document how they utilized certain antibiotic compounds}
-}
+\cvevent{Search \& Rescue Simulation}{Drone physics simulation written in C++}{Apr 2021 \github{fmgornick/drone-sim}}{} 
+\begin{itemize}
+\item A program that takes a 3D texture of Minneapolis and simulates drone movement with the use of design patterns and object oriented programming
+\end{itemize}
+\cvtag{C++}
+\cvtag{JavaScript}
+\cvtag{Docker}
+\cvtag{Doxygen}
+
+\divider
+
+\cvevent{Graph Data Structure Library}{provides collection of graph algorithms}{May 2023 -- Present \github{fmgornick/fmgraph}}{} 
+\begin{itemize}
+\item Made my own implentation of a graph data structure and added as many graph algorithms as I remember learing in my Graph Theory class
+\end{itemize}
+\cvtag{Rust}
+\cvtag{petgraph}
+\cvtag{itertools}
+\cvtag{graphviz}
+
+\divider
