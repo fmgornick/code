@@ -1,0 +1,169 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{blkarray}
+\usepackage{caption}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage[top=1.5cm,bottom=2cm,left=1.25cm,right=1.75cm,marginparwidth=1.75cm]{geometry}
+\setlength{\parindent}{0cm}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Eps}{\mathcal{E}}
+\newcommand\itm[1]{\item[\textbf{#1}]}
+\newcommand{\n}{\vspace{0.2cm}}
+\newtheorem{theorem}{Theorem}
+
+\def\lc{\left\lceil}
+\def\rc{\right\rceil}
+\def\lf{\left\lfloor}
+\def\rf{\right\rfloor}
+
+\title{\vspace{-1.0cm}CSCI 5304 Homework 1}
+\author{Fletcher Gornick}
+\date{September 8, 2023}
+
+\begin{document}
+\maketitle
+\begin{enumerate}
+	\item Let \(D = ABC\) where \(A \in \R^{m \times n}\), \(B \in \R^{n \times p}\), and \(C \in \R^{p \times q}\).  Compare the floating point operation (\textit{flop}) count of an algorithm that computes \(D\) via formula \(D = (AB)C\) versus the flop count for an algorithm that computes \(D\) as \(D = A(BC)\).  Under what condition(s) is the first procedure more flop-efficient?
+
+	      From lecture we know that given matrices \(A_{m \times n}\) and \(B_{n \times p}\), the number of flops to compute \(AB\) is \(2mnp\).
+
+	      Computing \(D = (AB)C\) requires \(2mnp\) flops for the first multiplication, yielding \(C'_{m \times p}\), similarly, the second multiplication \(D = C'C\) requires \(2mpq\) flops.  this gives us a total of \(2(mnp + mpq)\) flops, Since \(D\) has the same shape no matter how we multiply, we can fix \(m\) and \(q\), so the number of flops needed to compute \((AB)C\) is proportional to \(2(np + p) \propto np + p\)
+
+	      If we instead computed \(D = A(BC)\), we would need \(2npq + 2mnq \propto np + n\) flops.
+
+	      in order for \(D = (AB)C\) to be more flop-efficient, we would want less operations, so we would want \(p\) to be smaller than \(n\).  Therefore, we want \(B\) to have more rows than columns.
+
+
+	\item Let \(\Eps_{n \times n}\) be a zero matrix with ones on the anti-diagonal, that is:
+	      \[\varepsilon_{ij} = \begin{cases} 1, &\text{ if } i+j = n+1, \\ 0, &\text{otherwise.} \end{cases}\]
+	      \begin{enumerate}[label=(\alph*)]
+		      \item What is the \((i,j)\) entry of \(\Eps A \Eps\)? \n\\
+		            First, \((\Eps A)_{ij} = \displaystyle\sum_{k=1}^n \Eps_{ik} A_{kj} = A_{n+1-i,j}\), so \(\Eps A\) is just \(A\) with rows swapped
+
+		            Now, \((\Eps A \Eps)_{ij} = \displaystyle\sum_{k=1}^n (\Eps A)_{ik} \Eps_{kj} = (\Eps A)_{i, n+1-j} = A_{n+1-i, n+1-j}\)
+
+		      \item A matrix is said to be \textit{persymmetric} if \(\Eps A \Eps = A^T\).  Is a Toeplitz matrix persymmetric? \n\\
+		            Yes.  A Toeplitz matrix is a matrix with constants on the diagonals.  So for an \(n \times n\) Toeplitz matrix \(A\) we can define \(n\) constants \(a_{1-n}, \dots, a_{n-1}\) such that for any \(i,j\), \(1 \leq i,j \leq n\), \(A_{i,j} = a_{i-j}\)
+
+		            We know that \((\Eps A \Eps)_{i,j} = A_{n+1-i,n+1-j}\), and \((A^T)_{i,j} = A_{j,i}\).  Now, we see that
+		            \[(\Eps A \Eps)_{i,j} = A_{n+1-i,n+1-j} = a_{(n+1-i)-(n+1-j)} = a_{j-i} = A_{j,i} = (A^T)_{i,j}\]
+		            So we can conclude that Toeplitz matrices are persymmetric.
+
+		      \item Find an example of a small matrix that is perymmetric but not Toeplitz.
+		            \[\begin{pmatrix} 0 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0 \end{pmatrix} \]
+		      \item Consider a matrix \(A\) of the following form:
+		            \[A = \begin{pmatrix} C & C^T \\ -C^T & C \end{pmatrix}.\]
+		            Assuming \(C\) is persymmetric, show that \(A\) is persymmetric.  Assuming that \(C\) is Toeplitz, is \(A\) Toeplitz?
+
+		            It's simple enough to show \(A\) is persymmetric given \(C\) is,
+		            \begin{align*}
+			            \Eps A \Eps & =
+			            \begin{pmatrix} 0 & \Eps \\ \Eps & 0 \end{pmatrix}
+			            \begin{pmatrix} C & C^T \\ -C^T & C \end{pmatrix}
+			            \begin{pmatrix} 0 & \Eps \\ \Eps & 0 \end{pmatrix}
+			            \\
+			                        & =
+			            \begin{pmatrix}
+				            \Eps C \Eps & \Eps (-C^T) \Eps \\ \Eps (C^T) \Eps & \Eps C \Eps
+			            \end{pmatrix}
+			            \\
+			                        & =
+			            \begin{pmatrix}
+				            \Eps C \Eps & -(\Eps^T C \Eps^T)^T \\ (\Eps^T C \Eps^T)^T & \Eps C \Eps
+			            \end{pmatrix}
+			            \\
+			                        & =
+			            \begin{pmatrix}
+				            C^T & -C \\ C & C^T
+			            \end{pmatrix}
+			            \\
+			                        & = A^T
+		            \end{align*}
+		            But we cannot conclude \(A\) is Toeplitz given \(C\) is.  Take, for example, \(C = \begin{pmatrix}  0 & 1 \\ 1 & 0 \end{pmatrix}\), we would get \[A = \begin{pmatrix} 0 & 1 & 0 & 1 \\ 1 & 0 & 1 & 0 \\ 0 & -1 & 0 & 1 \\ -1 & 0 & 1 & 0  \end{pmatrix}\]
+		            which is clearly not Toeplitz.
+	      \end{enumerate}
+
+	\item Let \(X\) be an \(m \times n\) matrix with \(m \geq n\) of full rank.  Show \(X^T X\) is nonsingular.
+	      \begin{proof}
+		      Assume instead, that \(X^TX\) is singular, that is, there exists column vector \(y \in \R^n\) such that \(X^TXy = 0\).  Since this product is zero, it clearly follows that \(y^TX^TXy = (Xy)^T Xy = 0\).
+
+		      If we let \(Xy = z\), then we see that \(z^T z = |z|^2 = 0\).  Clearly, \(Xy = z = 0\), but \(X\) was assumed to have full rank (\(rank(A) = n\)).  With \(n \leq m\), \(Ay\) is the linear combination of \(n\) columns of \(A\), and since these columns are linearly independent, \(Ay \neq 0\), which is a contradiction.
+
+		      So we see that if \(X^TX\) is singular, then \(X\) cannot have full rank.  Thus, the above statement is proven via contrapositive.
+	      \end{proof}
+
+	\item Given full-rank matrices \(X_{m \times p}, Y_{n \times p}\) with \(m,n \geq p\) and matrix \(A = XY^T\), show that \(\text{rank}(A) = p\).
+	      \begin{proof}
+		      We know \(\text{rank}(A) \leq p\) because the range of \(A\) must be a subset of the span of \(X\), so all we must show is that \(\text{rank}(A) \geq p\).
+
+		      Since \(Y^TY\) is nonsingular (consequence of 3), we know \(Y^Tz \neq 0\) for any nonzero vector \(z \in \text{Ran}(Y)\).  And since \(Y^Tz \neq 0\), we know \(Az = XY^Tz \neq 0\), because \(X\) has full rank.
+
+		      So we can conclude that \(Az \neq 0\) for any nonzero \(z \in \text{Ran}(Y)\), and since \(\text{rank}(Y) = p\), we can see that \(\text{rank}(A) \geq \text{rank}(Y) = p\).
+
+		      We can now conclude that \(\text{rank}(A)\) must be exactly \(p\).
+	      \end{proof}
+
+	\item Show that a matrix \(A \in \R^{m \times n}\) is of rank \(p\) if and only if there are two full rank matrices \(X_{m \times p}, \; Y_{n \times p}\) such that \(A = XY^T\).
+	      \begin{proof}
+		      \begin{itemize}
+			      \item[\((\Leftarrow)\)] This direction was proven in 4.
+			      \item[\((\Rightarrow)\)] Suppose \(X\) is not of full rank
+		      \end{itemize}
+	      \end{proof}
+
+	\item Let \(A\) be an \(n \times n\) matrix whose only nonzero entries are in the first column and first row.
+	      \begin{enumerate}[label=(\alph*)]
+		      \item Show that \(A\) is of rank \(\leq 2\).  When is the rank less than 2?
+		            \begin{proof}
+			            If \(A\) is the zero matrix, then clearly it's rank is zero. \n
+
+			            Now, if only the first row of \(A\) is filled out, then we can choose any nonzero column \(u\), and every other column is just a multiple of \(u\), making \(\text{rank}(A) = 1\).  Similarly, if only the first column (call it \(v\)) of \(A\) is filled out, then every other column is just \(0 \cdot v\).  So again, \(\text{rank}(A) = 1\) \n
+
+			            Finally if both the first row and column of \(A\) are filled out, choose vector \(u\) to be the first column of \(A\), and vector \(v\) to be any other column with a nonzero element in the first row.  Since every other column of \(A\) is just a multiple of \(v\), we know \(u,v\) span the range of \(A\), making \(\text{rank}(A) = 2\)\n
+		            \end{proof}
+
+
+		      \item Assume that, in addition, \(A\) is symmetric and that \(a_{11} = 1\).  Show that there exist two vectors \(u\) and \(v\) such that \(A = uu^T - vv^T\).
+	      \end{enumerate}
+
+	\item Let \(T\) be a symmetric Toeplitz matrix \(T = [t_{|i-j|}]^n_{i,j=1}\) with \(t_0 = 1\) and define the \(n \times n\) lower triangular shift matrix \(Z\):
+	      \[Z = \begin{pmatrix} 0 & & & \\ 1 & 0 & & \\ & \ddots & \ddots & \\ & & 1 & 0 \end{pmatrix}\]
+	      \begin{enumerate}[label=(\alph*)]
+		      \item Show that the matrix \(D = T - ZTZ^T\) has rank \(\leq 2\).
+		      \item Show that \(D\) can be written as \(D = uu^T - vv^T\) for certain vectors \(u,v\) to be specified.
+	      \end{enumerate}
+
+	\item Are the following functions from \(\R^n\) to \(\R\) vector norms? (prove or disprove).
+	      \begin{multicols}{3}
+		      \begin{enumerate}[label=(\alph*)]
+			      \item \(N(x) = \displaystyle\sum_{i=1}^n \left| \frac{x_i}{2^i} \right|\);
+			      \item \(N(x) = \left[ \displaystyle\sum_{i=1}^n |x_i|^{1/2} \right]^2\);
+			      \item \(N(x) = \left[ \displaystyle\sum_{i=1}^n |x_i| \right]^2\);
+		      \end{enumerate}
+	      \end{multicols}
+
+	\item Calculate \(\lVert A \rVert_1, \lVert A \rVert_\infty\) for the matrix:
+	      \[A = \begin{pmatrix} 1 & 6 & 0 \\ 6 & -1 & 3 \\ -2 & 3 & 5 \end{pmatrix}\]
+	      \begin{enumerate}[label=(\alph*)]
+		      \item Among all vectors \(x\) satisfying \(\lVert x \rVert_\infty \leq 1\), find one for which \(\lVert Ax \rVert_\infty\) is the largest possible.
+		      \item Among all vectors \(x\) satisfying \(\lVert x \rVert_1 \leq 1\), find one for which \(\lVert Ax \rVert_1\) is the largest possible.
+		      \item (Using julia) Calculate the 2-norm of \(A\).  Among all vectors \(x\) satisfying \(\lVert x \rVert_2 \leq 1\), find one for which \(\lVert Ax \rVert_2\) is the largest possible.
+	      \end{enumerate}
+
+	\item \begin{enumerate}[label=(\alph*)]
+		      \item Compute the 1-norm, the 2-norm, the \(\infty\)-norm, and the Frobenius norm of the matrix:
+		            \[A = \begin{pmatrix} -1 & 2 & 1 \\ 0 & 0 & 0 \\ -2 & 3 & 0 \\ 1 & -1 & 1 \\ 2 & -1 & 4 \end{pmatrix}\]
+		      \item Find the eigenvalues and the spectral radius of \(A(2:4,:)\)
+		      \item Find the singular values of \(A\).  What is the nuclear norm of \(A\)?  What is it's Schatten 3-norm?  From the singular value, what can you say about the determinant of \(A^TA\)?
+		      \item Using the result of question 3, and the information on the determinant of question (c) above, show that the matrix \(A\) does not have full rank.
+	      \end{enumerate}
+\end{enumerate}
+\end{document}
