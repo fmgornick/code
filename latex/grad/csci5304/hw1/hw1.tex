@@ -14,6 +14,7 @@
 \setlength{\parindent}{0cm}
 
 \newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
 \newcommand{\Eps}{\mathcal{E}}
 \newcommand\itm[1]{\item[\textbf{#1}]}
 \newcommand{\n}{\vspace{0.2cm}}
@@ -83,7 +84,7 @@
 			                        & =
 			            \begin{pmatrix}
 				            C^T & -C \\ C & C^T
-			            \end{pmatrix}
+			            \end{pmatrix} \quad (\Eps^T = \Eps)
 			            \\
 			                        & = A^T
 		            \end{align*}
@@ -131,7 +132,16 @@
 		            \end{proof}
 
 
-		      \item Assume that, in addition, \(A\) is symmetric and that \(a_{11} = 1\).  Show that there exist two vectors \(u\) and \(v\) such that \(A = uu^T - vv^T\).
+		      \item Assume that, in addition, \(A\) is symmetric and that \(a_{11} = 1\).  Show that there exist two vectors \(u\) and \(v\) such that \(A = uu^T - vv^T\). \n\\
+		            Set \(u = A(:,1)\), and let \(v = u\) with the exception that \(v_1 = 0\).  This gives us (remember \(u_1 = a_{11} = 1\)):
+		            \[uu^T - vv^T =
+			            \begin{pmatrix} 1 & a_{21} & \hdots & a_{n1} \\ a_{21} & a_{21}^2 & \hdots & a_{21}a_{n1}  \\ \vdots & \vdots & \ddots & \vdots \\ a_{n1} & a_{n1}a_{21} & \hdots & a_{n1}^2
+			            \end{pmatrix} -
+			            \begin{pmatrix} 0 & 0 & \hdots & 0 \\ 0 & a_{21}^2 & \hdots & a_{21}a_{n1}  \\ \vdots & \vdots & \ddots & \vdots \\ 0 & a_{n1}a_{21} & \hdots & a_{n1}^2
+			            \end{pmatrix} =
+			            \begin{pmatrix} 1 & a_{21} & \hdots & a_{n1} \\ a_{21} & 0 & \hdots & 0 \\ \vdots & \vdots & \ddots & \vdots \\ a_{n1} & 0 & \hdots & 0
+			            \end{pmatrix} = A
+		            \]
 	      \end{enumerate}
 
 	\item Let \(T\) be a symmetric Toeplitz matrix \(T = [t_{|i-j|}]^n_{i,j=1}\) with \(t_0 = 1\) and define the \(n \times n\) lower triangular shift matrix \(Z\):
@@ -149,6 +159,19 @@
 			      \item \(N(x) = \left[ \displaystyle\sum_{i=1}^n |x_i| \right]^2\);
 		      \end{enumerate}
 	      \end{multicols}
+	      \begin{enumerate}[label=(\alph*)]
+		      \item This function is a vector norm.  We can prove this by showing \(N\) has the following three properties. (positive definiteness (i), absolute homogeneity (ii), and triangle inequality (iii)).
+		            \begin{enumerate}
+			            \item \(N(0)=0\), and for any vector \(u\) with \(u_j \neq 0\), \(\left| \displaystyle\frac{u_j}{2^i} \right| > 0\) for all \(i \in \N\), so \(N(u) > 0\).
+
+			            \item \(N(kx) = \displaystyle\sum_{i=1}^{n} \left| \frac{kx_i}{2^i} \right| = \sum_{i=1}^n \left(|k|\left| \frac{x_i}{2^i} \right|\right) = |k| \sum_{i=1}^n \left| \frac{x_i}{2^i} \right| = |k|N(x)\).
+
+			            \item \(N(x+y) = \displaystyle\sum_{i=1}^{n} \left| \frac{x_i + y_i}{2^i} \right| \leq \sum_{i=1}^n \left( \left| \frac{x_i}{2^i} \right| + \left| \frac{y_i}{2^i} \right| \right) = \sum_{i=1}^n \left| \frac{x_i}{2^i} \right| + \sum_{i=1}^n \left| \frac{y_i}{2^i} \right| = N(x) + N(y).\)
+		            \end{enumerate}
+		      \item This isn't a vector norm because it violates the triangle inequality.  Take vectors \(u = \binom10\) and \(v = \binom01\),
+		            \[N(u+v) = \left(1^{1/2} + 1^{1/2}\right)^2 = 4 > 2 = \left(1^{1/2} + 0^{1/2}\right)^2 + \left(0^{1/2} + 1^{1/2}\right)^2 = N(u) + N(v)\]
+		      \item This is'nt a vector norm either because it violates absolute homogeneity.  We can see this by simply taking 1-dimentional vector \(u = (1)\).  \(N(u) = 1\), but \(N(2u) = 4 \neq 2 = |2|N(u)\).
+	      \end{enumerate}
 
 	\item Calculate \(\lVert A \rVert_1, \lVert A \rVert_\infty\) for the matrix:
 	      \[A = \begin{pmatrix} 1 & 6 & 0 \\ 6 & -1 & 3 \\ -2 & 3 & 5 \end{pmatrix}\]
