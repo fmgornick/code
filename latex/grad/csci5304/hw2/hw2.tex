@@ -40,12 +40,12 @@
 			            \quad b = \begin{pmatrix} -3 \\ 5 \\ 1 \\ 4 \end{pmatrix}
 		            \]
 
-		      \item What is the \(LU\) factorization of \(A\), what is it's determinant?
+		      \item What is the LU factorization of \(A\), what is it's determinant?
 
-		      \item Using the \(LU\) factors obtained in (b), find the last column of the inverse of \(A\), without computing the whole inverse.
+		      \item Using the LU factors obtained in (b), find the last column of the inverse of \(A\), without computing the whole inverse.
 	      \end{enumerate}
 
-	\item Let \(A = LU\) be the \(LU\) factorization of \(A \in \R^{n \times n}\), with \(|\ell_{i,j}| \leq 1\).  Verify the equation:
+	\item Let \(A = LU\) be the LU factorization of \(A \in \R^{n \times n}\), with \(|\ell_{i,j}| \leq 1\).  Verify the equation:
 	      \[u_{i,:} = a_{i,:} - \sum_{j=1}^{i-1} \ell_{i,j}u_{j,:},\]
 	      Then use this relation to show that \(\lVert U \rVert_\infty \leq 2^{n-1} \lVert A \rVert_\infty\).
 
@@ -58,17 +58,40 @@
 		      \end{pmatrix}
 	      \]
 	      \begin{enumerate}
-		      \item Determine the standard \(LU\) factorization of the matrix on the right.
+		      \item Determine the standard LU factorization of the matrix on the right.
+
 		      \item Compute the determinant of \(A\).
+
 		      \item Compute the first column of the inverse of \(A\)
+
 		      \item Repeat the above questions when partial pivoting is used, i.e. find the permutation matrix \(P\) and the matrices \(L,U\) such that \(PA = LU\).  Compute the determinant of \(A\) based on this factorization, and compute the first column of the inverse of \(A\), based on this factorization.
 	      \end{enumerate}
 
-	\item We saw that Gaussian elimination is equivalent to multiplying the initial matrix \(A\) by a swquence of Gaussian transformations from the left.  This exercise explores what happens in the case of Gauss-Jordan (\(GJ\)) elimination.
+	\item We saw that Gaussian elimination is equivalent to multiplying the initial matrix \(A\) by a swquence of Gaussian transformations from the left.  This exercise explores what happens in the case of Gauss-Jordan (GJ) elimination.
 	      \begin{enumerate}
 		      \item Show that for Gauss-Jordan, we have the same result:
 		            \[A_k = M_kA_{k-1}, \; k = 1, 2, \dots, n,\]
-		            With \(A_0 = A\)
+		            With \(A_0 = A\), however the matrices \(M_k\) are different.  What are the new transformations \(M_k\)?
+
+		      \item In the case of Gaussian elimination, the product of the \(M_k\)'s is lower-triangular, this gives the LU factorization.  Is the product of the \(M_k\)'s triangular for Gauss-Jordan elimination?  Show that the last matrix (diagonal) obtained by GJ satisfies
+		            \[D = MA \;\; \text{with} \;\; M = M_n M_{n-1} \cdots M_1.\]
+		            Show how you can practically store all the matrices \(M_1, M_2, \dots, M_n\) in a single \(n \times n\) array.  Write a `Gauss-Jordan factorization' script which produces the diagonal \(D\) as a vector and the matrices \(M_1, \dots, M_n\) stored as just specified.
+
+		      \item Recall that the LU factorization can help solve several linear systems with the same matrix \(A\).  How would you exploit the output of the factorization described in (b) for the same task?  Write a matlab script that uses this output to solve \(p\) linear systems with \(A\) when the right-hand sides are stored in \(B_{n \times p}\).
+
+		      \item Explain how you would compute the inverse of a matrix using the Gauss-Jordan algorithm.  Apply this method and the scripts you developed in (b) and (c) to compute the inverse of the \(4 \times 4\) matrix \(A\) of question 1.
 	      \end{enumerate}
+
+	\item For the matrix
+	      \[A =
+		      \begin{pmatrix}
+			      -1 & 2  & 1 \\
+			      0  & 0  & 0 \\
+			      -2 & 3  & 0 \\
+			      1  & -1 & 1 \\
+			      2  & -1 & 4
+		      \end{pmatrix},
+	      \]
+	      find the singular values of \(A\).  What is the nuclear norm of \(A\)?  What is the Schatten 3-norm?  From the singular values, what can you say about the determinant of \(A^TA\)?
 \end{enumerate}
 \end{document}
