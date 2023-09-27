@@ -1,0 +1,74 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{blkarray}
+\usepackage{caption}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage[top=1.5cm,bottom=2cm,left=1.25cm,right=1.75cm,marginparwidth=1.75cm]{geometry}
+\setlength{\parindent}{0cm}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\n}{\vspace{0.3cm}}
+\newtheorem{theorem}{Theorem}
+
+\def\lc{\left\lceil}
+\def\rc{\right\rceil}
+\def\lf{\left\lfloor}
+\def\rf{\right\rfloor}
+
+\title{\vspace{-1.0cm}CSCI 5304 Homework 2 }
+\author{Fletcher Gornick}
+\date{September 30}
+
+\begin{document}
+\maketitle
+\begin{enumerate}
+	\item \begin{enumerate}
+		      \item Solve the linear system \(Ax = b\) by Gaussian elimination, where:
+		            \[A =
+			            \begin{pmatrix}
+				            1  & -2 & -1 & 0  \\
+				            -2 & 3  & 2  & 1  \\
+				            -1 & 2  & 3  & -2 \\
+				            0  & -1 & -4 & 6
+			            \end{pmatrix}
+			            \quad b = \begin{pmatrix} -3 \\ 5 \\ 1 \\ 4 \end{pmatrix}
+		            \]
+
+		      \item What is the \(LU\) factorization of \(A\), what is it's determinant?
+
+		      \item Using the \(LU\) factors obtained in (b), find the last column of the inverse of \(A\), without computing the whole inverse.
+	      \end{enumerate}
+
+	\item Let \(A = LU\) be the \(LU\) factorization of \(A \in \R^{n \times n}\), with \(|\ell_{i,j}| \leq 1\).  Verify the equation:
+	      \[u_{i,:} = a_{i,:} - \sum_{j=1}^{i-1} \ell_{i,j}u_{j,:},\]
+	      Then use this relation to show that \(\lVert U \rVert_\infty \leq 2^{n-1} \lVert A \rVert_\infty\).
+
+	\item For the following matrix:
+	      \[A =
+		      \begin{pmatrix}
+			      1 & -1 & 1 \\
+			      0 & 4  & 2 \\
+			      6 & 2  & 0
+		      \end{pmatrix}
+	      \]
+	      \begin{enumerate}
+		      \item Determine the standard \(LU\) factorization of the matrix on the right.
+		      \item Compute the determinant of \(A\).
+		      \item Compute the first column of the inverse of \(A\)
+		      \item Repeat the above questions when partial pivoting is used, i.e. find the permutation matrix \(P\) and the matrices \(L,U\) such that \(PA = LU\).  Compute the determinant of \(A\) based on this factorization, and compute the first column of the inverse of \(A\), based on this factorization.
+	      \end{enumerate}
+
+	\item We saw that Gaussian elimination is equivalent to multiplying the initial matrix \(A\) by a swquence of Gaussian transformations from the left.  This exercise explores what happens in the case of Gauss-Jordan (\(GJ\)) elimination.
+	      \begin{enumerate}
+		      \item Show that for Gauss-Jordan, we have the same result:
+		            \[A_k = M_kA_{k-1}, \; k = 1, 2, \dots, n,\]
+		            With \(A_0 = A\)
+	      \end{enumerate}
+\end{enumerate}
+\end{document}
