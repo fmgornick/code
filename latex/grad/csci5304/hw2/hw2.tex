@@ -31,38 +31,309 @@
 	\item \begin{enumerate}
 		      \item Solve the linear system \(Ax = b\) by Gaussian elimination, where:
 		            \[A =
-			            \begin{pmatrix}
+			            \begin{pmatrix*}[r]
 				            1  & -2 & -1 & 0  \\
 				            -2 & 3  & 2  & 1  \\
 				            -1 & 2  & 3  & -2 \\
 				            0  & -1 & -4 & 6
-			            \end{pmatrix}
-			            \quad b = \begin{pmatrix} -3 \\ 5 \\ 1 \\ 4 \end{pmatrix}
+			            \end{pmatrix*}
+			            \quad b = \begin{pmatrix*}[r] -3 \\ 5 \\ 1 \\ 4 \end{pmatrix*}
 		            \]
+		            We proceed by performing a series of row operations, keeping track of the corresponding elementary matrices \(M_1\), \(M_2\), and \(M_3\).
+		            \begin{align*}
+			            M_1 (A \mid b)         & =
+			            \begin{pmatrix*}[r]
+				            1 & 0 & 0 & 0 \\
+				            2 & 1 & 0 & 0 \\
+				            1 & 0 & 1 & 0 \\
+				            0 & 0 & 0 & 1
+			            \end{pmatrix*}
+			            \left(\begin{array}{rrrr|r}
+					                  1  & -2 & -1 & 0  & -3 \\
+					                  -2 & 3  & 2  & 1  & 5  \\
+					                  -1 & 2  & 3  & -2 & 1  \\
+					                  0  & -1 & -4 & 6  & 4
+				                  \end{array}\right)
+			                                   & =
+			            \left(\begin{array}{rrrr|r}
+					                  1 & -2 & -1 & 0  & -3 \\
+					                  0 & -1 & 0  & 1  & -1 \\
+					                  0 & 0  & 2  & -2 & -2 \\
+					                  0 & -1 & -4 & 6  & 4  \\
+				                  \end{array}\right)                                \\
+			            M_2 M_1 (A \mid b)     & =
+			            \begin{pmatrix*}[r]
+				            1 & 0  & 0 & 0 \\
+				            0 & 1  & 0 & 0 \\
+				            0 & 0  & 1 & 0 \\
+				            0 & -1 & 0 & 1 \\
+			            \end{pmatrix*}
+			            \left(\begin{array}{rrrr|r}
+					                  1 & -2 & -1 & 0  & -3 \\
+					                  0 & -1 & 0  & 1  & -1 \\
+					                  0 & 0  & 2  & -2 & -2 \\
+					                  0 & -1 & -4 & 6  & 4
+				                  \end{array}\right)
+			                                   & =
+			            \left(\begin{array}{rrrr|r}
+					                  1 & -2 & -1 & 0  & -3 \\
+					                  0 & -1 & 0  & 1  & -1 \\
+					                  0 & 0  & 2  & -2 & -2 \\
+					                  0 & 0  & -4 & 5  & 5  \\
+				                  \end{array}\right)                                \\
+			            M_3 M_2 M_1 (A \mid b) & =
+			            \begin{pmatrix*}[r]
+				            1 & 0 & 0 & 0 \\
+				            0 & 1 & 0 & 0 \\
+				            0 & 0 & 1 & 0 \\
+				            0 & 0 & 2 & 1 \\
+			            \end{pmatrix*}
+			            \left(\begin{array}{rrrr|r}
+					                  1 & -2 & -1 & 0  & -3 \\
+					                  0 & -1 & 0  & 1  & -1 \\
+					                  0 & 0  & 2  & -2 & -2 \\
+					                  0 & 0  & -4 & 5  & 5  \\
+				                  \end{array}\right)
+			                                   & =
+			            \left(\begin{array}{rrrr|r}
+					                  1 & -2 & -1 & 0  & -3 \\
+					                  0 & -1 & 0  & 1  & -1 \\
+					                  0 & 0  & 2  & -2 & -2 \\
+					                  0 & 0  & 0  & 1  & 1  \\
+				                  \end{array}\right)                                \\
+			                                   & = L^{-1}(A \mid b) = (U \mid L b)
+		            \end{align*}
+		            Now we have an augmented upper-triangular matrix with one solution.  We can back-solve from here to get all values of \(x\).
+		            \begin{align*}
+			            x_4                                                          & = 1 \\
+			            2x_3 - 2x_4 = -2 \implies 2x_3 - 2 = -2 \implies x_3         & = 0 \\
+			            -x_2 + x_4 = -1 \implies -x_2 + 1 = -1 \implies x_2          & = 2 \\
+			            x_1 - 2x_2 - x_3 = -3 \implies x_1 - 4 - 0 = -3 \implies x_1 & = 1
+		            \end{align*}
+		            This tells us \(x = (1,2,0,1)^T\). \n
 
-		      \item What is the LU factorization of \(A\), what is it's determinant?
+		      \item What is the LU factorization of \(A\), what is it's determinant? \n\\
+		            \(U\) and \(L^{-1}\) were derived in (a), and retrieving \(L\) from \(L^{-1}\) is as simple as negating the elements below the diagonal, so we get:
+		            \[
+			            L = (M_3 M_2 M_1)^{-1}
+			            =
+			            \begin{pmatrix*}[r]
+				            1 & 0  & 0 & 0 \\
+				            2 & 1  & 0 & 0 \\
+				            1 & 0  & 1 & 0 \\
+				            0 & -1 & 2 & 1
+			            \end{pmatrix*}^{-1}
+			            =
+			            \begin{pmatrix*}[r]
+				            1  & 0 & 0  & 0 \\
+				            -2 & 1 & 0  & 0 \\
+				            -1 & 0 & 1  & 0 \\
+				            0  & 1 & -2 & 1
+			            \end{pmatrix*}, \;\;
+			            U =
+			            \begin{pmatrix*}[r]
+				            1 & -2 & -1 & 0  \\
+				            0 & -1 & 0  & 1  \\
+				            0 & 0  & 2  & -2 \\
+				            0 & 0  & 0  & 1
+			            \end{pmatrix*}
+		            \]
+		            Now, since \(A = LU\), we know \(\det(A) = \det(L)\det(U)\), making \[\det(A) = (1 \cdot 1 \cdot 1 \cdot 1) \cdot (1 \cdot (-1) \cdot 2 \cdot 1) = -2.\]
 
-		      \item Using the LU factors obtained in (b), find the last column of the inverse of \(A\), without computing the whole inverse.
+		      \item Using the LU factors obtained in (b), find the last column of the inverse of \(A\), without computing the whole inverse. \n\\
+		            First note that \((L^{-1})_{:,n} = e_n\), so the only nonzero value of \((L^{-1})_{:,n}\) is \((L^{-1})_{n,n} = 1\),
+		            \[(A^{-1})_{:,n} = \sum_{k=1}^n (U^{-1})_{:,k}(L^{-1})_{k,n} = (U^{-1})_{:,n}\]
+		            Since \(U\) is upper-triangular, finding the \((U^{-1})_{:,n}\) can be done relatively quickly:
+		            \begin{align*}
+			            (U \mid I) & = \left(\begin{array}{rrrr|rrrr}
+					                                 1 & -2 & -1 & 0  & 1 & 0 & 0 & 0 \\
+					                                 0 & -1 & 0  & 1  & 0 & 1 & 0 & 0 \\
+					                                 0 & 0  & 2  & -2 & 0 & 0 & 1 & 0 \\
+					                                 0 & 0  & 0  & 1  & 0 & 0 & 0 & 1 \\
+				                                 \end{array}\right)
+			                       & \to                                 &
+			            \left(\begin{array}{rrrr|rrrr}
+					                  1 & -2 & -1 & 0  & 1 & 0  & 0       & 0 \\
+					                  0 & 1  & 0  & -1 & 0 & -1 & 0       & 0 \\
+					                  0 & 0  & 1  & -1 & 0 & 0  & \frac12 & 0 \\
+					                  0 & 0  & 0  & 1  & 0 & 0  & 0       & 1 \\
+				                  \end{array}\right)         \\
+			                       & \to
+			            \left(\begin{array}{rrrr|rrrr}
+					                  1 & -2 & -1 & 0 & 1 & 0  & 0       & 0 \\
+					                  0 & 1  & 0  & 0 & 0 & -1 & 0       & 1 \\
+					                  0 & 0  & 1  & 0 & 0 & 0  & \frac12 & 1 \\
+					                  0 & 0  & 0  & 1 & 0 & 0  & 0       & 1 \\
+				                  \end{array}\right)
+			                       & \to                                 &
+			            \left(\begin{array}{rrrr|rrrr}
+					                  1 & -2 & 0 & 0 & 1 & 0  & \frac12 & 1 \\
+					                  0 & 1  & 0 & 0 & 0 & -1 & 0       & 1 \\
+					                  0 & 0  & 1 & 0 & 0 & 0  & \frac12 & 1 \\
+					                  0 & 0  & 0 & 1 & 0 & 0  & 0       & 1 \\
+				                  \end{array}\right)           \\
+			                       & \to
+			            \left(\begin{array}{rrrr|rrrr}
+					                  1 & 0 & 0 & 0 & 1 & -2 & \frac12 & 3 \\
+					                  0 & 1 & 0 & 0 & 0 & -1 & 0       & 1 \\
+					                  0 & 0 & 1 & 0 & 0 & 0  & \frac12 & 1 \\
+					                  0 & 0 & 0 & 1 & 0 & 0  & 0       & 1 \\
+				                  \end{array}\right)
+			                       & \to                                 &
+			            \;\;U^{-1} =
+			            \begin{pmatrix*}[r]
+				            1 & -2 & \frac12 & 3 \\
+				            0 & -1 & 0   & 1 \\
+				            0 & 0  & \frac12 & 1 \\
+				            0 & 0  & 0   & 1 \\
+			            \end{pmatrix*}
+		            \end{align*}
+		            So we can see that \((A^{-1})_{:,4} = (U^{-1})_{:,4} = (3,1,1,1)^T\).
 	      \end{enumerate}
 
 	\item Let \(A = LU\) be the LU factorization of \(A \in \R^{n \times n}\), with \(|\ell_{i,j}| \leq 1\).  Verify the equation:
 	      \[u_{i,:} = a_{i,:} - \sum_{j=1}^{i-1} \ell_{i,j}u_{j,:},\]
 	      Then use this relation to show that \(\lVert U \rVert_\infty \leq 2^{n-1} \lVert A \rVert_\infty\).
 
+	      \begin{proof}
+		      First, we can acquire this equation for \(a_{i,:}\) by noting that \(\ell_{i,j} = 0\) for all \(j>i\):
+		      \[a_{i,:} = (\ell u)_{i,:} = \sum_{j=1}^n \ell_{i,j}u_{j,:} = \sum_{j=1}^i \ell_{i,j}u_{j,:},\]
+		      plugging this into the right-hand side of the equality we wish to prove, we see
+		      \[a_{i,:} - \sum_{j=1}^{i-1} \ell_{i,j}u_{j,:} = \sum_{j=1}^i \ell_{i,j}u_{j,:} - \sum_{j=1}^{i-1} \ell_{i,j}u_{j,:} = \ell_{i,i}u_{i,:} = 1 \cdot u_{i,:} = u_{i,:}.\]
+
+
+		      To show \(\lVert U \rVert_\infty \leq 2^{n-1}\lVert A \rVert_\infty\) we proceed inductively.
+
+		      Let \(i_0\) be the index of the the maximum row of \(U\), that is, \(\lVert U \rVert_\infty = \max_i \lVert u_{i,:} \rVert_1 = \lVert u_{i_0,:} \rVert_1\).  If \(i_0 = 1\), then clearly \(\lVert U \rVert_\infty = \lVert u_{1,:} \rVert_1 = \lVert a_{1,:} \rVert_1 \leq \lVert A \rVert_\infty \leq 2^{n-1}\lVert A \rVert_\infty\).
+
+		      Now, suppose for all \(k \geq 2\), \(\lVert u_{k,:} \rVert_1 \leq 2^{k-1}\lVert A \rVert_\infty\), we show \(\lVert u_{k+1,:} \rVert_1 \leq 2^k \lVert A \rVert_\infty.\)
+
+		      \begin{align*}
+			      \lVert u_{k+1,:} \rVert_1 & = \left\lVert a_{k+1,:} - \sum_{j=1}^k \ell_{k+1,j} u_{j,:} \right\rVert_1                                              & (\text{derived above})                             \\
+			                                & \leq \lVert a_{k+1,:} \rVert_1 + \sum_{j=1}^k \lVert u_{j,:} \rVert_1                                                   & (\text{triangle inequality})                       \\
+			                                & \leq \lVert A \rVert_\infty + \lVert u_{1,:} \rVert_1 + \lVert u_{2,:} \rVert_1 + \dots + \lVert u_{k,:} \rVert_1       & (\text{definition of } \lVert \cdot \rVert_\infty) \\
+			                                & \leq \lVert A \rVert_\infty + \lVert A \rVert_\infty + 2\lVert A \rVert_\infty + \dots + 2^{k-1}\lVert A  \rVert_\infty & (\text{inductive hypothesis})                      \\
+			                                & = 2\lVert A \rVert_\infty + 2\lVert A \rVert_\infty + \dots + 2^{k-1}\lVert A \rVert_\infty                             & (\text{merge first 2 terms})                       \\
+			                                & = 2\lVert A \rVert_\infty \left( 1 + 1 + 2 + 4 + \dots + 2^{k-2}\right)                                                 & (\text{pull out } 2 \lVert A \rVert_\infty)        \\
+			                                & = 2 \cdot 2^{k-1} \lVert A \rVert_\infty                                                                                & (\text{obvious in binary})                         \\
+			                                & = 2^k \lVert A \rVert_\infty.                                                                                           &
+		      \end{align*}
+		      Since \(\lVert u_{i,:} \rVert_1 \leq 2^{i-1} \lVert A \rVert_\infty\) for all rows \(i\), and the largest possible value for \(i\) is \(n\), we can conclude \(\lVert U \rVert_\infty \leq 2^{n-1}\lVert A \rVert_\infty\) by the principle of strong mathematical induction.
+	      \end{proof}
+
+
 	\item For the following matrix:
 	      \[A =
-		      \begin{pmatrix}
+		      \begin{pmatrix*}[r]
 			      1 & -1 & 1 \\
 			      0 & 4  & 2 \\
 			      6 & 2  & 0
-		      \end{pmatrix}
+		      \end{pmatrix*}
 	      \]
 	      \begin{enumerate}
-		      \item Determine the standard LU factorization of the matrix on the right.
+		      \item Determine the standard LU factorization of the matrix.
+		            \begin{align*}
+			            M_1 A                & =
+			            \begin{pmatrix*}[r]
+				            1  & 0 & 0 \\
+				            0  & 1 & 0 \\
+				            -6 & 0 & 1
+			            \end{pmatrix*}
+			            \begin{pmatrix*}[r]
+				            1 & -1 & 1 \\
+				            0 & 4  & 2 \\
+				            6 & 2  & 0
+			            \end{pmatrix*}
+			                                 & = &
+			            \begin{pmatrix*}[r]
+				            1 & -1 & 1  \\
+				            0 & 4  & 2  \\
+				            0 & 8  & -6
+			            \end{pmatrix*}         \\
+			            L^{-1} A = M_2 M_1 A & =
+			            \begin{pmatrix*}[r]
+				            1 & 0  & 0 \\
+				            0 & 1  & 0 \\
+				            0 & -2 & 1
+			            \end{pmatrix*}
+			            \begin{pmatrix*}[r]
+				            1  & 0 & 0 \\
+				            0  & 1 & 0 \\
+				            -6 & 0 & 1
+			            \end{pmatrix*}
+			            \begin{pmatrix*}[r]
+				            1 & -1 & 1 \\
+				            0 & 4  & 2 \\
+				            6 & 2  & 0
+			            \end{pmatrix*}
+			                                 & = &
+			            \begin{pmatrix*}[r]
+				            1 & -1 & 1   \\
+				            0 & 4  & 2   \\
+				            0 & 0  & -10
+			            \end{pmatrix*}
+			            = U
+		            \end{align*}
+
+		            \[
+			            L =
+			            \begin{pmatrix*}[r]
+				            1  & 0  & 0 \\
+				            0  & 1  & 0 \\
+				            -6 & -2 & 1
+			            \end{pmatrix*}^{-1}
+			            =
+			            \begin{pmatrix*}[r]
+				            1 & 0 & 0 \\
+				            0 & 1 & 0 \\
+				            6 & 2 & 1
+			            \end{pmatrix*}, \;\;
+			            U =
+			            \begin{pmatrix*}[r]
+				            1 & -1 & 1   \\
+				            0 & 4  & 2   \\
+				            0 & 0  & -10
+			            \end{pmatrix*}.
+		            \]
 
 		      \item Compute the determinant of \(A\).
+		            \[\det(A) \;=\; \det(L)\det(U) \;=\; (1 \cdot 1 \cdot 1) \cdot (1 \cdot 4 \cdot -10) \;=\; -40.\]
 
 		      \item Compute the first column of the inverse of \(A\)
+		            \begin{align*}
+			            \left(\begin{array}{rrr|rrr}
+					                  1 & -1 & 1   & 1 & 0 & 0 \\
+					                  0 & 4  & 2   & 0 & 1 & 0 \\
+					                  0 & 0  & -10 & 0 & 0 & 1 \\
+				                  \end{array}\right)
+			             & \to
+			            \left(\begin{array}{rrr|rrr}
+					                  1 & -1 & 1       & 1 & 0       & 0             \\
+					                  0 & 1  & \frac12 & 0 & \frac14 & 0             \\
+					                  0 & 0  & 1       & 0 & 0       & \frac{-1}{10} \\
+				                  \end{array}\right)
+			             & \to &
+			            \left(\begin{array}{rrr|rrr}
+					                  1 & -1 & 0 & 1 & 0       & \frac{1}{10}  \\
+					                  0 & 1  & 0 & 0 & \frac14 & \frac{1}{20}  \\
+					                  0 & 0  & 1 & 0 & 0       & \frac{-1}{10} \\
+				                  \end{array}\right) \\
+			             & \to
+			            \left(\begin{array}{rrr|rrr}
+					                  1 & 0 & 0 & 1 & \frac14 & \frac{3}{20}  \\
+					                  0 & 1 & 0 & 0 & \frac14 & \frac{1}{20}  \\
+					                  0 & 0 & 1 & 0 & 0       & \frac{-1}{10} \\
+				                  \end{array}\right)
+			             & \to & \;\; U^{-1} =
+			            \left(\begin{array}{rrr}
+					                  1 & \frac14 & \frac{3}{20}  \\
+					                  0 & \frac14 & \frac{1}{20}  \\
+					                  0 & 0       & \frac{-1}{10} \\
+				                  \end{array}\right)
+		            \end{align*}
+		            Unlike 1(c), we must now calculate the first column of \(A^{-1}\).  Since \((L^{-1})_{:,1} = (1,0,-6)^T\), we can get \((A^{-1})_{:,1}\) by taking
+		            \[(A^{-1})_{:,1} = \sum_{k=1}^3 (U^{-1})_{:,k} (L^{-1})_{k,1} =  1 \cdot (1,0,0)^T - 6 \cdot \left(\tfrac{3}{20}, \tfrac{1}{20}, \tfrac{-1}{10}\right)^T = \left(\tfrac{1}{10}, \tfrac{-3}{10}, \tfrac35\right)^T.\]
+
 
 		      \item Repeat the above questions when partial pivoting is used, i.e. find the permutation matrix \(P\) and the matrices \(L,U\) such that \(PA = LU\).  Compute the determinant of \(A\) based on this factorization, and compute the first column of the inverse of \(A\), based on this factorization.
 	      \end{enumerate}
@@ -82,16 +353,15 @@
 		      \item Explain how you would compute the inverse of a matrix using the Gauss-Jordan algorithm.  Apply this method and the scripts you developed in (b) and (c) to compute the inverse of the \(4 \times 4\) matrix \(A\) of question 1.
 	      \end{enumerate}
 
-	\item For the matrix
-	      \[A =
-		      \begin{pmatrix}
-			      -1 & 2  & 1 \\
-			      0  & 0  & 0 \\
-			      -2 & 3  & 0 \\
-			      1  & -1 & 1 \\
-			      2  & -1 & 4
-		      \end{pmatrix},
-	      \]
-	      find the singular values of \(A\).  What is the nuclear norm of \(A\)?  What is the Schatten 3-norm?  From the singular values, what can you say about the determinant of \(A^TA\)?
+	\item (Matlab) Consider the polynomial
+	      \[p(x) = (x-2)^9 = x^9 - 18x^8 + 144x^7 - 672x^6 + 2016x^5 - 4032x^4 + 5376x^3 - 4608x^2 + 2304x -512.\]
+	      \begin{enumerate}
+		      \item Plot \(p(x)\)  for \verb!x = [1.93:0.005:2.07]! using the expanded monomial formula given above.
+
+		      \item On the same figure, produce another plot of \(p(x)\) with the same points, but now using the original expression \((x-2)^9\).
+
+		      \item Coment on what you observe.  Specifically why is one of the methods much less accurate than the other?
+	      \end{enumerate}
 \end{enumerate}
+
 \end{document}
