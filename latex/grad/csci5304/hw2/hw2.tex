@@ -9,6 +9,7 @@
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{mathtools}
+\usepackage{subfigure}
 \usepackage{tikz}
 \usepackage[top=1.5cm,bottom=2cm,left=1.25cm,right=1.75cm,marginparwidth=1.75cm]{geometry}
 \setlength{\parindent}{0cm}
@@ -510,65 +511,44 @@
 		            Show how you can practically store all the matrices \(M_1, M_2, \dots, M_n\) in a single \(n \times n\) array.  Write a `Gauss-Jordan factorization' script which produces the diagonal \(D\) as a vector and the matrices \(M_1, \dots, M_n\) stored as just specified. \n\\
 		            In the case of Gauss-Jordan elimination, the \(M_k\) matrices do not produce a lower triangular matrix when multiplied together.  The reason they do for normal Gaussian elimination is because for each subsequent step in the elimination process, we only ever need to augment the pivot row onto all the rows below, but in the case of Gauss-Jordan elimination, we need to augment the pivot row onto the rows above as well.  You can refer to (a) above to see why these matrix multiplications produce a diagonal matrix. \n
 
-		            Each matrix \(M_i\) just looks like \(I - u_ke_k^T\), which only contains \(n-1\) unique values, so in order to make matrix \(M\) we can just leave 1s on the diagonal, and for all other \(m_{ik}\), just let \(m_{ik} = (M_k)_{ik}\).  For \(D\), we can just let \(d_k = (A_{k-1})_{kk}\).  You can see the script on the next page.
+		            Each matrix \(M_i\) just looks like \(I - u_ke_k^T\), which only contains \(n-1\) unique values, so in order to make matrix \(M\) we can just leave 1s on the diagonal, and for all other \(m_{ik}\), just let \(m_{ik} = (M_k)_{ik}\).  For \(D\), we can just let \(d_k = (A_{k-1})_{kk}\).  You can see the script on the next page below (c).
 		            \newpage
-		            \begin{verbatim}
-using LinearAlgebra
-
-function gauss_jordan(A)
-    A = float.(A)
-    n, _ = size(A)
-    M = Matrix{Float64}(I,n,n)
-    d = [0.0 for i=1:n]
-
-    for k=1:n
-        for i=1:n
-        i==k && continue
-        piv = A[i,k] / A[k,k]
-        for j=k+1:n
-            A[i,j] = A[i,j] - piv * A[k,j]
-        end
-        M[i,k] = -piv
-        d[k] = A[k,k]
-        end
-    end
-
-    M, d
-end
-		            \end{verbatim}
 
 		      \item Recall that the LU factorization can help solve several linear systems with the same matrix \(A\).  How would you exploit the output of the factorization described in (b) for the same task?  Write a matlab script that uses this output to solve \(p\) linear systems with \(A\) when the right-hand sides are stored in \(B_{n \times p}\). \n\\
-		            First, note that since \(M_n M_{n-1} \cdots M_1 A = D\), so \(A = M_1^{-1}M_2^{-1} \cdots M_n^{-1} D\), meaning:
+		            First, note that \(M_n M_{n-1} \cdots M_1 A = D\) means that \(A = M_1^{-1}M_2^{-1} \cdots M_n^{-1} D\), so
 		            \[Ax = b \implies M_1^{-1}M_2^{-1} \cdots M_n^{-1} Dx = b \implies Dx = M_n M_{n-1} \cdots M_1 b.\]
-		            For each of the \(p\) columns of \(B\), we can calculate the corresponding \(x\) by going through each column of \(M\).  For column \(m_{:,k}\), let \(b_i = b_i + m_{ik} \cdot b_k\) for \(i \neq k\), this has the same effect as taking \(M_i b\).  If we do this in order (1 \(\to\) n), it results in \(M_n M_{n-1} \cdots M_1 b\).  After that we just need to scale by \(1/d_i\) for each \(b_i\) to get \(x\).  You can find this algorithm on the next page.
-		            \newpage
+		            For each of the \(p\) columns of \(B\), we can calculate the corresponding \(x\) by going through each column of \(M\).  For column \(m_{:,k}\), let \(b_i = b_i + m_{ik} \cdot b_k\) for \(i \neq k\), this has the same effect as taking \(M_i b\).  If we do this in order (1 \(\to\) n), it results in \(M_n M_{n-1} \cdots M_1 b\).  After that we just need to scale by \(1/d_i\) for each \(b_i\) to get \(x\).  Algorithm below,
+
 		            \begin{verbatim}
-function linear_systems(A, B)
-  B = B[:,:]
-  M, d = gauss_jordan(A)
-  n, p = size(B)
-  X = zeros(n,p)
-
-  for pp=1:p 
-    b = float.(B[:,pp])
-    for k=1:n 
-      for i=1:n 
-        i==k && continue
-        b[i] = b[i] + M[i,k] * b[k]
-      end
-    end
-
-    for j=1:n
-      X[j,pp] = b[j] / d[j]
-    end
-  end
-
-  X
-end
-                \end{verbatim}
+(c)                                           (d)
+using LinearAlgebra                           function linear_systems(A, B)
+                                                B = B[:,:]
+function gauss_jordan(A)                        M, d = gauss_jordan(A)
+  A = float.(A)                                 n, p = size(B)
+  n, _ = size(A)                                X = zeros(n,p)
+  M = Matrix{Float64}(I,n,n)                
+  d = [0.0 for i=1:n]                           for pp=1:p 
+                                                  b = float.(B[:,pp])
+  for k=1:n                                       for k=1:n 
+    for i=1:n                                       for i=1:n 
+      i==k && continue                                i==k && continue
+      piv = A[i,k] / A[k,k]                           b[i] = b[i] + M[i,k] * b[k]
+      for j=k+1:n                                   end
+        A[i,j] = A[i,j] - piv * A[k,j]            end
+      end                                   
+      M[i,k] = piv                                for j=1:n
+      d[k] = A[k,k]                                 X[j,pp] = b[j] / d[j]
+    end                                           end
+  end                                           end
+                                            
+  M, d                                          X
+end                                           end
+		            \end{verbatim}
 
 		      \item Explain how you would compute the inverse of a matrix using the Gauss-Jordan algorithm.  Apply this method and the scripts you developed in (b) and (c) to compute the inverse of the \(4 \times 4\) matrix \(A\) of question 1. \n\\
 		            In order to calculate the inverse of a matrix using the \verb!linear_systems! equation, you can simply pass the matrix you want to take the inverse of as the first parameter, and the \(n \times n\) identity matrix as the second. \n
+
+		            This works because if we want to find an \(x_i\) such that \(Ax = e_i\), then we know that augmenting all these \(x_i\) columns in order and multiplying by \(A\) will produce a matrix of all the \(e_i\) columns augmented in order.  This result is exactly \(I_n\), so we know \(A (x_1 x_2 \cdots x_n) = I \to (x_1 x_2 \cdots x_n) - A^{-1}\). \n
 
 		            \includegraphics[height=1.5in]{matrix.png}
 		            \includegraphics[height=1.5in]{inverse.png}
