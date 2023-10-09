@@ -520,7 +520,7 @@
 		            For each of the \(p\) columns of \(B\), we can calculate the corresponding \(x\) by going through each column of \(M\).  For column \(m_{:,k}\), let \(b_i = b_i + m_{ik} \cdot b_k\) for \(i \neq k\), this has the same effect as taking \(M_i b\).  If we do this in order (1 \(\to\) n), it results in \(M_n M_{n-1} \cdots M_1 b\).  After that we just need to scale by \(1/d_i\) for each \(b_i\) to get \(x\).  Algorithm below,
 
 		            \begin{verbatim}
-(c)                                           (d)
+(b)                                           (c)
 using LinearAlgebra                           function linear_systems(A, B)
                                                 B = B[:,:]
 function gauss_jordan(A)                        M, d = gauss_jordan(A)

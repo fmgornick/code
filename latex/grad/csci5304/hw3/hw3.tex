@@ -1,0 +1,86 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{blkarray}
+\usepackage{caption}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usepackage{subfigure}
+\usepackage{tikz}
+\usepackage[top=1.5cm,bottom=2cm,left=1.25cm,right=1.75cm,marginparwidth=1.75cm]{geometry}
+\setlength{\parindent}{0cm}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\n}{\vspace{0.3cm}}
+\newtheorem{theorem}{Theorem}
+
+\def\lc{\left\lceil}
+\def\rc{\right\rceil}
+\def\lf{\left\lfloor}
+\def\rf{\right\rfloor}
+
+\title{\vspace{-1.0cm}CSCI 5304 Homework 3}
+\author{Fletcher Gornick}
+\date{October 15}
+
+\begin{document}
+\maketitle
+\begin{enumerate}
+	\item Write a julia script that computes the LU factorization (without pivoting) of a matrix.  Test your algorithm on the matrix
+	      \[A = \left(\begin{array}{rrr} 2 & 3 & -1 \\ -4 & -5 & 0 \\ -2 & -4 & 6 \\ \end{array}\right).\]
+
+	\item Assume the IEEE standard for floating point arithmetic.  If you use the matlab command \verb!'num2hex'!, you will find that the IEEE hex representation of \(-6.0\) is
+	      \['c018000000000000'\]
+	      The exponent sign part is \('c01'\), and the matissa is \(8\) followed by 12 zeros.  Explain why you obtain this representation.  What is the internal representation of \(-6\) in single precision?
+
+	\item In this exercise we assume the IEEE standard for floating point arithmetic in double precision.  With respect to the earlier representation \(\beta = 2, t = 53\).
+	      \begin{enumerate}
+		      \item What is the largest valid floating point number represented by this system?
+		      \item What is the smallest valid positive floating point number?
+		      \item Not all positive integers are representaed exactly in this floating point system.  What is the smallesst (positive) integer that is not exactly represented?
+	      \end{enumerate}
+
+	\item Consider the linear system \(Ax = b\), where \(|\varepsilon| < 4\) and:
+	      \[
+		      A = \left(\begin{array}{cc} 1 & 2 \\ 2 & 4-\varepsilon \\ \end{array}\right), \quad
+		      b = \left(\begin{array}{c} 3 \\ 6-\varepsilon \end{array}\right).
+	      \]
+	      \begin{enumerate}
+		      \item Solve the above linear system by Gaussian elimination with partial pivoting.
+		      \item Now replace the \(6-\varepsilon\) in the right-hand side by 6 and solve the new system.  How does the result depend on \(\varepsilon\)?
+		      \item Verify (a) and (b) with the system you obtain when \(\varepsilon = 0.001\).
+		      \item What is the inverse of \(A\)?  What is the 1-norm condition number (assume \(\varepsilon < 3\))?  Can you explain what you observe based on your answer?
+	      \end{enumerate}
+
+	\item Consider the system
+	      \[
+		      Ax \equiv \left(\begin{array}{rr} -0.001 & 1.001 \\ 0.001 & -0.001 \\ \end{array}\right)
+		      \binom{x_1}{x_2} = \binom10 \equiv b
+	      \]
+	      whose solution is \(x_1 = x_2 = 1\), and the system
+	      \[(A + \Delta A)y = b + \Delta b\]
+	      where \(\Delta A = \varepsilon|A|, \; \Delta b = \varepsilon|b|\).  In the following, we let \(\varepsilon = 10^{-4}\). \n\\
+	      Compute \(\kappa_\infty(A)\).  Compute the actual value of \(\lVert x-y \rVert_\infty / \lVert x \rVert_\infty\) and it's estimate obtained from using the (standard) condition number \(\kappa_\infty\).
+
+	\item \begin{enumerate}
+		      \item Apply the julia script you developed in question 1 to obtain the LU factorization of the following \(n \times n\) matrix:
+		            \[A = \left(\begin{array}{rrrrrrr}
+					            1      & 0      & 0      & \hdots & 0      & 0      & 1      \\
+					            -1     & 1      & 0      & \hdots & 0      & 0      & 1      \\
+					            -1     & -1     & 1      & \hdots & 0      & 0      & 1      \\
+					            \vdots & \vdots & \vdots & \ddots & \vdots & \vdots & \vdots \\
+					            -1     & -1     & -1     & \hdots & 1      & 0      & 1      \\
+					            -1     & -1     & -1     & \hdots & -1     & 1      & 1      \\
+					            -1     & -1     & -1     & \hdots & -1     & -1     & 1      \\
+				            \end{array}\right)\]
+		      \item What can you say about \(\lVert U \rVert_\infty\) as a function of the size \(n\)?  How do you relate this result to question 2 of homework 2?
+		      \item Compute, for the case \(n=8\), the matrix \(128 * A^{-1}\) (in julia).  Can you tell what the inverse of \(A\) is in general (for any \(n\))?  Prove your result.  What is (exactly) the 1-norm condition number of \(A\) as a function of \(n\)?  Any comments?
+	      \end{enumerate}
+
+\end{enumerate}
+
+\end{document}
