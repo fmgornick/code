@@ -37,26 +37,26 @@
                                               |      
      function gauss_lu(A)                     |      julia> L
        n, _ = size(A)                         |      3×3 Matrix{Float64}:
-       L = Matrix{Float64}(I,n,n)             |        1.0   0.0        0.0
-       U = float.(A)                          |       -2.0   1.0        0.0
-                                              |       -1.0  -0.0909091  1.0
+       L = Matrix{Float64}(I,n,n)             |        1.0   0.0  0.0
+       U = float.(A)                          |       -2.0   1.0  0.0
+                                              |       -1.0  -1.0  1.0
        for k=1:n-1                            |      
          for i=k+1:n                          |      julia> U
            piv = U[i,k] / U[k,k]              |      3×3 Matrix{Float64}:
-           for j=k:n                          |       2.0   3.0  -1.0
-             U[i,j] = U[i,j] - piv * U[k,j]   |       0.0  11.0  -2.0
-           end                                |       0.0   0.0   4.81818
-           L[i,k] = piv                       |    
-         end                                  |       julia> L * U
-       end                                    |       3×3 Matrix{Float64}:
-                                              |         2.0   3.0  -1.0
-       L, U                                   |        -4.0   5.0   0.0
-     end                                      |        -2.0  -4.0   6.0
+           for j=k:n                          |       2.0  3.0  -1.0
+             U[i,j] = U[i,j] - piv * U[k,j]   |       0.0  1.0  -2.0
+           end                                |       0.0  0.0   3.0
+           L[i,k] = piv                       |      
+         end                                  |      julia> L * U
+       end                                    |      3×3 Matrix{Float64}:
+                                              |        2.0   3.0  -1.0
+       L, U                                   |       -4.0  -5.0   0.0
+     end                                      |       -2.0  -4.0   6.0
         \end{verbatim}
 
 	\item Assume the IEEE standard for floating point arithmetic.  If you use the matlab command \verb!'num2hex'!, you will find that the IEEE hex representation of \(-6.0\) is
-	      \['c018000000000000'\]
-	      The exponent sign part is \('c01'\), and the matissa is \(8\) followed by 12 zeros.  Explain why you obtain this representation.  What is the internal representation of \(-6\) in single precision?
+	      \[\verb!c018 0000 0000 0000!\]
+	      The exponent + sign part is \verb!c01!, and the matissa is \(8\) followed by 12 zeros.  Explain why you obtain this representation.  What is the internal representation of \(-6\) in single precision?
 	      \[b(x) = \overbrace{\underset{b_{63}}1}^{\text{sign}} \;\; \overbrace{\underset{b_{62}}1 00 \;\; 0000 \;\; 000 \underset{b_{52}}1}^{\text{exponent}} \;\; \overbrace{\underset{b_{51}}1 000 \;\; 0000 \;\;\hdots \;\; 000 \underset{b_0}0}^{\text{mantissa}}\]
 	      Since the sign bit is set, we know \(x\) must be negative. \n
 
@@ -71,13 +71,33 @@
 		      \item \(2^2 = 2^{129-127}\), so \(e = 129 = 128 = 2^7 + 2^0\), meaning our exponent bits should look like \(1000\;0001\).
 		      \item we still only want the most significant bit set for our mantissa in order to get 1.5, so \(b_{22} = 1\), while the rest are 0.
 	      \end{itemize}
-	      \['c0c00000' \;=\; 1100\;0000\;1100\;0000\;0000\;0000\;0000\;0000 \;=\; -6.\]
+	      \[\verb!c0c0 0000! \;=\; 1100\;0000\;1100\;0000\;0000\;0000\;0000\;0000 \;=\; -6.\]
 
 	\item In this exercise we assume the IEEE standard for floating point arithmetic in double precision.  With respect to the earlier representation \(\beta = 2, t = 53\).
 	      \begin{enumerate}
-		      \item What is the largest valid floating point number represented by this system?
-		      \item What is the smallest valid positive floating point number?
+		      \item What is the largest valid floating point number represented by this system? \n\\
+		            To get this number, we wan't all the mantissa bits set as well as all the exponent bits.  The only bit that shouldn't be set is the sign bit.  But in the IEEE floating point standard, a value of \verb!7ff! for the exponent bits represent \(\pm \infty\), so we actually need 1 less than that to get the largest possible float.
+		            \[\verb!7fef ffff ffff ffff! = 2^{2047-1023} \cdot (2^0 + 2^{-1} + \dots + 2^{-52}) \approx 2^{1024} \approx 1.797693134 \times 10^{308}.\]
+
+		      \item What is the smallest valid positive floating point number? \n\\
+		            This time, we want none of the exponent or mantiassa bits set to get the smallest positive double.  But again, IEEE assigns meaning to exponent bits \verb!000!, so we must instead use \verb!001!:
+		            \[\verb!0010 0000 0000 0000! = 2^{1-1023} \cdot 2^0 \approx 2.2250738585072 \times 10^{-308}.\]
+
 		      \item Not all positive integers are representaed exactly in this floating point system.  What is the smallesst (positive) integer that is not exactly represented?
+		            \begin{align*}
+			            1 & = 2^0 = 2^0 \cdot 2^0           & = \mathtt{3ff0\;0000\;0000\;0000} \\
+			            2 & = 2^0 = 2^1 \cdot 2^0           & = \mathtt{4000\;0000\;0000\;0000} \\
+			            3 & = 2 + 1 = 2^1 (2^0 + 2^{-1})    & = \mathtt{4008\;0000\;0000\;0000} \\
+			            4 & = 2^2 = 2^2 \cdot 2^0           & = \mathtt{4010\;0000\;0000\;0000} \\
+			            5 & = 2^2 + 1 =  2^2 (2^0 + 2^{-2}) & = \mathtt{4012\;0000\;0000\;0000} \\
+			            \vdots
+		            \end{align*}
+		            It's clear that once we get to numbers larger than \(2^{53}\), we can no longer go up in increments of 1 exactly.
+		            \begin{align*}
+			            2^{53}   & = 2^{53} \cdot 2^0       & = \mathtt{4340\;0000\;0000\;0000} \\
+			            2^{53}+1 & = 2^{53} (2^0 + 2^{-53}) & = \mathtt{?}
+		            \end{align*}
+		            But since our mantissa can only go down to \(2^{-52}\), we see that \(2^{53}+1\) cannot be exactly represented.
 	      \end{enumerate}
 
 	\item Consider the linear system \(Ax = b\), where \(|\varepsilon| < 4\) and:
