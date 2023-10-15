@@ -107,7 +107,37 @@
 	      \]
 	      \begin{enumerate}
 		      \item Solve the above linear system by Gaussian elimination with partial pivoting.
+		            \[
+			            \left(\begin{array}{rr|r}
+					            1 & 2             & 3             \\
+					            2 & 4-\varepsilon & 6-\varepsilon \\
+				            \end{array}\right)
+			            =
+			            \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}
+			            \left(\begin{array}{rr|r}
+					            2 & 4-\varepsilon & 6-\varepsilon \\
+					            1 & 2             & 3             \\
+				            \end{array}\right)
+			            =
+			            \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}
+			            \begin{pmatrix} 1 & 0 \\ \tfrac12 & 1 \end{pmatrix}
+			            \left(\begin{array}{rr|r}
+					            2 & 4-\varepsilon      & 6-\varepsilon      \\
+					            0 & \tfrac\varepsilon2 & \tfrac\varepsilon2 \\
+				            \end{array}\right)
+		            \]
+		            It's clear that (without row-swapping) \(\tilde{x_2}=1\).  Now \(2\tilde{x_1} + 4-\varepsilon \cdot 1 = 6 - \varepsilon \implies \tilde{x_1}=1\), so \(x = E_{1,2}\tilde{x} = E_{1,2}(1,1)^T = (1,1)^T\). \n
+
 		      \item Now replace the \(6-\varepsilon\) in the right-hand side by 6 and solve the new system.  How does the result depend on \(\varepsilon\)?
+		            \[
+			            \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}
+			            \begin{pmatrix} 1 & 0 \\ \tfrac12 & 1 \end{pmatrix}
+			            \left(\begin{array}{rr|r}
+					            2 & 4-\varepsilon      & 6 \\
+					            0 & \tfrac\varepsilon2 & 0 \\
+				            \end{array}\right)
+		            \]
+
 		      \item Verify (a) and (b) with the system you obtain when \(\varepsilon = 0.001\).
 		      \item What is the inverse of \(A\)?  What is the 1-norm condition number (assume \(\varepsilon < 3\))?  Can you explain what you observe based on your answer?
 	      \end{enumerate}
