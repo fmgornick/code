@@ -112,34 +112,105 @@
 					            1 & 2             & 3             \\
 					            2 & 4-\varepsilon & 6-\varepsilon \\
 				            \end{array}\right)
-			            =
-			            \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}
+			            \to
 			            \left(\begin{array}{rr|r}
 					            2 & 4-\varepsilon & 6-\varepsilon \\
 					            1 & 2             & 3             \\
 				            \end{array}\right)
-			            =
-			            \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}
-			            \begin{pmatrix} 1 & 0 \\ \tfrac12 & 1 \end{pmatrix}
+			            \to
 			            \left(\begin{array}{rr|r}
 					            2 & 4-\varepsilon      & 6-\varepsilon      \\
 					            0 & \tfrac\varepsilon2 & \tfrac\varepsilon2 \\
 				            \end{array}\right)
+			            \implies
+			            \begin{array}{c}
+				            x_1 = 1 \\
+				            x_2 = 1 \\
+			            \end{array}
 		            \]
-		            It's clear that (without row-swapping) \(\tilde{x_2}=1\).  Now \(2\tilde{x_1} + 4-\varepsilon \cdot 1 = 6 - \varepsilon \implies \tilde{x_1}=1\), so \(x = E_{1,2}\tilde{x} = E_{1,2}(1,1)^T = (1,1)^T\). \n
+		            The last part follows from simple back-substitution, so \(x = (1,1)^T\) \n
 
 		      \item Now replace the \(6-\varepsilon\) in the right-hand side by 6 and solve the new system.  How does the result depend on \(\varepsilon\)?
 		            \[
-			            \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}
-			            \begin{pmatrix} 1 & 0 \\ \tfrac12 & 1 \end{pmatrix}
+			            \left(\begin{array}{rr|r}
+					            1 & 2             & 3 \\
+					            2 & 4-\varepsilon & 6 \\
+				            \end{array}\right)
+			            \to
+			            \left(\begin{array}{rr|r}
+					            2 & 4-\varepsilon & 6 \\
+					            1 & 2             & 3 \\
+				            \end{array}\right)
+			            \to
 			            \left(\begin{array}{rr|r}
 					            2 & 4-\varepsilon      & 6 \\
 					            0 & \tfrac\varepsilon2 & 0 \\
 				            \end{array}\right)
+			            \implies
+			            \begin{array}{c}
+				            x_1 = 3 \\
+				            x_2 = 0 \\
+			            \end{array}
 		            \]
+		            Again, using back-substitution, we get \(x = (3,0)^T\).  So it look like \(x\) doesn't depend on \(\varepsilon\) at all. \n
 
 		      \item Verify (a) and (b) with the system you obtain when \(\varepsilon = 0.001\).
+		            \begin{align*}
+			                     & \left(\begin{array}{cc}
+					                             1 & 2       \\
+					                             2 & 4-0.001 \\
+				                             \end{array}\right)
+			            \binom11 &
+			            =        & \binom{1+2}{2+4-0.001}  &
+			            =        & \binom{3}{6-0.001}      & \\
+			                     & \left(\begin{array}{cc}
+					                             1 & 2       \\
+					                             2 & 4-0.001 \\
+				                             \end{array}\right)
+			            \binom30 &
+			            =        & \binom{3}{3 \cdot 2}    &
+			            =        & \binom{3}{6}            &
+		            \end{align*}
 		      \item What is the inverse of \(A\)?  What is the 1-norm condition number (assume \(\varepsilon < 3\))?  Can you explain what you observe based on your answer?
+		            \[
+			            \left(\begin{array}{rr|rr}
+					            1 & 2             & 1 & 0 \\
+					            2 & 4-\varepsilon & 0 & 1 \\
+				            \end{array}\right)
+			            \to
+			            \left(\begin{array}{rr|rr}
+					            1 & 2            & 1  & 0 \\
+					            0 & -\varepsilon & -2 & 1 \\
+				            \end{array}\right)
+			            \to
+			            \left(\begin{array}{rr|rr}
+					            1 & 2 & 1                  & 0                   \\
+					            0 & 1 & \tfrac2\varepsilon & -\tfrac1\varepsilon \\
+				            \end{array}\right)
+			            \to
+			            \left(\begin{array}{rr|rr}
+					            1 & 0 & 1 - 4/\varepsilon & 2/\varepsilon  \\
+					            0 & 1 & 2/\varepsilon     & -1/\varepsilon \\
+				            \end{array}\right)
+		            \]
+		            This gives us the following matrix for \(A^{-1}\),
+		            \[
+			            A^{-1} \;=\;
+			            \left(\begin{array}{rr}
+					            1 - 4/\varepsilon & 2/\varepsilon  \\
+					            2/\varepsilon     & -1/\varepsilon \\
+				            \end{array}\right)
+			            \;=\;
+			            \frac1\varepsilon
+			            \left(\begin{array}{rr}
+					            \varepsilon - 4 & 2  \\
+					            2               & -1 \\
+				            \end{array}\right)
+		            \]
+		            Since the columns of \(A\) and \(\varepsilon A^{-1}\) both have the same sums (when taking the modulus), we know condition number \(\kappa(A) = \lVert A \rVert_1 \lVert A^{-1} \rVert_1 = \frac1\varepsilon \lVert A \rVert_1^2\). \n\\
+		            We know \(\varepsilon < 3\), so \(a_{:,2}\) must be the maximal column.  This gives us the following equation for \(\kappa\),
+		            \[\kappa(A) = \frac1\varepsilon \lVert A \rVert_1^2 = \frac1\varepsilon\left( |2| + |4 - \varepsilon| \right)^2 = \frac1\varepsilon(6-\varepsilon)^2 = \frac{36}\varepsilon - 12 + \varepsilon.\]
+		            It's clear from the above equation that, assuming \(\varepsilon > 0\), the condition number will blow up as \(\varepsilon\) approaches zero, so this matrix is very ill-conditioned for small values of \(\varepsilon\). \n
 	      \end{enumerate}
 
 	\item Consider the system
