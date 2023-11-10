@@ -194,8 +194,15 @@ Q3, R3 = cholQR(M)                       |    results[2,3] = norm(I[1:5,1:5] - Q
 
 	\item We saw in class that if \(w \in \R^n\) and \(\lVert w \rVert_2 = 1\), then the matrix \(P = I - 2ww^T\), called a Householder reflector, is at the same time symmetric and unitary.  Let \(x \in \R^n\), with \(x \neq 0\), and let \(y = Px\).
 	      \begin{enumerate}
-		      \item When do we have \(y = x\)?
-		      \item Assume now that \(w^T x > 0\).  Show that \(y \neq x\) and that \(w = (x-y)/\lVert x-y \rVert_2\).
+		      \item When do we have \(y = x\)? \n\\
+            When \(x\) is within the hyperplane span\(\{w\}^\perp\).  If \(x\) is already in this plane, then applying householder reflector \(P\) to \(x\) won't change anything.  So \(y = Px = x \iff (x,w) = 0\). \n
+            
+		      \item Assume now that \(w^T x > 0\).  Show that \(y \neq x\) and that \(w = (x-y)/\lVert x-y \rVert_2\). \n\\
+            First, it's clear to see that \(w^T x > 0 \iff y \neq x\):
+            \[x - y = x - Px = x - (I - ww^T)x = x - x + ww^T x = \alpha w \;\; (\alpha = w^T x > 0).\]
+            Since \(x - y \neq 0\), we know \(y \neq x\).  Now, to show \(w = (x-y)/\lVert x-y \rVert_2\), remember that \(w\) is a unit vectore, and \(\alpha > 0\) from above:
+            \[\frac{x-y}{\lVert x-y \rVert_2} = \frac{\alpha w}{\lVert \alpha w \rVert_2} = \frac{\alpha w}{|\alpha| \lVert w \rVert_2} \frac{w}{\lVert w \rVert_2} = w.\]
+            
 		      \item Show a geometric illustration of the result in (b).
 	      \end{enumerate}
 
