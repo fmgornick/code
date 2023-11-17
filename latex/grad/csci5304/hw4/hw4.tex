@@ -256,7 +256,7 @@ end                                               |     v, bet
                             Q, R
                           end
 \end{verbatim}
-    I used the above script to retrieve the QR factorization from our householder function, and from this, I got the following norms:
-    \[\lVert R_1 - R \rVert_2 = 2.7519 \times 10^{-14}, \quad \lVert I - Q^T Q \rVert_2 = 6.5811 \times 10^{-10} \quad \lVert I - Q_1^T Q_1 \rVert_2 = 7.2599 \times 10^{-16}\]
+    I used the above script to retrieve the QR factorization from our householder function, then got the thin decomposition by taking \(Q_1 = Q[:,1:n], \; R_1 = R[1:n,:]\).  From this, I got the following norms:
+    \[\lVert R_1 - R \rVert_2 = 2.7519 \times 10^{-14}, \quad \lVert I - Q^T Q \rVert_2 = 7.2599 \times 10^{-16} \quad \lVert I - Q_1^T Q_1 \rVert_2 = 3.2045 \times 10^{-16}.\]
 \end{enumerate}
 \end{document}
