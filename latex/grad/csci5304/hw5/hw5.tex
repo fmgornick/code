@@ -1,0 +1,121 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{blkarray}
+\usepackage{caption}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage[top=1.5cm,bottom=2cm,left=1.25cm,right=1.75cm,marginparwidth=1.75cm]{geometry}
+\setlength{\parindent}{0cm}
+
+\newcommand{\n}{\vspace{0.3cm}}
+\newtheorem{theorem}{Theorem}
+
+\def\lc{\left\lceil}
+\def\rc{\right\rceil}
+\def\lf{\left\lfloor}
+\def\rf{\right\rfloor}
+
+\newcommand{\C}{\mathbb{R}}
+\newcommand{\N}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{R}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{R}}
+
+\title{\vspace{-1.0cm}CSCI 5304 Homework 5}
+\author{Fletcher Gornick}
+
+\begin{document}
+\maketitle
+\begin{enumerate}
+	\item Let \(A\) be the matrix shown to the right.
+	      \begin{enumerate}
+		      \begin{minipage}{0.7\textwidth}
+			      \item What are the nonzero singular values of \(A\)?
+			      \item If \(A = U \Sigma V^T\) is the SVD of \(A\), what is the matrix \(V\)?  What is \(\Sigma\)?
+			      \item Find the first two columns of the matrix \(U\).
+		      \end{minipage}
+		      \begin{minipage}{0.3\textwidth}
+			      \(A = \left( \begin{array}{rr} -2 & 2 \\ 0 & 1 \\ 1 & 0 \\ 0 & 0 \end{array} \right)\)
+		      \end{minipage}
+		      \item Find the matrix of rank 1, that is the closest to \(A\) in the 2-norm sense, i.e. the matrix \(A_1\) which minimizes \(\lVert A - B \rVert_2\) over all \(4 \times 2\) matrices \(B\) that are of rank 1.
+	      \end{enumerate}
+
+	\item Consider the problem \(\min \; \lVert b - Ax \rVert_2\) in the situation where \(A\) is \(m \times n\) and \(m < n\) (`underdetermined' case).
+	      \begin{enumerate}
+		      \item Using what you've learned from the URV decomposition, find the set of *all* least-squares solutions.  Show that the least-squares solution \(x_*\) of smallest norm must belong to Ran\((A^T)\).  For the rest of the exercise assume \(A\) is of full rank.
+		      \item Find a method for computing \(x_*\) which involves a form of normal equations.
+		      \item Find a method for computing \(x_*\) which involves a QR factorization.
+		      \item Find a method for computing \(x_*\) based on the SVD.
+	      \end{enumerate}
+
+	\item Paul, Jane, and Ann, share information about their likes and dislikes of movies in order to make decisions about selecting films to see. They rates films they see with a scale of 0 to 10, (10 means they liked the movie very much). Here is the status of their table of ratings when Ann was interested in a new film which soon came to a ’theater near her’ (titled ’Title 6’ in the table):
+	      \begin{center}
+		      \begin{tabular}{|c|c|c|c|c|c|c|}
+			      \hline
+			           & Title 1 & Title 2 & Title 3 & Title 4 & Title 5 & Title 6 \\
+			      \hline
+			      Paul & 4       & 9       & 2       & 7       & 8       & 3       \\
+			      \hline
+			      Jane & 8       & 3       & 6       & 4       & 3       & 8       \\
+			      \hline
+			      Ann  & 4       & 8       & 1       & 4       & 6       & ?       \\
+			      \hline
+		      \end{tabular}
+	      \end{center}
+	      \begin{enumerate}
+		      \item\ [QR solution] Ann reasoned as follows: she will give the `similarity’ coefficients \(\alpha\) and \(\beta\) for Paul and Jane respectively.  If the missing rating (call it \(\delta\)) were known then the row of Ann’s ratings should be the closest in the least-squares sense to the row
+		      \[\alpha * (\text{Paul's ratings}) + \beta * (\text{Jane's ratings})\]
+		      Determine, \(\alpha\), \(\beta\) and the induced rating \(\delta\) for Ann for `Title 6'.  Is Ann’s taste closer to Paul’s or to Jane’s?
+
+		      \item\ [SVD solution] Ann reasoned as follows: Her score, say \(\delta\), for `Title 6' should be selected in such way that when added in the rank of the resulting matrix should be the smallest possible.  Instead of rank she uses the smallest singular value: the smallest singular value of the resulting matrix should be as small as possible.  By plotting the \color{red} smallest singular value \color{black} of the filled matrix against the score \(\delta\), determine the best score.
+	      \end{enumerate}
+
+	\item For any nonzero matrix \(A\), show that
+	      \begin{enumerate}
+		      \item \(AA^\dag v = v\) for any \(v\) in Ran(\(A\)).
+		      \item \(A^\dag x = 0\) for any \(x\) in Null(\(A^T\)).
+		      \item \((A^T)^\dag = (A^\dag)^T\).
+		      \item \((A^\dag)^\dag = A\).
+	      \end{enumerate}
+
+	\item Let \(A\) be a matrix with singular values \(\sigma_1 \geq \sigma_2 \geq \dots \geq \sigma_r > 0\), and \(E\) be a perturbation matrix such that \(\lVert E \rVert_2 < \sigma_r\).  Show that rank(\(A+E\)) \(\geq\) rank(\(A\)).
+
+	\item[9.] Apply Gershgorin’s theorem to find a domain where the eigenvalues of \(A\) are located for the following matrices
+		\[
+			A_1 = \left(\begin{array}{rrr} 1 & -1 & -1 \\ 1 & 2 & 3 \\ 2 & -4 & 1 \end{array}\right) \quad
+			A_2 = \left(\begin{array}{rrr} -i & 0 & i \\ 1 & 0 & 1 \\ 0 & 1+i & i \end{array}\right) \quad
+			A_3 = \left(\begin{array}{rrr} 1 & i & -i \\ -i & 2 & 0 \\ i & 0 & 3 \end{array}\right)
+		\]
+		The region (complex or real) you find should be the smallest possible that can be determined by using (the row version of) the Gershgorin theorem.
+
+	\item[10.] The matrix \(A\) shown on the right arises in boundary value problems with periodic boundary conditions.
+		\begin{enumerate}
+			\begin{minipage}{0.6\textwidth}
+				\item What is the inertia of this matrix?
+				\item What does Gershgorin’s theorem give for this matrix?
+				\item This matrix is almost tridiagonal.  Is this structure preserved by the QR algorithm?
+				\item Show a sequence of Givens rotations to transform this matrix into tridiagonal form (\(T = QAQ^T\) where \(Q\) is unitary, \(T\) is tri-diagonal).  What is the order of the number of operations required? Illustrate the process on a \(5 \times 5\) example (pattern only - no values).
+			\end{minipage}
+			\begin{minipage}{0.4\textwidth}
+				\(\;\;\left(\begin{array}{rrrrrr}
+						2      & -1     & 0      & \hdots & 0      & -1     \\
+						-1     & 2      & -1     & \hdots & -1     & 0      \\
+						0      & -1     & 2      & \hdots & 0      & -1     \\
+						\vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+						0      & -1     & \hdots & 2      & -1     & 0      \\
+						-1     & 0      & \hdots & -1     & 2      & -1     \\
+						0      & -1     & \hdots & 0      & -1     & 2      \\
+					\end{array}\right)\)
+			\end{minipage}
+		\end{enumerate}
+
+	\item[12.] Given a matrix \(X\) of size \(m \times n\) of full column rank, find the inertia of a matrix of the form
+		\[B = \begin{pmatrix} D & X \\ X^T & 0 \end{pmatrix}\]
+		where it is assumed that \(D\) is a diagonal matrix (of size \(m \times m\)) with positive diagonal entries.  Find the inertia when \(D\) is any nonsingular symmetric matrix (with say \(p\) positive eigenvalues and \(m-p\) negative eigenvalues) but \(X\) is an \(m \times m\) matrix (of full rank). Note: you can assume that \(D\) - is diagonal nonsingular with \(p\) positive entries on the diagonal.
+\end{enumerate}
+\end{document}
