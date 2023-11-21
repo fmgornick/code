@@ -195,21 +195,68 @@ Q3, R3 = cholQR(M)                       |    results[2,3] = norm(I[1:5,1:5] - Q
 	\item We saw in class that if \(w \in \R^n\) and \(\lVert w \rVert_2 = 1\), then the matrix \(P = I - 2ww^T\), called a Householder reflector, is at the same time symmetric and unitary.  Let \(x \in \R^n\), with \(x \neq 0\), and let \(y = Px\).
 	      \begin{enumerate}
 		      \item When do we have \(y = x\)? \n\\
-            When \(x\) is within the hyperplane span\(\{w\}^\perp\).  If \(x\) is already in this plane, then applying householder reflector \(P\) to \(x\) won't change anything.  So \(y = Px = x \iff (x,w) = 0\). \n
-            
+		            When \(x\) is within the hyperplane span\(\{w\}^\perp\).  If \(x\) is already in this plane, then applying householder reflector \(P\) to \(x\) won't change anything.  So \(y = Px = x \iff (x,w) = 0\). \n
+
 		      \item Assume now that \(w^T x > 0\).  Show that \(y \neq x\) and that \(w = (x-y)/\lVert x-y \rVert_2\). \n\\
-            First, it's clear to see that \(w^T x > 0 \iff y \neq x\):
-            \[x - y = x - Px = x - (I - ww^T)x = x - x + ww^T x = \alpha w \;\; (\alpha = w^T x > 0).\]
-            Since \(x - y \neq 0\), we know \(y \neq x\).  Now, to show \(w = (x-y)/\lVert x-y \rVert_2\), remember that \(w\) is a unit vectore, and \(\alpha > 0\) from above:
-            \[\frac{x-y}{\lVert x-y \rVert_2} = \frac{\alpha w}{\lVert \alpha w \rVert_2} = \frac{\alpha w}{|\alpha| \lVert w \rVert_2} \frac{w}{\lVert w \rVert_2} = w.\]
-            
-		      \item Show a geometric illustration of the result in (b).
+		            First, it's clear to see that \(w^T x > 0 \iff y \neq x\):
+		            \[x - y = x - Px = x - (I - ww^T)x = x - x + ww^T x = \alpha w \;\; (\alpha = w^T x > 0).\]
+		            Since \(x - y \neq 0\), we know \(y \neq x\).  Now, to show \(w = (x-y)/\lVert x-y \rVert_2\), remember that \(w\) is a unit vectore, and \(\alpha > 0\) from above:
+		            \[\frac{x-y}{\lVert x-y \rVert_2} = \frac{\alpha w}{\lVert \alpha w \rVert_2} = \frac{\alpha w}{|\alpha| \lVert w \rVert_2} \frac{w}{\lVert w \rVert_2} = w.\]
+
+		      \item Show a geometric illustration of the result in (b). \\
+		            \includegraphics[width=\textwidth]{householder.png}
 	      \end{enumerate}
 
 	\item Implement a julia function which computes the Householder QR factorization of a full rank matrix \(A\).  The function should look like:
 	      \[\verb!V, bet = houseQR(A)!\]
-	      where \verb!V! is the matrix of vectors \(v_1, \dots, v_m\) that are related to the successive Householder reflectors \(P_j = I - \beta_j v_j v_j^T\) used to transform \(A\) into upper triangular form, and \verb!bet! is the vector of coefficients \(\beta_j\).  Show the julia function.
+	      where \verb!V! is the matrix of vectors \(v_1, \dots, v_m\) that are related to the successive Householder reflectors \(P_j = I - \beta_j v_j v_j^T\) used to transform \(A\) into upper triangular form, and \verb!bet! is the vector of coefficients \(\beta_j\).  Show the julia function. \n\\
+	      Script on next page.
+	      \footnotesize
+	      \begin{verbatim}
+                                                  |   function house1(x)
+using LinearAlgebra                               |     m = size(x)[1]
+using DelimitedFiles                              |     m == 1 && return 1, 0
+                                                  |
+function house(X)                                 |     v = [1 ; x[2:m]]
+  X = deepcopy(X)                                 |     sigma = v[2:m]' * v[2:m]
+  m,n = size(X); V = zeros(m,n); bet = zeros(n)   |
+                                                  |     if (sigma == 0)
+  for k = 1 : n                                   |       bet = 0
+    S = X[k:m,k:n]                                |     else
+    v,b = house1(S[:,1])                          |       xnrm = sqrt(x[1]^2 + sigma)
+                                                  |       v[1] = (x[1] <= 0 ? x[1] - xnrm : x[1] + xnrm)
+    X[k:m,k:n] = S - b * v * v' * S               |
+    V[k:m,k] = v; bet[k] = b                      |       bet = 2 / (1+sigma/v[1]^2)
+  end                                             |       v = v / v[1]
+                                                  |     end
+  V, bet                                          |
+end                                               |     v, bet
+                                                  |   end
+        \end{verbatim}
+	      \normalsize
 
 	\item Test the program developed above for the same data as the one used for Question 5 above.  Obtain the \(Q_1, R_1\) matrices of the factorization \(A = Q_1R_1\) - where \(Q_1\) is \(m \times n\) and \(R_1\) is \(n \times n\), from the Householder factorization.  Compare the \(R_1\) matrix obtained from the Householder method with the \(R\) matrix obtained from the Modified Gram-Schmidt method seen in Question 5 (\(\lVert R_1 - R \rVert_1\)).  Similarly, compute the norms \(\lVert I - Q^T Q \rVert_1\) and \(\lVert I - Q_1^T Q_1 \rVert_1\).
+    \begin{verbatim}
+                          function house_qr(X)
+                            V, bet = house(X)
+                            m = size(V)[1]; n = size(bet)[1]
+                            eye = Float64.(I[1:m,1:m])
+                            Q = eye; R =  deepcopy(X)
+                          
+                            for j = 1 : n
+                              k = n + 1 - j
+                          
+                              Rp = R[j:m,j:n]; v = V[j:m,j]; b = bet[j]
+                              R[j:m,j:n] = Rp - b * v * v' * Rp
+                              R[j+1:m,j] = zeros(m-j)
+                          
+                              v = V[:,k]; b = bet[k]
+                              Q = Q - b * v * v' * Q
+                            end
+                            Q, R
+                          end
+\end{verbatim}
+    I used the above script to retrieve the QR factorization from our householder function, then got the thin decomposition by taking \(Q_1 = Q[:,1:n], \; R_1 = R[1:n,:]\).  From this, I got the following norms:
+    \[\lVert R_1 - R \rVert_2 = 2.7519 \times 10^{-14}, \quad \lVert I - Q^T Q \rVert_2 = 7.2599 \times 10^{-16} \quad \lVert I - Q_1^T Q_1 \rVert_2 = 3.2045 \times 10^{-16}.\]
 \end{enumerate}
 \end{document}
