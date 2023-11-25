@@ -33,24 +33,96 @@
 \maketitle
 \begin{enumerate}
 	\item Let \(A\) be the matrix shown to the right.
-	      \begin{enumerate}
-		      \begin{minipage}{0.7\textwidth}
-			      \item What are the nonzero singular values of \(A\)?
-			      \item If \(A = U \Sigma V^T\) is the SVD of \(A\), what is the matrix \(V\)?  What is \(\Sigma\)?
-			      \item Find the first two columns of the matrix \(U\).
-		      \end{minipage}
-		      \begin{minipage}{0.3\textwidth}
 			      \(A = \left( \begin{array}{rr} -2 & 2 \\ 0 & 1 \\ 1 & 0 \\ 0 & 0 \end{array} \right)\)
-		      \end{minipage}
-		      \item Find the matrix of rank 1, that is the closest to \(A\) in the 2-norm sense, i.e. the matrix \(A_1\) which minimizes \(\lVert A - B \rVert_2\) over all \(4 \times 2\) matrices \(B\) that are of rank 1.
-	      \end{enumerate}
+\begin{enumerate}
+	\item What are the nonzero singular values of \(A\)? \n\\
+	      To retrieve the singular values of \(A\) we must first find the eigenvalues of \(A^T A\),
+	      \[A^T A =
+	      \left( \begin{array}{rrrr} -2 & 0 & 1 & 0 \\ 2 & 1 & 0 & 0 \end{array} \right)
+	      \left( \begin{array}{rr} -2 & 2 \\ 0 & 1 \\ 1 & 0 \\ 0 & 0 \end{array} \right)
+	      = \left( \begin{array}{rr} 5 & -4 \\ -4 & 5 \end{array} \right).
+	      \]
+	      \(p_\lambda(A) = \det(A^T A - \lambda I) = (5 - \lambda)^2 - 16 \implies \lambda_1 = 9, \;\; \lambda_2 = 1\). \n\\
+	      The nonzero singular values of \(A\) are \(\sigma_1 = \sqrt\lambda_1 = 3\), \(\sigma_2 = \sqrt\lambda_2 = 1\). \n
 
-	\item Consider the problem \(\min \; \lVert b - Ax \rVert_2\) in the situation where \(A\) is \(m \times n\) and \(m < n\) (`underdetermined' case).
+	\item If \(A = U \Sigma V^T\) is the SVD of \(A\), what is the matrix \(V\)?  What is \(\Sigma\)? \n\\
+	      \(V\) represents the set of right-singular vectors of \(A\), which can also be thought of as the set of orthonormal eigenvectors of \(A^T A\).
+	      \[A^T A v_1 = \lambda_1 v_1 \implies \begin{array}{r} 5v_{11} - 4v_{12} = 9v_{11} \\ 5v_{12} - 4 v_{11} = 9v_{12}\end{array} \implies v_1 = \binom1{-1}\]
+	      \[A^T A v_2 = \lambda_1 v_2 \implies \begin{array}{r} 5v_{21} - 4v_{22} = v_{21} \\ 5v_{22} - 4 v_{21} = v_{22}\end{array} \implies v_1 = \binom11.\]
+	      Now we can use Gram-Schmidt to orthonormalize \(v_1\) and \(v_2\) (easy since \(v_1\) and \(v_2\) already orthogonal):
+	      \[
+		      v_1 = \binom1{-1} \to
+		      \left(\begin{array}{r}\tfrac{1}{\sqrt2} \\ \tfrac{-1}{\sqrt2} \end{array}\right),
+		      \quad v_2 = \binom11 \to
+		      \left(\begin{array}{r}\tfrac{1}{\sqrt2} \\ \tfrac{1}{\sqrt2} \end{array}\right).
+	      \]
+        Now we have our matrix \(V\), and \(\Sigma\) is just a \(4 \times 2\) matrix with the singular values in descending order along the upper diagonal:
+        \[V = \left(\begin{array}{rr} \tfrac{1}{\sqrt2} & \tfrac{1}{\sqrt2} \\ \tfrac{-1}{\sqrt2} & \tfrac{1}{\sqrt2} \end{array}\right), \quad \Sigma = \left( \begin{array}{rr} 3 & 0 \\ 0 & 1 \\ 0 & 0 \\ 0 & 0 \end{array} \right).\]
+	\item Find the first two columns of the matrix \(U\). \n\\
+    The first two columns of \(U\) correspond to the left-singular vectors of \(A\), or the first two left-eigenvectors of \(AA^T\).  We already know the eigenvalues for \(AA^T\): \(\lambda_1 = 3, \lambda_2 = 1, \lambda_3 = \lambda_4 = 0\).  So we just need to find the eigenvectors corresponding to \(\lambda_1, \lambda_2\) and orthonormalize them.
+    \[
+    AA^T =
+    \left( \begin{array}{rr} -2 & 2 \\ 0 & 1 \\ 1 & 0 \\ 0 & 0 \end{array} \right)
+    \left( \begin{array}{rrrr} -2 & 0 & 1 & 0 \\ 2 & 1 & 0 & 0 \end{array} \right)
+    = \left(\begin{array}{rrrr}
+        8 & 2 & -2 & 0 \\ 2 & 1 & 0 & 0 \\ -2 & 0 & 1 & 0 \\ 0 & 0 & 0 & 0
+        \end{array}\right).
+    \]
+    \[
+    u_1^T AA^T = \lambda_1 u_1^T \implies
+    \begin{array}{r}
+        8u_{11} + 2u_{12} - 2u_{13} = 9u_{11} \\
+        2u_{11} + u_{12} = 9u_{12}            \\
+        u_{13} - 2u_{11} = 9u_{13}
+    \end{array}
+    \implies u_1 = (-4, -1, 1, 0)^T
+    \]
+    \[
+    u_2^T AA^T = \lambda_1 u_2^T \implies
+    \begin{array}{r}
+        8u_{21} + 2u_{22} - 2u_{23} = u_{21} \\
+        2u_{21} + u_{22} = u_{22}            \\
+        u_{23} - 2u_{21} = u_{23}
+    \end{array}
+    \implies u_2 = (0, 1, 1, 0)^T
+    \]
+    Again, since these two vectors are already orthogonal, we just need to normalize them,
+    \[
+    u_1 = \left(\tfrac{-4}{3\sqrt2}, \tfrac{-1}{3\sqrt2}, \tfrac{1}{3\sqrt2}, 0\right)^T, \quad
+    u_2 = \left(0, \tfrac{1}{\sqrt2}, \tfrac{1}{\sqrt2}, 0\right)^T.
+    \]
+    
+	\item Find the matrix of rank 1, that is the closest to \(A\) in the 2-norm sense, i.e. the matrix \(A_1\) which minimizes \(\lVert A - B \rVert_2\) over all \(4 \times 2\) matrices \(B\) that are of rank 1. \n\\
+    By the Eckart-Young theorem, we know this matrix must be:
+    \[B = A_1 = \sum_{k=1}^1 \sigma_k u_k v_k^T = 3
+    \left(\begin{array}{r} \tfrac{-4}{3\sqrt2} \\ \tfrac{-1}{3\sqrt2} \\ \tfrac{1}{3\sqrt2} \\ 0 \end{array}\right)
+    \left(\begin{array}{rr} \tfrac{1}{\sqrt2} & \tfrac{-1}{\sqrt2} \end{array}\right) =
+    \left(\begin{array}{rr} -2 & 2 \\ -1/2 & 1/2 \\ 1/2 & -1/2 \\ 0 & 0 \end{array}\right).
+    \]
+\end{enumerate}
+
+	\item Consider the problem \(\min_x \lVert b - Ax \rVert_2\) in the situation where \(A\) is \(m \times n\) and \(m < n\) (`underdetermined').
 	      \begin{enumerate}
-		      \item Using what you've learned from the URV decomposition, find the set of *all* least-squares solutions.  Show that the least-squares solution \(x_*\) of smallest norm must belong to Ran\((A^T)\).  For the rest of the exercise assume \(A\) is of full rank.
+		    \item Using what you've learned from the URV decomposition, find the set of \textbf{all} least-squares solutions.  Show that the least-squares solution \(x_*\) of smallest norm must belong to Ran\((A^T)\).  For the rest of the exercise assume \(A\) is of full rank. \n\\
+          The solution to the least squares problem is some (not necessarily unique) vector \(x_*\) such that \(Ax_* = b_*\) where \(b_*\) is the orthogonal projection of \(b\) onto the space spanned by \(A\):
+          \[b = b_* + b_\perp, \quad b_\perp \in \text{Null}(A^T), \;\; b_* \in \text{Ran}(A).\]
+          Now, since \(b_\perp \in \text{Null}(A^T)\), \(A^T b = A^T(b_* + b_\perp) = A^T b_* + A^T b_\perp = A^T b_*\), meaning \(A^T Ax_* = A^T b\).  Plugging in \(A = URV^T\), we get
+
+          \[A = URV^T = (U_1 \; U_2) \begin{pmatrix} C & 0 \\ 0 & 0 \end{pmatrix} \binom{V_1^T}{V_2^T} = U_1 C V_1^T, \quad C \in \R^{r \times r}, \; U_1 \in R^{m \times r}, \; V_1 \in \R^{n \times r}.\]
+          \begin{align*}
+            A^T Ax_* = A^T b &\iff V_1 C^T U_1^T U_1 C V_1^T x_* = V_1 C^T U_1^T b \\
+            &\iff C V_1^T x_* = U_1^T b.
+          \end{align*}
+
+          \(CV_1^T\) is a full rank \(r \times n\) matrix (\(r < n\)), so the set of \textbf{all} solutions is the set of all \(x\) such that \(C V_1^T x = U_1^T b\).  This can be found by augmenting \(U_1^T b\) onto the matrix \(C V_1^T\) and performing row operations and backsolving for basis vectors that span the solution space. \n
+
 		      \item Find a method for computing \(x_*\) which involves a form of normal equations.
+            \[x_* = (A^T A)^{-1} A^T b.\]
 		      \item Find a method for computing \(x_*\) which involves a QR factorization.
+            \[x_* = R^{-1} Q^T b\]
 		      \item Find a method for computing \(x_*\) based on the SVD.
+            \[x_* = (\Sigma V^T)^{-1} U^T b = V \Sigma^{-1} U^T b,\]
+            Where \(\Sigma^{-1}\) is just a diagonal matrix with \(\sigma_{ii} = 1 / \sigma_i\).
 	      \end{enumerate}
 
 	\item Paul, Jane, and Ann, share information about their likes and dislikes of movies in order to make decisions about selecting films to see. They rates films they see with a scale of 0 to 10, (10 means they liked the movie very much). Here is the status of their table of ratings when Ann was interested in a new film which soon came to a ’theater near her’ (titled ’Title 6’ in the table):
@@ -78,9 +150,27 @@
 	\item For any nonzero matrix \(A\), show that
 	      \begin{enumerate}
 		      \item \(AA^\dag v = v\) for any \(v\) in Ran(\(A\)).
+            \begin{proof}
+              \(v = Aw\) for some \(w\), means that
+              \[A A^\dag v = v \iff A (A^T A)^{-1} A^T A w = Aw\]
+              Since \((A^T A)^{-1} A^T A = I\), we get \(AIw = Aw\) which is clearly true.
+            \end{proof}
 		      \item \(A^\dag x = 0\) for any \(x\) in Null(\(A^T\)).
+            \begin{proof}
+              \(A^T x = 0 \implies A^\dag x = (A^T A)^{-1} A^T x = (A^T A)^{-1} \cdot 0 = 0\)
+            \end{proof}
 		      \item \((A^T)^\dag = (A^\dag)^T\).
+            \begin{proof}
+              \((A^T)^\dag = ((A^T)^T (A^T))^{-1} (A^T)^T = (A A^T)^{-1} A = A^{-T}A^{-1}A = ((A^T A)^{-1} A^T)^T = (A^\dag)^T\)
+            \end{proof}
 		      \item \((A^\dag)^\dag = A\).
+            \begin{proof} \begin{align*}
+                (A^\dag)^\dag = ((A^T A)^{-1} A^T)^\dag &= (((A^T A)^{-1} A^T)^T (A^T A)^{-1} A^T)^{-1} ((A^T A)^{-1} A^T)^T \\
+                &= ((A^{-1} A^{-T} A^T)^T A^{-1} A^{-T} A^T)^{-1} (A^{-1} A^{-T} A^T)^T \\
+                &= (A^{-T} A^{-1})^{-1} A^{-T} \\
+                &= A A^T A^{-T} = A.
+              \end{align*}
+            \end{proof}
 	      \end{enumerate}
 
 	\item Let \(A\) be a matrix with singular values \(\sigma_1 \geq \sigma_2 \geq \dots \geq \sigma_r > 0\), and \(E\) be a perturbation matrix such that \(\lVert E \rVert_2 < \sigma_r\).  Show that rank(\(A+E\)) \(\geq\) rank(\(A\)).
