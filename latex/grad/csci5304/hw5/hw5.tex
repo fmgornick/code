@@ -20,11 +20,11 @@
 \def\lf{\left\lfloor}
 \def\rf{\right\rfloor}
 
-\newcommand{\C}{\mathbb{R}}
-\newcommand{\N}{\mathbb{R}}
-\newcommand{\Q}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{R}}
-\newcommand{\Z}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
 
 \title{\vspace{-1.0cm}CSCI 5304 Homework 5}
 \author{Fletcher Gornick}
@@ -145,8 +145,19 @@
 		      \item\ [QR solution] Ann reasoned as follows: she will give the `similarity’ coefficients \(\alpha\) and \(\beta\) for Paul and Jane respectively.  If the missing rating (call it \(\delta\)) were known then the row of Ann’s ratings should be the closest in the least-squares sense to the row
 		      \[\alpha * (\text{Paul's ratings}) + \beta * (\text{Jane's ratings})\]
 		      Determine, \(\alpha\), \(\beta\) and the induced rating \(\delta\) for Ann for `Title 6'.  Is Ann’s taste closer to Paul’s or to Jane’s?
+          \[
+            A = \begin{pmatrix} 4 & 8 \\ 9 & 3 \\ 2 & 6 \\ 7 & 4 \\ 8 & 3 \end{pmatrix}
+            \implies
+            Q = \begin{pmatrix} 0.2734 & 0.7165 \\ 0.6152 & -0.2731 \\ 0.1367 & 0.6096 \\ 0.4785 & -0.0029 \\ 0.5469 & -0.2009 \end{pmatrix}, \;\;
+            R = \begin{pmatrix} 14.6287 & 8.4081 \\ 0 & 7.9564 \end{pmatrix} \;\;\to\;\;
+            x = R^{-1}Q^T b.
+          \]
+          By method of QR factorization, we see that \(x = (0.7704, 0.0093)^T\), so \(\alpha=0.7704\), \(\beta=0.0093\).  To approximate Ann's score, we get \(\delta = 3\alpha + 8\beta = 3 \cdot 0.7704 + 8 \cdot 0.0093 = 2.3855\). \n
 
-		      \item\ [SVD solution] Ann reasoned as follows: Her score, say \(\delta\), for `Title 6' should be selected in such way that when added in the rank of the resulting matrix should be the smallest possible.  Instead of rank she uses the smallest singular value: the smallest singular value of the resulting matrix should be as small as possible.  By plotting the \color{red} smallest singular value \color{black} of the filled matrix against the score \(\delta\), determine the best score.
+		      \item\ [SVD solution] Ann reasoned as follows: Her score, say \(\delta\), for `Title 6' should be selected in such way that when added in, the rank of the resulting matrix should be the smallest possible.  Instead of rank she uses the smallest singular value: the smallest singular value of the resulting matrix should be as small as possible.  By plotting the \color{red} smallest singular value \color{black} of the filled matrix against the score \(\delta\), determine the best score. \n\\
+            You can see the plot on the next page, but it looks like the rating which yields the smallest singular value is around 2.4, which agrees with our answer of 2.3855 in the previous problem.
+            
+            \includegraphics[width=0.8\textwidth]{plot.png}
 	      \end{enumerate}
 
 	\item For any nonzero matrix \(A\), show that
@@ -190,7 +201,9 @@
 			A_2 = \left(\begin{array}{rrr} -i & 0 & i \\ 1 & 0 & 1 \\ 0 & 1+i & i \end{array}\right) \quad
 			A_3 = \left(\begin{array}{rrr} 1 & i & -i \\ -i & 2 & 0 \\ i & 0 & 3 \end{array}\right)
 		\]
-		The region (complex or real) you find should be the smallest possible that can be determined by using (the row version of) the Gershgorin theorem.
+		The region (complex or real) you find should be the smallest possible that can be determined by using (the row version of) the Gershgorin theorem. \n\\
+    Let \(D(x,r) \subseteq \C\) define a closed disc in the complex plane centered at \(x\) with radius \(r\).  We will use finite unions of these discs to describe the following eigenvalue domains.
+    \[\lambda(A_1) \in D(1,6), \quad \lambda(A_2) \in D(0,2) \cup D(i,\sqrt2), \quad \lambda(A_3) \in D(1,2) \cup D(3,1).\]
 
 	\item[10.] The matrix \(A\) shown on the right arises in boundary value problems with periodic boundary conditions.
 		\begin{enumerate}
@@ -201,15 +214,14 @@
 				\item Show a sequence of Givens rotations to transform this matrix into tridiagonal form (\(T = QAQ^T\) where \(Q\) is unitary, \(T\) is tri-diagonal).  What is the order of the number of operations required? Illustrate the process on a \(5 \times 5\) example (pattern only - no values).
 			\end{minipage}
 			\begin{minipage}{0.4\textwidth}
-				\(\;\;\left(\begin{array}{rrrrrr}
-						2      & -1     & 0      & \hdots & 0      & -1     \\
-						-1     & 2      & -1     & \hdots & -1     & 0      \\
-						0      & -1     & 2      & \hdots & 0      & -1     \\
-						\vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
-						0      & -1     & \hdots & 2      & -1     & 0      \\
-						-1     & 0      & \hdots & -1     & 2      & -1     \\
-						0      & -1     & \hdots & 0      & -1     & 2      \\
-					\end{array}\right)\)
+        \(\;\;\left(\begin{array}{rrrrrr}
+        2      & -1     & 0      & \hdots & 0      & -1     \\
+        -1     & 2      & -1     & \hdots & -1     & 0      \\
+        0      & -1     & 2      & \hdots & 0      & -1     \\
+        \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+        -1     & 0      & -1     & \hdots & 2      & -1     \\
+        0      & -1     & 0      & \hdots & -1     & 2      \\
+        \end{array}\right)\)
 			\end{minipage}
 		\end{enumerate}
 
