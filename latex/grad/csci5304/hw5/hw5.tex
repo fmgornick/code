@@ -116,6 +116,8 @@
 
           \(CV_1^T\) is a full rank \(r \times n\) matrix (\(r < n\)), so the set of \textbf{all} solutions is the set of all \(x\) such that \(C V_1^T x = U_1^T b\).  This can be found by augmenting \(U_1^T b\) onto the matrix \(C V_1^T\) and performing row operations and backsolving for basis vectors that span the solution space. \n
 
+          From lecture, we know that the least squares solution to \(\min_x \lVert Ax - b \rVert_2\) is \(A^\dag b + w\), where \(A^\dag\) is the pseudo-inverse of \(A\), and \(w \in \text{Null}(A)\).  So if we want the least-squares vector with minimum norm, we take \(w = 0\), and see that \(x_* = A^\dag b \in \text{Ran}(A^T)\). \n
+          
 		      \item Find a method for computing \(x_*\) which involves a form of normal equations.
             \[x_* = (A^T A)^{-1} A^T b.\]
 		      \item Find a method for computing \(x_*\) which involves a QR factorization.
@@ -174,6 +176,13 @@
 	      \end{enumerate}
 
 	\item Let \(A\) be a matrix with singular values \(\sigma_1 \geq \sigma_2 \geq \dots \geq \sigma_r > 0\), and \(E\) be a perturbation matrix such that \(\lVert E \rVert_2 < \sigma_r\).  Show that rank(\(A+E\)) \(\geq\) rank(\(A\)).
+    \begin{proof}
+      Let \(\text{rank}(A) = r\) and suppose (to the contrary) \(\lVert E \rVert_2 < \sigma_r\) and \(\text{rank}(A+E) = k < r\).  If \(A = U \Sigma V^T\) is the SVD of \(A\), then by the Eckart-Young theorem, \(A_k = \sum_{i=1}^k \sigma_i u_i v_i^T\) is the matrix of rank \(k\) closest to \(A\), and is distance \(\sigma_{k+1}\) away.  That is,
+      \[\min_{\text{rank}(B) = k} \lVert A - B \rVert_2 = \lVert A - A_k \rVert_2 = \sigma_{k+1}.\]
+      Now let's take a look at matrix \(A+E\),
+      \[\lVert A - (A+E) \rVert_2 \;=\; \lVert E \rVert_2 \;<\; \sigma_r \;\leq\; \sigma_{k+1} \;=\; \lVert A - A_k \rVert_2.\]
+      This clearly contradicts the Eckart-Young theorem, so we can conclude that \(\text{rank}(A+E) \geq \text{rank}(A)\).
+    \end{proof}
 
 	\item[9.] Apply Gershgorin’s theorem to find a domain where the eigenvalues of \(A\) are located for the following matrices
 		\[
