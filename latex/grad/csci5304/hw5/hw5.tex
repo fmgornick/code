@@ -204,29 +204,37 @@
 		The region (complex or real) you find should be the smallest possible that can be determined by using (the row version of) the Gershgorin theorem. \n\\
     Let \(D(x,r) \subseteq \C\) define a closed disc in the complex plane centered at \(x\) with radius \(r\).  We will use finite unions of these discs to describe the following eigenvalue domains.
     \[\lambda(A_1) \in D(1,6), \quad \lambda(A_2) \in D(0,2) \cup D(i,\sqrt2), \quad \lambda(A_3) \in D(1,2) \cup D(3,1).\]
+    \(A_3\) is Hermitian, meaning we it's eiganvalues must all be real, so we can restrict it's eigenvalues to the following domain:
+    \[\lambda(A_3) \in [-1,4] \subset \R.\]
 
-	\item[10.] The matrix \(A\) shown on the right arises in boundary value problems with periodic boundary conditions.
-		\begin{enumerate}
-			\begin{minipage}{0.6\textwidth}
-				\item What is the inertia of this matrix?
-				\item What does Gershgorin’s theorem give for this matrix?
-				\item This matrix is almost tridiagonal.  Is this structure preserved by the QR algorithm?
-				\item Show a sequence of Givens rotations to transform this matrix into tridiagonal form (\(T = QAQ^T\) where \(Q\) is unitary, \(T\) is tri-diagonal).  What is the order of the number of operations required? Illustrate the process on a \(5 \times 5\) example (pattern only - no values).
-			\end{minipage}
-			\begin{minipage}{0.4\textwidth}
-        \(\;\;\left(\begin{array}{rrrrrr}
-        2      & -1     & 0      & \hdots & 0      & -1     \\
-        -1     & 2      & -1     & \hdots & -1     & 0      \\
-        0      & -1     & 2      & \hdots & 0      & -1     \\
-        \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
-        -1     & 0      & -1     & \hdots & 2      & -1     \\
-        0      & -1     & 0      & \hdots & -1     & 2      \\
-        \end{array}\right)\)
-			\end{minipage}
-		\end{enumerate}
+	\item[11.] To reduce a matrix into Hessenberg form by a similarity transformation it is most common to use Householder transforms.  Show how you can use Givens rotations.  You need to show the sequences of rotations \(G(i,j)\) for each row and in which order they are applied.. \\
+    \[\text{Let } G(i,j) =
+    \left(\begin{array}{rrrrrrr}
+      1 & \hdots & 0 & \hdots & 0 & \hdots & 0 \\
+      \vdots & \ddots & \vdots & \ddots & \vdots  & \ddots & \vdots \\
+      0 & \hdots & c & \hdots & -s & \hdots & 0 \\
+      \vdots & \ddots & \vdots & \ddots & \vdots  & \ddots & \vdots \\
+      0 & \hdots & s & \hdots & c & \hdots & 0 \\
+      \vdots & \ddots & \vdots & \ddots & \vdots  & \ddots & \vdots \\
+      0 & \hdots & 0 & \hdots & 0 & \hdots & 1 \\
+    \end{array}\right), \text{ and suppose } A \in \R^{5 \times 5},
+    \]
+    \[G_{(2,3)} A = \begin{pmatrix} * & * & * & * & * \\ * & * & * & * & * \\  & * & * & * & * \\ * & * & * & * & * \\ * & * & * & * & * \end{pmatrix} \to G_{(2,4)} G_{(2,3)} A = \begin{pmatrix} * & * & * & * & * \\ * & * & * & * & * \\  & * & * & * & * \\  & * & * & * & * \\ * & * & * & * & * \end{pmatrix} \to \dots\]
+    The sequence \(G_{(4,5)}G_{(3,5)}G_{(3,4)}G_{(2,5)}G_{(2,4)}G_{(2,3)}A\) yields a Hessenberg matrix in this case.  For the general case of an \(n \times n\) matrix \(A\), the following multiplication will yield a hessenberg matrix:
+    \[G_{(n-1, n)} G_{(n-2, n)} G_{(n-2, n-1)} \cdots G_{(3,6)} \cdots G_{(3,4)} G_{(2,n)} \cdots G_{(2,4)} G_{(2,3)} A.\]
 
 	\item[12.] Given a matrix \(X\) of size \(m \times n\) of full column rank, find the inertia of a matrix of the form
 		\[B = \begin{pmatrix} D & X \\ X^T & 0 \end{pmatrix}\]
-		where it is assumed that \(D\) is a diagonal matrix (of size \(m \times m\)) with positive diagonal entries.  Find the inertia when \(D\) is any nonsingular symmetric matrix (with say \(p\) positive eigenvalues and \(m-p\) negative eigenvalues) but \(X\) is an \(m \times m\) matrix (of full rank). Note: you can assume that \(D\) - is diagonal nonsingular with \(p\) positive entries on the diagonal.
+		where it is assumed that \(D\) is a diagonal matrix (of size \(m \times m\)) with positive diagonal entries.  Find the inertia when \(D\) is any nonsingular symmetric matrix (with say \(p\) positive eigenvalues and \(m-p\) negative eigenvalues) but \(X\) is an \(m \times m\) matrix (of full rank). \n\\
+    Sylvester's Law of Inertia says that any two congruent matrices have the same inertia, so we can take the block LU factorization and solve for the inertia of \(U\),
+    \[
+        B = \begin{pmatrix} D_{m \times m} & X_{m \times n} \\ X^T_{n \times m} & 0_{n \times n} \end{pmatrix}
+          = \begin{pmatrix} I_{m \times m} & 0_{m \times n} \\ X^TD^{-1}_{n \times m} & I_{n \times n} \end{pmatrix}
+            \begin{pmatrix} D_{m \times m} & X_{m \times n} \\ 0_{n \times m} & -X^T D^{-1}X_{n \times n} \end{pmatrix}
+          = LU.
+    \]
+    Since the top half of \(U\) is diagonal, we know the first \(n\) eigenvalues are the same as for \(D\) which are positive.  We know the bottom half corresponds to the eigenvalues of \(-X^T D^{-1} X\), and since \(D^{-1}\) is diagonal (\(d^{-1}_{ii} = 1 / d_{ii}\)), \(D^{-1}X\) just scales the rows of \(X\), so \(X^T D^{-1} X\) must be symmetric positive definite.  This means that \(-X^T D^{-1} X\) must have all (\(n\)) negative eigenvalues.  Therefore \(\text{inertia}(B) = (m,0,n)\). \n
+
+    If instead \(D\) were any symmetric positive definite matrix, we could then use the Cholesky decomposition to produce \(D^{-1} = G^T G\) for some matrix \(G\), so \(X^T D^{-1} X = X^T G^T G X = (GX)^T GX\).  this means that \(X^T D^{-1} X\) must again have all negative eigenvalues.  Then on the top row, we just have \(p\) positive eigenvalues and \(m-p\) negative, so \(\text{inertia}(B) = (p, 0, m+n-p)\).
 \end{enumerate}
 \end{document}
